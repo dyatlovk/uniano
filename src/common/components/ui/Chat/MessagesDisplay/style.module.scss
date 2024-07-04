@@ -1,24 +1,24 @@
 .messages_grid {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 20px;
-    max-height: 200px;
-    
-    @include scrollStyles;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 200px;
+
+  @include scrollStyles;
 }
 
 .message_item {
-    padding: 0px 10px;
-    display: flex;
-    align-items: stretch;
-    gap: 15px;
+  padding: 0px 10px;
+  display: flex;
+  align-items: stretch;
+  gap: 15px;
 }
 
 .select_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: 32px;
 }

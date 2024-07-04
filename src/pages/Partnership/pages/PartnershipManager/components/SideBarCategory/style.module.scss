@@ -1,44 +1,43 @@
 .top_part {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .flex_center {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 5px;
 
-    .margin {
-        margin-left: auto;
-    }
+  .margin {
+    margin-left: auto;
+  }
 }
 
 .dropdown_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .wrapper_scroll {
-    padding-right: 15px;
-    overflow-y: auto;
-    @-moz-document url-prefix() {
-        scrollbar-width: thin;
-        scrollbar-color: $orange $white;
-    }
-  
-    &::-webkit-scrollbar {
-        width: 5px;  /* Width of the scrollbar */
-        background-color: $white;
-        border-radius: 20px;
-    }
-    
-  
-    &::-webkit-scrollbar-thumb {
-        background-color: $orange;  /* Color of the thumb */
-        border-radius: 1px;  /* Rounded corners of the thumb */
-        border-radius: 20px;
-    }
+  padding-right: 15px;
+  overflow-y: auto;
+  @-moz-document url-prefix() {
+    scrollbar-width: thin;
+    scrollbar-color: $orange $white;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    background-color: $white;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $orange; /* Color of the thumb */
+    border-radius: 1px; /* Rounded corners of the thumb */
+    border-radius: 20px;
+  }
 }

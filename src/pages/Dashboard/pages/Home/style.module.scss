@@ -1,133 +1,131 @@
-
 .wrapper {
-    max-width: 1224px;
-    margin: 0 auto;
-    padding: 0px 12px;
+  max-width: 1224px;
+  margin: 0 auto;
+  padding: 0px 12px;
 }
 .vertical_grey {
-    display: none;
+  display: none;
 }
 
 .green_circle {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $green;
-    border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $green;
+  border-radius: 50%;
 }
 
 .orange_circle {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $orange;
-    border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $orange;
+  border-radius: 50%;
 }
 .flex_center {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .flex_center_vertical {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .income_wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
 }
 
 .icome_flex_box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .flex_center_money_green {
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-    gap: 5px;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  gap: 5px;
 }
 .flex_center_money_red {
-    display: flex;
-    align-items: end;
-    margin-bottom: 5px;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  align-items: end;
+  margin-bottom: 5px;
+  justify-content: center;
+  gap: 5px;
 }
-
 
 .section_details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .third_section {
-
 }
 
 .second_section {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .dropdown_first {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .dropdown_second {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 .statistic_flex {
-    display: flex;
-    gap: 5px;
-    * {line-height: 1;}
+  display: flex;
+  gap: 5px;
+  * {
+    line-height: 1;
+  }
 }
 .third_section {
-    padding: 25px 35px 30px 35px;
-    background-color: #FCFCFC;
+  padding: 25px 35px 30px 35px;
+  background-color: #fcfcfc;
 }
 
-@media (min-width:$tabletSize) {
-    .third_section {
-        padding: 50px 0px;
-    }
-    .second_section {
-        flex-direction: row;
-    }
-    .section_details {
-        align-items: start;
-    }
-    .first_section {
-        display: flex;
-        justify-content: space-between;
-    }
-    .vertical_grey {
-        display: block;
-        border: 1px solid rgba($color: $text, $alpha: 0.1);
-        width: 0px;
-        height: 30px;
-    }
+@media (min-width: $tabletSize) {
+  .third_section {
+    padding: 50px 0px;
+  }
+  .second_section {
+    flex-direction: row;
+  }
+  .section_details {
+    align-items: start;
+  }
+  .first_section {
+    display: flex;
+    justify-content: space-between;
+  }
+  .vertical_grey {
+    display: block;
+    border: 1px solid rgba($color: $text, $alpha: 0.1);
+    width: 0px;
+    height: 30px;
+  }
 
-    .income_wrapper {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
+  .income_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 }

@@ -1,28 +1,28 @@
 .boxes_grid {
-    max-width: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
+  max-width: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 }
 
 .input_box {
-    max-width: 40px;
-    text-align: center;
-    height: 50px;
-    border-radius: 10px;
-    @include weakShadow;
-    outline: none;
-    background-color: white;
+  max-width: 40px;
+  text-align: center;
+  height: 50px;
+  border-radius: 10px;
+  @include weakShadow;
+  outline: none;
+  background-color: white;
 }
 
 .input_box_filled {
@@ -39,13 +39,13 @@
   max-width: 40px;
   text-align: center;
   height: 50px;
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
   border-radius: 10px;
   @include weakShadow;
   outline: none;
 }
 
-@media (min-width:$tabletSize) {
+@media (min-width: $tabletSize) {
   .input_box_empty {
     min-width: 60px;
     border-radius: 20px;
@@ -58,6 +58,4 @@
     min-width: 60px;
     border-radius: 20px;
   }
-  
-
 }

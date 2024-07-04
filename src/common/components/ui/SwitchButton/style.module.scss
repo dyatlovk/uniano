@@ -21,21 +21,21 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 80%;
   aspect-ratio: 1;
   left: 10%;
   top: 50%;
   transform: translateY(-50%);
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -47,9 +47,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translate(90%,-50%);
-  -ms-transform: translate(90%,-50%);
-  transform: translate(90%,-50%);
+  -webkit-transform: translate(90%, -50%);
+  -ms-transform: translate(90%, -50%);
+  transform: translate(90%, -50%);
 }
 
 /* Rounded sliders */
@@ -63,9 +63,9 @@ input:checked + .slider:before {
   left: 10%;
   transition: all 0.4s ease;
   top: 50%;
-  -webkit-transform: translate(80%,-50%);
-  -ms-transform: translate(80%,-50%);
-  transform: translate(80%,-50%);
+  -webkit-transform: translate(80%, -50%);
+  -ms-transform: translate(80%, -50%);
+  transform: translate(80%, -50%);
   opacity: 0;
   display: flex;
   align-items: center;

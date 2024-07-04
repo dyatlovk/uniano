@@ -1,26 +1,26 @@
 .message_item {
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: 1px solid rgba($color: $text, $alpha: 0.1);
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
 .message_flex {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .wrapper_top {
-    display: flex;
-    align-items: stretch;
-    gap: 10px;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
 }
 
 .flex_column_details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100%;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  gap: 10px;
+  align-items: center;
 }

@@ -1,94 +1,94 @@
 .vertical_line {
-    height: 22px;
-    width: 1px;
-    background-color: rgba($color: $text, $alpha: 0.1);
+  height: 22px;
+  width: 1px;
+  background-color: rgba($color: $text, $alpha: 0.1);
 }
 .search_popup_wrapper {
-    @include weakShadow;
-    border-radius: 20px;
-    background-color: white;
-    cursor: auto;
+  @include weakShadow;
+  border-radius: 20px;
+  background-color: white;
+  cursor: auto;
 
-    input {
-        outline: none;
-    }
+  input {
+    outline: none;
+  }
 }
 .results_item {
-    width: 100%;
-    padding: 12px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.15s;
-    &:hover {   
-        background-color: $white;
-    }
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.15s;
+  &:hover {
+    background-color: $white;
+  }
 }
 
 .related_wrapper {
-    width: 100%;
-    padding: 12px 20px;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.15s;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  img {
     border-radius: 20px;
-    cursor: pointer;
-    transition: 0.15s;
-    display: flex;
-    align-items: stretch;
-    gap: 10px;
-    img {
-        border-radius: 20px;
-    }
-    &:hover {   
-        background-color: $white;
-    }
+  }
+  &:hover {
+    background-color: $white;
+  }
 }
 
 .flex_column {
-    min-height: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 5px 0px;
+  min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px 0px;
 }
 
 .dropdown_item {
-    padding: 7px 10px;
-    transition: all 0.15s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-radius: 20px;
+  padding: 7px 10px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
 
-    svg {
-        height: 17px;
-        width: 17px;
-    }
-    &:hover {
-        background-color: $white;
-    }
+  svg {
+    height: 17px;
+    width: 17px;
+  }
+  &:hover {
+    background-color: $white;
+  }
 }
 
 .dropdown_wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 10px;
-    @include weakShadow;
-    border-radius: 20px;
-    background-color: white;
-    position: absolute;
-    z-index: 3;
-    top: 100%;
-    white-space: nowrap;
-    left: 50%;
-    transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+  @include weakShadow;
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  z-index: 3;
+  top: 100%;
+  white-space: nowrap;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .padding_title {
-    padding: 20px;
+  padding: 20px;
 }
 .padding {
-    padding: 20px;
+  padding: 20px;
 }
 
-@media (min-width:$tabletSize) {
-    .related_wrapper {
-        white-space: nowrap;
-    }
+@media (min-width: $tabletSize) {
+  .related_wrapper {
+    white-space: nowrap;
+  }
 }

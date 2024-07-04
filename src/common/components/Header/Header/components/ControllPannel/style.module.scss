@@ -1,136 +1,134 @@
 .controll_item {
-    padding: 5px;
-    border-radius: 20px;
-    transition: 0.15s;
+  padding: 5px;
+  border-radius: 20px;
+  transition: 0.15s;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    &:hover {
-        background-color: $white;
-    }
+  &:hover {
+    background-color: $white;
+  }
 
-    svg {
-        height: 18px;
-    }
+  svg {
+    height: 18px;
+  }
 }
 
 .time_choose_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .flex_icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    transition: 0.15s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  transition: 0.15s;
 }
 .flex_column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
 }
 .second_item_grid {
-    padding: 0px 20px;
-    border-right: 1px solid rgba($color: $text, $alpha: 0.1);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  padding: 0px 20px;
+  border-right: 1px solid rgba($color: $text, $alpha: 0.1);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .third_item_grid {
-
 }
 
 .category {
-    padding: 0px 14px;
-    background-color: $text;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  padding: 0px 14px;
+  background-color: $text;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 .grid_20 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 .choose_role {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 20px;
-    gap: 10px;   
-    max-width: 200px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 20px;
+  gap: 10px;
+  max-width: 200px;
 
-    svg {
-        height: 22px;
-    }
+  svg {
+    height: 22px;
+  }
 }
 .first_item_grid {
-    border-right: 1px solid rgba($color: $text, $alpha: 0.1);
+  border-right: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 .moderator_grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 .moderator_title_padding {
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .select_modal_moderator {
-    display: flex;
-    align-items: stretch;
-    min-width: 320px;
-    gap: 10px;
+  display: flex;
+  align-items: stretch;
+  min-width: 320px;
+  gap: 10px;
 
-    transition: 0.15s;
-    padding: 15px 30px;
-    border-radius: 20px;
-    &:hover {
-        background-color: $white;
-    }
+  transition: 0.15s;
+  padding: 15px 30px;
+  border-radius: 20px;
+  &:hover {
+    background-color: $white;
+  }
 }
 .select_item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .grid_10 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 .controll_pannel {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 10px 20px;
-    background-color: white;
-    border-radius: 20px;
-    width: calc(100vw - 20px);
-    @include weakShadow;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 20px;
+  width: calc(100vw - 20px);
+  @include weakShadow;
 }
 
 @media (min-width: $tabletSize) {
-    .controll_pannel {
-        width: auto;
-    }
+  .controll_pannel {
+    width: auto;
+  }
 
-    .moderator_grid {
-        grid-template-columns: repeat(3,auto);
-    }
+  .moderator_grid {
+    grid-template-columns: repeat(3, auto);
+  }
 
-    .first_item_grid {
-        padding-right: 20px;
-    }
-
+  .first_item_grid {
+    padding-right: 20px;
+  }
 }

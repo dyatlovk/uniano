@@ -1,76 +1,73 @@
 .wrapper {
-    position: relative;
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
+  position: relative;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    > textarea {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        resize: none;
-    }
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  > textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    resize: none;
+  }
 }
 
 .input {
-    width: 100%;
-    transition: 0.2s;
-    font-size: 0.875rem;
-    @include weakShadow;
-    padding: 8px 27px 8px 15px;
-    line-height: 1;
-    color: $text;
-    border-radius: 20px;
-    @include scrollStyles;
+  width: 100%;
+  transition: 0.2s;
+  font-size: 0.875rem;
+  @include weakShadow;
+  padding: 8px 27px 8px 15px;
+  line-height: 1;
+  color: $text;
+  border-radius: 20px;
+  @include scrollStyles;
 
-    &:focus {
-       @include midShadow;
-    }
-    
-}   
-
+  &:focus {
+    @include midShadow;
+  }
+}
 
 .dynamic_icon {
-    transition: all 0.3s ease;
-    position: absolute;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-    svg {
-        max-width: 20px;
-    }
+  svg {
+    max-width: 20px;
+  }
 }
 .dynamic_icon_end {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 20px;
-    
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
 }
 .close_icon {
-    transition: all 0.3s ease;
-    position: absolute;
-    right: 15px;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-@media (min-width:$tabletSize) {
-    .input {
-        font-size: 1rem;
-    }
+@media (min-width: $tabletSize) {
+  .input {
+    font-size: 1rem;
+  }
 }

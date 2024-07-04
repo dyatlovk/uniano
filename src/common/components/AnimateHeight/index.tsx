@@ -1,17 +1,15 @@
-
-import styles from './style.module.scss';
+import styles from './style.module.scss'
 
 type AnimateHeightProps = {
-    children: React.ReactNode;
-    show: boolean;
+  children: React.ReactNode
+  show: boolean
 }
-const AnimateHeight = ({children,show}:AnimateHeightProps) => {
+const AnimateHeight = ({ children, show }: AnimateHeightProps) => {
+  return (
+    <div className={`${styles.grid_item} ${show ? styles.show : ''}`}>
+      <div>{children}</div>
+    </div>
+  )
+}
 
-    return (
-      <div className={`${styles.grid_item} ${show ? styles.show : ''}`}>
-           <div>{children}</div>
-      </div>
-    );
-};
-
-export default AnimateHeight;
+export default AnimateHeight

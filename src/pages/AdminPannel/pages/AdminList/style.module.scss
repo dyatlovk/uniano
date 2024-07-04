@@ -1,69 +1,67 @@
 .top_part_wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .white_box {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    svg {
-        width: 8px;
-        height: 8px;
-    }
+  svg {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 .flex_3 {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
-
 
 .hover_text {
-    font-weight: 400;
-    color: rgba($color: black, $alpha: 0.5);
-    transition: 0.2s;
+  font-weight: 400;
+  color: rgba($color: black, $alpha: 0.5);
+  transition: 0.2s;
 
-    &:hover {
-        font-weight: 500;
-        color: $text;
-    }
+  &:hover {
+    font-weight: 500;
+    color: $text;
+  }
 }
-
 
 .settings_role_grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    align-items: center;
-    column-gap: 60px;
-    row-gap: 20px;
-    
-    * {
-        width: 70px;
-    }
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  column-gap: 60px;
+  row-gap: 20px;
+
+  * {
+    width: 70px;
+  }
 }
-@media (min-width:$tabletSize) {
-    .settings_role_grid {
-        display: flex;
-        align-items: center;
-        column-gap: 0px;
-        row-gap: 0px;
-        gap: 20px;
-        * {
-            width: auto;
-        }
+@media (min-width: $tabletSize) {
+  .settings_role_grid {
+    display: flex;
+    align-items: center;
+    column-gap: 0px;
+    row-gap: 0px;
+    gap: 20px;
+    * {
+      width: auto;
     }
-    .top_part_wrapper {
-        flex-direction: row;
-    }
+  }
+  .top_part_wrapper {
+    flex-direction: row;
+  }
 }

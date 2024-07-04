@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    
 
     /* Bundler mode */
     "moduleResolution": "node",
@@ -15,15 +14,11 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "types": ["vite-plugin-svgr/client"],
-    
-    
-    
 
-    
-    "baseUrl": "./src", 
-    "outDir": "./dist", 
+    "baseUrl": "./src",
+    "outDir": "./dist",
     "paths": {
-      "@assets/images/*": ["assets/images/*"], 
+      "@assets/images/*": ["assets/images/*"],
       "@assets/svg/*": ["assets/svg/*"],
       "@common/components/*": ["common/components/*.tsx"],
       "@common/helpers/*": ["common/helpers/*.ts"],
@@ -31,8 +26,8 @@
       "@common/styles/*": ["common/styles/*.ts"],
       "@common/content/*": ["common/content/*.ts"],
       "@common/context/*": ["common/context/*.tsx"],
-      "@pages/*": ["pages/*.tsx"],
-    },
+      "@pages/*": ["pages/*.tsx"]
+    }
   },
-  "include": ["./src"],
+  "include": ["./src"]
 }

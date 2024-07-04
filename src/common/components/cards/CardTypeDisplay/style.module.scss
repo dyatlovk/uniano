@@ -1,51 +1,51 @@
 .wrapper {
-    height: 20px;
-    padding: 0px 8px;
-    padding-top: 2px;
+  height: 20px;
+  padding: 0px 8px;
+  padding-top: 2px;
 }
 
 .round_box {
-    height: 25px;
-    width: 5px;
-    border-top-left-radius: 20px;
-    position: relative;
-    background-color: $text;
+  height: 25px;
+  width: 5px;
+  border-top-left-radius: 20px;
+  position: relative;
+  background-color: $text;
 
-    &::after {
-        content: "";
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 10px;
-        height: 12px;
-        background-color: #E0E0E0;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 10px;
+    height: 12px;
+    background-color: #e0e0e0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
 }
 
 .total_wrapper {
-    display: flex;
+  display: flex;
 }
 
 .wrapper_triangles {
-    width: 10px;
+  width: 10px;
 
-    .triable_top {
-        width: 0px;
-        height: 0px;
-        border-style: solid;
-        border-width: 0.8px 0 10px 3.9px;
-        border-color: transparent transparent transparent $text;
-        transform: rotate(0deg);
-    }
+  .triable_top {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0.8px 0 10px 3.9px;
+    border-color: transparent transparent transparent $text;
+    transform: rotate(0deg);
+  }
 
-    .triable_bottom {
-        width: 0px;
-        height: 0px;
-        border-style: solid;
-        border-width: 10px 0 0.8px 3.9px;
-        border-color: transparent transparent transparent $text;
-        transform: rotate(0deg);
-    }
+  .triable_bottom {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 10px 0 0.8px 3.9px;
+    border-color: transparent transparent transparent $text;
+    transform: rotate(0deg);
+  }
 }

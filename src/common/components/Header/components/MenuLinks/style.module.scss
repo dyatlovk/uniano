@@ -1,116 +1,117 @@
 .wrapper {
-    border-radius: 20px;
-    @include weakShadow;
-    background-color: white;
+  border-radius: 20px;
+  @include weakShadow;
+  background-color: white;
 }
 
 .links_wrapper {
-    display: flex;
-    align-items: center;
-    padding: 20px 30px;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  gap: 10px;
 }
 
 .horizontal_line {
-    width: 100%;
-    height: 0px;
-    border: 1px solid rgba($color: $text, $alpha: 0.1);
+  width: 100%;
+  height: 0px;
+  border: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
 .search_section {
-    padding-top: 30px;
-    max-width: 250px;
-    padding-bottom: 30px;
+  padding-top: 30px;
+  max-width: 250px;
+  padding-bottom: 30px;
 }
 
 .search_block {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .search_section input {
-    width: 190px;
-    padding: 6px 15px;
-    @include weakShadow;
-    border-radius: 20px;
-    transition: 0.2s;
-    &:focus {
-        @include midShadow;
-    }
+  width: 190px;
+  padding: 6px 15px;
+  @include weakShadow;
+  border-radius: 20px;
+  transition: 0.2s;
+  &:focus {
+    @include midShadow;
+  }
 }
 
 .color_title {
-    color: rgba($color: black, $alpha: 0.5);
-    transform: 0.2s;
-    &:hover {
-        color: $text;
-    }
+  color: rgba($color: black, $alpha: 0.5);
+  transform: 0.2s;
+  &:hover {
+    color: $text;
+  }
 }
 .search_categorys {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .content_wrapper {
-    display: flex;
+  display: flex;
 }
 
 .category_chevron {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .vertical_line {
-    display: flex;
-    align-items: stretch;
-    border: 1px solid rgba($color: $text, $alpha: 0.1);
+  display: flex;
+  align-items: stretch;
+  border: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 .category_item {
-    cursor: pointer;
-    user-select: none;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
 
-    &:hover {
-        background-color: #F5F5F5;
-    }
+  &:hover {
+    background-color: #f5f5f5;
+  }
 }
 
-.category_link_wrapper {}
+.category_link_wrapper {
+}
 
 .category_link_children {
-    display: flex;
-    flex: none;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
 .search_result_wrapper {
-    margin: 25px 25px 30px 25px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 30px;
-    overflow: hidden;
-    width: 100%;
+  margin: 25px 25px 30px 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 30px;
+  overflow: hidden;
+  width: 100%;
 }
 .link_wrapper {
-    flex: 1;
-    transition: all 0.3s ease;
-    display: flex;
+  flex: 1;
+  transition: all 0.3s ease;
+  display: flex;
 
-    padding: 22px 20px;
-    border-radius: 20px;
-    gap: 10px;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
+  padding: 22px 20px;
+  border-radius: 20px;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
 
-    svg {
-        min-height: 27px;
-        min-width: 27px;
-        width: 27px;
-        height: 27px;
-    }
+  svg {
+    min-height: 27px;
+    min-width: 27px;
+    width: 27px;
+    height: 27px;
+  }
 }

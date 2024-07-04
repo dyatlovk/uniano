@@ -1,139 +1,137 @@
 .wrapper {
-    @include backgroundGradientGreyWhite;
-    display: flex;
-    padding: 8px 12px;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.3s ease;
-    position: relative;
+  @include backgroundGradientGreyWhite;
+  display: flex;
+  padding: 8px 12px;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .title_hover {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.15s;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.15s;
+  user-select: none;
 
-    &:hover {
-        opacity: 0.7;
-    }
-    :active {
-        opacity: 1;
-    }
+  &:hover {
+    opacity: 0.7;
+  }
+  :active {
+    opacity: 1;
+  }
 }
 .content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
 }
 
 .absolute_dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    background-color: $text;
-    padding: 10px 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background-color: $text;
+  padding: 10px 10px;
 }
 .dropdown_grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 
-    > a {
-        margin-left: auto;
-    }
+  > a {
+    margin-left: auto;
+  }
 }
 .vertical_line {
-    display: block;
-    height: 42px;
-    border: 1px solid #A8A8AD;
+  display: block;
+  height: 42px;
+  border: 1px solid #a8a8ad;
 }
 .category_hover {
-    display: flex;
-    position: relative;
-    gap: 10px;
-    cursor: pointer;
+  display: flex;
+  position: relative;
+  gap: 10px;
+  cursor: pointer;
 }
 
-.hover_wrapper.disabled { 
-    display: none;
+.hover_wrapper.disabled {
+  display: none;
 }
 
 .active {
-    position: absolute;
-    top: calc(100% + 50px);
-    padding: 15px;
-    @include weakShadow;
+  position: absolute;
+  top: calc(100% + 50px);
+  padding: 15px;
+  @include weakShadow;
 }
 
 .hover_content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.15s ease;
-    padding: 15px;
-    &:hover {
-        background-color: #F5F5F5;
-        border-radius: 20px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s ease;
+  padding: 15px;
+  &:hover {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+  }
 }
 
 .currentTitle {
-    display: none;
+  display: none;
 }
 .categoty_text {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-wrap: nowrap;
 }
 
 .hover_wrapper {
-    cursor: pointer;
-    width: 350px;
-    border-radius: 20px;
+  cursor: pointer;
+  width: 350px;
+  border-radius: 20px;
 }
 
 .category_image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    @include weakShadow;
-    border-radius: 50%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  @include weakShadow;
+  border-radius: 50%;
 }
 
 .links_wrapper {
-    display: none;
+  display: none;
 }
 
 .chevron_down {
-    svg {
-        width: 12px;
-        height: 7px;
-    }
+  svg {
+    width: 12px;
+    height: 7px;
+  }
 }
 
 @media (min-width: $tabletSize) {
-
-    .wrapper {
-        min-height: 90px;
-    }
-    .chevron_down {
-        display: none;
-    }
-    .links_wrapper {
-        display: flex;
-        align-items: center;
-        row-gap: 0px;
-        flex-wrap: wrap;
-    }
-    .currentTitle {
-        display: inline-block;
-    }
+  .wrapper {
+    min-height: 90px;
+  }
+  .chevron_down {
+    display: none;
+  }
+  .links_wrapper {
+    display: flex;
+    align-items: center;
+    row-gap: 0px;
+    flex-wrap: wrap;
+  }
+  .currentTitle {
+    display: inline-block;
+  }
 }

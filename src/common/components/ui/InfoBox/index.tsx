@@ -1,17 +1,13 @@
+import AppColor from '@common/styles/variables-static'
+import styles from './style.module.scss'
 
-import AppColor from '@common/styles/variables-static';
-import styles from './style.module.scss';
-
-type InfoBox = {
-    
-}
+type InfoBox = {}
 const InfoBox = () => {
+  return (
+    <div className={styles.info_box}>
+      <AppColor.info />
+    </div>
+  )
+}
 
-    return (
-      <div className={styles.info_box}>
-           <AppColor.info />
-      </div>
-    );
-};
-
-export default InfoBox;
+export default InfoBox

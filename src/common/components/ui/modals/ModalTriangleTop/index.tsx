@@ -1,18 +1,23 @@
-
-import styles from './style.module.scss';
+import styles from './style.module.scss'
 
 type ModalTriangleTopProps = {
-    contentNode: React.ReactNode;
-    isActive:boolean;
-    padding?: string;
+  contentNode: React.ReactNode
+  isActive: boolean
+  padding?: string
 }
-const ModalTriangleTop = ({contentNode,isActive,padding}:ModalTriangleTopProps) => {
+const ModalTriangleTop = ({
+  contentNode,
+  isActive,
+  padding,
+}: ModalTriangleTopProps) => {
+  return (
+    <div
+      style={{ padding: padding, display: isActive ? 'block' : 'none' }}
+      className={styles.wrapper}
+    >
+      {contentNode}
+    </div>
+  )
+}
 
-    return (
-      <div style={{padding: padding,display: isActive ? 'block' : 'none'}} className={styles.wrapper}>
-           {contentNode}
-      </div>
-    );
-};
-
-export default ModalTriangleTop;
+export default ModalTriangleTop

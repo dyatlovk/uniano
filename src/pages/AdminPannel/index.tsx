@@ -1,14 +1,12 @@
-
-import Layout from './components/Layout';
-import styles from './style.module.scss';
+import Layout from './components/Layout'
+import styles from './style.module.scss'
 
 const AdminPannel = () => {
+  return (
+    <div>
+      <Layout />
+    </div>
+  )
+}
 
-    return (
-      <div>
-           <Layout />
-      </div>
-    );
-};
-
-export default AdminPannel;
+export default AdminPannel

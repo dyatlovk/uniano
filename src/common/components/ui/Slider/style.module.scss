@@ -1,110 +1,107 @@
 .slider {
-    display: flex;
-    transition: 0.5s ease;
-    user-select: none;
+  display: flex;
+  transition: 0.5s ease;
+  user-select: none;
 }
-
 
 .overflow_shell {
-    max-width: 100%;
-    padding: 0px 30px;
-    position: relative;
-    display: flex;
-    min-width: 250px;
+  max-width: 100%;
+  padding: 0px 30px;
+  position: relative;
+  display: flex;
+  min-width: 250px;
 }
 .shell {
-    width: 100%;
-    min-width: 250px;
+  width: 100%;
+  min-width: 250px;
 }
 
 .sliderOverflow {
-    overflow-x: hidden;
-    overflow-y: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 .chevron {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $text;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $text;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-    &:hover {
-        background-color: #999999;
-    }
+  &:hover {
+    background-color: #999999;
+  }
 }
 
 .left {
-    position: absolute;
-    right: calc(100% - 50px);
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
+  position: absolute;
+  right: calc(100% - 50px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
 }
-
-
 
 .right {
-    position: absolute;
-    left: calc(100% - 50px);
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
+  position: absolute;
+  left: calc(100% - 50px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
 }
 .remove_on_mobile {
-    display: none;
+  display: none;
 }
 
 .dots {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 .dots > span {
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
 }
 .dot {
-    background-color: $text;
+  background-color: $text;
 }
 .activeDot {
-    background-color: $orange;
+  background-color: $orange;
 }
 
-@media (min-width:$tabletSize) {
-    .overflow_shell {
-        padding: 0px 50px;
-    }
+@media (min-width: $tabletSize) {
+  .overflow_shell {
+    padding: 0px 50px;
+  }
 
-    .left {
-        right: calc(100% - 50px);
-    }
+  .left {
+    right: calc(100% - 50px);
+  }
 
-    .right {
-        left: calc(100% - 50px);
-    }
-    .chevron {
-        width: 50px;
-        height: 50px;
-    }
-    .remove_on_desktop {
-        display: none;
-    }
-    .remove_on_mobile {
-        display: flex;
-    }
+  .right {
+    left: calc(100% - 50px);
+  }
+  .chevron {
+    width: 50px;
+    height: 50px;
+  }
+  .remove_on_desktop {
+    display: none;
+  }
+  .remove_on_mobile {
+    display: flex;
+  }
 }

@@ -1,112 +1,112 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .filters_wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .active_day {
-    color: red;
-    background-color: red;
+  color: red;
+  background-color: red;
 }
 
 .in_range_item {
-    color: red;
+  color: red;
 }
 
 .full_space {
-    padding: 20px 20px 
+  padding: 20px 20px;
 }
 
 .day_preview_box {
-    @include weakShadow;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    transition: 0.2s;
+  @include weakShadow;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  transition: 0.2s;
 
-    &:hover {
-        background-color: $white;
-    }
+  &:hover {
+    background-color: $white;
+  }
 }
 .vertical_line {
-    width: 0px;
-    min-height: 100%;
-    border: 1px solid rgba($color: $text, $alpha: 0.1);
+  width: 0px;
+  min-height: 100%;
+  border: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
 .calendar_item_wrapper {
-    padding: 20px;
+  padding: 20px;
 }
 .date_grid {
-    padding: 30px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-width: 130px;
+  padding: 30px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 130px;
 }
 
 .calendar_wrapper {
-    background-color: white;
-    border-radius: 20px;
-    overflow: hidden;
-    @include weakShadow;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  @include weakShadow;
 }
 .date_text_hover {
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding-left: 20px;
-    white-space: nowrap;
-    width: 100%;
-    transition: 0.2s;
-    font-weight: 400;
-    &:hover {
-        background-color: $white;
-        font-weight: 500;
-    }
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 20px;
+  white-space: nowrap;
+  width: 100%;
+  transition: 0.2s;
+  font-weight: 400;
+  &:hover {
+    background-color: $white;
+    font-weight: 500;
+  }
 }
 .flex_filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0px;
-    border-top: 1px solid rgba($color: $text, $alpha: 0.1);
-    border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0px;
+  border-top: 1px solid rgba($color: $text, $alpha: 0.1);
+  border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
 .skill_wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 .flex_item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-@media (min-width:$tabletSize) {
-    .filters_wrapper {
-        gap: 30px;
+@media (min-width: $tabletSize) {
+  .filters_wrapper {
+    gap: 30px;
+  }
+  .wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    input {
+      font-size: 1rem;
     }
-    .wrapper {
-        flex-direction: row;
-        justify-content: space-between;
-        input {
-            font-size: 1rem;
-        }
-    }
+  }
 }

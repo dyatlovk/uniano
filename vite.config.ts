@@ -1,14 +1,12 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 export default defineConfig({
-  base: "/union-project/",
-  plugins: [
-    react(), svgr()
-  ],
+  base: '/union-project/',
+  plugins: [react(), svgr()],
   server: {
     host: '127.0.0.1',
-    port: 3000
+    port: 3000,
   },
   css: {
     preprocessorOptions: {
@@ -32,4 +30,4 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
-});
+})

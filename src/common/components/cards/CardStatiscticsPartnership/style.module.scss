@@ -1,134 +1,131 @@
-.name>p{
-    display: inline;
+.name > p {
+  display: inline;
 }
 
 .shell {
-    max-width: 250px;
-    min-width: 250px;
-    position: relative;
-    padding-left: 10px;
+  max-width: 250px;
+  min-width: 250px;
+  position: relative;
+  padding-left: 10px;
 }
 
 .links_wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
 }
 .right_abolute {
-    position: absolute;
-    top: 0;
-    transform: translateY(-50%);
-    right: 0;
-    width: 30px;
-    height: 25px;
-    background-color: $text;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  right: 0;
+  width: 30px;
+  height: 25px;
+  background-color: $text;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 .shell_absolute {
-    position: absolute;
-    overflow: visible;
-    z-index: 1;
-    top: -10px;
-    left: 0px;
+  position: absolute;
+  overflow: visible;
+  z-index: 1;
+  top: -10px;
+  left: 0px;
 }
 
 .shell_top_image {
-    padding: 17px 13px 23px 13px;
-    position: relative;
-    &::after {
-        content: '';
-        position: absolute;
-        @include full-size-position;
-        background-color: rgba(81, 81, 81, 0.8);
-        z-index: -1;
-    }
+  padding: 17px 13px 23px 13px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    @include full-size-position;
+    background-color: rgba(81, 81, 81, 0.8);
+    z-index: -1;
+  }
 }
 
 .content_top_first {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .content_top_second {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
 }
 
 .tags_wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 14px;
 }
 
 .tag {
-    padding: 4px 9px;
-    background-color: rgba($orange, 0.73);
-    border-radius: 20px;
-    
+  padding: 4px 9px;
+  background-color: rgba($orange, 0.73);
+  border-radius: 20px;
 }
 .svgText {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 .shell_bottom {
-    margin-top: 3px;
-    background-color: white;
-    padding: 20px 13px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    @include weakShadow;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    align-items: center;
+  margin-top: 3px;
+  background-color: white;
+  padding: 20px 13px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  @include weakShadow;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
 }
 
 .shell_middle {
-    margin-top: 3px;
-    background-color: white;
-    padding: 20px 13px;
-    @include weakShadow;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 15px;
+  margin-top: 3px;
+  background-color: white;
+  padding: 20px 13px;
+  @include weakShadow;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
 }
 
 .bottom_details_money {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
 }
 .bottom_details_money_range {
-    p {
-        display: inline;
-    }
+  p {
+    display: inline;
+  }
 }
 
-
 .static_wrapper {
-    display: flex;
-    gap: 5px;
-    align-items: end;
+  display: flex;
+  gap: 5px;
+  align-items: end;
 }
 
 .static_text {
-    
 }
 
 .dots {
-    display: flex;
-    flex: 1;
-    border-bottom: 2px dotted rgba($color: $text, $alpha: 0.5);
+  display: flex;
+  flex: 1;
+  border-bottom: 2px dotted rgba($color: $text, $alpha: 0.5);
 }
