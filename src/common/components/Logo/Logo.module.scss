@@ -1,0 +1,29 @@
+.p {
+    font-size: 28px;
+    line-height: 0.78;
+    letter-spacing: 6.16px;
+    color: $orange;
+    font-weight: 500;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: $orange;
+}
+
+.logo_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.h2 {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 120%;
+}

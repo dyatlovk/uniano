@@ -1,0 +1,46 @@
+.select_box {
+    width: 14px;
+    height: 14px;
+    border: 2px solid $text;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.15s;
+
+}
+
+.flex_item {
+    display: flex;
+    align-items: first baseline;
+    gap: 10px;
+    &:hover {
+        .select_box {
+            border: 2px solid $orange;
+        }
+
+    }
+}
+
+.text_item {
+    align-items: flex-start;
+}
+.select_box_active {
+    position: relative;
+    border: 2px solid $orange;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        height: 50%;
+        border: 1px solid $orange;
+        border-radius: 50%;
+    }
+}

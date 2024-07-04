@@ -1,0 +1,22 @@
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.box_black {
+    padding: 2px 13px;
+    border-radius: 20px;
+    background-color: $text;
+    width: fit-content;
+}
+
+.text_dotted_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.user_wrappper {
+    padding: 11px 14px;
+}

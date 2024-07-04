@@ -1,0 +1,44 @@
+.absolute_list {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include weakShadow;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 3;
+    background-color: white;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.triangle {
+    position: absolute;
+    top: calc(100% + 8px);
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+
+.filter_item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 20px;
+    transition: 0.15s;
+
+    white-space: nowrap;
+
+    &:hover {
+        background-color: $white;
+    }
+}

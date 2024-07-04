@@ -1,0 +1,136 @@
+.top_wrapper_part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.template_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    @include weakShadow;
+    background-color: white;
+}
+
+.orange {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background-color: $orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper_campaign {
+    padding: 11px 20px;
+    @include weakShadow;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.white {
+    padding: 2px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select_item {
+    display: flex;
+    align-items: center;
+    @include weakShadow;
+    border-radius: 20px;
+    padding: 16px 10px;
+    gap: 5px;
+}
+
+.positive_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.flex_space_between_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 13px;
+    @include weakShadow;
+    border-radius: 20px;
+}
+.flex_gap {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+.question_item {
+    display: flex;
+    gap: 10px;
+}
+
+.details_padding {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.orange_line {
+    width: 100%;
+    background-color: $orange;
+    height: 1px;
+}
+.details_wrapper {
+    @include weakShadow;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+}
+.absolute_details {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.details_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width:$tabletSize) {
+    .details_grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+    .flex_space_between_item {
+        padding: 13px 20px;
+    }
+    .positive_wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    .select_item {
+        justify-content: center;
+    }
+    .wrapper_campaign {
+        flex-direction: row;
+    }
+    .template_icon {
+        height: 40px;
+    }
+    .top_wrapper_part {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

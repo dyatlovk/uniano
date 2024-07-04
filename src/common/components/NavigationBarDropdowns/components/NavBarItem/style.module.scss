@@ -1,0 +1,39 @@
+.navbar_item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+
+    &:hover * {
+        color: $orange;
+        fill: $orange;
+    }
+    * {
+        color: white;
+        fill: white;
+    }
+}
+
+.absolute_wrapper {
+    position: absolute;
+    z-index: 3;
+    padding: 22px 30px 30px 22px;
+    border-radius: 20px;
+    top: calc(100% + 36px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    @include weakShadow;
+    max-width: 780px;
+}
+
+.gap_20 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.grid_wrapper {
+    display: grid;
+    grid-template-columns: repeat(3,250px);
+    gap: 30px;
+}

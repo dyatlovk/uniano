@@ -1,0 +1,37 @@
+.wrapper {
+    @include weakShadow;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.top_info {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button_solve {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF7E9;
+    color: $text;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+@media (min-width:$tabletSize) {
+    .wrapper {
+        padding: 30px;
+    }
+}

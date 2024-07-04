@@ -1,0 +1,86 @@
+.wrapper {
+    position: relative;
+    min-height: 215px;
+    @include weakShadow;
+    border-radius: 20px;
+}
+
+.grid_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.item_grid_border {
+    border-right: 1px solid rgba($color: $text, $alpha: 0.1);
+    padding-right: 30px;
+}
+.grid_15 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.item_grid_right {
+    padding-left: 30px;
+}
+.main_wrapper {
+    padding: 20px 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.member_wrapper {
+    position: relative;
+}
+
+.modal_absolute_handler {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.member_activity {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+.members_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.modal_edit_wrapper div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.last_circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    @include weakShadow;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width:$tabletSize) {
+    .main_wrapper {
+        padding: 30px 40px;
+    }
+}

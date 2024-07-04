@@ -1,0 +1,16 @@
+
+.input_abs {
+
+    display: none;
+
+}
+
+.right_abs {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}

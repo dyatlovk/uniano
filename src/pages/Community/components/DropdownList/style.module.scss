@@ -1,0 +1,14 @@
+.dropdown_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hide_list_wrapper {
+    margin-top: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

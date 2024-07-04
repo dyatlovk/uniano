@@ -1,0 +1,55 @@
+.wrapper_dots {
+    width: 30px;
+    height: 15px;
+    border-radius: 5px;
+    @include weakShadow;
+
+    transition: 0.2s;
+
+    display: flex;
+    svg {
+        margin: auto;
+        width: 12px;
+        height: 5px;
+    }
+    background-color: white;
+
+    &:hover {
+        background-color: #F5F5F5;
+    }
+}
+
+.abs_line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+}
+
+.pig_bonuses {
+    flex: 0 0 95px;
+    svg {
+        min-width: 95px;
+        min-height: 95px;
+        width: 95px;
+        height: 95px;
+    }
+}
+.hover_text {
+    color: rgba($color: black, $alpha: 0.5);
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        color: $text;
+    }
+}
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    min-height: 100%;
+}

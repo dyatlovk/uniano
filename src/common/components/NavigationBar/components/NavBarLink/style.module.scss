@@ -1,0 +1,13 @@
+.nav_bar_link {
+    padding: 8px 20px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+@media (min-width:$tabletSize) {
+    .nav_bar_link {
+        padding: 8px 19px;
+        border-radius: 20px;
+        width: fit-content;
+    }
+}

@@ -1,0 +1,91 @@
+.icon_border {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    @include weakShadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        height: 18px;
+    }
+}
+
+.icons_grid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.saved_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.absolute_show {
+    position: absolute;
+    top: calc(100% + 10px);
+    z-index: 3;
+    left: 100%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 20px;
+    @include weakShadow;
+    cursor: auto;
+}
+
+.absolute_top {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    svg {
+        height: 12px;
+    }
+}
+.absolute_grid {
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.absolute_item_grid {
+    padding: 5px 10px;
+    transition: 0.15s;
+    border-radius: 20px;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: $white;
+    }
+}
+.orange_box {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: $orange;
+    transition: 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+.saved_wrapper {
+    padding: 15px 30px;
+    border-radius: 20px;
+    transition: 0.2s;
+    &:hover {
+        background-color: $white;
+    }
+}

@@ -1,0 +1,21 @@
+.wrapper {
+    @include weakShadow;
+    padding: 15px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (min-width:$tabletSize) {
+    .wrapper {
+        padding: 25px 30px;
+        align-items: start;
+    }
+}

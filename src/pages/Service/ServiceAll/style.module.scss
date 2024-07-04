@@ -1,0 +1,124 @@
+.wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0px 10px;
+}
+.details_end_node {
+    svg {
+        transform: all 0.3s ease;
+    }
+}
+.details_end_node:hover {
+    svg {
+        fill: white;
+    }
+}
+
+.main_part {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.justify_flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+}
+
+.price_input {
+    width: 100px;
+    border-radius: 20px;
+    @include weakShadow;
+    padding: 6px 14px;
+    color: rgba($color: black, $alpha: 0.5);
+    font-size: 1rem; 
+}
+
+.skill_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.skill_item {
+    background-color: $orange;
+    padding: 1px 10px;
+    border-radius: 20px;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.gap_5 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cards_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.justify_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover_white {
+    transition: all 0.3s ease;
+    &:hover {
+        svg {
+            fill: white;
+        }
+    }
+}
+@media (min-width:$tabletSize) {
+    .justify_flex {
+        justify-content: space-between;
+    }
+    .cards_wrapper {
+        grid-template-columns: 1fr;
+    }
+    .justify_flex {
+        justify-content: space-between;
+    }
+    .main_part {
+        grid-template-columns: 1fr 3fr;
+        gap: 80px;
+    }
+}
+@media (min-width:900px) {
+    .cards_wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+@media (min-width:1300px) {
+    .justify_flex {
+        justify-content: space-between;
+    }
+    .cards_wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+    }
+    .main_part {
+        grid-template-columns: 1fr 3fr;
+        gap: 80px;
+    }
+}

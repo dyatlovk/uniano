@@ -1,0 +1,51 @@
+.wrapper {
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    user-select: none;
+}
+.flex_wrapper {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.relative {
+    position: relative;
+    margin: 0px 35px;
+}
+.left {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(100% + 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: $text;
+    transition: all 0.15s ease;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+.right {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(100% + 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: $text;
+    transition: all 0.15s ease;
+    &:hover {
+        opacity: 0.7;
+    }
+}

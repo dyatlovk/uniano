@@ -1,0 +1,41 @@
+.title_block {
+    display: flex;
+    transition: all 0.3s ease;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    @include prevent-select;
+
+    svg {
+        width: 15px;
+        height: 7px;
+    }
+    
+    .title_shell {
+        flex: 0 0 80%;
+    }
+}
+
+.description_block {
+    display: none;
+}
+.description_block_active {
+    display: block;
+    padding-top: 15px;
+}
+
+.line {
+    border: 1px solid rgba($color: $text, $alpha: 0.1);
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (min-width:$tabletSize) {
+    .title_block {
+        svg {
+            width: 15px;
+            height: 10px;
+        }
+    }
+}

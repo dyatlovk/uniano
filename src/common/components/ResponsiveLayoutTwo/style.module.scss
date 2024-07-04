@@ -1,0 +1,99 @@
+
+
+
+.main_part {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    position: relative;
+    justify-content: center;
+}
+
+.left_item_modal {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 100%;
+    order: -1;
+}
+
+.left_part {
+
+    display: flex;
+    justify-content: center;
+    flex: 0 0 100%;
+    order: var(--order1M);
+    min-width: 290px;
+}   
+.right_part {
+
+    display: flex;
+    justify-content: center;
+    flex: 0 0 100%;
+    order: var(--order2M);
+    min-width: 290px;
+}
+
+.modal {
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    background-color: white;
+    z-index: 5;
+}
+
+.overflow_modal {
+    overflow: auto;
+    padding: 10px;
+}
+
+.modal_remove {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 4;
+    background-color: rgba($color: black, $alpha: 0.2);
+    
+}
+
+.hide_modal {
+
+    right: 100%;
+}
+
+.show_modal {
+    right: 20%;
+    overflow: hidden;
+}
+.center_item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+@media (min-width:$tabletSize) {
+    .modal {
+        z-index: 0;
+    }
+    .left_item_modal {
+        display: none;
+    }
+    .modal {
+        position: static;
+    }
+    .main_part {
+        column-gap: var(--gap);
+    }
+    .left_part {
+        flex: 1 1 var(--maxWidth1);
+        max-width: var(--maxWidth1);
+        order: var(--order1D);
+    }   
+    .right_part {
+        flex: 1 1 ;
+        order: var(--order2D);
+    }
+}

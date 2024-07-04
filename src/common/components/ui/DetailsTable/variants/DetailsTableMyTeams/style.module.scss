@@ -1,0 +1,28 @@
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.center_item {
+    display: flex;
+    justify-content: start;
+}
+.false_item {
+    width: 14px;
+    height: 1.5px;
+    background-color: $text;
+}
+
+.flex_end {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+@media (min-width:$tabletSize) {
+    .center_item {
+        display: flex;
+        justify-content: center;
+    }
+}

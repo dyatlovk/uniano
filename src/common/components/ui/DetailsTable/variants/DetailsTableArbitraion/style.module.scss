@@ -1,0 +1,51 @@
+.dropdow_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+
+    >* {
+        min-height: 40px;
+    }
+}
+
+.text_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reviews_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.category_wrapper {
+    padding: 2px 14px;
+    background-color: $text;
+    border-radius: 20px;
+}
+
+.user_card {
+    padding: 10px 15px;
+    border-radius: 20px;
+    @include weakShadow;
+    max-width: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (min-width:$tabletSize) {
+    .reviews_wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    .dropdow_grid {
+        display: flex;
+        align-items: start;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding-left: 60px;
+        padding-left: 60px;
+    }
+}

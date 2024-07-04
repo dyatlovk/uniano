@@ -1,0 +1,26 @@
+.text_box {
+    background-color: $white;
+    border-radius: 20px;
+    padding: 10px 13px;
+}
+
+.user_wrappper {
+    padding: 11px 14px;
+}
+.details_box {
+    padding: 15px;
+}
+.text_dotted_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width:$tabletSize) {
+    .details_box {
+        padding: 25px 30px;
+    }
+    .text_box {
+        padding: 15px 20px;
+    }
+}
+

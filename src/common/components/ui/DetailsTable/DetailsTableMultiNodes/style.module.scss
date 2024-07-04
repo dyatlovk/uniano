@@ -1,0 +1,40 @@
+.table {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.table_absolute {
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 50px;
+    background-color: $white;
+    border-radius: 20px;
+}
+.column_title {
+    height: 50px;
+    z-index: 1;
+    text-align: start;
+}
+
+.row_item {
+    border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
+    height: 100px;
+}
+
+.mobile_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.mobile_item {}
+table {
+    padding: 0px 30px;
+    word-break:break-all;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: start;
+  }

@@ -1,0 +1,64 @@
+.border_input {
+    position: relative;
+    width: 100%;
+
+    textarea {
+        height: 150px;
+    }
+    > input,textarea {
+        transition: all 0.3s ease;
+        width: 100%;
+        padding: 20px 50px 20px 25px;
+        border: 1px solid rgba($color: #515151, $alpha: 0.1);
+        border-radius: 20px;
+        box-sizing: border-box;
+        color: $text;
+        font-size: 0.875rem;
+
+        &:focus {
+            
+            @include weakShadow;
+            outline: none;
+        }
+    }
+    > label {
+        position: absolute;
+        font-size: 14px;
+        color: #A8A8AD;
+        font-weight: 500;
+        top: 0;
+        left: 15px; /* Adjust this value based on your border radius */
+        transform: translateY(-50%);
+        background-color: white;
+        padding: 0px 5px;
+    }
+
+    .red_text {
+        color: #EB5757;
+    }
+
+    .label_icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.prev_icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+}
+
+@media (min-width:$tabletSize) {
+    .border_input {
+        > input,textarea {
+            font-size: 1rem;
+        }
+    }
+}

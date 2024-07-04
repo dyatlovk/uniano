@@ -1,0 +1,43 @@
+.news_wrapper {
+    @include weakShadow;
+    border-radius: 20px;
+    background-color: white;
+    cursor: auto;
+}
+
+.top_filter {
+    display: flex;
+    align-items: stretch;
+    min-height: 70px;
+    border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
+}
+.mid_grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+}
+
+.bottom_buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.filter_item {
+    flex-grow: 1;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+}
+
+.bottom_part {
+    border-top: 1px solid rgba($color: $text, $alpha: 0.1);
+}
+.bottom_part_padding {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

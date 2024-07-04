@@ -1,0 +1,65 @@
+.category_wrapper {
+    padding: 2px 14px;
+    background-color: $text;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fields_grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.field_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.select_field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 14px;
+    @include weakShadow;
+    cursor: pointer;
+}
+.dropdown_relative {
+    position: relative;
+    z-index: 3;
+}
+.absolute_dropdown_field {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    @include weakShadow;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+}
+
+.dropdown_child {
+    user-select: none;
+    width: 100%;
+    padding: 10px 15px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: $white;
+    }
+}
+@media (min-width:$tabletSize) {
+    .fields_grid {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 20px;
+    }
+}

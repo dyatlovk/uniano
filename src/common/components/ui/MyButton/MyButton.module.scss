@@ -1,0 +1,30 @@
+.button {
+    padding: var(--padding);
+    background-color: var(--backgroundColor);
+    border: var(--border);
+    width: var(--width);
+    white-space: nowrap;
+    cursor: pointer;
+    border-radius: var(--borderRadius);
+    transition: all 0.15s ease;
+    text-transform: var(--textTransform);
+    
+    &:hover {
+        background-color: var(--hoverBcColor);
+        border: var(--hoverBorder);
+        color: var(--hoverTextColor);
+    }
+    color: var(--textColor);
+    font-size: var(--textSize);
+    font-weight: var(--fontWeight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    line-height: 1;
+}
+
+.button:active {
+    opacity: 0.6;
+}

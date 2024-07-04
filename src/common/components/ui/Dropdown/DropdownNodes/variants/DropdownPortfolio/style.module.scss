@@ -1,0 +1,90 @@
+.bottom_abs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px 10px;
+    background-color: rgba($color: $text, $alpha: 0.8);
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+}
+
+.hover_dark {
+    color: rgba($color: black, $alpha: 0.5);
+    transition: 0.2s;
+  
+    &:hover {
+      color: $text;
+    }
+  }
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image {    
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+.edit_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.flex_end {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.white {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        height: 10px;
+    }
+}
+.profile_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+.node_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 30px;
+}
+.port_dropdown_item {
+    border-radius: 20px;
+    position: relative;
+    min-width: 190px;
+}
+
+.top_abs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.black_box {
+    padding: 2px 5px;
+    background-color: $text;
+    border-radius: 5px;
+}

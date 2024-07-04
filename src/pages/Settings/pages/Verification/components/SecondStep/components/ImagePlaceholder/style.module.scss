@@ -1,0 +1,48 @@
+.empty_wrapper {
+    @include weakShadow;
+    padding: 20px 40px;
+    text-align: center;
+    background-color: $white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    border: 2px dashed rgba($color: $text, $alpha: 0.1);
+
+}
+.wrapper {
+    position: relative;
+    svg {
+        cursor: pointer;
+    }
+}
+.absolute_file_wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    color: transparent;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.image_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 5px;
+
+    img {
+        border-radius: 20px;
+    }
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

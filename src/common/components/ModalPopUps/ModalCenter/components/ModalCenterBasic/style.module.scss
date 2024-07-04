@@ -1,0 +1,35 @@
+.top_part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-radius: 20px;
+}
+
+.bottom_part {
+    padding: 15px 30px;
+    max-height: calc(90vh - 45px);
+    overflow-y: auto;
+    @include scrollStyles;
+    overflow-x: hidden;
+}
+
+.modal_center_basic {
+    background-color: white;
+    border-radius: 20px;
+    @include weakShadow;
+    overflow: hidden;
+    min-width: var(--mobileMinWidth);
+    max-width: var(--mobileMaxWidth);
+}
+
+@media (min-width:$tabletSize) {
+    .bottom_part {
+        min-height: var(--desktopMinHeight);
+    }
+    .modal_center_basic {
+        max-width: var(--desktopMaxWidth);
+        min-width: var(--desktopWidthMin);
+        min-height: var(--desktopMinHeight);
+    }
+}

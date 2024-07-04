@@ -1,0 +1,19 @@
+.wrapper_date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desktop_details {
+    display: none;
+}
+@media (min-width:$tabletSize) {
+    .desktop_details {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .wrapper_date {
+        justify-content: space-between;
+    }
+}

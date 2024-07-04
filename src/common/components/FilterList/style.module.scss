@@ -1,0 +1,47 @@
+
+.filters_wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    overflow-x: auto;
+    @include scrollStyles;
+    gap: 20px;
+    
+}
+
+
+@media (min-width:$tabletSize) {
+    .filters_wrapper {
+        gap: 30px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    align-items: center;
+}
+.vertical_lone {
+    height: 14px;
+    width: 0px;
+    border: 1px solid #A8A8AD;
+}
+.filter_item {
+    cursor: pointer;
+    user-select: none;
+    transition: 0.15s;
+    padding-bottom: 5px;
+    &:hover {
+        * {
+            color: $orange;
+        }
+    }
+}

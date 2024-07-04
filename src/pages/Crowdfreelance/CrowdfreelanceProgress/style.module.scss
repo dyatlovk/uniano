@@ -1,0 +1,84 @@
+.cards_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.text_wrapper {
+    border-radius: 20px;
+    background-color: $white;
+    padding: 8px 13px;
+}
+
+
+.boxes_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.true_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.user_wrappper {
+    padding: 11px 14px;
+}
+
+.details_box {
+    padding: 15px 13px;
+}
+
+.text_dotted_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.buy_wrapper {
+    width: 33px;
+    height: 33px;
+    border-radius: 5px;
+    @include weakShadow;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info_box {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    @include weakShadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rewards_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+@media (min-width:$tabletSize) {
+    .details_box {
+        padding: 25px 30px;
+    }
+    .boxes_grid {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+    .text_wrapper {
+        padding: 15px 20px;
+    }
+}
+@media (min-width:$tabletSize) {
+    .cards_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

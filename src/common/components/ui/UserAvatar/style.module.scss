@@ -1,0 +1,50 @@
+
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.active_status {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background-color: $red;
+    min-width: 8px;
+    min-height: 8px;
+    max-width: 22px;
+    max-height: 22px;
+}
+
+.active_true {
+    background-color: $green;
+}
+.flex_wrapper {
+    display: none;
+}
+.position_relative {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    position: relative;
+}
+.wrapper_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+@media (min-width: $tabletSize) {
+    .wrapper {
+        gap: 10px;
+    }
+    .flex_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}

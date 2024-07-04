@@ -1,0 +1,14 @@
+.grid_item {
+    display: grid;
+    grid-template-rows: 0fr; /* Initial height set to 0 */
+    transition: grid-template-rows 0.2s ease; /* Adjust the duration and easing as needed */
+    
+    > div {
+        overflow: hidden;
+    }
+    &.show {
+      grid-template-rows: 1fr; /* Expanded height set to 100% */
+      grid-row: 1 / span 2;
+    }
+  }
+  

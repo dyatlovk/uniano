@@ -1,0 +1,23 @@
+.field_text {
+    padding: 10px 15px;
+    border-radius: 20px;
+    @include weakShadow;
+
+}
+
+.fields_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.ul_item {
+    padding-left: 20px;
+    > li {
+        list-style-type: disc;
+    }
+}
+@media (min-width:$tabletSize) {
+    .fields_grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

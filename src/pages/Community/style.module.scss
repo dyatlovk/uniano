@@ -1,0 +1,151 @@
+.wrapper {
+    max-width: 1220px;
+    padding: 0px 10px;
+    margin: 0 auto;
+}
+
+.bottom_nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.orange_plus {
+    width: 32px;
+    height: 32px;
+    background-color: $orange;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main_part {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+        width: 290px;
+    }
+}
+@media (min-width:$tabletSize) {
+    .main_part {
+        flex-direction: row;
+        gap: 80px;
+    }
+
+    .left_part {
+        flex: 0 0 290px;
+    }
+
+    .right_part {
+        flex: 1;
+    }
+}
+
+.wrapper_filter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    input {
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        color: rgba($color: #000000, $alpha: 0.5);
+        @include weakShadow;
+        min-width: 290px;
+        border-radius: 20px;
+    }
+}
+
+.filters_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.flex_item_filter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.flex_item_filter_text {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+}
+.flex_full {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .line {
+        width: 100%;
+    }
+}
+
+.dropdown_wrapper_filter {
+    position: absolute;
+    top: 20px;  
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.flex_item_filter_text {
+    position: relative;
+}
+
+.dropdown_wrapper_filter {
+    background-color: white;
+    @include weakShadow;
+    white-space: nowrap;
+    z-index: 1;
+    box-sizing: content-box;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+.dropdown_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+@media (min-width:$tabletSize) {
+    
+    .filters_wrapper {
+        gap: 30px;
+    }
+    .wrapper_filter {
+        flex-direction: row;
+        justify-content: space-between;
+        input {
+            font-size: 1rem;
+        }
+    }
+}

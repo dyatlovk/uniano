@@ -1,0 +1,56 @@
+.helper {
+    position: fixed;
+    bottom: 120px;
+    right: 10px;
+    max-width: calc(100% - 20px);
+    width: 400px;
+    border-radius: 20px;
+    background-color: white;
+    transition: 0.2s;
+    z-index: 4;
+}
+
+
+.scroll_bar_bottom {
+    max-height: calc(100vh - 270px);
+    overflow-y: auto;
+    height: 100%;
+    @include scrollStyles;
+}
+.care_height {
+    min-height: 50vh;
+    height: 80vh;
+    max-height: calc(100vh - 270px);
+}
+.helper.weak_shadow {
+    @include weakShadow;
+}
+.bottom_part {
+    overflow-y: auto;
+    height: 100%;
+
+    @include scrollStyles;
+}
+.helper_padding {
+    padding: 20px 30px;
+}
+
+.flex_row_end {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.flex_column {
+    display: flex;
+    min-height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@media (min-width: $tabletSize) {
+    .helper {
+        bottom: 170px;
+    }
+
+}

@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.title_cell {
+    transition: 0.15s;
+    white-space:    nowrap;
+    border-bottom: 3px solid $orange;
+    padding: 10px 0;
+    width: fit-content;
+}

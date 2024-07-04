@@ -1,0 +1,40 @@
+.justify_flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  .price_input {
+        width: 100px;
+        border-radius: 20px;
+        @include weakShadow;
+        padding: 6px 14px;
+        color: rgba($color: black, $alpha: 0.5);
+        font-size: 1rem; 
+    }
+}
+}
+
+
+
+
+
+.price_input {
+    width: 100px;
+    border-radius: 20px;
+    @include weakShadow;
+    padding: 6px 14px;
+    color: rgba($color: black, $alpha: 0.5);
+    font-size: 1rem; 
+}
+.wrapper {
+    max-width: 250px;
+}

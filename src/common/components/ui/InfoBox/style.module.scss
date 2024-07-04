@@ -1,0 +1,10 @@
+.info_box {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    @include weakShadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

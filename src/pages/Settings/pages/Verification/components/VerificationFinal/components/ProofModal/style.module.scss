@@ -1,0 +1,93 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+.right_wrapper {
+    background-color: $white;
+    padding: 17px 13px;
+    border-radius: 20px;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.input_checkbox {
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+    @include weakShadow;
+}
+
+.middle_details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.middle_details_picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.justify {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flex_justify {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box {
+    padding: 11px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include weakShadow;
+    background-color: white;
+}
+@media (min-width:$tabletSize) {
+    .middle_details_picker {
+        display: flex;
+        align-items: stretch;
+    }
+    .middle_details {
+        flex-direction: row;
+        align-items: center;
+    }
+    .middle_details_item {
+        flex: 0 0 200px;
+    }
+    .right_wrapper {
+        padding: 15px 20px;
+        min-width: 490px;
+    }
+    .wrapper {
+        grid-template-columns: 2fr 1fr;
+        justify-content: space-between;
+    }
+
+    .left {
+        max-width: 630px;
+    }
+    .right {
+        max-width: 490px;
+    }
+}

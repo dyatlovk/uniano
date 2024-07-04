@@ -1,0 +1,17 @@
+.dark_wrapper {
+    padding: 1px 12px;
+    border-radius: 20px;
+    background-color: $text;
+    flex: 0;
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 30px;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

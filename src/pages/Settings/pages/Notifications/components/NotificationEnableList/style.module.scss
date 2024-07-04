@@ -1,0 +1,24 @@
+
+
+.justify_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+@media (min-width:$tabletSize) {
+    .justify_flex {
+        padding: 0px 30px;
+    }
+}

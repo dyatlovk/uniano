@@ -1,0 +1,26 @@
+.wrapper {
+    max-width: 1220px;
+    padding: 0px 10px;
+    margin: 0 auto;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.orange_plus {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.6;
+    }
+}

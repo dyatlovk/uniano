@@ -1,0 +1,35 @@
+.wrapper {
+    max-width: 1220px;
+    padding: 0px 10px;
+    margin: 0 auto;
+}
+
+.orange_plus {
+    width: 32px;
+    height: 32px;
+    background-color: $orange;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.squads_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+@media (min-width:$tabletSize) {
+    .squads_wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-content: space-between;
+
+    }
+}

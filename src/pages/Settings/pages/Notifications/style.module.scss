@@ -1,0 +1,26 @@
+.wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0px 10px;
+}
+
+.top_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: $white;
+    border-radius: 20px;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    gap: 10px;   
+}
+
+@media (min-width:$tabletSize) {
+    .top_bar {
+        padding: 15px 30px;
+    }
+}

@@ -1,0 +1,32 @@
+.roadmap_wrapper {
+    padding: 15px 30px;
+    border-radius: 20px;
+
+    transition: 0.15s;
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.flex_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-height: 45px;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+    min-height: 100%;
+    gap: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

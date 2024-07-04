@@ -1,0 +1,12 @@
+.buttons_wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button_item {
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+}

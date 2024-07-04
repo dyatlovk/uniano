@@ -1,0 +1,126 @@
+.wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0px 10px;
+}
+
+.text_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.horiz_orange_line {
+    width: 40px;
+    height: 2px;
+    border-radius: 20px;
+    background-color: $orange;
+}
+.solution_image {
+    width: 60px;
+    height: 60px;
+    background-color: rgba($color: $text, $alpha: 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_solution {
+    padding: 15px 50px;
+    width: 100%;
+    text-align: center;
+    @include weakShadow;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 350px;
+
+    svg {
+        height: 28px;
+    }
+}
+
+.template_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    @include weakShadow;
+    background-color: white;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: nowrap;
+    gap: 5px;
+}
+
+.selection_items_wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.select_item {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    min-width: 270px;
+}
+
+.mobile_filter {
+    position: relative;
+
+}
+
+.black_box {
+    padding: 5px 13px;
+    background-color: $text;
+    border-radius: 20px;
+}
+.absolute_item_mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.cards_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.bottom_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width:$tabletSize) {
+    .bottom_grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+    }
+    .cards_wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+    .template_icon {
+        height: 40px;
+    }
+    .text_flex {
+        gap: 20px;
+    }
+}

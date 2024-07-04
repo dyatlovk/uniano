@@ -1,0 +1,114 @@
+.gap_5 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.category_wrapper {
+    padding: 3px 10px;
+    background-color: $text;
+    border-radius: 20px;
+}
+
+.dropdown_content {
+    display: flex;
+    align-items: center;
+    row-gap: 15px;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+
+.dropdown_first_part {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 0 0 100%;
+}
+.dropdown_text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.box {
+    padding: 3px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    @include weakShadow;
+    background-color: white;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $green;
+    }
+}
+
+.comment_wrapper {
+    padding: 20px 14px;
+    @include weakShadow;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comment_user_info {
+
+}
+
+.recommended_comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comments_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.user_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    @include weakShadow;
+    border-radius: 20px;
+    max-width: 390px;
+}
+@media (min-width:$tabletSize) {
+    .comments_wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    .recommended_comment {
+        justify-content: start;
+        gap: 20px;
+    }
+    .comment_user_info {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .comment_wrapper {
+        gap: 20px;
+        padding: 30px;
+    }
+    .dropdown_first_part {
+        flex: 0;
+    }
+
+    .dropdown_content {
+        gap: 30px;
+    }
+}

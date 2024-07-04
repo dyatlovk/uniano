@@ -1,0 +1,35 @@
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0px 10px;
+    padding-bottom: 20px;
+}
+
+.text_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.template_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    @include weakShadow;
+    background-color: white;
+}
+
+
+
+@media (min-width:$tabletSize) {
+    .template_icon {
+        height: 40px;
+    }
+    .text_flex {
+        gap: 20px;
+    }
+}

@@ -1,0 +1,44 @@
+/*====================================================================================================*/
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.top_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    white-space: nowrap;
+}
+.title_icon {
+    display: none;
+}
+.wrapper {
+    text-align: center;
+}
+@media (min-width:$tabletSize) {
+    .wrapper {
+        text-align: start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .title_icon {
+        display: flex;
+        justify-content: center;
+    }
+    .flex_center {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    /*====================================================================================================*/
+    .top_section {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    /*====================================================================================================*/
+}

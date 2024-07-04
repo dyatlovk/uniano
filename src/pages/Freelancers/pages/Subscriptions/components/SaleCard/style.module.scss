@@ -1,0 +1,34 @@
+
+
+.box_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0px 30px;
+}
+.text_flex {
+    display: flex;
+    align-items: baseline;
+}
+
+.current_button {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid rgba($color: $text, $alpha: 0.1);
+    background-color: $white;
+    border-radius: 20px;
+}
+
+
+@media (min-width:$tabletSize) {
+    .box_wrapper {
+        gap: 15px;
+    }
+}

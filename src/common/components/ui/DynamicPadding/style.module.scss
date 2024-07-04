@@ -1,0 +1,38 @@
+.dynamic_padding {
+  
+    &.top {
+      padding-top: var(--tablet-padding);
+    }
+  
+    &.bottom {
+      padding-bottom: var(--tablet-padding);
+    }
+  
+    &.right {
+      padding-right: var(--tablet-padding);
+    }
+  
+    &.left {
+      padding-left: var(--tablet-padding);
+    }
+}
+@media only screen and (min-width: $tabletSize) {
+.dynamic_padding {
+  
+    &.top {
+      padding-top: var(--desktop-padding);
+    }
+  
+    &.bottom {
+      padding-bottom: var(--desktop-padding);
+    }
+  
+    &.right {
+      padding-right: var(--desktop-padding);
+    }
+  
+    &.left {
+      padding-left: var(--desktop-padding);
+    }
+}
+}

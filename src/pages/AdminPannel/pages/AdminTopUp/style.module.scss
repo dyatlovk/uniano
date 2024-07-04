@@ -1,0 +1,130 @@
+.top_part, .top_end_part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.orange_circle {
+    width: 25px;
+    height: 25px;
+    background-color: $orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.hover_text {
+    font-weight: 400;
+    color: rgba($color: black, $alpha: 0.5);
+    transition: 0.2s;
+
+    &:hover {
+        font-weight: 500;
+        color: $text;
+    }
+}
+
+.abs_dropdown {
+    position: absolute;
+    z-index: 3;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    @include midShadow;
+}
+
+.dropdown_wrapper_custom {
+    div.dropdown_hover {
+        @include midShadow;
+    }
+}
+
+.dropdown_item {
+    padding: 10px 20px;
+    width: 100%;
+    transition: 0.2s;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.dropdown_styles_children {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include midShadow;
+}
+.custom_dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    @include weakShadow;
+    transition: 0.2s;
+    border-radius: 20px;
+}
+
+
+.white_box {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+.grid_2_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px
+}
+
+.grid_3_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px
+}
+
+.gap_20_10 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (min-width:$tabletSize) {
+    .gap_20_10 {
+        gap: 20px;
+    }
+    .orange_circle {
+        width: 35px;
+        height: 35px;
+    }
+    .top_part {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .top_end_part {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+    }
+}

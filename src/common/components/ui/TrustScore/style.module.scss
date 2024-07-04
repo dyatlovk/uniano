@@ -1,0 +1,45 @@
+
+
+.list {
+    margin: 5px 0px;
+    li {
+        list-style-type: disc;
+        margin-left: 30px;
+        font-style: italic;
+        color: $text;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+.custom_dot {
+    width: 18px;
+    height: 18px;
+    background-color: $orange;
+    border-radius: 50%;
+    border-radius: 3px solid white;
+}
+
+.flex_around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+.transform_chart {
+    transform: translateX(-60px);
+}
+.custom_tooltip {
+    width: 115px;
+    padding: 5px 15px;
+    background-color: #219653;
+    border-radius: 5px;
+
+    p {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.1;
+    }
+}

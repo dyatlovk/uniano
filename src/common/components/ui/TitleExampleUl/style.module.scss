@@ -1,0 +1,24 @@
+
+.right_text_box {
+    display: none;
+    ul {
+        padding-left: 18px;
+    }
+    li {
+        list-style-type: disc;
+        
+    }
+}
+.ul_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+@media (min-width:$tabletSize) {
+    .right_text_box {
+        border-radius: 20px;
+        display: block;
+        padding: 25px 30px;
+        @include weakShadow;
+    }
+}

@@ -1,0 +1,15 @@
+.flex_row {
+    display: flex;
+    align-items: center;
+}
+.statistic_text_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.statistic_text_wrapper {
+    justify-content: start;
+    row-gap: 30px;
+    column-gap: 15px;
+}

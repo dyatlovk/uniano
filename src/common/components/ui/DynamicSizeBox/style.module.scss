@@ -1,0 +1,11 @@
+.box {
+    width: var(--wMobile);
+    height: var(--hMobile);
+}
+
+@media(min-width: $tabletSize) {
+    .box {
+        width: var(--wDesktop);
+        height: var(--hDesktop);
+    }
+}

@@ -1,0 +1,182 @@
+.time_box {
+    position: relative;
+    padding: 15px;
+    @include weakShadow;
+    border-radius: 20px;
+}
+
+.absolute_fire {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+}
+
+.select_box {
+    width: 14px;
+    height: 14px;
+    border: 2px solid $text;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.math_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba($color: black, $alpha: 0.5);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $white;
+        opacity: 0.6;
+    }
+}
+.user_wrapper {}
+.dot_wrapper {
+    width: 30px;
+    height: 12px;
+    border-radius: 20px;
+    background-color: white;
+    @include weakShadow;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.price_plan_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.plan_box {
+    @include weakShadow;
+    border-radius: 20px;
+}
+.select_box_active {
+    position: relative;
+    border: 2px solid $orange;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        height: 50%;
+        border: 1px solid $orange;
+        border-radius: 50%;
+    }
+}
+
+.plan_box_padding {
+    padding: 0px 15px;
+}
+.only_select_box {
+    padding: 5px 15px;
+}
+
+.dots_text_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.select_benefit {
+    display: flex;
+    gap: 10px;
+}
+
+.benefit_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+.info_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    @include weakShadow;
+    border-radius: 50%;
+}
+
+.buy_wrapper {
+    width: 33px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include weakShadow;
+    border-radius: 5px;
+    
+}
+
+.user_slider_wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0px 20px;
+
+}
+.box_black {
+    padding: 2px 12px;
+    background-color: $text;
+    border-radius: 20px;
+}
+.overflow_slider_wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.absolute_move_on {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $text;
+    transition: all 0.3s ease;
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.milestone_wrapper {
+    padding: 15px 20px;
+    background-color: $white;
+    border-radius: 20px;
+}
+@media (min-width:$tabletSize) {
+    .benefit_wrapper {
+        gap: 20px;
+    }
+    .dots_text_wrapper {
+        gap: 15px;
+    }
+    .plan_box_padding {
+        padding: 0px 30px;
+    }
+    .only_select_box {
+        padding: 5px 30px;
+    }
+    .price_plan_wrapper {
+        padding: 25px 30px;
+    }
+    .time_box {
+        padding: 25px 30px;
+    }
+}

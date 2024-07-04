@@ -1,0 +1,15 @@
+.wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0px 10px;
+}
+
+.unverified_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 4px;
+    border: 1px solid $red;
+    border-radius: 20px;
+}

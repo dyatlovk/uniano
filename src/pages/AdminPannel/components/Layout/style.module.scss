@@ -1,0 +1,58 @@
+.desktop_left_bar_wrapper {
+    background-color: #333333;
+    padding: 20px 0px 50px 0px;
+    overflow: hidden;
+}
+
+.pages_scroll {
+    overflow-y: auto;
+    height: 100%;
+    @include scrollStyles;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 100px;
+}
+.dropdown_link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.background_color {
+    background-color: #4a4a4a;
+}
+.page_link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+@media (min-width:$tabletSize) {
+    .desktop_left_bar_wrapper {
+        position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    }
+    .desktop_right_wrapper {
+        position: fixed;
+        top: 0;
+        left: 20%;
+        right: 0;
+    }
+    .content_padding {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .content {
+        margin-left: 20%;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

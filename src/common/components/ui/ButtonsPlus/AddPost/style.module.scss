@@ -1,0 +1,55 @@
+.absolute_item {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: white;
+    @include weakShadow;
+}
+
+.categories_wrappper {
+    max-height: 450px;
+    overflow-y: auto;
+    @include scrollStyles;
+}
+.category_select_dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 20px;
+    @include weakShadow;
+    border-radius: 20px;
+    transition: 0.2s;
+    
+}
+
+.bottom_top_border {
+    border-top: 2px solid rgba($color: $text, $alpha: 0.1);
+    border-bottom: 2px solid rgba($color: $text, $alpha: 0.1);
+
+}
+
+.shadow_box {
+    flex: 1;
+    padding: 15px 20px;
+    @include weakShadow;
+    border-radius: 20px;
+
+}
+.sub_item {
+    padding: 8px 30px;
+    width: 100%;
+    transition: 0.15s;
+    border-radius: 20px;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.grid_20 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}

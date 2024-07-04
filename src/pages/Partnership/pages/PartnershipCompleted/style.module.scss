@@ -1,0 +1,139 @@
+.tools_wrapper_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.tools_wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include weakShadow;
+    border-radius: 20px;
+    padding: 20px 0px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: $white;
+
+    }
+}
+
+
+.user_wrappper {
+    padding: 11px 14px;
+}
+.details_box {
+    padding: 15px 13px;
+}
+
+.text_dotted_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.select_tips_button {
+    transition: all 0.3s ease;
+    @include weakShadow;
+    border-radius: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.tips_wrapper_button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    > div {
+        flex: 1;
+    }
+    flex: 1;
+}
+
+.tips_wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.end_text_tips {
+    display: flex;
+    align-items: center;
+}
+.tips_main_wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.end_node {
+    padding: 15px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.absolute_end_node {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $orange;
+    border-radius: 50%;
+}
+
+.buttons_end {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.desktop {
+    display: none;
+}
+.end_text_tips {
+    align-self: center;
+}
+@media (min-width:$tabletSize) {
+    .desktop {
+        display: flex;
+    }
+    .buttons_end {
+        gap: 20px;
+        flex-direction: row;
+    }
+    .end_node {
+        padding: 25px 0px 30px 0px;
+    }
+    .end_text_tips {
+        align-self: flex-end;
+    }
+    .tips_wrapper {
+        flex-direction: row;
+    }
+    .select_tips_button {
+        height: 50px;
+    }
+    .text_dotted_wrapper {
+        gap: 20px;
+    }
+    .details_box {
+        padding: 25px 30px;
+    } 
+    .tools_wrapper_section {
+        gap: 30px;
+    }
+
+}

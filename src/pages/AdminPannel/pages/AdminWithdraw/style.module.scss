@@ -1,0 +1,48 @@
+.top_part, .top_end_part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.orange_circle {
+    width: 25px;
+    height: 25px;
+    background-color: $orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.gap_20_10 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (min-width:$tabletSize) {
+    .gap_20_10 {
+        gap: 20px;
+    }
+    .orange_circle {
+        width: 35px;
+        height: 35px;
+    }
+    .top_part {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .top_end_part {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+    }
+}
