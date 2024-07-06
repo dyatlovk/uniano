@@ -32,3 +32,26 @@
   align-items: center;
   justify-content: center;
 }
+
+.user_name {
+  margin-bottom: 2px;
+}
+
+.user_position {
+  margin-bottom: 13px;
+}
+.send_message_btn {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.give_tip_btn {
+  width: 100%;
+  button:hover {
+    color: $text;
+    svg path {
+      fill: $text;
+      fill-opacity: 1;
+    }
+  }
+}

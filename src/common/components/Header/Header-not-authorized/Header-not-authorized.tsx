@@ -14,7 +14,6 @@ import InputCommon from '../../ui/inputs/InputCommon'
 import { categorysText, links } from '../components/MenuLinks/content'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import AnimateHeight from '../../AnimateHeight'
-import DynamicPadding from '../../ui/DynamicPadding'
 
 const HeaderNothAuthorized = () => {
   const [hovered, eventHandlers] = useHover({ delayInMilliseconds: 2000 })
@@ -176,9 +175,17 @@ const HeaderNothAuthorized = () => {
             </div>
             <div className={styles.header_third_part}>
               <Link to={'sign-in'}>
-                <MyButtonTransparent onClick={() => {}} fontWeight="500">
+                <MyButton
+                  onClick={() => {}}
+                  fontWeight="500"
+                  textColor={AppColor.text}
+                  hoverColor={AppColor.transparent}
+                  hoverTextColor={AppColor.orange}
+                  border={`1px solid ${AppColor.transparent}`}
+                  borderHover={`1px solid ${AppColor.transparent}`}
+                >
                   Sing in
-                </MyButtonTransparent>
+                </MyButton>
               </Link>
               <Link to={'sign-up'}>
                 <MyButton onClick={() => {}} fontWeight="500">

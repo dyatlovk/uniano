@@ -1,8 +1,6 @@
 import Logo from '../Logo/Logo'
-import Typography from '../ui/Typography/Typography'
 import styles from './style.module.scss'
 import copyrightIcon from '@assets/svg/copyright-icon.svg'
-
 import instagram from '@assets/svg/instagram.svg'
 import twitter from '@assets/svg/twitter.svg'
 import facebook from '@assets/svg/facebook.svg'
@@ -10,8 +8,6 @@ import telegram from '@assets/svg/telegram.svg'
 import AppColor from '@common/styles/variables-static'
 import AnimatedSvg from '../AnimatedSvg'
 import { useState, useEffect, useCallback, useContext } from 'react'
-import HorizontalLine from '../ui/Lines/HorizontalLine'
-import AnimateHeight from '../AnimateHeight'
 import { CareComponent } from './components/CareService/SwitchCare'
 import { FooterTriggerContext } from '@common/context/footer_trigger'
 
@@ -60,7 +56,7 @@ const Footer = ({ removeMargin }: { removeMargin?: boolean }) => {
   }
 
   const handleNavigation = useCallback(
-    e => {
+    (e: { currentTarget: any }) => {
       const window = e.currentTarget
       if (y > window.scrollY) {
         if (scrollDirection !== 'up') {
@@ -73,7 +69,7 @@ const Footer = ({ removeMargin }: { removeMargin?: boolean }) => {
       }
       setY(window.scrollY)
     },
-    [y]
+    [scrollDirection, y]
   )
 
   useEffect(() => {

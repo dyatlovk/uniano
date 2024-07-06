@@ -11,11 +11,11 @@ const GeneralHelp = ({ setActiveSwitch }: CareServiceChildProps) => {
   return (
     <div style={{ position: 'relative' }} className={styles.general_help}>
       <div style={{ flexGrow: '1' }}>
-        <div style={{ padding: '0px 30px' }}>
+        <div>
           <InputDropdown
             marginLeft={true}
             padding="12px 15px"
-            dropdownVariants={['All', 'All', 'All']}
+            dropdownVariants={['All', 'First', 'Second']}
             initText="All"
             labelIcon={<></>}
           />
@@ -30,7 +30,7 @@ const GeneralHelp = ({ setActiveSwitch }: CareServiceChildProps) => {
         <DynamicPadding desktop="30px" mobile="20px" />
       </div>
 
-      <div style={{ padding: '0px 30px' }}>
+      <div>
         <MyButtonOrange
           onClick={() => {
             setActiveSwitch('main.general help.create')
@@ -68,6 +68,7 @@ const QuestionItem = ({ callback }) => {
               <Typography variant="body5" color={AppColor.orange}>
                 Opened
               </Typography>
+              •
               <Typography variant="body5" color={AppColor.transparentBlack}>
                 1 min ago
               </Typography>

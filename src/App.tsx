@@ -68,12 +68,9 @@ import SingIn from './pages/Authentication/SingIn'
 import Recovery from './pages/Authentication/Recovery'
 import Authentication from './pages/Authentication/Authentication'
 import AdminPannel from './pages/AdminPannel'
-import MessengerPage from './pages/Messenger/pages/MessengerPage'
 import MessengerPageSolution from './pages/Messenger/pages/Solutions'
 import MessengerPageDirect from './pages/Messenger/pages/Direct'
 import PaymentsOperations from './pages/Payments/pages/Operations'
-import AnimatedSvg from './common/components/AnimatedSvg'
-import AppColor from '@common/styles/variables-static'
 
 function App() {
   return (

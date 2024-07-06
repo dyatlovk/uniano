@@ -13,7 +13,7 @@ const InputBarChat = () => {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={styles.input_wrapper}>
       <InputCommon
         icon={
           <div

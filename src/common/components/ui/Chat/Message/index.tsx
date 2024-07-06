@@ -27,11 +27,11 @@ const MessageItem = ({ backgroundColor, side, text, time }: MessageProps) => {
           borderTopRightRadius: '0px',
         }
   return (
-    <div className={styles.wrapper_top}>
+    <div className={`MessageItem ${styles.wrapper_top}`}>
       {side == 'left' && <AppColor.threePoints />}
       <div
         style={{ alignItems: side == 'left' ? 'start' : 'end' }}
-        className={styles.message_flex}
+        className={`Message ${styles.message_flex}`}
       >
         <Typography color={AppColor.transparentBlack} variant="body5">
           {time}
@@ -63,11 +63,11 @@ export const MessageItemUser = ({
           borderTopRightRadius: '0px',
         }
   return (
-    <div className={styles.wrapper_top}>
+    <div className={`MessageItemUser ${styles.wrapper_top}`}>
       {side == 'left' && <ColumnDetails role="Another" />}
       <div
         style={{ alignItems: side == 'left' ? 'start' : 'end' }}
-        className={styles.message_flex}
+        className={`${styles.message_flex}`}
       >
         <div className="gap_10" style={{ alignItems: 'end' }}>
           {side == 'right' && (
@@ -114,7 +114,7 @@ type ColumnDetailsProps = {
 const ColumnDetails = ({ role }: ColumnDetailsProps) => {
   const [deleteModal, setDeleteModal] = useState(false)
   return (
-    <>
+    <div className={`ColumnDetails ${styles.column_details}`}>
       {deleteModal && (
         <ModalCenterBasic
           title="Delete Message"
@@ -154,8 +154,8 @@ const ColumnDetails = ({ role }: ColumnDetailsProps) => {
           topPaddingFromNode="20px"
           showNode={
             <AppColor.threePoints
-              className="cursor"
-              style={{ padding: '5px', boxSizing: 'content-box' }}
+              className="column_cursor"
+              style={{ padding: '11px', paddingBottom: '0px', boxSizing: 'content-box' }}
               width={'17px'}
               height={'3px'}
             />
@@ -163,8 +163,8 @@ const ColumnDetails = ({ role }: ColumnDetailsProps) => {
           showBackgroundHover={false}
           showNodeHover={
             <AppColor.threePointsActive
-              className="cursor"
-              style={{ padding: '5px', boxSizing: 'content-box' }}
+              className="column_cursor"
+              style={{ padding: '11px', paddingBottom: '0px', boxSizing: 'content-box' }}
               width={'17px'}
               height={'3px'}
             />
@@ -204,7 +204,7 @@ const ColumnDetails = ({ role }: ColumnDetailsProps) => {
           }
         />
       </div>
-    </>
+    </div>
   )
 }
 export default MessageItem

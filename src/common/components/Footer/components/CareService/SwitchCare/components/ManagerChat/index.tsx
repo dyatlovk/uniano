@@ -1,13 +1,10 @@
-import MessagesDisplay, {
-  MessagesDisplayUsers,
-} from '@common/components/ui/Chat/MessagesDisplay/index'
+import { MessagesDisplayUsers } from '@common/components/ui/Chat/MessagesDisplay/index'
 import styles from './style.module.scss'
 import InputBarChat from '@common/components/ui/Chat/InputBar/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 
 const ManagerChat = () => {
   return (
-    <div className={styles.padding}>
+    <div className={`ManagerChat ${styles.padding}`}>
       <MessagesDisplayUsers
         maxHeight="400px"
         messageColorLeft="white"
@@ -35,8 +32,6 @@ const ManagerChat = () => {
           },
         ]}
       />
-
-      <DynamicPadding desktop="30px" mobile="20px" />
 
       <InputBarChat />
     </div>

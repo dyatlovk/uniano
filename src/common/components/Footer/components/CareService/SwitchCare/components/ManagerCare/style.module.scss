@@ -1,0 +1,17 @@
+.policy {
+  color: $text;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    left: 0;
+    top: 100%;
+    display: block;
+    background: $text;
+    transition: 0.15s;
+    position: absolute;
+    width: 100%;
+  }
+}

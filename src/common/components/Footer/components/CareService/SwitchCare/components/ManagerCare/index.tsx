@@ -52,9 +52,9 @@ const ManagerCare = ({ setActiveSwitch }: CareServiceChildProps) => {
       <DynamicPadding desktop="20px" mobile="15px" />
       <Typography variant="body4">
         I agree to have my personal data processed by Uniano for chat support.{' '}
-        <span className="underline_appearance" style={{ fontWeight: '500' }}>
+        <a href="#" className={styles.policy} style={{ fontWeight: '500' }}>
           Full policy
-        </span>
+        </a>
       </Typography>
       <DynamicPadding desktop="20px" mobile="15px" />
       <MyButtonOrange
@@ -68,7 +68,6 @@ const ManagerCare = ({ setActiveSwitch }: CareServiceChildProps) => {
       >
         Search New Manager
       </MyButtonOrange>
-      <DynamicPadding desktop="20px" mobile="15px" />
       <MyButtonTransparent
         onClick={() => {}}
         padding="15px"

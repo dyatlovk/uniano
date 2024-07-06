@@ -1,8 +1,7 @@
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { fakeUserConstant } from '@common/models/user'
 import MainCare from './components/MainCare'
 import CommunityCare from './components/CommunityCare'
@@ -14,7 +13,6 @@ import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/ind
 import GeneralHelpCreate from './components/GeneralHelp'
 import GeneralHelp from './components/GeneralHelpItem/GeneralHelp'
 import GeneralChat from './components/GeneralChat'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import GeneralDetails from './components/GeneralDetails'
 import GeneralUser from './components/GeneralUser'
 import ContactUsSteps from '@common/components/ui/ContactUsSteps/index'
@@ -48,7 +46,7 @@ export const CareComponent = ({ showHelper, callback }: CareComponentProps) => {
       setActiveSwitch(activeCategory)
       setActiveCategory('')
     }
-  }, [activeCategory])
+  }, [activeCategory, setActiveCategory])
 
   function moveBack() {
     const tmpArray = activeSwitch.split('.')
@@ -70,7 +68,7 @@ export const CareComponent = ({ showHelper, callback }: CareComponentProps) => {
   return (
     <div
       style={{}}
-      className={`${styles.helper} ${showHelper ? styles.weak_shadow : styles.no_shadow}`}
+      className={`CareComponent ${styles.helper} ${showHelper ? styles.weak_shadow : styles.no_shadow}`}
     >
       <AnimateHeight show={showHelper}>
         <div className={styles.care_height}>
@@ -259,14 +257,12 @@ export const CareComponent = ({ showHelper, callback }: CareComponentProps) => {
               </div>
             </div>
           </div>
-          <HorizontalLine />
           <div className={`${styles.bottom_part}`}>
             <div
               style={{
                 padding: '20px 30px',
-                paddingBottom: '100px',
               }}
-              className={styles.scroll_bar_bottom}
+              className={`ScrollChat ${styles.scroll_bar_bottom}`}
             >
               <SwitchCare
                 activeSwitch={activeSwitch}

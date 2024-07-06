@@ -6,7 +6,7 @@ type AnimateHeightProps = {
 }
 const AnimateHeight = ({ children, show }: AnimateHeightProps) => {
   return (
-    <div className={`${styles.grid_item} ${show ? styles.show : ''}`}>
+    <div className={`animateHeightComponent ${styles.grid_item} ${show ? styles.show : ''}`}>
       <div>{children}</div>
     </div>
   )

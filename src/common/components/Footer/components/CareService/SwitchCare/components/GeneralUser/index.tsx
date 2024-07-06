@@ -16,12 +16,13 @@ import {
   TipsItem,
 } from '@pages/Partnership/pages/PartnershipCompleted/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
+import MyButton from '@common/components/ui/MyButton/MyButton'
 
 const GeneralUser = () => {
   const [showTipModal, setShowTipModal] = useState(false)
   const [tip, setTip] = useState('0')
   return (
-    <div className={styles.flex_column} style={{ position: 'relative' }}>
+    <div className={`GeneralUser ${styles.flex_column}`} style={{ position: 'relative', gap: 0 }}>
       {showTipModal && (
         <ModalCenterBasic
           desktopMinWidth="400px"
@@ -71,40 +72,49 @@ const GeneralUser = () => {
         width="124px"
         height="124px"
       />
-      <div className="gap_10">
+      <div className={`gap_10 ${styles.user_name}`}>
         <AppColor.UkraineFlagIcon />
         <Typography variant="body3" fontWeight="500">
           Artem M.
         </Typography>
       </div>
-      <Typography variant="body4" color={AppColor.orange}>
+      <Typography className={styles.user_position} variant="body4" color={AppColor.orange}>
         Moderator
       </Typography>
-      <MyButtonOrange
-        width="100%"
-        onClick={() => {}}
-        fontWeight="500"
-        textTransform="uppercase"
-      >
-        Send message
-      </MyButtonOrange>
-      <MyButtonTransparent
-        width="100%"
-        onClick={() => {
-          setShowTipModal(true)
-        }}
-        fontWeight="500"
-        textTransform="uppercase"
-      >
-        <AppColor.giveTip /> give a tip
-      </MyButtonTransparent>
+      <div className={styles.send_message_btn}>
+        <MyButtonOrange
+          width="100%"
+          onClick={() => { }}
+          fontWeight="500"
+          textTransform="uppercase"
+        >
+          Send message
+        </MyButtonOrange>
+      </div>
+      <div className={styles.give_tip_btn}>
+        <MyButton
+          width="100%"
+          onClick={() => {
+            setShowTipModal(true)
+          }}
+          fontWeight="500"
+          textTransform="uppercase"
+          color={AppColor.transparent}
+          textColor="rgba(1, 1, 1, 0.5)"
+          border={`1px solid ${AppColor.transparent}`}
+          hoverColor={AppColor.transparent}
+          borderHover={`1px solid ${AppColor.transparent}`}
+        >
+          <AppColor.giveTip /> give a tip
+        </MyButton>
+      </div>
 
       <div className={styles.abs_lines}>
         <PopUpBottom
           positionRight="0px"
           popUpNode={
             <ThreeLinesPopUpCustom
-              positionRight="12px"
+              positionRight="9px"
               items={[
                 {
                   icon: <AppColor.details />,
@@ -129,6 +139,7 @@ const GeneralUser = () => {
                 {
                   icon: <AppColor.close fill={AppColor.red} />,
                   title: 'Delete',
+                  color: AppColor.red
                 },
               ]}
             />

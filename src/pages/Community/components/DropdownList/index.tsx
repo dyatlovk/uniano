@@ -56,11 +56,9 @@ const DropdownList = ({
             }}
           >
             <Typography
+              className={styles.list_item}
               fontWeight="400"
               textLineHeight="80%"
-              color={
-                currentActiveItem == item ? AppColor.orange : AppColor.text
-              }
             >
               • <span style={{ color: 'transparent' }}> . </span> {item}
             </Typography>

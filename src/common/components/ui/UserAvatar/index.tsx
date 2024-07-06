@@ -21,7 +21,7 @@ type UserAvatarProps = {
   roleColor?: string
   activeAgoRole?: string
   title?: string
-  gap?: string
+  gap?: string,
 }
 
 type UserAvatarVariants = 'row' | 'column' | 'money' | 'image'
@@ -116,11 +116,13 @@ const UserAvatar = ({
 const UserAvatarImage = ({ url, active, width, height }: UserAvatarProps) => {
   return (
     <div
+      className={styles.avatar_image}
       style={{
         position: 'relative',
         display: 'flex',
         width: width ?? '38px',
         height: height ?? '38px',
+        marginBottom: '12px'
       }}
     >
       <img src={url} width={width ?? '38px'} height={height ?? '38px'} alt="" />

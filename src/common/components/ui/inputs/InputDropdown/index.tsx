@@ -55,7 +55,7 @@ const InputDropdown = ({
         <Typography
           textLineHeight="1"
           color={
-            currenText == initText ? AppColor.transparentBlack : AppColor.text
+            currenText == initText ? AppColor.text : AppColor.text
           }
           variant="body4"
         >

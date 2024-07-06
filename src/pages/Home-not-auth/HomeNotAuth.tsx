@@ -3,7 +3,6 @@ import HeaderNothAuthorized, {
 } from '@common/components/Header/Header-not-authorized/Header-not-authorized'
 import styles from './style.module.scss'
 import { useState, useEffect, useRef } from 'react'
-import chevronDownTransparent from '@assets/svg/chevron-down-transparent.svg'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
 import MyButton from '@common/components/ui/MyButton/MyButton'
@@ -47,9 +46,7 @@ import SizeBox from '@common/components/ui/SizeBox/index'
 import { Link } from 'react-router-dom'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
-import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 
 const popular_categorys_content: PopularCategorysCatalogCardProps[] = [
@@ -202,12 +199,8 @@ const HomeNotAuth = () => {
                           <AppColor.search height={'15px'} width={'20px'} />
                         ),
                         title: 'Search Master',
-                        color:
-                          activeFilter == 'Search Master'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Search Master' ? '500' : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Search Master')
                         },
@@ -221,12 +214,8 @@ const HomeNotAuth = () => {
                           />
                         ),
                         title: 'Services Catalog',
-                        color:
-                          activeFilter == 'Services Catalog'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Services Catalog' ? '500' : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Services Catalog')
                         },
@@ -236,12 +225,8 @@ const HomeNotAuth = () => {
                           <AppColor.orders height={'15px'} width={'20px'} />
                         ),
                         title: 'Create Order',
-                        color:
-                          activeFilter == 'Create Order'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Create Order' ? '500' : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Create Order')
                         },
@@ -251,14 +236,8 @@ const HomeNotAuth = () => {
                           <AppColor.caseIcon height={'15px'} width={'20px'} />
                         ),
                         title: 'Sponsorships Catalog',
-                        color:
-                          activeFilter == 'Sponsorships Catalog'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Sponsorships Catalog'
-                            ? '500'
-                            : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Sponsorships Catalog')
                         },
@@ -268,12 +247,8 @@ const HomeNotAuth = () => {
                           <AppColor.freelancer height={'15px'} width={'20px'} />
                         ),
                         title: 'Freelancers Catalog',
-                        color:
-                          activeFilter == 'Freelancers Catalog'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Freelancers Catalog' ? '500' : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Freelancers Catalog')
                         },
@@ -283,12 +258,8 @@ const HomeNotAuth = () => {
                           <AppColor.managers height={'15px'} width={'20px'} />
                         ),
                         title: 'Contact Managers',
-                        color:
-                          activeFilter == 'Contact Managers'
-                            ? AppColor.text
-                            : AppColor.transparentBlack,
-                        fontWeight:
-                          activeFilter == 'Contact Managers' ? '500' : '400',
+                        color: AppColor.text,
+                        fontWeight: '400',
                         onClick: () => {
                           setActiveFilter('Contact Managers')
                         },
@@ -455,13 +426,19 @@ const HomeNotAuth = () => {
               >
                 Browse all services
               </MyButton>
-              <MyButtonTransparent
+              <MyButton
                 onClick={() => {}}
                 fontWeight="500"
                 textTransform="uppercase"
+                color={AppColor.transparent}
+                textColor={AppColor.text}
+                border={AppColor.transparent}
+                hoverColor={AppColor.transparent}
+                borderHover={AppColor.transparent}
+                hoverTextColor={AppColor.orange}
               >
                 Create own service
-              </MyButtonTransparent>
+              </MyButton>
             </div>
             <div className={styles.popular_categorys_skills}>
               <div className={styles.popular_categorys_skills_title}>
@@ -519,7 +496,7 @@ const HomeNotAuth = () => {
                 alt=""
               />
               <Slider
-                buttonLeft="-60px"
+                buttonLeft="-65px"
                 buttonRight="-55px"
                 maxShowCount={2}
                 paddingBottom="10px"
@@ -677,11 +654,12 @@ const HomeNotAuth = () => {
                     try sponsorship
                   </MyButton>
                   <MyButton
-                    border="1px solid transparent"
                     color="transparent"
                     textColor={AppColor.text}
-                    hoverColor="transparent"
+                    hoverColor={AppColor.transparent}
                     hoverTextColor={AppColor.orange}
+                    border={`1px solid ${AppColor.transparent}`}
+                    borderHover={`1px solid ${AppColor.transparent}`}
                     textTransform="uppercase"
                     fontWeight="500"
                     onClick={() => {}}
@@ -693,42 +671,40 @@ const HomeNotAuth = () => {
             </div>
             <div className={styles.fourth_screen_sponsor_wrapper}>
               <DynamicPadding desktop="50px" mobile="30px" side="right" />
-              <div className={styles.fourth_screen_sponsor_wrapper}>
-                <img
-                  width={38}
-                  height={38}
-                  src={testUserImage2}
-                  alt="userImage"
-                />
+              <img
+                width={38}
+                height={38}
+                src={testUserImage2}
+                alt="userImage"
+              />
 
-                <div className={styles.fourth_screen_details_wrapper}>
-                  <div>
-                    <img width={16} height={13} src={flagImage} alt="" />
-                    <span className={styles.fourth_screen_inline_text}>
-                      <Typography variant="body4">
-                        <span style={{ color: 'transparent' }}>a</span>
-                        <span
-                          style={{ fontWeight: '500' }}
-                          className="underline_appearance"
-                        >
-                          {fakeUser2.name}
-                        </span>
-                        <span style={{ color: 'transparent' }}>a</span>
-                        sponsored $2 500 in
-                        <span style={{ color: 'transparent' }}>a</span>
-                        <span
-                          style={{ fontWeight: '500' }}
-                          className="underline_appearance"
-                        >
-                          GameWithMe launch{' '}
-                        </span>
-                      </Typography>
-                    </span>
-                  </div>
-                  <Typography variant="body4" color={AppColor.transparentBlack}>
-                    2 hours ago
-                  </Typography>
+              <div className={styles.fourth_screen_details_wrapper}>
+                <div>
+                  <img width={16} height={13} src={flagImage} alt="" />
+                  <span className={styles.fourth_screen_inline_text}>
+                    <Typography variant="body4">
+                      <span style={{ color: 'transparent' }}>a</span>
+                      <span
+                        style={{ fontWeight: '500' }}
+                        className="underline_appearance"
+                      >
+                        {fakeUser2.name}
+                      </span>
+                      <span style={{ color: 'transparent' }}>a</span>
+                      sponsored $2 500 in
+                      <span style={{ color: 'transparent' }}>a</span>
+                      <span
+                        style={{ fontWeight: '500' }}
+                        className="underline_appearance"
+                      >
+                        GameWithMe launch{' '}
+                      </span>
+                    </Typography>
+                  </span>
                 </div>
+                <Typography variant="body4" color={AppColor.transparentBlack}>
+                  2 hours ago
+                </Typography>
               </div>
             </div>
             <div className={styles.fourth_screen_details_none_desktop}>
@@ -785,6 +761,7 @@ const HomeNotAuth = () => {
                   hoverColor="transparent"
                   hoverTextColor={AppColor.orange}
                   textTransform="uppercase"
+                  borderHover={AppColor.transparent}
                   fontWeight="500"
                   onClick={() => {}}
                 >
@@ -865,6 +842,7 @@ const HomeNotAuth = () => {
                       color="transparent"
                       textColor={AppColor.text}
                       hoverColor="transparent"
+                      borderHover={`1px solid ${AppColor.transparent}`}
                       hoverTextColor={AppColor.orange}
                       textTransform="uppercase"
                       fontWeight="500"
@@ -1100,7 +1078,6 @@ const PopUpBottom = ({
 
   const handleClick = () => {
     setShow(prev => !prev)
-    console.log('cliclk')
   }
 
   return (

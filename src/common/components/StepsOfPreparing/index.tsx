@@ -55,7 +55,7 @@ export const StepItem = ({
         <SizeBox height="5px" />
         <div className={styles.text_part}>
           <div className="gap_5">
-            <Typography textLineHeight="1" variant="body4">
+            <Typography textLineHeight="1.5" variant="body4">
               {text}
             </Typography>
             {afterTextNode}

@@ -66,7 +66,7 @@ export const MessagesDisplayUsers = ({
   return (
     <div
       style={{ maxHeight: maxHeight, minHeight: maxHeight }}
-      className={styles.messages_grid}
+      className={`MessagesDisplayUsersComponent ${styles.messages_grid}`}
     >
       {messages.map((item, index) => (
         <div

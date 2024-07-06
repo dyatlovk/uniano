@@ -12,7 +12,6 @@ const MyButtonTransparent = (props: MyButtonVariantProps) => {
       border="1px solid transparent"
       color="transparent"
       width={props.width}
-      textColor={AppColor.transparentBlack}
       hoverColor="transparent"
       borderHover="1px solid transparent"
       hoverTextColor={AppColor.orange}

@@ -2,20 +2,12 @@ import {
   StepItemSolving,
   StepsOfPreparingEndSolving,
 } from '@common/components/StepsOfPreparing/index'
-import BigInput, { BigInputOutside } from '@common/components/ui/BigInput/index'
-import DatePicker from '@common/components/ui/DatePicker/index'
-import InfoBox from '@common/components/ui/InfoBox/index'
+import { BigInputOutside } from '@common/components/ui/BigInput/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
-import { SkillCheckBox } from '@pages/Dashboard/pages/Account/index'
-import ImageCardsPlaceholder from '@common/components/ImageCardsPlaceholder/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import SizeBox from '../../SizeBox'
 import AnimateHeight from '@common/components/AnimateHeight/index'
 import MyButtonOrange from '../../MyButton/variants/MyButtonOrange'
@@ -337,6 +329,7 @@ const SecondStepItem = ({ text, callback }) => {
       onClick={() => {
         callback(text)
       }}
+      className="SecondStepItem"
     >
       <Typography variant="body4" className="underline_appearance">
         {text}
@@ -357,7 +350,7 @@ export const StepThreeContactUs = ({
 
   useEffect(() => {
     callback(array)
-  }, [array])
+  }, [array, callback])
 
   return (
     <StepsOfPreparingEndSolving
@@ -370,7 +363,7 @@ export const StepThreeContactUs = ({
           },
         },
         {
-          solve: 'Change description',
+          solve: 'Change category',
           text: stepTwoValue,
           onSolveClick: () => {
             callbackStep(2)
@@ -403,19 +396,19 @@ export const StepThreeContactUs = ({
                     >
                       Contact Us
                     </MyButtonOrange>
-                    <MyButtonTransparent onClick={() => {}} fontWeight="500">
+                    <MyButtonTransparent onClick={() => { }} fontWeight="500">
                       Ask Community
                     </MyButtonTransparent>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <BigInputOutside callback={() => {}} />
+                  <BigInputOutside callback={() => { }} />
 
                   <DynamicPadding desktop="10px" mobile="0px" />
 
                   <MyButtonOrange
-                    onClick={() => {}}
+                    onClick={() => { }}
                     fontWeight="500"
                     textTransform="uppercase"
                   >

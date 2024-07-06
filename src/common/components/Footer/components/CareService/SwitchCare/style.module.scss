@@ -11,15 +11,16 @@
 }
 
 .scroll_bar_bottom {
-  max-height: calc(100vh - 270px);
   overflow-y: auto;
-  height: 100%;
+  height: calc(100% - 86px);
   @include scrollStyles;
 }
 .care_height {
   min-height: 50vh;
   height: 80vh;
   max-height: calc(100vh - 270px);
+  display: flex;
+  flex-direction: column;
 }
 .helper.weak_shadow {
   @include weakShadow;
@@ -32,12 +33,13 @@
 }
 .helper_padding {
   padding: 20px 30px;
+  border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
 .flex_row_end {
   display: flex;
-  align-items: center;
-  gap: 30px;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 .flex_column {

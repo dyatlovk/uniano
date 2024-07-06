@@ -45,6 +45,7 @@ const Item = ({ title, icon, onClick, color, fontWeight }: ItemProps) => (
       className={styles.text_of_item}
       color={color ?? AppColor.text}
       variant="body5"
+      fontWeight={fontWeight ?? '400'}
     >
       {title}
     </Typography>
@@ -63,7 +64,12 @@ export const ThreeLinesPopUpCustom = ({
     <div style={{ position: 'relative' }}>
       <div className={styles.items_grid}>
         {items.map((item, index) => (
-          <Item key={index} {...item} />
+          <Item
+            key={index}
+            color={AppColor.text}
+            fontWeight={'400'}
+            {...item}
+          />
         ))}
       </div>
       <div

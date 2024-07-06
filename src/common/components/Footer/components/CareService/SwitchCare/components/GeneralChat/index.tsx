@@ -4,9 +4,9 @@ import styles from './style.module.scss'
 
 const GeneralChat = () => {
   return (
-    <div>
+    <div className={`MessagesDisplayUsers ${styles.messages_chat_wrapper}`}>
       <MessagesDisplayUsers
-        maxHeight="calc(50vh - 80px)"
+        maxHeight="auto"
         messageColorLeft="white"
         messageColorRight="#DDEAEF"
         messages={[
@@ -14,6 +14,26 @@ const GeneralChat = () => {
             side: 'left',
             text: 'Hello, how can I help you?',
             time: '12:00',
+          },
+          {
+            side: 'right',
+            text: 'I need help with my project',
+            time: '12:01',
+          },
+          {
+            side: 'left',
+            text: 'Hello, how can I help you?',
+            time: '12:30',
+          },
+          {
+            side: 'right',
+            text: 'I need help with my project',
+            time: '12:01',
+          },
+          {
+            side: 'left',
+            text: 'Hello, how can I help you?',
+            time: '12:30',
           },
           {
             side: 'right',
