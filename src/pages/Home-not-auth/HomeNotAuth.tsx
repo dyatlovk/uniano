@@ -157,6 +157,7 @@ const HomeNotAuth = () => {
               textAlign={width <= 768 ? 'center' : 'start'}
               variant="title"
               color={AppColor.text}
+              textLineHeight="1.16"
             >
               Empower Your Projects with
               <span className={styles.welcome_text_orange_span}>
@@ -365,7 +366,7 @@ const HomeNotAuth = () => {
                 variant="body4"
                 color={AppColor.transparentBlack}
               >
-                Browse services, orders, and sponsorships - unlock the path to
+                Browse rervices, orders, and sponsorships - unlock the path to
                 success!
               </Typography>
             </div>
@@ -432,9 +433,9 @@ const HomeNotAuth = () => {
                 textTransform="uppercase"
                 color={AppColor.transparent}
                 textColor={AppColor.text}
-                border={AppColor.transparent}
+                border={`1px solid ${AppColor.transparent}`}
                 hoverColor={AppColor.transparent}
-                borderHover={AppColor.transparent}
+                borderHover={`1px solid ${AppColor.transparent}`}
                 hoverTextColor={AppColor.orange}
               >
                 Create own service
@@ -474,6 +475,7 @@ const HomeNotAuth = () => {
                   textColor={AppColor.text}
                   hoverColor="transparent"
                   hoverTextColor={AppColor.orange}
+                  borderHover={`1px solid ${AppColor.transparent}`}
                   fontWeight="500"
                   onClick={() => {}}
                   textTransform="uppercase"
@@ -670,7 +672,7 @@ const HomeNotAuth = () => {
               </div>
             </div>
             <div className={styles.fourth_screen_sponsor_wrapper}>
-              <DynamicPadding desktop="50px" mobile="30px" side="right" />
+              <DynamicPadding desktop="50px" mobile="0px" side="right" />
               <img
                 width={38}
                 height={38}
@@ -761,7 +763,7 @@ const HomeNotAuth = () => {
                   hoverColor="transparent"
                   hoverTextColor={AppColor.orange}
                   textTransform="uppercase"
-                  borderHover={AppColor.transparent}
+                  borderHover={`1px solid ${AppColor.transparent}`}
                   fontWeight="500"
                   onClick={() => {}}
                 >
@@ -838,11 +840,11 @@ const HomeNotAuth = () => {
                     </MyButton>
                     <MyButton
                       textSize="14px"
-                      border="1px solid transparent"
+                      border={`1px solid ${AppColor.transparent}`}
+                      borderHover={`1px solid ${AppColor.transparent}`}
                       color="transparent"
                       textColor={AppColor.text}
                       hoverColor="transparent"
-                      borderHover={`1px solid ${AppColor.transparent}`}
                       hoverTextColor={AppColor.orange}
                       textTransform="uppercase"
                       fontWeight="500"
@@ -898,6 +900,7 @@ const HomeNotAuth = () => {
                   </MyButton>
                   <MyButton
                     border="1px solid transparent"
+                    borderHover={`1px solid ${AppColor.transparent}`}
                     color="transparent"
                     textColor={AppColor.text}
                     hoverColor="transparent"

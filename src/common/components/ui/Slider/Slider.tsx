@@ -1,7 +1,5 @@
-import { useRef, useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from './style.module.scss'
-import leftChevron from '@assets/svg/chevron-left.svg'
-import rightChevron from '@assets/svg/chevron-right.svg'
 import AppColor from '@common/styles/variables-static'
 
 interface SliderProps {

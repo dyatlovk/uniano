@@ -6,13 +6,12 @@ import mobile_user_svg from '@assets/svg/header_mobile-user.svg'
 import { useHover } from '@common/helpers/useHover'
 import MenuLinks from '../components/MenuLinks'
 import HorizontalLine from '../../ui/Lines/HorizontalLine'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, SetStateAction } from 'react'
 import { Link } from 'react-router-dom'
 import SizeBox from '../../ui/SizeBox'
 import Typography from '@common/components/ui/Typography/Typography'
 import InputCommon from '../../ui/inputs/InputCommon'
 import { categorysText, links } from '../components/MenuLinks/content'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import AnimateHeight from '../../AnimateHeight'
 
 const HeaderNothAuthorized = () => {
@@ -40,7 +39,7 @@ const HeaderNothAuthorized = () => {
 
   const [prevSelection, setPrevSelection] = useState('')
 
-  const handleChange = item => {
+  const handleChange = (item: SetStateAction<string>) => {
     if (activeSelection != '') {
       setActiveSelection('')
       setTimeout(() => {
@@ -95,7 +94,7 @@ const HeaderNothAuthorized = () => {
 
             <AnimateHeight show={activeSelection != ''}>
               <MobileNavBar
-                callbackSelection={item => {
+                callbackSelection={(item: SetStateAction<string>) => {
                   handleChange(item)
                 }}
                 prevSelection={prevSelection}
@@ -176,7 +175,7 @@ const HeaderNothAuthorized = () => {
             <div className={styles.header_third_part}>
               <Link to={'sign-in'}>
                 <MyButton
-                  onClick={() => {}}
+                  onClick={() => { }}
                   fontWeight="500"
                   textColor={AppColor.text}
                   hoverColor={AppColor.transparent}
@@ -188,7 +187,7 @@ const HeaderNothAuthorized = () => {
                 </MyButton>
               </Link>
               <Link to={'sign-up'}>
-                <MyButton onClick={() => {}} fontWeight="500">
+                <MyButton onClick={() => { }} fontWeight="500">
                   Sing up
                 </MyButton>
               </Link>
@@ -265,7 +264,7 @@ export const MobileNavBar = ({
       <HorizontalLine />
       <div className={styles.active_selection_padding}>
         <InputCommon
-          callback={() => {}}
+          callback={() => { }}
           placeholder="Search"
           padding="10px 15px"
         />

@@ -697,6 +697,7 @@ class AppColor {
   static transparentTextColor = `rgba(${AppColor.text}, 0.1)`
   static transparent = 'transparent'
   static tabletSize = 768
+  static mobileSize = 568
 
   static weakShadow = `-webkit-box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);
     -moz-box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);
