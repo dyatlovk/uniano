@@ -11,6 +11,7 @@
   min-height: 70px;
   border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
 }
+
 .mid_grid {
   width: 100%;
   display: grid;
@@ -26,6 +27,7 @@
 .top_filter {
   padding: 0px 15px;
 }
+
 .filter_item {
   flex-grow: 1;
   transition: all 0.2s ease;
@@ -34,6 +36,8 @@
   justify-content: center;
   white-space: nowrap;
   padding: 30px 15px;
+  position: relative;
+  gap: 5px;
 }
 
 .bottom_part {
@@ -49,6 +53,19 @@
     background-color: $white;
   }
 }
+
+.notify_counter {
+  @include notifyCounter;
+}
+
+.orage {
+  @include notifyCounter;
+
+  p {
+    color: $white;
+  }
+}
+
 .bottom_part_padding {
   padding: 30px;
   display: flex;

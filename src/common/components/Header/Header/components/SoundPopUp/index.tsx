@@ -28,12 +28,13 @@ const SoundPopUp = () => {
             >
               {item}
             </Typography>
+            <span className={styles.notify_counter}>3</span>
           </div>
         ))}
       </div>
 
       <div className={styles.mid_grid}>
-        <NotifictaionUser />
+        <NotificationUser count={4} />
         <NotificationCommon />
         <NotificationCommon />
       </div>
@@ -41,7 +42,7 @@ const SoundPopUp = () => {
       <div className={styles.bottom_part}>
         <div className={styles.bottom_part_padding}>
           <AppColor.doubleTrue />
-          <div className="gap_5">
+          <div className="gap_10">
             <div className="cursor">
               <Typography
                 variant="body5"
@@ -71,7 +72,11 @@ const SoundPopUp = () => {
   )
 }
 
-const NotifictaionUser = () => {
+interface NotificationUserProps {
+  count?: number
+}
+
+const NotificationUser = (props: NotificationUserProps) => {
   return (
     <div className={styles.notification_user}>
       <div className="flex_space_between">
@@ -84,8 +89,8 @@ const NotifictaionUser = () => {
           preventMobileNone={true}
         />
         <div className={styles.orage}>
-          <Typography variant="body5" fontWeight="500" color="white">
-            3
+          <Typography variant="body5" fontWeight="500">
+            {props.count}
           </Typography>
         </div>
       </div>

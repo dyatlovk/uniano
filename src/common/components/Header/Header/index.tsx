@@ -1,7 +1,6 @@
 import Logo from '@common/components/Logo/Logo'
 import AppColor from '@common/styles/variables-static'
-import { useHover } from '@common/helpers/useHover'
-import MenuLinks, { MenuLinksAuthorized } from '../components/MenuLinks'
+import { MenuLinksAuthorized } from '../components/MenuLinks'
 
 import styles from './style.module.scss'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
@@ -9,7 +8,7 @@ import UserAvatar from '../../ui/UserAvatar'
 import HorizontalLine from '../../ui/Lines/HorizontalLine'
 import DynamicPadding from '../../ui/DynamicPadding'
 import { fakeUserConstant } from '@common/models/user'
-import { useEffect, useRef, useState } from 'react'
+import { PropsWithChildren, useEffect, useRef, useState } from 'react'
 import PopUpBottom from '../../ModalPopUps/PopUpBottom'
 import SearchPopUp from './components/SearchPopUp'
 import CreatePopUp from './components/CreatePopUp'
@@ -382,13 +381,15 @@ const Header = ({
                     topPaddingFromNode="30px"
                   />
 
-                  <PopUpBottom
-                    showBackgroundHover={true}
-                    showNodeHover={<AppColor.soundOrange height={'20px'} />}
-                    showNode={<AppColor.sound height={'20px'} />}
-                    popUpNode={<SoundPopUp />}
-                    topPaddingFromNode="30px"
-                  />
+                  <Notification count={3}>
+                    <PopUpBottom
+                      showBackgroundHover={true}
+                      showNodeHover={<AppColor.soundOrange height={'20px'} />}
+                      showNode={<AppColor.sound height={'20px'} />}
+                      popUpNode={<SoundPopUp />}
+                      topPaddingFromNode="30px"
+                    />
+                  </Notification>
 
                   <PopUpBottom
                     showNodeHover={
@@ -422,6 +423,21 @@ const Header = ({
         </div>
       </div>
     </>
+  )
+}
+
+interface NotificationProps {
+  count?: number
+}
+
+const Notification = (props: PropsWithChildren<NotificationProps>) => {
+  return (
+    <div className={styles.notify_wrapper}>
+      {props.count > 0 && (
+        <span className={styles.notify_counter}>{props.count}</span>
+      )}
+      {props.children}
+    </div>
   )
 }
 
