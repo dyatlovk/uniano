@@ -187,7 +187,7 @@ const ControllPannel = () => {
 
           <DynamicPadding desktop="15px" mobile="10px" />
 
-          <div style={{ maxWidth: '390px' }} className="text_box">
+          <div style={{ maxWidth: '390px' }} className="text_box" contentEditable={true}>
             <Typography variant="body4">
               I will provide you with my professional skills for making
               professional plans in 2d or 3d from your own sketches, pictures or
@@ -209,7 +209,7 @@ const ControllPannel = () => {
 
           <DynamicPadding desktop="15px" mobile="10px" />
 
-          <div style={{ maxWidth: '390px' }} className="text_box">
+          <div style={{ maxWidth: '390px' }} className="text_box" contentEditable={true}>
             <Typography variant="body4">
               Hello. Leave your requirements for the project and I will notify
               you when I am online.

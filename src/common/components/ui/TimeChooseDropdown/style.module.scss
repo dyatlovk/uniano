@@ -41,12 +41,17 @@
 .time_choose {
   padding: 8px 15px;
   @include weakShadow;
+  color: $text;
   border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
   justify-content: center;
   min-width: 100px;
+
+  p {
+    color: $text !important;
+  }
 
   svg {
     width: 15px;
