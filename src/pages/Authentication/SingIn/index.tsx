@@ -43,7 +43,7 @@ const SingIn = () => {
           <Typography variant="body4">Already have an account?</Typography>
           <SizeBox width="19px" />
           <Link to={'/sign-up'}>
-            <MyButtonTransparentOrange onClick={() => {}} fontWeight="500">
+            <MyButtonTransparentOrange onClick={() => { }} fontWeight="500">
               Sign up
             </MyButtonTransparentOrange>
           </Link>
@@ -77,9 +77,8 @@ const SingIn = () => {
             }}
             labelIcon={<AppColor.key height={'20px'} />}
           />
-          <SizeBox height="5px" />
 
-          <div className="gap_10">
+          <div className={`gap_10 ${styles.remember_tool}`}>
             <MyCheckbox height="20px" width="20px" />
             <Typography variant="body5">Remember Me</Typography>
 
@@ -95,7 +94,7 @@ const SingIn = () => {
               </Link>
             </div>
           </div>
-          <DynamicPadding desktop="20px" mobile="15px" />
+          <DynamicPadding desktop="40px" mobile="15px" />
 
           <MyButtonOrange
             disabled={email.length < 2 || password.length < 4}
@@ -131,21 +130,23 @@ const SingIn = () => {
             <img src={facebookLogo} alt="facebook" />
           </div>
           <DynamicPadding desktop="20px" mobile="15px" />
-          <Typography variant="body5">
-            By clicking button above, you agree to our{' '}
-            <a className={styles.orange} style={{ fontWeight: '500' }} href="#">
-              terms and conditions
-            </a>{' '}
-            and{' '}
-            <a style={{ fontWeight: '500' }} className={styles.orange}>
-              privacy policies
-            </a>
-          </Typography>
+          <div className={styles.terms_text}>
+            <Typography variant="body5">
+              By clicking button above, you agree to our{' '}
+              <a className={styles.orange} style={{ fontWeight: '500' }} href="#">
+                terms and conditions
+              </a>{' '}
+              and{' '}
+              <a style={{ fontWeight: '500' }} className={styles.orange}>
+                privacy policies
+              </a>
+            </Typography>
+          </div>
         </div>
         <div style={{ opacity: '0' }} className={styles.first_flex}>
           <Typography variant="body4">Already have an account?</Typography>
           <SizeBox width="19px" />
-          <MyButtonTransparentOrange onClick={() => {}}>
+          <MyButtonTransparentOrange onClick={() => { }}>
             Sign in
           </MyButtonTransparentOrange>
         </div>

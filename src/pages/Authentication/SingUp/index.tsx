@@ -42,7 +42,7 @@ const SingUp = () => {
           <Typography variant="body4">Already have an account?</Typography>
           <SizeBox width="19px" />
           <Link to={'/sign-in'}>
-            <MyButtonTransparentOrange onClick={() => {}} fontWeight="500">
+            <MyButtonTransparentOrange onClick={() => { }} fontWeight="500">
               Sign in
             </MyButtonTransparentOrange>
           </Link>
@@ -102,21 +102,23 @@ const SingUp = () => {
             <img src={googleLogo} alt="google" />
             <img src={facebookLogo} alt="facebook" />
           </div>
-          <Typography variant="body5">
-            By clicking button above, you agree to our{' '}
-            <a className={styles.orange} style={{ fontWeight: '500' }} href="#">
-              terms and conditions
-            </a>{' '}
-            and{' '}
-            <a className={styles.orange} style={{ fontWeight: '500' }}>
-              privacy policies
-            </a>
-          </Typography>
+          <div className={styles.terms_text}>
+            <Typography variant="body5">
+              By clicking button above, you agree to our{' '}
+              <a className={styles.orange} style={{ fontWeight: '500' }} href="#">
+                terms and conditions
+              </a>{' '}
+              and{' '}
+              <a className={styles.orange} style={{ fontWeight: '500' }}>
+                privacy policies
+              </a>
+            </Typography>
+          </div>
         </div>
         <div style={{ opacity: '0' }} className={styles.first_flex}>
           <Typography variant="body4">Already have an account?</Typography>
           <SizeBox width="19px" />
-          <MyButtonTransparentOrange fontWeight="500" onClick={() => {}}>
+          <MyButtonTransparentOrange fontWeight="500" onClick={() => { }}>
             Sign in
           </MyButtonTransparentOrange>
         </div>

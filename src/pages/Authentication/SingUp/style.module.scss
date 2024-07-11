@@ -5,21 +5,21 @@
 
 .image_part {
   position: relative;
-  height: 65vh;
+  min-height: 65vh;
   background: rgb(138, 131, 131);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(138, 131, 131, 1) 0%,
-    rgba(130, 132, 132, 1) 20%,
-    rgba(110, 111, 113, 1) 40%,
-    rgba(81, 81, 81, 1) 100%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(138, 131, 131, 1) 0%,
+      rgba(130, 132, 132, 1) 20%,
+      rgba(110, 111, 113, 1) 40%,
+      rgba(81, 81, 81, 1) 100%);
+
   .logo {
     position: absolute;
     right: 0;
     left: 0;
     top: 30px;
   }
+
   .image {
     position: absolute;
     display: flex;
@@ -28,14 +28,17 @@
     left: calc(50% - 15px);
     transform: translate(-50%, 50%);
     bottom: 50%;
+
     img {
       max-width: 100%;
     }
   }
 }
+
 .content_part {
   padding: 20px 12px 0px 12px;
 }
+
 .first_flex {
   display: flex;
   align-items: center;
@@ -52,25 +55,29 @@
 
 .border_input {
   position: relative;
-  > input {
+
+  >input {
     width: 100%;
     padding: 20px;
     border: 1px solid rgba($color: #515151, $alpha: 0.1);
     border-radius: 20px;
     box-sizing: border-box;
   }
-  > label {
+
+  >label {
     position: absolute;
     font-size: 14px;
     color: #a8a8ad;
     font-weight: 500;
     top: 0;
-    left: 15px; /* Adjust this value based on your border radius */
+    left: 15px;
+    /* Adjust this value based on your border radius */
     transform: translateY(-50%);
     background-color: white;
     padding: 0px 5px;
   }
 }
+
 .red_text {
   color: #eb5757;
 }
@@ -81,6 +88,7 @@
   gap: 10px;
   align-items: center;
 }
+
 .orange {
   color: $orange;
   transition: 0.2s;
@@ -95,6 +103,7 @@
   justify-content: center;
   gap: 20px;
 }
+
 .grey_line {
   flex-grow: 1;
   height: 0px;
@@ -104,16 +113,24 @@
 .title {
   text-align: center;
 }
+
+.terms_text {
+  text-align: center;
+}
+
 @media (min-width: $tabletSize) {
   .title {
     text-align: start;
   }
+
   .image_part {
     flex: 0 0 30%;
-    height: 100vh;
+    min-height: 65vh;
   }
+
   .content_part {
     flex: 0 0 70%;
+    min-height: 100vh;
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;
@@ -130,7 +147,12 @@
       gap: 20px;
     }
   }
+
   .wrapper {
     display: flex;
+  }
+
+  .terms_text {
+    text-align: left;
   }
 }
