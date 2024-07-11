@@ -85,6 +85,10 @@ $grey: #a8a8ad;
 }
 
 @mixin notifyCounter {
+  @include roundLabel;
+}
+
+@mixin roundLabel {
   color: $white;
   background-color: $orange;
   min-width: 20px;

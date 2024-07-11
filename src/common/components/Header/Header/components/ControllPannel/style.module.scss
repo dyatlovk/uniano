@@ -91,6 +91,17 @@
   padding-top: 30px;
   padding-left: 30px;
   padding-right: 30px;
+
+  >p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.moderator_account_add {
+  @include roundLabel;
+  cursor: pointer;
 }
 
 .select_modal_moderator {

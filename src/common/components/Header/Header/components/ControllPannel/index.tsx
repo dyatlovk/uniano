@@ -283,7 +283,7 @@ const ControllPannel = () => {
             <div>
               <div className={styles.moderator_title_padding}>
                 <Typography variant="body3" fontWeight="500">
-                  Account
+                  Account <span className={styles.moderator_account_add}>+</span>
                 </Typography>
               </div>
 
