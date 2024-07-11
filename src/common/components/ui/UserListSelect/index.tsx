@@ -35,7 +35,7 @@ const UserListSelect = ({ activeFilterIndex, callback, index }) => {
   const [newListName, setNewListName] = useState('')
 
   return (
-    <div className="gap_10" style={{ alignItems: 'stretch' }}>
+    <div className="gap_10 user_section">
       {showAddModal && (
         <ModalCenter
           onClickHandler={() => {
@@ -102,9 +102,10 @@ const UserListSelect = ({ activeFilterIndex, callback, index }) => {
         url={fakeUserConstant.image}
         active={true}
         name={fakeUserConstant.name}
+        margin='0'
       />
       <div className={styles.flex_column}>
-        <div className="gap_5">
+        <div className={styles.user_header}>
           <AppColor.UkraineFlagIcon />
           <Typography variant="body4" fontWeight="500">
             Artem M.

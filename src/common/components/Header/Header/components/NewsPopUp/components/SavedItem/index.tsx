@@ -1,18 +1,10 @@
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import styles from './style.module.scss'
-import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import { useState } from 'react'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import ModalCenter from '@common/components/ModalPopUps/ModalCenter/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import MessageItem from '@common/components/ui/Chat/Message/index'
 import MessagesDisplay from '@common/components/ui/Chat/MessagesDisplay/index'
 import InputBarChat from '@common/components/ui/Chat/InputBar/index'
 import UserListSelect from '@common/components/ui/UserListSelect/index'
@@ -139,7 +131,6 @@ const SavedItem = ({
           </div>
         </div>
       </div>
-      <SizeBox height="10px" />
       {text && <Typography variant="body5">{text}</Typography>}
     </div>
   )

@@ -66,6 +66,7 @@
 
   &:hover {
     background-color: $white;
+    color: $text;
   }
 }
 .orange_box {
@@ -92,7 +93,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 5px;
+}
+.user_header {
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
 }
 .saved_wrapper {
   padding: 15px 30px;

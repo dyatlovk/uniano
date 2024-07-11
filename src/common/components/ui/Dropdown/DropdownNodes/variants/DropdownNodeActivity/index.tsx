@@ -116,7 +116,6 @@ export const ActivityItem = ({
           >
             {title}
           </Typography>
-          <DynamicPadding desktop="10px" mobile="10px" />
           <Typography variant="body4">
             <span className={styles.hover_text}>{filter}</span>{' '}
             {tag.map(item => (

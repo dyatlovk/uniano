@@ -68,6 +68,7 @@ const TemplateItem = () => {
           Design portfolio
         </Typography>
         <Typography variant="body5">
+          <span className={styles.hover_text}>Orders • </span>
           <span className={styles.hover_text}>Saved </span>
           <span className={styles.hover_text}>• 16 Oct 2023 13:15</span>
         </Typography>
@@ -83,6 +84,8 @@ const TemplateItem = () => {
           }}
           fill={AppColor.text}
           height={'15px'}
+          width={'15px'}
+          style={{height: '16px'}}
         />
         <AppColor.close width={'15px'} height={'15px'} fill={AppColor.red} />
       </div>

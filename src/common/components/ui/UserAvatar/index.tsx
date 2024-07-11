@@ -21,7 +21,8 @@ type UserAvatarProps = {
   roleColor?: string
   activeAgoRole?: string
   title?: string
-  gap?: string,
+  gap?: string
+  margin?: string
 }
 
 type UserAvatarVariants = 'row' | 'column' | 'money' | 'image'
@@ -44,6 +45,7 @@ const UserAvatar = ({
   width,
   activeAgo,
   nodeAfterText,
+  margin,
 }: UserAvatarProps) => {
   switch (variant) {
     case 'row':
@@ -64,6 +66,7 @@ const UserAvatar = ({
           url={url}
           preventMobileNone={preventMobileNone}
           flag={flag}
+          margin={margin}
         />
       )
     case 'column':
@@ -79,6 +82,7 @@ const UserAvatar = ({
           role={role}
           url={url}
           flag={flag}
+          margin={margin}
         />
       )
     case 'money':
@@ -95,6 +99,7 @@ const UserAvatar = ({
           url={url}
           flag={flag}
           money={money}
+          margin={margin}
         />
       )
     case 'image':
@@ -106,6 +111,7 @@ const UserAvatar = ({
           active={active}
           name={name}
           url={url}
+          margin={margin}
         />
       )
     default:
@@ -113,7 +119,13 @@ const UserAvatar = ({
   }
 }
 
-const UserAvatarImage = ({ url, active, width, height }: UserAvatarProps) => {
+const UserAvatarImage = ({
+  url,
+  active,
+  width,
+  height,
+  margin,
+}: UserAvatarProps) => {
   return (
     <div
       className={styles.avatar_image}
@@ -122,7 +134,8 @@ const UserAvatarImage = ({ url, active, width, height }: UserAvatarProps) => {
         display: 'flex',
         width: width ?? '38px',
         height: height ?? '38px',
-        marginBottom: '12px'
+        // marginBottom: '12px',
+        margin: margin ?? '0 0 12px 0',
       }}
     >
       <img src={url} width={width ?? '38px'} height={height ?? '38px'} alt="" />
@@ -149,13 +162,18 @@ const UserAvatarRow = ({
   nodeAfterText,
   roleColor,
   activeAgoRole,
+  margin,
 }: UserAvatarProps) => {
   const currentWidth = width != null ? width : '38px'
   const currentHeight = height != null ? height : '38px'
 
   return (
     <div
-      style={!title ? { maxWidth: '240px', gap: gap } : { gap: gap }}
+      style={
+        !title
+          ? { maxWidth: '240px', gap: gap, margin: margin }
+          : { gap: gap, margin: margin }
+      }
       className={styles.wrapper}
     >
       <div className={styles.position_relative}>

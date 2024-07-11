@@ -12,7 +12,7 @@
 
 .wrapper_top {
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   gap: 10px;
 }
 
@@ -23,4 +23,15 @@
   min-height: 100%;
   gap: 10px;
   align-items: center;
+}
+
+.message_selected {
+  .message_item {
+    border-color: #e7ecef;
+    background-color: #eef4f7 !important;
+    p {
+      color: #a8a8a8;
+      text-decoration-line: line-through;
+    }
+  }
 }

@@ -22,11 +22,17 @@
 .flex_column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   max-width: 400px;
   min-height: 100%;
   gap: 10px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.user_avatar {
+  & > div {
+    margin-bottom: 0!important;
+  }
 }

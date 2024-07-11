@@ -36,6 +36,7 @@ const Roadmap = ({ completed, text, title, steps }: RoadmapProps) => {
 
         <div className="gap_10">
           <Typography
+            color='#01010180'
             style={{ textOverflow: 'ellipsis', maxWidth: '310px' }}
             textLineHeight="1"
             variant="body4"
@@ -49,10 +50,10 @@ const Roadmap = ({ completed, text, title, steps }: RoadmapProps) => {
 
       {completed ? (
         <div
-          className={styles.flex_column}
+          className=""
           style={{ marginLeft: 'auto', alignItems: 'end' }}
         >
-          <div style={{ display: 'flex', gap: '5px' }}>
+          <div className={styles.user_avatar} style={{ display: 'flex', gap: '5px', marginBottom: '5px' }}>
             <UserAvatar
               name=""
               active={true}
@@ -130,7 +131,7 @@ export const RoadmapFlex = ({
           className={styles.flex_column}
           style={{ marginLeft: 'auto', alignItems: 'end' }}
         >
-          <div style={{ display: 'flex', gap: '5px' }}>
+          <div className={styles.user_avatar} style={{ display: 'flex', gap: '5px' }}>
             <UserAvatar
               name=""
               active={true}

@@ -16,8 +16,15 @@ export type MessageProps = {
   backgroundColor?: string
   text: string
   time: string
+  isSelected?: boolean
 }
-const MessageItem = ({ backgroundColor, side, text, time }: MessageProps) => {
+const MessageItem = ({
+  backgroundColor,
+  side,
+  text,
+  time,
+  isSelected,
+}: MessageProps) => {
   const borderStyle =
     side == 'left'
       ? {
@@ -27,11 +34,13 @@ const MessageItem = ({ backgroundColor, side, text, time }: MessageProps) => {
           borderTopRightRadius: '0px',
         }
   return (
-    <div className={`MessageItem ${styles.wrapper_top}`}>
+    <div
+      className={`MessageItem ${styles.wrapper_top}`}
+    >
       {side == 'left' && <AppColor.threePoints />}
       <div
         style={{ alignItems: side == 'left' ? 'start' : 'end' }}
-        className={`Message ${styles.message_flex}`}
+        className={`Message ${styles.message_flex} ${isSelected ? `${styles.message_selected}` : ''}`}
       >
         <Typography color={AppColor.transparentBlack} variant="body5">
           {time}
@@ -155,7 +164,11 @@ const ColumnDetails = ({ role }: ColumnDetailsProps) => {
           showNode={
             <AppColor.threePoints
               className="column_cursor"
-              style={{ padding: '11px', paddingBottom: '0px', boxSizing: 'content-box' }}
+              style={{
+                padding: '11px',
+                paddingBottom: '0px',
+                boxSizing: 'content-box',
+              }}
               width={'17px'}
               height={'3px'}
             />
@@ -164,7 +177,11 @@ const ColumnDetails = ({ role }: ColumnDetailsProps) => {
           showNodeHover={
             <AppColor.threePointsActive
               className="column_cursor"
-              style={{ padding: '11px', paddingBottom: '0px', boxSizing: 'content-box' }}
+              style={{
+                padding: '11px',
+                paddingBottom: '0px',
+                boxSizing: 'content-box',
+              }}
               width={'17px'}
               height={'3px'}
             />

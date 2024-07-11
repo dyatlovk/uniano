@@ -1,6 +1,7 @@
 import styles from './style.module.scss'
 import MessageItem, { MessageItemUser, MessageProps } from '../Message'
 import MyCheckbox from '../../inputs/Checkbox'
+import { useCallback, useState } from 'react'
 
 type MessagesDisplayProps = {
   messages: MessageProps[]
@@ -9,6 +10,7 @@ type MessagesDisplayProps = {
   messageColorRight: string
   selectBox?: boolean
   note?: boolean
+  callBack?: (state: boolean) => void
 }
 const MessagesDisplay = ({
   selectBox,
@@ -18,6 +20,15 @@ const MessagesDisplay = ({
   messageColorRight,
   note = false,
 }: MessagesDisplayProps) => {
+  const [selectedMessage, setMessageSelected] = useState<{
+    idx: number
+    state: boolean
+  }>({ idx: -1, state: false })
+
+  const onClickHandler = useCallback((e: boolean, index: number) => {
+    setMessageSelected({ idx: index, state: e })
+  }, [])
+
   return (
     <div style={{ maxHeight: maxHeight }} className={styles.messages_grid}>
       {messages.map((item, index) => (
@@ -27,7 +38,14 @@ const MessagesDisplay = ({
         >
           {selectBox && item.side == 'right' && (
             <div className={styles.select_box}>
-              <MyCheckbox borderRadius="50%" width="30px" height="30px" />
+              <MyCheckbox
+                borderRadius="50%"
+                width="30px"
+                height="30px"
+                callback={e => {
+                  onClickHandler(e, index)
+                }}
+              />
             </div>
           )}
           <MessageItem
@@ -43,10 +61,18 @@ const MessagesDisplay = ({
             side={item.side}
             text={item.text}
             time={item.time}
+            isSelected={selectedMessage.idx === index && selectedMessage.state}
           />
           {selectBox && item.side == 'left' && (
             <div className={styles.select_box}>
-              <MyCheckbox borderRadius="50%" width="30px" height="30px" />
+              <MyCheckbox
+                borderRadius="50%"
+                width="30px"
+                height="30px"
+                callback={e => {
+                  onClickHandler(e, index)
+                }}
+              />
             </div>
           )}
         </div>
@@ -63,6 +89,12 @@ export const MessagesDisplayUsers = ({
   messageColorRight,
   note = false,
 }: MessagesDisplayProps) => {
+  const [selectedMessage, setMessageSelected] = useState<number>(-1)
+  const onClickHandler = useCallback((e: boolean, index: number) => {
+    console.log(index, e)
+    setMessageSelected(index)
+  }, [])
+
   return (
     <div
       style={{ maxHeight: maxHeight, minHeight: maxHeight }}
@@ -75,7 +107,14 @@ export const MessagesDisplayUsers = ({
         >
           {selectBox && item.side == 'right' && (
             <div className={styles.select_box}>
-              <MyCheckbox borderRadius="50%" width="30px" height="30px" />
+              <MyCheckbox
+                borderRadius="50%"
+                width="30px"
+                height="30px"
+                callback={e => {
+                  onClickHandler(e, index)
+                }}
+              />
             </div>
           )}
           <MessageItemUser
@@ -91,6 +130,7 @@ export const MessagesDisplayUsers = ({
             side={item.side}
             text={item.text}
             time={item.time}
+            isSelected={selectedMessage === index}
           />
           {selectBox && item.side == 'left' && (
             <div className={styles.select_box}>

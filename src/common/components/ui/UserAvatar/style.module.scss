@@ -37,6 +37,10 @@
   align-items: center;
   gap: 15px;
 }
+.avatar_image {
+  padding: 0;
+}
+
 @media (min-width: $tabletSize) {
   .wrapper {
     gap: 10px;
