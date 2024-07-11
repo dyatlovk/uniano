@@ -16,9 +16,7 @@ import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { fakeUserConstant } from '@common/models/user'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
-import DarkBox from '@common/components/ui/DarkBox/index'
 import {
-  ButtonDropdownSelect,
   ButtonDropdownSelectDark,
 } from '@common/components/ui/ThreeLinesPopUp/index'
 

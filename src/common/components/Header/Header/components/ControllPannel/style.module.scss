@@ -3,7 +3,8 @@
   border-radius: 20px;
   transition: 0.15s;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 28px 1fr;
   align-items: center;
   gap: 10px;
 
@@ -21,6 +22,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .flex_icon {
   display: flex;
   flex-direction: column;
@@ -29,12 +31,14 @@
   min-height: 100%;
   transition: 0.15s;
 }
+
 .flex_column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
 }
+
 .second_item_grid {
   padding: 0px 20px;
   border-right: 1px solid rgba($color: $text, $alpha: 0.1);
@@ -43,8 +47,7 @@
   gap: 10px;
 }
 
-.third_item_grid {
-}
+.third_item_grid {}
 
 .category {
   padding: 0px 14px;
@@ -55,11 +58,13 @@
   justify-content: center;
   gap: 10px;
 }
+
 .grid_20 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 .choose_role {
   display: flex;
   align-items: center;
@@ -72,18 +77,22 @@
     height: 22px;
   }
 }
+
 .first_item_grid {
   border-right: 1px solid rgba($color: $text, $alpha: 0.1);
 }
+
 .moderator_grid {
   display: grid;
   grid-template-columns: 1fr;
 }
+
 .moderator_title_padding {
   padding-top: 30px;
   padding-left: 30px;
   padding-right: 30px;
 }
+
 .select_modal_moderator {
   display: flex;
   align-items: stretch;
@@ -93,10 +102,12 @@
   transition: 0.15s;
   padding: 15px 30px;
   border-radius: 20px;
+
   &:hover {
     background-color: $white;
   }
 }
+
 .select_item {
   display: flex;
   align-items: center;
@@ -108,6 +119,7 @@
   grid-template-columns: 1fr;
   gap: 10px;
 }
+
 .controll_pannel {
   display: grid;
   grid-template-columns: 1fr;
