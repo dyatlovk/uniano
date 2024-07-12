@@ -146,7 +146,9 @@ const FilterItem = ({
           onClick()
         }
       }}
-      className={styles.filter_wrapper}
+      className={`${styles.filter_wrapper} ${
+        !hasChildren ? 'filter_title__hasChildren' : 'filter_title'
+      }`}
       style={{
         border: `1px solid ${active ? AppColor.orange : 'transparent'}`,
       }}
@@ -158,7 +160,7 @@ const FilterItem = ({
           active
             ? AppColor.orange
             : !hasChildren
-              ? AppColor.transparentBlack
+              ? 'rgba(0, 0, 0, 0.3)'
               : AppColor.text
         }
       >

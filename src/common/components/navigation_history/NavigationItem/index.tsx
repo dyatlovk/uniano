@@ -26,7 +26,8 @@ const NavigationItem = ({ image, textList }: NavigationItemProps) => {
         />
         <SizeBox width="15px" />
         {textList.map((item, index) => (
-          <div
+          <a
+            href="#"
             style={{ whiteSpace: 'nowrap' }}
             className={
               styles.wrapper +
@@ -34,7 +35,7 @@ const NavigationItem = ({ image, textList }: NavigationItemProps) => {
               `${index + 2 >= textList.length ? styles.mobile_items : styles.empty}`
             }
           >
-            {item}
+            <span className="underline_appearance">{item}</span>
             {index == textList.length - 1 ? (
               <></>
             ) : (
@@ -45,7 +46,7 @@ const NavigationItem = ({ image, textList }: NavigationItemProps) => {
                 />
               </div>
             )}
-          </div>
+          </a>
         ))}
       </div>
     </div>

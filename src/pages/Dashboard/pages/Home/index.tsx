@@ -208,9 +208,9 @@ const DashboardHome = () => {
           <div className={styles.section_details}>
             <NavigationItem
               image={<AppColor.home />}
-              textList={['Dashboard']}
+              textList={['Dashboard', "Page"]}
             />
-            <DynamicPadding desktop="20px" mobile="15px" />
+            <DynamicPadding desktop="10px" mobile="15px" />
             <Typography variant="titleBig" textTransform="uppercase">
               Home
             </Typography>
