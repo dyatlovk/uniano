@@ -2,6 +2,13 @@
   padding: 8px 20px;
   border-radius: 20px;
   width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav_bar_counter {
+  @include roundLabel;
 }
 
 @media (min-width: $tabletSize) {

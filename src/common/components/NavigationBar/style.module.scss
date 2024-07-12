@@ -18,15 +18,18 @@
   &:hover {
     opacity: 0.7;
   }
+
   :active {
     opacity: 1;
   }
 }
+
 .content {
   display: flex;
   align-items: center;
   gap: 20px;
   max-width: 1200px;
+  width: 100%;
 }
 
 .absolute_dropdown {
@@ -38,20 +41,23 @@
   background-color: $text;
   padding: 10px 10px;
 }
+
 .dropdown_grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
 
-  > a {
+  >a {
     margin-left: auto;
   }
 }
+
 .vertical_line {
   display: block;
   height: 42px;
   border: 1px solid #a8a8ad;
 }
+
 .category_hover {
   display: flex;
   position: relative;
@@ -76,6 +82,7 @@
   gap: 10px;
   transition: all 0.15s ease;
   padding: 15px;
+
   &:hover {
     background-color: #f5f5f5;
     border-radius: 20px;
@@ -85,6 +92,7 @@
 .currentTitle {
   display: none;
 }
+
 .categoty_text {
   display: flex;
   flex-direction: column;
@@ -118,19 +126,34 @@
   }
 }
 
+.nav_bar_counter {
+  @include roundLabel;
+}
+
+.mobile {
+  p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
 @media (min-width: $tabletSize) {
   .wrapper {
     min-height: 90px;
   }
+
   .chevron_down {
     display: none;
   }
+
   .links_wrapper {
     display: flex;
     align-items: center;
     row-gap: 0px;
     flex-wrap: wrap;
   }
+
   .currentTitle {
     display: inline-block;
   }

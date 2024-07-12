@@ -1,7 +1,6 @@
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import NavBarLink from './components/NavBarLink'
-import { useHover } from '@common/helpers/useHover'
 import Typography from '../ui/Typography/Typography'
 import {
   nav_categorys,
@@ -96,14 +95,17 @@ const NavigationBar = ({
             <PagesNav hovered={hovered} />
           </div>
           <div className={styles.vertical_line}></div>
-          <div className="mobile">
+          <div className={`mobile ${styles.mobile}`}>
             <Typography
               color="white"
               fontWeight="500"
               variant="body4"
               textLineHeight="1"
             >
-              {currentCategory.links[activePageIndex].title.toUpperCase()}
+              <>
+                {currentCategory.links[activePageIndex].title.toUpperCase()}
+                {currentCategory.links[activePageIndex].counter > 0 ? <span className={styles.nav_bar_counter}>{currentCategory.links[activePageIndex].counter}</span> : ""}
+              </>
             </Typography>
           </div>
         </div>
@@ -119,6 +121,7 @@ const NavigationBar = ({
               index={index}
               activeIndex={activePageIndex}
               title={item.title}
+              counter={item.counter}
             />
           ))}
         </div>
@@ -143,6 +146,7 @@ const NavigationBar = ({
                   index={index}
                   activeIndex={activePageIndex}
                   title={item.title}
+                  counter={item.counter}
                 />
               ))}
             </div>
@@ -161,6 +165,7 @@ type NavigationBarCustomProps = {
   buttonsLink: {
     title: string
     link: string
+    counter?: number
   }[]
 }
 
@@ -256,6 +261,7 @@ export const NavigationBarCustom = ({
               index={index}
               activeIndex={activeIndex}
               title={item.title}
+              counter={item.counter}
             />
           ))}
         </div>
@@ -280,6 +286,7 @@ export const NavigationBarCustom = ({
                   index={index}
                   activeIndex={activeIndex}
                   title={item.title}
+                  counter={item.counter}
                 />
               ))}
             </div>

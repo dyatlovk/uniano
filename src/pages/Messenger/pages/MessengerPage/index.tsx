@@ -1,11 +1,9 @@
 import Header from '@common/components/Header/Header/index'
 import NavigationBar from '@common/components/NavigationBar/index'
-import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { fakeUserConstant } from '@common/models/user'
@@ -22,7 +20,7 @@ type MessengerPageProps = {
   activePageIndex: number
 }
 const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(true)
   const desktopRef = useRef(null)
 
   useEffect(() => {
@@ -127,12 +125,6 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
 
                 <div className="gap_20">
                   <AppColor.searchIconBlack />
-                  <AppColor.sidebarExpand
-                    onClick={() => {
-                      setShowSidebar(prev => !prev)
-                    }}
-                    className="cursor"
-                  />
                   <AppColor.chevronBottom fill={AppColor.text} />
                 </div>
               </div>
@@ -200,7 +192,6 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
                   Artem M.
                 </Typography>
               </div>
-              <SizeBox height="15px" />
               <div className="gap_5">
                 <Typography variant="body4" color={AppColor.orange}>
                   Freelancer
@@ -388,7 +379,6 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
 export const FileItemNotific = () => {
   return (
     <div className={styles.file_notification_wrapper}>
-      <div className={styles.absolute_background_color}></div>
       <AppColor.pdfFile />
       <div>
         <Typography textLineHeight="1" variant="body5" fontWeight="500">
@@ -461,8 +451,7 @@ const NotificationItem = ({
             <span style={{ fontWeight: '400' }}>{notText}</span>
           </Typography>
         </div>
-        <SizeBox height="5px" />
-        <div className="gap_5">
+        <div className="sender_item gap_5">
           <Typography variant="body5" color={AppColor.orange}>
             Freelancer
           </Typography>
@@ -473,7 +462,7 @@ const NotificationItem = ({
         </div>
         <SizeBox height="10px" />
         {fileTitle && (
-          <div>
+          <div className={styles.attachments}>
             <div className="gap_5">
               <FileExampleNotif />
               <FileExampleNotif />

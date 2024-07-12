@@ -178,7 +178,7 @@ const Header = ({
           </div>
         </div>
       </div>
-      <div>
+      <div className='header_fixed'>
         {position == 'fixed' && <DynamicPadding desktop="92px" mobile="92px" />}
         <div
           style={{ opacity: headerVisible ? '1' : '0', position: position }}

@@ -1,7 +1,8 @@
 import AppColor from '@common/styles/variables-static'
 
 type linkType = {
-  title: string
+  title: string,
+  counter?: number
 }
 export type nav_categorys = {
   title: nav_var_categorys_titles | any
@@ -61,12 +62,12 @@ export const nav_var_categorys: nav_categorys[] = [
     activeImage: AppColor.messageWhite,
     index: 3,
     links: [
-      { title: 'solutions' },
-      { title: 'direct  ' },
-      { title: 'groups' },
-      { title: 'management' },
-      { title: 'general help' },
-      { title: 'contact us' },
+      { title: 'solutions', counter: 1 },
+      { title: 'direct  ', counter: 0 },
+      { title: 'groups', counter: 0 },
+      { title: 'management', counter: 0 },
+      { title: 'general help', counter: 0 },
+      { title: 'contact us', counter: 0 },
     ],
   },
   {

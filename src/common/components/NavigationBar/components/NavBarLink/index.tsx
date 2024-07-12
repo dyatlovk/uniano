@@ -8,13 +8,15 @@ type NavBarLinkProps = {
   title: string
   index: number
   activeIndex: number
-  parentRoute: string
+  parentRoute: string,
+  counter?: number
 }
 const NavBarLink = ({
   title,
   index,
   activeIndex,
   parentRoute,
+  counter
 }: NavBarLinkProps) => {
   const modifiedTitle = title.replace('&', '-').replace(/\s/g, '')
 
@@ -34,6 +36,7 @@ const NavBarLink = ({
       >
         {title}
       </Typography>
+      {counter ? <span className={styles.nav_bar_counter}>{counter}</span> : <></>}
     </Link>
   )
 }
