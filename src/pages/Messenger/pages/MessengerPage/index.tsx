@@ -59,11 +59,11 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
       }
       setIsSidebarChangeGoing(false)
     }, 200)
-  }, [showSidebar])
+  }, [isSidebarChangeGoing, showSidebar])
 
   return (
     <div>
-      <Header removeMaxWidth={true} position="relative" />
+      <Header removeMaxWidth={false} position="relative" />
       <NavigationBar
         removeMaxWidth={true}
         currentCategoryTitle="Messenger"
@@ -74,7 +74,7 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
         ref={desktopRef}
         className="desktop opacity_0"
       >
-        <div className={styles.wrapper}>
+        <div className={`Messenger_page_wrapper_desktop ${styles.wrapper}`}>
           <div className={styles.white_background}>
             <DynamicPadding desktop="30px" mobile="20px" />
             <div style={{ padding: '0px 30px' }} className="gap_10">
@@ -637,7 +637,7 @@ const CommentPreview = () => {
                   handleCloseClick(event)
                 }}
               >
-                <AppColor.longChevronLeft />
+                <AppColor.longChevronLeft fill={AppColor.text} />
               </div>
               <UserAvatar
                 active={true}
