@@ -5,7 +5,7 @@
 }
 
 .image_part {
-  height: 65vh;
+  min-height: 65vh;
   @include backgroundGradientGreyWhite;
   display: flex;
   align-items: center;
@@ -16,12 +16,13 @@
     width: auto;
   }
 }
+
 .content_wrapper {
   padding: 30px 18px;
 }
+
 .dropdown_child {
   transform-origin: top;
-  overflow: hidden;
   transition: all 0.3s ease;
 }
 
@@ -36,7 +37,7 @@
   padding: 15px;
   border-radius: 20px;
 
-  > div {
+  >div {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -74,6 +75,7 @@
   height: 15px;
   border-radius: 50%;
   background-color: $orange;
+
   svg {
     width: 10px;
     height: 10px;
@@ -85,6 +87,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 15px;
+  align-items: baseline;
 
   .goal_text {
     flex: 0 0 90%;
@@ -98,6 +101,7 @@
 .goal_list {
   margin-top: 15px;
 }
+
 .center_text {
   text-align: center;
 }
@@ -107,6 +111,7 @@
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 .goal_solve_button {
@@ -115,10 +120,18 @@
   justify-content: center;
 }
 
+.goal_title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1;
+}
+
 .text_underline {
   display: inline-block;
   position: relative;
   padding-bottom: 5px;
+
   &::after {
     content: '';
     position: absolute;
@@ -129,17 +142,19 @@
     border: 1px solid $orange;
   }
 }
+
 @media (min-width: $tabletSize) {
   .center_text {
     text-align: start;
   }
+
   .goal_wrapper {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     gap: 10px;
     margin-bottom: 15px;
-    align-items: center;
+    align-items: baseline;
 
     .goal_text {
       flex: 0 1 auto;
@@ -155,34 +170,46 @@
     margin-top: 20px;
     padding-left: 30px;
   }
+
+  .goal_title {
+    display: flex;
+    flex-direction: row;
+    line-height: 1;
+    gap: 6px;
+  }
+
   .content_part_bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
+
   .dropdown {
     padding: 15px 29px;
   }
 
   .content_wrapper {
     padding: 0px 75px;
+    padding-bottom: 50px;
   }
+
   .content_part {
     width: 66%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
+    min-height: 100vh;
     @include scrollStyles;
   }
+
   .image_part {
-    height: 100vh;
+    min-height: 65vh;
     width: 34%;
   }
+
   .wrapper {
     flex-direction: row;
     display: flex;
-    overflow: hidden;
-    max-height: 100vh;
   }
 }

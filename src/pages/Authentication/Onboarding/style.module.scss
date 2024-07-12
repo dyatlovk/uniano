@@ -27,25 +27,38 @@
     object-fit: cover;
   }
 }
+
 .button {
   width: 100%;
 }
+
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
+}
+
+.text>p span {
+  display: none;
 }
 
 @media (min-width: $tabletSize) {
   .wrapper {
     height: 100vh;
   }
+
   .button {
     width: 432px;
   }
+
   .text {
     width: 610px;
+
+    p>span {
+      display: block;
+    }
   }
+
   .cards {
     display: flex;
     flex-direction: row;

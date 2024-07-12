@@ -78,7 +78,7 @@ const StartGuide = () => {
               Quick Start Guide
             </Typography>
           </div>
-          <DynamicPadding desktop="25px" mobile="13px" />
+          <DynamicPadding desktop="11px" mobile="11px" />
           <div className={styles.center_text}>
             <Typography variant="body4" color={AppColor.transparentBlack}>
               Here is a concise and user-friendly document that provides
@@ -108,8 +108,9 @@ const StartGuide = () => {
                 textTransform="uppercase"
                 fontWeight="500"
                 variant="body4"
+                className={styles.goal_title}
               >
-                Getting started{' '}
+                Getting started
                 <span className={styles.orange}>1 of 3 completed</span>
               </Typography>
             }
@@ -122,8 +123,9 @@ const StartGuide = () => {
                 textTransform="uppercase"
                 fontWeight="500"
                 variant="body4"
+                className={styles.goal_title}
               >
-                Getting started{' '}
+                Getting started
                 <span className={styles.orange}>1 of 3 completed</span>
               </Typography>
             }
@@ -154,15 +156,13 @@ const StartGuide = () => {
               <MyButtonOrange
                 textTransform="uppercase"
                 fontWeight="500"
-                onClick={() => {}}
+                onClick={() => { }}
                 padding="8px 19px"
               >
                 Complete later
               </MyButtonOrange>
             </Link>
           </div>
-
-          <DynamicPadding />
         </div>
       </div>
     </div>
@@ -242,12 +242,12 @@ const Goal = ({ isRiched, text, title, solveLink }: GoalProps) => {
         <Typography textLineHeight="100%" variant="body4" fontWeight="500">
           {title}
         </Typography>
-        <DynamicPadding mobile="7px" desktop="10px" />
+        <DynamicPadding mobile="13px" desktop="10px" />
         <Typography color={AppColor.transparentBlack} variant="body4">
           {text}
         </Typography>
+        <div className={styles.goal_margin}>{solveLink}</div>
       </div>
-      <div className={styles.goal_margin}>{solveLink}</div>
     </div>
   )
 }

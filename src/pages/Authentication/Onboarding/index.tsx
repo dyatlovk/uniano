@@ -41,9 +41,7 @@ const cards: CardProps[] = [
   },
 ]
 const Onboarding = () => {
-  const [currentIndex, setCurrentIndex] = useState<number | undefined>(
-    undefined
-  )
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
   const navigate = useNavigate()
 
   const [visible, setVisible] = useState(false)
@@ -68,8 +66,8 @@ const Onboarding = () => {
             color={AppColor.transparentBlack}
           >
             Thanks for signing up - we’re happy to have you on board! Let us to
-            know who is you ? Don’t worry, this can be changed later in two
-            clicks.
+            know who is you? <span>Don’t worry, this can be changed later in two
+              clicks.</span>
           </Typography>
         </div>
         <DynamicPadding desktop="50px" mobile="30px" />
