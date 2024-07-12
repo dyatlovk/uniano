@@ -85,11 +85,11 @@ const HoverDotsBox = () => {
                 or simple renovation of old plans or from your idea.
               </Typography>
 
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="41px" mobile="20px" />
 
               <MiddleLineText text="Rewards" />
 
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="41px" mobile="20px" />
 
               <div className="gap_20">
                 <AppColor.pigBonuses className={styles.pig_bonuses} />
@@ -107,28 +107,30 @@ const HoverDotsBox = () => {
                 </div>
               </div>
 
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="41px" mobile="20px" />
 
               <MiddleLineText text="purpose" />
 
-              <DynamicPadding desktop="40px" mobile="30px" />
+              <DynamicPadding desktop="41px" mobile="30px" />
             </div>
 
-            <Roadmap
-              completed={false}
-              text="Thanks for signing up - we’re happy to have you on board! "
-              title="Create an account"
-            />
-            <Roadmap
-              completed={false}
-              text="Thanks for signing up - we’re happy to have you on board! "
-              title="Create an account"
-            />
-            <Roadmap
-              completed={false}
-              text="Thanks for signing up - we’re happy to have you on board! "
-              title="Create an account"
-            />
+            <div>
+              <Roadmap
+                completed={false}
+                text="Thanks for signing up - we’re happy to have you on board! "
+                title="Create an account"
+              />
+              <Roadmap
+                completed={false}
+                text="Thanks for signing up - we’re happy to have you on board! "
+                title="Create an account"
+              />
+              <Roadmap
+                completed={false}
+                text="Thanks for signing up - we’re happy to have you on board! "
+                title="Create an account"
+              />
+            </div>
 
             <DynamicPadding desktop="30px" mobile="20px" />
           </>

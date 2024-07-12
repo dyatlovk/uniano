@@ -99,12 +99,12 @@ const RoadMapItem = ({
       <div className={styles.top_part}>
         <div className={styles.icon_text}>
           {icon}
-          <div>
+          <div className={styles.roadmap_content}>
             <Typography variant="body4" fontWeight="500">
               {title}{' '}
               <Typography color={AppColor.orange}>{stepsCompleted}</Typography>
             </Typography>
-            <DynamicPadding desktop="10px" mobile="10px" />
+            <DynamicPadding desktop="2px" mobile="10px" />
             <div className="gap_5" style={{ alignItems: 'end' }}>
               <Typography variant="body4" color={AppColor.transparentBlack}>
                 {text}
