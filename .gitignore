@@ -1,8 +1,8 @@
 node_modules
 .yarn
 docs
-*cache*
-*build*
+*cache
+*build
 .nvimrc
 dist
 .vite
