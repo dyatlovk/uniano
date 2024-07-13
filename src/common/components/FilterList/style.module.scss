@@ -49,17 +49,21 @@
   transition: 0.15s;
   padding-bottom: 5px;
   position: relative;
+  cursor: pointer;
 
-  >p {
-    cursor: pointer;
-
-    &:hover {
-      color: $orange;
-    }
+  &:hover {
+    color: $orange;
   }
 }
 
 .filter_active {
+  color: $orange;
+}
+
+.filter_title {
+  position: relative;
+  padding-bottom: 6px;
+
   &:after {
     content: "";
     position: absolute;
@@ -70,17 +74,5 @@
     z-index: 1;
     border-radius: 10px;
     background-color: $orange;
-  }
-
-  &>h6 {
-    color: $text;
-    cursor: default;
-    font-size: 23px;
-    font-weight: 500;
-    text-transform: uppercase;
-
-    &:hover {
-      color: $text;
-    }
   }
 }

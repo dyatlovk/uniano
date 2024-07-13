@@ -25,9 +25,9 @@ const CardsSliderRelated = ({
             <SizeBox width="50px" />
             <div style={{ flexGrow: '1' }}>
               <FilterListBig
-                activeStartItem="Related"
+                activeStartItem="Projects"
                 orangeText=""
-                filters={['Related', 'Partnership', 'Projects', 'History']}
+                filters={['Projects', 'Crowdfreelance', 'Users', 'History']}
               />
             </div>
             <SizeBox width="50px" />

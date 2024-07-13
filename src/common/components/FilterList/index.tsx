@@ -118,6 +118,15 @@ export const FilterListBig = ({
           </div>
         )}
         <div className={styles.filters_wrapper}>
+          <Typography
+            textTransform='uppercase'
+            variant="titleSmall"
+            fontWeight="500"
+            className={styles.filter_title}
+            fontSizeStatic="23px"
+          >
+            Related
+          </Typography>
           {filters.map((filter, index) => (
             <div
               className={`${styles.filter_item} ${filter === activeFilter ? styles.filter_active : ''}`}
@@ -125,7 +134,7 @@ export const FilterListBig = ({
                 setActive(filter)
               }}
             >
-              {filter == activeFilter ? <h6>{filter}</h6> : <p>{filter}</p>}
+              {filter}
             </div>
           ))}
         </div>
