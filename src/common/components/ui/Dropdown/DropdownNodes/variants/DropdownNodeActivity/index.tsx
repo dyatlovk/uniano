@@ -6,8 +6,6 @@ import Typography from '@common/components/ui/Typography/Typography'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import { useState } from 'react'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { fakeUserConstant } from '@common/models/user'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
@@ -63,6 +61,7 @@ const DropdownNodeActivity = ({
             <div className={styles.absolute_show}>
               {' '}
               <MyButtonTransparentBlack
+                textTransform='uppercase'
                 onClick={() => {
                   setShowItemsCount(prev => prev + 4)
                 }}
@@ -129,9 +128,9 @@ export const ActivityItem = ({
             <Typography variant="subtitle" fontWeight="500">
               ${price}
             </Typography>
-            {iconNode}
+            <div className={styles.icon_wrapper}>{iconNode}</div>
           </div>
-          <Typography variant="body4" color={AppColor.orange}>
+          <Typography variant="body4" color={AppColor.orange} fontWeight="500">
             Progress
           </Typography>
         </div>
@@ -140,7 +139,7 @@ export const ActivityItem = ({
         <Typography variant="subtitle" fontWeight="500">
           ${price}
         </Typography>
-        {iconNode}
+        <div className={styles.icon_wrapper}>{iconNode}</div>
         <div className={styles.mobile_margin}>
           <Typography fontWeight="500" variant="body4" color={AppColor.orange}>
             Progress

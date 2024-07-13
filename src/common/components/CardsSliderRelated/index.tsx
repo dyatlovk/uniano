@@ -1,4 +1,4 @@
-import FilterList, { FilterListBig } from '../FilterList'
+import { FilterListBig } from '../FilterList'
 import CardStatisticTest from '../cards/CardStatistics/variants/CardStatisticTest'
 import Slider from '../ui/Slider/Slider'
 import styles from './style.module.scss'
@@ -10,6 +10,7 @@ import AppColor from '@common/styles/variables-static'
 import { levelMap } from '../Footer/Footer'
 import test1 from '@assets/images/test1.png'
 import SizeBox from '../ui/SizeBox'
+
 const CardsSliderRelated = ({
   secondSlider = false,
 }: {
@@ -25,7 +26,7 @@ const CardsSliderRelated = ({
             <div style={{ flexGrow: '1' }}>
               <FilterListBig
                 activeStartItem="Related"
-                orangeText="History"
+                orangeText=""
                 filters={['Related', 'Partnership', 'Projects', 'History']}
               />
             </div>
@@ -42,6 +43,7 @@ const CardsSliderRelated = ({
             elementsCount={10}
             itemWidth={250}
             gap={40}
+            buttonLeft="-60px"
           >
             <CardStatisticTest />
             <CardStatisticTest />

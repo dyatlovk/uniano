@@ -6,11 +6,7 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import Header from '@common/components/Header/Header/index'
 import DropdownNode from '@common/components/ui/Dropdown/DropdownNodes/index'
-import Slider from '@common/components/ui/Slider/Slider'
-import CardTime from '@common/components/cards/CardTime/CardTime'
 import { fakeUserConstant, userModel } from '@common/models/user'
-import CardStatistics from '@common/components/cards/CardStatistics/index'
-import CardStatisticTest from '@common/components/cards/CardStatistics/variants/CardStatisticTest'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
@@ -316,7 +312,6 @@ const DashboardHome = () => {
               countNotification={activityItems.length}
               activityItems={activityItems}
             />
-            ;
           </div>
           <div className={styles.dropdown_second}>
             <DropdownNode
@@ -343,12 +338,16 @@ const DashboardHome = () => {
             />
           </div>
         </section>
-        <DynamicPadding desktop="50px" mobile="30px" />
+        <DynamicPadding desktop="0" mobile="30px" />
       </div>
       <CardsSliderRelated />
 
       <section className={styles.wrapper}>
-        <AskedQuestion />
+        <AskedQuestion
+          useBackground={false}
+          padding={"0 50px 0 50px"}
+          margin={"50px 0 0 0"}
+        />
       </section>
 
       <Footer />

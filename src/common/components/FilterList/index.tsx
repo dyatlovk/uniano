@@ -120,29 +120,16 @@ export const FilterListBig = ({
         <div className={styles.filters_wrapper}>
           {filters.map((filter, index) => (
             <div
-              style={{
-                borderBottom: `2px solid ${filter == activeFilter ? AppColor.orange : AppColor.transparent}`,
-              }}
-              className={styles.filter_item}
+              className={`${styles.filter_item} ${filter === activeFilter ? styles.filter_active : ''}`}
               onClick={() => {
                 setActive(filter)
               }}
             >
-              <Typography
-                fontWeight={
-                  activeFilter == filter || filter == orangeText ? '500' : '400'
-                }
-                textTransform={activeFilter == filter ? 'uppercase' : 'none'}
-                color={filter == orangeText && AppColor.orange}
-                variant={activeFilter == filter ? 'subtitle' : 'body4'}
-              >
-                {filter}
-              </Typography>
+              {filter == activeFilter ? <h6>{filter}</h6> : <p>{filter}</p>}
             </div>
           ))}
         </div>
       </div>
-      <HorizontalLine />
     </div>
   )
 }

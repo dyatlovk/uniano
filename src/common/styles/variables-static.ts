@@ -23,6 +23,7 @@ import { ReactComponent as subscriptions } from '@assets/svg/subscriptions.svg'
 
 import { ReactComponent as wallet } from '@assets/svg/balance-wallet.svg'
 import { ReactComponent as caseIcon } from '@assets/svg/case-icon.svg'
+import { ReactComponent as caseAltIcon } from '@assets/svg/case_lines.svg'
 import { ReactComponent as moneyRed } from '@assets/svg/money-red.svg'
 import { ReactComponent as moneyGreen } from '@assets/svg/money-green.svg'
 
@@ -667,6 +668,7 @@ class AppColor {
 
   static wallet = wallet
   static caseIcon = caseIcon
+  static caseAltIcon = caseAltIcon
   static moneyRed = moneyRed
   static moneyGreen = moneyGreen
   static messageIconRound = messageIconRound

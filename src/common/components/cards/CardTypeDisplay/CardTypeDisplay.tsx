@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react'
 
 import styles from './style.module.scss'
-import AppColor from '@common/styles/variables-static'
 
 type CardTypeDisplayProps = {
   text: string

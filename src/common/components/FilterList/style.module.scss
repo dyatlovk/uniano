@@ -18,6 +18,17 @@
   align-items: start;
   gap: 15px;
   transition: all 0.3s ease;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: rgba(81, 81, 81, 0.1);
+  }
 }
 
 .flex_center {
@@ -26,19 +37,50 @@
   gap: 15px;
   align-items: center;
 }
+
 .vertical_lone {
   height: 14px;
   width: 0px;
   border: 1px solid #a8a8ad;
 }
+
 .filter_item {
-  cursor: pointer;
   user-select: none;
   transition: 0.15s;
   padding-bottom: 5px;
-  &:hover {
-    * {
+  position: relative;
+
+  >p {
+    cursor: pointer;
+
+    &:hover {
       color: $orange;
+    }
+  }
+}
+
+.filter_active {
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 1;
+    border-radius: 10px;
+    background-color: $orange;
+  }
+
+  &>h6 {
+    color: $text;
+    cursor: default;
+    font-size: 23px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $text;
     }
   }
 }

@@ -9,9 +9,6 @@ import icon_sponsorship from '@assets/svg/sponsors-icon.svg'
 import icon_message from '@assets/svg/message-icon-white-icon.svg'
 import icon_star from '@assets/svg/star.svg'
 import icon_comments from '@assets/svg/comments-icon.svg'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import { formatNumberWithSpaces } from '@common/helpers/stringFunctions'
-import DaysLeftTimer from '@common/components/ui/DaysLeftTimer/DaysLeftTimer'
 import CardTypeDisplay from '../CardTypeDisplay/CardTypeDisplay'
 import AnimatedSvg from '../../AnimatedSvg'
 type CardTimeProps = {
@@ -52,6 +49,14 @@ const CardStatistics = ({
           backgroundColor={AppColor.text}
         />
       </span>
+      <div className={styles.card_indicators}>
+        <div className={styles.indicator_item}>
+          <AppColor.caseAltIcon/>
+        </div>
+        <div className={styles.indicator_item}>
+          <AppColor.fire/>
+        </div>
+      </div>
       <div style={topImageStyles} className={styles.shell_top_image}>
         <Typography variant="body5" color="white">
           {title}

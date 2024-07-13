@@ -3,10 +3,8 @@ import DropdownNode from '../..'
 import styles from './style.module.scss'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import Typography from '@common/components/ui/Typography/Typography'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import { useState } from 'react'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 import HoverDotsBox from '@common/components/ui/HoverDotsBox/index'
 
@@ -61,6 +59,7 @@ const DropdownNodeRoadmap = ({
             <div className={styles.absolute_show}>
               {' '}
               <MyButtonTransparentBlack
+                textTransform="uppercase"
                 onClick={() => {
                   setShowItemsCount(prev => prev + 4)
                 }}
