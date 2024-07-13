@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
   &:hover {
     opacity: 0.6;
   }
@@ -51,7 +52,9 @@
     width: 290px;
   }
 }
+
 @media (min-width: $tabletSize) {
+
   .main_part {
     flex-direction: row;
     gap: 80px;
@@ -71,10 +74,12 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+
   input {
     padding: 8px 16px;
     font-size: 0.875rem;
     color: rgba($color: #000000, $alpha: 0.5);
+
     @include weakShadow;
     min-width: 290px;
     border-radius: 20px;
@@ -86,6 +91,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .flex_item_filter {
   display: flex;
   align-items: center;
@@ -97,6 +103,7 @@
   gap: 5px;
   align-items: baseline;
 }
+
 .flex_full {
   width: 100%;
   display: flex;
@@ -124,6 +131,7 @@
 
 .dropdown_wrapper_filter {
   background-color: white;
+
   @include weakShadow;
   white-space: nowrap;
   z-index: 1;
@@ -131,18 +139,23 @@
   padding: 10px 20px;
   border-radius: 20px;
 }
+
 .dropdown_wrapper {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
+
 @media (min-width: $tabletSize) {
+
   .filters_wrapper {
     gap: 30px;
   }
+
   .wrapper_filter {
     flex-direction: row;
     justify-content: space-between;
+
     input {
       font-size: 1rem;
     }

@@ -9,6 +9,7 @@
 .wrapper {
   position: relative;
   box-sizing: content-box;
+
   @include backgroundGradientGreyWhite;
   padding: 8px 0px;
 }
@@ -24,17 +25,21 @@
   flex-direction: column;
 
   gap: 15px;
+
   @include backgroundGradientGreyWhite;
   padding-top: 65px;
 }
+
 .nav_items_wrapper {
   display: none;
 }
+
 .vertical_line {
   width: 0px;
   height: 29px;
   border: 1px solid $white;
 }
+
 .wrapper_shell {
   display: flex;
   align-items: center;
@@ -54,16 +59,21 @@
   flex-grow: 1;
   height: 42px;
 }
+
 @media (min-width: $tabletSize) {
+
   .vertical_line {
     height: 42px;
   }
+
   .mobile_flex {
     display: none;
   }
+
   .wrapper {
     padding: 22px 0px;
   }
+
   .nav_items_wrapper {
     display: flex;
     align-items: center;

@@ -8,6 +8,7 @@
   text-align: center;
   padding: 0px 30px;
 }
+
 .text_flex {
   display: flex;
   align-items: baseline;
@@ -25,6 +26,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .box_wrapper {
     gap: 15px;
   }

@@ -20,6 +20,7 @@
   order: var(--order1M);
   min-width: 290px;
 }
+
 .right_part {
   display: flex;
   justify-content: center;
@@ -62,29 +63,37 @@
   right: 20%;
   overflow: hidden;
 }
+
 .center_item {
   display: flex;
   justify-content: center;
   width: 100%;
 }
+
 @media (min-width: $tabletSize) {
+
   .modal {
     z-index: 0;
   }
+
   .left_item_modal {
     display: none;
   }
+
   .modal {
     position: static;
   }
+
   .main_part {
     column-gap: var(--gap);
   }
+
   .left_part {
     flex: 1 1 var(--maxWidth1);
     max-width: var(--maxWidth1);
     order: var(--order1D);
   }
+
   .right_part {
     flex: 1 1;
     order: var(--order2D);

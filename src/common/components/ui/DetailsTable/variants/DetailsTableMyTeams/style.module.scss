@@ -8,6 +8,7 @@
   display: flex;
   justify-content: start;
 }
+
 .false_item {
   width: 14px;
   height: 1.5px;
@@ -20,7 +21,9 @@
   align-items: center;
   justify-content: flex-end;
 }
+
 @media (min-width: $tabletSize) {
+
   .center_item {
     display: flex;
     justify-content: center;

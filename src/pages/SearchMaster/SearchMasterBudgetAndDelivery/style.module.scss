@@ -19,12 +19,14 @@
   height: 28px;
   aspect-ratio: 1;
   border-radius: 50%;
+
   @include weakShadow;
   background-color: white;
 }
 
 .shadow_box {
   border-radius: 20px;
+
   @include weakShadow;
   padding: 15px;
 }
@@ -34,6 +36,7 @@
   height: 1.5px;
   background-color: $text;
 }
+
 .negotiation_box {
   display: flex;
   align-items: center;
@@ -68,26 +71,33 @@
   background-color: $white;
   padding: 8px 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .text_box {
     padding: 15px 20px;
   }
+
   .level_wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
   }
+
   .first_grid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
   }
+
   .shadow_box {
     padding: 25px 30px;
   }
+
   .template_icon {
     height: 40px;
   }
+
   .text_flex {
     gap: 20px;
   }

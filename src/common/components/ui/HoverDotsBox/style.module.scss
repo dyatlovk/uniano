@@ -2,11 +2,13 @@
   width: 30px;
   height: 15px;
   border-radius: 5px;
+
   @include weakShadow;
 
   transition: 0.2s;
 
   display: flex;
+
   svg {
     margin: auto;
     width: 12px;
@@ -29,6 +31,7 @@
 
 .pig_bonuses {
   flex: 0 0 95px;
+
   svg {
     min-width: 95px;
     min-height: 95px;
@@ -36,6 +39,7 @@
     height: 95px;
   }
 }
+
 .hover_text {
   color: rgba($color: black, $alpha: 0.5);
   transition: 0.2s;
@@ -45,6 +49,7 @@
     color: $text;
   }
 }
+
 .flex_column {
   display: flex;
   flex-direction: column;

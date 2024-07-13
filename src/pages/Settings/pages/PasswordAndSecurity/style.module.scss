@@ -17,10 +17,12 @@
   white-space: nowrap;
   padding: 10px 20px;
   transition: 0.15s;
+
   &:hover {
     background-color: $white;
   }
 }
+
 .abs_item {
   position: absolute;
   overflow: hidden;
@@ -29,15 +31,19 @@
   transform: translateX(-50%);
   background-color: white;
   border-radius: 20px;
+
   @include weakShadow;
   width: 120px;
 }
+
 .grid_20 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 @media (min-width: $tabletSize) {
+
   .cards_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;

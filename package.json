@@ -22,7 +22,7 @@
     "react-toastify": "^10.0.4",
     "react-transition-group": "^4.4.5",
     "recharts": "^2.12.3",
-    "sass": "^1.69.5",
+    "sass": "^1.77.*",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -45,5 +45,11 @@
     "vite": ">=4.5.3",
     "vite-plugin-svgr": "^3.2.0"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

@@ -21,8 +21,10 @@
 
 .white_background {
   background-color: white;
+
   @include weakShadow;
   overflow-y: auto;
+
   @include scrollStyles;
   overscroll-behavior: contain;
 }
@@ -32,6 +34,7 @@
   overscroll-behavior: contain;
   background-color: white;
   overflow-y: auto;
+
   @include scrollStyles;
   direction: rtl;
 
@@ -115,6 +118,7 @@
   width: 31px;
   height: 31px;
   border-radius: 50%;
+
   @include weakShadow;
   display: flex;
   align-items: center;
@@ -172,6 +176,7 @@
   position: relative;
 
   &:hover {
+
     .absolute_background_color {
       background-color: $white;
     }
@@ -200,6 +205,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .pointer_desktop {
     cursor: pointer;
   }

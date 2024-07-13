@@ -12,6 +12,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .boxes_wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

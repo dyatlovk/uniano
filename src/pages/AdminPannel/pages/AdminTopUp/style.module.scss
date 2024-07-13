@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .orange_circle {
   width: 25px;
   height: 25px;
@@ -16,6 +17,7 @@
   padding: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
+
   &:hover {
     opacity: 0.6;
   }
@@ -42,11 +44,14 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow: hidden;
+
   @include midShadow;
 }
 
 .dropdown_wrapper_custom {
+
   div.dropdown_hover {
+
     @include midShadow;
   }
 }
@@ -55,6 +60,7 @@
   padding: 10px 20px;
   width: 100%;
   transition: 0.2s;
+
   &:hover {
     background-color: $white;
   }
@@ -63,13 +69,16 @@
 .dropdown_styles_children {
   display: grid;
   grid-template-columns: 1fr;
+
   @include midShadow;
 }
+
 .custom_dropdown {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px;
+
   @include weakShadow;
   transition: 0.2s;
   border-radius: 20px;
@@ -109,13 +118,16 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .gap_20_10 {
     gap: 20px;
   }
+
   .orange_circle {
     width: 35px;
     height: 35px;
   }
+
   .top_part {
     flex-direction: row;
     justify-content: space-between;

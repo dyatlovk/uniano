@@ -1,4 +1,5 @@
 .news_wrapper {
+
   @include weakShadow;
   border-radius: 20px;
   background-color: white;
@@ -55,10 +56,12 @@
 }
 
 .notify_counter {
+
   @include notifyCounter;
 }
 
 .orage {
+
   @include notifyCounter;
 
   p {

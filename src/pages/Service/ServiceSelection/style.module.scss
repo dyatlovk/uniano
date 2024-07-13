@@ -6,6 +6,7 @@
   cursor: pointer;
   margin-bottom: 5px;
   padding: 8px 14px;
+
   svg {
     max-height: 20px;
   }
@@ -25,6 +26,7 @@
   justify-content: center;
   gap: 15px;
 }
+
 .desktop {
   display: none;
 }
@@ -39,22 +41,28 @@
   display: flex;
   justify-content: center;
 }
+
 @media (min-width: $tabletSize) {
+
   .center_card {
     justify-content: start;
   }
+
   .cards_grid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     justify-content: start;
   }
+
   .desktop {
     display: initial;
   }
+
   .filters {
     gap: 30px;
     justify-content: end;
   }
+
   .category_select_wrapper {
     padding: 15px;
 
@@ -62,6 +70,7 @@
       max-height: 30px;
     }
   }
+
   .category_child {
     padding: 16px 0px;
     padding-left: 15px;
@@ -70,11 +79,14 @@
 }
 
 @media (min-width: 900px) {
+
   .cards_wrapper {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 @media (min-width: 1300px) {
+
   .cards_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;

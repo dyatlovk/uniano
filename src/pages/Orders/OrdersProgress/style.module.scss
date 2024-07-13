@@ -5,6 +5,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .shadow_box_grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -50,6 +51,7 @@
   width: 33px;
   height: 33px;
   border-radius: 5px;
+
   @include weakShadow;
   background-color: white;
   display: flex;
@@ -61,23 +63,29 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
+
   @include weakShadow;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .rewards_wrapper {
   display: flex;
   align-items: center;
   gap: 20px;
 }
+
 @media (min-width: $tabletSize) {
+
   .details_box {
     padding: 25px 30px;
   }
+
   .boxes_grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
   .text_wrapper {
     padding: 15px 20px;
   }

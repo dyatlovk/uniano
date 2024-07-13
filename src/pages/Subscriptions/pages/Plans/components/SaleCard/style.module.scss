@@ -14,6 +14,7 @@
     max-width: 260px;
   }
 }
+
 .text_flex {
   display: flex;
   align-items: baseline;
@@ -31,9 +32,11 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .box_wrapper {
     max-width: 300px;
   }
+
   .box_wrapper {
     gap: 15px;
   }

@@ -50,17 +50,21 @@
     width: 70px;
   }
 }
+
 @media (min-width: $tabletSize) {
+
   .settings_role_grid {
     display: flex;
     align-items: center;
     column-gap: 0px;
     row-gap: 0px;
     gap: 20px;
+
     * {
       width: auto;
     }
   }
+
   .top_part_wrapper {
     flex-direction: row;
   }

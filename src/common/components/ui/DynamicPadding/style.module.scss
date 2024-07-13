@@ -1,4 +1,5 @@
 .dynamic_padding {
+
   &.top {
     padding-top: var(--tablet-padding);
   }
@@ -15,8 +16,11 @@
     padding-left: var(--tablet-padding);
   }
 }
+
 @media only screen and (min-width: $tabletSize) {
+
   .dynamic_padding {
+
     &.top {
       padding-top: var(--desktop-padding);
     }

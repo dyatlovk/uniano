@@ -8,10 +8,12 @@
 }
 
 .nav_bar_counter {
+
   @include roundLabel;
 }
 
 @media (min-width: $tabletSize) {
+
   .nav_bar_link {
     padding: 8px 19px;
     border-radius: 20px;

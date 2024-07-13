@@ -10,9 +10,11 @@
   justify-content: center;
   width: 15px;
   height: 15px;
+
   @include weakShadow;
   border-radius: 50%;
 }
+
 .wrapper {
   display: flex;
   align-items: end;

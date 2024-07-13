@@ -10,6 +10,7 @@
 }
 
 .hover_text_popular {
+
   .hover_text_item {
     transition: 0.2s;
 
@@ -24,6 +25,7 @@
   }
 
   &:hover {
+
     .hover_text_item {
       font-weight: 500;
     }
@@ -145,6 +147,7 @@
     }
 
     &:focus {
+
       @include weakShadow;
     }
   }
@@ -280,6 +283,7 @@
         column-gap: 20px;
 
         // row-gap: 20px;
+
         > a {
           display: inline-block;
           margin-bottom: 14px;
@@ -328,6 +332,7 @@
       transition: all 0.3s ease;
 
       &:hover {
+
         &::after {
           opacity: 0;
         }
@@ -429,6 +434,7 @@
 }
 
 .fourth_screen_list_ul {
+
   > li {
     margin-left: 25px;
   }
@@ -464,6 +470,7 @@
 }
 
 .fourth_screen_inline_text {
+
   p {
     display: inline;
   }
@@ -521,6 +528,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 20px;
+
   @include weakShadow;
 }
 
@@ -596,6 +604,7 @@
 }
 
 @media (min-width: 1130px) {
+
   .popup_node {
     left: 50%;
     right: auto;
@@ -677,6 +686,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .fourth_screen_bc_image {
     margin-top: 0px;
   }
@@ -808,7 +818,9 @@
   }
 
   .popular_categorys_wawe {
+
     .popular_categorys {
+
       .popular_categorys_buttons {
         display: flex;
       }
@@ -834,17 +846,20 @@
 }
 
 @media (max-width: 524px) {
+
   .margin_top_slider {
     margin-top: 0;
   }
 
   .fourth_screen_text {
+
     h4 {
       line-height: 1.18;
     }
   }
 
   .fourth_screen_text_margin_top {
+
     p {
       line-height: 1.71;
     }
@@ -861,6 +876,7 @@
   }
 
   .fifth_sectin_wrapper_flex {
+
     h4 {
       line-height: 1.18;
     }
@@ -880,6 +896,7 @@
 
   .six_section_details {
     text-align: center;
+
     h4 {
       line-height: 1.18;
     }

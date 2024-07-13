@@ -8,6 +8,7 @@
   border: 1px solid rgba($color: #515151, $alpha: 0.1);
   border-radius: 20px;
   box-sizing: border-box;
+
   &:hover {
     border: 1px solid rgba($color: #515151, $alpha: 0.6);
     outline: none;
@@ -16,6 +17,7 @@
       border: 1px solid rgba($color: #515151, $alpha: 0.6);
     }
   }
+
   > label {
     position: absolute;
     font-size: 14px;
@@ -46,6 +48,7 @@
 .node_select {
   padding: 15px 20px;
   transition: 0.15s;
+
   &:hover {
     background-color: $white;
   }
@@ -56,6 +59,7 @@
   border-top: 1px solid rgba($color: #515151, $alpha: 0.1);
   border-bottom: 1px solid rgba($color: #515151, $alpha: 0.1);
 }
+
 .variants_wrapper {
   position: absolute;
   top: 100%;
@@ -78,10 +82,12 @@
   padding: 5px 0px;
   padding-left: 25px;
   user-select: none;
+
   &:hover {
     background-color: $white;
   }
 }
+
 .flex {
   display: flex;
   align-items: center;

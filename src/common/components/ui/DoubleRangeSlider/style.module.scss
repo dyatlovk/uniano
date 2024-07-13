@@ -53,6 +53,7 @@
 }
 
 /* Removing the default appearance */
+
 .thumb,
 .thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -76,10 +77,12 @@
 }
 
 /* For Chrome browsers */
+
 .thumb::-webkit-slider-thumb {
   background-color: white;
   border: none;
   border-radius: 50%;
+
   @include weakShadow;
   cursor: pointer;
   height: 30px;
@@ -90,10 +93,12 @@
 }
 
 /* For Firefox browsers */
+
 .thumb::-moz-range-thumb {
   background-color: white;
   border: none;
   border-radius: 50%;
+
   @include weakShadow;
   cursor: pointer;
   height: 30px;

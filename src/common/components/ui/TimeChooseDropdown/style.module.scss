@@ -27,6 +27,7 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .dropdown_absolute {
   position: absolute;
   top: 100%;
@@ -38,8 +39,10 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+
 .time_choose {
   padding: 8px 15px;
+
   @include weakShadow;
   color: $text;
   border-radius: 20px;
@@ -62,6 +65,7 @@
 .item_grid_border {
   border-right: 1px solid rgba($color: $text, $alpha: 0.1);
 }
+
 .time_item {
   padding: 5px 10px;
   transition: 0.15s;
@@ -69,6 +73,7 @@
   color: rgba($color: #000000, $alpha: 1);
   border-radius: 20px;
   user-select: none;
+
   &:hover {
     background-color: $white;
   }

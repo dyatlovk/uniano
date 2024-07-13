@@ -24,6 +24,7 @@
   gap: 20px;
   flex: 0 0 100%;
 }
+
 .dropdown_text {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -37,6 +38,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+
   @include weakShadow;
   background-color: white;
   position: relative;
@@ -55,6 +57,7 @@
 
 .comment_wrapper {
   padding: 20px 14px;
+
   @include weakShadow;
   border-radius: 20px;
   display: flex;
@@ -76,24 +79,30 @@
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .comments_wrapper {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
+
   .recommended_comment {
     justify-content: start;
     gap: 20px;
   }
+
   .comment_user_info {
     display: flex;
     align-items: center;
     gap: 25px;
   }
+
   .comment_wrapper {
     gap: 20px;
     padding: 30px;
   }
+
   .dropdown_first_part {
     flex: 0;
   }

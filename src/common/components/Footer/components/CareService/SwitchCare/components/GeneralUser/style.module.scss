@@ -23,10 +23,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
+
 .border_item {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+
   @include weakShadow;
   display: flex;
   align-items: center;
@@ -40,6 +42,7 @@
 .user_position {
   margin-bottom: 13px;
 }
+
 .send_message_btn {
   width: 100%;
   margin-bottom: 4px;
@@ -47,8 +50,10 @@
 
 .give_tip_btn {
   width: 100%;
+
   button:hover {
     color: $text;
+
     svg path {
       fill: $text;
       fill-opacity: 1;

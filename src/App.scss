@@ -1,4 +1,5 @@
 /* Roboto 100 Thin */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Thin.ttf') format('truetype');
@@ -7,6 +8,7 @@
 }
 
 /* Roboto 200 Extra-Light */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-ExtraLight.ttf') format('truetype');
@@ -15,6 +17,7 @@
 }
 
 /* Roboto 300 Light */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Light.ttf') format('truetype');
@@ -23,6 +26,7 @@
 }
 
 /* Roboto 400 Regular */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
@@ -31,6 +35,7 @@
 }
 
 /* Roboto 500 Medium */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
@@ -39,6 +44,7 @@
 }
 
 /* Roboto 600 Semi-Bold */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-SemiBold.ttf') format('truetype');
@@ -47,6 +53,7 @@
 }
 
 /* Roboto 700 Bold */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
@@ -55,6 +62,7 @@
 }
 
 /* Roboto 800 Extra-Bold */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-ExtraBold.ttf') format('truetype');
@@ -63,6 +71,7 @@
 }
 
 /* Roboto 900 Black */
+
 @font-face {
   font-family: Roboto;
   src: url('assets/fonts/Roboto-Black.ttf') format('truetype');
@@ -77,6 +86,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
+
 input[type='number'] {
   -moz-appearance: textfield;
 }
@@ -171,6 +181,7 @@ body {
   aspect-ratio: 1;
   background-color: #f5f5f5;
   border-radius: 20px;
+
   @include weakShadow;
   border-radius: 50%;
   display: flex;
@@ -183,6 +194,7 @@ body {
 }
 
 @media (min-width: $tabletSize) {
+
   .absolute_button {
     width: 60px;
     height: 60px;

@@ -1,6 +1,7 @@
 .border_item {
   width: 30px;
   height: 30px;
+
   @include weakShadow;
   border-radius: 50%;
   display: flex;
@@ -13,8 +14,10 @@
   transition: 0.2s;
   border-radius: 20px;
   position: relative;
+
   &:hover {
     background-color: $white;
+
     .absolute_background_color {
       background-color: $white;
     }

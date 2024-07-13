@@ -11,9 +11,11 @@
   align-items: center;
   justify-content: center;
 }
+
 .desktop {
   display: none;
 }
+
 .mobile_active_item {
   display: flex;
   justify-content: space-between;
@@ -43,9 +45,11 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .desktop {
     display: block;
   }
+
   .mobile {
     display: none;
   }

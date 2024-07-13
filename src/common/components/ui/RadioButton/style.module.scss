@@ -16,7 +16,9 @@
   display: flex;
   align-items: first baseline;
   gap: 10px;
+
   &:hover {
+
     .select_box {
       border: 2px solid $orange;
     }
@@ -26,6 +28,7 @@
 .text_item {
   align-items: flex-start;
 }
+
 .select_box_active {
   position: relative;
   border: 2px solid $orange;

@@ -10,6 +10,7 @@
   min-width: 100px;
   box-sizing: content-box;
   border-radius: 20px;
+
   @include weakShadow;
   z-index: 2;
   padding: 10px 5px;
@@ -24,12 +25,14 @@
   border-radius: 20px;
   padding: 1px 10px;
 }
+
 .buttons_grid {
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
 }
+
 .dropdown_grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -45,9 +48,11 @@
 }
 
 .details_wrapper {
+
   @include weakShadow;
   border-radius: 20px;
 }
+
 .details_item {
   text-align: center;
 }
@@ -60,17 +65,20 @@
 }
 
 .dropdown_relative {
+
   svg {
     fill: $orange;
     transition: all 0.3s ease;
   }
 
   &:hover {
+
     svg {
       fill: white;
     }
   }
 }
+
 .align_end {
   display: flex;
   justify-content: end;
@@ -81,11 +89,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .logo_grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 .logo_bottom_item {
   display: flex;
   align-items: center;
@@ -110,6 +120,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .absolute_add_button {
   position: absolute;
   top: 50%;
@@ -124,33 +135,41 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .ips_grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
   }
+
   .gap_30_15 {
     gap: 30px;
   }
+
   .social_grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
+
   .site_grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
+
   .logo_bottom_item {
     align-self: flex-end;
   }
+
   .logo_grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
   }
+
   .top_part_dropdown {
     align-items: center;
   }
+
   .details_wrapper_text {
     display: flex;
     align-items: center;
@@ -158,15 +177,18 @@
     flex-wrap: wrap;
     padding: 20px 30px;
   }
+
   .details_item {
     text-align: start;
   }
+
   .top_part_dropdown {
     padding: 20px 30px;
   }
 }
 
 @media (min-width: 1400px) {
+
   .ips_grid {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;

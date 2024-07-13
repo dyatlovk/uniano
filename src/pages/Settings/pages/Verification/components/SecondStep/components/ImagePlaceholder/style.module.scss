@@ -1,4 +1,5 @@
 .empty_wrapper {
+
   @include weakShadow;
   padding: 20px 40px;
   text-align: center;
@@ -10,12 +11,15 @@
   justify-content: center;
   border: 2px dashed rgba($color: $text, $alpha: 0.1);
 }
+
 .wrapper {
   position: relative;
+
   svg {
     cursor: pointer;
   }
 }
+
 .absolute_file_wrapper {
   position: absolute;
   top: 0px;
@@ -39,6 +43,7 @@
     border-radius: 20px;
   }
 }
+
 .column {
   display: flex;
   flex-direction: column;

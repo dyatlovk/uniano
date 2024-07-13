@@ -7,6 +7,7 @@
   align-items: start;
   justify-content: center;
   min-height: 100%;
+
   @include weakShadow;
 
   .care_text {
@@ -15,6 +16,7 @@
   }
 
   &:hover {
+
     .care_service_abs {
       background-color: $text;
     }
@@ -53,6 +55,7 @@
     height: 30px;
   }
 }
+
 .main_care_grid {
   display: grid;
   grid-template-columns: 1fr;

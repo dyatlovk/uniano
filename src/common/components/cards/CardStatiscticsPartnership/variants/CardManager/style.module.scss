@@ -18,6 +18,7 @@
   align-items: center;
   gap: 5px;
 }
+
 .box_black {
   width: 30px;
   height: 25px;
@@ -53,6 +54,7 @@
   padding: 15px 10px;
   user-select: none;
 }
+
 .gap_20 {
   display: flex;
   align-items: center;
@@ -64,15 +66,19 @@
   align-items: center;
   gap: 10px;
 }
+
 .shell_top_image {
   padding: 17px 13px 23px 13px;
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
+
     @include full-size-position;
     background-color: rgba(81, 81, 81, 0.8);
     z-index: -1;
+
     @if (has-property('.shell_top_image', border-bottom-left-radius)) {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
@@ -114,6 +120,7 @@
   background-color: $green;
   border-radius: 50%;
 }
+
 .svgText {
   display: flex;
   gap: 5px;
@@ -126,6 +133,7 @@
   padding: 20px 13px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+
   @include weakShadow;
   display: flex;
   justify-content: center;
@@ -137,6 +145,7 @@
   margin-top: 3px;
   background-color: white;
   padding: 20px 13px;
+
   @include weakShadow;
   display: grid;
   grid-template-columns: 1fr;
@@ -148,7 +157,9 @@
   justify-content: space-between;
   margin-top: 16px;
 }
+
 .bottom_details_money_range {
+
   p {
     display: inline;
   }
@@ -163,10 +174,12 @@
 .selection_activity {
   cursor: pointer;
   transition: all 0.3s ease;
+
   &:hover {
     opacity: 0.6;
   }
 }
+
 .static_text {
 }
 
@@ -182,7 +195,9 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+
 @media (min-width: $tabletSize) {
+
   .absolute_select {
     width: calc(300% + 60px);
     top: calc(100% + 20px);

@@ -1,4 +1,5 @@
 .wrapper {
+
   @include weakShadow;
   padding: 15px 20px;
   border-radius: 20px;
@@ -14,6 +15,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .wrapper {
     padding: 25px 30px;
     align-items: start;

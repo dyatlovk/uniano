@@ -22,29 +22,35 @@
 .active_true {
   background-color: $green;
 }
+
 .flex_wrapper {
   display: none;
 }
+
 .position_relative {
   width: fit-content;
   height: fit-content;
   display: flex;
   position: relative;
 }
+
 .wrapper_column {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
 }
+
 .avatar_image {
   padding: 0;
 }
 
 @media (min-width: $tabletSize) {
+
   .wrapper {
     gap: 10px;
   }
+
   .flex_wrapper {
     display: flex;
     flex-direction: column;

@@ -39,6 +39,7 @@
 }
 
 .white_box {
+
   @include weakShadow;
   width: 100%;
   display: flex;
@@ -53,6 +54,7 @@
 
 .scroll_bar {
   overflow-y: auto;
+
   @include scrollStyles;
   height: 100%;
 }
@@ -90,6 +92,7 @@
 
 .hamburger__wrapper {
   padding: 13px 10px;
+
   @include hamburger_wrapper_common;
 }
 
@@ -121,6 +124,7 @@
 }
 
 .header_second_part {
+
   > li {
     cursor: pointer;
     display: flex;
@@ -140,6 +144,7 @@
       }
 
       > div {
+
         &::before {
           display: block;
           content: attr(title);
@@ -228,6 +233,7 @@
 }
 
 @media (min-width: 1000px) {
+
   .bottom_line {
     display: block;
   }
@@ -248,6 +254,7 @@
     transition: all 0.15s ease;
 
     &:hover {
+
       .plus_box svg {
         stroke: white;
       }

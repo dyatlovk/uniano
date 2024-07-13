@@ -21,6 +21,7 @@
 .box_true {
   width: 30px;
   height: 30px;
+
   @include weakShadow;
   border-radius: 50%;
   display: flex;
@@ -37,6 +38,7 @@
   -webkit-line-clamp: 2; /* Number of lines to show */
   text-overflow: ellipsis;
 }
+
 .solve_part {
   max-width: 530px;
   white-space: normal;
@@ -44,6 +46,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .step_verical_wrapper {
   display: flex;
   flex-direction: column;

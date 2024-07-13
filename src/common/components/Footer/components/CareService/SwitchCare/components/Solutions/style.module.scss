@@ -17,6 +17,7 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .padding {
   padding: 0px 30px;
   padding-top: 20px;
@@ -27,6 +28,7 @@
   top: 10px;
   left: 10px;
 }
+
 .question_item {
   position: relative;
   padding: 15px 30px;
@@ -42,6 +44,7 @@
     height: 38px;
     border-radius: 50%;
   }
+
   &:hover {
     background-color: $white;
   }

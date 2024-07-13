@@ -14,6 +14,7 @@
   z-index: 4;
   background-color: rgba($color: black, $alpha: 0.5);
 }
+
 .header__container {
   display: flex;
   align-items: center;
@@ -40,6 +41,7 @@
 
 .hamburger__wrapper {
   padding: 13px 10px;
+
   @include hamburger_wrapper_common;
 }
 
@@ -55,14 +57,18 @@
 .header_second_part {
   display: none;
 }
+
 .logo {
   transition: all 0.3s ease;
   cursor: pointer;
+
   &:hover {
     opacity: 0.6;
   }
 }
+
 .header_second_part {
+
   > li {
     cursor: pointer;
     display: flex;
@@ -70,12 +76,14 @@
 
     > ul {
       transition: all 0.3s ease;
+
       &:hover {
         fill: $orange;
         font-weight: 500;
         color: $orange;
       }
     }
+
     > ul:hover * {
       fill: $orange;
     }
@@ -87,6 +95,7 @@
   gap: 10px;
   align-items: center;
 }
+
 .plus_box {
   border: 1px solid $orange;
   width: 15px;
@@ -96,6 +105,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .hover_wrapper.disabled {
   display: none;
 }
@@ -104,6 +114,7 @@
   display: flex;
   gap: 20px;
 }
+
 .hover_wrapper {
   position: absolute;
   top: calc(100% + 14px);
@@ -130,6 +141,7 @@
 .scroll_wrapper {
   overflow-y: auto;
   max-height: 100%;
+
   @include scrollStyles;
 }
 
@@ -138,21 +150,28 @@
 }
 
 @media (min-width: 1020px) {
+
   .remove_items_small_screen {
     display: block;
   }
 }
+
 @media (min-width: $tabletSize) {
+
   .modal_mobile {
     display: none;
   }
+
   .header {
     background-color: white;
   }
+
   .button_wrapper {
     display: flex;
     transition: all 0.3s ease;
+
     &:hover {
+
       * {
         stroke: white;
       }
@@ -162,6 +181,7 @@
       }
     }
   }
+
   .header_third_part {
     display: flex;
     gap: 20px;
@@ -172,10 +192,12 @@
       user-select: none;
     }
   }
+
   .hamburger__wrapper,
   .hamburger__wrapper_user {
     display: none;
   }
+
   .header_second_part {
     display: inline-block;
   }

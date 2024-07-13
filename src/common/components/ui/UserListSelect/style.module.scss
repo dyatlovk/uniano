@@ -2,6 +2,7 @@
   width: 31px;
   height: 31px;
   border-radius: 50%;
+
   @include weakShadow;
   display: flex;
   align-items: center;
@@ -14,11 +15,13 @@
 
 .chevrons {
   display: flex;
+
   svg {
     width: 15px;
     height: 7px;
   }
 }
+
 .icons_grid {
   display: flex;
   align-items: center;
@@ -39,6 +42,7 @@
   transform: translateX(-50%);
   background-color: white;
   border-radius: 20px;
+
   @include weakShadow;
   cursor: auto;
 }
@@ -48,10 +52,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
   svg {
     height: 12px;
   }
 }
+
 .absolute_grid {
   padding: 5px 10px;
   display: grid;
@@ -69,6 +75,7 @@
     color: $text;
   }
 }
+
 .orange_box {
   width: 18px;
   height: 18px;
@@ -78,6 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:hover {
     opacity: 0.7;
   }
@@ -89,21 +97,25 @@
   align-items: end;
   flex-direction: column;
 }
+
 .flex_column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .user_header {
   margin-bottom: 3px;
   display: flex;
   align-items: center;
   column-gap: 5px;
 }
+
 .saved_wrapper {
   padding: 15px 30px;
   border-radius: 20px;
   transition: 0.2s;
+
   &:hover {
     background-color: $white;
   }

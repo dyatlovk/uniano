@@ -7,6 +7,7 @@ $green: #219653;
 $red: #eb5757;
 $whiteGreen: #b6de59;
 $grey: #a8a8ad;
+
 @mixin full-size-position {
   top: 0;
   right: 0;
@@ -40,6 +41,7 @@ $grey: #a8a8ad;
     rgba(81, 81, 81, 1) 100%
   );
 }
+
 @mixin prevent-select {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -56,6 +58,7 @@ $grey: #a8a8ad;
   background-size: 5px 1px;
   background-repeat: repeat-x;
 }
+
 @mixin noSelect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -66,6 +69,7 @@ $grey: #a8a8ad;
 }
 
 @mixin scrollStyles {
+
   @-moz-document url-prefix() {
     scrollbar-width: thin;
     scrollbar-color: #e0e0e0 transparent;
@@ -85,6 +89,7 @@ $grey: #a8a8ad;
 }
 
 @mixin notifyCounter {
+
   @include roundLabel;
 }
 
@@ -113,8 +118,10 @@ $grey: #a8a8ad;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+
   @include weakShadow;
 }
+
 .desktop {
   display: none;
 }
@@ -129,6 +136,7 @@ $grey: #a8a8ad;
   align-items: center;
   gap: 5px;
 }
+
 .gap_5_wrap {
   display: flex;
   align-items: center;
@@ -136,6 +144,7 @@ $grey: #a8a8ad;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .gap_10 {
   display: flex;
   align-items: center;
@@ -147,6 +156,7 @@ $grey: #a8a8ad;
   align-items: center;
   gap: 15px;
 }
+
 .gap_20 {
   display: flex;
   align-items: center;
@@ -154,18 +164,22 @@ $grey: #a8a8ad;
 }
 
 .box_shadow {
+
   @include weakShadow;
   border-radius: 20px;
 }
+
 .wrapper_page {
   max-width: 1220px;
   margin: 0 auto;
   padding: 0px 10px;
 }
+
 .center_card {
   display: flex;
   justify-content: center;
 }
+
 .responsive_layout_child {
   width: 100%;
   display: flex;
@@ -177,12 +191,15 @@ $grey: #a8a8ad;
   align-items: center;
   justify-content: center;
 }
+
 .w100 {
   width: 100%;
 }
+
 .transition {
   transition: all 0.3s ease;
 }
+
 .center_card {
   display: flex;
   align-items: center;
@@ -217,12 +234,14 @@ $grey: #a8a8ad;
   align-items: center;
   justify-content: center;
 }
+
 .admin_wrapper {
   padding: 0px 10px;
 }
 
 .modal_wrapper_item {
   background-color: white;
+
   @include weakShadow;
   border-radius: 20px;
   max-width: 690px;
@@ -232,6 +251,7 @@ $grey: #a8a8ad;
 .popup_wrapper {
   padding: 15px 20px;
   background-color: white;
+
   @include weakShadow;
   border-radius: 20px;
 }
@@ -241,10 +261,13 @@ $grey: #a8a8ad;
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .admin_wrapper {
     padding: 0px 50px;
   }
+
   .black_box {
     padding: 8px 14px;
     background-color: $text;
@@ -253,26 +276,34 @@ $grey: #a8a8ad;
     align-items: center;
     justify-content: center;
   }
+
   .center_mobile_text {
     text-align: start;
   }
+
   .text_box {
     padding: 15px 20px;
   }
+
   .gap_5_wrap {
     justify-content: start;
   }
+
   .desktop {
     display: flex;
   }
+
   .mobile {
     display: none;
   }
 }
+
 .cursor {
   cursor: auto;
 }
+
 @media (pointer: fine) {
+
   .cursor {
     cursor: pointer;
   }
@@ -300,6 +331,7 @@ $grey: #a8a8ad;
   }
 
   &.orange {
+
     &::after {
       background: $orange; // Change this to the desired color
     }
@@ -313,15 +345,19 @@ $grey: #a8a8ad;
 .fade-enter {
   opacity: 0;
 }
+
 .fade-exit {
   opacity: 1;
 }
+
 .fade-enter-active {
   opacity: 1;
 }
+
 .fade-exit-active {
   opacity: 0;
 }
+
 .fade-enter-active,
 .fade-exit-active {
   transition: opacity 500ms;

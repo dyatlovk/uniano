@@ -11,6 +11,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .top_item_flex {
   display: flex;
   align-items: center;
@@ -20,11 +21,14 @@
     cursor: pointer;
   }
 }
+
 @media (min-width: $tabletSize) {
+
   .top_item_wrapper {
     flex-direction: row;
     gap: 20px;
   }
+
   .top_wrapper_second_content {
     align-items: start;
     gap: 15px;

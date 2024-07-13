@@ -14,6 +14,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
+
   &:hover {
     opacity: 0.6;
   }
@@ -34,8 +35,11 @@
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
+
   button {
+
     &:hover {
+
       * {
         fill: white;
       }
@@ -46,23 +50,27 @@
 .mobile {
 }
 /*====================================================================================================*/
+
 .wrapper_details {
   max-width: 1220px;
   padding: 0px 10px;
   margin: 0 auto;
 }
+
 .top_section_details {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
+
 .top_flex_details {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 20px;
 }
+
 .title_icon_details {
   display: none;
 }
@@ -81,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   @include weakShadow;
   background-color: white;
 }
@@ -91,6 +100,7 @@
   align-items: center;
   gap: 10px;
 }
+
 .desktop {
   display: none;
 }
@@ -100,6 +110,7 @@
   gap: 10px;
   align-items: center;
 }
+
 .main_part {
   display: flex;
   flex-direction: column;
@@ -110,21 +121,26 @@
   flex-direction: column;
   gap: 15px;
 }
+
 .flex_center_baseline {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 @media (min-width: $tabletSize) {
+
   .dropdown_wrapper {
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
+
   .main_part {
     flex-direction: row;
     gap: 80px;
   }
+
   .left_part {
     flex: 0 0 290px;
   }
@@ -132,35 +148,44 @@
   .right_part {
     flex: 1;
   }
+
   .post_details_flex {
     gap: 20px;
   }
+
   .desktop {
     display: block;
   }
+
   .post_details_box {
     width: 40px;
     height: 40px;
   }
+
   .post_details_wrapper {
     flex-direction: row;
   }
+
   .mobile {
     display: none;
   }
+
   .title_icon_details {
     display: flex;
     justify-content: center;
   }
+
   .flex_center_details {
     display: flex;
     gap: 10px;
     align-items: center;
   }
   /*====================================================================================================*/
+
   .top_flex_details {
     align-items: start;
   }
+
   .top_section_details {
     flex-direction: row;
     justify-content: space-between;

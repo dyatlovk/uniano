@@ -6,6 +6,7 @@
 }
 
 /* Hide default HTML checkbox */
+
 .switch input {
   opacity: 0;
   width: 0;
@@ -13,6 +14,7 @@
 }
 
 /* The slider */
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -53,9 +55,11 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
+
 .slider.round {
   border-radius: 14px;
 }
+
 .absolute_icon {
   position: absolute;
   height: 80%;
@@ -71,6 +75,7 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
 }
+
 .slider.round:before {
   border-radius: 50%;
 }

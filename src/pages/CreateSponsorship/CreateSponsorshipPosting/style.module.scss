@@ -13,6 +13,7 @@
   height: 28px;
   aspect-ratio: 1;
   border-radius: 50%;
+
   @include weakShadow;
   background-color: white;
 }
@@ -29,6 +30,7 @@
 
 .wrapper_campaign {
   padding: 11px 20px;
+
   @include weakShadow;
   border-radius: 20px;
   background-color: white;
@@ -50,6 +52,7 @@
 .select_item {
   display: flex;
   align-items: center;
+
   @include weakShadow;
   border-radius: 20px;
   padding: 16px 10px;
@@ -67,14 +70,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 13px;
+
   @include weakShadow;
   border-radius: 20px;
 }
+
 .flex_gap {
   display: flex;
   gap: 10px;
   margin-left: auto;
 }
+
 .question_item {
   display: flex;
   gap: 10px;
@@ -92,43 +98,55 @@
   background-color: $orange;
   height: 1px;
 }
+
 .details_wrapper {
+
   @include weakShadow;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   position: relative;
 }
+
 .absolute_details {
   position: absolute;
   top: 10px;
   right: 10px;
 }
+
 .details_grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .details_grid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
   }
+
   .flex_space_between_item {
     padding: 13px 20px;
   }
+
   .positive_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
   }
+
   .select_item {
     justify-content: center;
   }
+
   .wrapper_campaign {
     flex-direction: row;
   }
+
   .template_icon {
     height: 40px;
   }
+
   .top_wrapper_part {
     flex-direction: row;
     justify-content: space-between;

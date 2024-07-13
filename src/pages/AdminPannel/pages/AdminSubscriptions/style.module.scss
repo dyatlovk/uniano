@@ -4,6 +4,7 @@
   gap: 15px;
   padding: 15px 0px;
 }
+
 .wrapper {
   max-width: 100%;
   overflow-x: hidden;
@@ -56,27 +57,35 @@
   align-items: center;
   justify-content: center;
 }
+
 @media (min-width: $tabletSize) {
+
   .top_title_part {
     flex-direction: row;
     justify-content: space-between;
   }
+
   .mobile_padding {
     padding: 0px;
   }
+
   .wrapper {
     padding: 0px 50px;
   }
+
   .buttons_top {
     gap: 20px;
   }
+
   .top_part {
     justify-content: start;
     flex-direction: row;
     gap: 20px;
   }
+
   .scroll_bar {
   }
+
   .top_gap_30_15 {
     padding: 30px 0px;
     gap: 30px;

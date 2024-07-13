@@ -11,6 +11,7 @@
   justify-content: space-between;
   border-radius: 20px;
   transition: 0.2s;
+
   @include weakShadow;
   padding: 10px 15px;
 
@@ -24,6 +25,7 @@
   width: 30px;
   height: 15px;
   border-radius: 5px;
+
   @include weakShadow;
   display: flex;
   align-items: center;
@@ -32,11 +34,13 @@
 
   &:hover {
     background-color: $orange;
+
     svg {
       fill: white;
     }
   }
 }
+
 .related_topics {
   display: flex;
   flex-direction: column;
@@ -58,13 +62,16 @@
   .hover_text_child {
     font-weight: 400;
   }
+
   &:hover {
+
     .hover_text_child {
       font-weight: 500;
     }
     background-color: #f5f5f5;
   }
 }
+
 .grid_3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -78,10 +85,13 @@
   display: flex;
   align-items: center;
   border-radius: 20px;
+
   @include weakShadow;
   justify-content: center;
 }
+
 .border_item {
+
   @include weakShadow;
   padding: 15px 20px;
   display: flex;
@@ -89,6 +99,7 @@
   border-radius: 20px;
   justify-content: space-between;
 }
+
 .faq_item {
   display: flex;
   align-items: start;

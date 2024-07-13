@@ -11,6 +11,7 @@
   top: calc(100% + 10px);
   background-color: white;
   border-radius: 20px;
+
   @include weakShadow;
   padding: 12px 0px 12px 0px;
   right: 0;
@@ -37,6 +38,7 @@
     border-radius: 20px;
   }
 }
+
 .dropdown_child {
   min-width: 130px;
   padding: 5px 10px;
@@ -49,6 +51,7 @@
     background-color: $white;
   }
 }
+
 .dropdown_titles::after {
   position: absolute;
   content: '';

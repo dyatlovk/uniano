@@ -19,14 +19,17 @@
   height: 28px;
   aspect-ratio: 1;
   border-radius: 50%;
+
   @include weakShadow;
   background-color: white;
 }
 
 @media (min-width: $tabletSize) {
+
   .template_icon {
     height: 40px;
   }
+
   .text_flex {
     gap: 20px;
   }

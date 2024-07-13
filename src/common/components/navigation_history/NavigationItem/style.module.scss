@@ -13,13 +13,16 @@
 .empty {
   display: none;
 }
+
 .nav_wrapper {
   display: flex;
   justify-content: center;
 }
+
 .dots {
   width: 30px;
   height: 12px;
+
   @include weakShadow;
   background-color: white;
   display: none;
@@ -27,22 +30,29 @@
   justify-content: center;
   border-radius: 20px;
 }
+
 .dots_not_remove {
   display: flex;
 }
+
 .dots_remove {
   display: none;
 }
+
 @media (min-width: $tabletSize) {
+
   .dots_not_remove {
     display: none;
   }
+
   .nav_wrapper {
     justify-content: start;
   }
+
   .empty {
     display: flex;
   }
+
   .wrapper {
     max-width: none;
   }

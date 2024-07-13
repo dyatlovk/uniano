@@ -13,6 +13,7 @@
   gap: 5px;
   order: 2;
 }
+
 .chevron {
   order: 1;
   width: 32px;
@@ -21,32 +22,40 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+
   @include weakShadow;
   border-radius: 50%;
   transition: 0.2s;
+
   &:hover {
     background-color: $orange;
   }
 }
+
 .right_text {
   align-items: center;
   text-align: center;
 }
+
 .left_text {
   align-items: center;
   text-align: center;
 }
 
 @media (min-width: $tabletSize) {
+
   .left_text {
     align-items: start;
   }
+
   .right_text {
     align-items: end;
   }
+
   .wrapper {
     flex-direction: row;
   }
+
   .chevron {
     order: 3;
     width: 40px;

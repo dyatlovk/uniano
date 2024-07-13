@@ -31,15 +31,19 @@
   border-radius: 20px;
   background-color: $white;
 }
+
 @media (min-width: $tabletSize) {
+
   .box_text {
     padding: 15px 20px;
   }
+
   .selection_item_wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: stretch;
   }
+
   .selection_item {
     padding: 15px 15px;
   }

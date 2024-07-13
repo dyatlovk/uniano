@@ -8,11 +8,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
   @include weakShadow;
   border-radius: 20px;
   padding: 20px 0px;
   transition: all 0.3s ease;
   cursor: pointer;
+
   &:hover {
     background-color: $white;
   }
@@ -21,6 +23,7 @@
 .user_wrappper {
   padding: 11px 14px;
 }
+
 .details_box {
   padding: 15px 13px;
 }
@@ -30,13 +33,17 @@
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .text_dotted_wrapper {
     gap: 20px;
   }
+
   .details_box {
     padding: 25px 30px;
   }
+
   .tools_wrapper_section {
     gap: 30px;
   }

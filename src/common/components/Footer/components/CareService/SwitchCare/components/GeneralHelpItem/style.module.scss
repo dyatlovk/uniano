@@ -17,6 +17,7 @@
   right: -30px;
   bottom: 0px;
 }
+
 .general_absolute {
   position: absolute;
   top: 0;
@@ -46,6 +47,7 @@
     background-color: $white;
   }
 }
+
 .question_item {
   position: relative;
   padding: 15px 0;
@@ -55,7 +57,9 @@
   align-items: start;
   gap: 20px;
   transition: 0.2s;
+
   &:hover {
+
     .hover_background {
       background-color: $white;
     }

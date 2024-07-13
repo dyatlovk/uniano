@@ -27,16 +27,20 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .count_box {
     margin-right: none;
   }
+
   .bottom_part {
     gap: 30px;
   }
+
   .top_part {
     gap: 20px;
     justify-content: start;
   }
+
   .title_wrapper {
     display: flex;
     align-items: center;

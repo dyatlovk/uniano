@@ -22,21 +22,27 @@
   align-items: center;
   flex-direction: column;
 }
+
 @media (min-width: $tabletSize) {
+
   .delete_wrapper {
     text-align: start;
     align-items: start;
   }
+
   .main {
     grid-template-columns: 2fr 1fr;
     justify-content: space-between;
   }
+
   .main_left {
     max-width: 630px;
   }
+
   .main_right {
     max-width: 335px;
   }
+
   .inputs_wrapper {
     grid-template-columns: 1fr 1fr;
     gap: 30px;

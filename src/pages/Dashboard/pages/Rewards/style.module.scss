@@ -1,15 +1,18 @@
 /*====================================================================================================*/
+
 .wrapper {
   max-width: 1220px;
   padding: 0px 10px;
   margin: 0 auto;
 }
+
 .top_section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
+
 .top_flex {
   display: flex;
   align-items: center;
@@ -23,10 +26,12 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
+
   @include weakShadow;
   border-radius: 20px;
   padding: 20px 0px;
 }
+
 .reward_absolute_item_left {
   position: absolute;
   top: 18px;
@@ -39,6 +44,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .reward_absolute_item_right {
   position: absolute;
   right: 10px;
@@ -63,15 +69,18 @@
     padding: 8px 15px;
     font-size: 1rem;
     color: rgba($color: black, $alpha: 0.5);
+
     @include weakShadow;
     border-radius: 20px;
   }
 }
+
 .search_item_flex {
   align-items: center;
   display: flex;
   gap: 5px;
 }
+
 .flex_items_wrapper {
   align-items: center;
   display: flex;
@@ -84,29 +93,36 @@
   transform: translate(-50%, -50%);
   left: 50%;
 }
+
 @media (min-width: $tabletSize) {
+
   .rewards_wrapper {
     flex-direction: row;
     gap: 30px;
     flex-wrap: wrap;
   }
+
   .reward_wrapper {
     gap: 15px;
     padding: 30px 70px;
     text-align: center;
     flex: 0 0 277px;
   }
+
   .flex_items_wrapper {
     gap: 30px;
   }
+
   .search_wrapper {
     flex-direction: row;
     justify-content: space-between;
   }
   /*====================================================================================================*/
+
   .top_flex {
     align-items: start;
   }
+
   .top_section {
     flex-direction: row;
     justify-content: space-between;

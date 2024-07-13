@@ -52,6 +52,7 @@
 .dropdown_parent {
   background-color: #fcfcfc;
   border-radius: 20px;
+
   @include weakShadow;
   padding-top: 24px;
   padding-bottom: 18px;
@@ -97,7 +98,9 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .cookies {
+
     .cookies_child {
       display: flex;
       align-items: center;

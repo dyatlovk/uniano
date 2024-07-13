@@ -4,6 +4,7 @@
   gap: 15px;
   padding: 15px 0px;
 }
+
 .wrapper {
   max-width: 100%;
   overflow-x: hidden;
@@ -27,6 +28,7 @@
 
 .dropdown_wrapper {
   padding: 15px 20px;
+
   @include weakShadow;
   border-radius: 20px;
   display: flex;
@@ -41,12 +43,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
+
 .dropdown_custom_main {
   display: flex;
   align-items: center;
   gap: 10px;
   white-space: nowrap;
 }
+
 .abs_wrapper {
   position: absolute;
   top: calc(100% - 5px);
@@ -55,7 +59,9 @@
   right: 5px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+
   @include midShadow;
+
   @include scrollStyles;
 }
 
@@ -69,6 +75,7 @@
   gap: 10px;
   justify-content: center;
   transition: 0.2s;
+
   &:hover {
     opacity: 0.8;
   }
@@ -81,6 +88,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+
   @include weakShadow;
   border-radius: 5px;
 }
@@ -92,7 +100,9 @@
   width: 100%;
   align-items: start;
 }
+
 .yes_no_dropdown_wrapper {
+
   svg {
     width: 8px;
     height: 6px;
@@ -102,8 +112,10 @@
 .yes_no_abs_item {
   background-color: white;
   padding: 0px 0px;
+
   @include weakShadow;
   transition: 0.2s;
+
   &:hover {
     background-color: $white;
   }
@@ -130,11 +142,13 @@
   border-bottom-right-radius: 5px;
   overflow: hidden;
   z-index: 3;
+
   @include weakShadow;
   top: 100%;
   left: 0;
   right: 0;
 }
+
 .buttons_remove_list {
   display: flex;
   align-items: center;
@@ -153,6 +167,7 @@
     background-color: $white;
   }
 }
+
 .dropdown_child_abs {
   max-height: 400px;
   overflow-y: auto;
@@ -179,23 +194,30 @@
 .mobile_padding {
   padding: 0px 10px;
 }
+
 @media (min-width: $tabletSize) {
+
   .mobile_padding {
     padding: 0px;
   }
+
   .wrapper {
     padding: 0px 50px;
   }
+
   .buttons_top {
     gap: 20px;
   }
+
   .top_part {
     justify-content: start;
     flex-direction: row;
     gap: 20px;
   }
+
   .scroll_bar {
   }
+
   .top_gap_30_15 {
     padding: 30px 0px;
     gap: 30px;
@@ -203,7 +225,9 @@
 }
 
 .dropdown_wrapper_custom {
+
   div.dropdown_hover {
+
     @include midShadow;
   }
 }

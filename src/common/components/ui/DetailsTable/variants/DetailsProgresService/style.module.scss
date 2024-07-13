@@ -13,9 +13,11 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .dropdown_text_width {
     max-width: 105px;
   }
+
   .dropdown_content {
     gap: 30px;
   }

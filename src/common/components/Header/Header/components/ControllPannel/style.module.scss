@@ -100,6 +100,7 @@
 }
 
 .moderator_account_add {
+
   @include roundLabel;
   cursor: pointer;
 }
@@ -139,10 +140,12 @@
   background-color: white;
   border-radius: 20px;
   width: calc(100vw - 20px);
+
   @include weakShadow;
 }
 
 @media (min-width: $tabletSize) {
+
   .controll_pannel {
     width: auto;
   }

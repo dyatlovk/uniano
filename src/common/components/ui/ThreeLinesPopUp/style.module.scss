@@ -6,7 +6,9 @@
   padding: 5px 10px;
   font-weight: 400;
   border-radius: 20px;
+
   &:hover {
+
     .text_of_item {
       font-weight: 500;
     }
@@ -17,6 +19,7 @@
 }
 
 .text_of_item {
+
   &::after {
     display: block;
     content: attr(title);
@@ -42,14 +45,17 @@
     opacity: 0.6;
   }
 }
+
 .dropdown_item {
   padding: 10px 15px;
   border-radius: 20px;
   transition: 0.15s;
+
   &:hover {
     background-color: $white;
   }
 }
+
 .absolute_item {
   z-index: 2;
   position: absolute;

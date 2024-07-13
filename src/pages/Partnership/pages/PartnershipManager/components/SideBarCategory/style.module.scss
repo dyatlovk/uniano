@@ -24,6 +24,7 @@
 .wrapper_scroll {
   padding-right: 15px;
   overflow-y: auto;
+
   @-moz-document url-prefix() {
     scrollbar-width: thin;
     scrollbar-color: $orange $white;

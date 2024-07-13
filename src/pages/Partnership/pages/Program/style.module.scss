@@ -34,10 +34,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
   @include weakShadow;
   border-radius: 20px;
   padding: 20px 0px;
 }
+
 .condition_buttons {
   display: flex;
   align-items: center;
@@ -51,6 +53,7 @@
 
 .freelance_card_wrapper {
   position: relative;
+
   @include weakShadow;
   padding: 25px 15px;
   border-radius: 20px;
@@ -70,6 +73,7 @@
   left: -20px;
   padding-left: 10px;
 }
+
 .shell_absolute_right {
   position: absolute;
   transform: translateY(-50%);
@@ -91,10 +95,12 @@
   border-radius: 5px;
   background-color: $text;
   transition: 0.15s;
+
   &:hover {
     opacity: 0.8;
   }
 }
+
 .freelance_card_content {
   position: relative;
   display: flex;
@@ -127,9 +133,11 @@
   gap: 30px;
   flex-wrap: wrap;
 }
+
 .left_part {
   flex: 0 0 100%;
 }
+
 .right_part {
   flex: 0 0 100%;
 }
@@ -140,6 +148,7 @@
   display: flex;
   align-items: center;
 }
+
 .review_wrapper {
   display: flex;
   align-items: center;
@@ -148,12 +157,15 @@
   gap: 15px;
   justify-content: center;
 }
+
 .gap_10 {
   gap: 10px;
 }
+
 .gap_30 {
   gap: 30px;
 }
+
 .gap_5 {
   gap: 5px;
 }
@@ -161,6 +173,7 @@
 .margin_mobile {
   margin-left: auto;
 }
+
 .justify_flex {
   display: flex;
   align-items: center;
@@ -172,6 +185,7 @@
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 .box_black {
   padding: 2px 13px;
   border-radius: 20px;
@@ -190,36 +204,47 @@
 
 .right_part_item {
   padding: 15px 13px;
+
   @include weakShadow;
   border-radius: 20px;
   background-color: white;
 }
+
 @media (min-width: $tabletSize) {
+
   .main_part {
     flex-wrap: nowrap;
   }
+
   .right_part_item {
     padding: 30px 25px;
   }
+
   .review_wrapper {
     justify-content: space-between;
   }
+
   .margin_mobile {
     margin-left: 0;
   }
+
   .main_part {
     gap: 80px;
   }
+
   .left_part {
     flex: 0 0 70%;
   }
+
   .right_part {
     flex: 0 0 30%;
   }
+
   .active_status {
     width: 17px;
     height: 17px;
   }
+
   .freelance_card_content {
     gap: 20px;
 
@@ -227,12 +252,15 @@
       height: 92px;
     }
   }
+
   .freelance_card_wrapper {
     padding: 35px 30px;
   }
+
   .tools_wrapper_section {
     gap: 30px;
   }
+
   .condition_values_wrapper {
     gap: 25px;
   }

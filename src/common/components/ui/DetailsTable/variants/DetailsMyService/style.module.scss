@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .filter_text {
   cursor: pointer;
 }
@@ -16,6 +17,7 @@
 .desktop_wrapper {
   position: relative;
 }
+
 .gap_20 {
   display: flex;
   align-items: center;
@@ -27,6 +29,7 @@
   width: 30px;
   background-color: red;
 }
+
 .absolute_background {
   position: absolute;
   top: 0;
@@ -49,6 +52,7 @@
 .title_wrapper_desktop {
   padding-bottom: 17px;
 }
+
 .child_wrapper_desktop {
   padding-top: 25px;
 }
@@ -66,11 +70,13 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .navbar_wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .box {
   cursor: pointer;
   user-select: none;
@@ -81,35 +87,43 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+
   @include weakShadow;
 }
+
 .mobile_wrapper_all {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .mobile_text {
   padding: 10px 13px;
   background-color: $white;
   border-radius: 20px;
 }
+
 .mobile_child {
   padding: 15px 14px 0px 14px;
 }
+
 .users_wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
 }
+
 .category_text {
   padding: 3px 12px;
   border-radius: 20px;
   background-color: $text;
 }
+
 .dropdown_wrapper {
   padding-left: 0px;
 }
+
 .dropdown_content {
   display: flex;
   flex-wrap: wrap;
@@ -123,6 +137,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .node_wrapper {
   display: flex;
   align-items: center;
@@ -133,15 +148,19 @@
   flex-direction: column;
   gap: 10px;
 }
+
 @media (min-width: $tabletSize) {
+
   .dropdown_no_review {
     align-items: center;
     flex-direction: row;
   }
+
   .dropdown_wrapper {
     padding-right: 55px;
     padding-left: 20px;
   }
+
   .dessktop_item_shell {
     display: flex;
     flex-direction: column;
@@ -153,9 +172,11 @@
       align-items: center;
     }
   }
+
   .filter_text_wrapper {
     gap: 30px;
   }
+
   .flex_space {
     flex-direction: row;
     justify-content: space-between;

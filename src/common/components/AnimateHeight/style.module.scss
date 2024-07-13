@@ -6,6 +6,7 @@
   > div {
     overflow: hidden;
   }
+
   &.show {
     grid-template-rows: 1fr; /* Expanded height set to 100% */
     grid-row: 1 / span 2;

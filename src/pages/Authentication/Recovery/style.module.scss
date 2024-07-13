@@ -14,12 +14,14 @@
     rgba(110, 111, 113, 1) 40%,
     rgba(81, 81, 81, 1) 100%
   );
+
   .logo {
     position: absolute;
     right: 0;
     left: 0;
     top: 30px;
   }
+
   .image {
     position: absolute;
     display: flex;
@@ -28,14 +30,17 @@
     left: 50%;
     transform: translate(-50%, 50%);
     bottom: 50%;
+
     img {
       max-width: 100%;
     }
   }
 }
+
 .content_part {
   padding: 20px 12px 30px 12px;
 }
+
 .first_flex {
   display: flex;
   align-items: center;
@@ -49,6 +54,7 @@
 
 .border_input {
   position: relative;
+
   > input {
     width: 100%;
     padding: 20px;
@@ -56,6 +62,7 @@
     border-radius: 20px;
     box-sizing: border-box;
   }
+
   > label {
     position: absolute;
     font-size: 14px;
@@ -68,18 +75,22 @@
     padding: 0px 5px;
   }
 }
+
 .red_text {
   color: #eb5757;
 }
+
 .title {
   text-align: center;
 }
+
 .or_block {
   width: 100%;
   display: flex;
   gap: 10px;
   align-items: center;
 }
+
 .orange {
   color: $orange;
 }
@@ -89,12 +100,15 @@
   justify-content: center;
   gap: 20px;
 }
+
 .grey_line {
   flex-grow: 1;
   height: 0px;
   border: 1px solid rgba($color: $text, $alpha: 0.1);
 }
+
 @media (min-width: $tabletSize) {
+
   .image_part {
     flex: 0 0 30%;
     height: 100vh;
@@ -104,6 +118,7 @@
     min-width: 470px;
     text-align: start;
   }
+
   .content_part {
     flex: 0 0 70%;
     display: flex;
@@ -119,6 +134,7 @@
     .center {
     }
   }
+
   .wrapper {
     display: flex;
   }

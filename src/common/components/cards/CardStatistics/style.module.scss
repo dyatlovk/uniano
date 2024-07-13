@@ -23,6 +23,7 @@
   &::after {
     content: '';
     position: absolute;
+
     @include full-size-position;
     background-color: rgba(81, 81, 81, 0.8);
     z-index: -1;
@@ -92,6 +93,7 @@
   padding: 15px 13px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+
   @include weakShadow;
   display: flex;
   justify-content: center;
@@ -111,6 +113,7 @@
   margin-top: 3px;
   background-color: white;
   padding: 20px 13px;
+
   @include weakShadow;
   display: grid;
   grid-template-columns: 1fr;
@@ -124,6 +127,7 @@
 }
 
 .bottom_details_money_range {
+
   p {
     display: inline;
   }

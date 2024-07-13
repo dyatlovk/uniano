@@ -104,23 +104,29 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .body9 {
     font-size: 0.875rem;
   }
+
   .titleBig {
     font-size: 2.375rem;
   }
+
   .body8 {
     font-size: 1.438rem;
   }
+
   .titleSmall {
     font-size: 1.813rem; //29
     letter-spacing: 1.305px;
   }
+
   .title {
     font-size: 2.375rem; //38
     letter-spacing: 1.71px;
   }
+
   .body1 {
     font-size: 1rem; //16
   }
@@ -132,9 +138,11 @@
   .body3 {
     font-size: 1.125rem;
   }
+
   .body2 {
     font-size: 1.4375rem; //3
   }
+
   .subtitle {
     font-size: 1.438rem;
   }

@@ -13,6 +13,7 @@
 .top_end_part {
   gap: 10px;
 }
+
 .orange_circle {
   width: 25px;
   height: 25px;
@@ -24,6 +25,7 @@
   padding: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
+
   &:hover {
     opacity: 0.6;
   }
@@ -36,13 +38,16 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .gap_20_10 {
     gap: 20px;
   }
+
   .orange_circle {
     width: 35px;
     height: 35px;
   }
+
   .top_part {
     flex-direction: row;
     justify-content: space-between;

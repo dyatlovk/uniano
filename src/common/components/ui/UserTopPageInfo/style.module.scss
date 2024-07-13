@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   @include weakShadow;
   border-radius: 50%;
 }
@@ -17,6 +18,7 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .wrapper {
     justify-content: start;
   }

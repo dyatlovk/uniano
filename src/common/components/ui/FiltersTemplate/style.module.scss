@@ -1,6 +1,7 @@
 .title {
   font-weight: 400;
   transition: 0.15s;
+
   &:hover {
     font-weight: 500;
   }
@@ -10,15 +11,18 @@
   position: absolute;
   top: calc(100% + 15px);
   width: 290px;
+
   @include weakShadow;
   border-radius: 20px;
   background-color: white;
   z-index: 2;
   transition: 0.2s;
 }
+
 .padding {
   padding: 15px 20px;
 }
+
 .recent {
   padding: 10px 20px;
   border-radius: 20px;
@@ -35,7 +39,9 @@
     width: 15px;
     height: 15px;
   }
+
   &:hover {
+
     svg {
       opacity: 1;
     }

@@ -1,6 +1,7 @@
 .time_box {
   position: relative;
   padding: 15px;
+
   @include weakShadow;
   border-radius: 20px;
 }
@@ -18,6 +19,7 @@
   border-radius: 50%;
   transition: all 0.3s ease;
 }
+
 .math_box {
   display: flex;
   align-items: center;
@@ -34,13 +36,16 @@
     opacity: 0.6;
   }
 }
+
 .user_wrapper {
 }
+
 .dot_wrapper {
   width: 30px;
   height: 12px;
   border-radius: 20px;
   background-color: white;
+
   @include weakShadow;
   display: flex;
   align-items: center;
@@ -56,10 +61,13 @@
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .plan_box {
+
   @include weakShadow;
   border-radius: 20px;
 }
+
 .select_box_active {
   position: relative;
   border: 2px solid $orange;
@@ -80,6 +88,7 @@
 .plan_box_padding {
   padding: 0px 15px;
 }
+
 .only_select_box {
   padding: 5px 15px;
 }
@@ -100,12 +109,14 @@
   grid-template-columns: 1fr;
   gap: 10px;
 }
+
 .info_box {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 15px;
   height: 15px;
+
   @include weakShadow;
   border-radius: 50%;
 }
@@ -116,6 +127,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   @include weakShadow;
   border-radius: 5px;
 }
@@ -125,17 +137,20 @@
   position: relative;
   padding: 0px 20px;
 }
+
 .box_black {
   padding: 2px 12px;
   background-color: $text;
   border-radius: 20px;
 }
+
 .overflow_slider_wrapper {
   display: flex;
   align-items: center;
   overflow: hidden;
   transition: all 0.3s ease;
 }
+
 .absolute_move_on {
   position: absolute;
   left: calc(100% + 10px);
@@ -148,6 +163,7 @@
   justify-content: center;
   background-color: $text;
   transition: all 0.3s ease;
+
   &:hover {
     opacity: 0.6;
   }
@@ -158,22 +174,29 @@
   background-color: $white;
   border-radius: 20px;
 }
+
 @media (min-width: $tabletSize) {
+
   .benefit_wrapper {
     gap: 20px;
   }
+
   .dots_text_wrapper {
     gap: 15px;
   }
+
   .plan_box_padding {
     padding: 0px 30px;
   }
+
   .only_select_box {
     padding: 5px 30px;
   }
+
   .price_plan_wrapper {
     padding: 25px 30px;
   }
+
   .time_box {
     padding: 25px 30px;
   }

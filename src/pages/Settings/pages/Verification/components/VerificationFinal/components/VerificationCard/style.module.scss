@@ -1,4 +1,5 @@
 .wrapper {
+
   @include weakShadow;
   background-color: white;
   padding: 20px;
@@ -30,7 +31,9 @@
   font-size: 1rem;
   border-radius: 20px;
 }
+
 @media (min-width: $tabletSize) {
+
   .wrapper {
     padding: 30px;
   }

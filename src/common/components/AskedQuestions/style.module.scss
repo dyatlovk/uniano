@@ -52,6 +52,7 @@
 .dropdown_parent_with_bg {
   background-color: #fcfcfc;
   border-radius: 20px;
+
   @include weakShadow;
   padding-top: 24px;
   padding-bottom: 18px;
@@ -111,17 +112,20 @@
 }
 
 .link_card:hover {
+
   .link_card_image {
     opacity: 0.7;
   }
 }
 
 @media (min-width: $tabletSize) {
+
   .link_card {
     cursor: pointer;
   }
 
   .cookies {
+
     .cookies_child {
       display: flex;
       align-items: center;

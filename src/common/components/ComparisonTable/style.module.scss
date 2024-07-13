@@ -27,6 +27,7 @@
   align-items: center;
   gap: 10px;
 }
+
 .span {
   display: inline-block;
   font-size: 12px;
@@ -36,6 +37,7 @@
   border: 1px solid $orange;
   border-radius: 20px;
 }
+
 .monthly_absolute {
   position: absolute;
   top: 0;
@@ -45,16 +47,19 @@
 
 .details_box {
   padding: 15px 0px 20px 0px;
+
   @include weakShadow;
   border-radius: 20px;
   align-self: stretch;
   position: relative;
 }
+
 .absolute_switch {
   position: absolute;
   top: 10px;
   right: 10px;
 }
+
 .bottom_row {
   width: 100%;
   display: grid;
@@ -62,21 +67,26 @@
   padding: 12px 20px;
   border-radius: 20px;
 }
+
 .bottom_wrapper {
   width: 100%;
 }
+
 .bottom_row_item {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .title_wrapper {
   display: inline;
   position: relative;
+
   * {
     display: inline;
   }
 }
+
 .title_wrapper::after {
   position: absolute;
   top: 100%;
@@ -86,8 +96,10 @@
   height: 1px;
   width: 100%;
   display: block;
+
   @include dashedBorder;
 }
+
 .checked {
   width: 20px;
   height: 20px;
@@ -97,19 +109,24 @@
   background-color: $orange;
   border-radius: 5px;
 }
+
 @media (min-width: $tabletSize) {
+
   .monthly_absolute {
     bottom: calc(100% + 5px);
     top: auto;
     left: auto;
     right: 0;
   }
+
   .bottom_row {
     gap: 30px;
   }
+
   .details_box {
     padding: 25px 0px 30px 0px;
   }
+
   .top_wrapper {
     grid-template-columns: 15% 1fr 1fr 1fr;
     align-items: center;

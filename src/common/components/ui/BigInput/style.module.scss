@@ -1,5 +1,6 @@
 .wrapper_input_field {
   width: 100%;
+
   @include weakShadow;
   border-radius: 20px;
   position: relative;
@@ -24,6 +25,7 @@
     resize: none;
     font-size: 1rem;
     color: $text;
+
     @include scrollStyles;
   }
 }
@@ -33,6 +35,7 @@
   flex-direction: column;
   align-items: start;
 }
+
 .wrapper_input_field_no_border {
   width: 100%;
   position: relative;
@@ -56,9 +59,11 @@
     resize: none;
     font-size: 1rem;
     color: $text;
+
     @include scrollStyles;
   }
 }
+
 .bottom_part_wrapper {
   width: 100%;
   display: flex;
@@ -100,11 +105,15 @@
   flex-direction: column;
   align-items: end;
 }
+
 @media (min-width: $tabletSize) {
+
   .bottom_part_wrapper {
     padding: 0px 30px 25px 30px;
   }
+
   .wrapper_input_field {
+
     > textarea {
       padding: 20px;
     }

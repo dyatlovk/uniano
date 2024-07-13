@@ -13,6 +13,7 @@
 }
 
 .active_icon {
+
   svg {
     fill: orange;
   }
@@ -25,6 +26,7 @@
   height: 28px;
   aspect-ratio: 1;
   border-radius: 50%;
+
   @include weakShadow;
   background-color: white;
 }
@@ -40,6 +42,7 @@
   background-color: white;
   padding: 6px 13px;
 }
+
 .category_active {
   background-color: $white;
   border-radius: 20px;
@@ -50,14 +53,17 @@
   grid-template-columns: 1fr;
   gap: 20px;
   padding: 15px;
+
   @include weakShadow;
   border-radius: 20px;
 }
+
 .gap_20 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 .select_box {
   width: 14px;
   height: 14px;
@@ -65,6 +71,7 @@
   border-radius: 50%;
   transition: all 0.3s ease;
 }
+
 .select_box_active {
   position: relative;
   border: 2px solid $orange;
@@ -84,12 +91,14 @@
 
 .select_item_switch {
   padding: 15px 20px;
+
   @include weakShadow;
   border-radius: 20px;
   cursor: pointer;
 }
 
 .disabled {
+
   svg {
     fill: $text;
   }
@@ -100,26 +109,33 @@
   grid-template-columns: 1fr;
   gap: 15px;
 }
+
 @media (min-width: $tabletSize) {
+
   .switch_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
   }
+
   .search_result {
     grid-template-columns: 1fr 1fr 1fr;
     padding: 30px;
   }
+
   .category_active {
     background-color: white;
   }
+
   .category_wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+
   .template_icon {
     height: 40px;
   }
+
   .text_flex {
     gap: 20px;
   }

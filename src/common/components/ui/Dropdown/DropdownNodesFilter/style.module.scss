@@ -6,6 +6,7 @@
   padding: 20px 30px 15px 30px;
   cursor: pointer;
   flex-wrap: wrap;
+
   @include prevent-select;
 }
 
@@ -31,9 +32,11 @@
   padding: 3px 15px;
   background-color: $text;
 }
+
 .description_block {
   display: none;
 }
+
 .description_block_active {
   display: block;
 }
@@ -61,6 +64,7 @@
 .wrapper {
   background-color: white;
   border-radius: 20px;
+
   @include weakShadow;
 }
 
@@ -82,12 +86,15 @@
 }
 
 @media (min-width: $tabletSize) {
+
   .padding_reviews {
     padding: 0px 30px 30px 30px;
   }
+
   .padding {
     padding: 0px 30px;
   }
+
   .filte_wrapper {
     padding: 30px 0px;
   }
@@ -96,10 +103,12 @@
     flex-direction: row;
     align-items: center;
   }
+
   .filter_all_wrapper {
     margin-left: auto;
     order: 0;
   }
+
   .close_chevron {
     margin-left: 15px;
   }

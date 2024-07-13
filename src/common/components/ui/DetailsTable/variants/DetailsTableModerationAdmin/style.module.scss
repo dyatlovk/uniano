@@ -20,6 +20,7 @@
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 .category_wrapper {
   padding: 2px 14px;
   background-color: $text;
@@ -29,17 +30,21 @@
 .user_card {
   padding: 10px 15px;
   border-radius: 20px;
+
   @include weakShadow;
   max-width: 390px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 @media (min-width: $tabletSize) {
+
   .reviews_wrapper {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
+
   .dropdow_grid {
     display: flex;
     align-items: start;
