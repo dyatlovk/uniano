@@ -3,6 +3,7 @@
     "arcanis.vscode-zipfs",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
     "viijay-kr.react-ts-css"
   ]
 }

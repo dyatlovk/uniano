@@ -5,6 +5,8 @@
     "**/.pnp.*": true
   },
   "eslint.nodePath": ".yarn/sdks",
+  "eslint.lintTask.enable": true,
+  "eslint.lintTask.options": "--ext .tsx --ext .ts src/",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
 }
