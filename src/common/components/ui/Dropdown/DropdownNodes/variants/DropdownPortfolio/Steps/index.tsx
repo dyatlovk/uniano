@@ -3,7 +3,6 @@ import {
   StepsOfPreparingEndSolving,
 } from '@common/components/StepsOfPreparing/index'
 import { BigInputOutside } from '@common/components/ui/BigInput/index'
-import DatePicker from '@common/components/ui/DatePicker/index'
 import InfoBox from '@common/components/ui/InfoBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'

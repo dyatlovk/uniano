@@ -10,14 +10,27 @@ import { ReactComponent as ContactUs } from '@assets/svg/contact-us.svg'
 import { useContext, useState } from 'react'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import { FooterTriggerContext } from '@common/context/footer_trigger'
-const AskedQuestion = () => {
+
+interface Props {
+  useBackground?: boolean,
+  margin?: string,
+  padding?: string
+}
+
+const marginDefault = "80px 0 0 0"
+const paddingDefault = "50px"
+
+const AskedQuestion = (props: Props) => {
   const { width, height } = useScreenSize()
+  const useBackground = (typeof(props.useBackground) === "undefined") ? true : false
+  const margin = (typeof(props.margin) === "undefined") ? marginDefault : props.margin
+  const padding = (typeof(props.padding) === "undefined") ? paddingDefault : props.padding
 
   const { activeCategory, setActiveCategory } = useContext(FooterTriggerContext)
   return (
     <div>
       {width <= 768 && <Cookies />}
-      <div className={styles.dropdown_parent}>
+      <div style={{margin: margin, padding: padding}} className={(useBackground) ? styles.dropdown_parent_with_bg : styles.dropdown_parent}>
         <div className={styles.absolute}>
           <div className={styles.flex_center_child}>
             <Cookies />
