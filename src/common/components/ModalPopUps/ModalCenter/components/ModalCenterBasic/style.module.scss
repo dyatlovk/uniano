@@ -10,9 +10,8 @@
   padding: 15px 30px;
   max-height: calc(90vh - 45px);
   overflow-y: auto;
-
-  @include scrollStyles;
   overflow-x: hidden;
+  @include scrollStyles;
 }
 
 .modal_center_basic {

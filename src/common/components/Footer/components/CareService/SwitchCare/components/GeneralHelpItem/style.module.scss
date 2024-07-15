@@ -59,10 +59,10 @@
   transition: 0.2s;
 
   &:hover {
+    background-color: $white;
 
     .hover_background {
       background-color: $white;
     }
-    background-color: $white;
   }
 }

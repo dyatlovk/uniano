@@ -51,11 +51,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  flex: 1;
 
   > div {
     flex: 1;
   }
-  flex: 1;
 }
 
 .tips_wrapper {

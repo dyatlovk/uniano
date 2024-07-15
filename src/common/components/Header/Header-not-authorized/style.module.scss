@@ -98,7 +98,7 @@
   background-color: $orange;
   border-radius: 20px;
 
-  > svg {
+  >svg {
     height: 18px;
     width: 24px;
   }
@@ -152,9 +152,8 @@
 
 .scroll_bar {
   overflow-y: auto;
-
-  @include scrollStyles;
   height: 100%;
+  @include scrollStyles;
 }
 
 .active_modal {
@@ -219,12 +218,12 @@
 
 .header_second_part {
 
-  > li {
+  >li {
     cursor: pointer;
     display: flex;
     gap: 19px;
 
-    > ul {
+    >ul {
       transition: all 0.3s ease;
 
       &:hover {
@@ -233,7 +232,7 @@
       }
     }
 
-    > ul::before {
+    >ul::before {
       display: block;
       content: attr(title);
       font-weight: 500;
