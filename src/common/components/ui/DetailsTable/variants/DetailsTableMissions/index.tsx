@@ -151,6 +151,7 @@ const DetailsTableMissions = ({ information }: DetailsTableMissionsProps) => {
                   <Typography
                     textLineHeight="100%"
                     variant="body4"
+                    fontWeight="500"
                     color={AppColor.orange}
                   >
                     {currentItem.status}
