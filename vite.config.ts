@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
+
 export default defineConfig({
   base: '/uniano/',
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr(),
+  ],
+  optimizeDeps: {
+    exclude: ['@jest/globals']
+  },
   server: {
     host: '127.0.0.1',
     port: 3000,

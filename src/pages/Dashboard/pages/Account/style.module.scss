@@ -100,6 +100,18 @@
 .profile_top_level {
   display: flex;
   gap: 5px;
+  align-items: center;
+
+  p {
+    line-height: 1;
+  }
+}
+
+.top_level_skills {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .profile_bottom_level {
@@ -317,7 +329,13 @@
 .statistic_text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
+
+  >p,
+  >span {
+    line-height: 1;
+  }
+
 }
 
 .main_right {
@@ -368,6 +386,14 @@
   gap: 10px;
 }
 
+.avatar {
+  margin-bottom: 17px;
+
+  p {
+    font-size: 18px;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .statistic_text_wrapper {
@@ -411,5 +437,12 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 20px;
+  }
+
+  .category_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px
   }
 }

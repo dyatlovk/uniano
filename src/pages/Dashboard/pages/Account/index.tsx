@@ -2,7 +2,6 @@ import NavigationItem from '@common/components/navigation_history/NavigationItem
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import Header from '@common/components/Header/Header/index'
 import NavigationBar from '@common/components/NavigationBar/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
@@ -10,7 +9,6 @@ import { useScreenSize } from '@common/helpers/useScreenSize'
 import { useState } from 'react'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import DropdownNode from '@common/components/ui/Dropdown/DropdownNodes/index'
 import DropdownNodeFilter from '@common/components/ui/Dropdown/DropdownNodesFilter/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
@@ -24,10 +22,7 @@ import CategorySelect from './components/CategorySelect'
 import { developmentDropdown } from '@common/models/constants'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 import { SelectFilterItem } from '@common/components/ui/SearchFilterBar/index'
-import {
-  BigInputNoBorder,
-  BigInputOutside,
-} from '@common/components/ui/BigInput/index'
+import { BigInputNoBorder } from '@common/components/ui/BigInput/index'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import DarkBox from '@common/components/ui/DarkBox/index'
@@ -37,6 +32,8 @@ import DropdownPortfolio from '@common/components/ui/Dropdown/DropdownNodes/vari
 import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
 import LevelProgress from '@common/components/ui/LevelProgress/index'
 import InfoBox from '@common/components/ui/InfoBox/index'
+import UserLevelStat from '@common/components/Users/levels'
+import { User, UserSkill } from '@common/models/users/levels'
 
 const activityItems = [
   {
@@ -216,6 +213,8 @@ const skills = [
   'Other',
 ]
 
+const currentUserSkill = User.SkillsLabels.Junior
+
 const Account = () => {
   const [skillsContent, setSkillsContent] = useState<SkillType[]>([
     {
@@ -280,12 +279,12 @@ const Account = () => {
           desktopMinWidth="900px"
           bottomPartPadding="30px"
           nodeAfterTitle={
-            <div className="gap_10">
+            <div className={styles.top_level_skills}>
               <DarkBox fontWeight="400" text={'Logo design'.toUpperCase()} />
               <div className={styles.profile_top_level}>
-                <AppColor.twoOFFive />
+                <UserLevelStat level={currentUserSkill}/>
                 <Typography variant="body4" color={AppColor.text}>
-                  3 lvl
+                  {UserSkill.getLevelByLabel(currentUserSkill).level} lvl
                 </Typography>
                 <div
                   onClick={() => {
@@ -296,9 +295,9 @@ const Account = () => {
                   <Typography
                     variant="body4"
                     fontWeight="500"
-                    color={AppColor.green}
+                    color={UserSkill.getLevelByLabel(currentUserSkill).color}
                   >
-                    Junior
+                    {UserSkill.getLevelByLabel(currentUserSkill).label}
                   </Typography>
                 </div>
               </div>
@@ -310,7 +309,8 @@ const Account = () => {
               </Typography>
             </div>
           }
-          topPartPadding="20px 30p"
+          topPartPadding="20px 30px"
+          topPartContentGap="19px"
           callbackClose={() => {
             setShowLevelModal(false)
           }}
@@ -321,7 +321,7 @@ const Account = () => {
           </Typography>
 
           <DynamicPadding desktop="25px" mobile="15px" />
-          <LevelProgress percent={25} />
+          <LevelProgress level={currentUserSkill} />
 
           <DynamicPadding desktop="25px" mobile="15px" />
 
@@ -330,16 +330,6 @@ const Account = () => {
               description={'increases skill points  '}
               icon={<AppColor.doubleChevronsUp />}
               title={'Complete Project'}
-            />
-            <LevelRowItem
-              description={'reduces skill points  '}
-              icon={<AppColor.close fill={'white'} />}
-              title={'Unsuccesfull Projects'}
-            />
-            <LevelRowItem
-              description={'reduces skill level     '}
-              icon={<AppColor.statusOffline />}
-              title={'6 months Offline'}
             />
           </div>
         </ModalCenterBasic>
@@ -382,13 +372,6 @@ const Account = () => {
             >
               Cancel
             </MyButtonTransparent>
-            <MyButtonOrange
-              onClick={() => {}}
-              fontWeight="500"
-              textTransform="uppercase"
-            >
-              Save
-            </MyButtonOrange>
           </div>
         </ModalCenterBasic>
       )}
@@ -561,22 +544,6 @@ const Account = () => {
             >
               Cancel
             </MyButtonTransparent>
-            <MyButtonOrange
-              onClick={() => {
-                let tmpCopy = [...languages]
-                let neededIndex = tmpCopy.findIndex(
-                  item => item.language == editLanguageModal
-                )
-
-                tmpCopy[neededIndex] = processEditLanguage
-                setLanguages(tmpCopy)
-                setEditLanguageModal('')
-              }}
-              fontWeight="500"
-              textTransform="uppercase"
-            >
-              Save
-            </MyButtonOrange>
           </div>
         </ModalCenterBasic>
       )}
@@ -843,43 +810,18 @@ const Account = () => {
           />
         </div>
         <DynamicPadding desktop="40px" mobile="20px" />
-        <div className="gap_10">
-          <div className={styles.after_top_section}>
-            {width > 769 ? (
-              skillsContent.map(item => (
-                <SkillsItem
-                  activeCategory={selectedCategory}
-                  callback={item => {
-                    setSelectedCategory(item)
-                  }}
-                  icon={item.icon}
-                  skills={item.skills}
-                  title={item.title}
-                />
-              ))
-            ) : (
-              <DropdownSkills />
-            )}
-          </div>
-          <AppColor.edit
-            onClick={() => {
-              setEditModal(true)
-            }}
-            className="cursor"
-            fill={AppColor.text}
-          />
-        </div>
-        <DynamicPadding />
 
         <div className={styles.main_section}>
           <div className={styles.main_left}>
-            <UserAvatar
-              url={fakeUserConstant.image}
-              active={true}
-              name="Adrew B."
-              variant="column"
-              flag={<AppColor.UkraineFlagIcon />}
-            />
+            <div className={styles.avatar}>
+              <UserAvatar
+                url={fakeUserConstant.image}
+                active={true}
+                name="Adrew B."
+                variant="column"
+                flag={<AppColor.UkraineFlagIcon />}
+              />
+            </div>
             <div className={styles.profile_level_wrapper}>
               <div className={styles.profile_top_level}>
                 <AppColor.twoOFFive />
@@ -1112,9 +1054,39 @@ const Account = () => {
             <DynamicPadding desktop="30px" mobile="20px" />
           </div>
           <div className={styles.main_right}>
+            <div className={styles.category_item}>
+              <div className={styles.after_top_section}>
+                {width > 769 ? (
+                  skillsContent.map(item => (
+                    <SkillsItem
+                      activeCategory={selectedCategory}
+                      callback={item => {
+                        setSelectedCategory(item)
+                      }}
+                      icon={item.icon}
+                      skills={item.skills}
+                      title={item.title}
+                    />
+                  ))
+                ) : (
+                  <DropdownSkills />
+                )}
+              </div>
+              <AppColor.edit
+                onClick={() => {
+                  setEditModal(true)
+                }}
+                className="cursor"
+                fill={AppColor.text}
+              />
+            </div>
             <ContentShell
               title={
-                <Typography textLineHeight="1" variant="body2" fontWeight="500">
+                <Typography
+                  textLineHeight="1"
+                  fontSizeStatic="18px"
+                  fontWeight="500"
+                >
                   <div className={styles.text_flex_gap}>
                     {' '}
                     Description{' '}
@@ -1137,7 +1109,11 @@ const Account = () => {
             />
             <ContentShell
               title={
-                <Typography textLineHeight="1" variant="body2" fontWeight="500">
+                <Typography
+                  textLineHeight="1"
+                  fontSizeStatic="18px"
+                  fontWeight="500"
+                >
                   Statistics
                 </Typography>
               }
@@ -1151,7 +1127,11 @@ const Account = () => {
             />
             <ContentShell
               title={
-                <Typography textLineHeight="1" variant="body2" fontWeight="500">
+                <Typography
+                  textLineHeight="1"
+                  fontSizeStatic="18px"
+                  fontWeight="500"
+                >
                   <div className={styles.text_flex_gap}>
                     {' '}
                     Skills{' '}

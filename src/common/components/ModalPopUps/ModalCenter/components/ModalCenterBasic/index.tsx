@@ -13,6 +13,8 @@ type ModalCenterBasicProps = {
   callbackClose: () => void
   bottomPartPadding: string
   topPartPadding?: string
+  topPartContentGap?: string
+  topPartContentSkillsGap?: string
   prevClose?: boolean
   nodeAfterTitle?: React.ReactNode
   callbackPrev?: () => void
@@ -34,6 +36,7 @@ const ModalCenterBasic = ({
   mobileMinWidth,
   callbackClose,
   topPartPadding,
+  topPartContentGap,
   bottomPartPadding,
   children,
   title,
@@ -106,7 +109,7 @@ const ModalCenterBasic = ({
             </div>
           )}
           {!prevClose && (
-            <div className="gap_15" style={{ width: '100%' }}>
+            <div className={styles.top_part_content} style={{gap: (topPartContentGap ? topPartContentGap : "15px")}}>
               {title != '' && (
                 <Typography
                   textLineHeight="1"

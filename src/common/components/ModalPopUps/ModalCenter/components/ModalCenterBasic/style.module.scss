@@ -25,6 +25,13 @@
   max-width: var(--mobileMaxWidth);
 }
 
+.top_part_content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
 @media (min-width: $tabletSize) {
 
   .bottom_part {

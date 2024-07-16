@@ -1,60 +1,81 @@
+import { User, UserSkill } from '@common/models/users/levels'
 import PercentBar from '../PercentBar/PercentBar'
 import SizeBox from '../SizeBox'
 import Typography from '../Typography/Typography'
 import styles from './style.module.scss'
 
 type LevelProgressProps = {
-  percent: number
+  level: User.SkillsLabels
 }
-const LevelProgress = ({ percent }: LevelProgressProps) => {
+
+const LevelProgress = ({ level }: LevelProgressProps) => {
   return (
     <div className={styles.wrapper}>
       <div style={{ position: 'relative' }}>
         <SizeBox height="100px" />
-        <PercentBar currentPercent={percent} />
+        <PercentBar
+          color={UserSkill.getLevelByLabel(level).color}
+          currentPercent={UserSkill.findLevelPosition(level)}
+        />
 
         <AbsoluteItemDetails
-          accentColor="#B6DE59"
+          accentColor={
+            UserSkill.getLevelByLabel(User.SkillsLabels.Beginner).color
+          }
           leftPercentPosition="0%"
           profit="10"
-          riched={true}
-          title="Beginner "
+          riched={UserSkill.isLevelRiched(User.SkillsLabels.Beginner, level)}
+          title={User.SkillsLabels.Beginner}
         />
 
         <AbsoluteItemDetails
-          accentColor="#219653"
+          accentColor={
+            UserSkill.getLevelByLabel(User.SkillsLabels.Junior).color
+          }
           leftPercentPosition="25%"
           profit="30"
-          riched={true}
-          title="Junior"
-          pointsCount="300"
+          riched={UserSkill.isLevelRiched(User.SkillsLabels.Junior, level)}
+          title={User.SkillsLabels.Junior}
+          pointsCount={UserSkill.getLevelByLabel(
+            User.SkillsLabels.Junior
+          ).points.min.toString()}
         />
 
         <AbsoluteItemDetails
-          accentColor="#F2C94C"
+          accentColor={
+            UserSkill.getLevelByLabel(User.SkillsLabels.Middle).color
+          }
           leftPercentPosition="50%"
           profit="80"
-          riched={false}
-          title="Middle"
-          pointsCount="1501"
+          riched={UserSkill.isLevelRiched(User.SkillsLabels.Middle, level)}
+          title={User.SkillsLabels.Middle}
+          pointsCount={UserSkill.getLevelByLabel(
+            User.SkillsLabels.Middle
+          ).points.min.toString()}
         />
 
         <AbsoluteItemDetails
-          accentColor="#F4A72A"
+          accentColor={
+            UserSkill.getLevelByLabel(User.SkillsLabels.Senior).color
+          }
           leftPercentPosition="75%"
           profit="150"
-          riched={false}
-          title="Senior"
-          pointsCount="6001"
+          riched={UserSkill.isLevelRiched(User.SkillsLabels.Senior, level)}
+          title={User.SkillsLabels.Senior}
+          pointsCount={UserSkill.getLevelByLabel(
+            User.SkillsLabels.Senior
+          ).points.min.toString()}
         />
 
         <AbsoluteItemDetails
-          accentColor="#EB5757"
+          accentColor={UserSkill.getLevelByLabel(User.SkillsLabels.Lead).color}
           leftPercentPosition="100%"
           profit="200"
-          riched={false}
-          title="Lead"
-          pointsCount="15001"
+          riched={UserSkill.isLevelRiched(User.SkillsLabels.Lead, level)}
+          title={User.SkillsLabels.Lead}
+          pointsCount={UserSkill.getLevelByLabel(
+            User.SkillsLabels.Lead
+          ).points.min.toString()}
         />
         <SizeBox height="50px" />
       </div>

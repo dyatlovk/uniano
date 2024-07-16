@@ -158,16 +158,6 @@ export const BigInputNoBorder = ({
           >
             Cancel
           </MyButtonTransparent>
-          <MyButtonOrange
-            onClick={() => {
-              modalClose(false)
-              callback(text)
-            }}
-            fontWeight="500"
-            textTransform="uppercase"
-          >
-            Save
-          </MyButtonOrange>
         </div>
       </div>
     </div>
