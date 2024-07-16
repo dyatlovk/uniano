@@ -544,7 +544,7 @@ const DropdownPortfolio = () => {
           setActiveCategory(item)
         }}
         dropnodes={
-          <div>
+          <div className="dropnodes">
             <div className={styles.node_wrapper}>
               {(() => {
                 const displayedItems = []
@@ -674,7 +674,7 @@ type DropdownItemProps = {
 }
 export const DropdownItem = ({ callback }: DropdownItemProps) => {
   return (
-    <div style={{ paddingTop: '10px' }}>
+    <div>
       <div
         onClick={() => {
           callback(true)
