@@ -5,9 +5,6 @@ import NavigationItem from '@common/components/navigation_history/NavigationItem
 import AppColor from '@common/styles/variables-static'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import { useState } from 'react'
-import DetailsTable from '@common/components/ui/DetailsTable/index'
 import DetailsTableMissions from '@common/components/ui/DetailsTable/variants/DetailsTableMissions/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
@@ -81,13 +78,11 @@ const Missions = () => {
         </div>
 
         <DynamicPadding />
-        <SearchFilterBar recent={true} date="10/29/22 - 11/29/22" />
+        <SearchFilterBar recent={false} date="10/29/22 - 11/29/22" />
 
         <DynamicPadding />
 
-        <div>
-          <DetailsTableMissions information={missionContent} />
-        </div>
+        <DetailsTableMissions information={missionContent} />
 
         <AskedQuestion />
       </div>

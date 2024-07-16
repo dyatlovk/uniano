@@ -18,13 +18,14 @@
     }
   }
 
-  > label {
+  >label {
     position: absolute;
     font-size: 14px;
     color: #a8a8ad;
     font-weight: 500;
     top: 0;
-    left: 15px; /* Adjust this value based on your border radius */
+    left: 15px;
+    /* Adjust this value based on your border radius */
     transform: translateY(-50%);
     background-color: white;
     padding: 0px 5px;
@@ -48,11 +49,11 @@
 .node_select {
   padding: 15px 20px;
   transition: 0.15s;
+  border-radius: 20px;
 
   &:hover {
     background-color: $white;
   }
-  border-radius: 20px;
 }
 
 .border_top_bottom {

@@ -1,4 +1,8 @@
 .wrapper {
+  width: var(--mobileWidth);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   img {
     width: 100%;
@@ -7,17 +11,13 @@
     object-fit: cover;
     border-radius: 20px;
   }
-  width: var(--mobileWidth);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .small_images {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
-  > img {
+  >img {
     height: 60px;
     width: 22%;
     cursor: pointer;
@@ -48,7 +48,7 @@
     gap: 15px;
     grid-template-columns: 1fr;
 
-    > img {
+    >img {
       height: 100%;
       max-height: calc(25% - 15px);
       width: 100%;

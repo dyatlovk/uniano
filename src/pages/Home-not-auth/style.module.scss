@@ -317,6 +317,7 @@
       height: 240px;
       cursor: pointer;
       padding: 20px;
+      transition: all 0.3s ease;
 
       .popular_categorys_card_image {
         position: absolute;
@@ -328,8 +329,6 @@
         width: 260px;
         height: 240px;
       }
-
-      transition: all 0.3s ease;
 
       &:hover {
 

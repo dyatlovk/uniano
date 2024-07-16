@@ -3,9 +3,8 @@
   align-items: center;
   max-width: 100%;
   overflow-x: auto;
-
-  @include scrollStyles;
   gap: 20px;
+  @include scrollStyles;
 }
 
 @media (min-width: $tabletSize) {

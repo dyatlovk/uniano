@@ -54,9 +54,8 @@
 
 .scroll_bar {
   overflow-y: auto;
-
-  @include scrollStyles;
   height: 100%;
+  @include scrollStyles;
 }
 
 .active_modal {

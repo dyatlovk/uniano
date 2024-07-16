@@ -6,20 +6,18 @@
   padding: 5px 10px;
   font-weight: 400;
   border-radius: 20px;
+  user-select: none;
 
   &:hover {
+    background-color: $white;
 
     .text_of_item {
       font-weight: 500;
     }
-
-    background-color: $white;
   }
-  user-select: none;
 }
 
 .text_of_item {
-
   &::after {
     display: block;
     content: attr(title);

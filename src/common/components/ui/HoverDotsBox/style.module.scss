@@ -2,19 +2,16 @@
   width: 30px;
   height: 15px;
   border-radius: 5px;
-
-  @include weakShadow;
-
   transition: 0.2s;
-
+  background-color: white;
   display: flex;
+  @include weakShadow;
 
   svg {
     margin: auto;
     width: 12px;
     height: 5px;
   }
-  background-color: white;
 
   &:hover {
     background-color: #f5f5f5;

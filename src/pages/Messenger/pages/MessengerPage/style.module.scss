@@ -21,12 +21,10 @@
 
 .white_background {
   background-color: white;
-
-  @include weakShadow;
   overflow-y: auto;
-
-  @include scrollStyles;
   overscroll-behavior: contain;
+  @include weakShadow;
+  @include scrollStyles;
 }
 
 .white_background_right {
@@ -34,13 +32,13 @@
   overscroll-behavior: contain;
   background-color: white;
   overflow-y: auto;
-
-  @include scrollStyles;
   direction: rtl;
 
   >* {
     direction: ltr;
   }
+
+  @include scrollStyles;
 }
 
 .top_details_wrapper {
@@ -176,12 +174,11 @@
   position: relative;
 
   &:hover {
+    background-color: $white;
 
     .absolute_background_color {
       background-color: $white;
     }
-
-    background-color: $white;
   }
 }
 
