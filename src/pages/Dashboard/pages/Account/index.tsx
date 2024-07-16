@@ -34,6 +34,7 @@ import LevelProgress from '@common/components/ui/LevelProgress/index'
 import InfoBox from '@common/components/ui/InfoBox/index'
 import UserLevelStat from '@common/components/Users/levels'
 import { User, UserSkill } from '@common/models/users/levels'
+import { UserReview, User as UserReviewNs } from '@common/models/users/reviews'
 
 const activityItems = [
   {
@@ -1159,10 +1160,14 @@ const Account = () => {
                   textLineHeight="80%"
                   variant="body4"
                   fontWeight="500"
-                  color={AppColor.green}
+                  color={
+                    UserReview.findReviewByLabel(
+                      UserReviewNs.ReviewsLabel.Positive
+                    ).color
+                  }
                   textTransform="uppercase"
                 >
-                  95% positive reviews{' '}
+                  95% positive reviews
                 </Typography>
               }
             />

@@ -10,9 +10,9 @@ import ImageCardsShow from '../ImageCardsShow'
 import test1 from '@assets/images/test1.png'
 import test2 from '@assets/images/test2.png'
 import test3 from '@assets/images/test3.png'
-import test4 from '@assets/images/test4.png'
 import DynamicPadding from '../ui/DynamicPadding'
 import PopUpBottom from '../ModalPopUps/PopUpBottom'
+import { User, UserReview } from '@common/models/users/reviews'
 
 type ReviewsProgramCardProps = {
   user: userModel
@@ -214,7 +214,13 @@ export const ReviewsNoBorder = ({
         <div className={styles.recommended_comment}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <AppColor.like />
-            <Typography variant="body4" fontWeight="500">
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={
+                UserReview.findReviewByLabel(User.ReviewsLabel.Positive).color
+              }
+            >
               Recommended
             </Typography>
           </div>

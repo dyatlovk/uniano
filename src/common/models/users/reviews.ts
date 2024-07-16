@@ -41,11 +41,19 @@ export { UserReview }
  */
 if (import.meta.vitest) {
   const { expect, test } = import.meta.vitest
-  test('findByLabel', () => {
+  test('findByLabelPositive', () => {
     const actual = UserReview.findReviewByLabel(User.ReviewsLabel.Positive)
     const expected = {
       color: AppColor.green,
       label: User.ReviewsLabel.Positive,
+    }
+    expect(actual).toEqual(expected)
+  })
+  test('findByLabelNegative', () => {
+    const actual = UserReview.findReviewByLabel(User.ReviewsLabel.Negative)
+    const expected = {
+      color: AppColor.red,
+      label: User.ReviewsLabel.Negative,
     }
     expect(actual).toEqual(expected)
   })
