@@ -220,7 +220,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   gap: 30px;
-  row-gap: 15px;
+  row-gap: 2px;
 }
 
 .orange_box {
@@ -360,6 +360,12 @@
   max-width: 900px;
 }
 
+.filter_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .edit_grid {
   display: grid;
   grid-template-columns: 250px auto;
@@ -391,6 +397,12 @@
 
   p {
     font-size: 18px;
+  }
+}
+
+.description_modal {
+  textarea {
+    padding: 0;
   }
 }
 

@@ -282,7 +282,7 @@ const Account = () => {
             <div className={styles.top_level_skills}>
               <DarkBox fontWeight="400" text={'Logo design'.toUpperCase()} />
               <div className={styles.profile_top_level}>
-                <UserLevelStat level={currentUserSkill}/>
+                <UserLevelStat level={currentUserSkill} />
                 <Typography variant="body4" color={AppColor.text}>
                   {UserSkill.getLevelByLabel(currentUserSkill).level} lvl
                 </Typography>
@@ -507,7 +507,7 @@ const Account = () => {
             Language
           </Typography>
 
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="27px" mobile="20px" />
 
           <DropdownLanguages
             callback={item => {
@@ -522,7 +522,7 @@ const Account = () => {
             Level
           </Typography>
 
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="23px" mobile="20px" />
 
           <InputDropdown
             callback={item => {
@@ -531,6 +531,8 @@ const Account = () => {
             dropdownVariants={['Fluent', 'b1', 'b2', 'c1', 'c2']}
             initText="Fluent"
             labelIcon={<></>}
+            iconHeight="7px"
+            iconWidth="12px"
             marginLeft={true}
             padding="15px 20px"
           />
@@ -595,22 +597,24 @@ const Account = () => {
       )}
       {descriptionModal && (
         <ModalCenterBasic
-          topPartPadding="20px 30p"
+          topPartPadding="20px 30px"
           callbackClose={() => {
             setDescriptionModal(false)
           }}
           title="Description"
-          bottomPartPadding="25px 30px"
+          bottomPartPadding="30px"
           desktopMinWidth="880px"
         >
-          <BigInputNoBorder
-            callback={item => {
-              setDescriptionText(item)
-            }}
-            modalClose={() => {
-              setDescriptionModal(false)
-            }}
-          />
+          <div className={styles.description_modal}>
+            <BigInputNoBorder
+              callback={item => {
+                setDescriptionText(item)
+              }}
+              modalClose={() => {
+                setDescriptionModal(false)
+              }}
+            />
+          </div>
         </ModalCenterBasic>
       )}
       {editModal && (
@@ -717,20 +721,15 @@ const Account = () => {
                   </Typography>
                   <DynamicPadding desktop="20px" mobile="15px" />
 
-                  <div className={styles.grid_10}>
+                  <div className={styles.filter_list}>
                     {skillItem.links.map(item => {
                       return (
                         <SelectFilterItem
                           initState={activeSkills.includes(item)}
                           callback={item => {
-                            console.log('top level')
-
                             let newArray: SkillType[] = []
                             for (let i = 0; i < skillsContent.length; i++) {
-                              console.log('array iterration')
                               if (skillsTitles.includes(skillItem.title)) {
-                                console.log('includes')
-
                                 if (skillsContent[i].title == skillItem.title) {
                                   newArray.push({
                                     icon: skillsContent[i].icon,
@@ -742,8 +741,6 @@ const Account = () => {
                                 }
                                 setSkillsContent(newArray)
                               } else {
-                                console.log('new')
-
                                 setSkillsContent(prev => [
                                   ...prev,
                                   {
@@ -754,8 +751,6 @@ const Account = () => {
                                 ])
                               }
                             }
-
-                            console.log('after map')
                           }}
                           callbackRemove={item => {
                             setSkillsContent(prev =>
@@ -824,9 +819,9 @@ const Account = () => {
             </div>
             <div className={styles.profile_level_wrapper}>
               <div className={styles.profile_top_level}>
-                <AppColor.twoOFFive />
+                <UserLevelStat level={currentUserSkill} />
                 <Typography variant="body4" color={AppColor.text}>
-                  3 lvl
+                  {UserSkill.getLevelByLabel(currentUserSkill).level} lvl
                 </Typography>
                 <div
                   onClick={() => {
@@ -837,16 +832,16 @@ const Account = () => {
                   <Typography
                     variant="body4"
                     fontWeight="500"
-                    color={AppColor.green}
+                    color={UserSkill.getLevelByLabel(currentUserSkill).color}
                   >
-                    Junior
+                    {UserSkill.getLevelByLabel(currentUserSkill).label}
                   </Typography>
                 </div>
               </div>
               <PercentBar
-                currentPercent={22}
+                currentPercent={UserSkill.findLevelPosition(currentUserSkill)}
                 backgroundColor={AppColor.white}
-                color={AppColor.orange}
+                color={UserSkill.getLevelByLabel(currentUserSkill).color}
               />
               <div className={styles.profile_bottom_level}>
                 <Typography
@@ -1163,7 +1158,9 @@ const Account = () => {
                 <Typography
                   textLineHeight="80%"
                   variant="body4"
+                  fontWeight="500"
                   color={AppColor.green}
+                  textTransform="uppercase"
                 >
                   95% positive reviews{' '}
                 </Typography>
@@ -1249,7 +1246,7 @@ export const SkillCheckBox = ({
         </Typography>
       </div>
       {!removeDropdown && selected && (
-        <div style={{ paddingLeft: '32px' }}>
+        <div style={{ paddingLeft: '32px', marginBottom: '4px' }}>
           <SizeBox height="10px" />
           <div className="gap_5">
             <Typography variant="body4" color={AppColor.transparentBlack}>
@@ -1428,14 +1425,14 @@ export const DropdownLanguages = ({
           <AppColor.chevronTop
             fill={AppColor.text}
             width={'12px'}
-            height={'6px'}
+            height={'7px'}
             style={{ marginLeft: 'auto' }}
           />
         ) : (
           <AppColor.chevronBottom
             fill={AppColor.text}
             width={'12px'}
-            height={'6px'}
+            height={'7px'}
             style={{ marginLeft: 'auto' }}
           />
         )}

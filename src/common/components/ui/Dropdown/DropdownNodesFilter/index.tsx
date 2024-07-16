@@ -40,7 +40,7 @@ const DropdownNodeFilter = ({
     if (countNotifications == 0) {
       setIsActive(true)
     }
-  }, [])
+  }, [countNotifications])
   const [categoryActiveIndex, setCategoryActiveIndex] = useState(0)
   function changeState(event: any) {
     if (countNotifications > 0 && !alwaysActive) {
@@ -113,7 +113,6 @@ const DropdownNodeFilter = ({
         <div className={styles.padding_reviews}>
           <BigFilter />
           <div className={styles.horizontal_line}></div>
-          <SizeBox height="30px" />
           <ReviewsNoBorder
             likes="55"
             money="200"

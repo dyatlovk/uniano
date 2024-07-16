@@ -3,24 +3,19 @@ import styles from './style.module.scss'
 import Typography from '../Typography/Typography'
 import InputCommon from '../inputs/InputCommon'
 import PopUpBottom from '../../ModalPopUps/PopUpBottom'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import DynamicPadding from '../DynamicPadding'
 import MyCheckbox from '../inputs/Checkbox'
 import SizeBox from '../SizeBox'
-import DoubleRangeSlider from '../DoubleRangeSlider'
-import MyButtonBlack from '../MyButton/variants/MyButtonBlack'
 import RangeForm from '../RangeForm'
 import DropdownNumber from './components/DropdownNumber'
 import DropdownRecent from './components/DropdownRecent'
-import ButtonChooseList from '../../ButtonChooseList'
-import ButtonsSelectList from '../../ButtonsSelectList'
 import MyButtonTransparentOrange from '../MyButton/variants/MyButtonTransparentOrange'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import HorizontalLine from '../Lines/HorizontalLine'
 import MyButtonTransparent from '../MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '../MyButton/variants/MyButtonOrange'
-import { setDate } from 'date-fns'
 
 type SearchFilterBarProps = {
   recent?: boolean
@@ -29,8 +24,6 @@ type SearchFilterBarProps = {
 }
 
 type ValuePiece = Date | null
-
-type Value = ValuePiece | [ValuePiece, ValuePiece]
 
 const SearchFilterBar = ({ recent, exportIcon }: SearchFilterBarProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
@@ -953,7 +946,7 @@ export const SelectFilterItem = ({
   const [isSelected, setIsSelected] = useState(false)
 
   return (
-    <div className="gap_10">
+    <div className={styles.item}>
       <MyCheckbox
         width="20px"
         basicValue={initState ?? false}

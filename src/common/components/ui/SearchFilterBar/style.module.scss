@@ -106,6 +106,21 @@
   gap: 5px;
 }
 
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 7px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #F5F5F5;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .filters_wrapper {

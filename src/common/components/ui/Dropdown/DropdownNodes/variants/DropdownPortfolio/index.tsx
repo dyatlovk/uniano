@@ -18,13 +18,10 @@ import { fakeUserConstant } from '@common/models/user'
 import TagsDisplay from '@common/components/TagsDisplay/index'
 import FilterList from '@common/components/FilterList/index'
 import TitleUnderlineActive from '@common/components/ui/TitleUnderlineActive/index'
-import SliderTransparentSwiper from '@common/components/ui/SliderTransparentSwiper/index'
 import SliderByRef from '@common/components/ui/SliderByRef/index'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import PopUpBottom from '@common/components/ModalPopUps/PopUpBottom/index'
-import ThreeLinesPopUp, {
-  ThreeLinesPopUpCustom,
-} from '@common/components/ui/ThreeLinesPopUp/index'
+import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import {
   StepOneButtonAddPortfolio,
@@ -484,6 +481,7 @@ const DropdownPortfolio = () => {
           callbackClose={() => {
             setShowEdit(false)
           }}
+          topPartContentGap="10px"
           title="Portfolio"
           nodeAfterTitle={
             <div style={{ width: '100%' }} className="gap_10">
@@ -544,7 +542,7 @@ const DropdownPortfolio = () => {
           setActiveCategory(item)
         }}
         dropnodes={
-          <div>
+          <div className="dropnodes">
             <div className={styles.node_wrapper}>
               {(() => {
                 const displayedItems = []
@@ -674,7 +672,7 @@ type DropdownItemProps = {
 }
 export const DropdownItem = ({ callback }: DropdownItemProps) => {
   return (
-    <div style={{ paddingTop: '10px' }}>
+    <div>
       <div
         onClick={() => {
           callback(true)

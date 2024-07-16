@@ -12,12 +12,14 @@ type InputDropdownProps = {
   callback?: (item: string) => void
   marginLeft?: boolean
   iconHeight?: string
+  iconWidth?: string
   padding?: string
   iconBeforeVariant?: React.ReactNode
 }
 const InputDropdown = ({
   padding,
   iconHeight,
+  iconWidth,
   iconBeforeVariant,
   marginLeft,
   initText = '',
@@ -54,9 +56,7 @@ const InputDropdown = ({
       <div className={styles.flex}>
         <Typography
           textLineHeight="1"
-          color={
-            currenText == initText ? AppColor.text : AppColor.text
-          }
+          color={currenText == initText ? AppColor.text : AppColor.text}
           variant="body4"
         >
           {currenText}
@@ -64,13 +64,17 @@ const InputDropdown = ({
         <div style={{ marginLeft: marginLeft ? 'auto' : '0px' }}>
           {showDropdown ? (
             <AppColor.chevronTop
-              fill={AppColor.transparentBlack}
-              height={iconHeight ?? '6px'}
+              fill={AppColor.text}
+              height={iconHeight ?? '7px'}
+              width={iconWidth ?? '12px'}
+              style={{ display: 'block' }}
             />
           ) : (
             <AppColor.chevronBottom
-              fill={AppColor.transparentBlack}
-              height={iconHeight ?? '6px'}
+              fill={AppColor.text}
+              height={iconHeight ?? '7px'}
+              width={iconWidth ?? '12px'}
+              style={{ display: 'block' }}
             />
           )}
         </div>
