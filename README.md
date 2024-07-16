@@ -22,6 +22,11 @@ If you want manual deploy, do:
 yarn deploy
 ```
 
+# Testing
+```bash
+yarn test
+```
+
 ### FAQ
 
 **Q**: I get error 'Cannot find module <module_name>' in my IDE

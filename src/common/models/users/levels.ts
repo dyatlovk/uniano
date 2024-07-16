@@ -1,20 +1,20 @@
 export namespace User {
   export type SkillType = {
-    level: number,
+    level: number
     points: {
-      min: number,
+      min: number
       max?: number
     }
-    label: SkillsLabels,
+    label: SkillsLabels
     color: string
   }
 
   export enum SkillsLabels {
-    Beginner = "Beginner",
-    Junior = "Junior",
-    Middle = "Middle",
-    Senior = "Senior",
-    Lead = "Lead"
+    Beginner = 'Beginner',
+    Junior = 'Junior',
+    Middle = 'Middle',
+    Senior = 'Senior',
+    Lead = 'Lead',
   }
 
   export enum SkillsArrange {
@@ -22,7 +22,7 @@ export namespace User {
     Junior,
     Middle,
     Senior,
-    Lead
+    Lead,
   }
 }
 
@@ -32,36 +32,36 @@ export const SkillsMap: User.SkillType[] = [
     label: User.SkillsLabels.Beginner,
     points: {
       min: 0,
-      max: 299
+      max: 299,
     },
-    color: "#b6de59"
+    color: '#b6de59',
   },
   {
     level: 2,
     label: User.SkillsLabels.Junior,
     points: {
       min: 300,
-      max: 1500
+      max: 1500,
     },
-    color: "#219653"
+    color: '#219653',
   },
   {
     level: 3,
     label: User.SkillsLabels.Middle,
     points: {
       min: 1501,
-      max: 6000
+      max: 6000,
     },
-    color: "#f2c94c"
+    color: '#f2c94c',
   },
   {
     level: 4,
     label: User.SkillsLabels.Senior,
     points: {
       min: 6001,
-      max: 15000
+      max: 15000,
     },
-    color: "#f4a72a"
+    color: '#f4a72a',
   },
   {
     level: 5,
@@ -69,8 +69,8 @@ export const SkillsMap: User.SkillType[] = [
     points: {
       min: 15001,
     },
-    color: "#eb5757"
-  }
+    color: '#eb5757',
+  },
 ]
 
 export class UserSkill {
@@ -91,7 +91,10 @@ export class UserSkill {
     let found: User.SkillType | undefined = undefined
     if (val < 0) return UserSkill.getLevelByLabel(User.SkillsLabels.Junior)
     SkillsMap.forEach(el => {
-      if (el.points.min <= val && (el.points.max > val || typeof (el.points.max) === "undefined")) {
+      if (
+        el.points.min <= val &&
+        (el.points.max > val || typeof el.points.max === 'undefined')
+      ) {
         found = el
         return
       }
@@ -115,20 +118,23 @@ export class UserSkill {
       return 100
     }
 
-    return Math.ceil(100 * current.level / max)
+    return Math.ceil((100 * current.level) / max)
   }
 
-  static isLevelRiched(current: User.SkillsLabels, checked: User.SkillsLabels): boolean {
+  static isLevelRiched(
+    current: User.SkillsLabels,
+    checked: User.SkillsLabels
+  ): boolean {
     const checkedEnum = UserSkill.findSkillEnumByLabel(checked)
     const currentEnum = UserSkill.findSkillEnumByLabel(current)
     return currentEnum >= checkedEnum
   }
 
   static findMaxSkills(): number {
-    let size = 0;
+    let size = 0
     for (let element in User.SkillsLabels) {
       if (isNaN(Number(element))) {
-        size++;
+        size++
       }
     }
 
@@ -164,4 +170,129 @@ export class UserSkill {
         return User.SkillsLabels.Lead
     }
   }
+}
+
+/**
+ * Tests
+ */
+if (import.meta.vitest) {
+  const { expect, test, describe } = import.meta.vitest
+
+  describe('getLevels', () => {
+    test('byIndex', () => {
+      const actual = UserSkill.getLevelByIndex(1)
+      const expected = {
+        level: 1,
+        label: User.SkillsLabels.Beginner,
+        points: {
+          min: 0,
+          max: 299,
+        },
+        color: '#b6de59',
+      }
+      expect(actual).toEqual(expected)
+    })
+
+    test('byIndexNotFound', () => {
+      const notFound = UserSkill.getLevelByIndex(SkillsMap.length + 1)
+      expect(notFound).toBeUndefined()
+    })
+
+    test('byLabel', () => {
+      const actual = UserSkill.getLevelByLabel(User.SkillsLabels.Beginner)
+      const expected = {
+        level: 1,
+        label: User.SkillsLabels.Beginner,
+        points: {
+          min: 0,
+          max: 299,
+        },
+        color: '#b6de59',
+      }
+      expect(actual).toEqual(expected)
+    })
+
+    test('findLevelByPointJunior', () => {
+      const actual = UserSkill.findLevelByPoint(300).label
+      const expected = User.SkillsLabels.Junior
+      expect(actual).toEqual(expected)
+    })
+
+    test('findLevelByPointLead', () => {
+      const actual = UserSkill.findLevelByPoint(16000).label
+      const expected = User.SkillsLabels.Lead
+      expect(actual).toEqual(expected)
+    })
+
+    test('findLevelByPointMid', () => {
+      const actual = UserSkill.findLevelByPoint(2015).label
+      const expected = User.SkillsLabels.Middle
+      expect(actual).toEqual(expected)
+    })
+
+    test('findLevelByNegativePoint', () => {
+      const actual = UserSkill.findLevelByPoint(-10).label
+      const expected = User.SkillsLabels.Junior
+      expect(actual).toEqual(expected)
+    })
+
+    test('levelPosition', () => {
+      const beginner = UserSkill.findLevelPosition(User.SkillsLabels.Beginner)
+      expect(beginner).toEqual(0)
+
+      const jun = UserSkill.findLevelPosition(User.SkillsLabels.Junior)
+      expect(jun).toEqual(40)
+
+      const mid = UserSkill.findLevelPosition(User.SkillsLabels.Middle)
+      expect(mid).toEqual(60)
+
+      const senior = UserSkill.findLevelPosition(User.SkillsLabels.Senior)
+      expect(senior).toEqual(80)
+
+      const lead = UserSkill.findLevelPosition(User.SkillsLabels.Lead)
+      expect(lead).toEqual(100)
+    })
+
+    test('isLevelRiched', () => {
+      const beginJun = UserSkill.isLevelRiched(
+        User.SkillsLabels.Beginner,
+        User.SkillsLabels.Junior
+      )
+      expect(beginJun).toBeFalsy()
+
+      const junBegin = UserSkill.isLevelRiched(
+        User.SkillsLabels.Junior,
+        User.SkillsLabels.Beginner
+      )
+      expect(junBegin).toBeTruthy()
+
+      const midBegin = UserSkill.isLevelRiched(
+        User.SkillsLabels.Middle,
+        User.SkillsLabels.Beginner
+      )
+      expect(midBegin).toBeTruthy()
+
+      const seniorLead = UserSkill.isLevelRiched(
+        User.SkillsLabels.Senior,
+        User.SkillsLabels.Lead
+      )
+      expect(seniorLead).toBeFalsy()
+
+      const leadMid = UserSkill.isLevelRiched(
+        User.SkillsLabels.Lead,
+        User.SkillsLabels.Middle
+      )
+      expect(leadMid).toBeTruthy()
+
+      const seniorBegin = UserSkill.isLevelRiched(
+        User.SkillsLabels.Senior,
+        User.SkillsLabels.Beginner
+      )
+      expect(seniorBegin).toBeTruthy()
+    })
+
+    test('skillsCount', () => {
+      expect(UserSkill.findMaxSkills()).toEqual(5)
+    })
+  })
 }

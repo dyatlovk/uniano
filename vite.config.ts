@@ -4,13 +4,7 @@ import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
   base: '/uniano/',
-  plugins: [
-    react(),
-    svgr(),
-  ],
-  optimizeDeps: {
-    exclude: ['@jest/globals']
-  },
+  plugins: [react(), svgr()],
   server: {
     host: '127.0.0.1',
     port: 3000,
@@ -36,5 +30,8 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+  },
+  test: {
+    includeSource: ['src/**/*.{js,ts}'],
   },
 })
