@@ -16,11 +16,11 @@
 .image_big_placeholder {
   width: 100%;
   border-radius: 20px;
+  background-color: #FCFCFC;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #FCFCFC;
   @include weakShadow;
 
   svg {
@@ -29,14 +29,26 @@
   }
 }
 
+.image_preview_title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-weight: 500;
+  padding: 3px 9px;
+  text-transform: uppercase;
+}
+
 .image_small_placeholder {
   width: 100%;
   border-radius: 20px;
-
-  @include weakShadow;
+  position: relative;
+  background-color: #FCFCFC;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include weakShadow;
 
   svg {
     height: 30px;
@@ -47,6 +59,7 @@
 .small_images {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: relative;
 
   >img {
     height: 60px;

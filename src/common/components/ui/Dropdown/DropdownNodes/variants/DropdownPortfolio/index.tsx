@@ -58,6 +58,8 @@ const dropdownItems = [
   },
 ]
 
+const finalStepIndex = 8
+
 const DropdownPortfolio = () => {
   const [activeCategory, setActiveCategory] = useState('All')
   const [showItemsCount, setShowItemsCount] = useState(4)
@@ -322,7 +324,7 @@ const DropdownPortfolio = () => {
                 >
                   Cancel
                 </MyButtonTransparent>
-                {activeStep != 8 && (
+                {activeStep != finalStepIndex && (
                   <MyButtonOrange
                     disabled={
                       mapsOfValues[activeStep] == null ||
@@ -338,7 +340,7 @@ const DropdownPortfolio = () => {
                     Next
                   </MyButtonOrange>
                 )}
-                {activeStep == 8 && (
+                {activeStep == finalStepIndex && (
                   <MyButtonOrange
                     disabled={
                       mapsOfValues[activeStep] == null ||
@@ -351,7 +353,7 @@ const DropdownPortfolio = () => {
                     fontWeight="500"
                     textTransform="uppercase"
                   >
-                    Save
+                    Add
                   </MyButtonOrange>
                 )}
               </div>

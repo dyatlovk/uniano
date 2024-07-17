@@ -55,14 +55,17 @@ const ImageCardsPlaceholder = ({
         {imagesLocal.map((item, index) => {
           if (item != '') {
             return (
-              <img
-                style={{ opacity: activeImage == item ? 1 : 0.4 }}
-                onClick={() => {
-                  setActiveImage(item)
-                }}
-                src={item}
-                alt=""
-              />
+              <>
+                <img
+                  style={{ opacity: activeImage == item ? 1 : 0.4 }}
+                  onClick={() => {
+                    setActiveImage(item)
+                  }}
+                  src={item}
+                  alt=""
+                />
+                <span className={styles.image_preview_title}>main</span>
+              </>
             )
           } else {
             return (
