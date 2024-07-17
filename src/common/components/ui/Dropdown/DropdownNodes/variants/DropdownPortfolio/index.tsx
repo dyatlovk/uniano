@@ -223,35 +223,40 @@ const DropdownPortfolio = () => {
           callbackClose={() => {
             setAddQuestion(false)
           }}
+          prevClose={true}
           title="Add question"
         >
           <Typography variant="body3" fontWeight="500" textLineHeight="1">
             Question
           </Typography>
           <DynamicPadding desktop="28px" mobile="18px" />
-          <InputCommon
-            callback={item => {
-              setTmpStepFive(prev => [
-                { question: item, answer: prev[0].answer },
-              ])
-            }}
-            placeholder="Question"
-          />
+          <div className={styles.questionInput}>
+            <InputCommon
+              callback={item => {
+                setTmpStepFive(prev => [
+                  { question: item, answer: prev[0].answer },
+                ])
+              }}
+              placeholder="Question"
+            />
+          </div>
           <DynamicPadding desktop="28px" mobile="18px" />
           <Typography variant="body3" fontWeight="500" textLineHeight="1">
             Answer
           </Typography>
           <DynamicPadding desktop="28px" mobile="18px" />
-          <InputCommon
-            padding="15px"
-            callback={item => {
-              setTmpStepFive(prev => [
-                { question: prev[0].question, answer: item },
-              ])
-            }}
-            placeholder="Answer"
-            multiLine={true}
-          />
+          <div className={styles.questionInput}>
+            <InputCommon
+              padding="15px"
+              callback={item => {
+                setTmpStepFive(prev => [
+                  { question: prev[0].question, answer: item },
+                ])
+              }}
+              placeholder="Answer"
+              multiLine={true}
+            />
+          </div>
           <DynamicPadding desktop="30px" mobile="20px" />
 
           <div className={styles.flex_end}>
