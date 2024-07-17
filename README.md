@@ -1,6 +1,8 @@
 #### Build status
 [![Deploy static content to Pages](https://github.com/dyatlovk/uniano/actions/workflows/static_pages.yml/badge.svg)](https://github.com/dyatlovk/uniano/actions/workflows/static_pages.yml)
 
+[![CI](https://github.com/dyatlovk/uniano/actions/workflows/tests.yml/badge.svg)](https://github.com/dyatlovk/uniano/actions/workflows/tests.yml)
+
 # Development setup
 yarn
 ```bash
