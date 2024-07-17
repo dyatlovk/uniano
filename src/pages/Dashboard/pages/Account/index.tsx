@@ -1192,9 +1192,7 @@ const Account = () => {
             <DropdownPortfolio />
           </div>
         </div>
-
-        <DynamicPadding />
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

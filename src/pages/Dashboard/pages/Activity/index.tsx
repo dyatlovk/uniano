@@ -5,8 +5,6 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import DetailsTableMissions from '@common/components/ui/DetailsTable/variants/DetailsTableMissions/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import DetailsTableActivity, {

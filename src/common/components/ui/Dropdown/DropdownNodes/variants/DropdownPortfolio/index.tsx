@@ -599,13 +599,17 @@ const EditPortfolio = () => {
             url={fakeUserConstant.image}
           />
           <div className={styles.flex_column} style={{ alignItems: 'start' }}>
-            <Typography
-              variant="body4"
-              fontWeight="500"
-              className="underline_appearance"
-            >
-              Logo by sample in vector in maximum quality{' '}
-            </Typography>
+            <div className={styles.item_title}>
+              <Typography
+                variant="body4"
+                fontWeight="500"
+                className="underline_appearance"
+              >
+                Logo by sample in vector in maximum quality
+              </Typography>
+              <AppColor.playGreen />
+              <AppColor.homeAccept />
+            </div>
             <div className="gap_5">
               <Typography
                 variant="body5"
@@ -623,9 +627,13 @@ const EditPortfolio = () => {
           </div>
         </div>
       </div>
-      <Typography variant="body3" fontWeight="500">
-        $200
-      </Typography>
+      <div className={styles.price}>
+        <Typography variant="body3" fontWeight="500">
+          $200
+          <AppColor.cart height={22} fill={AppColor.text} />
+          <AppColor.flag height={22} />
+        </Typography>
+      </div>
       <PopUpBottom
         positionRight="-10px"
         showBackgroundHover={true}

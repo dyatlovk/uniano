@@ -61,7 +61,7 @@ const DropdownNodeActivity = ({
             <div className={styles.absolute_show}>
               {' '}
               <MyButtonTransparentBlack
-                textTransform='uppercase'
+                textTransform="uppercase"
                 onClick={() => {
                   setShowItemsCount(prev => prev + 4)
                 }}

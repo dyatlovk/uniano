@@ -2,7 +2,6 @@ import { ActivityItem } from '@common/components/ui/Dropdown/DropdownNodes/varia
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 
 const ActivityModal = () => {
   return (

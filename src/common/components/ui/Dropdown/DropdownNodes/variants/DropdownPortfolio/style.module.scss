@@ -94,3 +94,23 @@
   background-color: $text;
   border-radius: 5px;
 }
+
+.price {
+  >p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.item_title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    height: 19px;
+    width: 19px;
+  }
+}
