@@ -30,9 +30,9 @@ const AddRewardButton = () => {
           nodesBeforeClose={[]}
         >
           <Typography variant="body3" fontWeight="500">
-            Add reward
+            Reward
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="26px" mobile="20px" />
           <InputDropdown
             labelIcon={<></>}
             iconBeforeVariant={<AppColor.gift />}
@@ -45,6 +45,7 @@ const AddRewardButton = () => {
           <Typography variant="body3" fontWeight="500">
             Title
           </Typography>
+          <DynamicPadding desktop="26px" mobile="20px" />
           <InputCommon
             padding="15px 20px"
             placeholder="Enter title"
@@ -54,6 +55,7 @@ const AddRewardButton = () => {
           <Typography variant="body3" fontWeight="500">
             Image
           </Typography>
+          <DynamicPadding desktop="26px" mobile="20px" />
 
           <div className="gap_20">
             <img
@@ -88,7 +90,7 @@ const AddRewardButton = () => {
           <Typography variant="body3" fontWeight="500">
             Amount
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="26px" mobile="20px" />
           <div className={styles.grid_20}>
             <InputCommon
               padding="15px 30px"
