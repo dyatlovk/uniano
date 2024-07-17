@@ -5,7 +5,6 @@ import NavigationItem from '@common/components/navigation_history/NavigationItem
 import AppColor from '@common/styles/variables-static'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import headphones from '@assets/images/rewards-1.png'
@@ -248,8 +247,7 @@ const RewardDetails = ({ challenge, date, item }: RewardDetailsProps) => {
       <div style={{ position: 'relative' }}>
         <HorizontalLine />
         <div className={styles.absolute_box}>
-          <div style={{ width: 'fit-content' }}>
-            {' '}
+          <div style={{ width: 'fit-content', border: '10px solid #fff' }}>
             <DarkBox fonstSize="13px" text="MISSION" />
           </div>
         </div>
@@ -275,7 +273,7 @@ const RewardDetails = ({ challenge, date, item }: RewardDetailsProps) => {
       <div style={{ position: 'relative' }}>
         <HorizontalLine />
         <div className={styles.absolute_box}>
-          <div style={{ width: 'fit-content' }}>
+          <div style={{ width: 'fit-content', border: '10px solid #fff' }}>
             <DarkBox fonstSize="13px" text="CAN BE USED" />
           </div>
         </div>
