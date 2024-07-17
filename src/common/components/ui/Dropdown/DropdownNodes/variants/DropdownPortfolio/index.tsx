@@ -225,10 +225,10 @@ const DropdownPortfolio = () => {
           }}
           title="Add question"
         >
-          <Typography variant="body3" fontWeight="500">
+          <Typography variant="body3" fontWeight="500" textLineHeight="1">
             Question
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="28px" mobile="18px" />
           <InputCommon
             callback={item => {
               setTmpStepFive(prev => [
@@ -237,11 +237,11 @@ const DropdownPortfolio = () => {
             }}
             placeholder="Question"
           />
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <Typography variant="body3" fontWeight="500">
+          <DynamicPadding desktop="28px" mobile="18px" />
+          <Typography variant="body3" fontWeight="500" textLineHeight="1">
             Answer
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="28px" mobile="18px" />
           <InputCommon
             padding="15px"
             callback={item => {
