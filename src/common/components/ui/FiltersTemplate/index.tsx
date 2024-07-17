@@ -71,7 +71,7 @@ export const FilterTemplateDropdown = () => {
         onClick={() => {
           setShowDropdown(prev => !prev)
         }}
-        className="flex_space_between cursor"
+        className={`${styles.icon} flex_space_between cursor`}
       >
         <AppColor.template />
       </div>
@@ -81,7 +81,7 @@ export const FilterTemplateDropdown = () => {
         style={{ opacity: showDropdown ? '1' : '0', right: '-50px' }}
       >
         <AnimateHeight show={showDropdown}>
-          <div className={styles.padding}>
+          <div className={styles.padding_first}>
             <Typography
               variant="body5"
               color={AppColor.transparentBlack}
@@ -90,10 +90,9 @@ export const FilterTemplateDropdown = () => {
               Recent
             </Typography>
           </div>
-          <Recent text={'01/23/2023 23:10 - Crypto Wall ...'} />
-          <Recent text={'01/23/2023 23:10 - Crypto Wall ...'} />
+          <Recent text={'01/23/2023 23:10 - Crypto Wall text'} />
+          <Recent text={'01/23/2023 23:10 - Crypto Wall test2'} />
 
-          <SizeBox height="10px" />
           <div className={styles.padding}>
             <Typography
               variant="body5"
@@ -103,9 +102,9 @@ export const FilterTemplateDropdown = () => {
               Saved
             </Typography>
           </div>
-          <Recent text={'01/23/2023 23:10 - Crypto Wall ...'} edit={true} />
-          <Recent text={'01/23/2023 23:10 - Crypto Wall ...'} edit={true} />
-          <SizeBox height="10px" />
+          <Recent text={'01/23/2023 23:10 - Crypto Wall text'} edit={true} />
+          <Recent text={'01/23/2023 23:10 - Crypto Wall 2'} edit={true} />
+          <div className={styles.current_set}>Save current set</div>
         </AnimateHeight>
       </div>
     </div>
