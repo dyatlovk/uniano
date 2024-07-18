@@ -16,7 +16,6 @@ import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/compone
 import InfoBox from '@common/components/ui/InfoBox/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
-import { Selectbox } from '@pages/Service/Service/index'
 import RadioButton from '@common/components/ui/RadioButton/index'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
@@ -161,7 +160,7 @@ const SubscriptionsPlans = () => {
               filter="Start"
               description="All the basics for start to work with your freelancer"
               price={0}
-              isActive={activePlan == 'Start'}
+              isActive={activePlan === 'Start'}
               callback={item => {
                 setActivePlan(item)
               }}
@@ -172,7 +171,7 @@ const SubscriptionsPlans = () => {
               filter="Pro"
               description="In case you need a little bit more from your freelancer"
               price={39}
-              isActive={activePlan == 'Pro'}
+              isActive={activePlan === 'Pro'}
               callback={item => {
                 setActivePlan(item)
               }}
@@ -183,7 +182,7 @@ const SubscriptionsPlans = () => {
               filter="Ultimate"
               description="For teams and organizations to build business"
               price={59}
-              isActive={activePlan == 'Ultimate'}
+              isActive={activePlan === 'Ultimate'}
               callback={item => {
                 setActivePlan(item)
               }}
@@ -292,7 +291,7 @@ const SubscriptionsPlans = () => {
             Add own service
           </Typography>
         </div>
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

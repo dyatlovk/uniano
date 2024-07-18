@@ -1,13 +1,9 @@
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
-import { useHover } from '@common/helpers/useHover'
-import ModalTriangleTop from '@common/components/ui/modals/ModalTriangleTop/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import { useState } from 'react'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import { useEffect, useState } from 'react'
 
 export type SaleCardProps = {
   filter: string
@@ -34,30 +30,49 @@ const SaleCard = ({
         {filter}
       </Typography>
 
-      {price > 0 ? (
-        <div className={styles.text_flex}>
+      <div className={styles.price_section}>
+        {price > 0 ? (
+          <div className={styles.text_flex}>
+            <MakeFullPrice price={price} isActive={isActive} />
+          </div>
+        ) : (
           <Typography
-            contenteditable="true"
-            textLineHeight="1"
-            variant="body4"
+            textLineHeight="100%"
+            variant="titleSmall"
             color={AppColor.text}
-            fontWeight="400"
-          ></Typography>
-        </div>
-      ) : (
-        <Typography
-          textLineHeight="100%"
-          variant="titleSmall"
-          color={AppColor.text}
-          fontWeight="600"
-        >
-          FREE
-        </Typography>
-      )}
-      <HorizontalLine width="154px" />
+            fontWeight="600"
+          >
+            FREE
+          </Typography>
+        )}
+        <HorizontalLine width="154px" />
+      </div>
       <Typography contenteditable="true" variant="body4">
         {description}
       </Typography>
+    </div>
+  )
+}
+
+interface FullPriceProps {
+  price: number
+  currencySign?: string
+  isActive: boolean
+}
+const MakeFullPrice = ({
+  price,
+  currencySign = '$',
+  isActive = false,
+}: FullPriceProps): JSX.Element => {
+  return (
+    <div className={styles.full_price}>
+      <div className={styles.price}>
+        <span className={styles.currency_sign}>{currencySign}</span>
+        <span className={styles.price_value} contentEditable={isActive}>
+          {price.toString()}
+        </span>
+      </div>
+      <span className={styles.price_period}>/month</span>
     </div>
   )
 }

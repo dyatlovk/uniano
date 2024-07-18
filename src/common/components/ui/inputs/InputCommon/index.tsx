@@ -1,6 +1,6 @@
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHover } from '@common/helpers/useHover'
 
 type InputCommonProps = {
@@ -21,6 +21,7 @@ type InputCommonProps = {
   boxShadowNone?: boolean
   maxSymbolCount?: number
   endNode?: React.ReactNode
+  disabled?: boolean
 }
 const InputCommon = ({
   boxShadowNone,
@@ -40,8 +41,13 @@ const InputCommon = ({
   backgroundColor,
   textColor,
   type,
+  disabled,
 }: InputCommonProps) => {
-  const [text, setText] = useState(initText)
+  const [text, setText] = useState<string>(initText)
+
+  useEffect(() => {
+    setText(initText)
+  }, [])
 
   function handleChange(item: string) {
     callback(item)
@@ -80,6 +86,7 @@ const InputCommon = ({
               backgroundColor: backgroundColor ?? 'white',
             }}
             placeholder={placeholder}
+            disabled={disabled}
           ></textarea>
         </>
       ) : (
@@ -103,6 +110,7 @@ const InputCommon = ({
               backgroundColor: backgroundColor ?? 'white',
             }}
             placeholder={placeholder}
+            disabled={disabled}
           />
           <div
             onClick={() => {

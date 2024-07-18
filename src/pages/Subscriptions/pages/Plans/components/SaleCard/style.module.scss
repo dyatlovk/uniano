@@ -9,7 +9,8 @@
   position: relative;
 
   [contenteditable] {
-    outline: none; /* Remove the default focus outline */
+    outline: none;
+    /* Remove the default focus outline */
     white-space: pre-wrap;
     max-width: 260px;
   }
@@ -31,12 +32,33 @@
   border-radius: 20px;
 }
 
+.price_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.full_price {
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
+  line-height: 31px;
+}
+
+.price_value,
+.currency_sign {
+  font-size: 29px;
+  font-weight: 700;
+  color: $text;
+}
+
+.price_period {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(1, 1, 1, 0.5);
+}
+
 @media (min-width: $tabletSize) {
-
-  .box_wrapper {
-    max-width: 300px;
-  }
-
   .box_wrapper {
     gap: 15px;
   }
