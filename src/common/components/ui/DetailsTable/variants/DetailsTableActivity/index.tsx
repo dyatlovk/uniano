@@ -14,6 +14,7 @@ export type DetailsTableActivityProps = {
 
 export type DetailsTableActivityPropsItem = {
   date: string
+  time: string
   userName: string
   category: string
   rewardAmount: string
@@ -55,7 +56,10 @@ const DetailsTableActivity = ({ information }: DetailsTableActivityProps) => {
               {
                 title: 'Date',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <div>
+                    <Typography variant="body4">{currentItem.date}</Typography>
+                    <Typography variant="body4">{currentItem.time}</Typography>
+                  </div>
                 ),
               },
               {
@@ -153,7 +157,7 @@ const MissionItem = ({ text, image }: { text?: string; image: any }) => {
 
       <div className={styles.mission_wrapper}>
         <div>
-          <Typography textLineHeight="1" variant="body4" fontWeight="500">
+          <Typography textLineHeight="1.5" variant="body4" fontWeight="500">
             {text}
           </Typography>
         </div>

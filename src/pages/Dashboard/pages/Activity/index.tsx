@@ -15,7 +15,8 @@ import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 
 const missionContent: DetailsTableActivityPropsItem[] = [
   {
-    date: 'Feb 26, 2021 16:32',
+    date: 'Feb 26, 2021',
+    time: '16:32',
     userName: 'Artem M.',
     actionImage: <AppColor.freelancer width={'38px'} height={'38px'} />,
     actionText:
@@ -62,7 +63,7 @@ const Activity = () => {
           <DetailsTableActivity information={missionContent} />
         </div>
 
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>
