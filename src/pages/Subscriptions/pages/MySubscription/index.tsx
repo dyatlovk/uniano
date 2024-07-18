@@ -54,9 +54,9 @@ const MySubscription = () => {
             />
           }
         />
-        <DynamicPadding />
-        <SearchFilterBar />
-        <DynamicPadding />
+        <DynamicPadding desktop="38px" />
+        <SearchFilterBar usePeriod={false} />
+        <DynamicPadding desktop="46px" />
 
         <FilterList
           callback={item => {
@@ -97,7 +97,7 @@ const MySubscription = () => {
           subscriptions
         </Typography>
 
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

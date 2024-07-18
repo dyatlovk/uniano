@@ -21,11 +21,16 @@ type SearchFilterBarProps = {
   recent?: boolean
   date?: string
   exportIcon?: boolean
+  usePeriod?: boolean
 }
 
 type ValuePiece = Date | null
 
-const SearchFilterBar = ({ recent, exportIcon }: SearchFilterBarProps) => {
+const SearchFilterBar = ({
+  recent,
+  exportIcon,
+  usePeriod,
+}: SearchFilterBarProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
   const today = new Date()
@@ -153,142 +158,147 @@ const SearchFilterBar = ({ recent, exportIcon }: SearchFilterBarProps) => {
       <InputCommon width="290px" callback={() => {}} placeholder="Search" />
 
       <div className={styles.filters_wrapper}>
-        <div className={`${styles.flex_item} cursor`}>
-          <PopUpBottom
-            callbackShow={item => {
-              setShowedCalendar(item)
-            }}
-            showNode={
-              <div className="gap_10 cursor">
-                <AppColor.calendar />
-                <Typography
-                  textLineHeight="1"
-                  textTransform="uppercase"
-                  variant="body4"
-                  fontWeight="500"
-                  color={
-                    showedCalendar ? AppColor.text : AppColor.transparentBlack
-                  }
+        {usePeriod && (
+          <div className={`${styles.flex_item} cursor`}>
+            <PopUpBottom
+              callbackShow={item => {
+                setShowedCalendar(item)
+              }}
+              showNode={
+                <div className="gap_10 cursor">
+                  <AppColor.calendar />
+                  <Typography
+                    textLineHeight="1"
+                    textTransform="uppercase"
+                    variant="body4"
+                    fontWeight="500"
+                    color={
+                      showedCalendar ? AppColor.text : AppColor.transparentBlack
+                    }
+                  >
+                    {formattedStart} - {formattedEnd}
+                  </Typography>
+                </div>
+              }
+              popUpNode={
+                <div
+                  className={styles.calendar_wrapper}
+                  style={{ display: 'flex' }}
                 >
-                  {formattedStart} - {formattedEnd}
-                </Typography>
-              </div>
-            }
-            popUpNode={
-              <div
-                className={styles.calendar_wrapper}
-                style={{ display: 'flex' }}
-              >
-                <div className={styles.date_grid}>
-                  <DateText
-                    onClick={handleLastWeekClick}
-                    text={'Last 7 days'}
-                  />
-                  <DateText
-                    onClick={handleLastTwoWeeks}
-                    text={'Last 14 days'}
-                  />
-                  <DateText onClick={handleLastMonth} text={'Last 30 days'} />
-                  <DateText
-                    onClick={handleLastThreeMonth}
-                    text={'Last 3 months'}
-                  />
-                  <DateText onClick={handleLastYear} text={'Last 12 months'} />
-                  <DateText
-                    onClick={handleFirstDayOfMonth}
-                    text={'Month to date'}
-                  />
-                  <DateText onClick={() => {}} text={'Quarter to date'} />
-                  <DateText onClick={() => {}} text={'All time'} />
-                  <DateText onClick={() => {}} text={'Custom'} />
-                </div>
-                <div className={styles.vertical_line}></div>
-                <div>
-                  <div style={{ display: 'flex' }}>
-                    <div className={styles.calendar_item_wrapper}>
-                      <Calendar
-                        next2AriaLabel={null}
-                        prev2AriaLabel={null}
-                        prev2Label={null}
-                        next2Label={null}
-                        onChange={handleStartDateChange}
-                        value={[startDate, endDate]}
-                        locale="en-US"
-                        calendarType="iso8601"
-                        formatShortWeekday={(locale, date) => {
-                          const weekdays = [
-                            'Su',
-                            'Mo',
-                            'Tu',
-                            'We',
-                            'Th',
-                            'Fr',
-                            'Sa',
-                          ]
-                          return weekdays[date.getDay()]
-                        }}
-                      />
-                    </div>
-                    <div className={styles.vertical_line}></div>
-                    <div className={styles.calendar_item_wrapper}>
-                      <Calendar
-                        next2AriaLabel={null}
-                        prev2AriaLabel={null}
-                        prev2Label={null}
-                        next2Label={null}
-                        onChange={handleEndDateChange}
-                        value={[startDate, endDate]}
-                        locale="en-US"
-                        calendarType="iso8601"
-                        formatShortWeekday={(locale, date) => {
-                          const weekdays = [
-                            'Su',
-                            'Mo',
-                            'Tu',
-                            'We',
-                            'Th',
-                            'Fr',
-                            'Sa',
-                          ]
-                          return weekdays[date.getDay()]
-                        }}
-                      />
-                    </div>
+                  <div className={styles.date_grid}>
+                    <DateText
+                      onClick={handleLastWeekClick}
+                      text={'Last 7 days'}
+                    />
+                    <DateText
+                      onClick={handleLastTwoWeeks}
+                      text={'Last 14 days'}
+                    />
+                    <DateText onClick={handleLastMonth} text={'Last 30 days'} />
+                    <DateText
+                      onClick={handleLastThreeMonth}
+                      text={'Last 3 months'}
+                    />
+                    <DateText
+                      onClick={handleLastYear}
+                      text={'Last 12 months'}
+                    />
+                    <DateText
+                      onClick={handleFirstDayOfMonth}
+                      text={'Month to date'}
+                    />
+                    <DateText onClick={() => {}} text={'Quarter to date'} />
+                    <DateText onClick={() => {}} text={'All time'} />
+                    <DateText onClick={() => {}} text={'Custom'} />
                   </div>
-                  <HorizontalLine />
+                  <div className={styles.vertical_line}></div>
+                  <div>
+                    <div style={{ display: 'flex' }}>
+                      <div className={styles.calendar_item_wrapper}>
+                        <Calendar
+                          next2AriaLabel={null}
+                          prev2AriaLabel={null}
+                          prev2Label={null}
+                          next2Label={null}
+                          onChange={handleStartDateChange}
+                          value={[startDate, endDate]}
+                          locale="en-US"
+                          calendarType="iso8601"
+                          formatShortWeekday={(locale, date) => {
+                            const weekdays = [
+                              'Su',
+                              'Mo',
+                              'Tu',
+                              'We',
+                              'Th',
+                              'Fr',
+                              'Sa',
+                            ]
+                            return weekdays[date.getDay()]
+                          }}
+                        />
+                      </div>
+                      <div className={styles.vertical_line}></div>
+                      <div className={styles.calendar_item_wrapper}>
+                        <Calendar
+                          next2AriaLabel={null}
+                          prev2AriaLabel={null}
+                          prev2Label={null}
+                          next2Label={null}
+                          onChange={handleEndDateChange}
+                          value={[startDate, endDate]}
+                          locale="en-US"
+                          calendarType="iso8601"
+                          formatShortWeekday={(locale, date) => {
+                            const weekdays = [
+                              'Su',
+                              'Mo',
+                              'Tu',
+                              'We',
+                              'Th',
+                              'Fr',
+                              'Sa',
+                            ]
+                            return weekdays[date.getDay()]
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <HorizontalLine />
 
-                  <div className={styles.full_space}>
-                    <div className="gap_10">
+                    <div className={styles.full_space}>
                       <div className="gap_10">
-                        <DayPreviwBox text={formattedStart} />
-                        <AppColor.minus fill={AppColor.text} />
-                        <DayPreviwBox text={formattedEnd} />
-                      </div>
+                        <div className="gap_10">
+                          <DayPreviwBox text={formattedStart} />
+                          <AppColor.minus fill={AppColor.text} />
+                          <DayPreviwBox text={formattedEnd} />
+                        </div>
 
-                      <div className="gap_10" style={{ marginLeft: 'auto' }}>
-                        <MyButtonTransparent
-                          fontWeight="500"
-                          onClick={() => {}}
-                          textTransform="uppercase"
-                        >
-                          Cancel
-                        </MyButtonTransparent>
-                        <MyButtonOrange
-                          fontWeight="500"
-                          onClick={() => {}}
-                          textTransform="uppercase"
-                        >
-                          Save
-                        </MyButtonOrange>
+                        <div className="gap_10" style={{ marginLeft: 'auto' }}>
+                          <MyButtonTransparent
+                            fontWeight="500"
+                            onClick={() => {}}
+                            textTransform="uppercase"
+                          >
+                            Cancel
+                          </MyButtonTransparent>
+                          <MyButtonOrange
+                            fontWeight="500"
+                            onClick={() => {}}
+                            textTransform="uppercase"
+                          >
+                            Save
+                          </MyButtonOrange>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            }
-            topPaddingFromNode="30px"
-          />
-        </div>
+              }
+              topPaddingFromNode="30px"
+            />
+          </div>
+        )}
         <div className={styles.flex_item}>
           <PopUpBottom
             showNode={
