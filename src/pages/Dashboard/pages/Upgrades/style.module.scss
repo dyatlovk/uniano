@@ -150,10 +150,9 @@
 }
 
 .top_bar_text {
-  padding: 7px 14px;
-
-  @include weakShadow;
+  padding: 15px 19px;
   border-radius: 20px;
+  @include weakShadow;
 }
 
 .grade_absolute {

@@ -232,9 +232,7 @@ const Upgrades = () => {
             />
           </div>
         </div>
-
-        <DynamicPadding />
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>
@@ -377,6 +375,7 @@ const ActiveUpgradeGradeCircle = ({
               textLineHeight="1"
               textTransform="uppercase"
               variant="body4"
+              fontWeight="500"
               color={isNext ? AppColor.text : 'white'}
             >
               Grade
@@ -401,13 +400,13 @@ const ActiveUpgradeGradeCircle = ({
         </div>
 
         <div style={{ display: 'flex' }}>
-          <DynamicPadding desktop="10px" mobile="0px" side="right" />
           <div
             style={{ display: 'flex', width: '100%', justifyContent: 'center' }}
           >
             <Typography
               textLineHeight="100%"
               variant="body4"
+              fontWeight="500"
               color={
                 active
                   ? AppColor.orange
