@@ -60,8 +60,7 @@ const CreateTeamButton = () => {
           callbackClose={() => {
             setShowModal(false)
           }}
-          title="Add team"
-          nodesBeforeClose={[<AppColor.template />]}
+          title="Create team"
         >
           <div className="gap_5">
             <Typography variant="body3" fontWeight="500">
@@ -84,7 +83,7 @@ const CreateTeamButton = () => {
                 setErrorNameLength(false)
               }
             }}
-            placeholder="Type..."
+            placeholder="Write the name of the team"
             padding="15px 20px"
           />
           <SizeBox height="5px" />
@@ -107,7 +106,7 @@ const CreateTeamButton = () => {
             callback={item => {
               setUsername(item)
             }}
-            placeholder="Type..."
+            placeholder="Write the username"
             padding="15px 20px"
           />
           <SizeBox height="5px" />
