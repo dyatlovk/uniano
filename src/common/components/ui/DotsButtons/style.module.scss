@@ -1,0 +1,20 @@
+.wrapper {
+  width: 30px;
+  height: 15px;
+  border-radius: 5px;
+  transition: 0.2s;
+  background-color: white;
+  display: flex;
+  cursor: pointer;
+  @include weakShadow;
+
+  svg {
+    margin: auto;
+    width: 12px;
+    height: 5px;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}

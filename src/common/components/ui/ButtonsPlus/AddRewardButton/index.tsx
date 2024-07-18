@@ -101,6 +101,7 @@ const AddRewardButton = () => {
               placeholder="Enter Manually"
               type="number"
               width="100%"
+              backgroundColor="#FCFCFC"
             />
             <SelectItemSix
               activeText={activeSelection}

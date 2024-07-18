@@ -22,6 +22,7 @@ import {
 } from '@common/components/ui/ThreeLinesPopUp/index'
 import AddRewardButton from '@common/components/ui/ButtonsPlus/AddRewardButton/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import DotsButton from '@common/components/ui/DotsButtons/index'
 
 const rewards: RewardItemProps[] = [
   {
@@ -256,16 +257,25 @@ const RewardDetails = ({ challenge, date, item }: RewardDetailsProps) => {
       <div className="flex_space_between">
         <div className="gap_10">
           <AppColor.taskCheck />
-          <div className="gap_5">
-            <Typography variant="body4" fontWeight="500">
+          <div className={styles.reward_item_text}>
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              className={styles.reward_item_title}
+            >
               {challenge}
+              <AppColor.subscriptions />
             </Typography>
-            <AppColor.subscriptions />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={AppColor.orange}
+              style={{ gap: '10px', display: 'flex', alignItems: 'center' }}
+            >
+              10 of 10 completed
+              <DotsButton />
+            </Typography>
           </div>
-          <SizeBox height="8px" />
-          <Typography variant="body4" fontWeight="500" color={AppColor.orange}>
-            10 of 10 completed
-          </Typography>
         </div>
         <Typography variant="body4">{date}</Typography>
       </div>

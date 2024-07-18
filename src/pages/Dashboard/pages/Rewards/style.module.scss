@@ -57,6 +57,7 @@
   gap: 15px;
   width: 100%;
 }
+
 /*====================================================================================================*/
 
 .search_wrapper {
@@ -65,7 +66,7 @@
   gap: 20px;
   align-items: center;
 
-  > input {
+  >input {
     padding: 8px 15px;
     font-size: 1rem;
     color: rgba($color: black, $alpha: 0.5);
@@ -94,6 +95,19 @@
   left: 50%;
 }
 
+.reward_item_text {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.reward_item_title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 @media (min-width: $tabletSize) {
 
   .rewards_wrapper {
@@ -117,6 +131,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
   /*====================================================================================================*/
 
   .top_flex {
@@ -128,5 +143,6 @@
     justify-content: space-between;
     gap: 20px;
   }
+
   /*====================================================================================================*/
 }
