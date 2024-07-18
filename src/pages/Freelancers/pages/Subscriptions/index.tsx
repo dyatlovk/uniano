@@ -1,8 +1,6 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBar, {
-  NavigationBarCustom,
-} from '@common/components/NavigationBar/index'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
 import PageDetails from '@common/components/ui/PageDetails/index'
@@ -20,13 +18,21 @@ const FreelancersSubscriptions = () => {
       <Header />
       <NavigationBarCustom
         icon={<AppColor.subscriptionsWhite />}
-        text="Subscriptions"
+        text="Freelancers"
         parentRoute="freelancers"
         activeIndex={0}
         buttonsLink={[
           {
+            title: 'account',
+            link: '/account',
+          },
+          {
             title: 'subscriptions',
             link: '/subscriptions',
+          },
+          {
+            title: 'missions',
+            link: '/missions',
           },
         ]}
       />

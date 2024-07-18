@@ -1,11 +1,6 @@
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
-import { useHover } from '@common/helpers/useHover'
-import ModalTriangleTop from '@common/components/ui/modals/ModalTriangleTop/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import { useState } from 'react'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 
 export type SaleCardProps = {
@@ -73,8 +68,9 @@ const SaleCard = ({
         </div>
       ) : (
         <MyButtonTransparentOrange
-          padding="5px"
+          padding="9px"
           width="100%"
+          fontWeight="500"
           onClick={() => {
             callback(filter)
           }}
