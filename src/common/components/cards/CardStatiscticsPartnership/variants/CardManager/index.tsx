@@ -267,7 +267,7 @@ const CardManager = ({
               startValue={true}
               height="22px"
               width="44px"
-              bakcgroundColorActive={AppColor.text}
+              backgroundColorActive={AppColor.text}
               activeIcon={
                 <AppColor.freelancer width={'10px'} height={'12px'} />
               }
