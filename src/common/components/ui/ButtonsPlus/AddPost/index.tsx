@@ -11,7 +11,7 @@ import SizeBox from '../../SizeBox'
 import SwitchButton from '../../SwitchButton'
 import MyCheckbox from '../../inputs/Checkbox'
 import DatePicker from '../../DatePicker'
-import BigInput, { BigInputOutside } from '../../BigInput'
+import { BigInputOutside } from '../../BigInput'
 import MyButtonTransparent from '../../MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '../../MyButton/variants/MyButtonOrange'
 
@@ -184,6 +184,10 @@ const CategoryDropdown = () => {
     borderBottomRightRadius: showDropdown ? '0px' : '20px',
   }
 
+  const dropdDownStyles = {
+    opacity: showDropdown ? '1' : '0',
+  }
+
   return (
     <div style={{ position: 'relative' }}>
       <div
@@ -224,7 +228,7 @@ const CategoryDropdown = () => {
         )}
       </div>
 
-      <div className={styles.absolute_item}>
+      <div className={styles.absolute_item} style={{ ...dropdDownStyles }}>
         <AnimateHeight show={showDropdown}>
           <div className={styles.categories_wrappper}>
             <div className={styles.bottom_top_border}>

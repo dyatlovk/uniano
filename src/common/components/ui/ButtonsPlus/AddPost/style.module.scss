@@ -5,6 +5,7 @@
   transform: translateX(-50%);
   width: 100%;
   background-color: white;
+  z-index: 1;
 
   @include weakShadow;
 }
