@@ -95,7 +95,7 @@ const DetailsTableMyTeams = ({ information }: DetailsTableMyTeamsProps) => {
         callbackNav={item => {
           setCurrentPage(item)
         }}
-        filters={['All', 'Progress', 'Completed', 'Available', 'Unavailable']}
+        filters={['All', 'Member', 'Invited', 'Order']}
         page={currentPage}
         counter={
           <div className="counter">
@@ -351,7 +351,7 @@ const ContractItem = ({ icon, description, title }: ContractItemProps) => {
   return (
     <div className={styles.flex_center}>
       {icon}
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
         <Typography variant="body4" fontWeight="500">
           {title}
         </Typography>
