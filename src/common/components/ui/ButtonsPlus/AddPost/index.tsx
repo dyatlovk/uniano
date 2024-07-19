@@ -17,6 +17,7 @@ import MyButtonOrange from '../../MyButton/variants/MyButtonOrange'
 
 const AddPost = () => {
   const [showModal, setShowModal] = useState(false)
+  const [showPolls, setShowPolls] = useState<boolean>(false)
 
   const [allowMultipleSelection, setAllowMultipleSelection] = useState(false)
 
@@ -34,7 +35,6 @@ const AddPost = () => {
           <Typography variant="body3" fontWeight="500">
             Subject
           </Typography>
-
           <DynamicPadding desktop="25px" mobile="15px" />
           <InputCommon
             padding="15px 20px"
@@ -45,63 +45,67 @@ const AddPost = () => {
           <Typography variant="body3" fontWeight="500">
             Category
           </Typography>
-
           <DynamicPadding desktop="25px" mobile="15px" />
           <CategoryDropdown />
-
           <DynamicPadding desktop="25px" mobile="15px" />
           <div className="gap_10">
             <Typography variant="body4">Add poll</Typography>
-            <SwitchButton width="44px" height="24px" />
+            <SwitchButton width="44px" height="24px" callback={setShowPolls} />
           </div>
           <DynamicPadding desktop="25px" mobile="15px" />
-          <Typography variant="body3" fontWeight="500">
-            Poll subject
-          </Typography>
-          <DynamicPadding desktop="25px" mobile="15px" />
-          <InputCommon
-            padding="15px 20px"
-            callback={() => {}}
-            placeholder="What is your status ?"
-          />
-          <DynamicPadding desktop="25px" mobile="15px" />
-          <div className="gap_10">
-            <MyCheckbox width="20px" height="20px" />
-            <Typography variant="body4">Allow Multiple Selection</Typography>
-          </div>
-          <DynamicPadding desktop="25px" mobile="15px" />
-          <div className="gap_10">
-            <Typography variant="body4">Expiration</Typography>
-            <SwitchButton
-              callback={item => {
-                setAllowMultipleSelection(item)
-              }}
-              width="44px"
-              height="24px"
-            />
-            <div
-              style={{
-                opacity: allowMultipleSelection ? '1' : '0.5',
-                transition: '0.2s',
-              }}
-            >
-              <DatePicker />
+          {showPolls && (
+            <div className="polls_wrapper">
+              <Typography variant="body3" fontWeight="500">
+                Poll subject
+              </Typography>
+              <DynamicPadding desktop="25px" mobile="15px" />
+              <InputCommon
+                padding="15px 20px"
+                callback={() => {}}
+                placeholder="What is your status ?"
+              />
+              <DynamicPadding desktop="25px" mobile="15px" />
+              <div className="gap_10">
+                <MyCheckbox width="20px" height="20px" />
+                <Typography variant="body4">
+                  Allow Multiple Selection
+                </Typography>
+              </div>
+              <DynamicPadding desktop="25px" mobile="15px" />
+              <div className="gap_10">
+                <Typography variant="body4">Expiration</Typography>
+                <SwitchButton
+                  callback={item => {
+                    setAllowMultipleSelection(item)
+                  }}
+                  width="44px"
+                  height="24px"
+                />
+                <div
+                  style={{
+                    opacity: allowMultipleSelection ? '1' : '0.5',
+                    transition: '0.2s',
+                  }}
+                >
+                  <DatePicker />
+                </div>
+              </div>
+              <DynamicPadding desktop="25px" mobile="15px" />
+
+              <div className={styles.grid_20}>
+                <OptionItem text="Good feeling" />
+                <OptionItem text="Good feeling" />
+                <OptionItem text="Good feeling" />
+              </div>
+
+              <DynamicPadding desktop="25px" mobile="15px" />
+              <div>
+                <Typography variant="body5" color={AppColor.orange}>
+                  Add option
+                </Typography>
+              </div>
             </div>
-          </div>
-          <DynamicPadding desktop="25px" mobile="15px" />
-
-          <div className={styles.grid_20}>
-            <OptionItem text="Good feeling" />
-            <OptionItem text="Good feeling" />
-            <OptionItem text="Good feeling" />
-          </div>
-
-          <DynamicPadding desktop="25px" mobile="15px" />
-          <div>
-            <Typography variant="body5" color={AppColor.orange}>
-              Add option
-            </Typography>
-          </div>
+          )}
           <DynamicPadding desktop="25px" mobile="15px" />
           <Typography variant="body3" fontWeight="500">
             Description

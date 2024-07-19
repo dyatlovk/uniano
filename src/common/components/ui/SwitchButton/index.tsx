@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 
@@ -7,7 +7,7 @@ type SwitchButtonProps = {
   startValue?: boolean
   width?: string
   height?: string
-  bakcgroundColorActive?: string
+  backgroundColorActive?: string
   backgroundColorInActive?: string
   activeIcon?: React.ReactNode
   disable?: boolean
@@ -15,17 +15,17 @@ type SwitchButtonProps = {
 const SwitchButton = ({
   disable = false,
   activeIcon,
-  bakcgroundColorActive,
-  backgroundColorInActive = AppColor.orange,
+  backgroundColorActive = AppColor.orange,
+  backgroundColorInActive = '#E0E0E0',
   callback,
   startValue = false,
   height,
   width,
 }: SwitchButtonProps) => {
-  const buttonsVariables = {
-    '--colorActive': bakcgroundColorActive ?? backgroundColorInActive,
-  }
   const [isActive, setIsActive] = useState(startValue)
+  const [buttonVariables, setButtonVariables] = useState<Object>({
+    '--colorActive': backgroundColorInActive,
+  })
 
   function handleSwitch(item: boolean) {
     if (!disable) {
@@ -33,12 +33,15 @@ const SwitchButton = ({
         callback(item)
       }
       setIsActive(item)
+      item
+        ? setButtonVariables({ '--colorActive': backgroundColorActive })
+        : setButtonVariables({ '--colorActive': backgroundColorInActive })
     }
   }
   return (
     <div>
       <label
-        style={{ width: width, height: height, ...buttonsVariables }}
+        style={{ width: width, height: height, ...buttonVariables }}
         className={styles.switch}
       >
         <input
