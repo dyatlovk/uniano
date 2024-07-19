@@ -1,15 +1,12 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBar, {
-  NavigationBarCustom,
-} from '@common/components/NavigationBar/index'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import DetailsTableActivity from '@common/components/ui/DetailsTable/variants/DetailsTableActivity/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import DetailsTableMembers, {
@@ -22,7 +19,8 @@ const teamsContent: DetailsTableMembersPropsItem[] = [
     memberIcon: <AppColor.freelancer />,
     memberName: 'Artem M.',
     memberDescription: 'Senior UI Designer',
-    date: 'Feb 26, 2021 16:32 ',
+    date: 'Feb 26, 2021',
+    time: '16:32 ',
     contactDescription: 'till 26 Oct 2023',
     contactTitle: 'Signed (2/2)',
     freelance: true,
@@ -35,7 +33,8 @@ const teamsContent: DetailsTableMembersPropsItem[] = [
     memberIcon: <AppColor.freelancer />,
     memberName: 'Artem M.',
     memberDescription: 'Senior UI Designer',
-    date: 'Feb 26, 2021 16:32 ',
+    date: 'Feb 26, 2021',
+    time: '16:32 ',
     contactDescription: 'till 26 Oct 2023',
     contactTitle: 'Signed (2/2)',
     freelance: true,
@@ -67,15 +66,18 @@ const TeamMembers = () => {
       />
       <div className={styles.wrapper}>
         <PageDetails
-          pageTitle="my Teams"
+          pageTitle="Members"
           historyNode={
-            <NavigationItem image={<AppColor.home />} textList={['Teams']} />
+            <NavigationItem
+              image={<AppColor.home />}
+              textList={['Team', 'Members']}
+            />
           }
           endNode={
             <div className={styles.flex_center}>
               <CreateTeamButton />
               <Typography variant="body3" fontWeight="500">
-                Create Team
+                Add member
               </Typography>
             </div>
           }
@@ -87,7 +89,7 @@ const TeamMembers = () => {
 
         <DetailsTableMembers information={teamsContent} />
 
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

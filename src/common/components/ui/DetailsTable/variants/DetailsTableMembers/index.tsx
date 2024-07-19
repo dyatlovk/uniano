@@ -4,7 +4,6 @@ import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserAvatar from '../../../UserAvatar'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import DynamicPadding from '../../../DynamicPadding'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 
@@ -14,6 +13,7 @@ type DetailsTableMembersProps = {
 
 export type DetailsTableMembersPropsItem = {
   date: string
+  time: string
   memberName: string
   squad: string
   termination: boolean
@@ -37,7 +37,7 @@ const DetailsTableMembers = ({ information }: DetailsTableMembersProps) => {
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Completed', 'Available', 'Unavailable']}
+      filters={['All', 'Member', 'Invited', 'Fired']}
       page={currentPage}
       details={
         currentItem != null
@@ -46,8 +46,8 @@ const DetailsTableMembers = ({ information }: DetailsTableMembersProps) => {
                 title: 'Member',
                 child: (
                   <UserAvatar
-                    width="30px"
-                    height="30px"
+                    width="38px"
+                    height="38px"
                     variant="row"
                     active={true}
                     name={currentItem.memberName}
@@ -59,7 +59,10 @@ const DetailsTableMembers = ({ information }: DetailsTableMembersProps) => {
               {
                 title: 'Date',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <div>
+                    <Typography variant="body4">{currentItem.date}</Typography>
+                    <Typography variant="body4">{currentItem.time}</Typography>
+                  </div>
                 ),
               },
               {
@@ -92,6 +95,7 @@ const DetailsTableMembers = ({ information }: DetailsTableMembersProps) => {
                   <Typography
                     textLineHeight="100%"
                     variant="body4"
+                    fontWeight="500"
                     color={AppColor.orange}
                   >
                     {currentItem.status}
@@ -182,7 +186,7 @@ const ContractItem = ({ icon, description, title }: ContractItemProps) => {
           fontWeight="400"
           color={AppColor.transparentBlack}
         >
-          {description} Members
+          {description}
         </Typography>
       </div>
     </div>
