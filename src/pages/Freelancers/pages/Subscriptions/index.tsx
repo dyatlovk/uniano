@@ -142,7 +142,7 @@ const FreelancersSubscriptions = () => {
             },
           ]}
         />
-        <AskedQuestion />
+        <AskedQuestion margin="38px 0 0 0" />
       </div>
       <Footer />
     </div>

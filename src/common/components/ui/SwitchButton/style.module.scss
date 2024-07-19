@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--colorActive);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -40,15 +40,15 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--colorActive);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px var(--colorActive);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translate(90%, -50%);
   -ms-transform: translate(90%, -50%);
   transform: translate(90%, -50%);

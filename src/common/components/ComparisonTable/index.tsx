@@ -2,8 +2,6 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 import Typography from '../ui/Typography/Typography'
 import SwitchButton from '../ui/SwitchButton'
-import MyButtonTransparentOrange from '../ui/MyButton/variants/MyButtonTransparentOrange'
-import SizeBox from '../ui/SizeBox'
 import AppColor from '@common/styles/variables-static'
 import React from 'react'
 
@@ -41,16 +39,20 @@ const ComparisonTable = ({
       <div className={styles.top_wrapper}>
         <div className={styles.top_month_button_wrapper}>
           <div className={styles.wrapper_absolute}>
-            <Typography variant="body4" fontWeight="500">
+            <Typography variant="body4" fontWeight={isMonthly ? '400' : '500'}>
               Monthly
-            </Typography>{' '}
-            <SwitchButton />{' '}
-            <Typography variant="body4" fontWeight="500">
+            </Typography>
+            <SwitchButton
+              backgroundColorInActive={AppColor.orange}
+              callback={state => {
+                setIsMonthly(state)
+              }}
+            />
+            <Typography variant="body4" fontWeight={isMonthly ? '500' : '400'}>
               Annually
             </Typography>
             <div className={styles.monthly_absolute}>
-              {' '}
-              <span className={styles.span}>10% OFF</span>{' '}
+              <span className={styles.span}>10% OFF</span>
             </div>
           </div>
         </div>
