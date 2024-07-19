@@ -83,7 +83,7 @@ const TeamMembers = () => {
           }
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="36px" />
         <SearchFilterBar />
         <DynamicPadding />
 

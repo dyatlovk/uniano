@@ -20,7 +20,7 @@ const PageDetails = ({
       <div className={styles.wrapper}>
         <div className={styles.top_flex}>
           {historyNode}
-          <DynamicPadding desktop="16px" mobile="15px" />
+          <DynamicPadding desktop="11px" mobile="15px" />
           <div className={styles.flex_center}></div>
           <div className="gap_5">
             <Typography
