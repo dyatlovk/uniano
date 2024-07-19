@@ -2,9 +2,6 @@ import Typography from '@common/components/ui/Typography/Typography'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import ModalTriangleTop from '@common/components/ui/modals/ModalTriangleTop/index'
-import ModalBottomCenter from '@common/components/ui/modals/ModalBottomCenter/index'
-import { useHover } from '@common/helpers/useHover'
 import { useState } from 'react'
 import PopUpBottom from '@common/components/ModalPopUps/PopUpBottom/index'
 import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
@@ -106,6 +103,7 @@ const SquadCard = ({ members, title }: SquadCardProps) => {
             onClick={() => {
               setWebMembers(true)
             }}
+            fontWeight="500"
           >
             MEMBERS
           </MyButtonTransparentOrange>

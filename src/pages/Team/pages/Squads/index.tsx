@@ -1,8 +1,6 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBar, {
-  NavigationBarCustom,
-} from '@common/components/NavigationBar/index'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
@@ -103,7 +101,7 @@ const TeamSquads = () => {
       <Header />
       <NavigationBarCustom
         icon={<AppColor.teamsWhite />}
-        text="Teams"
+        text="Team"
         parentRoute="team"
         activeIndex={1}
         buttonsLink={[
@@ -133,14 +131,14 @@ const TeamSquads = () => {
           }
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="36px" />
 
         <div className={styles.squads_wrapper}>
           {squadContent.map(item => (
             <SquadCard members={item.members} title={item.title} />
           ))}
         </div>
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

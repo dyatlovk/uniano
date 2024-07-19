@@ -50,7 +50,7 @@ const TeamMembers = () => {
       <Header />
       <NavigationBarCustom
         icon={<AppColor.teamsWhite />}
-        text="Teams"
+        text="Team"
         parentRoute="team"
         activeIndex={0}
         buttonsLink={[
