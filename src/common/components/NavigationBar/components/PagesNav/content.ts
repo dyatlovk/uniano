@@ -1,7 +1,7 @@
 import AppColor from '@common/styles/variables-static'
 
 type linkType = {
-  title: string,
+  title: string
   counter?: number
 }
 export type nav_categorys = {
@@ -76,6 +76,6 @@ export const nav_var_categorys: nav_categorys[] = [
     image: AppColor.community,
     activeImage: AppColor.communityWhite,
     index: 4,
-    links: [{ title: 'posts' }, { title: 'faq' }],
+    links: [{ title: 'posts' }],
   },
 ]

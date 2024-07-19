@@ -20,3 +20,12 @@
     color: $orange;
   }
 }
+
+.item_selected {
+  color: $orange;
+
+  .list_item {
+    color: $orange;
+    font-weight: 500 !important;
+  }
+}

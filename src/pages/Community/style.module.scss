@@ -9,7 +9,8 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
-  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #5151511A;
 }
 
 .flex {
@@ -50,6 +51,12 @@
 
   input {
     width: 290px;
+  }
+}
+
+.post_item {
+  &:hover {
+    opacity: 0.8;
   }
 }
 

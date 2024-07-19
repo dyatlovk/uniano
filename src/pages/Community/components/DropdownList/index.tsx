@@ -54,6 +54,7 @@ const DropdownList = ({
               setCurrentActiveItem(item)
               callback(item)
             }}
+            className={(currentActiveItem === item) ? styles.item_selected : ''}
           >
             <Typography
               className={styles.list_item}

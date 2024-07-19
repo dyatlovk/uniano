@@ -3,7 +3,6 @@ import styles from './style.module.scss'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
-import { useHover } from '@common/helpers/useHover'
 import { useState } from 'react'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 

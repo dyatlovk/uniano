@@ -6,7 +6,6 @@ import NavigationItem from '@common/components/navigation_history/NavigationItem
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import DropdownList from './components/DropdownList'
 import PostCard, { PostCardProps } from './components/PostCard'
@@ -26,6 +25,21 @@ type postsContentType = {
   posts: PostCardProps[]
 }
 const postsContent: postsContentType[] = [
+  {
+    title: 'Password Recovery',
+    posts: [
+      {
+        user: fakeUserConstant,
+        comments: ['aaa', 'aaa', 'aaa'],
+        created: false,
+        description:
+          'Id viverra penatibus amet nunc, accumsan sem leo malesuada ame',
+        title: 'New to Uniano, Need assistance ',
+        saved: true,
+        createdAgo: '1 min ago',
+      },
+    ],
+  },
   {
     title: 'Registration',
     posts: [
@@ -152,6 +166,17 @@ const postsContent: postsContentType[] = [
     ],
   },
 ]
+
+function getPostsFlatLists(data: postsContentType[]): PostCardProps[] {
+  let result: PostCardProps[] = []
+  data.map(el => {
+    el.posts.map(post => {
+      result.push(post)
+    })
+  })
+  return result
+}
+
 const CommunityPosts = () => {
   const [currentActiveTitle, setCurrentActiveTitle] = useState('')
   let currentPost = postsContent.find(item => item.title == currentActiveTitle)
@@ -187,14 +212,14 @@ const CommunityPosts = () => {
             <div className={styles.flex_center}>
               <ButtonDropdownSelect
                 text="All posts"
-                variants={['All posts', 'Save posts', 'my posts']}
+                variants={['All posts', 'Saved posts', 'My posts', 'faq']}
               />
               <AddPost />
             </div>
           }
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="36px" />
 
         <SearchFilterBar
           callback={item => {
@@ -263,7 +288,7 @@ const CommunityPosts = () => {
               {currentPost.posts
                 .slice(currentPage * 4, (currentPage + 1) * 4)
                 .map((post, index) => (
-                  <Link to={'/community/post'}>
+                  <Link to={'/community/post'} className={styles.post_item}>
                     <PostCard
                       comments={post.comments}
                       created={post.created}
@@ -293,10 +318,11 @@ const CommunityPosts = () => {
                   />
                 </div>
               )}
+              {currentPost.posts.length == 0 && <AllPosts />}
             </div>
           </div>
         </div>
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>
@@ -481,6 +507,7 @@ const SearchFilterBar = ({
             variant="body4"
             fontWeight="500"
             color={AppColor.transparentBlack}
+            textTransform="uppercase"
           >
             Filters
           </Typography>
@@ -492,6 +519,7 @@ const SearchFilterBar = ({
               variant="body4"
               fontWeight="500"
               color={AppColor.transparentBlack}
+              textTransform="uppercase"
             >
               Most recent
             </Typography>
@@ -507,6 +535,43 @@ const SearchFilterBar = ({
           </Typography>
           <AppColor.chevronBottom fill={AppColor.transparentBlack} />
         </div>
+      </div>
+    </div>
+  )
+}
+
+const AllPosts = (): JSX.Element => {
+  const allPosts = getPostsFlatLists(postsContent)
+  return (
+    <div>
+      {allPosts.slice(4).map((post, index) => (
+        <Link to={'/community/post'}>
+          <PostCard
+            comments={post.comments}
+            created={post.created}
+            description={post.description}
+            saved={post.saved}
+            title={post.title}
+            user={post.user}
+            indexInParent={index}
+            createdAgo={post.createdAgo}
+          />
+        </Link>
+      ))}
+      <div className={styles.bottom_nav}>
+        <div className={styles.flex}>
+          <Typography variant="body4" fontWeight="500">
+            {allPosts.length}{' '}
+          </Typography>
+          <Typography color="transparent">.</Typography>
+          <Typography variant="body4" fontWeight="400">
+            posts
+          </Typography>
+        </div>
+        <NavBarLine
+          maxCountPage={allPosts.length / 4}
+          callback={item => () => {}}
+        />
       </div>
     </div>
   )
