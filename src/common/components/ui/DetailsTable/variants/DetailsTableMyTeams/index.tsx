@@ -3,8 +3,6 @@ import DetailsTable from '../..'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '../../../UserAvatar'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import DynamicPadding from '../../../DynamicPadding'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import { ThreeLinesPopUpCustom } from '../../../ThreeLinesPopUp'
@@ -20,6 +18,7 @@ type DetailsTableMyTeamsProps = {
 
 export type DetailsTableMyTeamsPropsItem = {
   date: string
+  time: string
   teamName: string
   position: string
   termination: boolean
@@ -98,6 +97,11 @@ const DetailsTableMyTeams = ({ information }: DetailsTableMyTeamsProps) => {
         }}
         filters={['All', 'Progress', 'Completed', 'Available', 'Unavailable']}
         page={currentPage}
+        counter={
+          <div className="counter">
+            <span style={{ fontWeight: '500' }}> 11 841</span> teams
+          </div>
+        }
         modalDropdown={
           <ThreeLinesPopUpCustom
             positionRight="14px"
@@ -130,7 +134,14 @@ const DetailsTableMyTeams = ({ information }: DetailsTableMyTeamsProps) => {
                 {
                   title: 'Date',
                   child: (
-                    <Typography variant="body4">{currentItem.date}</Typography>
+                    <div>
+                      <Typography variant="body4">
+                        {currentItem.date}
+                      </Typography>
+                      <Typography variant="body4">
+                        {currentItem.time}
+                      </Typography>
+                    </div>
                   ),
                 },
                 {
@@ -166,6 +177,7 @@ const DetailsTableMyTeams = ({ information }: DetailsTableMyTeamsProps) => {
                     <Typography
                       textLineHeight="100%"
                       variant="body4"
+                      fontWeight="500"
                       color={AppColor.green}
                     >
                       {currentItem.status}
@@ -348,7 +360,7 @@ const ContractItem = ({ icon, description, title }: ContractItemProps) => {
           fontWeight="400"
           color={AppColor.transparentBlack}
         >
-          {description} Members
+          {description}
         </Typography>
       </div>
     </div>

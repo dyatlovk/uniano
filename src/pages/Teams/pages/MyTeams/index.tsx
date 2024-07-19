@@ -7,13 +7,11 @@ import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import DetailsTableActivity from '@common/components/ui/DetailsTable/variants/DetailsTableActivity/index'
 import DetailsTableMyTeams, {
   DetailsTableMyTeamsPropsItem,
 } from '@common/components/ui/DetailsTable/variants/DetailsTableMyTeams/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import AddMissionButton from '@common/components/ui/AddMisionButton/index'
 import CreateTeamButton from '@common/components/ui/ButtonsPlus/CreateTeamButton/index'
 
 const teamsContent: DetailsTableMyTeamsPropsItem[] = [
@@ -21,7 +19,8 @@ const teamsContent: DetailsTableMyTeamsPropsItem[] = [
     teamIcon: <AppColor.freelancer />,
     teamName: 'Tugas Virtual Solutions',
     teamMembers: 322,
-    date: 'Feb 26, 2021 16:32 ',
+    date: 'Feb 26, 2021',
+    time: '16:32',
     contactDescription: 'till 26 Oct 2023',
     contactTitle: 'Signed (2/2)',
     freelance: true,
@@ -34,7 +33,8 @@ const teamsContent: DetailsTableMyTeamsPropsItem[] = [
     teamIcon: <AppColor.freelancer />,
     teamName: 'Tugas Virtual Solutions',
     teamMembers: 322,
-    date: 'Feb 26, 2021 16:32 ',
+    date: 'Feb 26, 2021',
+    time: '16:32',
     contactDescription: 'till 26 Oct 2023',
     contactTitle: 'Signed (2/2)',
     freelance: true,
@@ -47,7 +47,8 @@ const teamsContent: DetailsTableMyTeamsPropsItem[] = [
     teamIcon: <AppColor.freelancer />,
     teamName: 'Tugas Virtual Solutions',
     teamMembers: 322,
-    date: 'Feb 26, 2021 16:32 ',
+    date: 'Feb 26, 2021',
+    time: '16:32',
     contactDescription: 'till 26 Oct 2023',
     contactTitle: 'Signed (2/2)',
     freelance: true,

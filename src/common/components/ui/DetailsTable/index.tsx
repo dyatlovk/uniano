@@ -26,6 +26,7 @@ type DetailsTableProps = {
   group?: string
   endIcon?: React.ReactNode
   modalDropdown?: React.ReactNode
+  counter?: React.ReactNode
 }
 
 type DetailsTableItem = {
@@ -50,6 +51,11 @@ const DetailsTable = ({
   dropdownNode,
   removeNavBar = false,
   removeThreeLines = false,
+  counter = (
+    <div className="counter">
+      <span style={{ fontWeight: '500' }}> 11 841</span> missions
+    </div>
+  ),
 }: DetailsTableProps) => {
   const [currentFilter, setCurrentFilter] = useState('All')
   const { width, height } = useScreenSize()
@@ -347,9 +353,7 @@ const DetailsTable = ({
           {' '}
           <DynamicPadding mobile="20px" desktop="20px" />
           <div className={styles.flex_space}>
-            <Typography variant="body4">
-              <span style={{ fontWeight: '500' }}> 11 841</span> missions
-            </Typography>
+            <Typography variant="body4">{counter}</Typography>
             <NavBarLine
               maxCountPage={11841}
               callback={item => {

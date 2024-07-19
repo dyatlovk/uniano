@@ -45,7 +45,7 @@ export const nav_var_categorys: nav_categorys[] = [
     image: AppColor.teams,
     activeImage: AppColor.teamsWhite,
     index: 1,
-    links: [{ title: 'my-teams' }],
+    links: [{ title: 'my teams' }],
   },
   {
     title: 'Subscriptions',
