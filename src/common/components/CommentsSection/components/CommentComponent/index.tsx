@@ -5,12 +5,13 @@ import UserAvatar from '@common/components/ui/UserAvatar/index'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import Solution from '@common/components/ui/Solution/index'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { comment } from '../..'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import MyButton from '@common/components/ui/MyButton/MyButton'
 
 const CommentComponent = ({
   comment,
@@ -28,7 +29,7 @@ const CommentComponent = ({
     if (depth < 1) {
       setShowReplies(true)
     }
-  }, [])
+  }, [depth])
 
   const styleMargin = {
     '--marginSizeDesktop': '30px',
@@ -69,7 +70,7 @@ const CommentComponent = ({
       </div>
       <DynamicPadding desktop="10px" mobile="10px" />
       <Typography variant="body4">{comment}</Typography>
-      <DynamicPadding desktop="15px" mobile="15px" />
+      <DynamicPadding desktop="10px" mobile="15px" />
       <div className={styles.flex_center}>
         <Typography
           variant="body4"
@@ -96,6 +97,9 @@ const CommentComponent = ({
           >
             Reply
           </Typography>
+        </div>
+        <div className={styles.comment_tools}>
+          <AppColor.report width={18} height={18} />
         </div>
       </div>
       <DynamicPadding desktop="15px" mobile="15px" />
@@ -137,7 +141,7 @@ const CommentComponent = ({
             </div>
           )}
         </div>
-        {showReplies && <SizeBox height="20px" />}
+        {showReplies && <SizeBox height="27px" />}
         {addReply && (
           <div style={styleMargin} className={styles.margin_left}>
             <AddReplyItem
@@ -161,7 +165,7 @@ const CommentComponent = ({
                 user={item.user}
                 answeredUserComment={item.answeredUserComment}
               />
-              <SizeBox height="20px" />
+              <SizeBox height="5px" />
             </div>
           ))}
       </div>
@@ -192,19 +196,25 @@ const AddReplyItem = ({ replyTo, callbackCancel }: AddReplyItemProps) => {
           onInput={e => setText(e.currentTarget.textContent)}
         ></div>
       </div>
-      <DynamicPadding desktop="40px" mobile="22px" />
+      <DynamicPadding desktop="px" mobile="22px" />
       <div className={styles.end_flex}>
         <Typography variant="body4">{text.length} / 3000</Typography>
 
         <div className={styles.flex_center_10}>
-          <MyButtonTransparent
+          <MyButton
             onClick={() => {
               callbackCancel()
             }}
+            border={'1px solid transparent'}
+            borderHover="1px solid transparent"
+            hoverColor="transparent"
             textTransform="uppercase"
+            fontWeight="500"
+            hoverTextColor={AppColor.grey}
+            textColor={AppColor.grey}
           >
             cancel
-          </MyButtonTransparent>
+          </MyButton>
           <MyButtonOrange onClick={() => {}} textTransform="uppercase">
             Reply
           </MyButtonOrange>

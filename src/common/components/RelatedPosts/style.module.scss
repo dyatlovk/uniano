@@ -14,11 +14,11 @@
 .post_recomends_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 13px;
 }
 
 .title_wrapper {
-  margin-bottom: 3px;
+  margin-bottom: -3px;
 }
 
 .chevron {
@@ -65,7 +65,7 @@
   }
 
   button {
-    min-width: 170px;
+    min-width: auto !important;
     order: 0;
   }
 }
@@ -94,11 +94,11 @@
   }
 
   .title_wrapper {
-    margin-bottom: 5px;
+    margin-bottom: -3px;
   }
 
   .post_recomends_wrapper {
-    gap: 20px;
+    gap: 13px;
   }
 
   .wrapper {

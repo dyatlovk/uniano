@@ -5,6 +5,8 @@ import { useState } from 'react'
 import AppColor from '@common/styles/variables-static'
 import MyButtonBlack from '../ui/MyButton/variants/MyButtonBlack'
 import DynamicPadding from '../ui/DynamicPadding'
+import MyButtonTransparent from '../ui/MyButton/variants/MyButtonTransparent'
+import MyButton from '../ui/MyButton/MyButton'
 
 type RelatedPostsProps = {
   relatedPosts: relatedPostsItem[]
@@ -92,15 +94,22 @@ const RelatedPosts = ({ popularLinks, relatedPosts }: RelatedPostsProps) => {
       <DynamicPadding desktop="30px" mobile="20px" />
       <div className={styles.last_items}>
         <div className={styles.flex_center}>
-          <Typography
-            fontWeight="500"
-            variant="body4"
-            color={AppColor.green}
+          <MyButton
             textTransform="uppercase"
+            onClick={() => {}}
+            border="1px solid transparent"
+            borderHover={`1px solid ${AppColor.transparent}`}
+            color="transparent"
+            fontWeight="500"
+            hoverTextColor={AppColor.green}
+            hoverColor={AppColor.transparent}
+            textColor={AppColor.green}
+            width={'auto'}
+            padding={'0'}
           >
             Show Solution
-          </Typography>
-          <AppColor.greenCheckTrue />
+            <AppColor.greenCheckTrue />
+          </MyButton>
         </div>
         <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
           Show best reply

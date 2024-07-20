@@ -41,7 +41,7 @@ const CommentsSection = ({ comments }: CommentsSectionProps) => {
         callback={() => {}}
         placeholder="Add reply"
       />
-      <DynamicPadding mobile="20px" desktop="30px" />
+      <DynamicPadding mobile="20px" desktop="32px" />
       {comments.map((item, index) => (
         <div>
           <CommentComponent

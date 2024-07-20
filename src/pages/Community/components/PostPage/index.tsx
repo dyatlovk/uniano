@@ -4,7 +4,6 @@ import NavigationBar from '@common/components/NavigationBar/index'
 import Header from '@common/components/Header/Header/index'
 import AppColor from '@common/styles/variables-static'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { useScreenSize } from '@common/helpers/useScreenSize'
@@ -12,7 +11,6 @@ import UserAvatar from '@common/components/ui/UserAvatar/index'
 import DropdownList from '../DropdownList'
 import { useState } from 'react'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
 import RelatedPosts from '@common/components/RelatedPosts/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
@@ -24,6 +22,7 @@ import RadioButton from '@common/components/ui/RadioButton/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
 import AddPost from '@common/components/ui/ButtonsPlus/AddPost/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 
 const PostPageById = () => {
   const RelatedPostItem = (
@@ -142,26 +141,7 @@ const PostPageById = () => {
         likesPercent: Math.round(Math.random() * 100),
         isSolution: Math.random() < 0.5,
         isBestReplay: Math.random() < 0.3,
-        answeredUserComment: [
-          {
-            user: fakeUserConstant,
-            comment:
-              '1111111Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            likesPercent: Math.round(Math.random() * 100),
-            isSolution: Math.random() < 0.5,
-            isBestReplay: Math.random() < 0.3,
-            answeredUserComment: [],
-          },
-          {
-            user: fakeUserConstant,
-            comment:
-              '1111111Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            likesPercent: Math.round(Math.random() * 100),
-            isSolution: Math.random() < 0.5,
-            isBestReplay: Math.random() < 0.3,
-            answeredUserComment: [],
-          },
-        ],
+        answeredUserComment: [],
       },
       {
         user: fakeUserConstant,
@@ -217,13 +197,15 @@ const PostPageById = () => {
           pageTitle={fakePost.title}
           endNode={
             <div className={styles.flex_center}>
-              <ButtonDropdownSelect text="All posts" variants={['all posts']} />
+              <ButtonDropdownSelect
+                text="All posts"
+                variants={['All posts', 'Saved Posts', 'My posts']}
+              />
               <AddPost />
             </div>
           }
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
         <div className={styles.desktop}>
           <UserTopPageInfo
             user={fakeUserConstant}
@@ -240,10 +222,17 @@ const PostPageById = () => {
             }
           />
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
         <div className={styles.main_part}>
           <div className={styles.left_part}>
-            <div></div>
+            <SearchFilterBar
+              recent={false}
+              usePeriod={false}
+              useFilters={false}
+              exportIcon={false}
+              showItemsOnPage={false}
+            />
+            <DynamicPadding desktop="24px" />
             {width > 768 && (
               <div className={styles.dropdown_wrapper}>
                 <DropdownList
@@ -427,23 +416,25 @@ const PageDetails = ({
       <div className={styles.top_section_details}>
         <div className={styles.top_flex_details}>
           {historyNode}
-          <Typography
-            variant="titleBig"
-            textTransform="uppercase"
-            fontWeight="600"
-          >
-            <div className={styles.flex_center_details}>
-              {pageTitle}{' '}
-              <div className={styles.title_icon_details}>{pageTitleIcon}</div>
-            </div>
-          </Typography>
+          <DynamicPadding desktop="11px" mobile="15px" />
+          <div className={styles.flex_center}></div>
+          <div className="gap_5">
+            <Typography
+              variant="titleBig"
+              textTransform="uppercase"
+              fontWeight="600"
+            >
+              {pageTitle}
+            </Typography>
+            <div className={styles.title_icon}>{pageTitleIcon}</div>
+          </div>
         </div>
         <div className={styles.mobile}>
           <PostDetails user={fakeUserConstant} percentLike={55} />
         </div>
         {endNode}
       </div>
-      <DynamicPadding mobile="20px" desktop="50px" />
+      <DynamicPadding mobile="20px" desktop="16px" />
     </div>
   )
 }

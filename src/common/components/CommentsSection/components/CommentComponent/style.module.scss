@@ -27,7 +27,8 @@
 
   [contenteditable] {
     max-width: 760px;
-    outline: none; /* Remove the default focus outline */
+    outline: none;
+    /* Remove the default focus outline */
     white-space: pre-wrap;
   }
 }
@@ -51,6 +52,14 @@
   font-size: 0.875rem;
 }
 
+.comment_tools {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 @media (min-width: $tabletSize) {
 
   .margin_left {
@@ -58,7 +67,7 @@
   }
 
   .wrapper_new_reply {
-    padding: 15px 30px;
+    padding: 15px 20px;
   }
 
   .orangeText {
