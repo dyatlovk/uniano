@@ -4,6 +4,7 @@ import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 import InputCommon from '../InputCommon'
 import AnimateHeight from '@common/components/AnimateHeight/index'
+import classNames from 'classnames'
 
 type InputBorderTextDropdownProps = {
   borderText: string
@@ -17,6 +18,7 @@ type InputBorderTextDropdownProps = {
     icon: React.ReactNode
     text: string
   }[]
+  isActive?: boolean
 }
 const InputBorderTextDropdown = ({
   searchField,
@@ -26,6 +28,7 @@ const InputBorderTextDropdown = ({
   dropdownVariants,
   labelIcon,
   isRequired,
+  isActive = false,
   callback,
 }: InputBorderTextDropdownProps) => {
   const [currenText, setCurrentText] = useState(initText)
@@ -56,8 +59,13 @@ const InputBorderTextDropdown = ({
     borderBottomLeftRadius: showDropdown ? '0px' : '20px',
     borderBottomRightRadius: showDropdown ? '0px' : '20px',
   }
+
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      className={classNames(
+        isActive ? styles.input_wrapper_active : styles.input_wrapper
+      )}
+    >
       <div
         onClick={() => {
           setShowDropdown(prev => !prev)

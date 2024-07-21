@@ -94,3 +94,27 @@
   align-items: center;
   gap: 10px;
 }
+
+.input_wrapper {
+  position: relative;
+
+  p {
+    color: #01010180;
+  }
+
+  .border_input {
+    background-color: #FCFCFC;
+  }
+}
+
+.input_wrapper_active {
+  position: relative;
+
+  p {
+    color: $text;
+  }
+
+  .border_input {
+    background-color: #FFF;
+  }
+}

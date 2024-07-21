@@ -1,14 +1,11 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBar, {
-  NavigationBarCustom,
-} from '@common/components/NavigationBar/index'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
-import { fakeUserConstant, userModel } from '@common/models/user'
+import { fakeUserConstant } from '@common/models/user'
 import Typography from '@common/components/ui/Typography/Typography'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import DisplayTopInfo from './components/DisplayTopInfo'
 import InputBorderText from '@common/components/ui/inputs/InputBorderText/index'
@@ -137,7 +134,7 @@ const SettingsProfile = () => {
             link: '/profile',
           },
           {
-            title: 'password-security',
+            title: 'password & security',
             link: '/password-security',
           },
           {
@@ -237,6 +234,7 @@ const SettingsProfile = () => {
                 callback={item => {
                   handleCallback('country', item)
                 }}
+                isActive={formData.country.length > 0}
               />
               <InputBorderTextDropdown
                 initText="Select State/Province"
@@ -249,6 +247,7 @@ const SettingsProfile = () => {
                     }
                   />
                 }
+                isActive={formData.stateProvince.length > 0}
                 borderText="State/Province"
                 dropdownVariants={['aaaa', 'bbbb', 'cccc', 'dddd']}
                 callback={item => {
@@ -320,7 +319,7 @@ const SettingsProfile = () => {
           </div>
         </div>
 
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
 
         {!deleted && (
           <div className={styles.delete_wrapper}>
@@ -358,7 +357,7 @@ const SettingsProfile = () => {
             Recover account
           </MyButtonGreen>
         )}
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

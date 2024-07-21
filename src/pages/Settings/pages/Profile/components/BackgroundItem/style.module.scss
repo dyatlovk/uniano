@@ -1,5 +1,4 @@
 .wrapper {
-
   @include weakShadow;
   padding: 15px 20px;
   border-radius: 20px;
@@ -14,10 +13,22 @@
   gap: 10px;
 }
 
-@media (min-width: $tabletSize) {
+.update_bg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
 
+.update_rm {
+  cursor: pointer;
+}
+
+@media (min-width: $tabletSize) {
   .wrapper {
     padding: 25px 30px;
     align-items: start;
+    max-width: 335px;
   }
 }

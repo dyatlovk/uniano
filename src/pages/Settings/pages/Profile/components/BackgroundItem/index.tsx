@@ -20,11 +20,13 @@ const BackgroundItem = ({ image }: BackgroundItemProps) => {
         <img src={image} width={'250px'} height={'235px'}></img>
       )}
       <DynamicPadding mobile="15px" desktop="20px" />
-      <div className={styles.flex}>
+      <div className={styles.update_bg}>
         <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
           Update background
         </MyButtonBlack>
-        <AppColor.close fill={AppColor.red} />
+        <div className={styles.update_rm}>
+          <AppColor.close fill={AppColor.red} />
+        </div>
       </div>
       <DynamicPadding mobile="8px" desktop="12px" />
       <Typography variant="body4" fontWeight="400">

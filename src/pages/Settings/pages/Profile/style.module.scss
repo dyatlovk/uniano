@@ -40,7 +40,8 @@
   }
 
   .main_right {
-    max-width: 335px;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .inputs_wrapper {
