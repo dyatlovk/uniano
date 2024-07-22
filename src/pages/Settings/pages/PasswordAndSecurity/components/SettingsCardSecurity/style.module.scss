@@ -21,7 +21,7 @@
 
 .button_solve {
   width: 100%;
-  padding: 5px;
+  padding: 7px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,11 @@
   font-weight: 500;
   font-size: 1rem;
   border-radius: 20px;
+
+  &:hover {
+    background-color: $orange;
+    color: #fff;
+  }
 }
 
 @media (min-width: $tabletSize) {

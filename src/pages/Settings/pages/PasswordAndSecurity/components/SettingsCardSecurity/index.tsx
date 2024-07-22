@@ -1,11 +1,12 @@
 import Typography from '@common/components/ui/Typography/Typography'
 import styles from './style.module.scss'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
+import { useCallback, useState } from 'react'
 
 export type SettingsCardSecurityprops = {
   icon: any
   title: string
-  text: string
+  body: React.ReactNode
   onClick: () => void
   buttonText: string
   isSolved: boolean
@@ -15,11 +16,27 @@ const SettingsCardSecurity = ({
   buttonText,
   icon,
   onClick,
-  text,
   title,
   isSolved,
   solveText,
+  body,
 }: SettingsCardSecurityprops) => {
+  const [solvedText, setSolvedText] = useState<string>(buttonText)
+
+  const onSolvedButtonHover = useCallback(
+    (e: any) => {
+      setSolvedText(buttonText)
+    },
+    [buttonText]
+  )
+
+  const onSolvedButtonLeave = useCallback(
+    (e: any) => {
+      setSolvedText(solveText)
+    },
+    [solveText]
+  )
+
   return (
     <div className={styles.wrapper}>
       <div>
@@ -29,14 +46,24 @@ const SettingsCardSecurity = ({
             {title}
           </Typography>
         </div>
-        <Typography variant="body4">{text}</Typography>
+        {body}
       </div>
       {!isSolved ? (
-        <MyButtonTransparentOrange padding="5px" onClick={onClick}>
+        <MyButtonTransparentOrange
+          padding="7px 5px"
+          onClick={onClick}
+          fontWeight="500"
+        >
           {buttonText}
         </MyButtonTransparentOrange>
       ) : (
-        <div className={styles.button_solve}>{solveText}</div>
+        <div
+          onPointerEnter={onSolvedButtonHover}
+          onPointerLeave={onSolvedButtonLeave}
+          className={styles.button_solve}
+        >
+          {solvedText}
+        </div>
       )}
     </div>
   )

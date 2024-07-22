@@ -12,7 +12,7 @@ import SettingsCardSecurity, {
 } from './components/SettingsCardSecurity'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import InputBorderText from '@common/components/ui/inputs/InputBorderText/index'
@@ -38,10 +38,16 @@ const PasswordAndSecurity = () => {
   const [inputText, setInputText] = useState('')
   const [checkInput, setCheckInput] = useState('')
   const [twoFactorModal, setTwoFactorModal] = useState(false)
-
   const [passwordStage, setPasswordStage] = useState(0)
-
   const [blockedModal, setBlockedModal] = useState(false)
+  const [emailVisible, setEmailVisible] = useState<boolean>(false)
+
+  const emailVisibleCallback = useCallback(
+    e => {
+      setEmailVisible(!emailVisible)
+    },
+    [emailVisible]
+  )
 
   return (
     <div>
@@ -317,7 +323,7 @@ const PasswordAndSecurity = () => {
             link: '/profile',
           },
           {
-            title: 'password-security',
+            title: 'password & security',
             link: '/password-security',
           },
           {
@@ -344,7 +350,7 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.phone />}
             title="Phone Number"
-            text="You didn’t provide a phone number yet"
+            body={<p>You didn’t provide a phone number yet</p>}
             buttonText="Add a number"
             isSolved={false}
             onClick={() => {}}
@@ -352,7 +358,24 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.gmail />}
             title="Email"
-            text="w********@g***.com This email is linked to your account"
+            body={
+              <div className={styles.email_body}>
+                <Typography variant="body4">
+                  <div className={styles.email}>
+                    {emailVisible && <span>work@gmail.com</span>}
+                    {!emailVisible && <span>w**k@******</span>}
+                    <span
+                      className={styles.emailVisibilityIcon}
+                      onClick={emailVisibleCallback}
+                    >
+                      {emailVisible && <AppColor.hideEye />}
+                      {!emailVisible && <AppColor.eye />}
+                    </span>
+                  </div>
+                  <span>This email is linked to your account</span>
+                </Typography>
+              </div>
+            }
             buttonText="Change email"
             isSolved={false}
             onClick={() => {}}
@@ -360,7 +383,11 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.key />}
             title="Change Password"
-            text="Improve your security with a strong password"
+            body={
+              <Typography variant="body4">
+                Improve your security with a strong password
+              </Typography>
+            }
             buttonText="Change password"
             isSolved={false}
             onClick={() => {
@@ -370,7 +397,11 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.twoFactorAuth />}
             title="Two-Factor Authentication"
-            text="Add an extra layer of security to your  account"
+            body={
+              <Typography variant="body4">
+                Add an extra layer of security to your account
+              </Typography>
+            }
             buttonText="Enable 2FA"
             isSolved={false}
             onClick={() => {
@@ -380,8 +411,12 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.searchEarth />}
             title="Search Engines"
-            text="Allow or forbid search engines to index my profile"
-            buttonText="Allow to index"
+            body={
+              <Typography variant="body4">
+                Allow or forbid search engines to index my profile
+              </Typography>
+            }
+            buttonText="Forbid to index"
             isSolved={true}
             solveText="Allow to index"
             onClick={() => {}}
@@ -389,7 +424,12 @@ const PasswordAndSecurity = () => {
           <SettingsCardSecurity
             icon={<AppColor.hideEye width={'38px'} height={'38px'} />}
             title="Blocked List"
-            text="Add or remove users to blocked list and hide content from your view "
+            body={
+              <Typography variant="body4">
+                Add or remove users to blocked list and hide content from your
+                view
+              </Typography>
+            }
             buttonText="Browse blocked list"
             isSolved={false}
             onClick={() => {
