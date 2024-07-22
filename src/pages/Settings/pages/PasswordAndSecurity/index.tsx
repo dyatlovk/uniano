@@ -41,6 +41,7 @@ const PasswordAndSecurity = () => {
   const [passwordStage, setPasswordStage] = useState(0)
   const [blockedModal, setBlockedModal] = useState(false)
   const [emailVisible, setEmailVisible] = useState<boolean>(false)
+  const [phoneModalShow, setPhoneModalShow] = useState<boolean>(false)
 
   const emailVisibleCallback = useCallback(
     e => {
@@ -48,6 +49,10 @@ const PasswordAndSecurity = () => {
     },
     [emailVisible]
   )
+
+  const phoneModalCallback = useCallback(() => {
+    setPhoneModalShow(true)
+  }, [])
 
   return (
     <div>
@@ -311,6 +316,24 @@ const PasswordAndSecurity = () => {
           )}
         </ModalCenterBasic>
       )}
+      {phoneModalShow && (
+        <ModalCenterBasic
+          desktopMaxWidth="620px"
+          desktopMinWidth="620px"
+          bottomPartPadding="30px"
+          callbackClose={() => {
+            setPhoneModalShow(false)
+          }}
+          title="Add a number"
+        >
+          <PhoneModal
+            onFinish={() => {
+              setPhoneModalShow(false)
+            }}
+          />
+        </ModalCenterBasic>
+      )}
+
       <Header />
       <NavigationBarCustom
         icon={<AppColor.settings />}
@@ -353,7 +376,7 @@ const PasswordAndSecurity = () => {
             body={<p>You didn’t provide a phone number yet</p>}
             buttonText="Add a number"
             isSolved={false}
-            onClick={() => {}}
+            onClick={phoneModalCallback}
           />
           <SettingsCardSecurity
             icon={<AppColor.gmail />}
@@ -768,6 +791,180 @@ const TwoFactor = () => {
         />
       </div>
     </div>
+  )
+}
+
+interface PhoneModalProps {
+  onFinish: () => void
+}
+
+const PhoneModal = ({ onFinish }: PhoneModalProps) => {
+  const [stepNumber, setStepNumber] = useState<number>(1)
+  const [contryNumber, setCountryNumber] = useState<string>('+380')
+  const [number, setNumber] = useState<string>('')
+  const [verifCode, setVerifCode] = useState<string>('')
+  const [pin, setPin] = useState<string>('')
+
+  return (
+    <>
+      {stepNumber == 1 && (
+        <div>
+          <Typography
+            variant="body5"
+            fontWeight="500"
+            color={AppColor.transparentBlack}
+          >
+            Step 1 of 3
+          </Typography>
+          <DynamicPadding desktop="15px" mobile="10px" />
+          <Typography variant="body4">
+            Enter your phone number to confirm.
+          </Typography>
+          <DynamicPadding desktop="25px" mobile="15px" />
+          <InputBorderText
+            prevIcon={
+              <PhoneCountryNumberSelect
+                callback={item => {
+                  setCountryNumber(item)
+                }}
+              />
+            }
+            padding="17px 50px 17px 100px"
+            type="number"
+            emptyChangeColor={true}
+            callback={item => {
+              setNumber(item)
+            }}
+            borderText="Phone Number  "
+            labelIcon={
+              <div className="cursor">
+                <AppColor.phone height={'18px'} />
+              </div>
+            }
+            placeholderText=""
+          />
+          <DynamicPadding desktop="25px" mobile="15px" />
+          <div className="flex_end">
+            <MyButtonOrange
+              fontWeight="500"
+              textTransform="uppercase"
+              onClick={() => {
+                setStepNumber(2)
+              }}
+              disabled={number.length != 10}
+            >
+              Continue
+            </MyButtonOrange>
+          </div>
+        </div>
+      )}
+      {stepNumber == 2 && (
+        <>
+          <Typography
+            variant="body5"
+            fontWeight="500"
+            color={AppColor.transparentBlack}
+          >
+            Step 2 of 3
+          </Typography>
+          <DynamicPadding desktop="15px" mobile="10px" />
+          <Typography variant="body4">
+            A 6-digit verification code has been sent to +380*******31. Enter it
+            below.{' '}
+          </Typography>
+          <DynamicPadding desktop="25px" mobile="15px" />
+          <div style={{ maxWidth: '430px' }}>
+            <VerificationCodeInput
+              callback={item => {
+                setVerifCode(item)
+              }}
+              length={6}
+            />
+          </div>
+          <DynamicPadding desktop="25px" mobile="15px" />
+
+          <div className="gap_5">
+            <Typography variant="body4">
+              Your code will be active for{' '}
+            </Typography>
+            <CountDownText color={AppColor.green} durationInSeconds={900} />
+            <Typography variant="body4">minutes.</Typography>
+          </div>
+          <SizeBox height="5px" />
+          <div style={{ cursor: 'pointer' }}>
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={AppColor.orange}
+            >
+              Send new code{' '}
+            </Typography>
+          </div>
+          <div className="flex_end">
+            <MyButtonTransparent
+              fontWeight="500"
+              textTransform="uppercase"
+              onClick={() => {
+                setStepNumber(1)
+              }}
+            >
+              Back
+            </MyButtonTransparent>
+            <MyButtonOrange
+              fontWeight="500"
+              textTransform="uppercase"
+              onClick={() => {
+                setStepNumber(3)
+              }}
+              disabled={verifCode.length != 6}
+            >
+              Continue
+            </MyButtonOrange>
+          </div>
+        </>
+      )}
+      {stepNumber == 3 && (
+        <>
+          <Typography
+            variant="body5"
+            fontWeight="500"
+            color={AppColor.transparentBlack}
+          >
+            Step 3 of 3
+          </Typography>
+          <DynamicPadding desktop="15px" mobile="10px" />
+          <Typography variant="body4">Create 6-digit PIN </Typography>
+          <DynamicPadding desktop="25px" mobile="15px" />
+          <VerificationCodeInput
+            callback={item => {
+              setPin(item)
+            }}
+            length={6}
+          />
+          <DynamicPadding desktop="30px" mobile="20px" />
+
+          <div className="flex_end">
+            <MyButtonTransparent
+              fontWeight="500"
+              textTransform="uppercase"
+              onClick={() => {
+                setStepNumber(2)
+              }}
+            >
+              Back
+            </MyButtonTransparent>
+            <MyButtonOrange
+              fontWeight="500"
+              textTransform="uppercase"
+              onClick={onFinish}
+              disabled={false}
+            >
+              Finish
+            </MyButtonOrange>
+          </div>
+        </>
+      )}
+    </>
   )
 }
 
