@@ -74,6 +74,10 @@
   position: relative;
 }
 
+.active_item {
+  color: $orange;
+}
+
 @mixin hamburger_wrapper_common() {
   background-color: transparent;
   border: 1px solid $orange;
@@ -124,13 +128,13 @@
 
 .header_second_part {
 
-  > li {
+  >li {
     cursor: pointer;
     display: flex;
     gap: 20px;
     align-items: start;
 
-    > ul {
+    >ul {
       transition: all 0.3s ease;
 
       display: flex;
@@ -142,7 +146,7 @@
         height: 6px;
       }
 
-      > div {
+      >div {
 
         &::before {
           display: block;
@@ -161,7 +165,7 @@
       }
     }
 
-    > ul:hover svg {
+    >ul:hover svg {
       fill: $orange;
     }
   }
@@ -274,7 +278,7 @@
     gap: 10px;
     align-items: center;
 
-    > * {
+    >* {
       cursor: pointer;
       user-select: none;
     }

@@ -1,8 +1,6 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBar, {
-  NavigationBarCustom,
-} from '@common/components/NavigationBar/index'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
@@ -12,8 +10,14 @@ import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 import NotificationEnableList from './components/NotificationEnableList'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import { useCallback, useState } from 'react'
 
 const SettingsNotifications = () => {
+  const [isAllEmailsChecked, setAllEmailsChecked] = useState<boolean>(false)
+  const allEmailsCheckedHandler = useCallback((state: boolean) => {
+    setAllEmailsChecked(state)
+  }, [])
+
   return (
     <div>
       <Header />
@@ -28,7 +32,7 @@ const SettingsNotifications = () => {
             link: '/profile',
           },
           {
-            title: 'password-security',
+            title: 'password & security',
             link: '/password-security',
           },
           {
@@ -49,7 +53,7 @@ const SettingsNotifications = () => {
           pageTitle="notifications"
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="37px" />
 
         <div className={styles.notif_main_wrapper}>
           <div className={styles.top_bar}>
@@ -60,10 +64,14 @@ const SettingsNotifications = () => {
               <Typography variant="body4" fontWeight="500">
                 Email
               </Typography>
-              <MyCheckbox height="20px" width="20px" />
+              <MyCheckbox
+                height="20px"
+                width="20px"
+                callback={allEmailsCheckedHandler}
+              />
             </div>
           </div>
-          <NotificationEnableList />
+          <NotificationEnableList checkAllEmails={isAllEmailsChecked} />
         </div>
 
         <AskedQuestion />
