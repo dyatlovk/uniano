@@ -109,11 +109,19 @@ const PasswordAndSecurity = () => {
                   <div style={{ maxWidth: '95px' }}>
                     <Typography variant="body4">Feb 26, 2021 16:32</Typography>
                   </div>,
-                  <div className="gap_5">
+                  <div
+                    className="gap_5"
+                    onClick={e => {
+                      const target = e.target
+                      const row = target.closest('tr')
+                      row.remove()
+                    }}
+                  >
                     <Typography
                       variant="body4"
                       fontWeight="500"
                       color={AppColor.orange}
+                      className={styles.unblock_btn}
                     >
                       Unblock
                     </Typography>
@@ -132,11 +140,19 @@ const PasswordAndSecurity = () => {
                   <div style={{ maxWidth: '95px' }}>
                     <Typography variant="body4">Feb 26, 2021 16:32</Typography>
                   </div>,
-                  <div className="gap_5">
+                  <div
+                    className="gap_5"
+                    onClick={e => {
+                      const target = e.target
+                      const row = target.closest('tr')
+                      row.remove()
+                    }}
+                  >
                     <Typography
                       variant="body4"
                       fontWeight="500"
                       color={AppColor.orange}
+                      className={styles.unblock_btn}
                     >
                       Unblock
                     </Typography>
@@ -144,6 +160,7 @@ const PasswordAndSecurity = () => {
                 ],
               },
             ]}
+            counterName={"objects"}
           />
         </ModalCenterBasic>
       )}

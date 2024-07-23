@@ -1,16 +1,17 @@
 import { NavBarLine } from '..'
 import DynamicPadding from '../../DynamicPadding'
-import HorizontalLine from '../../Lines/HorizontalLine'
 import SizeBox from '../../SizeBox'
 import Typography from '../../Typography/Typography'
 import MyCheckbox from '../../inputs/Checkbox'
 import styles from './style.module.scss'
+import React from 'react'
 
 type DetailsTableMultiNodesProps = {
   elements: DetailsTableMultiNodesItem[]
   titles: string[]
   selectableColumn?: number
   removeNavBar?: boolean
+  counterName?: string
 }
 
 type DetailsTableMultiNodesItem = {
@@ -21,6 +22,7 @@ const DetailsTableMultiNodes = ({
   removeNavBar,
   titles,
   selectableColumn,
+  counterName = 'items',
 }: DetailsTableMultiNodesProps) => {
   return (
     <div>
@@ -95,7 +97,7 @@ const DetailsTableMultiNodes = ({
           {!removeNavBar && (
             <div className="flex_space_between">
               <Typography variant="body4">
-                <span style={{ fontWeight: '500' }}>11 841</span> Complaints
+                <span style={{ fontWeight: '500' }}>11 841</span> {counterName}
               </Typography>
               <NavBarLine callback={() => {}} maxCountPage={100} />
             </div>
