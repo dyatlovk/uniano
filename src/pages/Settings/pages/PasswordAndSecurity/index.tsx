@@ -111,7 +111,7 @@ const PasswordAndSecurity = () => {
                   </div>,
                   <div
                     className="gap_5"
-                    onClick={e => {
+                    onClick={(e: any) => {
                       const target = e.target
                       const row = target.closest('tr')
                       row.remove()
@@ -142,7 +142,7 @@ const PasswordAndSecurity = () => {
                   </div>,
                   <div
                     className="gap_5"
-                    onClick={e => {
+                    onClick={(e: any) => {
                       const target = e.target
                       const row = target.closest('tr')
                       row.remove()
@@ -160,7 +160,7 @@ const PasswordAndSecurity = () => {
                 ],
               },
             ]}
-            counterName={"objects"}
+            counterName={'objects'}
           />
         </ModalCenterBasic>
       )}
