@@ -21,6 +21,7 @@ import {
   MobileNavBar,
 } from '../Header-not-authorized/Header-not-authorized'
 import AnimateHeight from '../../AnimateHeight'
+import classNames from 'classnames'
 
 const Header = ({
   position = 'fixed',
@@ -318,7 +319,14 @@ const Header = ({
                         setHoveredLink(2)
                       }}
                     >
-                      <div className={styles.active_item} title="Partnership">
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('partnership')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Partnership"
+                      >
                         Partnership
                       </div>
                       <AppColor.chevronBottom

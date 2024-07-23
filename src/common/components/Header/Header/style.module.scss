@@ -76,6 +76,7 @@
 
 .active_item {
   color: $orange;
+  font-weight: 500;
 }
 
 @mixin hamburger_wrapper_common() {
