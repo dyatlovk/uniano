@@ -1,8 +1,8 @@
 import Typography from '@common/components/ui/Typography/Typography'
 import styles from './style.module.scss'
-import SliderByRef from '@common/components/ui/SliderByRef/index'
 import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
+import classNames from 'classnames'
 
 type SliderItemProps = {
   icon: React.ReactNode
@@ -20,6 +20,7 @@ const SliderItem = ({
   tags,
 }: SliderItemProps) => {
   const [isSelected, setIsSelected] = useState(false)
+
   const handleClickItem = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -41,8 +42,9 @@ const SliderItem = ({
       onClick={event => {
         handleClickItem(event)
       }}
-      style={{ backgroundColor: isSelected ? AppColor.white : 'white' }}
-      className={styles.slider_item}
+      className={classNames(
+        isSelected ? styles.slider_item__active : styles.slider_item
+      )}
     >
       <div
         style={{ opacity: isSelected ? 1 : 0 }}
@@ -51,7 +53,9 @@ const SliderItem = ({
         <AppColor.close fill={AppColor.text} />
       </div>
       {icon}
-      <Typography variant="body4">{text}</Typography>
+      <Typography fontWeight={isSelected ? '500' : '400'} variant="body4">
+        {text}
+      </Typography>
     </div>
   )
 }

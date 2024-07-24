@@ -11,16 +11,14 @@ import SliderByRef from '@common/components/ui/SliderByRef/index'
 import SliderItem from './components/SliderItem'
 import Typography from '@common/components/ui/Typography/Typography'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import { ClipboardEventHandler, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SideBarCategory from './components/SideBarCategory'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import DoubleRangeSlider from '@common/components/ui/DoubleRangeSlider/index'
 import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
-import CardStatisticTest from '@common/components/cards/CardStatistics/variants/CardStatisticTest'
 import CardStatisticsParthnershipConstant from '@common/components/cards/CardStatiscticsPartnership/variants/CardStatisticsParthnershipConstant/CardStatisticTest'
 import { useScreenSize } from '@common/helpers/useScreenSize'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import NavBarLineBlack from '@common/components/ui/NavBarLineBlack/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 import minimalist from '@assets/images/minimalist.png'
@@ -30,10 +28,9 @@ import threeD from '@assets/images/threeD.png'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import { FilterBlock } from '@pages/Crowdfreelance/CrowdfreelanceAll/index'
-import { Link } from 'react-router-dom'
 import FiltersTemplate from '@common/components/ui/FiltersTemplate/index'
-import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import DropdownText from '@common/components/ui/Dropdown/DropdownText/index'
 
 const PartnershipManager = () => {
   const { width, height } = useScreenSize()
@@ -100,10 +97,20 @@ const PartnershipManager = () => {
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="partnership"
-        navItems={developmentDropdown}
-        titleIcon={<AppColor.partnership />}
+        activeId={0}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All programs',
+            link: '/partnership',
+          },
+          {
+            title: 'My programs',
+            link: '/partnership/my-programs',
+          },
+        ]}
       />
 
       <div className={styles.wrapper}>
@@ -114,16 +121,11 @@ const PartnershipManager = () => {
               textList={['Partnership']}
             />
           }
-          endNode={
-            <ButtonDropdownSelect
-              text="All programs"
-              variants={['All programs', '2', '3']}
-            />
-          }
           pageTitle="Brand Identity Design "
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
+
         <SliderByRef
           endToFrontIndex={4}
           nodes={[
@@ -476,7 +478,7 @@ const PartnershipManager = () => {
                       <span style={{ fontWeight: '500' }}>11 841 </span>programs
                     </Typography>
                   </div>
-                  <div className={styles.flex_center}>
+                  <div className={styles.page_tools}>
                     <div
                       onClick={() => {
                         setShowModalSideBar(true)
@@ -493,7 +495,7 @@ const PartnershipManager = () => {
                         Filters
                       </Typography>
                     </div>
-                    <div className={'gap_5'}>
+                    <div className={styles.relevant}>
                       <AppColor.relevant />
                       <Typography
                         variant="body4"
@@ -504,9 +506,7 @@ const PartnershipManager = () => {
                         Relevant
                       </Typography>
                     </div>
-                    <div>
-                      <AppColor.chevronBottom fill={AppColor.text} />
-                    </div>
+                    <ItemsOnPageDropdown items={[10, 20, 30]} />
                   </div>
                 </div>
                 <DynamicPadding />
@@ -551,6 +551,67 @@ const PartnershipManager = () => {
         <AskedQuestion />
       </div>
       <Footer />
+    </div>
+  )
+}
+
+interface ItemsOnPageDropDownProps {
+  initIndex?: number
+  items: number[]
+}
+const ItemsOnPageDropdown = ({
+  items,
+  initIndex = 0,
+}: ItemsOnPageDropDownProps): JSX.Element => {
+  const [activeItem, setActiveItem] = useState<number>(items[initIndex])
+  const [active, setActive] = useState(false)
+
+  function handleClick(item: number) {
+    setActiveItem(item)
+  }
+
+  const handleScroll = e => {
+    e.preventDefault()
+  }
+
+  return (
+    <div
+      className={styles.items_on_page}
+      onClick={() => {
+        setActive(prev => !prev)
+      }}
+    >
+      <Typography color={'#01010180'} fontWeight="500" variant="body4">
+        {activeItem}
+      </Typography>
+      <AppColor.chevronBottom fill={'#01010180'} />
+      <div
+        style={{
+          display: active ? 'block' : 'none',
+          zIndex: 10,
+          position: 'absolute',
+        }}
+        className={styles.items_on_page__dropdown}
+      >
+        <div className={styles.dropdown_titles}>
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className={styles.dropdown_child}
+              onClick={() => {
+                handleClick(item)
+              }}
+            >
+              <Typography
+                fontWeight={item === activeItem ? '500' : '400'}
+                variant="body5"
+              >
+                {item}
+              </Typography>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

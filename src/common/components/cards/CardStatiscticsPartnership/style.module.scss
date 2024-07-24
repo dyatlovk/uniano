@@ -1,4 +1,12 @@
-.name > p {
+@mixin cardInvisibleShell {
+  position: absolute;
+  left: 10px;
+  top: 100%;
+  right: 0;
+  width: calc(100% - 10px);
+}
+
+.name>p {
   display: inline;
 }
 
@@ -40,7 +48,7 @@
 }
 
 .shell_top_image {
-  padding: 17px 13px 23px 13px;
+  padding: 19px 13px 23px 14px;
   position: relative;
 
   &::after {
@@ -56,14 +64,14 @@
 .content_top_first {
   display: flex;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .content_top_second {
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-top: 14px;
+  margin-top: 3px;
 }
 
 .tags_wrapper {
@@ -83,6 +91,23 @@
   display: flex;
   gap: 5px;
   align-items: center;
+}
+
+.shell_visible {
+  display: flex;
+  flex-direction: column;
+}
+
+.shell_invisible {
+  z-index: 0;
+  opacity: 0;
+  @include cardInvisibleShell
+}
+
+.shell_invisible__show {
+  opacity: 1;
+  z-index: 10;
+  @include cardInvisibleShell
 }
 
 .shell_bottom {
@@ -107,7 +132,7 @@
   @include weakShadow;
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 15px;
+  row-gap: 20px;
 }
 
 .bottom_details_money {
@@ -129,8 +154,7 @@
   align-items: end;
 }
 
-.static_text {
-}
+.static_text {}
 
 .dots {
   display: flex;
