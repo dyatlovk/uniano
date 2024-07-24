@@ -9,14 +9,14 @@ type NavBarLinkProps = {
   index: number
   activeIndex: number
   parentRoute: string,
-  counter?: number
+  counter?: number,
 }
 const NavBarLink = ({
   title,
   index,
   activeIndex,
   parentRoute,
-  counter
+  counter,
 }: NavBarLinkProps) => {
   const modifiedTitle = title.replace('&', '-').replace(/\s/g, '')
 

@@ -104,7 +104,13 @@ const NavigationBar = ({
             >
               <>
                 {currentCategory.links[activePageIndex].title.toUpperCase()}
-                {currentCategory.links[activePageIndex].counter > 0 ? <span className={styles.nav_bar_counter}>{currentCategory.links[activePageIndex].counter}</span> : ""}
+                {currentCategory.links[activePageIndex].counter > 0 ? (
+                  <span className={styles.nav_bar_counter}>
+                    {currentCategory.links[activePageIndex].counter}
+                  </span>
+                ) : (
+                  ''
+                )}
               </>
             </Typography>
           </div>
@@ -258,6 +264,7 @@ export const NavigationBarCustom = ({
           {buttonsLink.map((item, index) => (
             <NavBarLink
               parentRoute={parentRoute}
+              link={item.link}
               index={index}
               activeIndex={activeIndex}
               title={item.title}

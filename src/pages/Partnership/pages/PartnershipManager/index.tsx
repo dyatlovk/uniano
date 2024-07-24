@@ -1,5 +1,6 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
+import { NavigationBarCustom } from '@common/components/NavigationBar/index'
 import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import AppColor from '@common/styles/variables-static'
 import { developmentDropdown } from '@common/models/constants'
@@ -11,16 +12,14 @@ import SliderByRef from '@common/components/ui/SliderByRef/index'
 import SliderItem from './components/SliderItem'
 import Typography from '@common/components/ui/Typography/Typography'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import { ClipboardEventHandler, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SideBarCategory from './components/SideBarCategory'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import DoubleRangeSlider from '@common/components/ui/DoubleRangeSlider/index'
 import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
-import CardStatisticTest from '@common/components/cards/CardStatistics/variants/CardStatisticTest'
 import CardStatisticsParthnershipConstant from '@common/components/cards/CardStatiscticsPartnership/variants/CardStatisticsParthnershipConstant/CardStatisticTest'
 import { useScreenSize } from '@common/helpers/useScreenSize'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import NavBarLineBlack from '@common/components/ui/NavBarLineBlack/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 import minimalist from '@assets/images/minimalist.png'
@@ -30,8 +29,6 @@ import threeD from '@assets/images/threeD.png'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import { FilterBlock } from '@pages/Crowdfreelance/CrowdfreelanceAll/index'
-import { Link } from 'react-router-dom'
 import FiltersTemplate from '@common/components/ui/FiltersTemplate/index'
 import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
 
@@ -100,10 +97,21 @@ const PartnershipManager = () => {
     <div>
       <Header />
 
-      <NavigationBarDropdowns
-        title="partnership"
-        navItems={developmentDropdown}
-        titleIcon={<AppColor.partnership />}
+      <NavigationBarCustom
+        icon={<AppColor.partnership />}
+        text="Partnership"
+        parentRoute="partnership"
+        activeIndex={0}
+        buttonsLink={[
+          {
+            title: 'All my programs',
+            link: '/partnership/',
+          },
+          {
+            title: 'My programs',
+            link: '/partnership/my-programs',
+          },
+        ]}
       />
 
       <div className={styles.wrapper}>
@@ -123,7 +131,7 @@ const PartnershipManager = () => {
           pageTitle="Brand Identity Design "
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
         <SliderByRef
           endToFrontIndex={4}
           nodes={[
