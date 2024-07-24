@@ -298,6 +298,7 @@ const StatisticItem = ({ text, endNode }: StatisticItemProps) => {
         <Typography
           textLineHeight="80%"
           variant="body4"
+          fontSizeStatic="14px"
           color={AppColor.transparentBlack}
         >
           {text}
