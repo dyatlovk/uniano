@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { styles } from 'module.styles.scss'
+import styles from 'style.module.scss'
 import Typography from '@common/components/ui/Typography/Typography'
+import AppColor from '@common/styles/variables-static'
 
 interface NavBarProps {
   title: string
@@ -9,7 +10,7 @@ interface NavBarProps {
   counter?: number
 }
 
-const NavBarLink = ({ title, counter, link } = NavBarProps) => {
+const NavBarLink = ({ title, counter, link, isActive }: NavBarProps) => {
   return (
     <Link
       to={link}
@@ -35,4 +36,4 @@ const NavBarLink = ({ title, counter, link } = NavBarProps) => {
   )
 }
 
-export default NavBar
+export default NavBarLink
