@@ -40,8 +40,9 @@ const ModalPersonal = () => {
   return (
     <>
       <Typography variant="body4">
-        KYC is a one-time process required by international regulators and is
-        implemented for the safety of your assets.
+        <span className={styles.medium}>KYC</span> is a one-time process
+        required by international regulators and is implemented for the safety
+        of your assets.
       </Typography>
       <DynamicPadding desktop="30px" mobile="20px" />
       <div className={styles.inputs_wrapper}>
@@ -107,6 +108,7 @@ const ModalPersonal = () => {
           callback={item => {
             handleCallback('country', item)
           }}
+          isActive={formData.country.length > 0}
         />
         <InputBorderTextDropdown
           initText={
@@ -126,6 +128,7 @@ const ModalPersonal = () => {
           callback={item => {
             handleCallback('stateProvince', item)
           }}
+          isActive={formData.stateProvince.length > 0}
         />
         <InputBorderText
           borderText="Address Line 1"
@@ -181,6 +184,7 @@ const ModalPersonal = () => {
         />
       </div>
       <div className={styles.right}>
+        <DynamicPadding />
         <div className={'text_box'}>
           <Typography variant="body4" fontWeight="500">
             Requirements:

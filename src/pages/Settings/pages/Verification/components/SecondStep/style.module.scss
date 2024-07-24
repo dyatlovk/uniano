@@ -71,6 +71,28 @@
   background-color: white;
 }
 
+.medium {
+  font-weight: 500;
+}
+
+.step_nav {
+  cursor: pointer;
+
+  &:hover {
+    p {
+      color: $orange;
+    }
+
+    .box {
+      background-color: $orange;
+    }
+
+    svg path {
+      fill: #fff;
+    }
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .middle_details_picker {

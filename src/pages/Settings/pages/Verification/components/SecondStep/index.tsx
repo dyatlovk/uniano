@@ -9,6 +9,7 @@ import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import ImagePlaceholder from './components/ImagePlaceholder'
 import AppColor from '@common/styles/variables-static'
+import classNames from 'classnames'
 
 const SecondStep = ({
   callbackUndo,
@@ -22,14 +23,16 @@ const SecondStep = ({
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <div>
-            <Typography variant="body4">Step 2/3 - User ID document</Typography>
+            <Typography variant="body4">
+              <span className={styles.medium}>Step</span> 2/3 - User ID document
+            </Typography>
             <PercentBar currentPercent={66} height="13px" />
           </div>
-          <SizeBox height="30px" />
+          <SizeBox height="23px" />
           <Typography variant="body3" fontWeight="500">
             Kind of document
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="23px" mobile="20px" />
           <ChooseVariant
             items={['id cards', 'passport', 'Driving licence']}
             callback={() => {}}
@@ -41,13 +44,13 @@ const SecondStep = ({
             <MyCheckbox height="20px" width="20px" />
             <Typography variant="body5">No expiration</Typography>
           </div>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="19px" mobile="20px" />
           <div className={styles.middle_details}>
             <div className={styles.middle_details_item}>
               <Typography variant="body3" fontWeight="500">
                 Issued сountry
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="23px" mobile="20px" />
               <InputDropdown
                 padding="15px"
                 dropdownVariants={['Ukraine', 'England', 'Poland', 'USA']}
@@ -59,7 +62,7 @@ const SecondStep = ({
               <Typography variant="body3" fontWeight="500">
                 ID card number
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="23px" mobile="20px" />
               <InputCommon
                 placeholder="SJ 123 345"
                 callback={() => {}}
@@ -71,7 +74,7 @@ const SecondStep = ({
               <Typography variant="body3" fontWeight="500">
                 Expiration date
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="23px" mobile="20px" />
               <InputCommon
                 placeholder="MM/YY"
                 callback={() => {}}
@@ -80,33 +83,36 @@ const SecondStep = ({
               />
             </div>
           </div>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="24px" mobile="20px" />
           <div className={styles.middle_details_picker}>
             <div className={styles.middle_details_item}>
               <Typography variant="body3" fontWeight="500">
                 ID front
               </Typography>
-              <DynamicPadding desktop="10px" mobile="10px" />
+              <DynamicPadding desktop="7px" mobile="10px" />
               <ImagePlaceholder image={null} />
             </div>
             <div className={styles.middle_details_item}>
               <Typography variant="body3" fontWeight="500">
                 ID back
               </Typography>
-              <DynamicPadding desktop="10px" mobile="10px" />
+              <DynamicPadding desktop="7px" mobile="10px" />
               <ImagePlaceholder image={null} />
             </div>
             <div className={styles.middle_details_item}>
               <Typography variant="body3" fontWeight="500">
                 Selfie with ID
               </Typography>
-              <DynamicPadding desktop="10px" mobile="10px" />
+              <DynamicPadding desktop="7px" mobile="10px" />
               <ImagePlaceholder image={null} />
             </div>
           </div>
           <DynamicPadding />
           <div className={styles.flex_justify}>
-            <div onClick={callbackUndo} className={styles.justify}>
+            <div
+              onClick={callbackUndo}
+              className={classNames(styles.justify, styles.step_nav)}
+            >
               <div className={styles.box}>
                 <AppColor.longChevronLeft />
               </div>
@@ -123,7 +129,10 @@ const SecondStep = ({
                 </Typography>
               </div>
             </div>
-            <div onClick={callbackOn} className={styles.justify}>
+            <div
+              onClick={callbackOn}
+              className={classNames(styles.justify, styles.step_nav)}
+            >
               <div style={{ alignItems: 'end' }} className={styles.column}>
                 <Typography
                   textTransform="uppercase"
