@@ -265,7 +265,6 @@ export const NavigationBarCustom = ({
           {buttonsLink.map((item, index) => (
             <NavBarLink
               parentRoute={parentRoute}
-              link={item.link}
               index={index}
               activeIndex={activeIndex}
               title={item.title}
