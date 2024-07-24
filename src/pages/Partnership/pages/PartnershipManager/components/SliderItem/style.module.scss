@@ -1,7 +1,6 @@
-.slider_item {
+@mixin item {
   padding: 18px 20px;
   border-radius: 20px;
-  background-color: $white;
   border: 1px solid rgba($color: $text, $alpha: 0.1);
 
   display: flex;
@@ -10,6 +9,21 @@
 
   position: relative;
   cursor: pointer;
+}
+
+.slider_item {
+  background-color: #fff;
+
+  &:hover {
+    background-color: $white;
+  }
+
+  @include item;
+}
+
+.slider_item__active {
+  background-color: $white;
+  @include item;
 }
 
 .absolute_close {

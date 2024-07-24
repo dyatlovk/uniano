@@ -5,8 +5,9 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputBorderText from '@common/components/ui/inputs/InputBorderText/index'
 import AppColor from '@common/styles/variables-static'
 import InputBorderTextDropdown from '@common/components/ui/inputs/InputBorderTextDropdown/index'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
+import classNames from 'classnames'
 
 type dataType = {
   firstName: string
@@ -54,14 +55,16 @@ const FirstStep = ({
           <>
             <div>
               <Typography variant="body4">
-                Step 1/3 - User personal information
+                <span className={styles.medium}>Step</span> 1/3 - User personal
+                information
               </Typography>
               <PercentBar currentPercent={33.3} height="13px" />
             </div>
             <DynamicPadding desktop="25px" mobile="30px" />
             <Typography variant="body4">
-              KYC is a one-time process required by international regulators and
-              is implemented for the safety of your assets.{' '}
+              <span className={styles.medium}>KYC</span> is a one-time process
+              required by international regulators and is implemented for the
+              safety of your assets.{' '}
             </Typography>
             <DynamicPadding desktop="30px" mobile="20px" />
             <div className={styles.inputs_wrapper}>
@@ -137,6 +140,7 @@ const FirstStep = ({
                 callback={item => {
                   handleCallback('country', item)
                 }}
+                isActive={formData.country.length > 0}
               />
               <InputBorderTextDropdown
                 initText={
@@ -158,6 +162,7 @@ const FirstStep = ({
                 callback={item => {
                   handleCallback('stateProvince', item)
                 }}
+                isActive={formData.stateProvince.length > 0}
               />
               <InputBorderText
                 borderText="Address Line 1"
@@ -252,7 +257,7 @@ const FirstStep = ({
         onClick={() => {
           isCanMoveOn() ? handleMove() : () => {}
         }}
-        className={styles.justify}
+        className={classNames(styles.justify, styles.step_nav)}
       >
         <div className={styles.column}>
           <Typography

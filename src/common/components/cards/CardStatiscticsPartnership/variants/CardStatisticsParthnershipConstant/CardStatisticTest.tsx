@@ -41,23 +41,43 @@ const CardStatisticsParthnershipConstant = ({
       cardType="Logo design"
       rate={
         <div className={styles.statistic_flex}>
-          <Typography textLineHeight="0.6" variant="body4">
+          <Typography
+            textLineHeight="0.6"
+            variant="body4"
+            fontSizeStatic="14px"
+            fontWeight="500"
+          >
             5% - 10%
           </Typography>
         </div>
       }
       EPC={
-        <Typography textLineHeight="0.6" variant="body4">
+        <Typography
+          textLineHeight="0.6"
+          variant="body4"
+          fontSizeStatic="14px"
+          fontWeight="500"
+        >
           5$
         </Typography>
       }
       CR={
-        <Typography textLineHeight="0.6" variant="body4">
+        <Typography
+          textLineHeight="0.6"
+          variant="body4"
+          fontSizeStatic="14px"
+          fontWeight="500"
+        >
           10%
         </Typography>
       }
       CR48hours={
-        <Typography textLineHeight="0.6" variant="body4">
+        <Typography
+          textLineHeight="0.6"
+          variant="body4"
+          fontSizeStatic="14px"
+          fontWeight="500"
+        >
           8.78%
         </Typography>
       }

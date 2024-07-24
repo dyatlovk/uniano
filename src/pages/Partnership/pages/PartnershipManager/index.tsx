@@ -30,7 +30,8 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import FiltersTemplate from '@common/components/ui/FiltersTemplate/index'
-import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import DropdownText from '@common/components/ui/Dropdown/DropdownText/index'
 
 const PartnershipManager = () => {
   const { width, height } = useScreenSize()
@@ -97,15 +98,14 @@ const PartnershipManager = () => {
     <div>
       <Header />
 
-      <NavigationBarCustom
+      <NavigationSimpleBar
+        title="partnership"
+        activeId={0}
         icon={<AppColor.partnership />}
-        text="Partnership"
-        parentRoute="partnership"
-        activeIndex={0}
-        buttonsLink={[
+        links={[
           {
-            title: 'All my programs',
-            link: '/partnership/',
+            title: 'All programs',
+            link: '/partnership',
           },
           {
             title: 'My programs',
@@ -120,12 +120,6 @@ const PartnershipManager = () => {
             <NavigationItem
               image={<AppColor.home />}
               textList={['Partnership']}
-            />
-          }
-          endNode={
-            <ButtonDropdownSelect
-              text="All programs"
-              variants={['All programs', '2', '3']}
             />
           }
           pageTitle="Brand Identity Design "
@@ -484,7 +478,7 @@ const PartnershipManager = () => {
                       <span style={{ fontWeight: '500' }}>11 841 </span>programs
                     </Typography>
                   </div>
-                  <div className={styles.flex_center}>
+                  <div className={styles.page_tools}>
                     <div
                       onClick={() => {
                         setShowModalSideBar(true)
@@ -501,7 +495,7 @@ const PartnershipManager = () => {
                         Filters
                       </Typography>
                     </div>
-                    <div className={'gap_5'}>
+                    <div className={styles.relevant}>
                       <AppColor.relevant />
                       <Typography
                         variant="body4"
@@ -512,9 +506,7 @@ const PartnershipManager = () => {
                         Relevant
                       </Typography>
                     </div>
-                    <div>
-                      <AppColor.chevronBottom fill={AppColor.text} />
-                    </div>
+                    <ItemsOnPageDropdown items={[10, 20, 30]} />
                   </div>
                 </div>
                 <DynamicPadding />
@@ -559,6 +551,67 @@ const PartnershipManager = () => {
         <AskedQuestion />
       </div>
       <Footer />
+    </div>
+  )
+}
+
+interface ItemsOnPageDropDownProps {
+  initIndex?: number
+  items: number[]
+}
+const ItemsOnPageDropdown = ({
+  items,
+  initIndex = 0,
+}: ItemsOnPageDropDownProps): JSX.Element => {
+  const [activeItem, setActiveItem] = useState<number>(items[initIndex])
+  const [active, setActive] = useState(false)
+
+  function handleClick(item: number) {
+    setActiveItem(item)
+  }
+
+  const handleScroll = e => {
+    e.preventDefault()
+  }
+
+  return (
+    <div
+      className={styles.items_on_page}
+      onClick={() => {
+        setActive(prev => !prev)
+      }}
+    >
+      <Typography color={'#01010180'} fontWeight="500" variant="body4">
+        {activeItem}
+      </Typography>
+      <AppColor.chevronBottom fill={'#01010180'} />
+      <div
+        style={{
+          display: active ? 'block' : 'none',
+          zIndex: 10,
+          position: 'absolute',
+        }}
+        className={styles.items_on_page__dropdown}
+      >
+        <div className={styles.dropdown_titles}>
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className={styles.dropdown_child}
+              onClick={() => {
+                handleClick(item)
+              }}
+            >
+              <Typography
+                fontWeight={item === activeItem ? '500' : '400'}
+                variant="body5"
+              >
+                {item}
+              </Typography>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

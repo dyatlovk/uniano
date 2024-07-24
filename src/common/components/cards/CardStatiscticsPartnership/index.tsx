@@ -1,23 +1,17 @@
 import { fakeUserConstant, userModel } from '@common/models/user'
 import Typography from '../../ui/Typography/Typography'
-import testUserImage from '@assets/images/test-user-image.png'
 import bc_image from '@assets/images/card-time-background.png'
 import { useGetImage } from '@common/helpers/UseGetImage'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import icon_sponsorship from '@assets/svg/sponsors-icon.svg'
-import icon_message from '@assets/svg/message-icon.svg'
 import icon_star from '@assets/svg/star.svg'
-import icon_comments from '@assets/svg/comments-icon.svg'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import { formatNumberWithSpaces } from '@common/helpers/stringFunctions'
-import DaysLeftTimer from '@common/components/ui/DaysLeftTimer/DaysLeftTimer'
 import CardTypeDisplay from '../CardTypeDisplay/CardTypeDisplay'
 import Urgent from '../../ui/Urgent'
 import { CSSProperties, useEffect, useState } from 'react'
 import AnimatedSvg from '../../AnimatedSvg'
 import UserAvatar from '../../ui/UserAvatar'
 import { useNavigate } from 'react-router-dom'
+import classNames from 'classnames'
 type CardStatisticPartnershipProps = {
   title: string
   user: userModel
@@ -64,6 +58,9 @@ const CardStatisticPartnership = ({
   removeLastElementProps,
   setRemoveLastElementProps,
 }: CardStatisticPartnershipProps) => {
+  const [removeLastElement, setRemoveLastElement] = useState(false)
+  const [onCardHover, setOnCardHover] = useState<boolean>(false)
+
   const flagImage = useGetImage(`flags/${user.country}`, false)
 
   const topImageStyles = {
@@ -73,9 +70,6 @@ const CardStatisticPartnership = ({
     backgroundPosition: 'center',
     zIndex: 0,
   }
-  const today = new Date('2023-11-23')
-  const [removeLastElement, setRemoveLastElement] = useState(false)
-
   useEffect(() => {
     setRemoveLastElement(removeLastElementProps)
   }, [removeLastElementProps])
@@ -87,157 +81,174 @@ const CardStatisticPartnership = ({
   }
 
   return (
-    <div className={styles.shell}>
-      {cardType && (
-        <span className={styles.shell_absolute}>
-          <CardTypeDisplay
-            textTransform={textTransform}
-            textColor={typeColor ?? AppColor.white}
-            text={cardType ?? 'Business'}
-            backgroundColor={AppColor.text}
-          />
-        </span>
-      )}
-      <div className={styles.right_abolute}>
-        {iconsAbsolute ?? <AppColor.refresh />}
-      </div>
-      <div
-        onClick={() => {
-          if (navigateTo) {
-            navigate(navigateTo)
-          }
-        }}
-        style={{
-          ...topImageStyles,
-          borderTopLeftRadius: imageBorderLeft,
-          overflow: 'hidden',
-        }}
-        className={`${styles.shell_top_image} cursor`}
-      >
-        <Typography variant="body5" color="white">
-          {title}
-        </Typography>
-        <div className={styles.content_top_first}>
-          <UserAvatar
-            variant="image"
-            active={true}
-            name="name"
-            url={fakeUserConstant.image}
-          />
-          <div>
-            <div className="gap_5">
-              <img src={flagImage} alt="countryFlag" />
-              <span className={styles.name}>
-                <Typography variant="body5" color="white">
-                  {user.name}
-                </Typography>
-              </span>
-            </div>
-            <Typography variant="body5" color={AppColor.orange}>
-              {user.roles}
-            </Typography>
-          </div>
+    <div
+      onMouseEnter={e => {
+        setOnCardHover(true)
+      }}
+      onMouseLeave={e => {
+        setOnCardHover(false)
+      }}
+      className={styles.shell}
+    >
+      <div className={styles.shell_visible}>
+        {cardType && (
+          <span className={styles.shell_absolute}>
+            <CardTypeDisplay
+              textTransform={textTransform}
+              textColor={typeColor ?? AppColor.white}
+              text={cardType ?? 'Business'}
+              backgroundColor={AppColor.text}
+            />
+          </span>
+        )}
+        <div className={styles.right_abolute}>
+          {iconsAbsolute ?? <AppColor.refresh />}
         </div>
-        <div className={styles.content_top_second}>
-          {dateAgo != null ? (
-            <Typography variant="body5" color="white">
-              {dateAgo}
-            </Typography>
-          ) : userDetails != null ? (
+        <div
+          onClick={() => {
+            if (navigateTo) {
+              navigate(navigateTo)
+            }
+          }}
+          style={{
+            ...topImageStyles,
+            borderTopLeftRadius: imageBorderLeft,
+            overflow: 'hidden',
+          }}
+          className={`${styles.shell_top_image} cursor`}
+        >
+          <Typography variant="body5" color="white">
+            {title}
+          </Typography>
+          <div className={styles.content_top_first}>
+            <UserAvatar
+              variant="image"
+              active={true}
+              name="name"
+              url={fakeUserConstant.image}
+            />
+            <div>
+              <div className="gap_5">
+                <img src={flagImage} alt="countryFlag" />
+                <span className={styles.name}>
+                  <Typography variant="body5" color="white">
+                    {user.name}
+                  </Typography>
+                </span>
+              </div>
+              <Typography variant="body5" color={AppColor.orange}>
+                {user.roles}
+              </Typography>
+            </div>
+          </div>
+          <div className={styles.content_top_second}>
+            {dateAgo != null ? (
+              <Typography variant="body5" color="white">
+                {dateAgo}
+              </Typography>
+            ) : userDetails != null ? (
+              <>
+                {userDetails.map(item => (
+                  <SvgText nodeImg={item.nodeImg} text={item.text} />
+                ))}
+              </>
+            ) : (
+              <>
+                <SvgText
+                  nodeImg={<AppColor.handshake />}
+                  text={`${user.statistic.sponsorship_count}`}
+                />
+                <SvgText
+                  nodeImg={<AppColor.message fill="white" />}
+                  text={`${user.statistic.responses_count}`}
+                />
+                <SvgText img={icon_star} text={`${user.statistic.rating}%`} />
+              </>
+            )}
+            {isUrgent && <Urgent />}
+            {lvl && (
+              <div className="gap_5">
+                <AppColor.fiveOfFive />
+                <Typography variant="body5" color="white">
+                  {lvl} lvl
+                </Typography>
+                <Typography
+                  variant="body5"
+                  fontWeight="500"
+                  color={AppColor.red}
+                >
+                  Lead
+                </Typography>
+              </div>
+            )}
+          </div>
+          {links && (
+            <div className={styles.links_wrapper}>
+              {links.map(item => (
+                <Typography
+                  color="white"
+                  textTransform="uppercase"
+                  variant="body5"
+                  fontWeight="500"
+                >
+                  {item}
+                </Typography>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className={styles.shell_middle}>
+          {details != null ? (
             <>
-              {userDetails.map(item => (
-                <SvgText nodeImg={item.nodeImg} text={item.text} />
+              {details.map(item => (
+                <StatisticItem text={item.title} endNode={item.node} />
               ))}
             </>
           ) : (
             <>
-              <SvgText
-                nodeImg={<AppColor.handshake />}
-                text={`${user.statistic.sponsorship_count}`}
-              />
-              <SvgText
-                nodeImg={<AppColor.message fill="white" />}
-                text={`${user.statistic.responses_count}`}
-              />
-              <SvgText img={icon_star} text={`${user.statistic.rating}%`} />
+              <StatisticItem text="Rate" endNode={rate} />
+
+              <StatisticItem text="EPC" endNode={EPC} />
+
+              <StatisticItem text="CR" endNode={CR} />
+
+              <StatisticItem text="CR for 48 hours" endNode={CR48hours} />
             </>
           )}
-          {isUrgent && <Urgent />}
-          {lvl && (
-            <div className="gap_5">
-              <AppColor.fiveOfFive />
-              <Typography variant="body5" color="white">
-                {lvl} lvl
-              </Typography>
-              <Typography variant="body5" fontWeight="500" color={AppColor.red}>
-                Lead
-              </Typography>
-            </div>
-          )}
         </div>
-        {links && (
-          <div className={styles.links_wrapper}>
-            {links.map(item => (
-              <Typography
-                color="white"
-                textTransform="uppercase"
-                variant="body5"
-                fontWeight="500"
-              >
-                {item}
-              </Typography>
-            ))}
-          </div>
-        )}
-        <div className={styles.tags_wrapper}>
-          {tags.map(tag => (
-            <TagDisplay text={tag} />
-          ))}
-        </div>
-      </div>
-      <div className={styles.shell_middle}>
-        {details != null ? (
-          <>
-            {details.map(item => (
-              <StatisticItem text={item.title} endNode={item.node} />
-            ))}
-          </>
-        ) : (
-          <>
-            <StatisticItem text="Rate" endNode={rate} />
-
-            <StatisticItem text="EPC" endNode={EPC} />
-
-            <StatisticItem text="CR" endNode={CR} />
-
-            <StatisticItem text="CR for 48 hours" endNode={CR48hours} />
-          </>
-        )}
       </div>
       <div
-        style={removeLastElement ? { display: 'none' } : {}}
-        className={styles.shell_bottom}
+        className={classNames(
+          onCardHover ? styles.shell_invisible__show : styles.shell_invisible
+        )}
       >
-        <AnimatedSvg
-          node1={<AppColor.hearPlus height={'18px'} fill={AppColor.text} />}
-          node2={<AppColor.heartOrange height={'18px'} fill={AppColor.text} />}
-        />
-        <AnimatedSvg
-          node1={<AppColor.notes height={'18px'} fill={AppColor.text} />}
-          node2={<AppColor.noteOrange height={'18px'} fill={AppColor.text} />}
-        />
-        <AnimatedSvg
-          node1={<AppColor.eye height={'18px'} fill={AppColor.text} />}
-          node2={
-            <AppColor.eyeOrange
-              onClick={() => {
-                setRemoveLastElementInLocalStorage()
-              }}
-              height={'18px'}
-              fill={AppColor.text}
-            />
-          }
-        />
+        <div
+          style={removeLastElement ? { display: 'none' } : {}}
+          className={styles.shell_bottom}
+        >
+          <AnimatedSvg
+            node1={<AppColor.hearPlus height={'18px'} fill={AppColor.text} />}
+            node2={
+              <AppColor.heartOrange height={'18px'} fill={AppColor.text} />
+            }
+          />
+          <AnimatedSvg
+            node1={<AppColor.notes height={'18px'} fill={AppColor.text} />}
+            node2={<AppColor.noteOrange height={'18px'} fill={AppColor.text} />}
+          />
+          <AnimatedSvg
+            node1={<AppColor.eye height={'18px'} fill={AppColor.text} />}
+            node2={
+              <AppColor.eyeOrange
+                onClick={() => {
+                  setRemoveLastElementInLocalStorage()
+                }}
+                height={'18px'}
+                fill={AppColor.text}
+              />
+            }
+          />
+        </div>
       </div>
     </div>
   )
@@ -287,6 +298,7 @@ const StatisticItem = ({ text, endNode }: StatisticItemProps) => {
         <Typography
           textLineHeight="80%"
           variant="body4"
+          fontSizeStatic="14px"
           color={AppColor.transparentBlack}
         >
           {text}

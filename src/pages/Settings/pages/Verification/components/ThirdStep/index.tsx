@@ -23,11 +23,11 @@ const ThirdStep = ({
             </Typography>
             <PercentBar currentPercent={100} height="13px" />
           </div>
-          <SizeBox height="30px" />
+          <SizeBox height="23px" />
           <Typography variant="body3" fontWeight="500">
             Upload document
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="11px" mobile="20px" />
           <ImagePlaceholder height="156px" image={null} />
           <DynamicPadding />
           <div className={styles.flex_justify}>
