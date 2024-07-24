@@ -21,6 +21,7 @@ import {
   MobileNavBar,
 } from '../Header-not-authorized/Header-not-authorized'
 import AnimateHeight from '../../AnimateHeight'
+import classNames from 'classnames'
 
 const Header = ({
   position = 'fixed',
@@ -178,7 +179,7 @@ const Header = ({
           </div>
         </div>
       </div>
-      <div className='header_fixed'>
+      <div className="header_fixed">
         {position == 'fixed' && <DynamicPadding desktop="92px" mobile="92px" />}
         <div
           style={{ opacity: headerVisible ? '1' : '0', position: position }}
@@ -318,7 +319,16 @@ const Header = ({
                         setHoveredLink(2)
                       }}
                     >
-                      <div title="Partnership"> Partnership</div>
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('partnership')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Partnership"
+                      >
+                        Partnership
+                      </div>
                       <AppColor.chevronBottom
                         width={10}
                         height={6}
