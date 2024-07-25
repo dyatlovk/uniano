@@ -1,32 +1,37 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import AppColor from '@common/styles/variables-static'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import { developmentDropdown } from '@common/models/constants'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import FilterList from '@common/components/FilterList/index'
 import DetailsTableMyPrograms from '@common/components/ui/DetailsTable/variants/DetailsTableMyPrograms/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import { fakeUserConstant, userModel } from '@common/models/user'
+import { fakeUserConstant } from '@common/models/user'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 
 const PartnershipMyPrograms = () => {
   return (
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="partnership"
-        navItems={developmentDropdown}
-        titleIcon={<AppColor.partnership />}
+        activeId={1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All programs',
+            link: '/partnership',
+          },
+          {
+            title: 'My programs',
+            link: '/partnership/my-programs',
+          },
+        ]}
       />
 
       <div className={styles.wrapper}>
@@ -46,12 +51,10 @@ const PartnershipMyPrograms = () => {
           pageTitle="My programs  "
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
         <SearchFilterBar />
 
-        <DynamicPadding />
-
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="50px" mobile="20px" />
         <DetailsTableMyPrograms
           informationTable={[
             {
