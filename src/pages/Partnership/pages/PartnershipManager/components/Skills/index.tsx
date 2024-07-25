@@ -42,7 +42,10 @@ const SkillsFilter = ({
             )}
             key={idx}
             onClick={e => {
-              filterManager.toggle(idx)
+              const state = filterManager.toggle(idx)
+              if (state) {
+                callbackSelected(idx, skill.title)
+              }
               update()
             }}
           >

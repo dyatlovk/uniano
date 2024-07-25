@@ -8,13 +8,14 @@ class FiltersManager {
     this.storage.push(id)
   }
 
-  public toggle(id: number): void {
+  public toggle(id: number): boolean {
     if (this.isInList(id)) {
       this.remove(id)
-      return
+      return false
     }
 
     this.add(id)
+    return true
   }
 
   public isInList(id: number): boolean {
@@ -81,9 +82,11 @@ if (import.meta.vitest) {
     const instance = new FiltersManager()
     instance.add(10)
     instance.add(15)
-    instance.toggle(16)
+    const actualAdded = instance.toggle(16)
     expect(instance.isInList(16)).toBeTruthy()
-    instance.toggle(10)
+    expect(actualAdded).toBeTruthy()
+    const actualRemoved = instance.toggle(10)
+    expect(actualRemoved).toBeFalsy()
     expect(instance.getStorage()).toHaveLength(2)
   })
 }
