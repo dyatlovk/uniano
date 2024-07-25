@@ -27,10 +27,16 @@ const CardStatisticTest = () => {
       price={
         <div className={styles.statistic_flex}>
           <AppColor.fourOfFive />
-          <Typography fontWeight="500" textLineHeight="1" variant="body4">
+          <Typography
+            fontSizeStatic="14px"
+            fontWeight="500"
+            textLineHeight="1"
+            variant="body4"
+          >
             from $5 K{' '}
             <Typography
               textDecoration="line-through"
+              fontSizeStatic="14px"
               color={AppColor.transparentBlack}
             >
               $6K
@@ -45,12 +51,22 @@ const CardStatisticTest = () => {
         </div>
       }
       delivery={
-        <Typography fontWeight="500" textLineHeight="1" variant="body4">
+        <Typography
+          fontSizeStatic="14px"
+          fontWeight="500"
+          textLineHeight="1"
+          variant="body4"
+        >
           avg. 3 days
         </Typography>
       }
       queue={
-        <Typography fontWeight="500" textLineHeight="1" variant="body4">
+        <Typography
+          fontSizeStatic="14px"
+          fontWeight="500"
+          textLineHeight="1"
+          variant="body4"
+        >
           35
         </Typography>
       }

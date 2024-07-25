@@ -20,6 +20,7 @@
 .sliderOverflow {
   overflow-x: hidden;
   overflow-y: visible;
+  height: calc(100% + 50px);
 }
 
 .chevron {
