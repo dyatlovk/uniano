@@ -20,6 +20,7 @@ const FiltersTemplate = () => {
           className={`${styles.title} cursor`}
           variant="body4"
           textTransform="uppercase"
+          color="#01010150"
         >
           My filter templates
         </Typography>

@@ -1,8 +1,6 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import AppColor from '@common/styles/variables-static'
-import { developmentDropdown } from '@common/models/constants'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
@@ -30,7 +28,6 @@ import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import FiltersTemplate from '@common/components/ui/FiltersTemplate/index'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
-import DropdownText from '@common/components/ui/Dropdown/DropdownText/index'
 
 const PartnershipManager = () => {
   const { width, height } = useScreenSize()
@@ -277,7 +274,11 @@ const PartnershipManager = () => {
                     setTags([])
                   }}
                 >
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
+                  <Typography
+                    variant="body5"
+                    fontWeight="500"
+                    color={AppColor.transparentBlack}
+                  >
                     Reset All
                   </Typography>
                 </div>
