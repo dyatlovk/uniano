@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import Typography from '../Typography/Typography'
-import AppColor from '@common/styles/variables-static'
+
 const NavBarLineBlack = ({
   callback,
   maxCountPage,
@@ -10,16 +10,13 @@ const NavBarLineBlack = ({
   maxCountPage: number
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
-
   const startIdx = Math.max(1, currentPage - 3)
-
   const endIdx = startIdx + 6
-
   const numberBoxes = []
 
   useEffect(() => {
     callback(currentPage)
-  }, [currentPage])
+  }, [callback, currentPage])
 
   for (let i = startIdx; i <= endIdx; i++) {
     const [hovered, setHovered] = useState(false)
@@ -38,7 +35,9 @@ const NavBarLineBlack = ({
           className={styles.box}
           style={i == currentPage || hovered ? { opacity: 1 } : {}}
         >
-          <Typography variant="subtitle">{i}</Typography>
+          <Typography fontWeight="500" variant="subtitle">
+            {i}
+          </Typography>
         </div>
       ) : (
         <></>

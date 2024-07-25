@@ -243,7 +243,7 @@ const PartnershipManager = () => {
           }}
           item1ToAModalLeftMobile={true}
           showModal={showModalSideBar}
-          gap="80px"
+          gap="50px"
           item1MaxWidth="290px"
           item2MaxWidth="830px"
           item0MobileWhenModal={
@@ -541,6 +541,8 @@ const PartnershipManager = () => {
                     onClick={() => {
                       setItemsToShow(prev => [...prev, 1, 2, 3])
                     }}
+                    textTransform="uppercase"
+                    fontWeight={'500'}
                   >
                     Show more +3
                   </MyButtonTransparentBlack>
@@ -549,9 +551,6 @@ const PartnershipManager = () => {
                 <div className={styles.justify_center}>
                   <NavBarLineBlack callback={() => {}} maxCountPage={100} />
                 </div>
-                <DynamicPadding />
-
-                <DynamicPadding />
               </div>
             </div>
           }
