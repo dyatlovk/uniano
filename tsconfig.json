@@ -47,6 +47,9 @@
       "@common/context/*": [
         "common/context/*.tsx"
       ],
+      "@common/domain/*": [
+        "common/domain/*.ts"
+      ],
       "@pages/*": [
         "pages/*.tsx"
       ]

@@ -281,11 +281,13 @@ const PartnershipManager = () => {
                       style={{ cursor: 'pointer' }}
                       onClick={() => {
                         setTags([])
+                        setUserHasSelectedOptions(false)
                       }}
                     >
                       <Typography
                         variant="body5"
                         color={AppColor.transparentBlack}
+                        fontWeight="500"
                       >
                         Reset All
                       </Typography>

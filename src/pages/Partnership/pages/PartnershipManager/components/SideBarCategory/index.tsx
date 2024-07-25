@@ -1,8 +1,11 @@
 import Typography from '@common/components/ui/Typography/Typography'
 import styles from './style.module.scss'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import AppColor from '@common/styles/variables-static'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
+import classNames from 'classnames'
+import FiltersManager from '@common/domain/Partnership/filters'
+import useUpdater from '@common/helpers/useUpdater'
 
 type SideBarCategoryProps = {
   title: string
@@ -18,8 +21,21 @@ const SideBarCategory = ({
   title,
   callbackSelected,
 }: SideBarCategoryProps) => {
+  const update = useUpdater()
   const [showDropdown, setShowDropdown] = useState(true)
   const [countShow, setCountShow] = useState(4)
+  const [filterManager, setFilterManager] = useState<FiltersManager>(
+    new FiltersManager()
+  )
+  const [showMoreHovered, setShowMoreHovered] = useState<boolean>(false)
+
+  const showMoreEnterHandle = useCallback(() => {
+    setShowMoreHovered(true)
+  }, [])
+  const showMoreLeaveHandle = useCallback(() => {
+    setShowMoreHovered(false)
+  }, [])
+
   return (
     <div className={styles.wrapper}>
       <div
@@ -60,11 +76,23 @@ const SideBarCategory = ({
           className={styles.dropdown_wrapper}
         >
           {dropItems.map((item, idx) => (
-            <div className={styles.flex_center} key={idx}>
+            <div
+              className={classNames(
+                filterManager.isInList(idx)
+                  ? styles.filter_item__selected
+                  : styles.filter_item
+              )}
+              key={idx}
+            >
               <MyCheckbox
                 callback={state => {
                   if (state) {
                     callbackSelected(idx, item.text)
+                    filterManager.add(idx)
+                  }
+                  if (!state) {
+                    filterManager.remove(idx)
+                    update()
                   }
                 }}
                 height="20px"
@@ -86,11 +114,16 @@ const SideBarCategory = ({
           onClick={() => {
             setCountShow(dropItems.length)
           }}
-          style={{ cursor: 'pointer', marginTop: '15px' }}
+          className={styles.show_more}
+          onMouseEnter={showMoreEnterHandle}
+          onMouseLeave={showMoreLeaveHandle}
         >
-          {' '}
           <Typography
-            color={AppColor.transparentBlack}
+            className={classNames(
+              showMoreHovered
+                ? styles.show_more_text_hovered
+                : styles.show_more_text
+            )}
             variant="body4"
             fontWeight="500"
           >

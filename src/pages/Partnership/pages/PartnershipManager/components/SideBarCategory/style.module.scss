@@ -1,17 +1,34 @@
+@mixin filter_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 5px;
+  cursor: pointer;
+
+  .margin {
+    margin-left: auto;
+  }
+}
+
 .top_part {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.flex_center {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-left: 5px;
+.filter_item {
+  @include filter_item;
 
-  .margin {
-    margin-left: auto;
+  &:hover p {
+    font-weight: 500;
+  }
+}
+
+.filter_item__selected {
+  @include filter_item;
+
+  p {
+    font-weight: 500;
   }
 }
 
@@ -31,14 +48,30 @@
   }
 
   &::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
+    width: 5px;
+    /* Width of the scrollbar */
     background-color: $white;
     border-radius: 20px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $orange; /* Color of the thumb */
-    border-radius: 1px; /* Rounded corners of the thumb */
+    background-color: $orange;
+    /* Color of the thumb */
+    border-radius: 1px;
+    /* Rounded corners of the thumb */
     border-radius: 20px;
   }
+}
+
+.show_more {
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.show_more_text {
+  color: #01010150;
+}
+
+.show_more_text_hovered {
+  color: $orange;
 }
