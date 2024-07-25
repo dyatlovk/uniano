@@ -48,8 +48,9 @@ const PartnershipManager = () => {
   const minValueRef = useRef(null)
   const maxValueRef = useRef(null)
   const [removedTagFromSideBar, setRemovedTagFromSideBar] = useState('')
-
   const [removeLastElement, setRemoveLastElement] = useState(false)
+  const [isUserHasSelectedOptions, setUserHasSelectedOptions] =
+    useState<boolean>(false)
 
   useEffect(() => {
     const value = JSON.parse(localStorage.getItem('removeLastElement'))
@@ -74,6 +75,12 @@ const PartnershipManager = () => {
         return prevTags.filter(tag => tag !== item)
       }
     })
+    if (tags.length > 0) {
+      setUserHasSelectedOptions(false)
+    }
+    if (tags.length <= 0) {
+      setUserHasSelectedOptions(true)
+    }
   }
 
   useEffect(() => {
@@ -122,7 +129,6 @@ const PartnershipManager = () => {
         />
 
         <DynamicPadding desktop="35px" />
-
         <SliderByRef
           endToFrontIndex={4}
           nodes={[
@@ -261,48 +267,55 @@ const PartnershipManager = () => {
 
               <DynamicPadding desktop="30px" mobile="15px" />
               <InputCommon placeholder="Search" callback={() => {}} />
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <HorizontalLine />
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <div className={styles.justify_flex}>
-                <Typography variant="body3" fontWeight="500">
-                  You chose
-                </Typography>
-                <div
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    setTags([])
-                  }}
-                >
-                  <Typography
-                    variant="body5"
-                    fontWeight="500"
-                    color={AppColor.transparentBlack}
-                  >
-                    Reset All
-                  </Typography>
-                </div>
-              </div>
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <div className={styles.skill_wrapper}>
-                {tags.map(item => (
-                  <div className={styles.hover_white}>
-                    <MyButtonTransparentOrange
-                      padding="5px 13px"
+
+              {isUserHasSelectedOptions && (
+                <div className="user_selected_tags">
+                  <DynamicPadding desktop="30px" mobile="15px" />
+                  <HorizontalLine />
+                  <DynamicPadding desktop="30px" mobile="15px" />
+                  <div className={styles.justify_flex}>
+                    <Typography variant="body3" fontWeight="500">
+                      You chose
+                    </Typography>
+                    <div
+                      style={{ cursor: 'pointer' }}
                       onClick={() => {
-                        handleAddTagFromSideBar(item)
+                        setTags([])
                       }}
                     >
-                      {item} <AppColor.close fill={AppColor.orange} />
-                    </MyButtonTransparentOrange>
+                      <Typography
+                        variant="body5"
+                        color={AppColor.transparentBlack}
+                      >
+                        Reset All
+                      </Typography>
+                    </div>
                   </div>
-                ))}
-              </div>
+                  <DynamicPadding desktop="30px" mobile="15px" />
+                  <div className={styles.skill_wrapper}>
+                    {tags.map(item => (
+                      <div className={styles.hover_white}>
+                        <MyButtonTransparentOrange
+                          padding="5px 13px"
+                          onClick={() => {
+                            handleAddTagFromSideBar(item)
+                          }}
+                        >
+                          {item} <AppColor.close fill={AppColor.orange} />
+                        </MyButtonTransparentOrange>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
               <DynamicPadding desktop="30px" mobile="15px" />
               <HorizontalLine />
               <DynamicPadding desktop="30px" mobile="15px" />
               <SideBarCategory
                 title="Logo Style"
+                callbackSelected={(id: number, title: string) => {
+                  handleAddTag(title)
+                }}
                 dropItems={[
                   {
                     count: 500,
@@ -341,6 +354,9 @@ const PartnershipManager = () => {
               <DynamicPadding desktop="30px" mobile="15px" />
               <SideBarCategory
                 title="File Format"
+                callbackSelected={(id: number, title: string) => {
+                  handleAddTag(title)
+                }}
                 dropItems={[
                   {
                     count: 500,
@@ -369,6 +385,9 @@ const PartnershipManager = () => {
               <DynamicPadding desktop="30px" mobile="15px" />
               <SideBarCategory
                 title="Includes"
+                callbackSelected={(id: number, title: string) => {
+                  handleAddTag(title)
+                }}
                 dropItems={[
                   {
                     count: 500,

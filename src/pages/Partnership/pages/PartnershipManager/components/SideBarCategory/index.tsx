@@ -2,18 +2,22 @@ import Typography from '@common/components/ui/Typography/Typography'
 import styles from './style.module.scss'
 import { useState } from 'react'
 import AppColor from '@common/styles/variables-static'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 
 type SideBarCategoryProps = {
   title: string
+  callbackSelected?: (id: number, title: string) => void
   dropItems: {
     text: string
     icon: React.ReactNode
     count: number
   }[]
 }
-const SideBarCategory = ({ dropItems, title }: SideBarCategoryProps) => {
+const SideBarCategory = ({
+  dropItems,
+  title,
+  callbackSelected,
+}: SideBarCategoryProps) => {
   const [showDropdown, setShowDropdown] = useState(true)
   const [countShow, setCountShow] = useState(4)
   return (
@@ -55,9 +59,17 @@ const SideBarCategory = ({ dropItems, title }: SideBarCategoryProps) => {
           style={{ paddingBottom: '10px' }}
           className={styles.dropdown_wrapper}
         >
-          {dropItems.map(item => (
-            <div className={styles.flex_center}>
-              <MyCheckbox height="20px" width="20px" />
+          {dropItems.map((item, idx) => (
+            <div className={styles.flex_center} key={idx}>
+              <MyCheckbox
+                callback={state => {
+                  if (state) {
+                    callbackSelected(idx, item.text)
+                  }
+                }}
+                height="20px"
+                width="20px"
+              />
               {item.icon}
               <Typography variant="body4">{item.text}</Typography>
               <div className={styles.margin}>
