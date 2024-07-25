@@ -76,10 +76,10 @@ const PartnershipManager = () => {
       }
     })
     if (tags.length > 0) {
-      setUserHasSelectedOptions(false)
+      setUserHasSelectedOptions(true)
     }
     if (tags.length <= 0) {
-      setUserHasSelectedOptions(true)
+      setUserHasSelectedOptions(false)
     }
   }
 
