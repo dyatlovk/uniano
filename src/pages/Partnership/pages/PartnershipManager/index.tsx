@@ -28,6 +28,7 @@ import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import FiltersTemplate from '@common/components/ui/FiltersTemplate/index'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import SkillsFilter from './components/Skills'
 
 const PartnershipManager = () => {
   const { width, height } = useScreenSize()
@@ -38,13 +39,6 @@ const PartnershipManager = () => {
   }>({ min: 0, max: 100 })
   const [itemsToshow, setItemsToShow] = useState([])
   const [showModalSideBar, setShowModalSideBar] = useState(false)
-  const [skills, setSkills] = useState([
-    'Logos',
-    'Logo Design',
-    'Logo',
-    'Logo Maker',
-    'Modern Logo ',
-  ])
   const minValueRef = useRef(null)
   const maxValueRef = useRef(null)
   const [removedTagFromSideBar, setRemovedTagFromSideBar] = useState('')
@@ -470,25 +464,20 @@ const PartnershipManager = () => {
               <DynamicPadding desktop="30px" mobile="15px" />
               <HorizontalLine />
               <DynamicPadding desktop="30px" mobile="15px" />
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Skills
-                </Typography>
-                <DynamicPadding desktop="20px" mobile="15px" />
-                <div className={styles.skill_wrapper}>
-                  {skills.map(skill => (
-                    <div className={styles.skill_item}>
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color="white"
-                      >
-                        {skill}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <SkillsFilter
+                items={[
+                  {
+                    title: 'Logos',
+                  },
+                  {
+                    title: 'Logo design',
+                  },
+                  {
+                    title: 'Modern logo',
+                  },
+                ]}
+                callbackSelected={() => {}}
+              />
             </div>
           }
           item2={

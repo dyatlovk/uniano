@@ -8,6 +8,15 @@ class FiltersManager {
     this.storage.push(id)
   }
 
+  public toggle(id: number): void {
+    if (this.isInList(id)) {
+      this.remove(id)
+      return
+    }
+
+    this.add(id)
+  }
+
   public isInList(id: number): boolean {
     return this.storage.includes(id)
   }
@@ -66,5 +75,15 @@ if (import.meta.vitest) {
     instance.add(15)
     expect(instance.isInList(10)).toBeTruthy()
     expect(instance.isInList(20)).toBeFalsy()
+  })
+
+  test("toggle", () => {
+    const instance = new FiltersManager()
+    instance.add(10)
+    instance.add(15)
+    instance.toggle(16)
+    expect(instance.isInList(16)).toBeTruthy()
+    instance.toggle(10)
+    expect(instance.getStorage()).toHaveLength(2)
   })
 }
