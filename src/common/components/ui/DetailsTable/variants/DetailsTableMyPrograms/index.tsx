@@ -30,6 +30,7 @@ function findAllFiltersTitle(): string[] {
 
 export type DetailsTableMyProgramsItem = {
   date: string
+  time?: string
   memberName: string
   category: string
   rate: string
@@ -97,6 +98,7 @@ const DetailsTableMyPrograms = ({
               Duration={currentDropdownItem.Duration}
               status={currentDropdownItem.status}
               page={currentDropdownItem.page}
+              useSpaceAtTheEnd={false}
             />
 
             <div>
@@ -132,6 +134,7 @@ const DetailsTableMyPrograms = ({
                       url={fakeUserConstant.image}
                       name=""
                       active={true}
+                      margin={'0'}
                     />
                     <Typography variant="body4" fontWeight="500">
                       Artem Markevych Logo Design Partnership
@@ -142,7 +145,14 @@ const DetailsTableMyPrograms = ({
               {
                 title: 'Date',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <div>
+                    <Typography variant="body4">{currentItem.date}</Typography>
+                    {currentItem.time && (
+                      <Typography variant="body4">
+                        {currentItem.time}
+                      </Typography>
+                    )}
+                  </div>
                 ),
               },
               {
@@ -241,6 +251,7 @@ type DropdownMyProgramsItemProps = {
   status: string
   page: number
   showHorizontalLine?: boolean
+  useSpaceAtTheEnd?: boolean
 }
 
 type CommentItemProps = {
@@ -295,10 +306,11 @@ const DropdownMyProgramsItem = ({
   manager,
   status,
   showHorizontalLine = true,
+  useSpaceAtTheEnd = true,
 }: DropdownMyProgramsItemProps) => {
   return (
     <div className={styles.dropdown_wrapper}>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="26px" mobile="20px" />
       <div className={styles.dropdown_content}>
         <div className={styles.dropdown_first_part}>
           <AppColor.openInBrowser />
@@ -332,7 +344,7 @@ const DropdownMyProgramsItem = ({
         <DropdownDetails title="Duration" text={Duration + ' ' + 'days'} />
         <DropdownDetails title="Status" text={status} color={AppColor.orange} />
       </div>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      {useSpaceAtTheEnd && <DynamicPadding desktop="23px" mobile="20px" />}
       {showHorizontalLine && <HorizontalLine />}
     </div>
   )

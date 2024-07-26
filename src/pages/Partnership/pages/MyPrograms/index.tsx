@@ -10,7 +10,6 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { fakeUserConstant } from '@common/models/user'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 
 const PartnershipMyPrograms = () => {
@@ -56,7 +55,8 @@ const PartnershipMyPrograms = () => {
               category: 'Logo design',
               CR: '10%',
               CR48Hours: '8%',
-              date: 'Feb 26, 2021 16:32 ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
               EPC: '5$',
               page: 0,
               rate: '5% - 10% ',

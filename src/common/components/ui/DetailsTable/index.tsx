@@ -264,7 +264,7 @@ const DetailsTable = ({
                         {item.child}
                       </div>
                     ) : (
-                      <div className="gap_20">
+                      <div className={styles.gap_20}>
                         {item.selecrable && (
                           <MyCheckbox
                             basicValue={selectAll}
@@ -338,7 +338,7 @@ const DetailsTable = ({
           </div>
         )}
       </div>
-      <DynamicPadding mobile="20px" desktop="30px" />
+      <DynamicPadding mobile="20px" desktop="26px" />
       <div className={styles.vertical_line}></div>
 
       {showUsers ? (
