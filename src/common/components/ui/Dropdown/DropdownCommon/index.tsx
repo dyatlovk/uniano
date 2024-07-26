@@ -4,6 +4,7 @@ import Typography from '../../Typography/Typography'
 import styles from './style.module.scss'
 import { render, screen, cleanup } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
+import classNames from 'classnames'
 
 type DropDownItem = string | number | React.ReactNode
 
@@ -81,16 +82,13 @@ const DropDownCommon = ({
               onClick={() => {
                 handleClick(item, idx)
               }}
-              className={styles.item}
+              className={classNames(
+                idx === activeItem ? styles.item_selected : styles.item
+              )}
               key={idx}
               data-testid={item}
             >
-              <Typography
-                fontWeight={idx == activeItem ? '500' : '400'}
-                variant="body5"
-              >
-                {item}
-              </Typography>
+              <Typography variant="body5">{item}</Typography>
             </div>
           ))}
         </div>
