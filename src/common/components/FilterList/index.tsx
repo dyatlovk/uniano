@@ -69,7 +69,6 @@ const FilterList = ({
         </div>
       </div>
       <DynamicPadding mobile="15px" desktop="15px" />
-      <HorizontalLine />
     </div>
   )
 }

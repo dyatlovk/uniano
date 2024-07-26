@@ -15,7 +15,7 @@
   align-items: center;
   gap: 15px;
 
-  > div {
+  >div {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -38,6 +38,15 @@
   @include weakShadow;
   border-radius: 20px;
   padding: 20px 0px;
+
+  &:hover {
+
+    p,
+    svg path {
+      fill: $orange;
+      color: $orange !important;
+    }
+  }
 }
 
 .condition_buttons {

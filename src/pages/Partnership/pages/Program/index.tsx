@@ -38,6 +38,10 @@ import PorftolioModal from './modals/PorftolioModal'
 import ReviewsModal from './modals/reviewsModal'
 import SubscriptionsModal from './modals/subscriptionsModal'
 import DeeplinkModal from './modals/deeplinkModal'
+import BannersModal from './modals/bannersModal'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import AdsBannersProvider from '@common/models/ads/banners'
 
 const Program = () => {
   const [showAllDetailsRight, setShowAllDetailsRight] = useState(false)
@@ -49,7 +53,9 @@ const Program = () => {
     'WordPress',
   ]
 
-  const [deeplinkModal, setDeeplinkModal] = useState(false)
+  const [deeplinkModal, setDeeplinkModal] = useState<boolean>(false)
+  const [bannersModal, setBannersModal] = useState<boolean>(false)
+  const [showHtmlCode, setShowHtmlCode] = useState<boolean>(false)
 
   const ratesRef = useRef(null)
   const toolsRef = useRef(null)
@@ -83,10 +89,20 @@ const Program = () => {
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="partnership"
-        navItems={developmentDropdown}
-        titleIcon={<AppColor.partnership />}
+        activeId={-1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All programs',
+            link: '/partnership',
+          },
+          {
+            title: 'My programs',
+            link: '/partnership/my-programs',
+          },
+        ]}
       />
 
       <div className={styles.wrapper}>
@@ -94,16 +110,10 @@ const Program = () => {
           historyNode={
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
-          endNode={
-            <ButtonDropdownSelect
-              text="My programs"
-              variants={['My programs', '2', '3']}
-            />
-          }
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="17px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={
@@ -127,7 +137,7 @@ const Program = () => {
           }
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
 
         <FilterList
           activeStartItem="Description"
@@ -143,7 +153,7 @@ const Program = () => {
             scrollToRef(item)
           }}
         />
-        <DynamicPadding />
+        <DynamicPadding desktop="28px" />
 
         <ResponsiveLayoutTwo
           gap="80px"
@@ -153,7 +163,7 @@ const Program = () => {
             <div style={{ width: '100%' }}>
               <Typography variant="body3">Description</Typography>
 
-              <DynamicPadding desktop="35px" mobile="15px" />
+              <DynamicPadding desktop="17px" mobile="15px" />
               <Typography variant="body4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi,
                 tristique enim, neque, mollis at. Quam scelerisque pulvinar
@@ -171,7 +181,7 @@ const Program = () => {
                 arcu. Pellentesque sapien, arcu, nulla quis magnis praesent.
               </Typography>
 
-              <DynamicPadding desktop="20px" mobile="20px" />
+              <DynamicPadding desktop="12px" mobile="20px" />
               <Typography
                 variant="body4"
                 fontWeight="500"
@@ -185,14 +195,14 @@ const Program = () => {
               <span ref={ratesRef}>
                 <ConditionSection />
               </span>
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <span ref={toolsRef}>
                 <Typography variant="body3" fontWeight="500">
                   Tools
                 </Typography>
               </span>
 
-              <DynamicPadding desktop="40px" mobile="30px" />
+              <DynamicPadding desktop="25px" mobile="30px" />
               <div className={styles.tools_wrapper_section}>
                 <ToolsItem
                   icon={<AppColor.deeplink />}
@@ -206,6 +216,9 @@ const Program = () => {
                   icon={<AppColor.banners />}
                   title="Banners"
                   text="Advertising Images"
+                  onClick={() => {
+                    setBannersModal(true)
+                  }}
                 />
               </div>
               {deeplinkModal && (
@@ -220,8 +233,14 @@ const Program = () => {
                   <DeeplinkModal />
                 </ModalCenterBasic>
               )}
+              {bannersModal && (
+                <BannersModal
+                  data={AdsBannersProvider.getAll()}
+                  onModalClose={() => setBannersModal(false)}
+                />
+              )}
 
-              <DynamicPadding />
+              <DynamicPadding desktop="46px" />
               <span ref={freelancerRef}>
                 <Typography variant="body3" fontWeight="500">
                   Freelancer
@@ -339,9 +358,24 @@ const Program = () => {
                   <Typography variant="body3">Details</Typography>
                   <DynamicPadding desktop="25px" mobile="15px" />
                   <div className={styles.details_dotted_text_wrapper}>
-                    <TextDotted text="EPC" textEnd="3$" />
-                    <TextDotted text="CR" textEnd="5.61%" />
-                    <TextDotted text="CR for 48 hours" textEnd="8.61%" />
+                    <TextDotted
+                      text="EPC"
+                      textEnd="3$"
+                      fontWeightEndText="500"
+                      startTextColor="#01010150"
+                    />
+                    <TextDotted
+                      text="CR"
+                      textEnd="5.61%"
+                      fontWeightEndText="500"
+                      startTextColor="#01010150"
+                    />
+                    <TextDotted
+                      text="CR for 48 hours"
+                      textEnd="8.61%"
+                      fontWeightEndText="500"
+                      startTextColor="#01010150"
+                    />
                   </div>
                 </div>
                 <DynamicPadding desktop="30px" mobile="20px" />
@@ -351,9 +385,30 @@ const Program = () => {
                   <Typography variant="body3">Managers</Typography>
                   <DynamicPadding desktop="25px" mobile="15px" />
                   <div className={styles.details_dotted_text_wrapper}>
-                    <TextDotted text="Level" textEnd="3$" />
-                    <TextDotted text="Positive Reviews" textEnd="5.61%" />
-                    <TextDotted text="Organization" textEnd="8.61%" />
+                    <TextDotted
+                      text="Level"
+                      textEnd="3$"
+                      fontWeightEndText="500"
+                      startTextColor="#01010150"
+                    />
+                    <TextDotted
+                      text="Positive Reviews"
+                      startTextColor="#01010150"
+                      endNode={
+                        <AppColor.singTrue
+                          width={'11px'}
+                          stroke={AppColor.green}
+                          height={'9px'}
+                        />
+                      }
+                      fontWeightEndText="500"
+                    />
+                    <TextDotted
+                      text="Organization"
+                      textEnd="8.61%"
+                      fontWeightEndText="500"
+                      startTextColor="#01010150"
+                    />
                     {!showAllDetailsRight && (
                       <div
                         onClick={() => {
@@ -361,7 +416,11 @@ const Program = () => {
                         }}
                         style={{ cursor: 'pointer' }}
                       >
-                        <Typography variant="body4" fontWeight="500">
+                        <Typography
+                          variant="body4"
+                          fontWeight="500"
+                          color="#01010150"
+                        >
                           Show 3 more
                         </Typography>
                       </div>
@@ -369,9 +428,21 @@ const Program = () => {
 
                     {showAllDetailsRight && (
                       <div className={styles.details_dotted_text_wrapper}>
-                        <TextDotted text="Level" textEnd="3$" />
-                        <TextDotted text="Positive Reviews" textEnd="5.61%" />
-                        <TextDotted text="Organization" textEnd="8.61%" />
+                        <TextDotted
+                          text="Level"
+                          textEnd="3$"
+                          startTextColor="#01010150"
+                        />
+                        <TextDotted
+                          text="Positive Reviews"
+                          textEnd="5.61%"
+                          startTextColor="#01010150"
+                        />
+                        <TextDotted
+                          text="Organization"
+                          textEnd="8.61%"
+                          startTextColor="#01010150"
+                        />
                       </div>
                     )}
                   </div>
@@ -1129,6 +1200,7 @@ const ToolsItem = ({ icon, text, title, onClick }: ToolsItemProps) => {
         textLineHeight="1"
         variant="body5"
         fontWeight="500"
+        color="#01010150"
         textTransform="uppercase"
       >
         {text}
@@ -1145,11 +1217,11 @@ const ConditionSection = () => {
       <div
         style={{
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'space-between',
         }}
       >
-        <Typography variant="body3" fontWeight="500">
+        <Typography variant="body3" fontWeight="500" textLineHeight="1">
           Conditions
         </Typography>
         <div className={styles.condition_buttons}>
@@ -1166,6 +1238,7 @@ const ConditionSection = () => {
           >
             <Typography
               color={activeItem == 'Services' ? AppColor.orange : AppColor.text}
+              fontWeight={activeItem == 'Services' ? '500' : '400'}
               variant="body4"
             >
               Services
@@ -1185,6 +1258,7 @@ const ConditionSection = () => {
             <Typography
               color={activeItem == 'Orders' ? AppColor.orange : AppColor.text}
               variant="body4"
+              fontWeight={activeItem == 'Orders' ? '500' : '400'}
             >
               Orders
             </Typography>
@@ -1205,6 +1279,7 @@ const ConditionSection = () => {
                 activeItem == 'Subscriptions' ? AppColor.orange : AppColor.text
               }
               variant="body4"
+              fontWeight={activeItem == 'Subscriptions' ? '500' : '400'}
             >
               Subscriptions
             </Typography>
@@ -1216,9 +1291,20 @@ const ConditionSection = () => {
       <div>
         {activeItem == 'Services' && (
           <div className={styles.condition_values_wrapper}>
-            <TextDotted text="Services Referral Rate" textEnd={'15%'} />
-            <TextDotted text="Services Manager Rate" textEnd={'15%'} />
             <TextDotted
+              startTextColor="#01010150"
+              fontWeightEndText="500"
+              text="Services Referral Rate"
+              textEnd={'15%'}
+            />
+            <TextDotted
+              startTextColor="#01010150"
+              fontWeightEndText="500"
+              text="Services Manager Rate"
+              textEnd={'15%'}
+            />
+            <TextDotted
+              startTextColor="#01010150"
               text="Access to chat with customers"
               endNode={
                 <AppColor.singTrue
@@ -1229,6 +1315,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text=" Access to “Selection” stage"
               endNode={
                 <AppColor.singTrue
@@ -1239,6 +1326,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text="Access to “Negotiation” stage"
               endNode={
                 <AppColor.singTrue
@@ -1249,6 +1337,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text="Access to “Progress” stage"
               endNode={
                 <AppColor.singTrue
@@ -1259,6 +1348,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text=" Access to “Completed” stage"
               endNode={
                 <AppColor.singTrue
@@ -1272,9 +1362,20 @@ const ConditionSection = () => {
         )}
         {activeItem == 'Orders' && (
           <div className={styles.condition_values_wrapper}>
-            <TextDotted text="Orders Referral Rate" textEnd={'15%'} />
-            <TextDotted text="Orders Manager Rate" textEnd={'15%'} />
             <TextDotted
+              startTextColor="#01010150"
+              text="Orders Referral Rate"
+              textEnd={'15%'}
+              fontWeightEndText="500"
+            />
+            <TextDotted
+              startTextColor="#01010150"
+              text="Orders Manager Rate"
+              textEnd={'15%'}
+              fontWeightEndText="500"
+            />
+            <TextDotted
+              startTextColor="#01010150"
               text="Access to chat with customers"
               endNode={
                 <AppColor.singTrue
@@ -1285,6 +1386,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text=" Access to “Selection” stage"
               endNode={
                 <AppColor.singTrue
@@ -1295,6 +1397,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text="Access to “Negotiation” stage"
               endNode={
                 <AppColor.singTrue
@@ -1305,6 +1408,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text="Access to “Progress” stage"
               endNode={
                 <AppColor.singTrue
@@ -1315,6 +1419,7 @@ const ConditionSection = () => {
               }
             />
             <TextDotted
+              startTextColor="#01010150"
               text=" Access to “Completed” stage"
               endNode={
                 <AppColor.singTrue
@@ -1328,7 +1433,12 @@ const ConditionSection = () => {
         )}
         {activeItem == 'Subscriptions' && (
           <div className={styles.condition_values_wrapper}>
-            <TextDotted text="Subscriptions Referral Rate" textEnd={'15%'} />
+            <TextDotted
+              startTextColor="#01010150"
+              text="Subscriptions Referral Rate"
+              textEnd={'15%'}
+              fontWeightEndText="500"
+            />
           </div>
         )}
       </div>

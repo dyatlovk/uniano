@@ -24,6 +24,7 @@ type SearchFilterBarProps = {
   usePeriod?: boolean
   useFilters?: boolean
   showItemsOnPage?: boolean
+  useSearch?: boolean
 }
 
 type ValuePiece = Date | null
@@ -34,6 +35,7 @@ const SearchFilterBar = ({
   usePeriod,
   useFilters = true,
   showItemsOnPage = true,
+  useSearch = true,
 }: SearchFilterBarProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
@@ -159,7 +161,9 @@ const SearchFilterBar = ({
 
   return (
     <div className={styles.wrapper}>
-      <InputCommon width="290px" callback={() => {}} placeholder="Search" />
+      {useSearch && (
+        <InputCommon width="290px" callback={() => {}} placeholder="Search" />
+      )}
 
       <div className={styles.filters_wrapper}>
         {usePeriod && (
