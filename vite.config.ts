@@ -32,6 +32,7 @@ export default defineConfig({
     target: 'esnext',
   },
   test: {
-    includeSource: ['src/**/*.{js,ts}'],
+    environment: 'jsdom',
+    includeSource: ['src/**/*.{js,ts,tsx}'],
   },
 })

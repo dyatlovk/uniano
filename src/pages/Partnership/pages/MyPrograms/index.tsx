@@ -42,13 +42,7 @@ const PartnershipMyPrograms = () => {
               textList={['Partnership']}
             />
           }
-          endNode={
-            <ButtonDropdownSelect
-              text="My programs"
-              variants={['My programs', '2', '3']}
-            />
-          }
-          pageTitle="My programs  "
+          pageTitle="My programs"
         />
 
         <DynamicPadding desktop="35px" />

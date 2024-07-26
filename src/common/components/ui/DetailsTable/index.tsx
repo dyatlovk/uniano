@@ -23,10 +23,12 @@ type DetailsTableProps = {
   removeThreeLines?: boolean
   projectsCount?: string
   titleEnd?: string
+  /** @deprecated Use groupDropdown */
   group?: string
   endIcon?: React.ReactNode
   modalDropdown?: React.ReactNode
   counter?: React.ReactNode
+  groupDropdown?: React.ReactNode
 }
 
 type DetailsTableItem = {
@@ -40,6 +42,7 @@ const DetailsTable = ({
   titleEnd,
   modalDropdown,
   group,
+  groupDropdown,
   details,
   page,
   projectsCount,
@@ -72,6 +75,12 @@ const DetailsTable = ({
               {group}
             </Typography>
             <AppColor.chevronBottom fill={AppColor.text} />
+            <div className={styles.vertical_line_item}></div>
+          </div>
+        )}
+        {groupDropdown && (
+          <div className="gap_10">
+            {groupDropdown}
             <div className={styles.vertical_line_item}></div>
           </div>
         )}

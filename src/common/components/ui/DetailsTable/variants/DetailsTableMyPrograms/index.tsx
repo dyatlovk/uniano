@@ -8,10 +8,24 @@ import DynamicPadding from '../../../DynamicPadding'
 import AppColor from '@common/styles/variables-static'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import { fakeUserConstant, userModel } from '@common/models/user'
-import App from 'App'
 type DetailsTableMyProgramsProps = {
   informationTable: DetailsTableMyProgramsItem[]
   informationDropdown: DropdownMyProgramsItemProps[]
+}
+import DropDownCommon from '../../../Dropdown/DropdownCommon'
+
+const groupFilters = {
+  Programs: ['All', 'Active', 'Pending'],
+  Projects: ['All', 'Progress', 'Pending', 'Completed', 'Canceled'],
+}
+
+function findActiveFilter(key: string): string[] {
+  if (key.length === 0) return []
+  return groupFilters[key]
+}
+
+function findAllFiltersTitle(): string[] {
+  return Object.keys(groupFilters)
 }
 
 export type DetailsTableMyProgramsItem = {
@@ -24,6 +38,7 @@ export type DetailsTableMyProgramsItem = {
   CR48Hours: string
   page: number
 }
+
 const DetailsTableMyPrograms = ({
   informationTable,
   informationDropdown,
@@ -32,13 +47,22 @@ const DetailsTableMyPrograms = ({
   const currentItem = informationTable[currentPage - 1]
   const currentDropdownItem = informationDropdown[currentPage - 1]
   const { width, height } = useScreenSize()
+  const [selectedGroupFilter, setSelectedGroupFilter] = useState<string>('')
 
   return (
     <DetailsTable
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Completed', 'Available', 'Unavailable']}
+      groupDropdown={
+        <DropDownCommon
+          items={findAllFiltersTitle()}
+          callback={(item: string) => {
+            setSelectedGroupFilter(item)
+          }}
+        />
+      }
+      filters={findActiveFilter(selectedGroupFilter)}
       page={currentPage}
       dropdownNode={
         currentDropdownItem != null ? (
@@ -278,8 +302,8 @@ const DropdownMyProgramsItem = ({
       <div className={styles.dropdown_content}>
         <div className={styles.dropdown_first_part}>
           <AppColor.openInBrowser />
-          <DropdownText title="ID" text={'#' + id} />
-          <DropdownText
+          <DropdownDetails title="ID" text={'#' + id} />
+          <DropdownDetails
             title="Freelancer"
             text={freelancer.name}
             node={
@@ -288,7 +312,7 @@ const DropdownMyProgramsItem = ({
               </div>
             }
           />
-          <DropdownText
+          <DropdownDetails
             title="Manager"
             text={manager.name}
             node={
@@ -298,15 +322,15 @@ const DropdownMyProgramsItem = ({
             }
           />
         </div>
-        <DropdownText title="CTR" text={CTR + '%'} />
-        <DropdownText title="eCPC" text={'$' + eCPC} />
-        <DropdownText title="CR" text={CR + '%'} />
-        <DropdownText title="Clicks" text={Clicks} />
-        <DropdownText title="Leads" text={Leads} />
-        <DropdownText title="Sales" text={Sales} />
-        <DropdownText title="Earned" text={'$' + Earned} />
-        <DropdownText title="Duration" text={Duration + ' ' + 'days'} />
-        <DropdownText title="Status" text={status} color={AppColor.orange} />
+        <DropdownDetails title="CTR" text={CTR + '%'} />
+        <DropdownDetails title="eCPC" text={'$' + eCPC} />
+        <DropdownDetails title="CR" text={CR + '%'} />
+        <DropdownDetails title="Clicks" text={Clicks} />
+        <DropdownDetails title="Leads" text={Leads} />
+        <DropdownDetails title="Sales" text={Sales} />
+        <DropdownDetails title="Earned" text={'$' + Earned} />
+        <DropdownDetails title="Duration" text={Duration + ' ' + 'days'} />
+        <DropdownDetails title="Status" text={status} color={AppColor.orange} />
       </div>
       <DynamicPadding desktop="20px" mobile="20px" />
       {showHorizontalLine && <HorizontalLine />}
@@ -314,7 +338,7 @@ const DropdownMyProgramsItem = ({
   )
 }
 
-const DropdownText = ({
+const DropdownDetails = ({
   text,
   title,
   node,
