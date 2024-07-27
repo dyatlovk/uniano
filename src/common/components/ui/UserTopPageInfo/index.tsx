@@ -9,11 +9,13 @@ type UserTopPageInfoProps = {
   user: userModel
   nodeAfter?: React.ReactNode
   settings?: boolean
+  showTools?: boolean
 }
 const UserTopPageInfo = ({
   user,
   nodeAfter,
   settings,
+  showTools = true,
 }: UserTopPageInfoProps) => {
   return (
     <div className={styles.wrapper}>
@@ -26,69 +28,71 @@ const UserTopPageInfo = ({
         active={true}
       />
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div className={styles.box}>
-          <AppColor.message fill={AppColor.text} height={'22px'} />
-        </div>
-        {!settings ? (
+      {showTools && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div className={styles.box}>
-            <AppColor.hearPlus fill={AppColor.text} height={'22px'} />
+            <AppColor.message fill={AppColor.text} height={'22px'} />
           </div>
-        ) : (
-          <div className={styles.box}>
-            <AppColor.settings2 fill={AppColor.text} height={'22px'} />
-          </div>
-        )}
-        <PopUpBottom
-          showBackgroundHover={false}
-          showNodeHover={
-            <div className={`${styles.box} cursor`}>
-              <AppColor.threePointsActive
-                fill={AppColor.orange}
-                height={'22px'}
+          {!settings ? (
+            <div className={styles.box}>
+              <AppColor.hearPlus fill={AppColor.text} height={'22px'} />
+            </div>
+          ) : (
+            <div className={styles.box}>
+              <AppColor.settings2 fill={AppColor.text} height={'22px'} />
+            </div>
+          )}
+          <PopUpBottom
+            showBackgroundHover={false}
+            showNodeHover={
+              <div className={`${styles.box} cursor`}>
+                <AppColor.threePointsActive
+                  fill={AppColor.orange}
+                  height={'22px'}
+                />
+              </div>
+            }
+            showNode={
+              <div className={`${styles.box} cursor`}>
+                <AppColor.threePoints fill={AppColor.text} height={'22px'} />
+              </div>
+            }
+            popUpNode={
+              <ThreeLinesPopUpCustom
+                items={[
+                  {
+                    icon: <AppColor.share />,
+                    title: 'Share',
+                  },
+                  {
+                    icon: <AppColor.report />,
+                    title: 'Report',
+                  },
+                  {
+                    icon: <AppColor.edit fill={AppColor.text} />,
+                    title: 'Edit',
+                  },
+                  {
+                    icon: <AppColor.pause />,
+                    title: 'Pending',
+                  },
+                  {
+                    icon: (
+                      <AppColor.close
+                        width={'18px'}
+                        height={'18px'}
+                        fill={AppColor.red}
+                      />
+                    ),
+                    title: 'Delete',
+                  },
+                ]}
               />
-            </div>
-          }
-          showNode={
-            <div className={`${styles.box} cursor`}>
-              <AppColor.threePoints fill={AppColor.text} height={'22px'} />
-            </div>
-          }
-          popUpNode={
-            <ThreeLinesPopUpCustom
-              items={[
-                {
-                  icon: <AppColor.share />,
-                  title: 'Share',
-                },
-                {
-                  icon: <AppColor.report />,
-                  title: 'Report',
-                },
-                {
-                  icon: <AppColor.edit fill={AppColor.text} />,
-                  title: 'Edit',
-                },
-                {
-                  icon: <AppColor.pause />,
-                  title: 'Pending',
-                },
-                {
-                  icon: (
-                    <AppColor.close
-                      width={'18px'}
-                      height={'18px'}
-                      fill={AppColor.red}
-                    />
-                  ),
-                  title: 'Delete',
-                },
-              ]}
-            />
-          }
-          topPaddingFromNode="27px"
-        />
-      </div>
+            }
+            topPaddingFromNode="27px"
+          />
+        </div>
+      )}
 
       {nodeAfter}
     </div>

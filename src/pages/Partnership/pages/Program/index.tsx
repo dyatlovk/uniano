@@ -43,6 +43,8 @@ import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import AdsBannersProvider from '@common/models/ads/banners'
 import { User, UserSkill } from '@common/models/users/levels'
 import UserLevelStat from '@common/components/Users/levels'
+import ContactModal from './modals/contactModal'
+import AccountModal from './modals/Account'
 
 const currentUserSkill = User.SkillsLabels.Junior
 
@@ -519,9 +521,17 @@ export const FreelancerCard = ({
   const [servicesModal, setServicesModal] = useState(false)
   const [portfolioModal, setPortfolioModal] = useState(false)
   const [reviewsModal, setReviewsModal] = useState(false)
+  const [accountModal, setAccountModal] = useState<boolean>(false)
 
   return (
     <div style={{ position: 'relative' }}>
+      {accountModal && (
+        <AccountModal
+          onModalClose={() => {
+            setAccountModal(false)
+          }}
+        />
+      )}
       {subscriptionsModal && (
         <ModalCenterBasic
           desktopMaxWidth="1260px"
@@ -848,9 +858,11 @@ export const FreelancerCard = ({
                 })
               ) : (
                 <>
-                  <Link
-                    to={'/dashboard/account'}
+                  <div
                     className={styles.freelancer_link}
+                    onClick={() => {
+                      setAccountModal(true)
+                    }}
                   >
                     <Typography
                       textTransform="uppercase"
@@ -859,7 +871,8 @@ export const FreelancerCard = ({
                     >
                       ACCOUNT
                     </Typography>
-                  </Link>
+                  </div>
+
                   <div
                     className={styles.freelancer_link}
                     onClick={() => {
