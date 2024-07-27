@@ -16,6 +16,12 @@ const AccountModal = ({
   cols = 2,
   gap = 30,
 }: Props): JSX.Element => {
+  const sectionsStyles = {
+    '--cols': cols,
+    '--gap': `${gap}px`,
+    zIndex: 1,
+  }
+
   return (
     <ModalCenterBasic
       desktopMaxWidth="1260px"
@@ -29,10 +35,7 @@ const AccountModal = ({
       }}
       title="Account"
     >
-      <div
-        className={styles.sections}
-        style={{ '--cols': cols, '--gap': gap + 'px' }}
-      >
+      <div className={styles.sections} style={sectionsStyles}>
         <div className={styles.padding_top}></div>
         <GeneralSection />
         <EduSection />
