@@ -635,16 +635,12 @@ export const FreelancerCard = ({
           desktopMinWidth="650px"
           nodeAfterTitle={
             <div className={styles.flex_node}>
-              <DarkBox text="3" />
+              <DarkBox fonstSize="18px" text="3" />
               <div style={{ flexGrow: '1' }}></div>
               <div className="gap_10" style={{ gap: '30px' }}>
-                <ButtonDropdownSelect
-                  text="Projects"
-                  variants={['Projects', 'Projects1']}
-                />
                 <DropdownNumber />
               </div>
-              <SizeBox width="30px" />
+              <SizeBox width="2px" />
             </div>
           }
           desktopMaxWidth="650px"

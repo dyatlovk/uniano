@@ -16,7 +16,6 @@ const ActivityModal = () => {
         tag={['Logo Design']}
         title="Logo by sample in vector in maximum quality "
       />
-      ,
       <ActivityItem
         filter="Service"
         image={<AppColor.freelancer />}
@@ -26,7 +25,6 @@ const ActivityModal = () => {
         tag={['Logo Design']}
         title="Logo by sample in vector in maximum quality "
       />
-      ,
       <ActivityItem
         filter="Service"
         image={<AppColor.freelancer />}
