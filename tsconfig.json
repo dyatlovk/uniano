@@ -60,7 +60,4 @@
     "test/**/*.ts",
     "test/**/*.tsx",
   ],
-  "files": [
-    "common/types/**/*.d.ts",
-  ],
 }
