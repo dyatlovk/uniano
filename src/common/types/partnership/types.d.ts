@@ -7,4 +7,8 @@ declare namespace PartnerShip {
     htmlCode: string
     serviceLink: string
   }
+  export interface Stats {
+    title: string
+    text: string
+  }
 }

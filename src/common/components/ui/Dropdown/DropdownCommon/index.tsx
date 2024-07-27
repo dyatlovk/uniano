@@ -28,7 +28,7 @@ const DropDownCommon = ({
   const ref = useRef<HTMLDivElement>(null)
 
   function handleClick(item: DropDownItem, idx: number) {
-    callback(item)
+    if (callback) callback(item)
     setActiveItem(idx)
   }
 
@@ -48,7 +48,7 @@ const DropDownCommon = ({
 
   useEffect(() => {
     const activeTitle = findActiveTitle(activeItem, items)
-    callback(activeTitle)
+    if (callback) callback(activeTitle)
   }, [activeItem, callback, items])
 
   return (
@@ -57,12 +57,15 @@ const DropDownCommon = ({
         setVisible(prev => !prev)
       }}
       ref={ref}
+      data-id="dropdown"
+      data-dropdownOpened={isVisible ? 'true' : 'false'}
       className={styles.dropdown}
     >
       <Typography
         fontWeight="500"
         variant="body4"
         color={AppColor.text}
+        data-dropDown="selected"
         data-testid="dropdown__selected"
       >
         {findActiveTitle(activeItem, items)}
@@ -73,6 +76,7 @@ const DropDownCommon = ({
       </div>
       <div
         data-testid="dropdown__inner"
+        data-dropDown="inner"
         className={styles.inner}
         style={{ display: isVisible ? 'block' : 'none' }}
       >

@@ -45,6 +45,7 @@ import { User, UserSkill } from '@common/models/users/levels'
 import UserLevelStat from '@common/components/Users/levels'
 import ContactModal from './modals/contactModal'
 import AccountModal from './modals/Account'
+import DropDownCommon from '@common/components/ui/Dropdown/DropdownCommon/index'
 
 const currentUserSkill = User.SkillsLabels.Junior
 
@@ -605,27 +606,11 @@ export const FreelancerCard = ({
         </ModalCenterBasic>
       )}
       {statsModal && (
-        <ModalCenterBasic
-          nodeAfterTitle={
-            <div className={styles.flex_node}>
-              <DarkBox text="3" />
-              <div style={{ flexGrow: '1' }}></div>
-              <ButtonDropdownSelect
-                text="Projects"
-                variants={['Projects', 'Projects1']}
-              />
-              <SizeBox width="30px" />
-            </div>
-          }
-          desktopMaxWidth="820px"
-          bottomPartPadding="30px"
-          callbackClose={() => {
+        <StatsModal
+          onClose={() => {
             setStatsModal(false)
           }}
-          title="Statistics"
-        >
-          <StatsModal />
-        </ModalCenterBasic>
+        />
       )}
       {partnershipModal && (
         <ModalCenterBasic
