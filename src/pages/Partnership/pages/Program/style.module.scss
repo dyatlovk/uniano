@@ -94,8 +94,8 @@
 }
 
 .absolute_black {
-  width: 27px;
-  height: 27px;
+  width: 22px;
+  height: 22px;
   padding: 5px;
   aspect-ratio: 1;
   display: flex;
@@ -135,6 +135,18 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.freelancer_link {
+  cursor: pointer;
+
+  p {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover p {
+    color: $text;
+  }
 }
 
 .main_part {
@@ -263,7 +275,8 @@
   }
 
   .freelance_card_wrapper {
-    padding: 35px 30px;
+    padding: 33px 30px;
+    padding-bottom: 29px;
   }
 
   .tools_wrapper_section {

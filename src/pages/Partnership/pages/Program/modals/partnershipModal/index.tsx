@@ -38,7 +38,7 @@ const PartnershipModal = () => {
           <Typography variant="body4" fontWeight="500">
             Description
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="16px" mobile="20px" />
           <div style={{ display: 'flex', gap: '10px' }}>
             <div className="gap_5">
               <AppColor.clicks />
@@ -64,10 +64,11 @@ const PartnershipModal = () => {
                 style={{ borderRadius: '20px' }}
                 src={item}
                 height={'33px'}
+                width={'43px'}
               />
             ))}
           </div>
-          <DynamicPadding desktop="20px" mobile="15px" />
+          <DynamicPadding desktop="15px" mobile="15px" />
           <Typography variant="body4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi,
             tristique enim, neque, mollis at. Quam scelerisque pulvinar

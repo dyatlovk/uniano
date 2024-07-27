@@ -5,7 +5,6 @@ import test3 from '@assets/images/test3.png'
 import ModalCenter from '@common/components/ModalPopUps/ModalCenter/index'
 import { ImageModal } from '@common/components/ReviewsProgram/index'
 import CardStatisticPartnership from '@common/components/cards/CardStatiscticsPartnership/index'
-import CardStatisticsParthnershipConstant from '@common/components/cards/CardStatiscticsPartnership/variants/CardStatisticsParthnershipConstant/CardStatisticTest'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -13,6 +12,7 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 const images = [test1, test2, test3]
+
 const ServiceModal = () => {
   const [imageModal, setImageModal] = useState(false)
   return (

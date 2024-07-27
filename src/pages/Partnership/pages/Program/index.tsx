@@ -40,8 +40,11 @@ import SubscriptionsModal from './modals/subscriptionsModal'
 import DeeplinkModal from './modals/deeplinkModal'
 import BannersModal from './modals/bannersModal'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
-import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import AdsBannersProvider from '@common/models/ads/banners'
+import { User, UserSkill } from '@common/models/users/levels'
+import UserLevelStat from '@common/components/Users/levels'
+
+const currentUserSkill = User.SkillsLabels.Junior
 
 const Program = () => {
   const [showAllDetailsRight, setShowAllDetailsRight] = useState(false)
@@ -711,25 +714,35 @@ export const FreelancerCard = ({
                 style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
               >
                 <AppColor.UkraineFlagIcon />
-                <Typography variant="body4">{user.name}</Typography>
+                <Link to={'/dashboard/account'}>
+                  <Typography fontWeight="500" variant="body4">
+                    {user.name}
+                  </Typography>
+                </Link>
               </div>
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
               >
                 <AppColor.starFilled fill={AppColor.green} />
-                <Typography variant="body4">95%</Typography>
+                <Typography fontWeight="500" variant="body4">
+                  95%
+                </Typography>
               </div>
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
               >
-                <AppColor.fiveOfFive />
+                <UserLevelStat level={currentUserSkill} />
                 <Typography variant="body4">{user.lvl} lvl</Typography>
-                <Typography variant="body4" color={AppColor.red}>
-                  Lead
+                <Typography
+                  variant="body4"
+                  fontWeight="500"
+                  color={UserSkill.getLevelByLabel(currentUserSkill).color}
+                >
+                  {UserSkill.getLevelByLabel(currentUserSkill).label}
                 </Typography>
               </div>
             </div>
-            <DynamicPadding desktop="20px" mobile="15px" />
+            <DynamicPadding desktop="15px" mobile="15px" />
             <div className={styles.freelancer_links}>
               {links ? (
                 links.map(item => {
@@ -839,10 +852,12 @@ export const FreelancerCard = ({
                 })
               ) : (
                 <>
-                  <Link to={'/dashboard/account'}>
+                  <Link
+                    to={'/dashboard/account'}
+                    className={styles.freelancer_link}
+                  >
                     <Typography
                       textTransform="uppercase"
-                      color={AppColor.transparentBlack}
                       variant="body5"
                       fontWeight="500"
                     >
@@ -850,14 +865,13 @@ export const FreelancerCard = ({
                     </Typography>
                   </Link>
                   <div
-                    className="cursor"
+                    className={styles.freelancer_link}
                     onClick={() => {
                       setStatsModal(true)
                     }}
                   >
                     <Typography
                       textTransform="uppercase"
-                      color={AppColor.transparentBlack}
                       variant="body5"
                       fontWeight="500"
                     >
@@ -865,14 +879,13 @@ export const FreelancerCard = ({
                     </Typography>
                   </div>
                   <div
-                    className="cursor"
+                    className={styles.freelancer_link}
                     onClick={() => {
                       setServicesModal(true)
                     }}
                   >
                     <Typography
                       textTransform="uppercase"
-                      color={AppColor.transparentBlack}
                       variant="body5"
                       fontWeight="500"
                     >
@@ -880,14 +893,13 @@ export const FreelancerCard = ({
                     </Typography>
                   </div>
                   <div
-                    className="cursor"
+                    className={styles.freelancer_link}
                     onClick={() => {
                       setPortfolioModal(true)
                     }}
                   >
                     <Typography
                       textTransform="uppercase"
-                      color={AppColor.transparentBlack}
                       variant="body5"
                       fontWeight="500"
                     >
@@ -895,14 +907,13 @@ export const FreelancerCard = ({
                     </Typography>
                   </div>
                   <div
-                    className="cursor"
+                    className={styles.freelancer_link}
                     onClick={() => {
                       setReviewsModal(true)
                     }}
                   >
                     <Typography
                       textTransform="uppercase"
-                      color={AppColor.transparentBlack}
                       variant="body5"
                       fontWeight="500"
                     >
@@ -1032,7 +1043,7 @@ export const DisplayArrayOfDetailsProfile = ({
       )}
       {partnershipModal && (
         <ModalCenterBasic
-          nodeAfterTitle={<DarkBox text="3" />}
+          nodeAfterTitle={<DarkBox fonstSize="18px" text="3" />}
           desktopMaxWidth="820px"
           bottomPartPadding="30px"
           callbackClose={() => {
