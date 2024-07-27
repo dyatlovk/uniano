@@ -1013,27 +1013,11 @@ export const DisplayArrayOfDetailsProfile = ({
         </ModalCenterBasic>
       )}
       {statsModal && (
-        <ModalCenterBasic
-          nodeAfterTitle={
-            <div className={styles.flex_node}>
-              <DarkBox text="3" />
-              <div style={{ flexGrow: '1' }}></div>
-              <ButtonDropdownSelect
-                text="Projects"
-                variants={['Projects', 'Projects1']}
-              />
-              <SizeBox width="30px" />
-            </div>
-          }
-          desktopMaxWidth="820px"
-          bottomPartPadding="30px"
-          callbackClose={() => {
+        <StatsModal
+          onClose={() => {
             setStatsModal(false)
           }}
-          title="Statistics"
-        >
-          <StatsModal />
-        </ModalCenterBasic>
+        />
       )}
       {partnershipModal && (
         <ModalCenterBasic
