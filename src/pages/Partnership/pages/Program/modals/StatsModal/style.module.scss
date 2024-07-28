@@ -58,13 +58,13 @@ div[data-id="dropdown"] {
   }
 }
 
-[data-dropDown="selected"] {
+[data-dropdown="selected"] {
   color: $orange !important;
   letter-spacing: 1px;
   user-select: none;
 }
 
-[data-dropDown="inner"] {
+[data-dropdown="inner"] {
   transform: translateX(-50%);
   right: auto;
   left: 50%;
