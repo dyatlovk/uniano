@@ -32,13 +32,22 @@ const ServiceModal = () => {
         <PreviewItem />
       </div>
 
-      <DynamicPadding desktop="30px" mobile="20px" />
+      <DynamicPadding desktop="37px" mobile="20px" />
       <div className={styles.flex_10} style={{ gap: '20px' }}>
         <CardStatisticPartnership
           imageBorderLeft="20px"
           typeColor="white"
           textTransform="uppercase"
-          iconsAbsolute={<AppColor.fire fill="white" />}
+          iconsAbsolute={
+            <div className={styles.cats_item}>
+              <div className={styles.cat_item}>
+                <AppColor.caseAltIcon fill="white" />
+              </div>
+              <div className={styles.cat_item}>
+                <AppColor.fire fill="white" />
+              </div>
+            </div>
+          }
           isUrgent={false}
           details={[
             {
@@ -90,7 +99,7 @@ const ServiceModal = () => {
           <Typography variant="body4" fontWeight="500">
             Description
           </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="15px" mobile="20px" />
           <div style={{ display: 'flex', gap: '10px' }}>
             <div className="gap_5">
               <AppColor.clicks />
@@ -119,7 +128,7 @@ const ServiceModal = () => {
               />
             ))}
           </div>
-          <DynamicPadding desktop="20px" mobile="15px" />
+          <DynamicPadding desktop="15px" mobile="15px" />
           <Typography variant="body4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi,
             tristique enim, neque, mollis at. Quam scelerisque pulvinar

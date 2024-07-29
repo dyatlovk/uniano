@@ -1,6 +1,4 @@
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import styles from './style.module.scss'
-import { developmentDropdown } from '@common/models/constants'
 import Header from '@common/components/Header/Header/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
@@ -43,9 +41,7 @@ import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import AdsBannersProvider from '@common/models/ads/banners'
 import { User, UserSkill } from '@common/models/users/levels'
 import UserLevelStat from '@common/components/Users/levels'
-import ContactModal from './modals/contactModal'
 import AccountModal from './modals/Account'
-import DropDownCommon from '@common/components/ui/Dropdown/DropdownCommon/index'
 
 const currentUserSkill = User.SkillsLabels.Junior
 
@@ -61,7 +57,6 @@ const Program = () => {
 
   const [deeplinkModal, setDeeplinkModal] = useState<boolean>(false)
   const [bannersModal, setBannersModal] = useState<boolean>(false)
-  const [showHtmlCode, setShowHtmlCode] = useState<boolean>(false)
 
   const ratesRef = useRef(null)
   const toolsRef = useRef(null)
@@ -594,9 +589,10 @@ export const FreelancerCard = ({
       )}
       {servicesModal && (
         <ModalCenterBasic
-          nodeAfterTitle={<DarkBox text="3" />}
+          nodeAfterTitle={<DarkBox fonstSize="18px" text="3" />}
+          topPartContentGap="9px"
           desktopMaxWidth="820px"
-          bottomPartPadding="30px"
+          bottomPartPadding="30px 30px 90px 30px"
           callbackClose={() => {
             setServicesModal(false)
           }}
