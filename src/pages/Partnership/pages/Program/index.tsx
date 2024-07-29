@@ -569,16 +569,17 @@ export const FreelancerCard = ({
       )}
       {portfolioModal && (
         <ModalCenterBasic
+          topPartContentGap="10px"
           nodeAfterTitle={
             <div className={styles.flex_node}>
-              <DarkBox text="3" />
+              <DarkBox fonstSize="18px" text="3" />
               <div style={{ flexGrow: '1' }}></div>
               <DropdownNumber />
-              <SizeBox width="30px" />
+              <SizeBox width="0px" />
             </div>
           }
           desktopMaxWidth="880px"
-          bottomPartPadding="30px"
+          bottomPartPadding="30px 30px 26px 30px"
           callbackClose={() => {
             setPortfolioModal(false)
           }}
