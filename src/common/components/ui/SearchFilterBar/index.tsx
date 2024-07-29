@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import Typography from '../Typography/Typography'
 import InputCommon from '../inputs/InputCommon'
 import PopUpBottom from '../../ModalPopUps/PopUpBottom'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import DynamicPadding from '../DynamicPadding'
 import MyCheckbox from '../inputs/Checkbox'
 import SizeBox from '../SizeBox'
@@ -636,30 +636,52 @@ const DateText = ({ text, onClick }) => {
 
 export const FilterTags = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
-
-  const [startDate, setStartDate] = useState(new Date())
-
   const [categoriesMore, setCategoriesMore] = useState(false)
+
+  const resetFilterCallback = useCallback(() => {
+    setSelectedFilters([])
+  }, [])
+
   return (
     <div className={styles.flex_filters}>
-      <Typography
-        variant="body5"
-        fontWeight="500"
-        color={AppColor.transparentBlack}
-      >
-        Reset all
-      </Typography>
-      <div className="gap_10">
+      {selectedFilters.length > 0 && (
+        <div className={styles.filters_selected_top}>
+          {selectedFilters.map(item => (
+            <div className={styles.hover_white}>
+              <MyButtonTransparentOrange
+                padding="5px 13px"
+                onClick={() => {
+                  setSelectedFilters(prev =>
+                    prev.filter(filter => filter !== item)
+                  )
+                }}
+              >
+                {item} <AppColor.close fill={AppColor.orange} />
+              </MyButtonTransparentOrange>
+            </div>
+          ))}
+          <div className={styles.reset_all} onClick={resetFilterCallback}>
+            <Typography
+              variant="body5"
+              fontWeight="500"
+              color={AppColor.transparentBlack}
+            >
+              Reset all
+            </Typography>
+          </div>
+        </div>
+      )}
+      {selectedFilters.length <= 0 && <span></span>}
+      <div className="gap_20">
         <PopUpBottom
           showNode={
-            <div className="gap_10 cursor">
+            <div className={styles.filter_btn}>
               <AppColor.filter />
               <Typography
                 textLineHeight="1"
                 textTransform="uppercase"
                 variant="body4"
                 fontWeight="500"
-                color={AppColor.transparentBlack}
               >
                 Filters
               </Typography>

@@ -544,8 +544,13 @@ export const FreelancerCard = ({
         <ModalCenterBasic
           nodeAfterTitle={
             <div className={styles.flex_node}>
-              <DarkBox text="3" />
-              <Typography variant="body4" color={AppColor.green}>
+              <DarkBox fonstSize="18px" text="3" />
+              <Typography
+                variant="body4"
+                color={AppColor.green}
+                fontWeight="500"
+                textTransform="uppercase"
+              >
                 95% positive reviews{' '}
               </Typography>
               <div style={{ flexGrow: '1' }}></div>
@@ -554,7 +559,7 @@ export const FreelancerCard = ({
                 variants={['Projects', 'Projects1']}
               />
               <DropdownNumber />
-              <SizeBox width="30px" />
+              <SizeBox width="0px" />
             </div>
           }
           desktopMaxWidth="820px"

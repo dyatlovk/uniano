@@ -93,6 +93,43 @@
   border-bottom: 1px solid rgba($color: $text, $alpha: 0.1);
 }
 
+.filters_selected_top {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.reset_all {
+  cursor: pointer;
+}
+
+.filter_btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  cursor: pointer;
+
+  svg path {
+    fill: #01010150;
+  }
+
+  p {
+    color: #01010150;
+  }
+
+  &:hover {
+    svg path {
+      fill: $text;
+    }
+
+    p {
+      color: $text;
+    }
+  }
+}
+
 .skill_wrapper {
   display: flex;
   align-items: center;

@@ -28,7 +28,7 @@ const DropdownRecent = () => {
         onClick={event => {
           handleClick(event)
         }}
-        className="gap_5 cursor"
+        className={styles.filter_btn}
       >
         <AppColor.recent />
         <Typography
@@ -36,7 +36,6 @@ const DropdownRecent = () => {
           textTransform="uppercase"
           variant="body4"
           fontWeight="500"
-          color={AppColor.transparentBlack}
         >
           {activeFilter}
         </Typography>
