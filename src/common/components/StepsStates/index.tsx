@@ -57,18 +57,13 @@ interface StepItemProps {
   current: Navigation.State
 }
 const StepLabel = ({ state, current }: StepItemProps): JSX.Element => {
-  const [currentItem, setCurrentItem] = useState<boolean>(
-    current === state && !state.disabled
-  )
-  const [prevItem, setPrevItem] = useState<boolean>(
-    !state.disabled && current !== state
-  )
-
-  const [nextItem, setNextItem] = useState<boolean>(state.disabled)
+  const isCurrentItem = current === state && !state.disabled
+  const isPrevItem = !state.disabled && current !== state
+  const isNextItem = state.disabled
 
   return (
     <div>
-      {nextItem && (
+      {isNextItem && (
         <Typography
           fontWeight="400"
           variant="body4"
@@ -78,13 +73,13 @@ const StepLabel = ({ state, current }: StepItemProps): JSX.Element => {
         </Typography>
       )}
 
-      {currentItem && (
+      {isCurrentItem && (
         <Typography fontWeight="500" variant="body4" color={AppColor.white}>
           {state.title}
         </Typography>
       )}
 
-      {prevItem && (
+      {isPrevItem && (
         <Link to={state.url} className={styles.link}>
           <Typography fontWeight="500" variant="body4" color={AppColor.orange}>
             {state.title}
