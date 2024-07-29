@@ -331,9 +331,10 @@ const Program = () => {
                 showLine={false}
               />
 
-              <DynamicPadding />
-              <div className={styles.justify_flex}>
-                <Link to={'/partnership'}>
+              <DynamicPadding desktop='42px' />
+
+              <div className={styles.page_nav}>
+                <Link to={'/partnership'} className={styles.page_nav_left}>
                   <ChevronMoveTo
                     variant="left"
                     onClick={() => {}}
@@ -341,8 +342,12 @@ const Program = () => {
                     title="catalog"
                   />
                 </Link>
-                <Link to={'/partnership/freelancer/selection'}>
+                <Link
+                  to={'/partnership/freelancer/selection'}
+                  className={styles.page_nav_right}
+                >
                   <ChevronMoveTo
+                    disabled={true}
                     variant="right"
                     onClick={() => {}}
                     text="Next step"

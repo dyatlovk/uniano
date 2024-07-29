@@ -4,13 +4,27 @@
   gap: 10px;
   user-select: none;
   flex-direction: column;
+
+  &:not([data-page_move_disabled="true"]):hover {
+    .chevron {
+      background-color: $orange;
+
+      svg {
+        fill: $white;
+      }
+    }
+
+    p {
+      color: $orange;
+    }
+  }
 }
 
 .text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 5px;
+  gap: 1px;
   order: 2;
 }
 

@@ -201,6 +201,20 @@
   justify-content: space-between;
 }
 
+.page_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page_nav_right {
+
+}
+
+.page_nav_left {
+
+}
+
 .details_dotted_text_wrapper {
   display: grid;
   grid-template-columns: 1fr;

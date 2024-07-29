@@ -61,7 +61,12 @@ const ChevronMoveToRight = ({
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div style={{ opacity: disabled ? 0.5 : 1 }} className={styles.wrapper}>
+    <div
+      style={{ opacity: disabled ? 0.5 : 1 }}
+      className={styles.wrapper}
+      data-page_move="right"
+      data-page_move_disabled={disabled}
+    >
       <div className={styles.text + ' ' + styles.right_text}>
         <Typography variant="body4" fontWeight="500" textTransform="uppercase">
           {title}
@@ -74,6 +79,7 @@ const ChevronMoveToRight = ({
         style={disabled ? { backgroundColor: 'white' } : {}}
         onClick={!disabled ? onClick : () => {}}
         className={`${styles.chevron} cursor`}
+        data-page_move_chevron="right"
       >
         {cancel ? (
           !hovered ? (
@@ -89,7 +95,7 @@ const ChevronMoveToRight = ({
           !hovered ? (
             <AppColor.preview fill={AppColor.transparentBlack} width={'24px'} />
           ) : (
-            <AppColor.preview fill="white" width={'24px'} />
+            <AppColor.preview width={'24px'} />
           )
         ) : hovered ? (
           <AppColor.longRightWhite width={'24px'} />
@@ -112,20 +118,29 @@ const ChevronMoveToLeft = ({
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div style={{ opacity: disabled ? 0.5 : 1 }} className={styles.wrapper}>
+    <div
+      style={{ opacity: disabled ? 0.5 : 1 }}
+      className={styles.wrapper}
+      data-page_move="left"
+      data-page_move_disabled={disabled}
+    >
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={disabled ? { backgroundColor: 'white', order: 1 } : { order: 1 }}
         onClick={!disabled ? onClick : () => {}}
         className={`${styles.chevron} cursor`}
+        data-page_move_chevron="left"
       >
         {cancel ? (
           <AppColor.close fill={AppColor.text} width={'17px'} height={'17px'} />
         ) : hovered ? (
           <AppColor.longLeftWhite width={'24px'} />
         ) : (
-          <AppColor.longChevronLeft width={'24px'} />
+          <AppColor.longChevronLeft
+            fill={AppColor.transparentBlack}
+            width={'24px'}
+          />
         )}
       </div>
       <div className={styles.text + ' ' + styles.left_text}>
