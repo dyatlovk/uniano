@@ -1,11 +1,8 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import AppColor from '@common/styles/variables-static'
-import { developmentDropdown } from '@common/models/constants'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
@@ -14,9 +11,7 @@ import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/My
 import NavBarLineBlack from '@common/components/ui/NavBarLineBlack/index'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '@common/helpers/useScreenSize'
-import CardStatisticsParthnershipConstant from '@common/components/cards/CardStatiscticsPartnership/variants/CardStatisticsParthnershipConstant/CardStatisticTest'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import DropdownNumber from '@common/components/ui/SearchFilterBar/components/DropdownNumber/index'
@@ -26,6 +21,8 @@ import Footer from '@common/components/Footer/Footer'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { Link } from 'react-router-dom'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/partnership/statesModel'
 
 const SelectionFreelancer = () => {
   const { width, height } = useScreenSize()
@@ -54,10 +51,7 @@ const SelectionFreelancer = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Program', 'Selection', 'Progress', 'Completed']}
-        currentItemProgress="Selection"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Selection'} />
 
       <div className={styles.wrapper}>
         <PageDetails

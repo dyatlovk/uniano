@@ -1,6 +1,5 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
@@ -22,6 +21,8 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { Link } from 'react-router-dom'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/partnership/statesModel'
 
 const ProgressFreelancer = () => {
   const arrayHistory = [
@@ -39,9 +40,9 @@ const ProgressFreelancer = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Program', 'Selection', 'Progress', 'Completed']}
-        currentItemProgress="Progress"
+      <StepsStates
+        states={StatesModel.getAll()}
+        currentState={'Progress'}
       />
 
       <div className={'wrapper_page'}>
