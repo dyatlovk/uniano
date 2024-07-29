@@ -56,15 +56,27 @@ div[data-id="dropdown"] {
     fill: $orange;
     width: 12px;
   }
+
+  &:hover {
+    background-color: $orange;
+
+    [data-dropdown="selected"] {
+      color: $white !important;
+    }
+
+    svg {
+      fill: $white;
+    }
+  }
 }
 
-[data-dropDown="selected"] {
+[data-dropdown="selected"] {
   color: $orange !important;
   letter-spacing: 1px;
   user-select: none;
 }
 
-[data-dropDown="inner"] {
+[data-dropdown="inner"] {
   transform: translateX(-50%);
   right: auto;
   left: 50%;
