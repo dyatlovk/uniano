@@ -425,7 +425,7 @@ export const ImageModal = ({ callback }) => {
           <div className={styles.fake_grid}>
             <div className="flex_space_between">
               <div
-                className="gap_5 cursor"
+                className={styles.action_link}
                 onClick={() => {
                   setShareModal(true)
                 }}
@@ -439,7 +439,7 @@ export const ImageModal = ({ callback }) => {
                   Share
                 </Typography>
               </div>
-              <div className="gap_5 cursor">
+              <div className={styles.action_link}>
                 <AppColor.report />
                 <Typography
                   variant="body4"
