@@ -58,14 +58,14 @@ const DropDownCommon = ({
       }}
       ref={ref}
       data-id="dropdown"
-      data-dropdownOpened={isVisible ? 'true' : 'false'}
+      data-dropdownopened={isVisible ? 'true' : 'false'}
       className={styles.dropdown}
     >
       <Typography
         fontWeight="500"
         variant="body4"
         color={AppColor.text}
-        data-dropDown="selected"
+        data-dropdown="selected"
         data-testid="dropdown__selected"
       >
         {findActiveTitle(activeItem, items)}
@@ -76,7 +76,7 @@ const DropDownCommon = ({
       </div>
       <div
         data-testid="dropdown__inner"
-        data-dropDown="inner"
+        data-dropdown="inner"
         className={styles.inner}
         style={{ display: isVisible ? 'block' : 'none' }}
       >
