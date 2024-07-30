@@ -1,4 +1,4 @@
-.name > p {
+.name>p {
   display: inline;
 }
 
@@ -180,8 +180,7 @@
   }
 }
 
-.static_text {
-}
+.static_text {}
 
 .dots {
   display: flex;
@@ -194,6 +193,11 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+
+  a:hover,
+  p:hover {
+    opacity: 0.5;
+  }
 }
 
 @media (min-width: $tabletSize) {
