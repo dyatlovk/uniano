@@ -15,7 +15,6 @@ import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import DropdownNumber from '@common/components/ui/SearchFilterBar/components/DropdownNumber/index'
-import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import AskedQuestion from '@common/components/AskedQuestions/index'
@@ -58,22 +57,16 @@ const SelectionFreelancer = () => {
           historyNode={
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
-          endNode={
-            <ButtonDropdownSelect
-              text="My programs"
-              variants={['My programs', '2', '3']}
-            />
-          }
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="14px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={<AppColor.refreshA />}
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="51px" />
 
         <div className={styles.main_part}>
           <div className={styles.left_part}>
@@ -95,7 +88,7 @@ const SelectionFreelancer = () => {
                 icon={<AppColor.shortlisted width={'34px'} />}
                 text="Shortlisted"
                 count="4"
-                color={AppColor.orange}
+                color={'#01010150'}
                 onClick={item => {
                   setActiveSelection(item)
                 }}
@@ -111,7 +104,7 @@ const SelectionFreelancer = () => {
                 }
                 text="Cancelled"
                 count="0"
-                color={AppColor.red}
+                color={'#01010150'}
                 onClick={item => {
                   setActiveSelection(item)
                 }}
@@ -278,7 +271,6 @@ export const SelectionItem = ({
     <div
       style={{
         backgroundColor: activeItem == text ? AppColor.white : 'white',
-        opacity: parseInt(count) != 0 ? 1 : 0.35,
       }}
       onClick={() => {
         onClick(text)
@@ -286,11 +278,21 @@ export const SelectionItem = ({
       className={styles.selection_item}
     >
       {icon}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Typography variant="body4" color={color} fontWeight="500">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <Typography
+          variant="body4"
+          color={activeItem === text ? AppColor.text : '#01010150'}
+          fontWeight={activeItem === text ? '500' : '400'}
+        >
           {text}
         </Typography>
-        <Typography variant="body4">({count})</Typography>
+        <Typography
+          color={activeItem === text ? AppColor.text : '#01010150'}
+          fontWeight={activeItem === text ? '500' : '400'}
+          variant="body4"
+        >
+          ({count})
+        </Typography>
       </div>
     </div>
   )

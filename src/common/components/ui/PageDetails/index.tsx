@@ -16,7 +16,7 @@ const PageDetails = ({
 }: PageDetailsProps) => {
   return (
     <>
-      <DynamicPadding />
+      <DynamicPadding desktop='47px' />
       <div className={styles.wrapper}>
         <div className={styles.top_flex}>
           {historyNode}
