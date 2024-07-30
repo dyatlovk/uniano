@@ -1,7 +1,7 @@
 import States from '@common/domain/Navigation/states'
 import AppColor from '@common/styles/variables-static'
 import classNames from 'classnames'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PercentBar from '../ui/PercentBar/PercentBar'
 import Typography from '../ui/Typography/Typography'
@@ -12,16 +12,21 @@ interface Props {
   currentState: string
 }
 const StepsStates = ({ states, currentState }: Props): JSX.Element => {
-  const [stateMachine, setStateMachine] = useState<States>(new States(states))
-  stateMachine.current = currentState
-  stateMachine.updateStates
+  const [stateMachine, setStateMachine] = useState<States | null>(null)
+
+  useEffect(() => {
+    const st = new States(states)
+    st.current = currentState
+    st.updateStates
+    setStateMachine(st)
+  }, [currentState])
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.mobile}>
           <Typography variant="body4" fontWeight="500" color={AppColor.white}>
-            {stateMachine.getCurrent().title}
+            {stateMachine && stateMachine.getCurrent().title}
           </Typography>
           <AppColor.chevronBottom
             width={'12px'}
@@ -31,21 +36,22 @@ const StepsStates = ({ states, currentState }: Props): JSX.Element => {
         </div>
 
         <PercentBar
-          currentPercent={stateMachine.getProgress()}
+          currentPercent={stateMachine && stateMachine.getProgress()}
           height="15px"
           backgroundColor={'white'}
         />
 
         <div className={classNames(styles.titles_wrapper, styles.desktop)}>
-          {stateMachine.updateStates.map(
-            (state: Navigation.State, id: number) => (
-              <StepLabel
-                key={id}
-                state={state}
-                current={stateMachine.getCurrent()}
-              />
-            )
-          )}
+          {stateMachine &&
+            stateMachine.updateStates.map(
+              (state: Navigation.State, id: number) => (
+                <StepLabel
+                  key={id}
+                  state={state}
+                  current={stateMachine.getCurrent()}
+                />
+              )
+            )}
         </div>
       </div>
     </div>
