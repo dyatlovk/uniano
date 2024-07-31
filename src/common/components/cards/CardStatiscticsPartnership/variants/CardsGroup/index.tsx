@@ -12,6 +12,7 @@ import AppColor from '@common/styles/variables-static'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import CardManager from '../CardManager'
 import styles from './style.module.scss'
+import fakeUserImage from '@assets/images/user-fake.png'
 
 interface Props {
   items: number[]
@@ -189,7 +190,7 @@ const BatchPopup = ({
                     key={id}
                     width="38px"
                     height="38px"
-                    src="/uniano/src/assets/images/user-fake.png"
+                    src={fakeUserImage}
                     alt=""
                   />
                 )}
@@ -294,7 +295,7 @@ const HiredPopup = ({
                       key={id}
                       width="38px"
                       height="38px"
-                      src="/uniano/src/assets/images/user-fake.png"
+                      src={fakeUserImage}
                       alt=""
                     />
                   )}
@@ -370,7 +371,7 @@ const CancelDialogModal = ({
                       key={id}
                       width="38px"
                       height="38px"
-                      src="/uniano/src/assets/images/user-fake.png"
+                      src={fakeUserImage}
                       alt=""
                     />
                   )}
@@ -472,7 +473,7 @@ const CanceledPopup = ({
                     key={id}
                     width="38px"
                     height="38px"
-                    src="/uniano/src/assets/images/user-fake.png"
+                    src={fakeUserImage}
                     alt=""
                   />
                 )}
