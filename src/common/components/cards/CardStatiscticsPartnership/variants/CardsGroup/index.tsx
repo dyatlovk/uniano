@@ -5,7 +5,6 @@ import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButto
 import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
-import SelectedManager from '@common/domain/Cards/selectedManager'
 import FiltersManager from '@common/domain/Partnership/filters'
 import useUpdater from '@common/helpers/useUpdater'
 import { fakeUserConstant } from '@common/models/user'
