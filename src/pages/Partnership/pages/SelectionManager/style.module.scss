@@ -20,6 +20,11 @@
   cursor: pointer;
 }
 
+.selection_item_nextNode {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .flex_center_column {
   display: flex;
   flex-direction: column;

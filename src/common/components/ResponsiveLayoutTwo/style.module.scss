@@ -18,7 +18,7 @@
   justify-content: center;
   flex: 0 0 100%;
   order: var(--order1M);
-  min-width: 290px;
+  min-width: var(--maxWidth1);
 }
 
 .right_part {
@@ -26,7 +26,7 @@
   justify-content: center;
   flex: 0 0 100%;
   order: var(--order2M);
-  min-width: 290px;
+  min-width: var(--maxWidth2);
 }
 
 .modal {

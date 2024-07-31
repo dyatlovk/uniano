@@ -4,7 +4,6 @@ import NavigationBarSelection from '@common/components/NavigationBarSelection/in
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
@@ -17,6 +16,8 @@ import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/partnership/statesModel'
 
 const SelectionManager = () => {
   const { width, height } = useScreenSize()
@@ -32,9 +33,9 @@ const SelectionManager = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Program', 'Selection', 'Progress', 'Completed']}
-        currentItemProgress="Program"
+      <StepsStates
+        states={StatesModel.getAll()}
+        currentState={'Selection'}
       />
 
       <div className={styles.wrapper}>
@@ -73,6 +74,9 @@ const SelectionManager = () => {
                     setActiveSelection(item)
                   }}
                   activeItem={activeSelection}
+                  nodeNextToText={
+                    <AppColor.shieldTrue width={15} height={18} />
+                  }
                 />
                 <SelectionItem
                   icon={<AppColor.shortlisted width={'34px'} />}
@@ -108,7 +112,7 @@ const SelectionManager = () => {
                   activeItem={activeSelection}
                 />
               </div>
-              <DynamicPadding />
+              <DynamicPadding desktop="47px" />
               <div className={styles.box_text}>
                 <Typography variant="body4">
                   You are in <span style={{ fontWeight: '500' }}>new list</span>
@@ -211,6 +215,7 @@ type SelectionItemProps = {
   color: string
   onClick: (item: string) => void
   activeItem: string
+  nodeNextToText?: React.ReactNode
 }
 const SelectionItem = ({
   icon,
@@ -218,6 +223,7 @@ const SelectionItem = ({
   color,
   onClick,
   activeItem,
+  nodeNextToText,
 }: SelectionItemProps) => {
   return (
     <div
@@ -233,6 +239,7 @@ const SelectionItem = ({
           {text}
         </Typography>
       </div>
+      <div className={styles.selection_item_nextNode}>{nodeNextToText}</div>
     </div>
   )
 }
