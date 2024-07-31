@@ -20,26 +20,25 @@ interface Props {
 const CardsGroup = ({ items }: Props): JSX.Element => {
   const update = useUpdater()
   const cardsRef = useRef(null)
-  const [selectedManager, setSelectedManager] =
-    useState<FiltersManager | null>(null)
-  const [isBatchActionsVisible, setBatchActionsVisibility] =
-    useState<boolean>(false)
+  const [stateManager, setStateManager] = useState<FiltersManager | null>(null)
+  const [isBatchPopupVisible, setBatchPopupVisible] = useState<boolean>(false)
   const [cancelDialog, setCancelDialog] = useState(false)
-  const [canceledBatch, setCanceledBatch] = useState<boolean>(false)
-  const [hired, setHired] = useState(false)
+  const [canceledPopup, setCanceledPopup] = useState<boolean>(false)
+  const [hiredPopup, setHiredPopupVisible] = useState(false)
+  const [usersToBatch, setUsersToBatch] = useState<number[]>([])
 
   useEffect(() => {
-    setSelectedManager(new FiltersManager())
+    setStateManager(new FiltersManager())
   }, [])
 
   const onSelect = useCallback(
     (id: number, state: boolean) => {
-      if (selectedManager) {
-        selectedManager.toggle(id)
-        setBatchActionsVisibility(selectedManager.total() > 0)
+      if (stateManager) {
+        stateManager.toggle(id)
+        setBatchPopupVisible(stateManager.total() > 0)
       }
     },
-    [selectedManager]
+    [stateManager]
   )
 
   return (
@@ -48,7 +47,7 @@ const CardsGroup = ({ items }: Props): JSX.Element => {
         <CardManager
           id={id}
           key={id}
-          initSelect={selectedManager.isInList(id) ? true : false}
+          initSelect={stateManager.isInList(id) ? true : false}
           links={['Account', 'Stats', 'Reviews']}
           showCardManagerActions={false}
           tags={['Logo', 'Logo Design', 'Logo Maker', 'Logo Create']}
@@ -81,48 +80,58 @@ const CardsGroup = ({ items }: Props): JSX.Element => {
         />
       ))}
 
-      {isBatchActionsVisible && (
-        <BatchActions
+      {isBatchPopupVisible && (
+        <BatchPopup
           onClose={() => {
-            setBatchActionsVisibility(false)
+            setBatchPopupVisible(false)
+            setUsersToBatch([])
           }}
-          onCancelModal={() => {
+          onCancelModal={(selectedUsers: number[]) => {
             setCancelDialog(true)
+            setBatchPopupVisible(false)
+            setUsersToBatch(selectedUsers)
           }}
-          onHiredModal={() => {
-            setHired(true)
-            setBatchActionsVisibility(false)
+          onHiredModal={(selectedUsers: number[]) => {
+            setHiredPopupVisible(true)
+            setBatchPopupVisible(false)
+            setUsersToBatch(selectedUsers)
           }}
+          users={stateManager.getStorage()}
           width={cardsRef.current.clientWidth}
         />
       )}
 
       {cancelDialog && (
         <CancelDialogModal
+          users={usersToBatch}
           onClose={(state: boolean) => {
             setCancelDialog(false)
-            setCanceledBatch(state)
+            setCanceledPopup(state)
           }}
         />
       )}
 
-      {hired && (
-        <HiredModal
+      {hiredPopup && (
+        <HiredPopup
+          users={usersToBatch}
           width={cardsRef.current.clientWidth}
           onClose={() => {
-            if (selectedManager) selectedManager.clear()
-            setHired(false)
+            if (stateManager) stateManager.clear()
+            setHiredPopupVisible(false)
+            setUsersToBatch([])
           }}
         />
       )}
 
-      {canceledBatch && (
-        <CanceledBatch
+      {canceledPopup && (
+        <CanceledPopup
+          users={usersToBatch}
           width={cardsRef.current.clientWidth}
           onClose={() => {
-            if (selectedManager) selectedManager.clear()
-            setCanceledBatch(false)
-            setBatchActionsVisibility(false)
+            if (stateManager) stateManager.clear()
+            setCanceledPopup(false)
+            setBatchPopupVisible(false)
+            setUsersToBatch([])
           }}
         />
       )}
@@ -130,18 +139,26 @@ const CardsGroup = ({ items }: Props): JSX.Element => {
   )
 }
 
-interface BatchActionsProps {
+interface BatchPopupProps {
   width: number
   onClose: () => void
-  onCancelModal: () => void
-  onHiredModal: () => void
+  onCancelModal: (selectedUsers: number[]) => void
+  onHiredModal: (selectedUsers: number[]) => void
+  users: number[]
+  visibleAvatarsLimit?: number
 }
-const BatchActions = ({
+const BatchPopup = ({
   width,
   onClose,
   onCancelModal,
   onHiredModal,
-}: BatchActionsProps): JSX.Element => {
+  users,
+  visibleAvatarsLimit = 3,
+}: BatchPopupProps): JSX.Element => {
+  const showSingleUser = users.length == 1
+  const avatarsUsersTreshold = visibleAvatarsLimit - 1
+  const counterUsersTreshodl = users.length > visibleAvatarsLimit
+
   return (
     <div
       style={{
@@ -154,13 +171,37 @@ const BatchActions = ({
         <Typography variant="body3" fontWeight="500">
           Move
         </Typography>
-        <UserAvatar
-          name={fakeUserConstant.name}
-          active={true}
-          flag={<AppColor.UkraineFlagIcon />}
-          role="Shortlisted"
-          preventMobileNone={true}
-        />
+        {showSingleUser && (
+          <UserAvatar
+            name={fakeUserConstant.name}
+            active={true}
+            flag={<AppColor.UkraineFlagIcon />}
+            role="Shortlisted"
+            preventMobileNone={true}
+          />
+        )}
+        {!showSingleUser && (
+          <div className={styles.users_list}>
+            {users.map((user, id: number) => (
+              <>
+                {id <= avatarsUsersTreshold && (
+                  <img
+                    key={id}
+                    width="38px"
+                    height="38px"
+                    src="/uniano/src/assets/images/user-fake.png"
+                    alt=""
+                  />
+                )}
+              </>
+            ))}
+            {counterUsersTreshodl && (
+              <span className={styles.users_counter}>
+                +{users.length - visibleAvatarsLimit}
+              </span>
+            )}
+          </div>
+        )}
       </div>
       <div className={styles.gap_20}>
         <AppColor.speficChevronRightFilled />
@@ -170,7 +211,7 @@ const BatchActions = ({
         </div>
         <div
           onClick={() => {
-            onCancelModal()
+            onCancelModal(users)
           }}
           className={styles.gap_10 + ' ' + styles.selection_activity}
         >
@@ -181,7 +222,7 @@ const BatchActions = ({
         </div>
         <div
           onClick={() => {
-            onHiredModal()
+            onHiredModal(users)
           }}
           className={styles.gap_10 + ' ' + styles.selection_activity}
         >
@@ -198,11 +239,22 @@ const BatchActions = ({
   )
 }
 
-interface HiredProps {
+interface HiredPopupProps {
   width: number
+  users: number[]
+  visibleAvatarsLimit?: number
   onClose: () => void
 }
-const HiredModal = ({ onClose, width }: HiredProps): JSX.Element => {
+const HiredPopup = ({
+  onClose,
+  width,
+  users,
+  visibleAvatarsLimit = 3,
+}: HiredPopupProps): JSX.Element => {
+  const showSingleUser = users.length === 1
+  const avatarsUsersTreshold = visibleAvatarsLimit - 1
+  const counterUsersTreshodl = users.length > visibleAvatarsLimit
+
   return (
     <div
       style={{ display: 'flex', maxWidth: width }}
@@ -212,22 +264,58 @@ const HiredModal = ({ onClose, width }: HiredProps): JSX.Element => {
         <Typography variant="body3" fontWeight="500">
           Moved
         </Typography>
-        <UserAvatar
-          name={fakeUserConstant.name}
-          active={true}
-          flag={<AppColor.UkraineFlagIcon />}
-          role="Shortlisted"
-          preventMobileNone={true}
-        />
-        <AppColor.speficChevronRightFilled />
-        <UserAvatar
-          name={fakeUserConstant.name}
-          active={true}
-          flag={<AppColor.UkraineFlagIcon />}
-          role="Hired"
-          roleColor={AppColor.green}
-          preventMobileNone={true}
-        />
+        {showSingleUser && (
+          <>
+            <UserAvatar
+              name={fakeUserConstant.name}
+              active={true}
+              flag={<AppColor.UkraineFlagIcon />}
+              role="Shortlisted"
+              preventMobileNone={true}
+            />
+            <AppColor.speficChevronRightFilled />
+            <UserAvatar
+              name={fakeUserConstant.name}
+              active={true}
+              flag={<AppColor.UkraineFlagIcon />}
+              role="Shortlisted"
+              preventMobileNone={true}
+            />
+          </>
+        )}
+
+        {!showSingleUser && (
+          <>
+            <div className={styles.users_list}>
+              {users.map((user, id: number) => (
+                <>
+                  {id <= avatarsUsersTreshold && (
+                    <img
+                      key={id}
+                      width="38px"
+                      height="38px"
+                      src="/uniano/src/assets/images/user-fake.png"
+                      alt=""
+                    />
+                  )}
+                </>
+              ))}
+              {counterUsersTreshodl && (
+                <span className={styles.users_counter}>
+                  +{users.length - visibleAvatarsLimit}
+                </span>
+              )}
+            </div>
+            <AppColor.speficChevronRightFilled />
+            <UserAvatar
+              name={fakeUserConstant.name}
+              active={true}
+              flag={<AppColor.UkraineFlagIcon />}
+              role="Shortlisted"
+              preventMobileNone={true}
+            />
+          </>
+        )}
       </div>
       <div className={styles.batch_close} onClick={onClose}>
         <AppColor.close width={10} height={10} fill={AppColor.text} />
@@ -236,11 +324,21 @@ const HiredModal = ({ onClose, width }: HiredProps): JSX.Element => {
   )
 }
 
-interface CancelModalProps {
+interface CancelDialogModalProps {
+  users: number[]
+  visibleAvatarsLimit?: number
   onClose: (state: boolean) => void
 }
-const CancelDialogModal = ({ onClose }: CancelModalProps): JSX.Element => {
+const CancelDialogModal = ({
+  onClose,
+  users,
+  visibleAvatarsLimit = 3,
+}: CancelDialogModalProps): JSX.Element => {
   const [cancelText, setCancelText] = useState('')
+
+  const showSingleUser = users.length == 1
+  const avatarsUsersTreshold = visibleAvatarsLimit - 1
+  const counterUsersTreshodl = users.length > visibleAvatarsLimit
 
   return (
     <ModalCenterBasic
@@ -252,12 +350,40 @@ const CancelDialogModal = ({ onClose }: CancelModalProps): JSX.Element => {
       }}
       title="Move to cancelled"
       nodeAfterTitle={
-        <UserAvatar
-          variant="image"
-          active={true}
-          url={fakeUserConstant.image}
-          name=""
-        />
+        <>
+          {showSingleUser && (
+            <UserAvatar
+              name={fakeUserConstant.name}
+              active={true}
+              flag={<AppColor.UkraineFlagIcon />}
+              role="Shortlisted"
+              preventMobileNone={true}
+            />
+          )}
+
+          {!showSingleUser && (
+            <div className={styles.users_list}>
+              {users.map((user, id: number) => (
+                <>
+                  {id <= avatarsUsersTreshold && (
+                    <img
+                      key={id}
+                      width="38px"
+                      height="38px"
+                      src="/uniano/src/assets/images/user-fake.png"
+                      alt=""
+                    />
+                  )}
+                </>
+              ))}
+              {counterUsersTreshodl && (
+                <span className={styles.users_counter}>
+                  +{users.length - visibleAvatarsLimit}
+                </span>
+              )}
+            </div>
+          )}
+        </>
       }
     >
       <InputCommon
@@ -302,11 +428,23 @@ const CancelDialogModal = ({ onClose }: CancelModalProps): JSX.Element => {
   )
 }
 
-interface CanceledProps {
+interface CanceledPopupProps {
   width: number
+  users: number[]
+  visibleAvatarsLimit?: number
   onClose: () => void
 }
-const CanceledBatch = ({ onClose, width }: CanceledProps): JSX.Element => {
+const CanceledPopup = ({
+  onClose,
+  width,
+  users,
+  visibleAvatarsLimit = 3,
+}: CanceledPopupProps): JSX.Element => {
+  const showSingleUser = users.length == 1
+  const avatarsUsersTreshold = visibleAvatarsLimit - 1
+  const counterUsersTreshodl = users.length > visibleAvatarsLimit
+  console.log(users)
+
   return (
     <div
       style={{ display: 'flex', maxWidth: width }}
@@ -316,13 +454,37 @@ const CanceledBatch = ({ onClose, width }: CanceledProps): JSX.Element => {
         <Typography variant="body3" fontWeight="500">
           Moved
         </Typography>
-        <UserAvatar
-          name={fakeUserConstant.name}
-          active={true}
-          flag={<AppColor.UkraineFlagIcon />}
-          role="Shortlisted"
-          preventMobileNone={true}
-        />
+        {showSingleUser && (
+          <UserAvatar
+            name={fakeUserConstant.name}
+            active={true}
+            flag={<AppColor.UkraineFlagIcon />}
+            role="Shortlisted"
+            preventMobileNone={true}
+          />
+        )}
+        {!showSingleUser && (
+          <div className={styles.users_list}>
+            {users.map((user, id: number) => (
+              <>
+                {id <= avatarsUsersTreshold && (
+                  <img
+                    key={id}
+                    width="38px"
+                    height="38px"
+                    src="/uniano/src/assets/images/user-fake.png"
+                    alt=""
+                  />
+                )}
+              </>
+            ))}
+            {counterUsersTreshodl && (
+              <span className={styles.users_counter}>
+                +{users.length - visibleAvatarsLimit}
+              </span>
+            )}
+          </div>
+        )}
         <AppColor.speficChevronRightFilled />
         <Typography variant="body5" fontWeight="500" color={AppColor.red}>
           Cancelled
