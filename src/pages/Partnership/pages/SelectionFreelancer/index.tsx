@@ -12,7 +12,6 @@ import NavBarLineBlack from '@common/components/ui/NavBarLineBlack/index'
 import { useEffect, useState } from 'react'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import DropdownNumber from '@common/components/ui/SearchFilterBar/components/DropdownNumber/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
@@ -22,6 +21,7 @@ import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { Link } from 'react-router-dom'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/partnership/statesModel'
+import CardsGroup from '@common/components/cards/CardStatiscticsPartnership/variants/CardsGroup/index'
 
 const SelectionFreelancer = () => {
   const { width, height } = useScreenSize()
@@ -164,48 +164,8 @@ const SelectionFreelancer = () => {
             </div>
             <DynamicPadding />
 
-            <div className={styles.cards_wrapper}>
-              {itemsToshow.map((item, index) => (
-                <div className={styles.center_card}>
-                  <CardManager
-                    links={['aCCOUNT', 'Stats', 'Reviews']}
-                    showCardManagerActions={true}
-                    position={
-                      width < 769
-                        ? 'center'
-                        : index % 3 === 0
-                          ? 'left'
-                          : index % 3 === 1
-                            ? 'center'
-                            : 'right'
-                    }
-                    tags={['Logo', 'Logo Design', 'Logo Maker', 'Logo Create']}
-                    programs={
-                      <Typography variant="body5" fontWeight="500">
-                        3
-                      </Typography>
-                    }
-                    sales={
-                      <Typography variant="body5" fontWeight="500">
-                        450
-                      </Typography>
-                    }
-                    leads={
-                      <Typography variant="body5" fontWeight="500">
-                        918
-                      </Typography>
-                    }
-                    earned={
-                      <Typography variant="body5" fontWeight="500">
-                        $45K
-                      </Typography>
-                    }
-                    title=""
-                    user={fakeUserConstant}
-                  />
-                </div>
-              ))}
-            </div>
+            <CardsGroup items={itemsToshow} />
+
             <DynamicPadding desktop="40px" mobile="20px" />
             <div className={styles.justify_center}>
               <MyButtonTransparentBlack

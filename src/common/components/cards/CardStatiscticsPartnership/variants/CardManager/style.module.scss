@@ -40,8 +40,9 @@
 
 .absolute_select {
   transition: all 0.3s ease;
-  position: absolute;
-  top: calc(100% + 10px);
+  position: fixed;
+  top: auto;
+  bottom: 0;
   z-index: 3;
   background-color: $white;
   border-radius: 20px;
@@ -139,6 +140,34 @@
   justify-content: center;
   gap: 15px;
   align-items: center;
+
+  svg {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.batch_actions {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 0;
+  z-index: 3;
+  background-color: $white;
+  border-radius: $borderRadius;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 10px;
+  user-select: none;
+  width: 100%;
 }
 
 .shell_middle {
@@ -201,10 +230,11 @@
 }
 
 @media (min-width: $tabletSize) {
-
   .absolute_select {
-    width: calc(300% + 60px);
-    top: calc(100% + 20px);
+    padding: 20px 10px;
+  }
+
+  .batch_actions {
     padding: 20px 10px;
   }
 }

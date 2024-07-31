@@ -705,9 +705,11 @@ class AppColor {
     -moz-box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);
     box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);`
 
-  static fullBorder = 'border-radius: 20px'
+  static borderRadius = 20;
+
+  static fullBorder = `border-radius: ${this.borderRadius}px`
   static topBorder = `
-    border-top-left-radius: 20px;border-top-right-radius: 20px;
+    border-top-left-radius: ${this.borderRadius}px;border-top-right-radius: ${this.borderRadius}px;
     `
 
   static colorWithOpacityRgb = (color: string, opacity: number): string => {

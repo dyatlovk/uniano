@@ -35,6 +35,10 @@ class FiltersManager {
   public clear(): void {
     this.storage = []
   }
+
+  public total(): number {
+    return this.storage.length
+  }
 }
 
 export default FiltersManager

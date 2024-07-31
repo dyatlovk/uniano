@@ -1,17 +1,9 @@
 import { fakeUserConstant, userModel } from '@common/models/user'
-
 import testUserImage from '@assets/images/test-user-image.png'
 import bc_image from '@assets/images/card-time-background.png'
 import { useGetImage } from '@common/helpers/UseGetImage'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import icon_sponsorship from '@assets/svg/sponsors-icon.svg'
-import icon_message from '@assets/svg/message-icon.svg'
-import icon_star from '@assets/svg/star.svg'
-import icon_comments from '@assets/svg/comments-icon.svg'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import { formatNumberWithSpaces } from '@common/helpers/stringFunctions'
-import DaysLeftTimer from '@common/components/ui/DaysLeftTimer/DaysLeftTimer'
 import Typography from '@common/components/ui/Typography/Typography'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 import { useState } from 'react'
@@ -43,6 +35,9 @@ type CardManagerProps = {
   links?: string[]
   nodeAfterDetails?: React.ReactNode
   absoluteIcons?: React.ReactNode[]
+  onSelect?: (id: number, state: boolean) => void
+  id?: number
+  initSelect?: boolean
 }
 const CardManager = ({
   title,
@@ -63,9 +58,12 @@ const CardManager = ({
   absoluteIcons,
   links,
   details,
+  onSelect,
+  id = 0,
+  initSelect = false,
 }: CardManagerProps) => {
   const flagImage = useGetImage(`flags/${user.country}`, false)
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState<boolean>(initSelect)
   const topImageStyles = {
     backgroundImage: `url(${bc_image})`,
     backgroundSize: 'cover', // You can customize these styles based on your requirements
@@ -73,7 +71,6 @@ const CardManager = ({
     backgroundPosition: 'center',
     zIndex: 0,
   }
-  const today = new Date('2023-11-23')
   const positionStyle =
     position == 'right'
       ? { right: '0' }
@@ -253,8 +250,10 @@ const CardManager = ({
           <MyCheckbox
             height="22px"
             width="22px"
+            basicValue={initSelect}
             callback={item => {
               setIsSelected(item)
+              onSelect(id, item)
             }}
             checkWidth="14px"
           />
