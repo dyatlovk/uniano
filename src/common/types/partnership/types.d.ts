@@ -20,4 +20,8 @@ declare namespace PartnerShip {
     position: string
     date: string
   }
+  export interface FreelancerProjectState {
+    label: string
+    color: string
+  }
 }

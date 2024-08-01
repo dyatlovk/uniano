@@ -1,0 +1,15 @@
+.box {
+  padding: 15px 13px;
+}
+
+.text_dotted_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: $tabletSize) {
+  .text_dotted_wrapper {
+    gap: 20px;
+  }
+}

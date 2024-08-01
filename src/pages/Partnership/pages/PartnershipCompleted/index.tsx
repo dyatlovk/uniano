@@ -10,12 +10,7 @@ import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { useEffect, useState } from 'react'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import ReviewsProgramCard from '@common/components/ReviewsProgram/index'
@@ -24,8 +19,24 @@ import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOran
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/partnership/statesModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import ManagersDropDown from '../ProgressFreelancer/components/ManagerDropdown'
+import Progress from '@common/components/Partnership/Progress/index'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+
+const currentState = 'Completed'
+const freelancerProjectModel = new FreelancerProjectsModel(
+  FreelancerProjectsModel.makeFakeData()
+)
+const freelancerFakeProject = freelancerProjectModel.findByLabel('Progress')
+const freelancerFakeProjectProgress =
+  freelancerProjectModel.getProgress('Progress')
 
 const PartnershipCompleted = () => {
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
   const arrayHistory = [
     'Partnership',
     'Development',
@@ -38,11 +49,15 @@ const PartnershipCompleted = () => {
     window.scrollTo({ top: 0 })
   }, [])
 
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
+
   return (
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Completed'} />
+      <StepsStates states={StatesModel.getAll()} currentState={currentState} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -104,29 +119,16 @@ const PartnershipCompleted = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Manager"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
 
               <DynamicPadding desktop="25px" mobile="20px" />
               <div className="justify_center">
@@ -140,114 +142,11 @@ const PartnershipCompleted = () => {
               </div>
               <DynamicPadding desktop="25px" mobile="20px" />
 
-              <div className={`box_shadow ${styles.details_box}`}>
-                <DetailsDropdownItem
-                  title="Partnership"
-                  text="Fab 27, 2023 23:55 - current"
-                  initState={true}
-                  node={
-                    <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Duration
-                        </Typography>
-                        <Typography variant="body4" fontWeight="500">
-                          2 weeks 2 days
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar
-                        currentPercent={100}
-                        color={AppColor.green}
-                        height="5px"
-                      />
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Status
-                        </Typography>
-                        <Typography
-                          variant="body4"
-                          fontWeight="500"
-                          color={AppColor.green}
-                        >
-                          Completed
-                        </Typography>
-                      </div>
-
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Status
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
-
-                      <div className={styles.text_dotted_wrapper}>
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="CTR"
-                          textEnd="5%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="eCPC"
-                          textEnd="$5"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="CR"
-                          textEnd="3%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="Clicks"
-                          textEnd="4178%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="Leads"
-                          textEnd="643"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="Sales"
-                          textEnd="75"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          text="Earned"
-                          textEnd="$3 231"
-                        />
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
-                        <Typography variant="body4">
-                          Public Financial Details{' '}
-                        </Typography>
-                        <SwitchButton
-                          width="44px"
-                          height="24px"
-                          startValue={true}
-                        />
-                        <div
-                          className="circle_shadow"
-                          style={{ padding: '3px 6px' }}
-                        >
-                          <AppColor.info />
-                        </div>
-                      </div>
-                    </div>
-                  }
-                />
-              </div>
+              <Progress
+                statusColor={freelancerFakeProject.color}
+                statusLabel={freelancerFakeProject.label}
+                percent={freelancerFakeProjectProgress}
+              />
             </div>
           }
         />

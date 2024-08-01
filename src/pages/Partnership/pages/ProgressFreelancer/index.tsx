@@ -11,10 +11,6 @@ import DetailsProgress from '@common/components/ui/DetailsTable/variants/Details
 import Typography from '@common/components/ui/Typography/Typography'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { useEffect, useState } from 'react'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import TextDotted from '@common/components/ui/TextDotted/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
@@ -24,6 +20,15 @@ import StatesModel from '@common/models/partnership/statesModel'
 import PartnersModel from '@common/models/partnership/partnersModel'
 import ManagersDropDown from './components/ManagerDropdown'
 import { ToolsCommon } from '@common/components/Partnership/Tools/index'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import Progress from '@common/components/Partnership/Progress/index'
+
+const freelancerProjectModel = new FreelancerProjectsModel(
+  FreelancerProjectsModel.makeFakeData()
+)
+const freelancerFakeProject = freelancerProjectModel.findByLabel('Completed')
+const freelancerFakeProjectProgress =
+  freelancerProjectModel.getProgress('Completed')
 
 const ProgressFreelancer = () => {
   const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
@@ -148,117 +153,11 @@ const ProgressFreelancer = () => {
 
               <DynamicPadding desktop="25px" mobile="20px" />
 
-              <div className={`box_shadow ${styles.details_box}`}>
-                <DetailsDropdownItem
-                  title="Partnership"
-                  text="Fab 27, 2023 23:55 - current"
-                  initState={true}
-                  node={
-                    <div>
-                      <DynamicPadding desktop="19px" mobile="15px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Duration
-                        </Typography>
-                        <Typography variant="body4" fontWeight="500">
-                          45 m 32 sec
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="9px" mobile="5px" />
-                      <PercentBar currentPercent={20} height="5px" />
-                      <DynamicPadding desktop="9px" mobile="5px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Status
-                        </Typography>
-                        <Typography
-                          variant="body4"
-                          fontWeight="500"
-                          color={AppColor.orange}
-                        >
-                          Progress
-                        </Typography>
-                      </div>
-
-                      <DynamicPadding desktop="25px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="24px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Statistics
-                      </Typography>
-                      <DynamicPadding desktop="22px" mobile="20px" />
-
-                      <div className={styles.text_dotted_wrapper}>
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="CTR"
-                          textEnd="5%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="eCPC"
-                          textEnd="$5"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="CR"
-                          textEnd="3%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="Clicks"
-                          textEnd="4178%"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="Leads"
-                          textEnd="643"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="Sales"
-                          textEnd="75"
-                        />
-                        <TextDotted
-                          startTextColor={AppColor.transparentBlack}
-                          fontWeightEndText="500"
-                          text="Earned"
-                          textEnd="$3 231"
-                        />
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
-                        <Typography variant="body4">
-                          Public Financial Details{' '}
-                        </Typography>
-                        <SwitchButton
-                          width="44px"
-                          height="24px"
-                          startValue={true}
-                        />
-                        <div
-                          className="circle_shadow"
-                          style={{ padding: '3px 6px' }}
-                        >
-                          <AppColor.info />
-                        </div>
-                      </div>
-                    </div>
-                  }
-                />
-              </div>
+              <Progress
+                statusColor={freelancerFakeProject.color}
+                statusLabel={freelancerFakeProject.label}
+                percent={freelancerFakeProjectProgress}
+              />
             </div>
           }
         />
