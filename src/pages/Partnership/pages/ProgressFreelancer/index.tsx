@@ -262,7 +262,6 @@ const ProgressFreelancer = () => {
             </div>
           }
         />
-        <DynamicPadding />
       </div>
       <CardsSliderRelated />
       <div className={'wrapper_page'}>
