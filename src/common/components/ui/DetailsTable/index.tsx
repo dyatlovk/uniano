@@ -251,7 +251,7 @@ const DetailsTable = ({
                         ) : (
                           <AppColor.chevronBottom
                             width={'20px'}
-                            fill={AppColor.text}
+                            fill={'#01010150'}
                           />
                         )}
                         {item.selecrable && (

@@ -2,13 +2,12 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import DetailsTable from '../..'
-import { fakeUserConstant, userModel } from '@common/models/user'
+import { fakeUserConstant } from '@common/models/user'
 import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserAvatar from '../../../UserAvatar'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 
 type DetailsTableMyProgramsProps = {
@@ -65,7 +64,7 @@ const DetailsProgress = ({
               />
             ))}
             {dropdownShowItemsCount != 5 && (
-              <>
+              <div className={styles.more_action}>
                 <DynamicPadding desktop="30px" mobile="40px" />
                 <div className="justify_center">
                   <MyButtonTransparentBlack
@@ -78,7 +77,7 @@ const DetailsProgress = ({
                     Show more +4
                   </MyButtonTransparentBlack>
                 </div>
-              </>
+              </div>
             )}
           </div>
         ) : null

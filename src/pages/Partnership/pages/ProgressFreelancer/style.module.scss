@@ -34,6 +34,18 @@
   gap: 15px;
 }
 
+[data-detailsdropdown_state="closed"] {
+  svg {
+    fill: #01010150;
+  }
+}
+
+[data-detailsdropdown_state="opened"] {
+  svg {
+    fill: $text;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .text_dotted_wrapper {
@@ -42,6 +54,7 @@
 
   .details_box {
     padding: 25px 30px;
+    padding-bottom: 30px;
   }
 
   .tools_wrapper_section {

@@ -11,7 +11,6 @@ import DetailsProgress from '@common/components/ui/DetailsTable/variants/Details
 import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { useEffect, useState } from 'react'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
@@ -23,8 +22,14 @@ import Footer from '@common/components/Footer/Footer'
 import { Link } from 'react-router-dom'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/partnership/statesModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import ManagersDropDown from './components/ManagerDropdown'
 
 const ProgressFreelancer = () => {
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
   const arrayHistory = [
     'Partnership',
     'Development',
@@ -34,16 +39,17 @@ const ProgressFreelancer = () => {
   const title = 'Artem Markevych WordPress Partnership'
 
   useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
+
+  useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [])
   return (
     <div>
       <Header />
 
-      <StepsStates
-        states={StatesModel.getAll()}
-        currentState={'Progress'}
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -53,7 +59,8 @@ const ProgressFreelancer = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="15px" mobile="20px" />
+
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={<AppColor.refreshA />}
@@ -127,31 +134,19 @@ const ProgressFreelancer = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Manager"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
 
               <DynamicPadding desktop="25px" mobile="20px" />
+
               <div className="justify_center">
                 <Typography
                   variant="body4"
@@ -161,6 +156,7 @@ const ProgressFreelancer = () => {
                   Project 1
                 </Typography>
               </div>
+
               <DynamicPadding desktop="25px" mobile="20px" />
 
               <div className={`box_shadow ${styles.details_box}`}>
@@ -170,7 +166,7 @@ const ProgressFreelancer = () => {
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="19px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -182,9 +178,9 @@ const ProgressFreelancer = () => {
                           45 m 32 sec
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <PercentBar currentPercent={20} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -201,13 +197,13 @@ const ProgressFreelancer = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
-                        Status
+                        Statistics
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -294,8 +290,12 @@ export const DetailsDropdownItem = ({
   node,
 }: DetailsDropdownItemProps) => {
   const [showDropdown, setShowDropdown] = useState(initState)
+
   return (
-    <div className={styles.dropdown_details}>
+    <div
+      data-detailsdropdown_state={showDropdown ? 'opened' : 'closed'}
+      className={styles.dropdown_details}
+    >
       <div
         style={{ userSelect: 'none', cursor: 'pointer' }}
         onClick={() => {
@@ -355,4 +355,5 @@ const ToolsItem = ({ icon, text, title }: ToolsItemProps) => {
     </div>
   )
 }
+
 export default ProgressFreelancer
