@@ -19,7 +19,7 @@ const Progress = ({
   className,
   statusLabel,
   statusColor,
-  percent
+  percent,
 }: Props): JSX.Element => {
   return (
     <div className={classNames(className, 'box_shadow', styles.box)}>
@@ -29,7 +29,7 @@ const Progress = ({
         initState={true}
         node={
           <div>
-            <DynamicPadding desktop="30px" mobile="15px" />
+            <DynamicPadding desktop="20px" mobile="15px" />
             <div className="flex_space_between">
               <Typography variant="body4" color={AppColor.transparentBlack}>
                 Duration
@@ -38,68 +38,71 @@ const Progress = ({
                 2 weeks 2 days
               </Typography>
             </div>
-            <DynamicPadding desktop="15px" mobile="5px" />
+            <DynamicPadding desktop="9px" mobile="5px" />
             <PercentBar
               currentPercent={percent}
               color={statusColor}
               height="5px"
             />
-            <DynamicPadding desktop="15px" mobile="5px" />
+            <DynamicPadding desktop="10px" mobile="5px" />
             <div className="flex_space_between">
               <Typography variant="body4" color={AppColor.transparentBlack}>
                 Status
               </Typography>
-              <Typography
-                variant="body4"
-                fontWeight="500"
-                color={statusColor}
-              >
+              <Typography variant="body4" fontWeight="500" color={statusColor}>
                 {statusLabel}
               </Typography>
             </div>
 
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="25px" mobile="20px" />
             <HorizontalLine />
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="24px" mobile="20px" />
             <Typography variant="body3" fontWeight="500">
-              Status
+              Statistics
             </Typography>
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="21px" mobile="20px" />
 
             <div className={styles.text_dotted_wrapper}>
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="CTR"
+                fontWeightEndText="500"
                 textEnd="5%"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="eCPC"
+                fontWeightEndText="500"
                 textEnd="$5"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="CR"
+                fontWeightEndText="500"
                 textEnd="3%"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="Clicks"
+                fontWeightEndText="500"
                 textEnd="4178%"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="Leads"
+                fontWeightEndText="500"
                 textEnd="643"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="Sales"
+                fontWeightEndText="500"
                 textEnd="75"
               />
               <TextDotted
                 startTextColor={AppColor.transparentBlack}
                 text="Earned"
+                fontWeightEndText="500"
                 textEnd="$3 231"
               />
             </div>
@@ -111,6 +114,7 @@ const Progress = ({
                 <AppColor.info />
               </div>
             </div>
+            <DynamicPadding desktop="5px" mobile="5px" />
           </div>
         }
       />

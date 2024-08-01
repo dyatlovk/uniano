@@ -67,13 +67,13 @@ const PartnershipCompleted = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="35px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={<AppColor.refreshA />}
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
         <ResponsiveLayoutTwo
           orderItem1Desktop={0}
           orderItem2Desktop={1}
@@ -87,7 +87,7 @@ const PartnershipCompleted = () => {
               <Typography variant="body3" fontWeight="500">
                 Review
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="24px" mobile="20px" />
               <ReviewsProgramCard
                 likes="15"
                 money="2 000"
@@ -104,11 +104,11 @@ const PartnershipCompleted = () => {
                 user={fakeUserConstant}
               />
 
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <Typography variant="body3" fontWeight="500">
                 Tips
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="25px" mobile="20px" />
 
               <TipsItem
                 description={'Submit a new partnership project with'}
