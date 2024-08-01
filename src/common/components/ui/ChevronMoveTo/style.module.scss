@@ -9,8 +9,9 @@
     .chevron {
       background-color: $orange;
 
-      svg {
+      svg path {
         fill: $white;
+        fill-opacity: 1;
       }
     }
 

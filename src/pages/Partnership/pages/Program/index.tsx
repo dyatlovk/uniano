@@ -35,13 +35,11 @@ import ServiceModal from './modals/ServiceModal'
 import PorftolioModal from './modals/PorftolioModal'
 import ReviewsModal from './modals/reviewsModal'
 import SubscriptionsModal from './modals/subscriptionsModal'
-import DeeplinkModal from './modals/deeplinkModal'
-import BannersModal from './modals/bannersModal'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
-import AdsBannersProvider from '@common/models/ads/banners'
 import { User, UserSkill } from '@common/models/users/levels'
 import UserLevelStat from '@common/components/Users/levels'
 import AccountModal from './modals/Account'
+import { ToolsCommon } from '@common/components/Partnership/Tools/index'
 
 const currentUserSkill = User.SkillsLabels.Junior
 
@@ -54,9 +52,6 @@ const Program = () => {
     'Web Development',
     'WordPress',
   ]
-
-  const [deeplinkModal, setDeeplinkModal] = useState<boolean>(false)
-  const [bannersModal, setBannersModal] = useState<boolean>(false)
 
   const ratesRef = useRef(null)
   const toolsRef = useRef(null)
@@ -204,42 +199,7 @@ const Program = () => {
               </span>
 
               <DynamicPadding desktop="25px" mobile="30px" />
-              <div className={styles.tools_wrapper_section}>
-                <ToolsItem
-                  icon={<AppColor.deeplink />}
-                  title="Deeplink"
-                  text="Sale Links"
-                  onClick={() => {
-                    setDeeplinkModal(true)
-                  }}
-                />
-                <ToolsItem
-                  icon={<AppColor.banners />}
-                  title="Banners"
-                  text="Advertising Images"
-                  onClick={() => {
-                    setBannersModal(true)
-                  }}
-                />
-              </div>
-              {deeplinkModal && (
-                <ModalCenterBasic
-                  desktopMaxWidth="830px"
-                  bottomPartPadding="30px"
-                  callbackClose={() => {
-                    setDeeplinkModal(false)
-                  }}
-                  title="Deeplink"
-                >
-                  <DeeplinkModal />
-                </ModalCenterBasic>
-              )}
-              {bannersModal && (
-                <BannersModal
-                  data={AdsBannersProvider.getAll()}
-                  onModalClose={() => setBannersModal(false)}
-                />
-              )}
+              <ToolsCommon />
 
               <DynamicPadding desktop="46px" />
               <span ref={freelancerRef}>
@@ -1176,34 +1136,7 @@ export const DisplayArrayOfDetailsProfile = ({
     </>
   )
 }
-const ToolsItem = ({ icon, text, title, onClick }: ToolsItemProps) => {
-  return (
-    <div
-      onClick={() => {
-        if (onClick) {
-          onClick()
-        }
-      }}
-      className={`${styles.tools_wrapper} cursor`}
-    >
-      {icon}
-      <SizeBox height="15px" />
-      <Typography textLineHeight="1" variant="body3" fontWeight="500">
-        {title}
-      </Typography>
-      <SizeBox height="15px" />
-      <Typography
-        textLineHeight="1"
-        variant="body5"
-        fontWeight="500"
-        color="#01010150"
-        textTransform="uppercase"
-      >
-        {text}
-      </Typography>
-    </div>
-  )
-}
+
 const ConditionSection = () => {
   const [activeItem, setActiveItem] = useState<
     'Services' | 'Orders' | 'Subscriptions'

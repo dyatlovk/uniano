@@ -1,0 +1,24 @@
+.tools_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.tool_item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include weakShadow;
+  border-radius: 20px;
+  padding: 20px 0px;
+
+  &:hover {
+
+    p,
+    svg path {
+      fill: $orange;
+      color: $orange !important;
+    }
+  }
+}

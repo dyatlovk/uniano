@@ -8,7 +8,6 @@ import { fakeUserConstant } from '@common/models/user'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import DetailsProgress from '@common/components/ui/DetailsTable/variants/DetailsProgress/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { useEffect, useState } from 'react'
@@ -24,6 +23,7 @@ import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/partnership/statesModel'
 import PartnersModel from '@common/models/partnership/partnersModel'
 import ManagersDropDown from './components/ManagerDropdown'
+import { ToolsCommon } from '@common/components/Partnership/Tools/index'
 
 const ProgressFreelancer = () => {
   const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
@@ -98,19 +98,8 @@ const ProgressFreelancer = () => {
                 ]}
               />
               <DynamicPadding />
-              <div className={styles.tools_wrapper_section}>
-                <ToolsItem
-                  icon={<AppColor.deeplink />}
-                  title="Deeplink"
-                  text="Sale Links"
-                />
-                <ToolsItem
-                  icon={<AppColor.banners />}
-                  title="Banners"
-                  text="Advertising Images"
-                />
-              </div>
-              <DynamicPadding />
+              <ToolsCommon />
+              <DynamicPadding desktop="49px" />
 
               <div className="flex_space_between">
                 <Link to={'/partnership/freelancer/selection'}>
@@ -208,36 +197,43 @@ const ProgressFreelancer = () => {
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="CTR"
                           textEnd="5%"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="eCPC"
                           textEnd="$5"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="CR"
                           textEnd="3%"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="Clicks"
                           textEnd="4178%"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="Leads"
                           textEnd="643"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="Sales"
                           textEnd="75"
                         />
                         <TextDotted
                           startTextColor={AppColor.transparentBlack}
+                          fontWeightEndText="500"
                           text="Earned"
                           textEnd="$3 231"
                         />
@@ -326,32 +322,6 @@ export const DetailsDropdownItem = ({
         )}
       </div>
       {showDropdown && node}
-    </div>
-  )
-}
-type ToolsItemProps = {
-  icon: any
-  title: string
-  text: string
-}
-
-const ToolsItem = ({ icon, text, title }: ToolsItemProps) => {
-  return (
-    <div className={styles.tools_wrapper}>
-      {icon}
-      <SizeBox height="15px" />
-      <Typography textLineHeight="1" variant="body3" fontWeight="500">
-        {title}
-      </Typography>
-      <SizeBox height="15px" />
-      <Typography
-        textLineHeight="1"
-        variant="body5"
-        fontWeight="500"
-        textTransform="uppercase"
-      >
-        {text}
-      </Typography>
     </div>
   )
 }
