@@ -160,6 +160,14 @@
   }
 }
 
+.add_review_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .dropdown_no_review {

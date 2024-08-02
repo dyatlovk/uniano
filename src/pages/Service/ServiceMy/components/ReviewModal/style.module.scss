@@ -1,0 +1,105 @@
+.user_top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+
+  button {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+  }
+}
+
+.button_cancel {
+  button {
+    color: #01010180;
+
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.recommendations {
+  display: flex;
+  gap: 20px;
+}
+
+.review_msg {
+  margin-bottom: 42px;
+}
+
+.recommendButton {
+  cursor: pointer;
+  padding: 6px 13px;
+  border-width: 1px;
+  border-radius: $borderRadius;
+  border-style: solid;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.recommend {
+  background-color: rgba(252, 254, 255, 1);
+  border-color: #219653A6;
+  color: #219653;
+
+  &:hover {
+    background-color: #219653;
+    color: $white;
+
+    svg path {
+      fill: $white;
+    }
+  }
+}
+
+.notrecommend {
+  border-color: rgba(245, 245, 245, 1);
+  font-weight: 500;
+
+  &:hover {
+    background-color: $text;
+    color: $white;
+    border-color: $text;
+
+    svg path {
+      fill: $white;
+    }
+  }
+
+  svg {
+    path {
+      fill: $text;
+    }
+
+    transform: rotate(180deg) scaleX(-1);
+  }
+}
+
+.msg_counter {
+  margin-top: 22px;
+  color: rgba(1, 1, 1, 0.5);
+}

@@ -5,7 +5,6 @@ import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserAvatar from '../../../UserAvatar'
 import DynamicPadding from '../../../DynamicPadding'
-import { useScreenSize } from '@common/helpers/useScreenSize'
 import { fakeUserConstant, userModel } from '@common/models/user'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 
@@ -15,6 +14,7 @@ import SizeBox from '../../../SizeBox'
 export type DetailsMyServiceProps = {
   information: DetailsMyServicePropsItem[]
   informationDropdown: DropdownMyProgramsItemProps[]
+  onAddReviewCallback: () => void
 }
 
 export type DetailsMyServicePropsItem = {
@@ -44,14 +44,13 @@ function findAllFiltersTitle(): string[] {
 const DetailsMyService = ({
   information,
   informationDropdown,
+  onAddReviewCallback,
 }: DetailsMyServiceProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
   const [showUsers, setShowUsers] = useState(false)
   const [selectedGroupFilter, setSelectedGroupFilter] = useState<string>('')
   const currentDropdownItem = informationDropdown[currentPage - 1]
-
-  const { width, height } = useScreenSize()
 
   return (
     <DetailsTable
@@ -79,6 +78,9 @@ const DetailsMyService = ({
               queue={currentDropdownItem.queue}
               status={currentDropdownItem.status}
               page={currentDropdownItem.page}
+              onAddReviewClick={() => {
+                onAddReviewCallback()
+              }}
             />
           </div>
         ) : null
@@ -212,6 +214,7 @@ type DropdownMyProgramsItemProps = {
   status: string
   page: number
   showHorizontalLine?: boolean
+  onAddReviewClick?: () => void
 }
 
 const DropdownMyServiceItem = ({
@@ -225,6 +228,7 @@ const DropdownMyServiceItem = ({
   manager,
   status,
   showHorizontalLine = true,
+  onAddReviewClick,
 }: DropdownMyProgramsItemProps) => {
   return (
     <div className={styles.dropdown_wrapper}>
@@ -302,9 +306,20 @@ const DropdownMyServiceItem = ({
           <AppColor.infoCircle />
           <Typography variant="body4">No review from customer</Typography>
         </div>
-        <Typography variant="body4" textTransform="uppercase" fontWeight="500">
-          Add review
-        </Typography>
+        <div
+          onClick={() => {
+            onAddReviewClick && onAddReviewClick()
+          }}
+          className={styles.add_review_btn}
+        >
+          <Typography
+            variant="body4"
+            textTransform="uppercase"
+            fontWeight="500"
+          >
+            Add review
+          </Typography>
+        </div>
         <SizeBox width={'9px'} />
         <div className="gap_10">
           <AppColor.infoCircle />

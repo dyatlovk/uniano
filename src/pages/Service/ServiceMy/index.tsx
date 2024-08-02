@@ -1,21 +1,21 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import DetailsMyService from '@common/components/ui/DetailsTable/variants/DetailsMyService/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import ReviewModal from './components/ReviewModal'
 
 const ServiceMy = () => {
+  const [addReviewModalShow, setAddReviewModalShow] = useState<boolean>(false)
+
   useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [])
@@ -77,12 +77,29 @@ const ServiceMy = () => {
               status: 'Completed',
             },
           ]}
+          onAddReviewCallback={() => {
+            setAddReviewModalShow(true)
+          }}
         />
       </div>
+
+      {addReviewModalShow && (
+        <ReviewModal
+          onPublish={() => {
+            setAddReviewModalShow(false)
+          }}
+          onClose={() => {
+            setAddReviewModalShow(false)
+          }}
+        />
+      )}
+
       <CardsSliderRelated />
+
       <div className="wrapper_page">
         <AskedQuestion />
       </div>
+
       <Footer />
     </div>
   )
