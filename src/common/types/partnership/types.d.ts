@@ -24,4 +24,12 @@ declare namespace PartnerShip {
     label: string
     color: string
   }
+  export interface FilterSectionItem {
+    label: string
+    uuid: string
+  }
+  export interface FilterSection {
+    label: string,
+    items: FilterSectionItem[]
+  }
 }

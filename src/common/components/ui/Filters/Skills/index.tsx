@@ -16,9 +16,6 @@ interface SkillsProps {
   callbackSelected: (id: number, title: string) => void
 }
 
-/**
- * @deprecated Use @common/components/ui/Filters/Skills/index
- */
 const SkillsFilter = ({
   title = 'Skills',
   items,

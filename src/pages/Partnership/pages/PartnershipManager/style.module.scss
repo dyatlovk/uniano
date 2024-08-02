@@ -76,6 +76,13 @@
   justify-content: center;
 }
 
+.skill_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .hover_white {
   transition: all 0.3s ease;
 

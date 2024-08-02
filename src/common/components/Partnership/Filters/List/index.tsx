@@ -1,34 +1,30 @@
-import Typography from '@common/components/ui/Typography/Typography'
-import styles from './style.module.scss'
-import { useCallback, useState } from 'react'
-import AppColor from '@common/styles/variables-static'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
-import classNames from 'classnames'
+import Typography from '@common/components/ui/Typography/Typography'
 import FiltersManager from '@common/domain/Partnership/filters'
 import useUpdater from '@common/helpers/useUpdater'
+import AppColor from '@common/styles/variables-static'
+import classNames from 'classnames'
+import { useState, useCallback, useEffect } from 'react'
+import styles from './style.module.scss'
 
-type SideBarCategoryProps = {
+interface Props {
   title: string
-  callbackSelected?: (id: number, title: string) => void
+  callback?: (id: string, title: string, state: boolean) => void
   dropItems: {
     text: string
     icon: React.ReactNode
     count: number
+    id: string
+    isActive: boolean
   }[]
 }
-/**
- * @deprecated use @common/components/Partnership/Filters/List/
- */
-const SideBarCategory = ({
-  dropItems,
-  title,
-  callbackSelected,
-}: SideBarCategoryProps) => {
+
+const FilterSection = ({ dropItems, title, callback }: Props): JSX.Element => {
   const update = useUpdater()
   const [showDropdown, setShowDropdown] = useState(true)
   const [countShow, setCountShow] = useState(4)
-  const [filterManager, setFilterManager] = useState<FiltersManager>(
-    new FiltersManager()
+  const [filterManager, setFilterManager] = useState<FiltersManager | null>(
+    null
   )
   const [showMoreHovered, setShowMoreHovered] = useState<boolean>(false)
 
@@ -38,6 +34,12 @@ const SideBarCategory = ({
   const showMoreLeaveHandle = useCallback(() => {
     setShowMoreHovered(false)
   }, [])
+
+  useEffect(() => {
+    setFilterManager(new FiltersManager())
+  }, [])
+
+  if (!filterManager) return
 
   return (
     <div className={styles.wrapper}>
@@ -88,18 +90,20 @@ const SideBarCategory = ({
               key={idx}
             >
               <MyCheckbox
+                key={idx}
                 callback={state => {
+                  callback(item.id, item.text, state)
                   if (state) {
-                    callbackSelected(idx, item.text)
                     filterManager.add(idx)
                   }
                   if (!state) {
                     filterManager.remove(idx)
-                    update()
                   }
+                  update()
                 }}
                 height="20px"
                 width="20px"
+                basicValue={item.isActive}
               />
               {item.icon}
               <Typography variant="body4">{item.text}</Typography>
@@ -138,4 +142,4 @@ const SideBarCategory = ({
   )
 }
 
-export default SideBarCategory
+export default FilterSection

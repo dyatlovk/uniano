@@ -1,0 +1,29 @@
+@mixin item {
+  background-color: $orange;
+  padding: 1px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.skill_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skill_item {
+  @include item;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.skill_item__selected {
+  opacity: 0.6;
+  @include item;
+  p {
+    font-weight: 500;
+  }
+}
