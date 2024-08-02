@@ -149,6 +149,17 @@
   gap: 10px;
 }
 
+.table_item_service_actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 20px;
+
+  svg path {
+    fill: $orange;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .dropdown_no_review {

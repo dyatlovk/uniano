@@ -12,16 +12,10 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { useEffect } from 'react'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 
 const ServiceMy = () => {
-  const arrayHistory = [
-    'Service',
-    'Development',
-    'Web Development',
-    'WordPress',
-  ]
-  const title = 'Artem Markevych WordPress Partnership'
-
   useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [])
@@ -30,26 +24,33 @@ const ServiceMy = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Program', 'Selection', 'Progress', 'Completed']}
-        currentItemProgress="Program"
+      <NavigationSimpleBar
+        title="Service"
+        activeId={1}
+        icon={<AppColor.cart fill={AppColor.white} width={26} />}
+        links={[
+          {
+            title: 'All services',
+            link: '/service/all',
+          },
+          {
+            title: 'My services',
+            link: '/service/my',
+          },
+        ]}
       />
 
       <div className={'wrapper_page'}>
         <PageDetails
           historyNode={
-            <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
+            <NavigationItem image={<AppColor.home />} textList={['Service']} />
           }
-          pageTitle={title}
+          pageTitle={'My services'}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
-        <UserTopPageInfo
-          user={fakeUserConstant}
-          nodeAfter={<AppColor.refreshA />}
-        />
-
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
+        <SearchFilterBar usePeriod={true} />
+        <DynamicPadding desktop="50px" mobile="20px" />
 
         <DetailsMyService
           information={[

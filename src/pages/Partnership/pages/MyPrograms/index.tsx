@@ -45,7 +45,7 @@ const PartnershipMyPrograms = () => {
         />
 
         <DynamicPadding desktop="35px" />
-        <SearchFilterBar />
+        <SearchFilterBar usePeriod={true} />
 
         <DynamicPadding desktop="50px" mobile="20px" />
         <DetailsTableMyPrograms

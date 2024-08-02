@@ -9,6 +9,9 @@ import { useScreenSize } from '@common/helpers/useScreenSize'
 import { fakeUserConstant, userModel } from '@common/models/user'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 
+import DropDownCommon from '@common/components/ui/Dropdown/DropdownCommon/index'
+import SizeBox from '../../../SizeBox'
+
 export type DetailsMyServiceProps = {
   information: DetailsMyServicePropsItem[]
   informationDropdown: DropdownMyProgramsItemProps[]
@@ -24,14 +27,29 @@ export type DetailsMyServicePropsItem = {
   page: number
 }
 
+const groupFilters = {
+  Programs: ['All', 'Active', 'Pending'],
+  Projects: ['All', 'Progress', 'Pending', 'Completed', 'Canceled'],
+}
+
+function findActiveFilter(key: string): string[] {
+  if (key.length === 0) return []
+  return groupFilters[key]
+}
+
+function findAllFiltersTitle(): string[] {
+  return Object.keys(groupFilters)
+}
+
 const DetailsMyService = ({
   information,
   informationDropdown,
 }: DetailsMyServiceProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
-  const currentDropdownItem = informationDropdown[currentPage - 1]
   const [showUsers, setShowUsers] = useState(false)
+  const [selectedGroupFilter, setSelectedGroupFilter] = useState<string>('')
+  const currentDropdownItem = informationDropdown[currentPage - 1]
 
   const { width, height } = useScreenSize()
 
@@ -40,6 +58,14 @@ const DetailsMyService = ({
       maxWidth="346px"
       showUsers={showUsers}
       removeNavBar={true}
+      groupDropdown={
+        <DropDownCommon
+          items={findAllFiltersTitle()}
+          callback={(item: string) => {
+            setSelectedGroupFilter(item)
+          }}
+        />
+      }
       dropdownNode={
         currentDropdownItem != null ? (
           <div>
@@ -60,7 +86,7 @@ const DetailsMyService = ({
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Pending', 'Completed', 'Canceled']}
+      filters={findActiveFilter(selectedGroupFilter)}
       page={currentPage}
       details={
         currentItem != null
@@ -73,9 +99,9 @@ const DetailsMyService = ({
                     preventMobileNone={true}
                     name={'Professional business logo with copyrights '}
                     nodeAfterText={
-                      <div className="gap_5">
-                        <AppColor.hideEye />
-                        <AppColor.heart />
+                      <div className={styles.table_item_service_actions}>
+                        <AppColor.hideEye fill={AppColor.orange} />
+                        <AppColor.heart fill={AppColor.orange} />
                       </div>
                     }
                   />
@@ -279,6 +305,7 @@ const DropdownMyServiceItem = ({
         <Typography variant="body4" textTransform="uppercase" fontWeight="500">
           Add review
         </Typography>
+        <SizeBox width={'9px'} />
         <div className="gap_10">
           <AppColor.infoCircle />
           <Typography variant="body4">No review from customer</Typography>
