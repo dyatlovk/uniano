@@ -1,6 +1,6 @@
 .filters_wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   max-width: 100%;
   overflow-x: auto;
   gap: 20px;
@@ -27,7 +27,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 0;
+    bottom: 4px;
     height: 1px;
     background-color: rgba(81, 81, 81, 0.1);
   }
@@ -50,6 +50,7 @@
   user-select: none;
   transition: 0.15s;
   padding-bottom: 5px;
+  margin-top: 5px;
   position: relative;
   cursor: pointer;
 
