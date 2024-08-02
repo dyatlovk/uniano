@@ -80,6 +80,16 @@ class FilterSectionManager {
     })
     return found !== undefined
   }
+
+  public findItemById(id: string): PartnerShip.FilterSectionItem | null {
+    let result = null
+    this.storage.forEach(sections => {
+      const found = sections.items.find(item => item.uuid === id)
+      if (found) result = found
+    })
+    if (!result) null
+    return result
+  }
 }
 
 export default FilterSectionManager
@@ -153,6 +163,15 @@ if (import.meta.vitest) {
       instance.add("test2", crypto.randomUUID(), "tagLabel2")
       const actual = instance.isPresent(id)
       expect(actual).toBeTruthy()
+    })
+    test("findById", () => {
+      const instance = new FilterSectionManager()
+      const id = crypto.randomUUID()
+      instance.add("test", id, "tagLabel")
+      instance.add("test", crypto.randomUUID(), "tag1Label2")
+      instance.add("test2", crypto.randomUUID(), "tag2Label")
+      const actual = instance.findItemById(id)
+      expect(actual).toEqual({ label: "tagLabel", uuid: id })
     })
   })
 }

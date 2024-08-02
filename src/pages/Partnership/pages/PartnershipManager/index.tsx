@@ -92,6 +92,30 @@ const PartnershipManager = () => {
 
   useEffect(() => {}, [removedTagFromSideBar])
 
+  function skillsFindSelectedTags(): number[] {
+    if (!filterManager) return []
+    const section = filterManager.getSection('skills')
+    if (!section) return []
+    return section.items.map(el => Number(el.uuid))
+  }
+
+  function skillsToggleTagState(id: string, title: string): void {
+    if (!filterManager) return
+    filterManager.toggle('skills', id.toString(), title)
+  }
+
+  function sliderFindSelectedTag(id: string): string[] {
+    if (!filterManager) return []
+    const present = filterManager.findItemById(id)
+    if (!present) return []
+    return [present.uuid]
+  }
+
+  function sliderToggleTagState(id: string, title: string): void {
+    if (!filterManager) return
+    filterManager.toggle('slider', id, title)
+  }
+
   return (
     <div>
       <Header />
@@ -131,241 +155,181 @@ const PartnershipManager = () => {
               icon={<img src={minimalist} height={'30px'} />}
               text="Minimalist"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '80940dfe-2327-4d93-82a6-3433858fc101',
-                    title
-                  )
+                sliderToggleTagState(
+                  '80940dfe-2327-4d93-82a6-3433858fc101',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('80940dfe-2327-4d93-82a6-3433858fc101')
-                  ? ['Minimalist']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '80940dfe-2327-4d93-82a6-3433858fc101'
+              )}
             />,
             <SliderItem
               icon={<img src={threeD} height={'30px'} />}
               text="3D"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '58b66547-a614-4647-a6d8-4a6acb91ea29',
-                    title
-                  )
+                sliderToggleTagState(
+                  '58b66547-a614-4647-a6d8-4a6acb91ea29',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('58b66547-a614-4647-a6d8-4a6acb91ea29')
-                  ? ['3D']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '58b66547-a614-4647-a6d8-4a6acb91ea29'
+              )}
             />,
             <SliderItem
               icon={<img src={freestyle} height={'30px'} />}
               text="Freestyle"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    'a7967b42-a36b-495c-9d2d-3cbc63ac376e',
-                    title
-                  )
+                sliderToggleTagState(
+                  'a7967b42-a36b-495c-9d2d-3cbc63ac376e',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('a7967b42-a36b-495c-9d2d-3cbc63ac376e')
-                  ? ['Freestyle']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                'a7967b42-a36b-495c-9d2d-3cbc63ac376e'
+              )}
             />,
             <SliderItem
               icon={<img src={mascot} height={'30px'} />}
               text="Mascot"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '676f2e3a-a2f6-452a-9868-c9702dcd4374',
-                    title
-                  )
+                sliderToggleTagState(
+                  '676f2e3a-a2f6-452a-9868-c9702dcd4374',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('676f2e3a-a2f6-452a-9868-c9702dcd4374')
-                  ? ['Mascot']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '676f2e3a-a2f6-452a-9868-c9702dcd4374'
+              )}
             />,
             <SliderItem
               icon={<img src={minimalist} height={'30px'} />}
               text="Minimalist"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '966a42e6-634b-40e9-87f4-a3fb73fea633',
-                    title
-                  )
+                sliderToggleTagState(
+                  '966a42e6-634b-40e9-87f4-a3fb73fea633',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('966a42e6-634b-40e9-87f4-a3fb73fea633')
-                  ? ['Minimalist']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '966a42e6-634b-40e9-87f4-a3fb73fea633'
+              )}
             />,
             <SliderItem
               icon={<img src={threeD} height={'30px'} />}
               text="3D"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '7159b331-13f9-4cfc-b6c9-576a8381544e',
-                    title
-                  )
+                sliderToggleTagState(
+                  '7159b331-13f9-4cfc-b6c9-576a8381544e',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('7159b331-13f9-4cfc-b6c9-576a8381544e')
-                  ? ['3D']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '7159b331-13f9-4cfc-b6c9-576a8381544e'
+              )}
             />,
             <SliderItem
               icon={<img src={freestyle} height={'30px'} />}
               text="Freestyle"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    'd1ea34aa-1725-4296-b64c-a7d70f363d4e',
-                    title
-                  )
+                sliderToggleTagState(
+                  'd1ea34aa-1725-4296-b64c-a7d70f363d4e',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('d1ea34aa-1725-4296-b64c-a7d70f363d4e')
-                  ? ['Freestyle']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                'd1ea34aa-1725-4296-b64c-a7d70f363d4e'
+              )}
             />,
             <SliderItem
               icon={<img src={mascot} height={'30px'} />}
               text="Mascot"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '04d055d2-d617-4afa-b8af-5cb1e0979509',
-                    title
-                  )
+                sliderToggleTagState(
+                  '04d055d2-d617-4afa-b8af-5cb1e0979509',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('04d055d2-d617-4afa-b8af-5cb1e0979509')
-                  ? ['Mascot']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '04d055d2-d617-4afa-b8af-5cb1e0979509'
+              )}
             />,
             <SliderItem
               icon={<img src={minimalist} height={'30px'} />}
               text="Minimalist"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    'c1af37e7-981f-4a48-a2e4-13b8d742375f',
-                    title
-                  )
+                sliderToggleTagState(
+                  'c1af37e7-981f-4a48-a2e4-13b8d742375f',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('c1af37e7-981f-4a48-a2e4-13b8d742375f')
-                  ? ['Minimalist']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                'c1af37e7-981f-4a48-a2e4-13b8d742375f'
+              )}
             />,
             <SliderItem
               icon={<img src={threeD} height={'30px'} />}
               text="3D"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '419407eb-fb34-4f1f-bbe5-11bae2b67ae9',
-                    title
-                  )
+                sliderToggleTagState(
+                  '419407eb-fb34-4f1f-bbe5-11bae2b67ae9',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('419407eb-fb34-4f1f-bbe5-11bae2b67ae9')
-                  ? ['3D']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '419407eb-fb34-4f1f-bbe5-11bae2b67ae9'
+              )}
             />,
             <SliderItem
               icon={<img src={freestyle} height={'30px'} />}
               text="Freestyle"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    'd9f895a9-94eb-46e1-a76d-060765592ff6',
-                    title
-                  )
+                sliderToggleTagState(
+                  'd9f895a9-94eb-46e1-a76d-060765592ff6',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('d9f895a9-94eb-46e1-a76d-060765592ff6')
-                  ? ['Freestyle']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                'd9f895a9-94eb-46e1-a76d-060765592ff6'
+              )}
             />,
             <SliderItem
               icon={<img src={mascot} height={'30px'} />}
               text="Mascot"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '77601100-0c41-4a85-a86e-71f057145a8e',
-                    title
-                  )
+                sliderToggleTagState(
+                  '77601100-0c41-4a85-a86e-71f057145a8e',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('77601100-0c41-4a85-a86e-71f057145a8e')
-                  ? ['Mascot']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '77601100-0c41-4a85-a86e-71f057145a8e'
+              )}
             />,
           ]}
         />
@@ -688,7 +652,11 @@ const PartnershipManager = () => {
                     title: 'Modern logo',
                   },
                 ]}
-                callbackSelected={() => {}}
+                selected={skillsFindSelectedTags()}
+                callback={(id: number, title: string, state: boolean) => {
+                  skillsToggleTagState(id.toString(), title)
+                  renderUpdate()
+                }}
               />
             </div>
           }

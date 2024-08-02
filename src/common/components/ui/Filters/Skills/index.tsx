@@ -3,7 +3,7 @@ import Typography from '@common/components/ui/Typography/Typography'
 import FiltersManager from '@common/domain/Partnership/filters'
 import useUpdater from '@common/helpers/useUpdater'
 import classNames from 'classnames'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 
 interface SkillType {
@@ -13,18 +13,32 @@ interface SkillType {
 interface SkillsProps {
   title?: string
   items: SkillType[]
-  callbackSelected: (id: number, title: string) => void
+  callback: (id: number, title: string, state: boolean) => void
+  selected?: number[]
 }
 
 const SkillsFilter = ({
   title = 'Skills',
   items,
-  callbackSelected,
+  callback,
+  selected = [],
 }: SkillsProps) => {
-  const update = useUpdater()
+  const renderUpdate = useUpdater()
   const [filterManager, setFilterManager] = useState<FiltersManager>(
     new FiltersManager()
   )
+
+  useEffect(() => {
+    if (!filterManager) return
+    if (selected.length === 0) {
+      filterManager.clear()
+      renderUpdate()
+      return
+    }
+    filterManager.clear()
+    selected.forEach(el => filterManager.add(el))
+    renderUpdate()
+  }, [filterManager, renderUpdate, selected])
 
   return (
     <div className={styles.skills}>
@@ -43,10 +57,8 @@ const SkillsFilter = ({
             key={idx}
             onClick={e => {
               const state = filterManager.toggle(idx)
-              if (state) {
-                callbackSelected(idx, skill.title)
-              }
-              update()
+              callback(idx, skill.title, state)
+              renderUpdate()
             }}
           >
             <Typography variant="body4" fontWeight="500" color="white">

@@ -8,7 +8,7 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SliderByRef from '@common/components/ui/SliderByRef/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import DoubleRangeSlider from '@common/components/ui/DoubleRangeSlider/index'
@@ -71,6 +71,30 @@ const ServiceAll = () => {
 
   const [showModalSideBar, setShowModalSideBar] = useState(false)
 
+  function skillsFindSelectedTags(): number[] {
+    if (!filterManager) return []
+    const section = filterManager.getSection('skills')
+    if (!section) return []
+    return section.items.map(el => Number(el.uuid))
+  }
+
+  function skillsToggleTagState(id: string, title: string): void {
+    if (!filterManager) return
+    filterManager.toggle('skills', id.toString(), title)
+  }
+
+  function sliderFindSelectedTag(id: string): string[] {
+    if (!filterManager) return []
+    const present = filterManager.findItemById(id)
+    if (!present) return []
+    return [present.uuid]
+  }
+
+  function sliderToggleTagState(id: string, title: string): void {
+    if (!filterManager) return
+    filterManager.toggle('slider', id, title)
+  }
+
   return (
     <div>
       <Header />
@@ -107,81 +131,61 @@ const ServiceAll = () => {
               icon={<img src={minimalist} height={'30px'} />}
               text="Minimalist"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '80940dfe-2327-4d93-82a6-3433858fc101',
-                    title
-                  )
+                sliderToggleTagState(
+                  '80940dfe-2327-4d93-82a6-3433858fc101',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('80940dfe-2327-4d93-82a6-3433858fc101')
-                  ? ['Minimalist']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '80940dfe-2327-4d93-82a6-3433858fc101'
+              )}
             />,
             <SliderItem
               icon={<img src={threeD} height={'30px'} />}
               text="3D"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '58b66547-a614-4647-a6d8-4a6acb91ea29',
-                    title
-                  )
+                sliderToggleTagState(
+                  '58b66547-a614-4647-a6d8-4a6acb91ea29',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('58b66547-a614-4647-a6d8-4a6acb91ea29')
-                  ? ['3D']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '58b66547-a614-4647-a6d8-4a6acb91ea29'
+              )}
             />,
             <SliderItem
               icon={<img src={freestyle} height={'30px'} />}
               text="Freestyle"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    'a7967b42-a36b-495c-9d2d-3cbc63ac376e',
-                    title
-                  )
+                sliderToggleTagState(
+                  'a7967b42-a36b-495c-9d2d-3cbc63ac376e',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('a7967b42-a36b-495c-9d2d-3cbc63ac376e')
-                  ? ['Freestyle']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                'a7967b42-a36b-495c-9d2d-3cbc63ac376e'
+              )}
             />,
             <SliderItem
               icon={<img src={mascot} height={'30px'} />}
               text="Mascot"
               onClick={(title: string) => {
-                filterManager &&
-                  filterManager.toggle(
-                    'slider',
-                    '676f2e3a-a2f6-452a-9868-c9702dcd4374',
-                    title
-                  )
+                sliderToggleTagState(
+                  '676f2e3a-a2f6-452a-9868-c9702dcd4374',
+                  title
+                )
                 renderUpdate()
               }}
               removedTag={removedTagFromSideBar}
-              tags={
-                filterManager &&
-                filterManager.isPresent('676f2e3a-a2f6-452a-9868-c9702dcd4374')
-                  ? ['Mascot']
-                  : []
-              }
+              tags={sliderFindSelectedTag(
+                '676f2e3a-a2f6-452a-9868-c9702dcd4374'
+              )}
             />,
           ]}
         />
@@ -503,7 +507,11 @@ const ServiceAll = () => {
                     title: 'Modern logo',
                   },
                 ]}
-                callbackSelected={() => {}}
+                selected={skillsFindSelectedTags()}
+                callback={(id: number, title: string, state: boolean) => {
+                  skillsToggleTagState(id.toString(), title)
+                  renderUpdate()
+                }}
               />
             </div>
           }
