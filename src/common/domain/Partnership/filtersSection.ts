@@ -31,6 +31,23 @@ class FilterSectionManager {
     this.cleanEmptySections()
   }
 
+  /**
+   * Toggle tag in storage
+   * @returns {boolean} Result
+   */
+  public toggle(section: string, id: string, label?: string): boolean {
+    const isPresent = this.isPresent(id)
+    if (isPresent) {
+      this.remove(section, id)
+      return true
+    }
+
+    if (label.length === 0) return false
+
+    this.add(section, id, label)
+    return true
+  }
+
   public cleanEmptySections(): void {
     this.storage = this.storage.filter(el => el.items.length !== 0)
   }
@@ -115,6 +132,15 @@ if (import.meta.vitest) {
       instance.remove("test", id)
       const actual = instance.getSection("test")
       expect(actual.items.length).toEqual(1)
+    })
+    test("toggle", () => {
+      const instance = new FilterSectionManager()
+      const id = crypto.randomUUID()
+      instance.add("test", id, "tagLabel")
+      instance.toggle("test", id)
+      expect(instance.total()).toEqual(0)
+      instance.toggle("test", id, "testLabel")
+      expect(instance.total()).toEqual(1)
     })
   })
 

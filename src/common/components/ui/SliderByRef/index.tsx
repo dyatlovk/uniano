@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
-import { useScreenSize } from '@common/helpers/useScreenSize'
+import classNames from 'classnames'
 
 type SliderByRefProps = {
   nodes: React.ReactNode[]
@@ -16,8 +16,29 @@ const SliderByRef = ({ nodes, buttons = true }: SliderByRefProps) => {
   const currentItemRef = useRef<HTMLDivElement | null>(null)
   const previousItemRef = useRef<HTMLDivElement | null>(null)
   const totalRef = useRef<HTMLDivElement | null>(null)
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
   const [startX, setStartX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [isNavVisible, setNavVisible] = useState<boolean>(buttons)
+
+  const navVisibilityHandler = useCallback(() => {
+    if (getContentWidth() <= getMainWrapperWidth()) setNavVisible(false)
+    if (getContentWidth() >= getMainWrapperWidth()) setNavVisible(true)
+  }, [])
+
+  useEffect(() => {
+    navVisibilityHandler()
+  }, [navVisibilityHandler])
+
+  useEffect(() => {
+    const handleResize = () => {
+      navVisibilityHandler()
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [navVisibilityHandler])
 
   function handleMoveOn() {
     if (currentItemRef.current && currentItemRef.current.offsetWidth) {
@@ -33,17 +54,14 @@ const SliderByRef = ({ nodes, buttons = true }: SliderByRefProps) => {
   }
   function handleMoveUndo() {
     if (previousItemRef.current && previousItemRef.current.offsetWidth) {
-      console.log('before1 2 3')
       if (currentIndex > 0) {
         const previousWidth = previousItemRef.current.offsetWidth
         setTotalTransform(prev => prev - previousWidth - gap)
         setCurrentIndex(prev => prev - 1)
-        console.log('before1')
       } else {
         const totalTransform = totalRef.current.offsetWidth
         setTotalTransform(totalTransform)
         setCurrentIndex(nodes.length - 1)
-        console.log('before')
       }
     }
   }
@@ -78,8 +96,23 @@ const SliderByRef = ({ nodes, buttons = true }: SliderByRefProps) => {
     return 'touches' in e ? e.touches[0].clientX : e.clientX
   }
 
+  function getMainWrapperWidth(): number {
+    if (!wrapperRef) return 0
+    return wrapperRef.current.clientWidth
+  }
+
+  function getContentWidth(): number {
+    if (!totalRef) return 0
+
+    return totalRef.current.clientWidth
+  }
+
   return (
-    <div className={styles.relative}>
+    <div
+      className={classNames(
+        isNavVisible ? styles.relative : styles.relative_no_nav
+      )}
+    >
       <div
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}
@@ -88,6 +121,7 @@ const SliderByRef = ({ nodes, buttons = true }: SliderByRefProps) => {
         onMouseUp={handleDragEnd}
         onTouchEnd={handleDragEnd}
         className={styles.wrapper}
+        ref={wrapperRef}
       >
         <div
           ref={totalRef}
@@ -111,7 +145,7 @@ const SliderByRef = ({ nodes, buttons = true }: SliderByRefProps) => {
           ))}
         </div>
       </div>
-      {buttons && (
+      {isNavVisible && (
         <>
           <div onClick={handleMoveUndo} className={styles.left}>
             <AppColor.chevronLeft fill="white" width={'30px'} height={'15px'} />

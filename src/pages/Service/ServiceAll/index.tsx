@@ -34,19 +34,11 @@ import useUpdater from '@common/helpers/useUpdater'
 
 const ServiceAll = () => {
   const { width, height } = useScreenSize()
-  const [tags, setTags] = useState<string[]>([])
   const [priceValue, setPriceValue] = useState<{
     min: number
     max: number
   }>({ min: 0, max: 100 })
   const [itemsToshow, setItemsToShow] = useState([])
-  const [skills, setSkills] = useState([
-    'Logos',
-    'Logo Design',
-    'Logo',
-    'Logo Maker',
-    'Modern Logo ',
-  ])
   const minValueRef = useRef(null)
   const maxValueRef = useRef(null)
   const [removedTagFromSideBar, setRemovedTagFromSideBar] = useState('')
@@ -78,16 +70,6 @@ const ServiceAll = () => {
   }, [])
 
   const [showModalSideBar, setShowModalSideBar] = useState(false)
-
-  const handleAddTag = (item: string) => {
-    setTags(prevTags => {
-      if (!prevTags.includes(item)) {
-        return [...prevTags, item]
-      } else {
-        return prevTags.filter(tag => tag !== item)
-      }
-    })
-  }
 
   return (
     <div>
@@ -124,30 +106,82 @@ const ServiceAll = () => {
             <SliderItem
               icon={<img src={minimalist} height={'30px'} />}
               text="Minimalist"
-              onClick={handleAddTag}
+              onClick={(title: string) => {
+                filterManager &&
+                  filterManager.toggle(
+                    'slider',
+                    '80940dfe-2327-4d93-82a6-3433858fc101',
+                    title
+                  )
+                renderUpdate()
+              }}
               removedTag={removedTagFromSideBar}
-              tags={tags}
+              tags={
+                filterManager &&
+                filterManager.isPresent('80940dfe-2327-4d93-82a6-3433858fc101')
+                  ? ['Minimalist']
+                  : []
+              }
             />,
             <SliderItem
               icon={<img src={threeD} height={'30px'} />}
               text="3D"
-              onClick={handleAddTag}
+              onClick={(title: string) => {
+                filterManager &&
+                  filterManager.toggle(
+                    'slider',
+                    '58b66547-a614-4647-a6d8-4a6acb91ea29',
+                    title
+                  )
+                renderUpdate()
+              }}
               removedTag={removedTagFromSideBar}
-              tags={tags}
+              tags={
+                filterManager &&
+                filterManager.isPresent('58b66547-a614-4647-a6d8-4a6acb91ea29')
+                  ? ['3D']
+                  : []
+              }
             />,
             <SliderItem
               icon={<img src={freestyle} height={'30px'} />}
               text="Freestyle"
-              onClick={handleAddTag}
+              onClick={(title: string) => {
+                filterManager &&
+                  filterManager.toggle(
+                    'slider',
+                    'a7967b42-a36b-495c-9d2d-3cbc63ac376e',
+                    title
+                  )
+                renderUpdate()
+              }}
               removedTag={removedTagFromSideBar}
-              tags={tags}
+              tags={
+                filterManager &&
+                filterManager.isPresent('a7967b42-a36b-495c-9d2d-3cbc63ac376e')
+                  ? ['Freestyle']
+                  : []
+              }
             />,
             <SliderItem
               icon={<img src={mascot} height={'30px'} />}
               text="Mascot"
-              onClick={handleAddTag}
+              onClick={(title: string) => {
+                filterManager &&
+                  filterManager.toggle(
+                    'slider',
+                    '676f2e3a-a2f6-452a-9868-c9702dcd4374',
+                    title
+                  )
+                renderUpdate()
+              }}
               removedTag={removedTagFromSideBar}
-              tags={tags}
+              tags={
+                filterManager &&
+                filterManager.isPresent('676f2e3a-a2f6-452a-9868-c9702dcd4374')
+                  ? ['Mascot']
+                  : []
+              }
             />,
           ]}
         />
@@ -233,9 +267,9 @@ const ServiceAll = () => {
                 <FilterSection
                   title="Logo Style"
                   callback={(id: string, title: string, state: boolean) => {
-                    handleAddTag(title)
                     if (state) filterManager.add('Logo Style', id, title)
                     if (!state) filterManager.remove('Logo Style', id)
+                    renderUpdate()
                   }}
                   dropItems={[
                     {
@@ -303,9 +337,9 @@ const ServiceAll = () => {
                 <FilterSection
                   title="File Format"
                   callback={(id: string, title: string, state: boolean) => {
-                    handleAddTag(title)
                     if (state) filterManager.add('File Format', id, title)
                     if (!state) filterManager.remove('File Format', id)
+                    renderUpdate()
                   }}
                   dropItems={[
                     {
@@ -355,9 +389,9 @@ const ServiceAll = () => {
                 <FilterSection
                   title="Includes"
                   callback={(id: string, title: string, state: boolean) => {
-                    handleAddTag(title)
                     if (state) filterManager.add('Includes', id, title)
                     if (!state) filterManager.remove('Includes', id)
+                    renderUpdate()
                   }}
                   dropItems={[
                     {
