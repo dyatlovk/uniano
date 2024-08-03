@@ -680,7 +680,7 @@ const Service = () => {
           <SelectPro onClose={() => setSelectProModal(false)} />
         )}
       </div>
-      <CardsSliderRelated />
+      <CardsSliderRelated secondSlider={true} />
 
       <div className="wrapper_page">
         <AskedQuestion />

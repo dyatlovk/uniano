@@ -22,7 +22,7 @@ const CardsSliderRelated = ({
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <div style={{ display: 'flex' }}>
-            <SizeBox width="50px" />
+            <SizeBox width="40px" />
             <div style={{ flexGrow: '1' }}>
               <FilterListBig
                 activeStartItem="Projects"
@@ -30,7 +30,7 @@ const CardsSliderRelated = ({
                 filters={['Projects', 'Crowdfreelance', 'Users', 'History']}
               />
             </div>
-            <SizeBox width="50px" />
+            <SizeBox width="40px" />
           </div>
           <DynamicPadding desktop="20px" mobile="10px" />
           <Slider
@@ -43,7 +43,7 @@ const CardsSliderRelated = ({
             elementsCount={10}
             itemWidth={250}
             gap={40}
-            buttonLeft="-60px"
+            buttonLeft="-50px"
           >
             <CardStatisticTest />
             <CardStatisticTest />
@@ -58,26 +58,39 @@ const CardsSliderRelated = ({
           </Slider>
           {secondSlider && (
             <>
-              <DynamicPadding />
-              <FilterListBig
-                activeStartItem="Suitable"
-                orangeText="Services"
-                filters={['Suitable', 'Services', 'Freelancers']}
-              />
-              <DynamicPadding desktop="30px" mobile="20px" />
-              <ButtonChooseList
-                buttons={['Web Development', 'Web Design', 'IT Support']}
-                buttonPadding="5px 13px"
-                callback={() => {}}
-                gap="0px"
-                initValue="Web Development"
-              />
+              <DynamicPadding desktop="34px" />
+              <div style={{ display: 'flex' }}>
+                <SizeBox width="40px" />
+                <div style={{ flexGrow: '1' }}>
+                  <FilterListBig
+                    activeStartItem="Projects"
+                    orangeText=""
+                    filters={['Projects', 'Crowdfreelance', 'Users', 'History']}
+                    title="Suitable"
+                  />
+                </div>
+                <SizeBox width="40px" />
+              </div>
+              <DynamicPadding desktop="26px" mobile="20px" />
+              <div style={{ display: 'flex' }}>
+                <SizeBox width="40px" />
+                <ButtonChooseList
+                  buttons={['Web Development', 'Web Design', 'IT Support']}
+                  buttonPadding="5px 13px"
+                  callback={() => {}}
+                  gap="0px"
+                  initValue="Web Development"
+                />
+              </div>
+              <DynamicPadding desktop='10px'/>
               <Slider
                 swiper={true}
-                paddingBottom="10px"
-                paddingTop="20px"
+                padding='20px 40px 10px 40px'
                 elementsCount={6}
-                itemWidth={250}
+                itemWidth={265}
+                buttonLeft="-50px"
+                buttonRight="-50px"
+                buttonSize="29px"
                 gap={20}
               >
                 <SliderItem

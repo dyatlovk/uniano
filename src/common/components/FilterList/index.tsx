@@ -79,6 +79,7 @@ type FilterListBigProps = {
   callback?: (item: string) => void
   activeStartItem: string
   orangeText: string
+  title?: string
 }
 export const FilterListBig = ({
   filters,
@@ -86,6 +87,7 @@ export const FilterListBig = ({
   category = [],
   activeStartItem,
   orangeText,
+  title = 'Related',
 }: FilterListBigProps) => {
   const [activeFilter, setActiveFilter] = useState(activeStartItem)
   const [currentCategory, setCurrentCategory] = useState(category[0])
@@ -118,13 +120,13 @@ export const FilterListBig = ({
         )}
         <div className={styles.filters_wrapper}>
           <Typography
-            textTransform='uppercase'
+            textTransform="uppercase"
             variant="titleSmall"
             fontWeight="500"
             className={styles.filter_title}
             fontSizeStatic="23px"
           >
-            Related
+            {title}
           </Typography>
           {filters.map((filter, index) => (
             <div

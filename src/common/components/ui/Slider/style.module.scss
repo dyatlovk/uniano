@@ -21,6 +21,9 @@
   overflow-x: hidden;
   overflow-y: visible;
   height: calc(100% + 50px);
+  padding-left: 10px;
+  width: calc(100% + 10px);
+  margin-left: -10px;
 }
 
 .chevron {
