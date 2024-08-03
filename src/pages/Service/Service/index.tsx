@@ -44,6 +44,7 @@ import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPop
 import TrustScore from '@common/components/ui/TrustScore/index'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import { SubscriptionList } from './components/Subscriptions/List'
+import SelectPro from './components/modals/SelectPro'
 
 const Service = () => {
   const arrayHistory = [
@@ -62,6 +63,7 @@ const Service = () => {
     window.scrollTo({ top: 0 })
   }, [])
   const [contactModal, setContactModal] = useState(false)
+  const [selectProModal, setSelectProModal] = useState(false)
 
   return (
     <div>
@@ -599,6 +601,7 @@ const Service = () => {
                   </div>
                   <DynamicPadding desktop="13px" mobile="10px" />
                   <span
+                    className={styles.mission_btn}
                     onClick={() => {
                       setShowMissionModal(true)
                     }}
@@ -614,25 +617,28 @@ const Service = () => {
                   </span>
                   <DynamicPadding desktop="30px" mobile="20px" />
                   <HorizontalLine />
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="24px" mobile="20px" />
                   <Typography variant="body3" fontWeight="500">
                     Rewards
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="22px" mobile="20px" />
 
                   <div className="gap_20">
                     <AppColor.reward30Xp />
                     <AppColor.reward10PTS />
                   </div>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="25px" mobile="20px" />
                   <HorizontalLine />
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="29px" mobile="20px" />
 
                   <TrustScore />
                   <DynamicPadding desktop="15px" mobile="10px" />
                   <MyButtonOrange
                     textTransform="uppercase"
-                    onClick={() => {}}
+                    onClick={() => {
+                      setSelectProModal(true)
+                    }}
+                    fontWeight="500"
                     width="100%"
                   >
                     Select pro $1500
@@ -640,6 +646,7 @@ const Service = () => {
                   <DynamicPadding desktop="15px" mobile="10px" />
                   <MyButtonTransparentOrange
                     textTransform="uppercase"
+                    fontWeight="500"
                     onClick={() => {
                       setContactModal(true)
                     }}
@@ -668,6 +675,9 @@ const Service = () => {
               }}
             />
           </ModalCenterBasic>
+        )}
+        {selectProModal && (
+          <SelectPro onClose={() => setSelectProModal(false)} />
         )}
       </div>
       <CardsSliderRelated />

@@ -368,6 +368,7 @@ import { ReactComponent as external } from '@assets/svg/external.svg'
 import { ReactComponent as boxIcon } from '@assets/svg/box_icon.svg'
 
 import { ReactComponent as pigBonuses } from '@assets/svg/pig_bonuses.svg'
+import { ReactComponent as squares } from '@assets/svg/squares.svg'
 
 class AppColor {
   static pigBonuses = pigBonuses
@@ -683,6 +684,7 @@ class AppColor {
   static chevronBottom = chevronBottom
   static home = home
   static cookies = cookies
+  static squares = squares
 
   static orange = '#F4A72A'
   static yellow = '#F2C94C'

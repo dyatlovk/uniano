@@ -147,9 +147,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   @include weakShadow;
   border-radius: 5px;
+
+  &:hover {
+    background-color: $orange;
+
+    svg path {
+      fill: $white;
+    }
+  }
 }
 
 .user_slider_wrapper {
@@ -193,6 +202,14 @@
   padding: 15px 20px;
   background-color: $white;
   border-radius: 20px;
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @media (min-width: $tabletSize) {

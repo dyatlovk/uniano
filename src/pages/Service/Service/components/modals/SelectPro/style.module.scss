@@ -1,0 +1,160 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  button {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
+.action_first {}
+
+.action_second {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 5px;
+  grid-template-areas:
+    "action_cancel action_confirm"
+  ;
+
+  button {
+    letter-spacing: 0.7px;
+    padding: 8px 13px;
+  }
+}
+
+.action_description {
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: right;
+  color: rgba(1, 1, 1, 0.5);
+}
+
+.confirm_btn {
+  grid-area: action_confirm;
+}
+
+.cancel_btn {
+  grid-area: action_cancel;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    color: rgba(1, 1, 1, 0.5);
+
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.attach_docs {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.padding_shadow {
+  padding: 11px 20px;
+  border-radius: 20px;
+
+  @include weakShadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.orange {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $orange;
+  border-radius: 50%;
+
+  svg path {
+    stroke: $white;
+  }
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  border: 1px dashed rgba(0, 0, 0, 0.13);
+  border-radius: $borderRadius;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(1, 1, 1, 0.5);
+  padding: 11px;
+  box-sizing: border-box;
+  background-color: $white;
+  @include weakShadow;
+
+  p {
+    color: rgba(1, 1, 1, 0.5);
+  }
+}
+
+.docs {
+  display: flex;
+  flex-direction: column;
+}
+
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.file_close {
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attached_file_sign {
+  color: rgba(33, 150, 83, 1);
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
