@@ -1,0 +1,28 @@
+@mixin item {
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.buttons_wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.button_item {
+  @include item;
+}
+
+.button_item_active {
+  @include item;
+
+  svg path {
+    fill: $orange;
+  }
+}

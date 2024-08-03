@@ -1,6 +1,5 @@
 import Header from '@common/components/Header/Header/index'
 import styles from './style.module.scss'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import AppColor from '@common/styles/variables-static'
@@ -28,7 +27,6 @@ import test1 from '@assets/images/test1.png'
 import test2 from '@assets/images/test2.png'
 import test3 from '@assets/images/test3.png'
 import test4 from '@assets/images/test4.png'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import TagsDisplay from '@common/components/TagsDisplay/index'
 import { FreelancerCard } from '@pages/Partnership/pages/Program/index'
 import CommentTitleFilter from '@common/components/CommentTitleFilters/index'
@@ -38,19 +36,14 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import Dropdown from '@common/components/ui/Dropdown/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { Link } from 'react-router-dom'
-import { developmentDropdown } from '@common/models/constants'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import LastSponsors from '@common/components/LastSponsors/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import ContactModal from '@pages/Partnership/pages/Program/modals/contactModal/index'
-import { ButtonDropdownSelect } from '@common/components/ui/ThreeLinesPopUp/index'
-import HoverDotsBox, {
-  HoverDotsBoxService,
-} from '@common/components/ui/HoverDotsBox/index'
-import Roadmap, {
-  RoadmapFlex,
-} from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
+import { HoverDotsBoxService } from '@common/components/ui/HoverDotsBox/index'
+import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
 import TrustScore from '@common/components/ui/TrustScore/index'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import { SubscriptionList } from './components/Subscriptions/List'
 
 const Service = () => {
   const arrayHistory = [
@@ -61,7 +54,7 @@ const Service = () => {
   ]
   const title = 'Logo by sample in vector in maximum quality'
   const [activeBuyPlan, setActiveBuyPlan] = useState('Fixed')
-  const [selectedPricePlan, setSelectedPricePlan] = useState('')
+  const [selectedPricePlan, setSelectedPricePlan] = useState('1250')
 
   const [showMissionModal, setShowMissionModal] = useState(false)
 
@@ -119,32 +112,31 @@ const Service = () => {
       )}
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Service',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
+      <NavigationSimpleBar
+        title="Services"
+        activeId={-1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All services',
+            link: '/service/all',
+          },
+          {
+            title: 'My services',
+            link: '/service/my',
+          },
         ]}
-        currentItemProgress="Service"
       />
 
       <div className={'wrapper_page'}>
         <PageDetails
-          endNode={
-            <ButtonDropdownSelect
-              text="All services"
-              variants={['All services', '2', '3']}
-            />
-          }
           historyNode={
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="14px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={
@@ -164,13 +156,13 @@ const Service = () => {
             </div>
           }
         />
-        <DynamicPadding />
+        <DynamicPadding desktop="40px" />
         <FilterList
           filters={['Description', 'Freelancer', 'Reviews (25)', 'FAQ (2)']}
           activeStartItem="Freelancer"
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="32px" />
 
         <ResponsiveLayoutTwo
           orderItem1Desktop={0}
@@ -186,7 +178,7 @@ const Service = () => {
               <DynamicPadding />
 
               <LastSponsors />
-              <DynamicPadding />
+              <DynamicPadding desktop="43px" />
               <Typography variant="body3" fontWeight="500">
                 Description
               </Typography>
@@ -429,7 +421,7 @@ const Service = () => {
                   lvl={4}
                   price="1750"
                   priceWithDiscount="1500"
-                  titleProps="Easy Start"
+                  titleProps="Pro"
                 />
                 <SelectItem
                   selectedPrice={selectedPricePlan}
@@ -439,28 +431,29 @@ const Service = () => {
                   lvl={5}
                   price="2250"
                   priceWithDiscount="2000"
-                  titleProps="Easy Start"
+                  titleProps="Ultimate"
                 />
                 <Selectbox
                   selectedPrice={selectedPricePlan}
                   callback={item => {
                     setSelectedPricePlan(item)
                   }}
+                  fontWeight="400"
                   price="custom"
                 />
 
                 <div className={styles.plan_box_padding}>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="18px" mobile="20px" />
                   <HorizontalLine />
                   <DynamicPadding desktop="30px" mobile="20px" />
                   <ButtonChooseList
                     buttonPadding="4px 13px"
-                    buttons={['Fixed', 'Milestones']}
+                    buttons={['Single-pay', 'Milestones']}
                     callback={item => {
                       setActiveBuyPlan(item)
                     }}
                     gap="0px"
-                    initValue="Fixed"
+                    initValue="Single-pay"
                   />
                   {activeBuyPlan == 'Milestones' && (
                     <div>
@@ -469,25 +462,25 @@ const Service = () => {
                         <Typography variant="body4" fontWeight="500">
                           Milestone 1 : First draft
                         </Typography>
-                        <SizeBox height="10px" />
+                        <SizeBox height="4px" />
                         <Typography variant="body4">
                           I'll prepare a first draft of the delivery.
                         </Typography>
-                        <SizeBox height="15px" />
+                        <SizeBox height="4px" />
                         <Typography variant="subtitle" fontWeight="500">
                           $700
                         </Typography>
-                        <DynamicPadding desktop="15px" mobile="10px" />
+                        <DynamicPadding desktop="5px" mobile="10px" />
                         <HorizontalLine />
-                        <DynamicPadding desktop="15px" mobile="10px" />
+                        <DynamicPadding desktop="9px" mobile="10px" />
                         <Typography variant="body4" fontWeight="500">
                           Milestone 2 : Delivery
                         </Typography>
-                        <SizeBox height="10px" />
+                        <SizeBox height="4px" />
                         <Typography variant="body4">
                           I'll send you the final delivery.
                         </Typography>
-                        <SizeBox height="15px" />
+                        <SizeBox height="4px" />
                         <Typography variant="subtitle" fontWeight="500">
                           $800
                         </Typography>
@@ -507,12 +500,14 @@ const Service = () => {
                     <TextDotted
                       fontWeightEndText="500"
                       info={true}
+                      startTextColor="#01010150"
                       text="Revisions"
                       textEnd="3"
                     />
                     <TextDotted
                       info={true}
                       text="Source File"
+                      startTextColor="#01010150"
                       endNode={
                         <AppColor.singTrue
                           stroke={AppColor.green}
@@ -524,6 +519,7 @@ const Service = () => {
                     <TextDotted
                       info={true}
                       text="High Resolution"
+                      startTextColor="#01010150"
                       endNode={
                         <AppColor.singTrue
                           stroke={AppColor.green}
@@ -534,6 +530,7 @@ const Service = () => {
                     />
                     <TextDotted
                       fontWeightEndText="500"
+                      startTextColor="#01010150"
                       info={true}
                       text="Delivery"
                       textEnd="4 days"
@@ -541,11 +538,11 @@ const Service = () => {
                   </div>
                   <DynamicPadding desktop="30px" mobile="20px" />
                   <HorizontalLine />
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="23px" mobile="20px" />
                   <Typography variant="body3" fontWeight="500">
                     Options
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="23px" mobile="20px" />
                   <div className={styles.benefit_wrapper}>
                     <SelectBenefitItem
                       daysDelta="+1 day"
@@ -563,35 +560,33 @@ const Service = () => {
                       title="Add Vector Files"
                     />
                   </div>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="24px" mobile="20px" />
                   <HorizontalLine />
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="24px" mobile="20px" />
                   <Typography variant="body3" fontWeight="500">
                     Subscription
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="22px" mobile="20px" />
 
                   <div className="flex_space_between">
-                    <ButtonChooseList
-                      buttonPadding="4px 13px"
-                      buttons={['Start', 'Pro', 'Ultimate']}
-                      callback={() => {}}
-                      gap="0px"
-                      initValue="Fixed"
+                    <SubscriptionList
+                      callback={(title: string) => {
+                        console.log(title)
+                      }}
                     />
 
                     <div className={styles.buy_wrapper}>
                       <AppColor.buy fill={AppColor.text} />
                     </div>
                   </div>
-                  <DynamicPadding desktop="20px" mobile="10px" />
+                  <DynamicPadding desktop="18px" mobile="10px" />
                   <div className="gap_5">
                     <AppColor.queue fill={AppColor.orange} />
                     <Typography variant="body4">
                       Higher Priority Queue
                     </Typography>
                   </div>
-                  <DynamicPadding desktop="20px" mobile="10px" />
+                  <DynamicPadding desktop="18px" mobile="10px" />
                   <div className="gap_10">
                     <div className="gap_5">
                       <AppColor.moneyHummer />
@@ -602,7 +597,7 @@ const Service = () => {
                       <Typography variant="body4">10 days</Typography>
                     </div>
                   </div>
-                  <DynamicPadding desktop="20px" mobile="10px" />
+                  <DynamicPadding desktop="13px" mobile="10px" />
                   <span
                     onClick={() => {
                       setShowMissionModal(true)
@@ -737,8 +732,10 @@ export const SelectBenefitItem = ({
 }: SelectBenefitItemProps) => {
   return (
     <div className={styles.select_benefit}>
-      <MyCheckbox height="20px" width="20px" />
-      <div>
+      <div className={styles.benefit_checkbox}>
+        <MyCheckbox height="20px" width="20px" />
+      </div>
+      <div className={styles.benefit_first_line}>
         <Typography
           variant="body4"
           textLineHeight="1"
@@ -746,7 +743,8 @@ export const SelectBenefitItem = ({
         >
           {title}
         </Typography>
-        <SizeBox height="8px" />
+      </div>
+      <div className={styles.benefit_second_line}>
         <Typography variant="body4" fontWeight="500">
           +{price} ${daysDelta != '' && `(${daysDelta})`}
         </Typography>
@@ -821,8 +819,16 @@ export const SelectItem = ({
           <div
             className={`${styles.select_box} ${isSelected ? styles.select_box_active : styles.select_box_disabled}`}
           ></div>
-          <Typography variant="body3">{titleProps}</Typography>
+          <Typography
+            color={isSelected ? AppColor.orange : AppColor.text}
+            textLineHeight="1"
+            variant="body3"
+            fontWeight="400"
+          >
+            {titleProps}
+          </Typography>
         </div>
+        <DynamicPadding desktop="9px" />
         <div className="gap_10">
           {lvl == 3 ? (
             <AppColor.threeOfFive />
@@ -834,10 +840,18 @@ export const SelectItem = ({
           <Typography
             color={isSelected ? AppColor.orange : AppColor.text}
             variant="titleSmall"
+            fontWeight="700"
+            textLineHeight="1"
           >
             ${priceWithDiscount}
           </Typography>
-          <Typography variant="body3" textDecoration="line-through">
+          <Typography
+            variant="body3"
+            fontWeight="500"
+            color={'rgba(1, 1, 1, 0.5)'}
+            textDecoration="line-through"
+            textLineHeight="1"
+          >
             ${price}
           </Typography>
         </div>
