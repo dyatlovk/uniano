@@ -13,7 +13,7 @@ class StatesModel {
       },
       {
         title: 'Negotiation',
-        url: '/service/negotioation/customer',
+        url: '/service/negotiation/customer',
         disabled: false,
       },
       {

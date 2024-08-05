@@ -175,7 +175,7 @@ const CrowdfreelanceProgress = () => {
                     variant="left"
                   />
                 </Link>
-                <Link to={'/service/negotioation/freelancer'}>
+                <Link to={'/service/negotiation/freelancer'}>
                   <ChevronMoveTo
                     onClick={() => {}}
                     text="Next step"
@@ -226,7 +226,7 @@ const CrowdfreelanceProgress = () => {
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
                   title="Easy start"
-                  text=" 
+                  text="
                                 Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
                   initState={true}
                   node={

@@ -301,7 +301,7 @@ const OrdersSelection = () => {
                     variant="left"
                   />
                 </Link>
-                <Link to={'/service/negotioation/freelancer'}>
+                <Link to={'/service/negotiation/freelancer'}>
                   <ChevronMoveTo
                     onClick={() => {}}
                     text="Next step"

@@ -149,11 +149,11 @@ function App() {
           <Route path="/service/" element={<Service />} />
           <Route path="/service/selection" element={<ServiceSelection />} />
           <Route
-            path="/service/negotioation/freelancer"
+            path="/service/negotiation/freelancer"
             element={<ServiceNegotiationFreelancer />}
           />
           <Route
-            path="/service/negotioation/customer"
+            path="/service/negotiation/customer"
             element={<ServiceNegotiationCustomer />}
           />
           <Route
