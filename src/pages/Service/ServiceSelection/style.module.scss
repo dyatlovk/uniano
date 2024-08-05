@@ -42,6 +42,13 @@
   justify-content: center;
 }
 
+.cat_item p {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: baseline;
+}
+
 @media (min-width: $tabletSize) {
 
   .center_card {
@@ -64,7 +71,7 @@
   }
 
   .category_select_wrapper {
-    padding: 15px;
+    padding: 17.5px 15px;
 
     svg {
       max-height: 30px;
@@ -72,7 +79,7 @@
   }
 
   .category_child {
-    padding: 16px 0px;
+    padding: 14px 0px;
     padding-left: 15px;
     margin-left: 40px;
   }

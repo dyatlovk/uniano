@@ -13,13 +13,15 @@ import { useEffect, useState } from 'react'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
-import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { Link } from 'react-router-dom'
+import { useScreenSize } from '@common/helpers/useScreenSize'
+import CardsGroup from '@common/components/cards/Services/CardsGroup/index'
+import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 
 const ServiceSelection = () => {
   const arrayHistory = [
@@ -28,9 +30,18 @@ const ServiceSelection = () => {
     'Web Development',
     'WordPress',
   ]
+  const { width, height } = useScreenSize()
   const title = 'Logo by sample in vector in maximum quality'
   const [activeCategory, setActiveCategory] = useState('Team')
-  const [itemsToshow, setItemsToShow] = useState([1, 2, 3])
+  const [itemsToshow, setItemsToShow] = useState([])
+
+  useEffect(() => {
+    const arrayLengthStart = width <= 768 ? 4 : 9
+
+    setItemsToShow(
+      Array.from({ length: arrayLengthStart }, (a, index) => index)
+    )
+  }, [width])
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -185,98 +196,18 @@ const ServiceSelection = () => {
 
               <DynamicPadding desktop="40px" mobile="20px" />
 
-              <div className={styles.cards_wrapper}>
-                {itemsToshow.map((item, index) => (
-                  <div className={styles.center_card}>
-                    <CardManager
-                      links={[
-                        'aCCOUNT',
-                        'Stats',
-                        'services',
-                        'portfolio',
-                        'Reviews',
-                      ]}
-                      switchButton={true}
-                      role="Marketing"
-                      specificIconsEnd={[
-                        <AppColor.speficChevronRight />,
-                        <AppColor.message fill={AppColor.text} />,
-                      ]}
-                      showCardManagerActions={false}
-                      tags={[
-                        'Logo',
-                        'Logo Design',
-                        'Logo Maker',
-                        'Logo Create',
-                      ]}
-                      details={[
-                        {
-                          title: 'Projects',
-                          node: (
-                            <Typography
-                              textLineHeight="1"
-                              variant="body5"
-                              fontWeight="500"
-                            >
-                              353
-                            </Typography>
-                          ),
-                        },
-                        {
-                          title: 'Successful Projects',
-                          node: (
-                            <Typography
-                              textLineHeight="1"
-                              variant="body5"
-                              fontWeight="500"
-                            >
-                              94%
-                            </Typography>
-                          ),
-                        },
-                        {
-                          title: 'Delivery',
-                          node: (
-                            <Typography
-                              textLineHeight="1"
-                              variant="body5"
-                              fontWeight="500"
-                            >
-                              avg 2 days
-                            </Typography>
-                          ),
-                        },
-                        {
-                          title: 'Budget',
-                          node: (
-                            <Typography
-                              textLineHeight="1"
-                              variant="body5"
-                              fontWeight="500"
-                            >
-                              avg $3 500
-                            </Typography>
-                          ),
-                        },
-                      ]}
-                      title=""
-                      user={fakeUserConstant}
-                    />
-                  </div>
-                ))}
-              </div>
+              <CardsGroup items={itemsToshow} />
 
               <DynamicPadding desktop="40px" mobile="20px" />
               <div className="justify_center">
-                {' '}
-                <MyButtonBlack
-                  textTransform="uppercase"
+                <MyButtonTransparentBlack
                   onClick={() => {
                     setItemsToShow(prev => [...prev, 1, 2, 3])
                   }}
+                  textTransform="uppercase"
                 >
                   Show more +3
-                </MyButtonBlack>
+                </MyButtonTransparentBlack>
               </div>
               <DynamicPadding />
 
@@ -336,7 +267,7 @@ export const CategorySelect = ({
     if (activeCategory == title && selectedChild == '' && children.length > 0) {
       setSelectedChild(children[0].title)
     }
-  }, [activeCategory])
+  }, [activeCategory, children, selectedChild, title])
   const handleChildClick = (item: string) => {
     if (activeCategory != title) {
       callbackCategory(title)
@@ -350,6 +281,7 @@ export const CategorySelect = ({
       callbackCategory(title)
     }
   }
+
   return (
     <div>
       <div
@@ -360,21 +292,23 @@ export const CategorySelect = ({
         className={styles.category_select_wrapper}
       >
         {icon}
-        <Typography
-          variant="body4"
-          fontWeight={activeCategory == title ? '500' : '400'}
-        >
-          {title}
-          <span
-            color={
-              activeCategory == title
-                ? AppColor.text
-                : AppColor.transparentBlack
-            }
+        <div className={styles.cat_item}>
+          <Typography
+            variant="body4"
+            fontWeight={activeCategory == title ? '500' : '400'}
           >
-            ({count})
-          </span>
-        </Typography>
+            {title}
+            <span
+              color={
+                activeCategory == title
+                  ? AppColor.text
+                  : AppColor.transparentBlack
+              }
+            >
+              ({count})
+            </span>
+          </Typography>
+        </div>
         {children.length > 0 && (
           <div className={`mobile gap_5`}>
             <AppColor.chevronRight
@@ -409,21 +343,23 @@ export const CategorySelect = ({
             }}
             className={styles.category_child}
           >
-            <Typography
-              variant="body4"
-              fontWeight={selectedChild == item.title ? '500' : '400'}
-            >
-              • {item.title}
-              <span
-                color={
-                  selectedChild == item.title
-                    ? AppColor.text
-                    : AppColor.transparentBlack
-                }
+            <div className={styles.cat_item}>
+              <Typography
+                variant="body4"
+                fontWeight={selectedChild == item.title ? '500' : '400'}
               >
-                ({item.count})
-              </span>
-            </Typography>
+                • {item.title}
+                <span
+                  color={
+                    selectedChild == item.title
+                      ? AppColor.text
+                      : AppColor.transparentBlack
+                  }
+                >
+                  ({item.count})
+                </span>
+              </Typography>
+            </div>
           </li>
         ))}
       </ul>
