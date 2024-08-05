@@ -13,12 +13,12 @@ class StatesModel {
       },
       {
         title: 'Negotiation',
-        url: '/partnership/freelancer/progress',
+        url: '/service/negotioation/customer',
         disabled: false,
       },
       {
         title: 'Progress',
-        url: '/partnership/freelancer/progress',
+        url: '/service/progress/customer',
         disabled: false,
       },
       {

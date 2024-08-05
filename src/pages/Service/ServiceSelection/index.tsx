@@ -22,6 +22,8 @@ import { Link } from 'react-router-dom'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import CardsGroup from '@common/components/cards/Services/CardsGroup/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/services/statesModel'
 
 const ServiceSelection = () => {
   const arrayHistory = [
@@ -51,16 +53,7 @@ const ServiceSelection = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Service',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Selection"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Selection'} />
 
       <div className={'wrapper_page'}>
         <PageDetails

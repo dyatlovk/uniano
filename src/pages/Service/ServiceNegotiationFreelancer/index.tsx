@@ -1,12 +1,11 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -16,7 +15,6 @@ import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
@@ -24,6 +22,8 @@ import { Link } from 'react-router-dom'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/services/statesModel'
 
 const ServiceNegotiationFreelancer = () => {
   const arrayHistory = [
@@ -42,16 +42,7 @@ const ServiceNegotiationFreelancer = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Service',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Negotiation"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Negotiation'} />
 
       <div className={'wrapper_page'}>
         <PageDetails

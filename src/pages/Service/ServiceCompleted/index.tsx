@@ -25,6 +25,8 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { useEffect } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/services/statesModel'
 
 const ServiceCompleted = () => {
   const arrayHistory = [
@@ -43,10 +45,7 @@ const ServiceCompleted = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Service', 'Negotiation', 'Progress', 'Completed']}
-        currentItemProgress="Completed"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Completed'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -160,7 +159,7 @@ const ServiceCompleted = () => {
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
                   title="Fixed"
-                  text=" 
+                  text="
                                 Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
                   initState={true}
                   node={

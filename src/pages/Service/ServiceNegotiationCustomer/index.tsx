@@ -1,5 +1,4 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
@@ -24,6 +23,8 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { useEffect } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/services/statesModel'
 
 const ServiceNegotiationCustomer = () => {
   const arrayHistory = [
@@ -42,16 +43,7 @@ const ServiceNegotiationCustomer = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Service',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Negotiation"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Negotiation'} />
 
       <div className={'wrapper_page'}>
         <PageDetails

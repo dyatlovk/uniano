@@ -8,7 +8,6 @@ import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import DetailsProgress from '@common/components/ui/DetailsTable/variants/DetailsProgress/index'
 import DetailsProgresService from '@common/components/ui/DetailsTable/variants/DetailsProgresService/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -24,6 +23,8 @@ import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import { useEffect } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/services/statesModel'
 
 const ServiceProgress = () => {
   const arrayHistory = [
@@ -42,16 +43,7 @@ const ServiceProgress = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Service',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Progress"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
