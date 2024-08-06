@@ -159,6 +159,30 @@
   gap: 20px;
 }
 
+.reward {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.trust_score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.info_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+
+  @include weakShadow;
+  border-radius: 50%;
+}
 
 @media (min-width: $tabletSize) {
 

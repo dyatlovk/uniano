@@ -425,7 +425,7 @@ const ServiceNegotiationFreelancer = () => {
                       <DynamicPadding desktop="20px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
-                        <AppColor.reward10PTSDisabled />
+                        <AppColor.reward30Xp />
                         <AppColor.reward30XpDisabled />
                       </div>
 
@@ -502,6 +502,51 @@ const ServiceNegotiationFreelancer = () => {
                             </Typography>
                           }
                         />
+                      </div>
+
+                      <DynamicPadding desktop="20px" mobile="20px" />
+                      <div className={styles.reward}>
+                        <AppColor.gift width={15} height={15} />
+                        <Typography
+                          variant="body3"
+                          color={AppColor.green}
+                          textTransform="uppercase"
+                        >
+                          <span>1 reward available</span>
+                        </Typography>
+                      </div>
+                      <DynamicPadding desktop="14px" mobile="20px" />
+
+                      <div className={styles.trust_score}>
+                        <AppColor.likeRounded />
+                        <Typography color={AppColor.green}>96</Typography>
+                        <Typography>Trust Score</Typography>
+                        <div className={styles.info_box}>
+                          <AppColor.info />
+                        </div>
+                        <div style={{ flexGrow: 1 }}></div>
+                        <div
+                          style={{
+                            gap: '5px',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <AppColor.close
+                            width={15}
+                            height={15}
+                            fill={AppColor.red}
+                          />
+                          <AppColor.moneyHummer width={26} height={22} />
+                          <Typography
+                            fontWeight="500"
+                            textLineHeight="1"
+                            variant="body4"
+                          >
+                            $40
+                          </Typography>
+                        </div>
                       </div>
                     </div>
                   }
