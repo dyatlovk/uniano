@@ -96,10 +96,10 @@ const ServiceNegotiationFreelancer = () => {
                 <CenterShadowBox
                   absoluteItem={
                     <div className={styles.true_box}>
-                      <AppColor.singTrue width={11} fill={AppColor.white} />
+                      <AppColor.singTrue width={11} stroke={AppColor.white} />
                     </div>
                   }
-                  gap="17px"
+                  gap="15px"
                   paddingBoxDesktop="20px"
                   elements={[
                     <div className={styles.steps_icon}>
@@ -130,11 +130,11 @@ const ServiceNegotiationFreelancer = () => {
                   }}
                 >
                   <CenterShadowBox
-                    gap="17px"
+                    gap="15px"
                     paddingBoxDesktop="20px"
                     absoluteItem={
                       <div className={styles.false_box}>
-                        <AppColor.singTrue width={10} fill={AppColor.white} />
+                        <AppColor.singTrue width={10} stroke={AppColor.white} />
                       </div>
                     }
                     elements={[
@@ -161,11 +161,11 @@ const ServiceNegotiationFreelancer = () => {
                   />
                 </div>
                 <CenterShadowBox
-                  gap="17px"
+                  gap="15px"
                   paddingBoxDesktop="20px"
                   absoluteItem={
                     <div className={styles.false_box}>
-                      <AppColor.singTrue width={10} fill={AppColor.white} />
+                      <AppColor.singTrue width={10} stroke={AppColor.white} />
                     </div>
                   }
                   elements={[
