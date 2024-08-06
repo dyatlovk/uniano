@@ -9,6 +9,7 @@ type CenterShadowBoxProps = {
   absoluteItem?: React.ReactNode
   align?: 'center' | 'start' | 'end'
 }
+
 const CenterShadowBox = ({
   direction,
   elements,

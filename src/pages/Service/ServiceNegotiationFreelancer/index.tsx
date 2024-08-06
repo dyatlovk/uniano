@@ -5,14 +5,13 @@ import PageDetails from '@common/components/ui/PageDetails/index'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import TextDotted from '@common/components/ui/TextDotted/index'
@@ -24,6 +23,10 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/services/statesModel'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import classNames from 'classnames'
+import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 
 const ServiceNegotiationFreelancer = () => {
   const arrayHistory = [
@@ -34,8 +37,17 @@ const ServiceNegotiationFreelancer = () => {
   ]
   const title = 'Logo by sample in vector in maximum quality'
 
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+  const [docsSignModal, setDocsSignModal] = useState<boolean>(false)
+
   useEffect(() => {
     window.scrollTo({ top: 0 })
+  }, [])
+
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
   }, [])
 
   return (
@@ -84,23 +96,20 @@ const ServiceNegotiationFreelancer = () => {
                 <CenterShadowBox
                   absoluteItem={
                     <div className={styles.true_box}>
-                      <AppColor.singTrue
-                        width={'8px'}
-                        height={'5px'}
-                        stroke="white"
-                      />
+                      <AppColor.singTrue width={11} fill={AppColor.white} />
                     </div>
                   }
-                  gap="20px"
+                  gap="17px"
                   paddingBoxDesktop="20px"
                   elements={[
-                    <AppColor.moneyHummer />,
+                    <div className={styles.steps_icon}>
+                      <AppColor.moneyHummer />
+                    </div>,
                     <Typography
                       variant="body4"
                       fontWeight="500"
                       textLineHeight="1"
                     >
-                      {' '}
                       $40 Penalty
                     </Typography>,
                     <Typography
@@ -108,54 +117,81 @@ const ServiceNegotiationFreelancer = () => {
                       color={AppColor.orange}
                       fontWeight="500"
                       textTransform="uppercase"
+                      textLineHeight="1"
                     >
                       paid
                     </Typography>,
                   ]}
                 />
+                <div
+                  className={styles.step_block}
+                  onClick={() => {
+                    setDocsSignModal(true)
+                  }}
+                >
+                  <CenterShadowBox
+                    gap="17px"
+                    paddingBoxDesktop="20px"
+                    absoluteItem={
+                      <div className={styles.false_box}>
+                        <AppColor.singTrue width={10} fill={AppColor.white} />
+                      </div>
+                    }
+                    elements={[
+                      <div className={styles.steps_icon}>
+                        <AppColor.contract width={23} height={27} />
+                      </div>,
+                      <Typography
+                        variant="body4"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        Documents
+                      </Typography>,
+                      <Typography
+                        variant="body5"
+                        color={AppColor.transparentBlack}
+                        fontWeight="500"
+                        textTransform="uppercase"
+                        textLineHeight="1"
+                      >
+                        not signed
+                      </Typography>,
+                    ]}
+                  />
+                </div>
                 <CenterShadowBox
-                  gap="20px"
+                  gap="17px"
                   paddingBoxDesktop="20px"
+                  absoluteItem={
+                    <div className={styles.false_box}>
+                      <AppColor.singTrue width={10} fill={AppColor.white} />
+                    </div>
+                  }
                   elements={[
-                    <AppColor.moneyHummer />,
+                    <div
+                      className={classNames(
+                        styles.steps_icon_circled,
+                        styles.steps_icon
+                      )}
+                    >
+                      <AppColor.iconChecked fill={AppColor.green} />
+                    </div>,
                     <Typography
                       variant="body4"
                       fontWeight="500"
                       textLineHeight="1"
                     >
-                      {' '}
-                      $40 Penalty
+                      Confirmation
                     </Typography>,
                     <Typography
                       variant="body5"
-                      color={AppColor.orange}
+                      color={AppColor.transparentBlack}
                       fontWeight="500"
                       textTransform="uppercase"
-                    >
-                      paid
-                    </Typography>,
-                  ]}
-                />
-                <CenterShadowBox
-                  gap="20px"
-                  paddingBoxDesktop="20px"
-                  elements={[
-                    <AppColor.moneyHummer />,
-                    <Typography
-                      variant="body4"
-                      fontWeight="500"
                       textLineHeight="1"
                     >
-                      {' '}
-                      $40 Penalty
-                    </Typography>,
-                    <Typography
-                      variant="body5"
-                      color={AppColor.orange}
-                      fontWeight="500"
-                      textTransform="uppercase"
-                    >
-                      paid
+                      Not Started
                     </Typography>,
                   ]}
                 />
@@ -193,29 +229,17 @@ const ServiceNegotiationFreelancer = () => {
               />
 
               <DynamicPadding desktop="30px" mobile="15px" />
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Customer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
 
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
 
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className="justify_center">
@@ -470,6 +494,62 @@ const ServiceNegotiationFreelancer = () => {
       </div>
 
       <Footer />
+
+      {docsSignModal && (
+        <ModalCenterBasic
+          title={'Documents to sign'}
+          callbackClose={() => {
+            setDocsSignModal(false)
+          }}
+          desktopMaxWidth={'568px'}
+          desktopMinWidth={'568px'}
+          bottomPartPadding={'30px'}
+        >
+          <DocSection />
+        </ModalCenterBasic>
+      )}
+    </div>
+  )
+}
+
+const DocSection = (): JSX.Element => {
+  return (
+    <div className={styles.docs}>
+      <DynamicPadding desktop="8px" />
+      <div className={styles.attaches}>
+        <div className={styles.attached_file}>
+          <div className={styles.attached_file_inner}>
+            <div>
+              <AppColor.filePdf />
+            </div>
+            <div>
+              <Typography fontWeight="500">NDA.pdf</Typography>
+            </div>
+            <div>
+              <Typography variant="body4" color={'rgba(1, 1, 1, 0.5)'}>
+                432.1 KB
+              </Typography>
+            </div>
+          </div>
+          <p className={styles.attached_file_sign}>Signed 16 Oct 2023 13:15</p>
+        </div>
+        <div className={styles.attached_file}>
+          <div className={styles.attached_file_inner}>
+            <div>
+              <AppColor.filePdf />
+            </div>
+            <div>
+              <Typography fontWeight="500">NCA.pdf</Typography>
+            </div>
+            <div>
+              <Typography variant="body4" color={'rgba(1, 1, 1, 0.5)'}>
+                432.1 KB
+              </Typography>
+            </div>
+          </div>
+          <p className={styles.attached_file_not_sign}>Not Signed</p>
+        </div>
+      </div>
     </div>
   )
 }

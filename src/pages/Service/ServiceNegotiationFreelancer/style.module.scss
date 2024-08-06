@@ -1,3 +1,14 @@
+@mixin step_checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin-right: -5px;
+  margin-top: -5px;
+}
+
 .text_wrapper {
   border-radius: 20px;
   background-color: $white;
@@ -11,13 +22,13 @@
 }
 
 .true_box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: $orange;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
+  @include step_checkbox();
+}
+
+.false_box {
+  background-color: rgba(224, 224, 224, 1);
+  @include step_checkbox();
 }
 
 .user_wrappper {
@@ -51,6 +62,84 @@
   align-items: center;
   gap: 20px;
 }
+
+.steps_icon_circled {
+  border: 1px solid $text;
+  border-radius: 100%;
+  min-width: 27px;
+  width: 27px;
+  height: 27px;
+  min-height: 27px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps_icon {
+  height: 27px;
+}
+
+.step_block {
+  cursor: pointer;
+
+  &:hover {
+    .steps_icon {
+      svg path {
+        fill: $orange;
+      }
+    }
+
+    p {
+      color: $orange !important;
+    }
+  }
+}
+
+.docs {
+  display: flex;
+  flex-direction: column;
+}
+
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  width: 156px;
+}
+
+.file_close {
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attached_file_sign {
+  color: rgba(33, 150, 83, 1);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.attached_file_not_sign {
+  color: rgba(1, 1, 1, 0.5);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
 
 @media (min-width: $tabletSize) {
 

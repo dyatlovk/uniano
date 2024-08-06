@@ -10,6 +10,7 @@
   gap: var(--gap);
   padding: var(--paddingMobile);
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .absolute_node {
