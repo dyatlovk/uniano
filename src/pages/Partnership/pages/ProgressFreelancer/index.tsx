@@ -201,11 +201,15 @@ export const DetailsDropdownItem = ({
         }}
         className="flex_space_between"
       >
-        <div>
-          <Typography variant="body3" fontWeight="500">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <Typography variant="body3" fontWeight="500" textLineHeight="1">
             {title}
           </Typography>
-          <Typography variant="body5" color={AppColor.transparentBlack}>
+          <Typography
+            variant="body5"
+            color={AppColor.transparentBlack}
+            textLineHeight="1"
+          >
             {text}
           </Typography>
         </div>
