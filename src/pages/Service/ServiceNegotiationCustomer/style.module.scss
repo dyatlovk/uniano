@@ -25,7 +25,9 @@
 }
 
 .details_box {
-  padding: 15px 13px;
+  padding: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .text_dotted_wrapper {
@@ -44,17 +46,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.info_box {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
+  &:hover {
+    background-color: $orange;
 
-  @include weakShadow;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    svg path {
+      fill: $white;
+    }
+  }
 }
 
 .rewards_wrapper {
@@ -63,10 +62,44 @@
   gap: 20px;
 }
 
+.reward {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.trust_score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.info_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+
+  @include weakShadow;
+  border-radius: 50%;
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .details_box {
     padding: 25px 30px;
+    padding-bottom: 30px;
   }
 
   .boxes_grid {

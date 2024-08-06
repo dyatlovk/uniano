@@ -18,13 +18,26 @@ import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/services/statesModel'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import { SubscriptionList } from '../Service/components/Subscriptions/List'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
+import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+
+const freelancerProjectModel = new FreelancerProjectsModel(
+  FreelancerProjectsModel.makeFakeData()
+)
+const freelancerFakeProject = freelancerProjectModel.findByLabel('Progress')
+const freelancerFakeProjectProgress =
+  freelancerProjectModel.getProgress('Progress')
 
 const ServiceNegotiationCustomer = () => {
   const arrayHistory = [
@@ -35,8 +48,18 @@ const ServiceNegotiationCustomer = () => {
   ]
   const title = 'Logo by sample in vector in maximum quality'
 
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
+  const [showMissionModal, setShowMissionModal] = useState(false)
+
   useEffect(() => {
     window.scrollTo({ top: 0 })
+  }, [])
+
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
   }, [])
 
   return (
@@ -119,29 +142,16 @@ const ServiceNegotiationCustomer = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Freelancer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
 
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className="justify_center">
@@ -161,7 +171,7 @@ const ServiceNegotiationCustomer = () => {
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="20px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -173,9 +183,12 @@ const ServiceNegotiationCustomer = () => {
                           0 sec
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar currentPercent={0} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
+                      <PercentBar
+                        currentPercent={freelancerFakeProjectProgress}
+                        color={freelancerFakeProject.color}
+                      />
+                      <DynamicPadding desktop="10px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -186,19 +199,19 @@ const ServiceNegotiationCustomer = () => {
                         <Typography
                           variant="body4"
                           fontWeight="500"
-                          color={'#F2C94C'}
+                          color={freelancerFakeProject.color}
                         >
-                          Pending
+                          {freelancerFakeProject.label}
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="21px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -248,35 +261,34 @@ const ServiceNegotiationCustomer = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="23px" mobile="20px" />
 
                       <Typography variant="body3" fontWeight="500">
                         Subscription
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
+
                       <div className="flex_space_between">
-                        <ButtonChooseList
-                          buttonPadding="4px 13px"
-                          buttons={['Start', 'Pro', 'Ultimate']}
-                          callback={() => {}}
-                          gap="0px"
-                          initValue="Start"
+                        <SubscriptionList
+                          callback={(title: string) => {
+                            console.log(title)
+                          }}
                         />
 
                         <div className={styles.buy_wrapper}>
                           <AppColor.buy fill={AppColor.text} />
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_5">
                         <AppColor.queue fill={AppColor.orange} />
                         <Typography variant="body4">
                           Higher Priority Queue
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_10">
                         <div className="gap_5">
                           <AppColor.moneyHummer />
@@ -287,39 +299,47 @@ const ServiceNegotiationCustomer = () => {
                           <Typography variant="body4">10 days</Typography>
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color={AppColor.transparentBlack}
+                      <DynamicPadding desktop="14px" mobile="10px" />
+                      <span
+                        className={styles.mission_btn}
+                        onClick={() => {
+                          setShowMissionModal(true)
+                        }}
                       >
-                        Missions
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                        {' '}
+                        <Typography
+                          variant="body4"
+                          fontWeight="500"
+                          color={AppColor.transparentBlack}
+                        >
+                          Missions
+                        </Typography>
+                      </span>
+                      <DynamicPadding desktop="23px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="20px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
-                        <AppColor.reward10PTS />
                         <AppColor.reward30Xp />
+                        <AppColor.reward30XpDisabled />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Summary
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
+
                       <div className={styles.text_dotted_wrapper}>
+                        <Typography variant="body3" fontWeight="500">
+                          Summary
+                        </Typography>
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
-                          text="Start Package Milestone 2"
+                          text="Start Package"
                           endNode={
                             <div className="gap_5">
                               <AppColor.threeOfFive />{' '}
@@ -336,14 +356,40 @@ const ServiceNegotiationCustomer = () => {
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
-                          text="Sale Discount 50%"
-                          textEnd="-$100"
+                          text="Sale Discount 5%"
+                          textEnd="-$10"
                         />
-
+                        <TextDotted
+                          fontWeightEndText="500"
+                          startTextColor={AppColor.transparentBlack}
+                          text="Service Fee 10%"
+                          textEnd="-$19"
+                        />
+                        <TextDotted
+                          fontWeightEndText="500"
+                          startTextColor={AppColor.transparentBlack}
+                          text="Bonus Reward"
+                          endNode={
+                            <div className="gap_5">
+                              <AppColor.close
+                                width={'15px'}
+                                height={'15px'}
+                                fill={AppColor.red}
+                              />{' '}
+                              <Typography
+                                textLineHeight={'1'}
+                                variant="body4"
+                                fontWeight="500"
+                              >
+                                $10
+                              </Typography>
+                            </div>
+                          }
+                        />
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.orange}
-                          text="Total To Pay"
+                          text="Total To Receive"
                           endNode={
                             <Typography
                               textLineHeight={'1'}
@@ -351,31 +397,54 @@ const ServiceNegotiationCustomer = () => {
                               variant="body4"
                               fontWeight="500"
                             >
-                              $100
+                              $181
                             </Typography>
                           }
                         />
                       </div>
 
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div style={{ opacity: '0.5' }} className="gap_5">
-                        <AppColor.gift />
+                      <DynamicPadding desktop="20px" mobile="20px" />
+                      <div className={styles.reward}>
+                        <AppColor.gift width={15} height={15} />
                         <Typography
-                          variant="body5"
-                          fontWeight="500"
+                          variant="body3"
+                          color={AppColor.green}
                           textTransform="uppercase"
                         >
-                          no rewards
+                          <span>1 reward available</span>
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
+                      <DynamicPadding desktop="14px" mobile="20px" />
+
+                      <div className={styles.trust_score}>
                         <AppColor.likeRounded />
-                        <Typography variant="body4" fontWeight="500">
-                          <span color={AppColor.green}>96</span> Trust Score
-                        </Typography>
+                        <Typography color={AppColor.green}>96</Typography>
+                        <Typography>Trust Score</Typography>
                         <div className={styles.info_box}>
                           <AppColor.info />
+                        </div>
+                        <div style={{ flexGrow: 1 }}></div>
+                        <div
+                          style={{
+                            gap: '5px',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <AppColor.close
+                            width={15}
+                            height={15}
+                            fill={AppColor.red}
+                          />
+                          <AppColor.moneyHummer width={26} height={22} />
+                          <Typography
+                            fontWeight="500"
+                            textLineHeight="1"
+                            variant="body4"
+                          >
+                            $40
+                          </Typography>
                         </div>
                       </div>
                     </div>
@@ -383,10 +452,6 @@ const ServiceNegotiationCustomer = () => {
                 />
               </div>
 
-              {/* <DynamicPadding desktop='30px' mobile='15px'/>
-                        <div className="justify_center">
-                            <Typography variant='body4' textTransform='uppercase' fontWeight='500'>Project 1</Typography>
-                        </div> */}
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
@@ -395,7 +460,7 @@ const ServiceNegotiationCustomer = () => {
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="20px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -407,9 +472,12 @@ const ServiceNegotiationCustomer = () => {
                           0 sec
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar currentPercent={0} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
+                      <PercentBar
+                        currentPercent={freelancerFakeProjectProgress}
+                        color={freelancerFakeProject.color}
+                      />
+                      <DynamicPadding desktop="10px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -420,19 +488,19 @@ const ServiceNegotiationCustomer = () => {
                         <Typography
                           variant="body4"
                           fontWeight="500"
-                          color={'#F2C94C'}
+                          color={freelancerFakeProject.color}
                         >
-                          Pending
+                          {freelancerFakeProject.label}
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="21px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -482,35 +550,34 @@ const ServiceNegotiationCustomer = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="23px" mobile="20px" />
 
                       <Typography variant="body3" fontWeight="500">
                         Subscription
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
+
                       <div className="flex_space_between">
-                        <ButtonChooseList
-                          buttonPadding="4px 13px"
-                          buttons={['Start', 'Pro', 'Ultimate']}
-                          callback={() => {}}
-                          gap="0px"
-                          initValue="Start"
+                        <SubscriptionList
+                          callback={(title: string) => {
+                            console.log(title)
+                          }}
                         />
 
                         <div className={styles.buy_wrapper}>
                           <AppColor.buy fill={AppColor.text} />
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_5">
                         <AppColor.queue fill={AppColor.orange} />
                         <Typography variant="body4">
                           Higher Priority Queue
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_10">
                         <div className="gap_5">
                           <AppColor.moneyHummer />
@@ -521,39 +588,47 @@ const ServiceNegotiationCustomer = () => {
                           <Typography variant="body4">10 days</Typography>
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color={AppColor.transparentBlack}
+                      <DynamicPadding desktop="14px" mobile="10px" />
+                      <span
+                        className={styles.mission_btn}
+                        onClick={() => {
+                          setShowMissionModal(true)
+                        }}
                       >
-                        Missions
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                        {' '}
+                        <Typography
+                          variant="body4"
+                          fontWeight="500"
+                          color={AppColor.transparentBlack}
+                        >
+                          Missions
+                        </Typography>
+                      </span>
+                      <DynamicPadding desktop="23px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="20px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
-                        <AppColor.reward10PTS />
                         <AppColor.reward30Xp />
+                        <AppColor.reward30XpDisabled />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Summary
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
+
                       <div className={styles.text_dotted_wrapper}>
+                        <Typography variant="body3" fontWeight="500">
+                          Summary
+                        </Typography>
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
-                          text="Start Package Milestone 2"
+                          text="Start Package"
                           endNode={
                             <div className="gap_5">
                               <AppColor.threeOfFive />{' '}
@@ -570,14 +645,40 @@ const ServiceNegotiationCustomer = () => {
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
-                          text="Sale Discount 50%"
-                          textEnd="-$100"
+                          text="Sale Discount 5%"
+                          textEnd="-$10"
                         />
-
+                        <TextDotted
+                          fontWeightEndText="500"
+                          startTextColor={AppColor.transparentBlack}
+                          text="Service Fee 10%"
+                          textEnd="-$19"
+                        />
+                        <TextDotted
+                          fontWeightEndText="500"
+                          startTextColor={AppColor.transparentBlack}
+                          text="Bonus Reward"
+                          endNode={
+                            <div className="gap_5">
+                              <AppColor.close
+                                width={'15px'}
+                                height={'15px'}
+                                fill={AppColor.red}
+                              />{' '}
+                              <Typography
+                                textLineHeight={'1'}
+                                variant="body4"
+                                fontWeight="500"
+                              >
+                                $10
+                              </Typography>
+                            </div>
+                          }
+                        />
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.orange}
-                          text="Total To Pay"
+                          text="Total To Receive"
                           endNode={
                             <Typography
                               textLineHeight={'1'}
@@ -585,31 +686,54 @@ const ServiceNegotiationCustomer = () => {
                               variant="body4"
                               fontWeight="500"
                             >
-                              $100
+                              $181
                             </Typography>
                           }
                         />
                       </div>
 
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div style={{ opacity: '0.5' }} className="gap_5">
-                        <AppColor.gift />
+                      <DynamicPadding desktop="20px" mobile="20px" />
+                      <div className={styles.reward}>
+                        <AppColor.gift width={15} height={15} />
                         <Typography
-                          variant="body5"
-                          fontWeight="500"
+                          variant="body3"
+                          color={AppColor.green}
                           textTransform="uppercase"
                         >
-                          no rewards
+                          <span>1 reward available</span>
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
+                      <DynamicPadding desktop="14px" mobile="20px" />
+
+                      <div className={styles.trust_score}>
                         <AppColor.likeRounded />
-                        <Typography variant="body4" fontWeight="500">
-                          <span color={AppColor.green}>96</span> Trust Score
-                        </Typography>
+                        <Typography color={AppColor.green}>96</Typography>
+                        <Typography>Trust Score</Typography>
                         <div className={styles.info_box}>
                           <AppColor.info />
+                        </div>
+                        <div style={{ flexGrow: 1 }}></div>
+                        <div
+                          style={{
+                            gap: '5px',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <AppColor.close
+                            width={15}
+                            height={15}
+                            fill={AppColor.red}
+                          />
+                          <AppColor.moneyHummer width={26} height={22} />
+                          <Typography
+                            fontWeight="500"
+                            textLineHeight="1"
+                            variant="body4"
+                          >
+                            $40
+                          </Typography>
                         </div>
                       </div>
                     </div>
@@ -626,7 +750,67 @@ const ServiceNegotiationCustomer = () => {
       </div>
 
       <Footer />
+
+      {showMissionModal && (
+        <MissionModal
+          onClose={() => {
+            setShowMissionModal(false)
+          }}
+        />
+      )}
     </div>
+  )
+}
+
+interface MissionModalProps {
+  onClose: () => void
+}
+
+const MissionModal = ({ onClose }: MissionModalProps): JSX.Element => {
+  return (
+    <ModalCenterBasic
+      bottomPartPadding="0px"
+      callbackClose={() => {
+        onClose()
+      }}
+      title="Pro Missions"
+      nodeAfterTitle={
+        <ButtonChooseList
+          buttonPadding="4px 13px"
+          buttons={['Start', 'Pro', 'Ultimate']}
+          callback={() => {}}
+          gap="0px"
+          initValue="Fixed"
+        />
+      }
+    >
+      <Typography style={{ padding: '30px 30px' }} variant="body4">
+        Freelancers create some tasks to achieve. After successful completion
+        you can get valuable rewards.
+      </Typography>
+      <RoadmapFlex
+        text="Provide complete information about yourself"
+        title="Entrance challenge"
+        completed={true}
+        steps="1 of 12 completed"
+      />
+      <RoadmapFlex
+        text="Provide complete information about yourself"
+        title="Entrance challenge"
+        completed={true}
+        steps="1 of 12 completed"
+      />
+
+      <div style={{ padding: '30px' }} className="flex_end">
+        <MyButtonOrange
+          onClick={() => {}}
+          fontWeight="500"
+          textTransform="uppercase"
+        >
+          Change pro plan $25/month
+        </MyButtonOrange>
+      </div>
+    </ModalCenterBasic>
   )
 }
 
