@@ -47,6 +47,7 @@ import { ReactComponent as managment } from '@assets/svg/managment.svg'
 import { ReactComponent as consulting } from '@assets/svg/consulting.svg'
 
 import { ReactComponent as plus } from '@assets/svg/plus-icon.svg'
+import { ReactComponent as plusCircle } from '@assets/svg/plus_circle.svg'
 
 import { ReactComponent as search } from '@assets/svg/search-icon-loop.svg'
 
@@ -640,6 +641,7 @@ class AppColor {
   static cart = cart
   static ordersWhite = ordersWhite
   static plus = plus
+  static plusCircle = plusCircle
   static managersWhite = managersWhite
 
   static hearPlus = hearPlus

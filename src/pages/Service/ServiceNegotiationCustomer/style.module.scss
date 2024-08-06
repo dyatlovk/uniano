@@ -95,6 +95,14 @@
   }
 }
 
+.add_milestone {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .details_box {

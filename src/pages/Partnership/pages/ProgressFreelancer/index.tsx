@@ -179,11 +179,15 @@ type DetailsDropdownItemProps = {
 }
 export const DetailsDropdownItem = ({
   text,
-  initState,
+  initState = false,
   title,
   node,
 }: DetailsDropdownItemProps) => {
   const [showDropdown, setShowDropdown] = useState(initState)
+
+  useEffect(() => {
+    setShowDropdown(initState)
+  }, [initState])
 
   return (
     <div

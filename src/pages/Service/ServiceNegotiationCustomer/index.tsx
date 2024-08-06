@@ -15,7 +15,6 @@ import Typography from '@common/components/ui/Typography/Typography'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
@@ -51,8 +50,10 @@ const ServiceNegotiationCustomer = () => {
   const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
   const [partnersSelectedUser, setPartnersSelecteduser] =
     useState<PartnerShip.Manager | null>(null)
-
   const [showMissionModal, setShowMissionModal] = useState(false)
+  const [selectedMileStone, setSelectedMilestone] =
+    useState<string>('Milestone 2')
+  const [addMilistone, setAddMilestone] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -76,7 +77,7 @@ const ServiceNegotiationCustomer = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="13px" mobile="20px" />
         <UserTopPageInfo user={fakeUserConstant} />
         <DynamicPadding />
 
@@ -91,13 +92,27 @@ const ServiceNegotiationCustomer = () => {
                 text="Custom Requirements"
                 drawLine={false}
               />
-              <ButtonChooseList
-                buttonPadding="4px 13px"
-                buttons={['Milestone 1', 'Milestone 2']}
-                callback={() => {}}
-                initValue="Milestone 2"
-                gap="0px"
-              />
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '24px' }}
+              >
+                <ButtonChooseList
+                  buttonPadding="4px 13px"
+                  buttons={['Milestone 1', 'Milestone 2']}
+                  callback={(item: string) => {
+                    setSelectedMilestone(item)
+                  }}
+                  initValue={selectedMileStone}
+                  gap="0px"
+                />
+                <div
+                  className={styles.add_milestone}
+                  onClick={() => {
+                    setAddMilestone(true)
+                  }}
+                >
+                  <AppColor.plusCircle />
+                </div>
+              </div>
               <DynamicPadding desktop="30px" mobile="20px" />
               <StepsOfPreparing
                 elements={[
@@ -168,7 +183,7 @@ const ServiceNegotiationCustomer = () => {
                 <DetailsDropdownItem
                   title="Milestone 2"
                   text="Fab 27, 2023 23:55 - current"
-                  initState={true}
+                  initState={selectedMileStone === 'Milestone 2'}
                   node={
                     <div>
                       <DynamicPadding desktop="20px" mobile="15px" />
@@ -457,7 +472,7 @@ const ServiceNegotiationCustomer = () => {
                 <DetailsDropdownItem
                   title="Milestone 1"
                   text="Fab 27, 2023 23:55 - current"
-                  initState={true}
+                  initState={selectedMileStone === 'Milestone 1'}
                   node={
                     <div>
                       <DynamicPadding desktop="20px" mobile="15px" />
