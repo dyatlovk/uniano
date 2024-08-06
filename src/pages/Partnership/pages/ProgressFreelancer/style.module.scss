@@ -41,7 +41,7 @@
 }
 
 [data-detailsdropdown_state="opened"] {
-  svg {
+  &>svg {
     fill: $text;
   }
 }

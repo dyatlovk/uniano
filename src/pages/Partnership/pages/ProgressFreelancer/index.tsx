@@ -208,12 +208,14 @@ export const DetailsDropdownItem = ({
         {showDropdown ? (
           <AppColor.chevronTop
             fill={AppColor.text}
+            className="chevron"
             width={'16px'}
             height={'8px'}
           />
         ) : (
           <AppColor.chevronBottom
             fill={AppColor.text}
+            className="chevron"
             width={'16px'}
             height={'8px'}
           />

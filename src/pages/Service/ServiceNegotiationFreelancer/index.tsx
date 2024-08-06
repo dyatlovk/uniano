@@ -27,6 +27,17 @@ import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/compon
 import PartnersModel from '@common/models/partnership/partnersModel'
 import classNames from 'classnames'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
+import { SubscriptionList } from '../Service/components/Subscriptions/List'
+import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+
+const freelancerProjectModel = new FreelancerProjectsModel(
+  FreelancerProjectsModel.makeFakeData()
+)
+const freelancerFakeProject = freelancerProjectModel.findByLabel('Progress')
+const freelancerFakeProjectProgress =
+  freelancerProjectModel.getProgress('Progress')
 
 const ServiceNegotiationFreelancer = () => {
   const arrayHistory = [
@@ -41,6 +52,7 @@ const ServiceNegotiationFreelancer = () => {
   const [partnersSelectedUser, setPartnersSelecteduser] =
     useState<PartnerShip.Manager | null>(null)
   const [docsSignModal, setDocsSignModal] = useState<boolean>(false)
+  const [showMissionModal, setShowMissionModal] = useState(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -260,7 +272,7 @@ const ServiceNegotiationFreelancer = () => {
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="20px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -272,9 +284,12 @@ const ServiceNegotiationFreelancer = () => {
                           0 sec
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar currentPercent={0} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
+                      <PercentBar
+                        currentPercent={freelancerFakeProjectProgress}
+                        color={freelancerFakeProject.color}
+                      />
+                      <DynamicPadding desktop="10px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -285,19 +300,19 @@ const ServiceNegotiationFreelancer = () => {
                         <Typography
                           variant="body4"
                           fontWeight="500"
-                          color={'#F2C94C'}
+                          color={freelancerFakeProject.color}
                         >
-                          Pending
+                          {freelancerFakeProject.label}
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="21px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -347,35 +362,34 @@ const ServiceNegotiationFreelancer = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="23px" mobile="20px" />
 
                       <Typography variant="body3" fontWeight="500">
                         Subscription
                       </Typography>
+                      <DynamicPadding desktop="27px" mobile="20px" />
 
                       <div className="flex_space_between">
-                        <ButtonChooseList
-                          buttonPadding="4px 13px"
-                          buttons={['Start', 'Pro', 'Ultimate']}
-                          callback={() => {}}
-                          gap="0px"
-                          initValue="Fixed"
+                        <SubscriptionList
+                          callback={(title: string) => {
+                            console.log(title)
+                          }}
                         />
 
                         <div className={styles.buy_wrapper}>
                           <AppColor.buy fill={AppColor.text} />
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_5">
                         <AppColor.queue fill={AppColor.orange} />
                         <Typography variant="body4">
                           Higher Priority Queue
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_10">
                         <div className="gap_5">
                           <AppColor.moneyHummer />
@@ -386,32 +400,43 @@ const ServiceNegotiationFreelancer = () => {
                           <Typography variant="body4">10 days</Typography>
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color={AppColor.transparentBlack}
+                      <DynamicPadding desktop="14px" mobile="10px" />
+                      <span
+                        className={styles.mission_btn}
+                        onClick={() => {
+                          setShowMissionModal(true)
+                        }}
                       >
-                        Missions
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                        {' '}
+                        <Typography
+                          variant="body4"
+                          fontWeight="500"
+                          color={AppColor.transparentBlack}
+                        >
+                          Missions
+                        </Typography>
+                      </span>
+                      <DynamicPadding desktop="23px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="20px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
                         <AppColor.reward10PTSDisabled />
                         <AppColor.reward30XpDisabled />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
+                        <Typography variant="body3" fontWeight="500">
+                          Summary
+                        </Typography>
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
@@ -508,6 +533,14 @@ const ServiceNegotiationFreelancer = () => {
           <DocSection />
         </ModalCenterBasic>
       )}
+
+      {showMissionModal && (
+        <MissionModal
+          onClose={() => {
+            setShowMissionModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }
@@ -551,6 +584,58 @@ const DocSection = (): JSX.Element => {
         </div>
       </div>
     </div>
+  )
+}
+
+interface MissionModalProps {
+  onClose: () => void
+}
+
+const MissionModal = ({ onClose }: MissionModalProps): JSX.Element => {
+  return (
+    <ModalCenterBasic
+      bottomPartPadding="0px"
+      callbackClose={() => {
+        onClose()
+      }}
+      title="Pro Missions"
+      nodeAfterTitle={
+        <ButtonChooseList
+          buttonPadding="4px 13px"
+          buttons={['Start', 'Pro', 'Ultimate']}
+          callback={() => {}}
+          gap="0px"
+          initValue="Fixed"
+        />
+      }
+    >
+      <Typography style={{ padding: '30px 30px' }} variant="body4">
+        Freelancers create some tasks to achieve. After successful completion
+        you can get valuable rewards.
+      </Typography>
+      <RoadmapFlex
+        text="Provide complete information about yourself"
+        title="Entrance challenge"
+        completed={true}
+        steps="1 of 12 completed"
+      />
+      <RoadmapFlex
+        text="Provide complete information about yourself"
+        title="Entrance challenge"
+        completed={true}
+        steps="1 of 12 completed"
+      />
+
+      <div style={{ padding: '30px' }} className="flex_end">
+        <MyButtonOrange
+          onClick={() => {}}
+          fontWeight="500"
+          textTransform="uppercase"
+        >
+          Change pro plan $25/month
+        </MyButtonOrange>
+      </div>
+    </ModalCenterBasic>
   )
 }
 

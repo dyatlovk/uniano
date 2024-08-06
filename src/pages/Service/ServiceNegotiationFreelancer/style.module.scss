@@ -36,7 +36,17 @@
 }
 
 .details_box {
-  padding: 15px 13px;
+  padding: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .text_dotted_wrapper {
@@ -55,6 +65,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $orange;
+
+    svg path {
+      fill: $white;
+    }
+  }
 }
 
 .rewards_wrapper {
@@ -145,10 +164,15 @@
 
   .details_box {
     padding: 25px 30px;
+    padding-bottom: 30px;
   }
 
   .boxes_grid {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .text_dotted_wrapper {
+    gap: 17px;
   }
 
   .text_wrapper {
