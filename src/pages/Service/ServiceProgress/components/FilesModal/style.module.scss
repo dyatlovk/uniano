@@ -1,0 +1,127 @@
+@mixin tab {
+  padding: 15px 15px;
+  padding-top: 0;
+  cursor: pointer;
+
+  span,
+  p {
+    color: $text;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba($text, 0.1);
+}
+
+.tab {
+  @include tab;
+}
+
+.tab_content {
+  margin-top: 30px;
+}
+
+.tab_active {
+  @include tab;
+  color: $orange;
+
+  span,
+  p {
+    color: $orange;
+  }
+}
+
+.file_tools {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .file_tools {
+      opacity: 1;
+    }
+  }
+}
+
+.file_tool {
+  background-color: $text;
+  color: $white;
+  border-radius: 5px;
+  padding: 2px 5.5px;
+  line-height: 1;
+
+  svg path {
+    fill: $white;
+  }
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attached_file_sign {
+  color: rgba(33, 150, 83, 1);
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.buttons_top {
+  display: flex;
+  flex-grow: row;
+  gap: 10px;
+
+  button {
+    color: $text;
+
+    &:hover {
+      border-color: $orange;
+    }
+  }
+}
+
+.button_top_active {
+  button {
+    border-color: $orange;
+    color: $orange;
+  }
+}
