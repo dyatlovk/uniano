@@ -14,9 +14,7 @@ import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
@@ -25,7 +23,6 @@ import { useEffect, useState } from 'react'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/services/statesModel'
 import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
-import partnersModel from '@common/models/partnership/partnersModel'
 import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
 import PartnersModel from '@common/models/partnership/partnersModel'
 import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
@@ -76,16 +73,16 @@ const ServiceProgress = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="15px" mobile="20px" />
         <UserTopPageInfo user={fakeUserConstant} />
-        <DynamicPadding />
+        <DynamicPadding desktop="51px" />
 
         <ResponsiveLayoutTwo
           gap="80px"
           item1MaxWidth="730px"
           item2MaxWidth="390px"
           item1={
-            <div style={{ width: '100%' }}>
+            <div className={styles.details_progress}>
               <DetailsProgresService
                 informationTable={[
                   {
@@ -100,8 +97,12 @@ const ServiceProgress = () => {
               <div className={styles.shadow_box_grid}>
                 <CenterShadowBox
                   elements={[
-                    <AppColor.files />,
-                    <Typography variant="body4" fontWeight="500">
+                    <AppColor.files height={27} />,
+                    <Typography
+                      variant="body4"
+                      fontWeight="500"
+                      textLineHeight="1"
+                    >
                       Files
                     </Typography>,
                     <Typography
@@ -109,17 +110,22 @@ const ServiceProgress = () => {
                       textTransform="uppercase"
                       variant="body5"
                       fontWeight="500"
+                      textLineHeight="1"
                     >
                       3 files
                     </Typography>,
                   ]}
-                  gap="20px"
+                  gap="15px"
                   paddingBoxDesktop="20px 0px"
                 />
                 <CenterShadowBox
                   elements={[
-                    <AppColor.negotiation />,
-                    <Typography variant="body4" fontWeight="500">
+                    <AppColor.negotiation height={27} />,
+                    <Typography
+                      variant="body4"
+                      fontWeight="500"
+                      textLineHeight="1"
+                    >
                       Negotiations
                     </Typography>,
                     <Typography
@@ -127,17 +133,22 @@ const ServiceProgress = () => {
                       textTransform="uppercase"
                       variant="body5"
                       fontWeight="500"
+                      textLineHeight="1"
                     >
                       Change
                     </Typography>,
                   ]}
-                  gap="20px"
+                  gap="15px"
                   paddingBoxDesktop="20px 0px"
                 />
                 <CenterShadowBox
                   elements={[
-                    <AppColor.cancel />,
-                    <Typography variant="body4" fontWeight="500">
+                    <AppColor.cancel height={27} />,
+                    <Typography
+                      variant="body4"
+                      fontWeight="500"
+                      textLineHeight="1"
+                    >
                       Cancel
                     </Typography>,
                     <Typography
@@ -145,11 +156,12 @@ const ServiceProgress = () => {
                       textTransform="uppercase"
                       variant="body5"
                       fontWeight="500"
+                      textLineHeight="1"
                     >
                       project
                     </Typography>,
                   ]}
-                  gap="20px"
+                  gap="15px"
                   paddingBoxDesktop="20px 0px"
                 />
               </div>

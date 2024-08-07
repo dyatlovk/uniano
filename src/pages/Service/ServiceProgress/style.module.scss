@@ -4,6 +4,14 @@
   gap: 20px;
 }
 
+.details_progress {
+  width: 100%;
+
+  [data-detailstable="child"] {
+    padding-top: 22px;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .shadow_box_grid {

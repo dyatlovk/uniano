@@ -234,7 +234,10 @@ const DetailsTable = ({
                       </Typography>
                     </div>
                   </div>
-                  <div className={styles.child_wrapper_desktop}>
+                  <div
+                    data-detailstable="child"
+                    className={styles.child_wrapper_desktop}
+                  >
                     {dropdownNode && index == 0 ? (
                       <div
                         style={{ cursor: 'pointer' }}
