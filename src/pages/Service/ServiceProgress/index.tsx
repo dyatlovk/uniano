@@ -95,75 +95,90 @@ const ServiceProgress = () => {
               />
               <DynamicPadding />
               <div className={styles.shadow_box_grid}>
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.files height={27} />,
-                    <Typography
-                      variant="body4"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      Files
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      3 files
-                    </Typography>,
-                  ]}
-                  gap="15px"
-                  paddingBoxDesktop="20px 0px"
-                />
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.negotiation height={27} />,
-                    <Typography
-                      variant="body4"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      Negotiations
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      Change
-                    </Typography>,
-                  ]}
-                  gap="15px"
-                  paddingBoxDesktop="20px 0px"
-                />
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.cancel height={27} />,
-                    <Typography
-                      variant="body4"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      Cancel
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                      textLineHeight="1"
-                    >
-                      project
-                    </Typography>,
-                  ]}
-                  gap="15px"
-                  paddingBoxDesktop="20px 0px"
-                />
+                <div className={styles.action} onClick={() => {}}>
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.files
+                        height={27}
+                      />,
+                      <Typography
+                        variant="body4"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        Files
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        3 files
+                      </Typography>,
+                    ]}
+                    gap="15px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
+
+                <div className={styles.action} onClick={() => {}}>
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.negotiation
+                        height={27}
+                      />,
+                      <Typography
+                        variant="body4"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        Negotiations
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        Change
+                      </Typography>,
+                    ]}
+                    gap="15px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
+
+                <div className={styles.action} onClick={() => {}}>
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.cancel
+                        className={styles.action_icon_cancel}
+                        height={27}
+                      />,
+                      <Typography
+                        variant="body4"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        Cancel
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        project
+                      </Typography>,
+                    ]}
+                    gap="15px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
               </div>
 
               <DynamicPadding />

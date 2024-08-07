@@ -4,6 +4,34 @@
   gap: 20px;
 }
 
+.action {
+  cursor: pointer;
+
+  &:hover {
+    p {
+      color: $orange !important;
+    }
+
+    .action_icon_cancel {
+      path {
+        fill: $orange;
+      }
+    }
+
+    [data-file="file-path-2"] {
+      stroke: $orange;
+    }
+
+    [data-negotiation-path="1"] {
+      fill: $orange;
+    }
+
+    [data-negotiation-path="3"] {
+      fill: $orange;
+    }
+  }
+}
+
 .details_progress {
   width: 100%;
 
