@@ -1,0 +1,35 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.steps {
+  margin-bottom: -30px;
+}
+
+.dropdown_content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  column-gap: 24px;
+}
+
+.notify {
+  background-color: $white;
+  border-radius: $borderRadius;
+  padding: 20px;
+  padding: 15.5px 20px;
+
+  span {
+    font-weight: 500;
+  }
+}
