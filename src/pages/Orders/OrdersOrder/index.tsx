@@ -267,10 +267,14 @@ const OrdersOrder = () => {
                 align="start"
                 elements={[
                   <div style={{ width: '100%' }}>
-                    <Typography variant="body3" fontWeight="500">
+                    <Typography
+                      variant="body3"
+                      fontWeight="500"
+                      textLineHeight="1"
+                    >
                       Details
                     </Typography>
-                    <DynamicPadding desktop="30px" mobile="20px" />
+                    <DynamicPadding desktop="24px" mobile="20px" />
 
                     <div className={styles.text_dotted_wrapper}>
                       <TextDotted
@@ -310,11 +314,17 @@ const OrdersOrder = () => {
                         textEnd="3"
                       />
                     </div>
-                    <DynamicPadding />
-                    <Typography variant="body3" fontWeight="500">
+                    <DynamicPadding desktop="30px" />
+                    <HorizontalLine />
+                    <DynamicPadding desktop="28px" />
+                    <Typography
+                      variant="body3"
+                      fontWeight="500"
+                      textLineHeight="1"
+                    >
                       Freelancers
                     </Typography>
-                    <DynamicPadding desktop="30px" mobile="20px" />
+                    <DynamicPadding desktop="24px" mobile="20px" />
 
                     <div className={styles.text_dotted_wrapper}>
                       <TextDotted
@@ -365,7 +375,7 @@ const OrdersOrder = () => {
                         More 3
                       </Typography>
                     </div>
-                    <DynamicPadding desktop="30px" mobile="20px" />
+                    <DynamicPadding desktop="23px" mobile="20px" />
                     <HorizontalLine />
                     <DynamicPadding desktop="30px" mobile="20px" />
                     <MyButtonOrange
@@ -378,7 +388,7 @@ const OrdersOrder = () => {
                   </div>,
                 ]}
                 gap="0px"
-                paddingBoxDesktop="25px 30px"
+                paddingBoxDesktop="30px"
                 paddingBoxMobile="15px"
               />
             </div>
