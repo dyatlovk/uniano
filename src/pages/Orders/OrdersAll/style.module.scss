@@ -140,7 +140,8 @@
 
   .cards_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    column-gap: 20px;
+    row-gap: 50px;
   }
 
   .main_part {

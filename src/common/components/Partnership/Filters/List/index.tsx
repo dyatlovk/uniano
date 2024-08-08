@@ -72,7 +72,7 @@ const FilterSection = ({ dropItems, title, callback }: Props): JSX.Element => {
         className={styles.wrapper_scroll}
         style={{
           display: showDropdown ? 'block' : 'none',
-          marginTop: '30px',
+          marginTop: '20px',
           maxHeight: `${35 * countShow + 30}px`,
         }}
       >
