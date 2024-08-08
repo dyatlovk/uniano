@@ -407,7 +407,9 @@ const OrdersAll = () => {
                   10/20
                 </Typography>
               </div>
-              <DynamicPadding desktop="22px" mobile="15px" />
+              <DynamicPadding desktop="26px" mobile="15px" />
+              <HorizontalLine />
+              <DynamicPadding desktop="25px" mobile="15px" />
               <FiltersTemplate />
 
               <DynamicPadding desktop="25px" mobile="15px" />
