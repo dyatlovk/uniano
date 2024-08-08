@@ -1,15 +1,16 @@
-import { useScreenSize } from '@common/helpers/useScreenSize'
 import DetailsTable from '../..'
 import UserAvatar from '../../../UserAvatar'
 import styles from './style.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Typography from '@common/components/ui/Typography/Typography'
 import DynamicPadding from '../../../DynamicPadding'
 import AppColor from '@common/styles/variables-static'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import { fakeUserConstant, userModel } from '@common/models/user'
-import App from 'App'
 import SizeBox from '../../../SizeBox'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
+
 type DetailMyOrdersProps = {
   informationTable: DetailMyOrdersItem[]
   informationDropdown: DropdownMyProgramsItemProps[]
@@ -25,7 +26,14 @@ const DetailMyOrders = ({
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = informationTable[currentPage - 1]
   const currentDropdownItem = informationDropdown[currentPage - 1]
-  const { width, height } = useScreenSize()
+
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
 
   return (
     <DetailsTable
@@ -39,26 +47,18 @@ const DetailMyOrders = ({
           <div>
             <DynamicPadding desktop="30px" mobile="15px" />
             <div className={styles.user_box}>
-              <UserAvatar
-                url={fakeUserConstant.image}
-                active={true}
-                name="Artem M."
-                flag={<AppColor.UkraineFlagIcon />}
-                role="Manager"
-                preventMobileNone={true}
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
               />
-              <div className="gap_10">
-                <Typography variant="body5" color={AppColor.transparentBlack}>
-                  15 hr 59 min ago
-                </Typography>
-                <AppColor.chevronBottom
-                  width={'16px'}
-                  height={'8px'}
-                  fill={AppColor.transparentBlack}
-                />
-              </div>
             </div>
-            <DynamicPadding desktop="30px" mobile="15px" />
+            <DynamicPadding desktop="6px" mobile="15px" />
             <DropdownMyProgramsItem page={currentDropdownItem.page} />
           </div>
         ) : null
@@ -70,7 +70,6 @@ const DetailMyOrders = ({
                 title: 'Order',
                 child: (
                   <UserAvatar
-                    // nodeAfterText={ <div className={styles.gap_5}><AppColor.playButton/><AppColor.refreshColored/></div> }
                     url={fakeUserConstant.image}
                     width="30px"
                     height="30px"
@@ -224,6 +223,7 @@ const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
                 url={fakeUserConstant.image}
                 name="user35"
                 active={true}
+                gap="1px"
               />
             </div>
           }
@@ -241,6 +241,7 @@ const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
                 url={fakeUserConstant.image}
                 name="user35"
                 active={true}
+                gap="1px"
               />
             </div>
           }
@@ -258,6 +259,7 @@ const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
                 url={fakeUserConstant.image}
                 name="user35"
                 active={true}
+                gap="1px"
               />
             </div>
           }
@@ -272,7 +274,7 @@ const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
           color={AppColor.orange}
         />
       </div>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="30px" mobile="20px" />
       <HorizontalLine />
     </div>
   )

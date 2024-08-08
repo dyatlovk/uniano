@@ -65,8 +65,7 @@
   gap: 15px;
 }
 
-.comment_user_info {
-}
+.comment_user_info {}
 
 .recommended_comment {
   display: flex;
@@ -83,11 +82,7 @@
 .user_box {
   display: flex;
   justify-content: space-between;
-  padding: 10px 14px;
-
-  @include weakShadow;
-  border-radius: 20px;
-  max-width: 390px;
+  width: 388px;
 }
 
 @media (min-width: $tabletSize) {
@@ -118,6 +113,6 @@
   }
 
   .dropdown_content {
-    gap: 30px;
+    gap: 20px;
   }
 }

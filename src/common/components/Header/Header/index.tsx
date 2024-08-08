@@ -305,7 +305,16 @@ const Header = ({
                         setHovered(prev => !prev)
                       }}
                     >
-                      <div title="Order">Order</div>
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('order')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Order"
+                      >
+                        Order
+                      </div>
                       <AppColor.chevronBottom
                         width={10}
                         height={6}

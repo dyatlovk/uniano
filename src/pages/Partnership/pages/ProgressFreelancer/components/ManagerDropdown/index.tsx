@@ -46,7 +46,7 @@ const ManagersDropDown = ({
             />
           )}
           {!selectedUser && (
-            <Typography variant="body4">Selecte a user</Typography>
+            <Typography variant="body4">Select a user</Typography>
           )}
         </div>
         <div className={styles.selected_area_tools}>
