@@ -2,7 +2,6 @@ import AppColor from '@common/styles/variables-static'
 import Typography from '../ui/Typography/Typography'
 import styles from './style.module.scss'
 import InfoBox from '../ui/InfoBox'
-import SliderByRef from '../ui/SliderByRef'
 import UserAvatar from '../ui/UserAvatar'
 import { fakeUserConstant } from '@common/models/user'
 import Slider from '../ui/Slider/Slider'
@@ -27,7 +26,7 @@ const LastSponsors = () => {
           elementsCount={6}
           gap={10}
           itemWidth={130}
-          maxWidth={600}
+          maxWidth={626}
           swiper={true}
         >
           {SliderItemCurrent}

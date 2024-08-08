@@ -1,9 +1,7 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
-import { developmentDropdown } from '@common/models/constants'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
@@ -17,21 +15,24 @@ import { FreelancerCard } from '@pages/Partnership/pages/Program/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import Dropdown from '@common/components/ui/Dropdown/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import TextDotted from '@common/components/ui/TextDotted/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import { Link } from 'react-router-dom'
-import { RefObject, useEffect, useRef } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
 
 const OrdersOrder = () => {
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
   const arrayHistory = ['Order', 'Development ', 'Web Development', 'WordPress']
   const title = 'Logo by sample in vector in maximum quality'
 
@@ -58,14 +59,29 @@ const OrdersOrder = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [])
+
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
+
   return (
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="Order"
-        navItems={developmentDropdown}
-        titleIcon={<AppColor.goal />}
+        activeId={1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All orders',
+            link: '/orders/all',
+          },
+          {
+            title: 'My order',
+            link: '/orders/myorders',
+          },
+        ]}
       />
 
       <div className={'wrapper_page'}>
@@ -74,17 +90,9 @@ const OrdersOrder = () => {
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
           pageTitle={title}
-          endNode={
-            <MyButtonTransparentOrange
-              textTransform="uppercase"
-              onClick={() => {}}
-            >
-              All orders <AppColor.chevronBottom fill={AppColor.orange} />
-            </MyButtonTransparentOrange>
-          }
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="13px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={
@@ -101,7 +109,7 @@ const OrdersOrder = () => {
           }
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="38px" />
 
         <FilterList
           callback={item => {
@@ -111,12 +119,12 @@ const OrdersOrder = () => {
           activeStartItem="Description"
         />
 
-        <DynamicPadding mobile="0px" />
+        <DynamicPadding desktop="30px" mobile="0px" />
 
         <ResponsiveLayoutTwo
           gap="80px"
-          item1MaxWidth="730px"
-          item2MaxWidth="390px"
+          item1MaxWidth="732px"
+          item2MaxWidth="388px"
           orderItem1Desktop={0}
           orderItem1Mobile={1}
           orderItem2Desktop={1}
@@ -124,12 +132,12 @@ const OrdersOrder = () => {
           item1={
             <div style={{ width: '100%' }}>
               <LastSponsors />
-              <DynamicPadding />
+              <DynamicPadding desktop="43px" />
 
               <Typography variant="body3" fontWeight="500">
                 Description
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="16px" mobile="20px" />
               <Typography variant="body4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi,
                 tristique enim, neque, mollis at. Quam scelerisque pulvinar
@@ -146,7 +154,7 @@ const OrdersOrder = () => {
                 placerat sem. Sit nunc integer velit facilisi adipiscing lectus
                 arcu. Pellentesque sapien, arcu, nulla quis magnis praesent.
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="10px" mobile="20px" />
 
               <Typography
                 variant="body4"
@@ -158,13 +166,13 @@ const OrdersOrder = () => {
               <SizeBox height="10px" />
               <TagsDisplay tags={['Logos', 'Logo Design', 'Logo']} />
 
-              <DynamicPadding />
+              <DynamicPadding desktop="44px" />
               <span ref={specifRef}>
                 <Typography variant="body3" fontWeight="500">
                   Specification
                 </Typography>
               </span>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="20px" mobile="20px" />
               <div className="gap_10">
                 <AppColor.layers />
                 <div className={styles.flex_column}>
@@ -180,14 +188,14 @@ const OrdersOrder = () => {
                 </div>
               </div>
 
-              <DynamicPadding />
+              <DynamicPadding desktop="40px" />
 
               <span ref={customerRef}>
                 <Typography variant="body3" fontWeight="500">
                   Customer
                 </Typography>
               </span>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="35px" mobile="20px" />
               <FreelancerCard
                 disableFirstTwo={true}
                 type="Logo design"
@@ -206,7 +214,7 @@ const OrdersOrder = () => {
                   </Typography>
                 </div>
               </div>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="25px" mobile="20px" />
 
               <Dropdown
                 title="What if your requirements does not meet any of my package?                        "
@@ -220,7 +228,7 @@ const OrdersOrder = () => {
                 showLine={false}
               />
 
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <div className={'flex_space_between'}>
                 <Link to={'/orders/all'}>
                   <ChevronMoveTo
@@ -243,29 +251,16 @@ const OrdersOrder = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Freelancer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
               <DynamicPadding desktop="30px" mobile="20px" />
 
               <CenterShadowBox
