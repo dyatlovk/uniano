@@ -41,8 +41,11 @@ const BigInput = () => {
         <Typography variant="body4" color={AppColor.transparentBlack}>
           {text.length} / 3000
         </Typography>
-        <MyButtonOrange textTransform="uppercase" onClick={() => {}}>
-          {' '}
+        <MyButtonOrange
+          fontWeight="500"
+          textTransform="uppercase"
+          onClick={() => {}}
+        >
           <AppColor.moveOn /> Publish review
         </MyButtonOrange>
       </div>
