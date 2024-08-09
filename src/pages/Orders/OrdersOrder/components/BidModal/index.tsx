@@ -328,10 +328,58 @@ const OfferPriceDropdown = (): JSX.Element => {
 }
 
 const OfferDeliveryCalDropdown = (): JSX.Element => {
+  const [dropDownOpened, setDropDownOpened] = useState<boolean>(false)
+  const [selectedDays, setSelectedDays] = useState<number>(0)
+  const daysGridCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
   return (
-    <DropDown selectedNode={<>Calendar</>}>
-      <div>Enter days</div>
-      <div></div>
+    <DropDown
+      initOpened={dropDownOpened}
+      selectedNode={
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '5px',
+          }}
+        >
+          <Typography variant="body4" color={'#01010180'}>
+            Delivery
+          </Typography>
+          <Typography>{selectedDays} days</Typography>
+          <SizeBox width="1px" />
+          <AppColor.chevronBottom fill={AppColor.text} />
+        </div>
+      }
+    >
+      <div className={styles.dropdown_delivery_date}>
+        <InputCommon
+          type={'number'}
+          callback={(item: string) => {
+            setSelectedDays(Number(item))
+          }}
+          boxShadowNone={true}
+          textAlingCenter={true}
+          placeholder={'Enter Days Manually'}
+          backgroundColor={AppColor.transparent}
+        />
+      </div>
+      <DynamicPadding desktop="20px" />
+      <div className={styles.calendar_grid}>
+        {daysGridCount.map(i => (
+          <span
+            onClick={() => {
+              setSelectedDays(i)
+            }}
+            className={styles.calendar_day}
+            style={{ width: '49px', height: '42px', display: 'flex' }}
+          >
+            {i}
+          </span>
+        ))}
+      </div>
+      <DynamicPadding desktop="10px" />
     </DropDown>
   )
 }
