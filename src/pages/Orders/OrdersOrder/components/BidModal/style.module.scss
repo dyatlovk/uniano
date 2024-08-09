@@ -1,0 +1,31 @@
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.interview_wrap {
+  @include flexRow();
+  justify-content: space-between;
+}
+
+.interview_section_1 {
+  @include flexRow();
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.interview_cycle {
+  @include flexRow();
+  border-radius: 100%;
+  background-color: $orange;
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+
+  svg path {
+    fill: $white;
+  }
+}
+
+.interview_section_2 {}

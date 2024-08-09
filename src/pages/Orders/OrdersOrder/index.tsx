@@ -27,11 +27,14 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
 import PartnersModel from '@common/models/partnership/partnersModel'
+import BidModal from './components/BidModal'
 
 const OrdersOrder = () => {
   const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
   const [partnersSelectedUser, setPartnersSelecteduser] =
     useState<PartnerShip.Manager | null>(null)
+
+  const [placeBidModal, setPlaceBidModal] = useState<boolean>(false)
 
   const arrayHistory = ['Order', 'Development ', 'Web Development', 'WordPress']
   const title = 'Logo by sample in vector in maximum quality'
@@ -381,7 +384,9 @@ const OrdersOrder = () => {
                     <MyButtonOrange
                       width="100%"
                       textTransform="uppercase"
-                      onClick={() => {}}
+                      onClick={() => {
+                        setPlaceBidModal(true)
+                      }}
                     >
                       Place a bid 10/20
                     </MyButtonOrange>
@@ -400,6 +405,14 @@ const OrdersOrder = () => {
         <AskedQuestion />
       </div>
       <Footer />
+
+      {placeBidModal && (
+        <BidModal
+          onClose={() => {
+            setPlaceBidModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }
