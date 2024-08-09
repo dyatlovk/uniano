@@ -41,10 +41,10 @@ const BidModal = ({ onClose }: Props): JSX.Element => {
       <DynamicPadding desktop="30px" mobile="25px" />
 
       <UltimateSubscription />
-      <DynamicPadding desktop="30px" mobile="25px" />
+      <DynamicPadding desktop="22px" mobile="25px" />
 
       <Rewards />
-      <DynamicPadding desktop="30px" mobile="25px" />
+      <DynamicPadding desktop="27px" mobile="25px" />
 
       <Summary />
     </ModalCenterBasic>
@@ -200,6 +200,10 @@ const Rewards = (): JSX.Element => {
   return (
     <>
       <Title>Rewards</Title>
+      <div className="gap_20">
+        <AppColor.reward30Xp />
+        <AppColor.reward10PTS />
+      </div>
     </>
   )
 }
