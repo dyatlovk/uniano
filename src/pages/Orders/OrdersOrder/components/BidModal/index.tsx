@@ -1,15 +1,19 @@
+import ButtonChooseList from '@common/components/ButtonChooseList/index'
+import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import DropDownCommon from '@common/components/ui/Dropdown/DropdownCommon/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import MyButton from '@common/components/ui/MyButton/MyButton'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserLevelStat from '@common/components/Users/levels'
 import useUpdater from '@common/helpers/useUpdater'
 import { User, UserSkill } from '@common/models/users/levels'
 import AppColor from '@common/styles/variables-static'
+import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
 import classNames from 'classnames'
 import { PropsWithChildren, useEffect, useRef, useState } from 'react'
 import styles from './style.module.scss'
@@ -112,10 +116,83 @@ const Offer = (): JSX.Element => {
 }
 
 const UltimateSubscription = (): JSX.Element => {
+  const [showMissionModal, setShowMissionModal] = useState(false)
+
   return (
-    <>
+    <div>
       <Title>Ultimate subscription</Title>
-    </>
+      <div className="gap_10" style={{ marginTop: '-2px' }}>
+        <div className="gap_5">
+          <AppColor.moneyHummer />
+          <Typography variant="body4">$40</Typography>
+        </div>
+        <div className="gap_5">
+          <AppColor.shield />
+          <Typography variant="body4">10 days</Typography>
+        </div>
+      </div>
+      <DynamicPadding desktop="13px" mobile="10px" />
+      <span
+        className={styles.mission_btn}
+        onClick={() => {
+          setShowMissionModal(true)
+        }}
+      >
+        <Typography
+          variant="body4"
+          fontWeight="500"
+          color={AppColor.transparentBlack}
+        >
+          Missions
+        </Typography>
+      </span>
+
+      {showMissionModal && (
+        <ModalCenterBasic
+          bottomPartPadding="0px"
+          callbackClose={() => {
+            setShowMissionModal(false)
+          }}
+          title="Pro Missions"
+          nodeAfterTitle={
+            <ButtonChooseList
+              buttonPadding="4px 13px"
+              buttons={['Start', 'Pro', 'Ultimate']}
+              callback={() => {}}
+              gap="0px"
+              initValue="Fixed"
+            />
+          }
+        >
+          <Typography style={{ padding: '30px 30px' }} variant="body4">
+            Freelancers create some tasks to achieve. After successful
+            completion you can get valuable rewards.
+          </Typography>
+          <RoadmapFlex
+            text="Provide complete information about yourself"
+            title="Entrance challenge"
+            completed={true}
+            steps="1 of 12 completed"
+          />
+          <RoadmapFlex
+            text="Provide complete information about yourself"
+            title="Entrance challenge"
+            completed={true}
+            steps="1 of 12 completed"
+          />
+
+          <div style={{ padding: '30px' }} className="flex_end">
+            <MyButtonOrange
+              onClick={() => {}}
+              fontWeight="500"
+              textTransform="uppercase"
+            >
+              Change pro plan $25/month
+            </MyButtonOrange>
+          </div>
+        </ModalCenterBasic>
+      )}
+    </div>
   )
 }
 

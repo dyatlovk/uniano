@@ -65,7 +65,6 @@
 
 .dropdown {
   @include dropdown();
-  z-index: 20;
 }
 
 .dropdown_opened {
@@ -150,5 +149,13 @@
 
   &:hover {
     background-color: #FCFCFC;
+  }
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
   }
 }
