@@ -1,9 +1,17 @@
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import DropDownCommon from '@common/components/ui/Dropdown/DropdownCommon/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import MyButton from '@common/components/ui/MyButton/MyButton'
+import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
+import UserLevelStat from '@common/components/Users/levels'
+import useUpdater from '@common/helpers/useUpdater'
+import { User, UserSkill } from '@common/models/users/levels'
 import AppColor from '@common/styles/variables-static'
-import { PropsWithChildren } from 'react'
+import classNames from 'classnames'
+import { PropsWithChildren, useEffect, useRef, useState } from 'react'
 import styles from './style.module.scss'
 
 interface Props {
@@ -84,10 +92,22 @@ const Interview = (): JSX.Element => {
 
 const Offer = (): JSX.Element => {
   return (
-    <>
+    <div>
       <Title>Offer</Title>
-      <DropDownCommon items={[<>item</>]} callback={() => {}} />
-    </>
+      <div className={styles.offer_text}>
+        <Typography variant="body4" className={styles.offer_text}>
+          <span style={{ fontWeight: '500' }}>Artem M.</span> skill is{' '}
+          <span style={{ fontWeight: '500', color: AppColor.green }}>
+            Lead.
+          </span>
+          You will lose rewards if you work with this price.
+        </Typography>
+      </div>
+      <DynamicPadding desktop="20px" mobile="20px" />
+      <OfferPriceDropdown />
+      <DynamicPadding desktop="20px" mobile="20px" />
+      <OfferDeliveryCalDropdown />
+    </div>
   )
 }
 
@@ -142,8 +162,236 @@ const Title = (props: PropsWithChildren<TitleProps>): JSX.Element => {
       <Typography textLineHeight="1" variant="body3">
         {props.children}
       </Typography>
-      <DynamicPadding desktop="30px" mobile="25px" />
+      <DynamicPadding desktop="28px" mobile="25px" />
     </>
+  )
+}
+
+const OfferPriceDropdown = (): JSX.Element => {
+  const [priceDropDownOpened, setPriceDropDownOpened] = useState<boolean>(false)
+  const [selectedPrice, setSelectedPrice] = useState<number>(0)
+
+  return (
+    <DropDown
+      selectedNode={
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '5px',
+          }}
+        >
+          <UserLevelStat level={User.SkillsLabels.Beginner} />
+          <Typography variant="body4" color={'#01010180'}>
+            Price
+          </Typography>
+          <Typography>${selectedPrice}</Typography>
+          <SizeBox width="1px" />
+          <AppColor.chevronBottom fill={AppColor.text} />
+        </div>
+      }
+      onCallback={(state: boolean) => {
+        setPriceDropDownOpened(state)
+      }}
+      initOpened={priceDropDownOpened}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '15px',
+        }}
+      >
+        Fixed <DropDownCommon items={['Milestones 1', 'Milestones 2']} />
+      </div>
+      <DynamicPadding desktop="20px" />
+      <div className={styles.price_input}>
+        <InputCommon
+          type={'number'}
+          boxShadowNone={true}
+          callback={() => {}}
+          placeholder={''}
+        />
+        <MyButton
+          padding="7.5px 13.3px"
+          fontWeight="500"
+          textTransform="uppercase"
+          onClick={() => {
+            setPriceDropDownOpened(false)
+          }}
+        >
+          ok
+        </MyButton>
+      </div>
+      <DynamicPadding desktop="20px" />
+      <HorizontalLine />
+      <DynamicPadding desktop="8px" />
+      <ul className={styles.offer_list}>
+        <li
+          onClick={() => {
+            setPriceDropDownOpened(false)
+            setSelectedPrice(40)
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <UserLevelStat level={User.SkillsLabels.Beginner} />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={
+                UserSkill.getLevelByLabel(User.SkillsLabels.Beginner).color
+              }
+            >
+              {UserSkill.getLevelByLabel(User.SkillsLabels.Beginner).label}
+            </Typography>
+            $30 - $50
+          </div>
+        </li>
+        <li
+          onClick={() => {
+            setPriceDropDownOpened(false)
+            setSelectedPrice(80)
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <UserLevelStat level={User.SkillsLabels.Junior} />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={UserSkill.getLevelByLabel(User.SkillsLabels.Junior).color}
+            >
+              {UserSkill.getLevelByLabel(User.SkillsLabels.Junior).label}
+            </Typography>
+            $51 - $100
+          </div>
+        </li>
+        <li
+          onClick={() => {
+            setPriceDropDownOpened(false)
+            setSelectedPrice(100)
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <UserLevelStat level={User.SkillsLabels.Middle} />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={UserSkill.getLevelByLabel(User.SkillsLabels.Middle).color}
+            >
+              {UserSkill.getLevelByLabel(User.SkillsLabels.Middle).label}
+            </Typography>
+            $101 - $300
+          </div>
+        </li>
+        <li
+          onClick={() => {
+            setPriceDropDownOpened(false)
+            setSelectedPrice(200)
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <UserLevelStat level={User.SkillsLabels.Senior} />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={UserSkill.getLevelByLabel(User.SkillsLabels.Senior).color}
+            >
+              {UserSkill.getLevelByLabel(User.SkillsLabels.Senior).label}
+            </Typography>
+            $301 - $500
+          </div>
+        </li>
+        <li
+          onClick={() => {
+            setPriceDropDownOpened(false)
+            setSelectedPrice(300)
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <UserLevelStat level={User.SkillsLabels.Lead} />
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={UserSkill.getLevelByLabel(User.SkillsLabels.Lead).color}
+            >
+              {UserSkill.getLevelByLabel(User.SkillsLabels.Lead).label}
+            </Typography>
+            starting at $501
+            <AppColor.shieldTrue width={9} fill={AppColor.red} />
+          </div>
+        </li>
+      </ul>
+    </DropDown>
+  )
+}
+
+const OfferDeliveryCalDropdown = (): JSX.Element => {
+  return (
+    <DropDown selectedNode={<>Calendar</>}>
+      <div>Enter days</div>
+      <div></div>
+    </DropDown>
+  )
+}
+
+interface DropDownProps {
+  onCallback?: (state: boolean) => void
+  selectedNode?: React.ReactNode
+  initOpened?: boolean
+}
+const DropDown = ({
+  onCallback,
+  children,
+  selectedNode,
+  initOpened = false,
+}: PropsWithChildren<DropDownProps>): JSX.Element => {
+  const [isSelected, setIsSelected] = useState<boolean>(initOpened)
+  const selectedRef = useRef<HTMLDivElement>(null)
+  const dropDownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setIsSelected(initOpened)
+  }, [initOpened])
+
+  return (
+    <div
+      className={classNames(
+        isSelected ? styles.dropdown_opened : styles.dropdown
+      )}
+      ref={dropDownRef}
+      data-orderdropdown={isSelected ? 'opened' : 'closed'}
+      onClick={() => {
+        if (!isSelected) {
+          setIsSelected(true)
+          if (onCallback) onCallback(!isSelected)
+        }
+      }}
+    >
+      <div
+        onClick={() => {
+          setIsSelected(false)
+          if (onCallback) onCallback(false)
+        }}
+        className={classNames(
+          isSelected
+            ? styles.dropdown_selected_active
+            : styles.dropdown_selected
+        )}
+        ref={selectedRef}
+      >
+        {selectedNode}
+      </div>
+      <div
+        className={classNames(
+          isSelected ? styles.dropdown_content_active : styles.dropdown_content
+        )}
+      >
+        <DynamicPadding desktop="20px" />
+        {children}
+      </div>
+    </div>
   )
 }
 

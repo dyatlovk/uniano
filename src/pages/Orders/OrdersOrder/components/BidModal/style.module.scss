@@ -1,7 +1,32 @@
+@mixin dropdownContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  padding-bottom: 8px;
+  padding-top: 51px;
+}
+
 @mixin flexRow {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+@mixin dropdown {
+  box-shadow: 0px 0px 13px 2px #00000021;
+  border-radius: $borderRadius;
+  position: relative;
+}
+
+@mixin selected {
+  position: relative;
+  z-index: 11;
+  padding: 12.5px 20px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .interview_wrap {
@@ -28,4 +53,76 @@
   }
 }
 
+.offer_text {
+  p {
+    display: inline flow-root list-item;
+    margin-left: 1em;
+    margin-top: -8px;
+  }
+}
+
 .interview_section_2 {}
+
+.dropdown {
+  @include dropdown();
+  z-index: 20;
+}
+
+.dropdown_opened {
+  @include dropdown();
+  box-shadow: none;
+  z-index: 21;
+}
+
+.dropdown_content_active {
+  @include dropdownContent();
+  opacity: 1;
+  border-radius: $borderRadius;
+  z-index: 10;
+  box-shadow: 0px 0px 13px 2px #00000021;
+}
+
+.dropdown_content {
+  @include dropdownContent();
+  opacity: 0;
+  z-index: -1;
+}
+
+.dropdown_selected {
+  @include selected();
+  border-bottom: 2px solid transparent;
+}
+
+.dropdown_selected_active {
+  @include selected();
+  border-bottom: 2px solid #5151511A;
+}
+
+.price_input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  width: 65%;
+
+  input {
+    border: 1px solid #5151511A;
+  }
+}
+
+.offer_list {
+  display: flex;
+  flex-direction: column;
+  margin-left: -10px;
+  width: calc(100% + 20px);
+
+  li {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
