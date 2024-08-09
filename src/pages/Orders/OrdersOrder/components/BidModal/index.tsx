@@ -8,14 +8,20 @@ import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import MyButton from '@common/components/ui/MyButton/MyButton'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import SizeBox from '@common/components/ui/SizeBox/index'
+import TextDotted from '@common/components/ui/TextDotted/index'
+import TrustScore from '@common/components/ui/TrustScore/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserLevelStat from '@common/components/Users/levels'
-import useUpdater from '@common/helpers/useUpdater'
 import { User, UserSkill } from '@common/models/users/levels'
 import AppColor from '@common/styles/variables-static'
-import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
 import classNames from 'classnames'
-import { PropsWithChildren, useEffect, useRef, useState } from 'react'
+import {
+  MouseEvent,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import styles from './style.module.scss'
 
 interface Props {
@@ -44,9 +50,23 @@ const BidModal = ({ onClose }: Props): JSX.Element => {
       <DynamicPadding desktop="22px" mobile="25px" />
 
       <Rewards />
-      <DynamicPadding desktop="27px" mobile="25px" />
+      <DynamicPadding desktop="23px" mobile="25px" />
 
       <Summary />
+      <DynamicPadding desktop="30px" mobile="25px" />
+
+      <Notify />
+      <DynamicPadding desktop="30px" mobile="25px" />
+
+      <MyButtonOrange
+        width="100%"
+        textTransform="uppercase"
+        onClick={() => {
+          onClose()
+        }}
+      >
+        Place a bid 10/20
+      </MyButtonOrange>
     </ModalCenterBasic>
   )
 }
@@ -210,9 +230,42 @@ const Rewards = (): JSX.Element => {
 
 const Summary = (): JSX.Element => {
   return (
-    <>
+    <div>
       <Title>Summary</Title>
-    </>
+      <div className={styles.dots_text_wrapper}>
+        <TextDotted
+          fontWeightEndText="500"
+          startTextColor="#01010150"
+          text="Price"
+          textEnd="3"
+        />
+        <TextDotted
+          text="Service Fee 10%"
+          startTextColor="#01010150"
+          textEnd="-$15"
+          fontWeightEndText="500"
+        />
+        <TextDotted
+          text="Total To Receive"
+          startTextColor="#01010150"
+          textEnd="$135"
+          fontWeightEndText="500"
+        />
+      </div>
+      <DynamicPadding desktop="25px" />
+      <div className={styles.flex_row}>
+        <AppColor.gift />
+        <Typography
+          color={AppColor.green}
+          fontWeight={'500'}
+          textTransform="uppercase"
+        >
+          1 reward available
+        </Typography>
+      </div>
+      <DynamicPadding desktop="23px" />
+      <TrustScore />
+    </div>
   )
 }
 
@@ -520,6 +573,17 @@ const DropDown = ({
         <DynamicPadding desktop="20px" />
         {children}
       </div>
+    </div>
+  )
+}
+
+const Notify = (): JSX.Element => {
+  return (
+    <div className={styles.notify}>
+      <Typography variant="body4">
+        You can cancel your bid only when there are no hired freelancers or
+        until you will not be moved from new list.{' '}
+      </Typography>
     </div>
   )
 }
