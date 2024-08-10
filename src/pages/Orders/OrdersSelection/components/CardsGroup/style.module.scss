@@ -1,0 +1,95 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.batch_actions {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  z-index: 3;
+  background-color: $white;
+  border-radius: $borderRadius;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 10px;
+  user-select: none;
+  width: 100%;
+}
+
+.users_list {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: $borderRadius;
+    border: 3px solid #fff;
+    margin-right: -10px;
+  }
+}
+
+.users_counter {
+  color: $text;
+  display: flex;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.gap_20 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.gap_10 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selection_activity {
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.6;
+
+    p {
+      font-weight: 500;
+    }
+  }
+}
+
+.batch_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.cancel_actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cancel_btn {
+  button:hover {
+    color: $text;
+  }
+}
+
+@media (min-width: $tabletSize) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+}
