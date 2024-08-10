@@ -157,9 +157,11 @@ const OrdersSelection = () => {
 
             <CardsGroup items={itemsToshow} />
 
-            <DynamicPadding desktop="40px" mobile="20px" />
+            <DynamicPadding desktop="30px" mobile="20px" />
             <div className={styles.justify_center}>
               <MyButtonTransparentBlack
+                textTransform="uppercase"
+                fontWeight="500"
                 onClick={() => {
                   setItemsToShow(prev => [...prev, 1, 2, 3])
                 }}
@@ -167,11 +169,11 @@ const OrdersSelection = () => {
                 Show more +3
               </MyButtonTransparentBlack>
             </div>
-            <DynamicPadding desktop="40px" mobile="20px" />
+            <DynamicPadding desktop="30px" mobile="20px" />
             <div className={styles.justify_center}>
               <NavBarLineBlack callback={() => {}} maxCountPage={100} />
             </div>
-            <DynamicPadding />
+            <DynamicPadding desktop='49px' />
             <div className={styles.justify_flex}>
               <Link to={'/partnership/program'}>
                 <ChevronMoveTo
