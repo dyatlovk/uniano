@@ -1,5 +1,4 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
@@ -8,26 +7,47 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import AskedQuestion from '@common/components/AskedQuestions/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import DetailsProgresService from '@common/components/ui/DetailsTable/variants/DetailsProgresService/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import DetailsProgressOrders from '@common/components/ui/DetailsTable/variants/DetailsProgressOrders/index'
+import { useEffect, useState } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/orders/statesModel'
+import CancelModal from '@pages/Service/ServiceProgress/components/CancelModal/index'
+import FilesModal from '@pages/Service/ServiceProgress/components/FilesModal/index'
+import NegotiationsModal from '@pages/Service/ServiceProgress/components/NegotiationModal/index'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
+import MissionModal from '@pages/Service/ServiceProgress/components/MissionModal/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
-import InfoBox from '@common/components/ui/InfoBox/index'
-import { useEffect } from 'react'
+
+const freelancerProjectModel = new FreelancerProjectsModel(
+  FreelancerProjectsModel.makeFakeData()
+)
+const freelancerFakeProject = freelancerProjectModel.findByLabel('Progress')
+const freelancerFakeProjectProgress =
+  freelancerProjectModel.getProgress('Progress')
 
 const OrdersProgress = () => {
+  const [showFilesModal, setShowFilesModal] = useState<boolean>(false)
+  const [showNegotiationModal, setShowNegotiationModal] =
+    useState<boolean>(false)
+  const [showCancelModal, setShowCancelModal] = useState<boolean>(false)
+  const [showMissionModal, setShowMissionModal] = useState<boolean>(false)
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
   const arrayHistory = [
     'Partnership',
     'Development',
@@ -40,20 +60,15 @@ const OrdersProgress = () => {
     window.scrollTo({ top: 0 })
   }, [])
 
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
+
   return (
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Order',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Order"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -63,14 +78,14 @@ const OrdersProgress = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="15px" mobile="20px" />
         <UserTopPageInfo user={fakeUserConstant} />
         <DynamicPadding />
 
         <ResponsiveLayoutTwo
           gap="80px"
           item1MaxWidth="730px"
-          item2MaxWidth="390px"
+          item2MaxWidth="388px"
           orderItem1Desktop={0}
           orderItem1Mobile={1}
           orderItem2Desktop={1}
@@ -89,60 +104,83 @@ const OrdersProgress = () => {
               />
               <DynamicPadding />
               <div className={styles.shadow_box_grid}>
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.files />,
-                    <Typography variant="body4" fontWeight="500">
-                      Files
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                    >
-                      3 files
-                    </Typography>,
-                  ]}
-                  gap="20px"
-                  paddingBoxDesktop="20px 0px"
-                />
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.negotiation />,
-                    <Typography variant="body4" fontWeight="500">
-                      Negotiations
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                    >
-                      Change
-                    </Typography>,
-                  ]}
-                  gap="20px"
-                  paddingBoxDesktop="20px 0px"
-                />
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.cancel />,
-                    <Typography variant="body4" fontWeight="500">
-                      Cancel
-                    </Typography>,
-                    <Typography
-                      color={AppColor.transparentBlack}
-                      textTransform="uppercase"
-                      variant="body5"
-                      fontWeight="500"
-                    >
-                      project
-                    </Typography>,
-                  ]}
-                  gap="20px"
-                  paddingBoxDesktop="20px 0px"
-                />
+                <div
+                  className={styles.action}
+                  onClick={() => {
+                    setShowFilesModal(true)
+                  }}
+                >
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.files />,
+                      <Typography variant="body4" fontWeight="500">
+                        Files
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                      >
+                        3 files
+                      </Typography>,
+                    ]}
+                    gap="20px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
+
+                <div
+                  className={styles.action}
+                  onClick={() => {
+                    setShowNegotiationModal(true)
+                  }}
+                >
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.negotiation />,
+                      <Typography variant="body4" fontWeight="500">
+                        Negotiations
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                      >
+                        Change
+                      </Typography>,
+                    ]}
+                    gap="20px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
+
+                <div
+                  className={styles.action}
+                  onClick={() => {
+                    setShowCancelModal(true)
+                  }}
+                >
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.cancel />,
+                      <Typography variant="body4" fontWeight="500">
+                        Cancel
+                      </Typography>,
+                      <Typography
+                        color={AppColor.transparentBlack}
+                        textTransform="uppercase"
+                        variant="body5"
+                        fontWeight="500"
+                      >
+                        project
+                      </Typography>,
+                    ]}
+                    gap="20px"
+                    paddingBoxDesktop="20px 0px"
+                  />
+                </div>
               </div>
 
               <DynamicPadding />
@@ -165,29 +203,16 @@ const OrdersProgress = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Freelancer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
 
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className="justify_center">
@@ -196,18 +221,18 @@ const OrdersProgress = () => {
                   textTransform="uppercase"
                   fontWeight="500"
                 >
-                  Project 1
+                  Project 2
                 </Typography>
               </div>
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
-                  title="Order"
-                  text="Fab 27, 2023 23:55 - Fab 28, 2023 23:55"
-                  initState={true}
+                  title="Milestone 1"
+                  text="Fab 27, 2023 23:55 - current"
+                  initState={false}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="20px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -219,9 +244,13 @@ const OrdersProgress = () => {
                           0 sec
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar currentPercent={66} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
+                      <PercentBar
+                        currentPercent={freelancerFakeProjectProgress}
+                        color={freelancerFakeProject.color}
+                        height={'5px'}
+                      />
+                      <DynamicPadding desktop="10px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -232,26 +261,26 @@ const OrdersProgress = () => {
                         <Typography
                           variant="body4"
                           fontWeight="500"
-                          color={AppColor.orange}
+                          color={freelancerFakeProject.color}
                         >
-                          Progress
+                          {freelancerFakeProject.label}
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="21px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
                           fontWeightEndText="500"
                           info={true}
                           startTextColor={AppColor.transparentBlack}
-                          text="Delivert"
+                          text="Delivary"
                           textEnd="1 day"
                         />
                       </div>
@@ -266,35 +295,27 @@ const OrdersProgress = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="27px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="23px" mobile="20px" />
 
                       <Typography variant="body3" fontWeight="500">
                         Subscription
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
+
                       <div className="flex_space_between">
-                        <ButtonChooseList
-                          buttonPadding="4px 13px"
-                          buttons={['Start', 'Pro', 'Ultimate']}
-                          callback={() => {}}
-                          gap="0px"
-                          initValue="Start"
+                        <SubscriptionList
+                          callback={(title: string) => {
+                            console.log(title)
+                          }}
                         />
 
                         <div className={styles.buy_wrapper}>
                           <AppColor.buy fill={AppColor.text} />
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <div className="gap_5">
-                        <AppColor.queue fill={AppColor.orange} />
-                        <Typography variant="body4">
-                          Higher Priority Queue
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
+                      <DynamicPadding desktop="18px" mobile="10px" />
                       <div className="gap_10">
                         <div className="gap_5">
                           <AppColor.moneyHummer />
@@ -305,35 +326,43 @@ const OrdersProgress = () => {
                           <Typography variant="body4">10 days</Typography>
                         </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color={AppColor.transparentBlack}
+                      <DynamicPadding desktop="14px" mobile="10px" />
+                      <span
+                        className={styles.mission_btn}
+                        onClick={() => {
+                          setShowMissionModal(true)
+                        }}
                       >
-                        Missions
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                        {' '}
+                        <Typography
+                          variant="body4"
+                          fontWeight="500"
+                          color={AppColor.transparentBlack}
+                        >
+                          Missions
+                        </Typography>
+                      </span>
+                      <DynamicPadding desktop="23px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="20px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
-                        <AppColor.reward10PTS />
                         <AppColor.reward30Xp />
+                        <AppColor.reward30XpDisabled />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Summary
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
+
                       <div className={styles.text_dotted_wrapper}>
+                        <Typography variant="body3" fontWeight="500">
+                          Summary
+                        </Typography>
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.transparentBlack}
@@ -351,19 +380,18 @@ const OrdersProgress = () => {
                             </div>
                           }
                         />
-
                         <TextDotted
                           fontWeightEndText="500"
                           startTextColor={AppColor.orange}
                           text="Total To Pay"
                           endNode={
                             <div className="gap_5">
-                              <AppColor.lock />{' '}
+                              <AppColor.lock />
                               <Typography
                                 textLineHeight={'1'}
-                                color={AppColor.orange}
                                 variant="body4"
                                 fontWeight="500"
+                                color={AppColor.orange}
                               >
                                 $200
                               </Typography>
@@ -372,258 +400,31 @@ const OrdersProgress = () => {
                         />
                       </div>
 
-                      <DynamicPadding desktop="20px" mobile="15px" />
+                      <DynamicPadding desktop="20px" mobile="20px" />
+
                       <div className="gap_5">
                         <Typography variant="body4">
                           Public Financial Details
                         </Typography>
                         <SwitchButton
-                          startValue={true}
-                          height="24px"
                           width="44px"
+                          height="24px"
+                          startValue={true}
                         />
-                        <InfoBox />
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
-                        <AppColor.likeRounded />
-                        <Typography variant="body4" fontWeight="500">
-                          <span color={AppColor.green}>96</span> Trust Score
-                        </Typography>
-                        <div className={styles.info_box}>
+                        <div
+                          className="circle_shadow"
+                          style={{ padding: '3px 6px' }}
+                        >
                           <AppColor.info />
                         </div>
                       </div>
-                    </div>
-                  }
-                />
-              </div>
 
-              {/* <DynamicPadding desktop='30px' mobile='15px'/>
-                      <div className="justify_center">
-                          <Typography variant='body4' textTransform='uppercase' fontWeight='500'>Project 1</Typography>
-                      </div> */}
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <div className={`box_shadow ${styles.details_box}`}>
-                <DetailsDropdownItem
-                  title="Milestone 1"
-                  text="Fab 27, 2023 23:55 - current"
-                  initState={false}
-                  node={
-                    <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Duration
-                        </Typography>
-                        <Typography variant="body4" fontWeight="500">
-                          0 sec
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <PercentBar currentPercent={0} height="5px" />
-                      <DynamicPadding desktop="15px" mobile="5px" />
-                      <div className="flex_space_between">
-                        <Typography
-                          variant="body4"
-                          color={AppColor.transparentBlack}
-                        >
-                          Status
-                        </Typography>
-                        <Typography
-                          variant="body4"
-                          fontWeight="500"
-                          color={'#F2C94C'}
-                        >
-                          Pending
-                        </Typography>
-                      </div>
+                      <DynamicPadding desktop="20px" mobile="5px" />
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Details
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
-
-                      <div className={styles.text_dotted_wrapper}>
-                        <TextDotted
-                          fontWeightEndText="500"
-                          info={true}
-                          startTextColor={AppColor.transparentBlack}
-                          text="Revisions"
-                          textEnd="10"
-                        />
-                        <TextDotted
-                          fontWeightEndText="500"
-                          info={true}
-                          startTextColor={AppColor.transparentBlack}
-                          text="Source File"
-                          textEnd="2"
-                        />
-                        <TextDotted
-                          fontWeightEndText="500"
-                          info={true}
-                          startTextColor={AppColor.transparentBlack}
-                          text="High Resolution"
-                          textEnd="2"
-                        />
-                        <TextDotted
-                          fontWeightEndText="500"
-                          info={true}
-                          startTextColor={AppColor.transparentBlack}
-                          text="Delivery"
-                          textEnd="6 days"
-                        />
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_10">
-                        <Typography
-                          fontWeight="500"
-                          color={AppColor.transparentBlack}
-                          variant="body4"
-                        >
-                          Specification
-                        </Typography>
-                        <Typography
-                          fontWeight="500"
-                          color={AppColor.transparentBlack}
-                          variant="body4"
-                        >
-                          Documents
-                        </Typography>
-                      </div>
-
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-
-                      <Typography variant="body3" fontWeight="500">
-                        Subscription
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <div className="flex_space_between">
-                        <ButtonChooseList
-                          buttonPadding="4px 13px"
-                          buttons={['Start', 'Pro', 'Ultimate']}
-                          callback={() => {}}
-                          gap="0px"
-                          initValue="Start"
-                        />
-
-                        <div className={styles.buy_wrapper}>
-                          <AppColor.buy fill={AppColor.text} />
-                        </div>
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <div className="gap_5">
-                        <AppColor.queue fill={AppColor.orange} />
-                        <Typography variant="body4">
-                          Higher Priority Queue
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <div className="gap_10">
-                        <div className="gap_5">
-                          <AppColor.moneyHummer />
-                          <Typography variant="body4">$40</Typography>
-                        </div>
-                        <div className="gap_5">
-                          <AppColor.shield />
-                          <Typography variant="body4">10 days</Typography>
-                        </div>
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="10px" />
-                      <Typography
-                        variant="body4"
-                        fontWeight="500"
-                        color={AppColor.transparentBlack}
-                      >
-                        Missions
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Rewards
-                      </Typography>
-                      <SizeBox height="10px" />
-
-                      <div className={styles.rewards_wrapper}>
-                        <AppColor.reward10PTS />
-                        <AppColor.reward30Xp />
-                      </div>
-
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <Typography variant="body3" fontWeight="500">
-                        Summary
-                      </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
-                      <div className={styles.text_dotted_wrapper}>
-                        <TextDotted
-                          fontWeightEndText="500"
-                          startTextColor={AppColor.transparentBlack}
-                          text="Start Package Milestone 2"
-                          endNode={
-                            <div className="gap_5">
-                              <AppColor.threeOfFive />{' '}
-                              <Typography
-                                textLineHeight={'1'}
-                                variant="body4"
-                                fontWeight="500"
-                              >
-                                $200
-                              </Typography>
-                            </div>
-                          }
-                        />
-                        <TextDotted
-                          fontWeightEndText="500"
-                          startTextColor={AppColor.transparentBlack}
-                          text="Sale Discount 50%"
-                          textEnd="-$100"
-                        />
-
-                        <TextDotted
-                          fontWeightEndText="500"
-                          startTextColor={AppColor.orange}
-                          text="Total To Pay"
-                          endNode={
-                            <Typography
-                              textLineHeight={'1'}
-                              color={AppColor.orange}
-                              variant="body4"
-                              fontWeight="500"
-                            >
-                              $100
-                            </Typography>
-                          }
-                        />
-                      </div>
-
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div style={{ opacity: '0.5' }} className="gap_5">
-                        <AppColor.gift />
-                        <Typography
-                          variant="body5"
-                          fontWeight="500"
-                          textTransform="uppercase"
-                        >
-                          no rewards
-                        </Typography>
-                      </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-                      <div className="gap_5">
+                      <div className={styles.trust_score}>
                         <AppColor.likeRounded />
-                        <Typography variant="body4" fontWeight="500">
-                          <span color={AppColor.green}>96</span> Trust Score
-                        </Typography>
+                        <Typography color={AppColor.green}>96</Typography>
+                        <Typography>Trust Score</Typography>
                         <div className={styles.info_box}>
                           <AppColor.info />
                         </div>
@@ -642,6 +443,38 @@ const OrdersProgress = () => {
       </div>
 
       <Footer />
+
+      {showMissionModal && (
+        <MissionModal
+          onClose={() => {
+            setShowMissionModal(false)
+          }}
+        />
+      )}
+
+      {showFilesModal && (
+        <FilesModal
+          onClose={() => {
+            setShowFilesModal(false)
+          }}
+        />
+      )}
+
+      {showNegotiationModal && (
+        <NegotiationsModal
+          onClose={() => {
+            setShowNegotiationModal(false)
+          }}
+        />
+      )}
+
+      {showCancelModal && (
+        <CancelModal
+          onClose={() => {
+            setShowCancelModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }

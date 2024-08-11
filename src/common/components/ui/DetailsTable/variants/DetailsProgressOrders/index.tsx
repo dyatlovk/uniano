@@ -2,16 +2,14 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 import { useScreenSize } from '@common/helpers/useScreenSize'
 import DetailsTable from '../..'
-import { fakeUserConstant, userModel } from '@common/models/user'
+import { fakeUserConstant } from '@common/models/user'
 import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import AppColor from '@common/styles/variables-static'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserAvatar from '../../../UserAvatar'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
 import SizeBox from '../../../SizeBox'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 
@@ -30,8 +28,6 @@ const DetailsProgressOrders = ({
 }: DetailsProgressOrdersProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = informationTable[currentPage - 1]
-  const { width, height } = useScreenSize()
-
   const [dropdownShowItemsCount, setDropdownShowItemCount] = useState(1)
 
   const dropdownElements = Array.from(
@@ -64,6 +60,7 @@ const DetailsProgressOrders = ({
                 <DynamicPadding desktop="30px" mobile="40px" />
                 <div className="justify_center">
                   <MyButtonTransparentBlack
+                    textTransform="uppercase"
                     fontWeight="500"
                     onClick={() => {
                       setDropdownShowItemCount(5)
@@ -145,19 +142,19 @@ const DetailsProgressOrders = ({
 const DropdownMyProgramsItem = ({}) => {
   return (
     <div className={styles.dropdown_wrapper}>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="27px" mobile="20px" />
       <div className={styles.dropdown_content}>
         <DropdownText
           sizeBox={true}
-          title="Budget"
+          title="Hourly Rate"
           node={
             <div className="gap_5">
-              <Typography variant="body4" fontWeight="500">
-                $1 500
+              <Typography variant="body4" fontWeight="500" textLineHeight="1">
+                $15/hr
               </Typography>
               <AppColor.doubleUp />
-              <Typography variant="body4" fontWeight="500">
-                $3 000
+              <Typography variant="body4" fontWeight="500" textLineHeight="1">
+                $30/hr
               </Typography>
             </div>
           }
@@ -168,11 +165,11 @@ const DropdownMyProgramsItem = ({}) => {
           title="Delivery"
           node={
             <div className="gap_5">
-              <Typography variant="body4" fontWeight="500">
+              <Typography variant="body4" fontWeight="500" textLineHeight="1">
                 6 days
               </Typography>
               <AppColor.doubleDown />
-              <Typography variant="body4" fontWeight="500">
+              <Typography variant="body4" fontWeight="500" textLineHeight="1">
                 5 days
               </Typography>
             </div>
@@ -185,9 +182,10 @@ const DropdownMyProgramsItem = ({}) => {
           node={
             <div className="gap_5">
               <Typography
-                fontWeight="500"
-                variant="body4"
                 color={AppColor.transparentBlack}
+                variant="body4"
+                fontWeight="500"
+                textLineHeight="1"
               >
                 View
               </Typography>
@@ -195,7 +193,6 @@ const DropdownMyProgramsItem = ({}) => {
           }
           text=""
         />
-
         <DropdownText
           sizeBox={true}
           title="Ultimate Subscription"
@@ -203,13 +200,13 @@ const DropdownMyProgramsItem = ({}) => {
             <div className="gap_10">
               <div className="gap_5">
                 <AppColor.moneyHummer />
-                <Typography variant="body4" fontWeight="500">
+                <Typography variant="body4" fontWeight="500" textLineHeight="1">
                   $40{' '}
                 </Typography>
               </div>
               <div className="gap_5">
                 <AppColor.shield />
-                <Typography variant="body4" fontWeight="500">
+                <Typography variant="body4" fontWeight="500" textLineHeight="1">
                   10 days
                 </Typography>
               </div>
@@ -245,7 +242,7 @@ const DropdownMyProgramsItemUser = ({
 }: DropdownMyProgramsItemUserProps) => {
   return (
     <div className={styles.dropdown_wrapper}>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="28px" mobile="20px" />
       <div className={styles.dropdown_content_user}>
         <UserAvatar
           width="38px"
@@ -270,7 +267,7 @@ const DropdownMyProgramsItemUser = ({
           <AppColor.singTrue stroke={AppColor.green} />
         </div>
       </div>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="28px" mobile="20px" />
       <HorizontalLine />
     </div>
   )

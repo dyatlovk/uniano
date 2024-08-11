@@ -4,6 +4,39 @@
   gap: 20px;
 }
 
+.action {
+  cursor: pointer;
+
+  &:hover {
+    p {
+      color: $orange !important;
+    }
+
+    .action_icon_cancel {
+      path {
+        fill: $orange;
+      }
+    }
+
+    [data-file="file-path-2"] {
+      stroke: $orange;
+    }
+
+    [data-negotiation-path="1"] {
+      fill: $orange;
+    }
+
+    [data-negotiation-path="3"] {
+      fill: $orange;
+    }
+  }
+}
+
+[data-detailstable="child"] {
+  padding-top: 22px;
+  padding-bottom: 2px;
+}
+
 @media (min-width: $tabletSize) {
 
   .shadow_box_grid {
@@ -74,6 +107,21 @@
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.trust_score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @media (min-width: $tabletSize) {
