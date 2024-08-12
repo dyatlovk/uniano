@@ -2,23 +2,21 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DetailMyOrders from '@common/components/ui/DetailsTable/variants/DetailsMyOrders/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import {
-  crowdfreelancerNav,
-  developmentDropdown,
-} from '@common/models/constants'
 import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
+import { useEffect, useState } from 'react'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import DetailsMyService from '@common/components/ui/DetailsTable/variants/DetailsMyService/index'
+import { fakeUserConstant } from '@common/models/user'
+import ReviewModal from '@pages/Service/ServiceMy/components/ReviewModal/index'
+import DetailsCrowdfreelanceAdmin from '@common/components/ui/DetailsTable/variants/DetailsCrowdfreelanceAdmin/index'
 import DetailCrowdfreelanceMy from '@common/components/ui/DetailsTable/variants/DetailsCrowdfreelancerMy/index'
-import { useEffect } from 'react'
 
 const CrowdfreelanceMy = () => {
+  const [addReviewModalShow, setAddReviewModalShow] = useState<boolean>(false)
   const arrayHistory = ['Crowdfreelance']
   const title = 'My Campaigns'
 
@@ -30,10 +28,20 @@ const CrowdfreelanceMy = () => {
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="Crowdfreelance"
-        navItems={crowdfreelancerNav}
-        titleIcon={<AppColor.caseWhite />}
+        activeId={1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All campaigns',
+            link: '/crowdfreelance/all',
+          },
+          {
+            title: 'My campaigns',
+            link: '/crowdfreelance/my',
+          },
+        ]}
       />
 
       <div className={'wrapper_page'}>
@@ -42,22 +50,11 @@ const CrowdfreelanceMy = () => {
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
           pageTitle={title}
-          endNode={
-            <MyButtonTransparentOrange
-              onClick={() => {}}
-              textTransform="uppercase"
-              fontWeight="500"
-            >
-              My campaigns <AppColor.chevronBottom fill={AppColor.orange} />
-            </MyButtonTransparentOrange>
-          }
         />
 
-        <DynamicPadding />
-
-        <SearchFilterBar date="10/29/22 - 11/29/22" />
-
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
+        <SearchFilterBar usePeriod={true} />
+        <DynamicPadding desktop="50px" mobile="20px" />
 
         <DetailCrowdfreelanceMy
           informationDropdown={[
@@ -74,9 +71,20 @@ const CrowdfreelanceMy = () => {
       </div>
       <CardsSliderRelated />
       <div className="wrapper_page">
-        <AskedQuestion />
+        <AskedQuestion margin='50px 0 0 0' />
       </div>
       <Footer />
+
+      {addReviewModalShow && (
+        <ReviewModal
+          onPublish={() => {
+            setAddReviewModalShow(false)
+          }}
+          onClose={() => {
+            setAddReviewModalShow(false)
+          }}
+        />
+      )}
     </div>
   )
 }
