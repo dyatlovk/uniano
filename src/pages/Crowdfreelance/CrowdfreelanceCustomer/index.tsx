@@ -1,16 +1,12 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import CommentTitleFilter from '@common/components/CommentTitleFilters/index'
 import FilterList from '@common/components/FilterList/index'
 import Header from '@common/components/Header/Header/index'
 import ImageCardsShow from '@common/components/ImageCardsShow/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import ReviewsProgramCard from '@common/components/ReviewsProgram/index'
-import TagsDisplay from '@common/components/TagsDisplay/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DaysLeftTimer from '@common/components/ui/DaysLeftTimer/DaysLeftTimer'
 import Dropdown from '@common/components/ui/Dropdown/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
@@ -22,7 +18,6 @@ import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
@@ -35,29 +30,21 @@ import test1 from '@assets/images/test1.png'
 import test2 from '@assets/images/test2.png'
 import test3 from '@assets/images/test3.png'
 import test4 from '@assets/images/test4.png'
-import {
-  SliderUsers,
-  SelectBenefitItem,
-  Selectbox,
-} from '@pages/Service/Service/index'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
-import {
-  crowdfreelancerNav,
-  developmentDropdown,
-} from '@common/models/constants'
-import Slider from '@common/components/ui/Slider/Slider'
-import LastSponsors from '@common/components/LastSponsors/index'
+import { Selectbox } from '@pages/Service/Service/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import CommentsSection, {
   comment,
 } from '@common/components/CommentsSection/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import ContactModal from '@pages/Partnership/pages/Program/modals/contactModal/index'
+import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
+import LastSponsors from '@common/components/LastSponsors/index'
+import TagsDisplay from '@common/components/TagsDisplay/index'
+import Slider from '@common/components/ui/Slider/Slider'
 
 const CrowdfreelanceCustomer = () => {
   const arrayHistory = ['Crowdfreelance', 'Tech', 'Web Service']
   const title = 'Logo by sample in vector in maximum quality'
-  const [activeBuyPlan, setActiveBuyPlan] = useState('Fixed')
   const [selectedPricePlan, setSelectedPricePlan] = useState('')
 
   useEffect(() => {
@@ -130,10 +117,20 @@ const CrowdfreelanceCustomer = () => {
     <div>
       <Header />
 
-      <NavigationBarDropdowns
+      <NavigationSimpleBar
         title="Crowdfreelance"
-        navItems={crowdfreelancerNav}
-        titleIcon={<AppColor.caseWhite />}
+        activeId={-1}
+        icon={<AppColor.partnership />}
+        links={[
+          {
+            title: 'All campaigns',
+            link: '/crowdfreelance/all',
+          },
+          {
+            title: 'My campaigns',
+            link: '/crowdfreelance/my',
+          },
+        ]}
       />
 
       <div className={'wrapper_page'}>
@@ -142,18 +139,9 @@ const CrowdfreelanceCustomer = () => {
             <NavigationItem image={<AppColor.home />} textList={arrayHistory} />
           }
           pageTitle={title}
-          endNode={
-            <MyButtonTransparentOrange
-              onClick={() => {}}
-              textTransform="uppercase"
-              fontWeight="500"
-            >
-              All campaigns <AppColor.chevronBottom fill={AppColor.orange} />
-            </MyButtonTransparentOrange>
-          }
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="15px" mobile="20px" />
         <UserTopPageInfo
           user={fakeUserConstant}
           nodeAfter={
@@ -169,33 +157,33 @@ const CrowdfreelanceCustomer = () => {
             </div>
           }
         />
-        <DynamicPadding />
+        <DynamicPadding desktop="38px" />
+
         <FilterList
           filters={['Description', 'Freelancer', 'Reviews (25)', 'FAQ (2)']}
           activeStartItem="Freelancer"
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="30px" />
 
         <ResponsiveLayoutTwo
           orderItem1Desktop={0}
           orderItem1Mobile={1}
           orderItem2Desktop={1}
           orderItem2Mobile={0}
-          gap="60px"
-          item1MaxWidth="750px"
-          item2MaxWidth="390px"
+          gap="80px"
+          item1MaxWidth="732px"
+          item2MaxWidth="388px"
           item1={
             <div style={{ width: '100%' }}>
               <ImageCardsShow images={[test1, test2, test3, test4]} />
-              <DynamicPadding />
-
-              {/* <LastSponsors /> */}
-              <DynamicPadding />
+              <DynamicPadding desktop="30px" />
+              <LastSponsors />
+              <DynamicPadding desktop="44px" />
               <Typography variant="body3" fontWeight="500">
                 Description
               </Typography>
-              <DynamicPadding desktop="30px" mobile="15px" />
+              <DynamicPadding desktop="17px" mobile="15px" />
               <Typography variant="body4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi,
                 tristique enim, neque, mollis at. Quam scelerisque pulvinar
@@ -213,7 +201,15 @@ const CrowdfreelanceCustomer = () => {
                 arcu. Pellentesque sapien, arcu, nulla quis magnis praesent
                 aliquet venenatis.
               </Typography>
-              <DynamicPadding desktop="30px" mobile="15px" />
+
+              <DynamicPadding desktop="15px" mobile="15px" />
+              <Typography fontWeight="500" color="#01010180" variant="body4">
+                Tags
+              </Typography>
+              <DynamicPadding desktop="12px" mobile="10px" />
+              <TagsDisplay tags={['Video', 'Social Media']} />
+
+              <DynamicPadding desktop="50px" mobile="25px" />
 
               <div className="gap_5">
                 <Typography variant="body3" fontWeight="500">
@@ -227,48 +223,86 @@ const CrowdfreelanceCustomer = () => {
               </div>
 
               <DynamicPadding desktop="30px" mobile="20px" />
-              {/* <Slider elementsCount={6} itemWidth={230} maxWidth={730} gap={20} swiper={true}>
-                            <SliderStageItem
-                                currentMoney='5000' stageNumber='1' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                            <SliderStageItem
-                                currentMoney='3000' stageNumber='2' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                            <SliderStageItem
-                                currentMoney='0' stageNumber='3' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                              <SliderStageItem
-                                currentMoney='5000' stageNumber='1' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                            <SliderStageItem
-                                currentMoney='3000' stageNumber='2' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                            <SliderStageItem
-                                currentMoney='0' stageNumber='3' title='Immersion - Arrival April' totalMoney='5000'
-                            />
-                        </Slider> */}
+              <Slider
+                elementsCount={6}
+                itemWidth={230}
+                maxWidth={730}
+                gap={20}
+                swiper={true}
+                buttonSize="29px"
+                maxShowCount={3}
+                padding="0"
+                buttonLeft="-8px"
+                buttonRight="-8px"
+              >
+                <SliderStageItem
+                  currentMoney="5000"
+                  stageNumber="1"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+                <SliderStageItem
+                  currentMoney="3000"
+                  stageNumber="2"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+                <SliderStageItem
+                  currentMoney="0"
+                  stageNumber="3"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+                <SliderStageItem
+                  currentMoney="5000"
+                  stageNumber="1"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+                <SliderStageItem
+                  currentMoney="3000"
+                  stageNumber="2"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+                <SliderStageItem
+                  currentMoney="0"
+                  stageNumber="3"
+                  title="Immersion - Arrival April"
+                  totalMoney="5000"
+                />
+              </Slider>
 
-              <DynamicPadding />
+              <DynamicPadding desktop="43px" mobile="30px" />
 
               <Typography variant="body3" fontWeight="500">
-                Freelancer
+                Customer
               </Typography>
               <DynamicPadding desktop="40px" mobile="20px" />
-              <FreelancerCard user={fakeUserConstant} />
+              <FreelancerCard
+                disableFirstTwo={true}
+                user={fakeUserConstant}
+                links={['Account', 'Stats', 'Reviews']}
+              />
 
-              <DynamicPadding />
+              <DynamicPadding desktop="50px" />
 
               <CommentTitleFilter
                 notCount={111}
                 textAfterTitle={
-                  <Typography variant="body4" color={AppColor.green}>
+                  <Typography
+                    variant="body4"
+                    color={AppColor.green}
+                    textTransform="uppercase"
+                    fontWeight="500"
+                  >
                     95% positive reviews{' '}
                   </Typography>
                 }
                 title="Reviews "
               />
 
-              <DynamicPadding desktop="40px" mobile="20px" />
+              <DynamicPadding desktop="30px" mobile="20px" />
               <ReviewsProgramCard
                 likes="55"
                 money="200"
@@ -318,7 +352,7 @@ const CrowdfreelanceCustomer = () => {
                   </Typography>
                 </div>
               </div>
-              <DynamicPadding desktop="30px" mobile="15px" />
+              <DynamicPadding desktop="22px" mobile="15px" />
               <Dropdown
                 showLine={false}
                 title="What if your requirements does not meet any of my package?"
@@ -327,10 +361,10 @@ const CrowdfreelanceCustomer = () => {
               <DynamicPadding desktop="20px" mobile="10px" />
               <Dropdown
                 showLine={false}
-                title="What software do you use?                            "
+                title="What software do you use?"
                 description="In risus nec etiam nunc, leo velit. Turpis et diam cursus adipiscing dolor posuere. Velit elit metus tempus volutpat turpis iaculis tempor nam. Sapien felis at ipsum aliquet commodo."
               />
-              <DynamicPadding />
+              <DynamicPadding desktop="47px" />
               <div className="gap_10">
                 <Typography variant="body3" fontWeight="500">
                   Documents
@@ -376,14 +410,14 @@ const CrowdfreelanceCustomer = () => {
                   paddingBoxDesktop="10px 0px"
                 />
               </div>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="48px" mobile="20px" />
               <CommentsSection comments={fakeComments} />
             </div>
           }
           item2={
             <div>
               <div className={styles.time_box}>
-                <Typography variant="body3" fontWeight="500">
+                <Typography variant="body3" fontWeight="500" textLineHeight="1">
                   Fundrasing
                 </Typography>
                 <DynamicPadding desktop="20px" mobile="15px" />
@@ -407,7 +441,6 @@ const CrowdfreelanceCustomer = () => {
                     22%
                   </Typography>
                 </div>
-                <SizeBox height="10px" />
                 <PercentBar currentPercent={35} height="15px" />
                 <DynamicPadding desktop="20px" mobile="15px" />
                 <div className="justify_center">
@@ -441,7 +474,7 @@ const CrowdfreelanceCustomer = () => {
                   price="1500+"
                   title="Pro"
                 />
-
+                <DynamicPadding desktop="5px" />
                 <Selectbox
                   fontWeight="400"
                   titleProps="Without a reward"
@@ -453,7 +486,7 @@ const CrowdfreelanceCustomer = () => {
                 />
 
                 <div className={styles.plan_box_padding}>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="18px" mobile="20px" />
                   <HorizontalLine />
                   <DynamicPadding desktop="30px" mobile="20px" />
                   <img
@@ -467,17 +500,19 @@ const CrowdfreelanceCustomer = () => {
                     Negotiate all technical and financial questions in private
                     messages and start the project.
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="16px" mobile="20px" />
                   <div className={styles.dots_text_wrapper}>
                     <TextDotted
                       fontWeightEndText="500"
                       info={true}
                       text="Digital copy of game"
                       textEnd="1"
+                      startTextColor={AppColor.transparentBlack}
                     />
                     <TextDotted
                       info={true}
                       text="Your name in credits"
+                      startTextColor={AppColor.transparentBlack}
                       endNode={
                         <AppColor.singTrue
                           stroke={AppColor.green}
@@ -490,35 +525,39 @@ const CrowdfreelanceCustomer = () => {
                       info={true}
                       text="Shipping"
                       textEnd="Worldwide"
+                      fontWeightEndText="500"
+                      startTextColor={AppColor.transparentBlack}
                     />
                     <TextDotted
                       fontWeightEndText="500"
                       info={true}
                       text="Delivery"
                       textEnd="30 days"
+                      startTextColor={AppColor.transparentBlack}
                     />
                     <TextDotted
                       fontWeightEndText="500"
                       info={true}
                       text="Left"
                       textEnd="14/1000"
+                      startTextColor={AppColor.transparentBlack}
                     />
                   </div>
 
                   <DynamicPadding desktop="30px" mobile="20px" />
                   <HorizontalLine />
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="23px" mobile="20px" />
                   <Typography variant="body3" fontWeight="500">
                     Rewards
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="23px" mobile="20px" />
 
                   <div className="gap_20">
                     <AppColor.reward30Xp height={'110px'} />
                     <AppColor.reward10PTS height={'110px'} />
                     <AppColor.rewardBox height={'110px'} />
                   </div>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="25px" mobile="20px" />
                   <HorizontalLine />
                   <DynamicPadding desktop="30px" mobile="20px" />
 
@@ -540,7 +579,7 @@ const CrowdfreelanceCustomer = () => {
                     }}
                     width="100%"
                   >
-                    Contact freelancer
+                    Contact customer
                   </MyButtonTransparentOrange>
                   <DynamicPadding desktop="30px" mobile="15px" />
                 </div>
@@ -606,13 +645,16 @@ const SelectItem = ({
           <Typography
             color={price == selectedPrice ? AppColor.orange : AppColor.text}
             variant="body3"
+            textLineHeight="1"
           >
             {title}
           </Typography>
         </div>
+        <DynamicPadding desktop="9px" />
         <Typography
           variant="titleSmall"
-          fontWeight="600"
+          fontWeight="700"
+          textLineHeight="1"
           color={price == selectedPrice ? AppColor.orange : AppColor.text}
         >
           ${price}
