@@ -177,8 +177,7 @@ function App() {
           <Route
             path="/crowdfreelance/progress"
             element={<CrowdfreelanceProgress />}
-          />{' '}
-          {/* is in process */}
+          />
           <Route
             path="/crowdfreelance/completed"
             element={<CrowdfreelanceCompleted />}

@@ -27,7 +27,6 @@ const SkillsFilter = ({
   const [filterManager, setFilterManager] = useState<FiltersManager>(
     new FiltersManager()
   )
-
   useEffect(() => {
     if (!filterManager) return
     if (selected.length === 0) {
@@ -37,8 +36,7 @@ const SkillsFilter = ({
     }
     filterManager.clear()
     selected.forEach(el => filterManager.add(el))
-    renderUpdate()
-  }, [filterManager, renderUpdate, selected])
+  }, [filterManager, selected])
 
   return (
     <div className={styles.skills}>
@@ -58,7 +56,7 @@ const SkillsFilter = ({
             onClick={e => {
               const state = filterManager.toggle(idx)
               callback(idx, skill.title, state)
-              renderUpdate()
+              // renderUpdate()
             }}
           >
             <Typography variant="body4" fontWeight="500" color="white">
