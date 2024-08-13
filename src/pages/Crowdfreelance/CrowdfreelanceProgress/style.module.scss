@@ -4,6 +4,27 @@
   gap: 20px;
 }
 
+.card_item {
+  cursor: pointer;
+
+  &:hover {
+    [data-file="file-path-2"] {
+      stroke: $orange;
+      fill: transparent;
+    }
+
+    [data-file="file-path-3"] {
+      stroke: transparent;
+    }
+
+    p,
+    svg path {
+      fill: $orange;
+      color: $orange !important;
+    }
+  }
+}
+
 .text_wrapper {
   border-radius: 20px;
   background-color: $white;

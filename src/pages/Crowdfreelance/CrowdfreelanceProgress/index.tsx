@@ -27,6 +27,7 @@ import StatesModel from '@common/models/partnership/statesModel'
 import classNames from 'classnames'
 import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
 import PartnersModel from '@common/models/partnership/partnersModel'
+import FilesModal from '@pages/Service/ServiceProgress/components/FilesModal/index'
 
 const CrowdfreelanceProgress = () => {
   const arrayHistory = ['Crowdfreelance', 'Tech', 'Web Service']
@@ -35,6 +36,7 @@ const CrowdfreelanceProgress = () => {
   const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
   const [partnersSelectedUser, setPartnersSelecteduser] =
     useState<PartnerShip.Manager | null>(null)
+  const [showFilesModal, setShowFilesModal] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -140,42 +142,51 @@ const CrowdfreelanceProgress = () => {
               <DynamicPadding desktop="30px" />
 
               <div className={styles.cards_grid}>
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.files height={'27px'} />,
-                    <Typography variant="body4" fontWeight="500">
-                      Files
-                    </Typography>,
-                    <Typography
-                      variant="body5"
-                      color={AppColor.transparentBlack}
-                      fontWeight="500"
-                      textTransform="uppercase"
-                    >
-                      3 files
-                    </Typography>,
-                  ]}
-                  gap="20px"
-                  paddingBoxDesktop="20px"
-                />
-                <CenterShadowBox
-                  elements={[
-                    <AppColor.caseIcon height={'27px'} />,
-                    <Typography variant="body4" fontWeight="500">
-                      Sponsorship & Shipping
-                    </Typography>,
-                    <Typography
-                      variant="body5"
-                      color={AppColor.transparentBlack}
-                      fontWeight="500"
-                      textTransform="uppercase"
-                    >
-                      Change
-                    </Typography>,
-                  ]}
-                  gap="20px"
-                  paddingBoxDesktop="20px"
-                />
+                <div
+                  className={styles.card_item}
+                  onClick={() => {
+                    setShowFilesModal(true)
+                  }}
+                >
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.files height={'27px'} />,
+                      <Typography variant="body4" fontWeight="500">
+                        Files
+                      </Typography>,
+                      <Typography
+                        variant="body5"
+                        color={AppColor.transparentBlack}
+                        fontWeight="500"
+                        textTransform="uppercase"
+                      >
+                        3 files
+                      </Typography>,
+                    ]}
+                    gap="20px"
+                    paddingBoxDesktop="20px"
+                  />
+                </div>
+                <div className={styles.card_item}>
+                  <CenterShadowBox
+                    elements={[
+                      <AppColor.caseIcon height={'27px'} />,
+                      <Typography variant="body4" fontWeight="500">
+                        Sponsorship & Shipping
+                      </Typography>,
+                      <Typography
+                        variant="body5"
+                        color={AppColor.transparentBlack}
+                        fontWeight="500"
+                        textTransform="uppercase"
+                      >
+                        Change
+                      </Typography>,
+                    ]}
+                    gap="20px"
+                    paddingBoxDesktop="20px"
+                  />
+                </div>
               </div>
 
               <DynamicPadding />
@@ -397,6 +408,14 @@ const CrowdfreelanceProgress = () => {
         <AskedQuestion />
       </div>
       <Footer />
+
+      {showFilesModal && (
+        <FilesModal
+          onClose={() => {
+            setShowFilesModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }
