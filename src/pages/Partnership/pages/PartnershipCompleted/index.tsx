@@ -178,7 +178,6 @@ export const TipsItem = ({
           }}
           placeholder="Enter Price Manually"
           padding="13px 45px"
-          rightPadding={45}
           textColor={AppColor.transparentBlack}
           type="number"
         />

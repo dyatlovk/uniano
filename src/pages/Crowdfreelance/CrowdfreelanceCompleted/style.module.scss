@@ -31,7 +31,7 @@
 .text_dotted_wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 15px;
+  gap: 20px;
 }
 
 .buy_wrapper {
@@ -66,7 +66,7 @@
 @media (min-width: $tabletSize) {
 
   .details_box {
-    padding: 25px 30px;
+    padding: 20px 30px;
   }
 
   .boxes_grid {

@@ -1,32 +1,35 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import BigInput from '@common/components/ui/BigInput/index'
-import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { TipsItem } from '@pages/Partnership/pages/PartnershipCompleted/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import styles from './style.module.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/partnership/statesModel'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
 
 const CrowdfreelanceCompleted = () => {
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+
   const arrayHistory = [
     'Crowdfreelance',
     'All Campaigns',
@@ -39,14 +42,15 @@ const CrowdfreelanceCompleted = () => {
     window.scrollTo({ top: 0 })
   }, [])
 
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
+  }, [])
+
   return (
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Campaign', 'Progress', 'Completed']}
-        currentItemProgress="Completed"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Completed'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -56,9 +60,9 @@ const CrowdfreelanceCompleted = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="14px" mobile="20px" />
         <UserTopPageInfo user={fakeUserConstant} />
-        <DynamicPadding />
+        <DynamicPadding desktop="42px" />
 
         <ResponsiveLayoutTwo
           gap="80px"
@@ -73,14 +77,14 @@ const CrowdfreelanceCompleted = () => {
               <Typography variant="body3" fontWeight="500">
                 Review
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="23px" mobile="20px" />
               <BigInput />
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
 
               <Typography variant="body3" fontWeight="500">
                 Tips
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="25px" mobile="20px" />
 
               <TipsItem
                 description={'Sponsor a new campaign project with'}
@@ -91,49 +95,25 @@ const CrowdfreelanceCompleted = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Freelancer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <div className="justify_center">
-                <Typography
-                  variant="body4"
-                  textTransform="uppercase"
-                  fontWeight="500"
-                >
-                  Project 1
-                </Typography>
-              </div>
-              <DynamicPadding desktop="30px" mobile="15px" />
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
+              <DynamicPadding desktop="25px" mobile="20px" />
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
                   title="Easy start"
-                  text=" 
-                                Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
+                  text="Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="23px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -145,13 +125,13 @@ const CrowdfreelanceCompleted = () => {
                           22 hrs 15 min
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <PercentBar
                         currentPercent={100}
                         color={AppColor.green}
                         height="5px"
                       />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -168,13 +148,13 @@ const CrowdfreelanceCompleted = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="23px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -207,11 +187,11 @@ const CrowdfreelanceCompleted = () => {
 
                       <DynamicPadding desktop="30px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
                         <AppColor.reward10PTS height={'110px'} />
@@ -219,13 +199,13 @@ const CrowdfreelanceCompleted = () => {
                         <AppColor.rewardBox height={'110px'} />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Summary
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
                           fontWeightEndText="500"
