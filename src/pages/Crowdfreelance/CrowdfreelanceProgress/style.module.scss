@@ -31,13 +31,15 @@
 }
 
 .details_box {
-  padding: 15px 13px;
+  padding: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .text_dotted_wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 15px;
+  gap: 20px;
 }
 
 .buy_wrapper {
@@ -69,10 +71,38 @@
   gap: 20px;
 }
 
+.sponsorship_green {
+  color: $green;
+
+  svg path {
+    fill: $green;
+  }
+}
+
+.sponsorship_orange {
+  color: $orange;
+
+  svg path {
+    fill: $orange;
+  }
+}
+
+.info_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0px 0px 2px 1px #00000021;
+  margin-left: 5px;
+}
+
 @media (min-width: $tabletSize) {
 
   .details_box {
-    padding: 25px 30px;
+    padding: 21px 30px;
   }
 
   .boxes_grid {

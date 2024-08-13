@@ -1,19 +1,14 @@
 import Header from '@common/components/Header/Header/index'
-import NavigationBarDropdowns from '@common/components/NavigationBarDropdowns/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { crowdfreelancerNav } from '@common/models/constants'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import DetailCrowdfreelanceProgress from '@common/components/ui/DetailsTable/variants/DetailsCrowdfreelancerProgress/index'
-import { useEffect } from 'react'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
+import { useEffect, useState } from 'react'
 import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
 import UserAvatar from '@common/components/ui/UserAvatar/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
@@ -24,27 +19,36 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/partnership/statesModel'
+import classNames from 'classnames'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import PartnersModel from '@common/models/partnership/partnersModel'
 
 const CrowdfreelanceProgress = () => {
   const arrayHistory = ['Crowdfreelance', 'Tech', 'Web Service']
   const title = 'MONITREE - Vines that grow along the moni...'
 
+  const [partnersModel, setPartnersModel] = useState<PartnersModel | null>(null)
+  const [partnersSelectedUser, setPartnersSelecteduser] =
+    useState<PartnerShip.Manager | null>(null)
+
   useEffect(() => {
     window.scrollTo({ top: 0 })
+  }, [])
+
+  useEffect(() => {
+    setPartnersModel(new PartnersModel())
   }, [])
 
   return (
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={['Campaign', 'Progress', 'Completed']}
-        currentItemProgress="Progress"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -54,7 +58,7 @@ const CrowdfreelanceProgress = () => {
           pageTitle={title}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="14px" mobile="20px" />
         <UserTopPageInfo user={fakeUserConstant} />
         <DynamicPadding />
 
@@ -82,7 +86,12 @@ const CrowdfreelanceProgress = () => {
                           Feb 26, 2021 16:32
                         </Typography>
                       </div>,
-                      <div className="gap_5">
+                      <div
+                        className={classNames(
+                          'gap_5',
+                          styles.sponsorship_orange
+                        )}
+                      >
                         <Typography
                           variant="body4"
                           fontWeight="500"
@@ -108,22 +117,27 @@ const CrowdfreelanceProgress = () => {
                           Feb 26, 2021 16:32
                         </Typography>
                       </div>,
-                      <div className="gap_5">
+                      <div
+                        className={classNames(
+                          'gap_5',
+                          styles.sponsorship_green
+                        )}
+                      >
                         <Typography
                           variant="body4"
                           fontWeight="500"
-                          color={AppColor.orange}
+                          color={AppColor.green}
                         >
-                          Offered to complete sponsorship
+                          Started the sponsorship
                         </Typography>
-                        <AppColor.time />
+                        <AppColor.iconChecked />
                       </div>,
                     ],
                   },
                 ]}
               />
 
-              <DynamicPadding />
+              <DynamicPadding desktop="30px" />
 
               <div className={styles.cards_grid}>
                 <CenterShadowBox
@@ -167,7 +181,7 @@ const CrowdfreelanceProgress = () => {
               <DynamicPadding />
 
               <div className="flex_space_between">
-                <Link to={'/service/'}>
+                <Link to={'/crowdfreelance/campaign'}>
                   <ChevronMoveTo
                     onClick={() => {}}
                     text="Step back"
@@ -175,7 +189,10 @@ const CrowdfreelanceProgress = () => {
                     variant="left"
                   />
                 </Link>
-                <Link to={'/service/negotiation/freelancer'}>
+                <Link
+                  to={'crowdfreelance/completed'}
+                  style={{ pointerEvents: 'none' }}
+                >
                   <ChevronMoveTo
                     onClick={() => {}}
                     text="Next step"
@@ -189,49 +206,25 @@ const CrowdfreelanceProgress = () => {
           }
           item2={
             <div style={{ width: '100%' }}>
-              <div
-                className={`flex_space_between box_shadow ${styles.user_wrappper}`}
-              >
-                <UserAvatar
-                  role="Freelancer"
-                  preventMobileNone={true}
-                  url={fakeUserConstant.image}
-                  name={fakeUserConstant.name}
-                  flag={<AppColor.UkraineFlagIcon />}
-                  active={true}
-                />
-
-                <div className="gap_10">
-                  <Typography variant="body5" color={AppColor.transparentBlack}>
-                    15 hr 59 min ago
-                  </Typography>
-                  <AppColor.chevronBottom
-                    fill={AppColor.text}
-                    width={'16px'}
-                    height={'8px'}
-                  />
-                </div>
-              </div>
-              <DynamicPadding desktop="30px" mobile="15px" />
-              <div className="justify_center">
-                <Typography
-                  variant="body4"
-                  textTransform="uppercase"
-                  fontWeight="500"
-                >
-                  Project 1
-                </Typography>
-              </div>
+              <ManagersDropDown
+                selectedUser={partnersSelectedUser}
+                users={partnersModel && partnersModel.getAll()}
+                onUserCallback={(id: string) => {
+                  if (partnersModel) {
+                    const uuid = partnersModel.findByUuid(id)
+                    setPartnersSelecteduser(uuid)
+                  }
+                }}
+              />
               <DynamicPadding desktop="30px" mobile="15px" />
               <div className={`box_shadow ${styles.details_box}`}>
                 <DetailsDropdownItem
                   title="Easy start"
-                  text="
-                                Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
+                  text="Fab 27, 2023 23:40 - Fab 28, 2023 21:55"
                   initState={true}
                   node={
                     <div>
-                      <DynamicPadding desktop="30px" mobile="15px" />
+                      <DynamicPadding desktop="22px" mobile="15px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -243,13 +236,13 @@ const CrowdfreelanceProgress = () => {
                           22 hrs 15 min
                         </Typography>
                       </div>
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <PercentBar
                         currentPercent={100}
                         color={AppColor.green}
                         height="5px"
                       />
-                      <DynamicPadding desktop="15px" mobile="5px" />
+                      <DynamicPadding desktop="9px" mobile="5px" />
                       <div className="flex_space_between">
                         <Typography
                           variant="body4"
@@ -266,13 +259,13 @@ const CrowdfreelanceProgress = () => {
                         </Typography>
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Details
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
 
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
@@ -305,11 +298,11 @@ const CrowdfreelanceProgress = () => {
 
                       <DynamicPadding desktop="30px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Rewards
                       </Typography>
-                      <SizeBox height="10px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
 
                       <div className={styles.rewards_wrapper}>
                         <AppColor.reward10PTS height={'110px'} />
@@ -317,13 +310,13 @@ const CrowdfreelanceProgress = () => {
                         <AppColor.rewardBox height={'110px'} />
                       </div>
 
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="25px" mobile="20px" />
                       <HorizontalLine />
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="24px" mobile="20px" />
                       <Typography variant="body3" fontWeight="500">
                         Summary
                       </Typography>
-                      <DynamicPadding desktop="30px" mobile="20px" />
+                      <DynamicPadding desktop="22px" mobile="20px" />
                       <div className={styles.text_dotted_wrapper}>
                         <TextDotted
                           fontWeightEndText="500"
@@ -372,6 +365,9 @@ const CrowdfreelanceProgress = () => {
                           width="44px"
                           startValue={true}
                         />
+                        <div className={styles.info_icon}>
+                          <AppColor.info />
+                        </div>
                       </div>
                       <DynamicPadding desktop="20px" mobile="15px" />
                       <div className="gap_5">
@@ -383,16 +379,10 @@ const CrowdfreelanceProgress = () => {
                           width="44px"
                           startValue={true}
                         />
+                        <div className={styles.info_icon}>
+                          <AppColor.info />
+                        </div>
                       </div>
-                      <DynamicPadding desktop="20px" mobile="15px" />
-
-                      <Typography
-                        variant="body4"
-                        color={AppColor.transparentBlack}
-                        fontWeight="500"
-                      >
-                        Invoice
-                      </Typography>
                     </div>
                   }
                 />

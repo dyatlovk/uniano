@@ -5,6 +5,10 @@
   user-select: none;
   flex-direction: column;
 
+  &[data-page_move_disabled="true"] {
+    pointer-events: none;
+  }
+
   &:not([data-page_move_disabled="true"]):hover {
     .chevron {
       background-color: $orange;
