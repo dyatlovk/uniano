@@ -12,6 +12,8 @@ import AnimatedSvg from '../../AnimatedSvg'
 import UserAvatar from '../../ui/UserAvatar'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
+import { DisplayArrayOfDetailsProfile } from '@pages/Partnership/pages/Program/index'
+import SizeBox from '../../ui/SizeBox'
 type CardStatisticPartnershipProps = {
   title: string
   user: userModel
@@ -182,18 +184,10 @@ const CardStatisticPartnership = ({
               </div>
             )}
           </div>
-          {links && (
+          {links != null && <SizeBox height="15px" />}
+          {links != null && (
             <div className={styles.links_wrapper}>
-              {links.map(item => (
-                <Typography
-                  color="white"
-                  textTransform="uppercase"
-                  variant="body5"
-                  fontWeight="500"
-                >
-                  {item}
-                </Typography>
-              ))}
+              <DisplayArrayOfDetailsProfile array={links} />
             </div>
           )}
         </div>

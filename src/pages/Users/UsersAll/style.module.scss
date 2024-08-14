@@ -100,6 +100,11 @@
   }
 }
 
+.card_center {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: $tabletSize) {
 
   .justify_flex {
