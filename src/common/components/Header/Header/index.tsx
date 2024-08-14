@@ -8,7 +8,7 @@ import UserAvatar from '../../ui/UserAvatar'
 import HorizontalLine from '../../ui/Lines/HorizontalLine'
 import DynamicPadding from '../../ui/DynamicPadding'
 import { fakeUserConstant } from '@common/models/user'
-import { PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import PopUpBottom from '../../ModalPopUps/PopUpBottom'
 import SearchPopUp from './components/SearchPopUp'
 import CreatePopUp from './components/CreatePopUp'
@@ -291,7 +291,16 @@ const Header = ({
                         setHoveredLink(0)
                       }}
                     >
-                      <div title="Service">Service</div>
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('service')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Service"
+                      >
+                        Service
+                      </div>
                       <AppColor.chevronBottom
                         width={10}
                         height={6}
@@ -351,7 +360,16 @@ const Header = ({
                         setHoveredLink(3)
                       }}
                     >
-                      <div title="Crowdfreelance">Crowdfreelance</div>
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('crowdfreelance')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Crowdfreelance"
+                      >
+                        Crowdfreelance
+                      </div>
                       <AppColor.chevronBottom
                         width={10}
                         height={6}
@@ -365,7 +383,16 @@ const Header = ({
                         setHoveredLink(4)
                       }}
                     >
-                      <div title="Users"> Users</div>
+                      <div
+                        className={classNames(
+                          window.location.hash.includes('users')
+                            ? styles.active_item
+                            : ''
+                        )}
+                        title="Users"
+                      >
+                        Users
+                      </div>
                       <AppColor.chevronBottom
                         width={10}
                         height={6}

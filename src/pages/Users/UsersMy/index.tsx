@@ -7,7 +7,6 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import DetailsMyFreelancers from '@common/components/ui/DetailsTable/variants/DetailsMyFreelancers/index'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 
