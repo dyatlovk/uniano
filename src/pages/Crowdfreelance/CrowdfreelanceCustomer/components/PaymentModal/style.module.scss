@@ -1,0 +1,107 @@
+@mixin flex_col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin flex_row($gap) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+
+@mixin price_item() {
+  box-shadow: -1px 1px 6px 2px #0000001C;
+  border-radius: $borderRadius;
+  width: 77px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps {
+  @include flex_col();
+}
+
+.price_items {
+  @include flex_row(20px);
+  cursor: pointer;
+}
+
+.price_item {
+  @include price_item();
+  border: 1px solid transparent;
+}
+
+.price_item_active {
+  @include price_item();
+  border: 1px solid $orange;
+}
+
+.repeated_toggle {
+  @include flex_row(10px);
+  align-items: center;
+}
+
+.info_circle {
+  box-shadow: 0px 0px 2px 1px #00000021;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+}
+
+.available {
+  @include flex_row(10px);
+  box-shadow: -1px 1px 6px 2px #0000001C;
+  border-radius: $borderRadius;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.available_alt {
+  @include flex_row(10px);
+  align-items: center;
+}
+
+.dots_text_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.summary_buttons {
+  @include flex_row(10px);
+}
+
+.summary,
+.support {
+  box-shadow: 0px 0px 13px 2px #00000021;
+  border-radius: $borderRadius;
+  padding: 30px;
+}
+
+.support {
+  @include flex_row(20px);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.walletIcon {
+  width: 34px;
+  height: 34px;
+  background-color: $green;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: $tabletSize) {
+  .dots_text_wrapper {
+    gap: 20px;
+  }
+}

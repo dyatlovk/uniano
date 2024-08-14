@@ -372,6 +372,7 @@ import { ReactComponent as pigBonuses } from '@assets/svg/pig_bonuses.svg'
 import { ReactComponent as squares } from '@assets/svg/squares.svg'
 import { ReactComponent as iconChecked } from '@assets/svg/icon-checked.svg'
 import { ReactComponent as iconFileDownload } from '@assets/svg/download_file.svg'
+import { ReactComponent as iconSupportUa } from '@assets/svg/support_ua.svg'
 
 class AppColor {
   static pigBonuses = pigBonuses
@@ -691,6 +692,7 @@ class AppColor {
   static squares = squares
   static iconChecked = iconChecked
   static iconFileDownload = iconFileDownload
+  static iconSupportUa = iconSupportUa
 
   static orange = '#F4A72A'
   static yellow = '#F2C94C'

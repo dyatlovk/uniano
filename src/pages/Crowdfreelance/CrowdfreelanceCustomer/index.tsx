@@ -41,11 +41,13 @@ import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import LastSponsors from '@common/components/LastSponsors/index'
 import TagsDisplay from '@common/components/TagsDisplay/index'
 import Slider from '@common/components/ui/Slider/Slider'
+import PaymentModal from './components/PaymentModal'
 
 const CrowdfreelanceCustomer = () => {
   const arrayHistory = ['Crowdfreelance', 'Tech', 'Web Service']
   const title = 'Logo by sample in vector in maximum quality'
   const [selectedPricePlan, setSelectedPricePlan] = useState('')
+  const [paymentModal, setPaymentModal] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -563,7 +565,9 @@ const CrowdfreelanceCustomer = () => {
 
                   <MyButtonOrange
                     textTransform="uppercase"
-                    onClick={() => {}}
+                    onClick={() => {
+                      setPaymentModal(true)
+                    }}
                     width="100%"
                   >
                     Select{' '}
@@ -602,6 +606,13 @@ const CrowdfreelanceCustomer = () => {
               }}
             />
           </ModalCenterBasic>
+        )}
+        {paymentModal && (
+          <PaymentModal
+            onClose={() => {
+              setPaymentModal(false)
+            }}
+          />
         )}
       </div>
       <CardsSliderRelated />

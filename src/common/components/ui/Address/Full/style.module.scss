@@ -1,0 +1,19 @@
+.address {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.address_footer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+@media (min-width: $tabletSize) {
+  .address {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
