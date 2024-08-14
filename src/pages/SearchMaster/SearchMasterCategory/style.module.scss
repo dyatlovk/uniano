@@ -44,7 +44,7 @@
 .search_result {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 15px;
   padding: 15px;
 
   @include weakShadow;
@@ -55,6 +55,12 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+}
+
+.list_item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
 }
 
 .select_box {
@@ -80,6 +86,14 @@
     border: 1px solid $orange;
     border-radius: 50%;
   }
+}
+
+[data-stepsstate="true"] {
+  background: transparent;
+}
+
+[data-stepstate="content"] {
+  padding: 0;
 }
 
 @media (min-width: $tabletSize) {

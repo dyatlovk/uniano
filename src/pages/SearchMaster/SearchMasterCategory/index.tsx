@@ -1,4 +1,3 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import styles from './style.module.scss'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -6,16 +5,20 @@ import AppColor from '@common/styles/variables-static'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import { useEffect, useState } from 'react'
 import SizeBox from '@common/components/ui/SizeBox/index'
-import { developmentDropdown } from '@common/models/constants'
+import { developmentDropdown, NavItemType } from '@common/models/constants'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { Link, useNavigate } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/search/statesModel'
 
 const SearchMasterCategory = () => {
   const [activeCategory, setActiveCategory] = useState('Development')
   const [selectedSubCategory, setSelectedSubCategory] = useState('')
-  const currentList = developmentDropdown.find(
-    item => item.title == activeCategory
+  const currentList: NavItemType | undefined = developmentDropdown.find(
+    item => item.title === activeCategory
   )
+  const [isNextStepDisabled, setNextStepDisabled] = useState<boolean>(true)
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,21 +26,19 @@ const SearchMasterCategory = () => {
     }, 0)
   }, [])
   const navigate = useNavigate()
+
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={[
-          'Category',
-          'Requirements',
-          'Skills',
-          'Budget & Delivery ',
-          'Results',
-        ]}
-        currentItemProgress="Category"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Category'}
+        />
+      </HeaderDummy>
 
       <div className={styles.wrapper}>
-        <DynamicPadding />
+        <DynamicPadding desktop="43px" />
         <div className={styles.text_flex}>
           <Typography variant="titleBig" textTransform="uppercase">
             Category
@@ -47,14 +48,14 @@ const SearchMasterCategory = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="25px" mobile="20px" />
+        <DynamicPadding desktop="10px" mobile="20px" />
         <div style={{ textAlign: 'center' }} className="justify_center">
           <Typography variant="body4" color={AppColor.transparentBlack}>
             Describe your project, and we will help you find the best-suited
-            solutions. Or pick it by yourself.
+            solutions. <br /> Or pick it by yourself.
           </Typography>
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="46px" />
 
         <InputCommon
           icon={<AppColor.search />}
@@ -64,7 +65,7 @@ const SearchMasterCategory = () => {
           callback={() => {}}
         />
 
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
 
         <div className={styles.category_wrapper}>
           <CategorySelect
@@ -116,10 +117,10 @@ const SearchMasterCategory = () => {
             title="Consulting"
           />
         </div>
-        <SizeBox height="20px" />
+        <SizeBox height="9px" />
 
         <div className={styles.search_result}>
-          {currentList.items.map(item => (
+          {currentList && currentList.items.map(item => (
             <div style={{ whiteSpace: 'nowrap' }}>
               <Typography
                 variant="body4"
@@ -128,13 +129,14 @@ const SearchMasterCategory = () => {
               >
                 {item.title}
               </Typography>
-              <DynamicPadding desktop="20px" mobile="20px" />
-              <div className={styles.gap_20}>
+              <DynamicPadding desktop="11px" mobile="20px" />
+              <div className={styles.list_item}>
                 {item.links.map(item => (
                   <div
                     className="gap_5"
                     onClick={() => {
                       setSelectedSubCategory(item)
+                      setNextStepDisabled(false)
                     }}
                   >
                     <div
@@ -146,6 +148,7 @@ const SearchMasterCategory = () => {
                           ? AppColor.orange
                           : AppColor.text
                       }
+                      fontWeight={selectedSubCategory == item ? '500' : '400'}
                       variant="body4"
                     >
                       {item}
@@ -158,6 +161,7 @@ const SearchMasterCategory = () => {
         </div>
 
         <DynamicPadding />
+
         <div className={'flex_space_between'}>
           <ChevronMoveTo
             variant="left"
@@ -167,9 +171,13 @@ const SearchMasterCategory = () => {
             text="Step back"
             title="cancel"
           />
-          <Link to={'/search-master/requirements'}>
+          <Link
+            to={'/search-master/requirements'}
+            style={{ pointerEvents: isNextStepDisabled ? 'none' : 'auto' }}
+          >
             <ChevronMoveTo
               variant="right"
+              disabled={isNextStepDisabled ? true : false}
               onClick={() => {}}
               text="Next step"
               title="Requirement"

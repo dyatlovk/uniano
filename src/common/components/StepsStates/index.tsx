@@ -10,8 +10,13 @@ import styles from './styles.module.scss'
 interface Props {
   states: Navigation.State[]
   currentState: string
+  maxWidth?: string
 }
-const StepsStates = ({ states, currentState }: Props): JSX.Element => {
+const StepsStates = ({
+  states,
+  currentState,
+  maxWidth = '100%',
+}: Props): JSX.Element => {
   const [stateMachine, setStateMachine] = useState<States | null>(null)
 
   useEffect(() => {
@@ -22,8 +27,12 @@ const StepsStates = ({ states, currentState }: Props): JSX.Element => {
   }, [currentState])
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.content}>
+    <div
+      style={{ maxWidth: maxWidth }}
+      className={styles.wrapper}
+      data-stepsstate
+    >
+      <div className={styles.content} data-stepstate="content">
         <div className={styles.mobile}>
           <Typography variant="body4" fontWeight="500" color={AppColor.white}>
             {stateMachine && stateMachine.getCurrent().title}
