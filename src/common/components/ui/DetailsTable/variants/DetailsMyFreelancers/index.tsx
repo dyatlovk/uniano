@@ -8,11 +8,16 @@ import DynamicPadding from '../../../DynamicPadding'
 import AppColor from '@common/styles/variables-static'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import { fakeUserConstant, userModel } from '@common/models/user'
-import App from 'App'
 import SizeBox from '../../../SizeBox'
+import DropDownCommon from '../../../Dropdown/DropdownCommon'
 type DetailsMyFreelancersProps = {
   informationTable: DetailsMyFreelancersItem[]
   informationDropdown: DropdownMyProgramsItemProps[]
+}
+
+const groupFilters = {
+  Programs: ['All', 'Active', 'Pending'],
+  Projects: ['All', 'Progress', 'Pending', 'Completed', 'Canceled'],
 }
 
 export type DetailsMyFreelancersItem = {
@@ -26,6 +31,16 @@ const DetailsMyFreelancers = ({
   const currentItem = informationTable[currentPage - 1]
   const currentDropdownItem = informationDropdown[currentPage - 1]
   const { width, height } = useScreenSize()
+  const [selectedGroupFilter, setSelectedGroupFilter] = useState<string>('')
+
+  function findActiveFilter(key: string): string[] {
+    if (key.length === 0) return []
+    return groupFilters[key]
+  }
+
+  function findAllFiltersTitle(): string[] {
+    return Object.keys(groupFilters)
+  }
 
   return (
     <DetailsTable
@@ -34,9 +49,17 @@ const DetailsMyFreelancers = ({
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Pending', 'Completed']}
+      filters={findActiveFilter(selectedGroupFilter)}
       page={currentPage}
       removeNavBar={true}
+      groupDropdown={
+        <DropDownCommon
+          items={findAllFiltersTitle()}
+          callback={(item: string) => {
+            setSelectedGroupFilter(item)
+          }}
+        />
+      }
       dropdownNode={
         currentDropdownItem != null ? (
           <div>
@@ -51,7 +74,6 @@ const DetailsMyFreelancers = ({
                 title: 'Freelancer',
                 child: (
                   <UserAvatar
-                    // nodeAfterText={ <div className={styles.gap_5}><AppColor.playButton/><AppColor.refreshColored/></div> }
                     url={fakeUserConstant.image}
                     role="Freelancer"
                     width="30px"
@@ -157,7 +179,7 @@ const CommentItem = ({ text, user, likes }: CommentItemProps) => {
 const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
   return (
     <div className={styles.dropdown_wrapper}>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="26px" mobile="20px" />
       <div className={styles.dropdown_content}>
         <AppColor.openInBrowser />
         <DropdownText title="ID" text={'#352'} />
@@ -206,7 +228,7 @@ const DropdownMyProgramsItem = ({}: DropdownMyProgramsItemProps) => {
           color={AppColor.orange}
         />
       </div>
-      <DynamicPadding desktop="20px" mobile="20px" />
+      <DynamicPadding desktop="30px" mobile="20px" />
       <HorizontalLine />
     </div>
   )
