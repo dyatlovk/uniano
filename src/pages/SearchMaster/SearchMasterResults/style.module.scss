@@ -1,3 +1,13 @@
+@mixin select_item {
+  padding: 9px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 270px;
+}
+
 .wrapper {
   max-width: 1120px;
   margin: 0 auto;
@@ -29,22 +39,32 @@
 }
 
 .card_solution {
-  padding: 15px 50px;
+  padding: 17px 30px;
+  padding-bottom: 25px;
   width: 100%;
   text-align: center;
-
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   @include weakShadow;
   border-radius: 20px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   max-width: 350px;
 
   svg {
     height: 28px;
+
+    path {
+      fill: #01010180;
+    }
   }
+}
+
+.card_solution_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .template_icon {
@@ -71,16 +91,20 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .select_item {
-  padding: 20px 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  min-width: 270px;
+  @include select_item();
+
+  &:hover {
+    background-color: $white;
+  }
+}
+
+.select_item_active {
+  @include select_item();
+  background-color: $white;
 }
 
 .mobile_filter {
@@ -110,6 +134,12 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
+}
+
+.hover {
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @media (min-width: $tabletSize) {

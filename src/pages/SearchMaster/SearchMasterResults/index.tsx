@@ -1,4 +1,3 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
@@ -8,6 +7,9 @@ import CardStatisticTest from '@common/components/cards/CardStatistics/variants/
 import SizeBox from '@common/components/ui/SizeBox/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import { useNavigate } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/search/statesModel'
 
 const SearchMasterResults = () => {
   const [selectedFilter, setSelectedFilter] = useState('')
@@ -65,19 +67,16 @@ const SearchMasterResults = () => {
   ]
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={[
-          'Category',
-          'Requirements',
-          'Skills',
-          'Budget & Delivery ',
-          'Results',
-        ]}
-        currentItemProgress="Results"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Results'}
+        />
+      </HeaderDummy>
 
       <div className={styles.wrapper}>
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
         <div className={styles.text_flex}>
           <Typography variant="titleBig" textTransform="uppercase">
             Results
@@ -87,13 +86,13 @@ const SearchMasterResults = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="25px" mobile="20px" />
+        <DynamicPadding desktop="10px" mobile="20px" />
         <div style={{ textAlign: 'center' }} className="justify_center">
           <Typography variant="body4" color={AppColor.transparentBlack}>
             Explore tailored suggestions of comprehensive solutions
           </Typography>
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="45px" />
 
         <div className="mobile justify_center">
           <MobileFilter items={mobileFilterItems} />
@@ -165,7 +164,7 @@ const SearchMasterResults = () => {
             </Typography>
           </div>
 
-          <div style={{ marginLeft: 'auto' }}>
+          <div style={{ marginLeft: 'auto' }} className={styles.hover}>
             <Typography
               variant="body5"
               textLineHeight="1"
@@ -203,7 +202,7 @@ const SearchMasterResults = () => {
             </Typography>
           </div>
 
-          <div style={{ marginLeft: 'auto' }}>
+          <div style={{ marginLeft: 'auto' }} className={styles.hover}>
             <Typography
               variant="body5"
               textLineHeight="1"
@@ -229,7 +228,7 @@ const SearchMasterResults = () => {
           If you need more solutions
         </Typography>
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="28px" mobile="20px" />
         <div className={styles.bottom_grid}>
           <SolutionCard
             title="Order"
@@ -274,15 +273,19 @@ type SolutionCardProps = {
 const SolutionCard = ({ icon, text, title }: SolutionCardProps) => {
   return (
     <div className={styles.card_solution}>
-      <div className={styles.solution_image}>{icon}</div>
-      <SizeBox height="5px" />
-      <Typography variant="body3" fontWeight="500">
-        {title}
-      </Typography>
-      <SizeBox height="15px" />
-      <div className={styles.horiz_orange_line}></div>
-      <SizeBox height="15px" />
-      <Typography variant="body4">{text}</Typography>
+      <div className={styles.card_solution_inner}>
+        <div className={styles.solution_image}>{icon}</div>
+        <Typography variant="body3" fontWeight="500">
+          {title}
+        </Typography>
+        <SizeBox height="9px" />
+        <div className={styles.horiz_orange_line}></div>
+        <SizeBox height="10px" />
+        <Typography variant="body4">{text}</Typography>
+      </div>
+      <div>
+        <AppColor.longRightWhite />
+      </div>
     </div>
   )
 }
@@ -310,8 +313,7 @@ const SelectItem = ({
   return (
     <div
       onClick={handleClick}
-      style={{ backgroundColor: isActive ? AppColor.white : 'white' }}
-      className={styles.select_item}
+      className={isActive ? styles.select_item_active : styles.select_item}
     >
       {icon}
       <div className={styles.flex_column}>
