@@ -35,7 +35,11 @@ const ButtonsSelectList = ({ callback, text, gap }: ButtonsSelectListProps) => {
                 : AppColor.transparent
             }`,
           }}
-          className={styles.button_item}
+          className={
+            activeButton.includes(item)
+              ? styles.button_item_active
+              : styles.button_item
+          }
         >
           <Typography
             variant="body4"

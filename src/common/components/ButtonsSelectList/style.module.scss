@@ -1,3 +1,10 @@
+@mixin button_item() {
+  cursor: pointer;
+  padding: 5px 14px;
+  border-radius: $borderRadius;
+  @include weakShadow;
+}
+
 .buttons_wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -5,9 +12,10 @@
 }
 
 .button_item {
-  cursor: pointer;
-  padding: 5px 14px;
-  border-radius: 20px;
+  @include button_item();
+}
 
-  @include weakShadow;
+.button_item_active {
+  background-color: #FFF7E9;
+  @include button_item();
 }

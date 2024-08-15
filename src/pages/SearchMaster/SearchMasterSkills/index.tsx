@@ -1,13 +1,14 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import ButtonsSelectList from '@common/components/ButtonsSelectList/index'
 import { Link, useNavigate } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/search/statesModel'
 
 const SearchMasterSkills = () => {
   const [activeTitle, setActiveTitle] = useState('')
@@ -22,19 +23,16 @@ const SearchMasterSkills = () => {
 
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={[
-          'Category',
-          'Requirements',
-          'Skills',
-          'Budget & Delivery',
-          'Results',
-        ]}
-        currentItemProgress="Skills"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Skills'}
+        />
+      </HeaderDummy>
 
       <div className={styles.wrapper}>
-        <DynamicPadding />
+        <DynamicPadding desktop="43px" />
         <div className={styles.text_flex}>
           <Typography variant="titleBig" textTransform="uppercase">
             skills
@@ -44,13 +42,13 @@ const SearchMasterSkills = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="25px" mobile="20px" />
+        <DynamicPadding desktop="10px" mobile="20px" />
         <div style={{ textAlign: 'center' }} className="justify_center">
           <Typography variant="body4" color={AppColor.transparentBlack}>
             Select the specific skills you require for your project
           </Typography>
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="46px" />
 
         <ButtonsSelectList
           callback={item => {
@@ -89,7 +87,7 @@ const SearchMasterSkills = () => {
           ]}
         />
 
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="26px" mobile="20px" />
         <div className="gap_5">
           <Typography
             variant="body4"
@@ -102,7 +100,7 @@ const SearchMasterSkills = () => {
             {selectedSkills.length} skill
           </Typography>
         </div>
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="43px" mobile="20px" />
         <div
           style={{ maxWidth: '530px', margin: '0 auto' }}
           className={'flex_space_between'}
