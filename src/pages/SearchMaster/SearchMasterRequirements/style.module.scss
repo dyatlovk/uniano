@@ -1,3 +1,9 @@
+@mixin select_item() {
+  padding: 15px 20px;
+  border-radius: $borderRadius;
+  cursor: pointer;
+}
+
 .wrapper {
   max-width: 1220px;
   margin: 0 auto;
@@ -90,11 +96,14 @@
 }
 
 .select_item_switch {
-  padding: 15px 20px;
+  @include select_item();
+  border: 1px solid #5151511A;
+}
 
+.select_item_switch_active {
+  @include select_item();
   @include weakShadow;
-  border-radius: 20px;
-  cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .disabled {

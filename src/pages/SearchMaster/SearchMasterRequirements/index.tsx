@@ -1,15 +1,14 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import { developmentDropdown } from '@common/models/constants'
 import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 import { Link, useNavigate } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/search/statesModel'
 
 const SearchMasterRequirements = () => {
   const [activeTitle, setActiveTitle] = useState('')
@@ -20,21 +19,19 @@ const SearchMasterRequirements = () => {
     }, 0)
   }, [])
   const navigate = useNavigate()
+
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={[
-          'Category',
-          'Requirements',
-          'Skills',
-          'Budget & Delivery ',
-          'Results',
-        ]}
-        currentItemProgress="Requirements"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Requirements'}
+        />
+      </HeaderDummy>
 
       <div className={styles.wrapper}>
-        <DynamicPadding />
+        <DynamicPadding desktop="43px" />
         <div className={styles.text_flex}>
           <Typography variant="titleBig" textTransform="uppercase">
             Requirements
@@ -44,14 +41,14 @@ const SearchMasterRequirements = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="25px" mobile="20px" />
+        <DynamicPadding desktop="10px" mobile="20px" />
         <div style={{ textAlign: 'center' }} className="justify_center">
           <Typography variant="body4" color={AppColor.transparentBlack}>
             Choose the specific features and functionalities you want to
             implement.
           </Typography>
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="46px" />
 
         <div className={styles.switch_wrapper}>
           <SelectItem
@@ -181,14 +178,16 @@ const SearchMasterRequirements = () => {
           style={{ maxWidth: '530px', margin: '0 auto' }}
           className={'flex_space_between'}
         >
-          <ChevronMoveTo
-            variant="left"
-            onClick={() => {
-              navigate(-1)
-            }}
-            text="Step back"
-            title="category"
-          />
+          <Link to={'/search-master/category'}>
+            <ChevronMoveTo
+              variant="left"
+              onClick={() => {
+                navigate(-1)
+              }}
+              text="Step back"
+              title="category"
+            />
+          </Link>
           <Link to={'/search-master/skills'}>
             <ChevronMoveTo
               variant="right"
@@ -216,37 +215,35 @@ const SelectItem = ({
   title,
 }: SelectItemProps) => {
   const [isActiveItem, setIsActiveItem] = useState(false)
-  const handleSwitch = (item: boolean) => {
-    if (item) {
-      callback(title)
-      return
-    }
-    callback('')
-  }
-  const isActive = activeTitle == title
+
   return (
     <div
       onClick={() => {
-        setIsActiveItem(prev => !prev)
+        setIsActiveItem(!isActiveItem)
       }}
-      className={styles.select_item_switch}
+      className={
+        isActiveItem
+          ? styles.select_item_switch_active
+          : styles.select_item_switch
+      }
     >
       <div className="gap_10">
         <MyCheckbox
           height="14px"
           width="14px"
           basicValue={isActiveItem}
-          callback={item => {
-            handleSwitch(item)
-          }}
+          callback={item => {}}
         />
-        <div className={isActive ? styles.active_icon : styles.disabled}>
+        <div
+          style={{ lineHeight: 1, fontSize: 0 }}
+          className={isActiveItem ? styles.active_icon : styles.disabled}
+        >
           {icon}
         </div>
         <Typography
           variant="body4"
-          fontWeight={isActive ? '500' : '400'}
-          color={isActive ? AppColor.orange : AppColor.text}
+          fontWeight={isActiveItem ? '500' : '400'}
+          color={isActiveItem ? AppColor.orange : AppColor.text}
         >
           {title}
         </Typography>
