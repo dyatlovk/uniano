@@ -1,5 +1,3 @@
-import ButtonsSelectList from '@common/components/ButtonsSelectList/index'
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -12,6 +10,10 @@ import SizeBox from '@common/components/ui/SizeBox/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import { levelMap } from '@common/components/Footer/Footer'
 import { Link, useNavigate } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/search/statesModel'
+import classNames from 'classnames'
 
 const SearchMasterBudgetAndDelivery = () => {
   const [selectedSkillsLevel, setSelectedSkillsLevel] = useState<string[]>([])
@@ -28,19 +30,16 @@ const SearchMasterBudgetAndDelivery = () => {
 
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={[
-          'Category',
-          'Requirements',
-          'Skills',
-          'Budget & Delivery',
-          'Results',
-        ]}
-        currentItemProgress="Budget & Delivery"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Budget&Delivery'}
+        />
+      </HeaderDummy>
 
       <div className={styles.wrapper}>
-        <DynamicPadding />
+        <DynamicPadding desktop="35px" />
         <div className={styles.text_flex}>
           <Typography variant="titleBig" textTransform="uppercase">
             budget & delivery
@@ -50,147 +49,133 @@ const SearchMasterBudgetAndDelivery = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="25px" mobile="20px" />
+        <DynamicPadding desktop="10px" mobile="20px" />
         <div style={{ textAlign: 'center' }} className="justify_center">
           <Typography variant="body4" color={AppColor.transparentBlack}>
             Tell us your budget and time delivery, and we'll tailor the project
             options accordingly.
           </Typography>
         </div>
-        <DynamicPadding />
+        <DynamicPadding desktop="46px" />
 
-        <div className={styles.shadow_box}>
-          <Typography variant="body3" fontWeight="500">
-            What payment option would you like to choose?
-          </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <div className={styles.first_grid}>
-            <SelectItem
-              activeItem={activePaymentMethod}
-              callback={item => {
-                setActivePaymentMethod(item)
-              }}
-              title="A fixed amount without negotiation"
-            />
-            <SelectItem
-              activeItem={activePaymentMethod}
-              callback={item => {
-                setActivePaymentMethod(item)
-              }}
-              title="Negotiable budget"
-              isNegotiation={true}
-            />
-            <SelectItem
-              activeItem={activePaymentMethod}
-              callback={item => {
-                setActivePaymentMethod(item)
-              }}
-              title="Need an offer"
-              onlyText="If you are unsure about estimating the budget"
-            />
+        <div className={classNames(styles.shadow_box, styles.container)}>
+          <div className={styles.container_head}>
+            <div className={styles.payment}>
+              <Typography variant="body3" fontWeight="500">
+                What payment option would you like to choose?
+              </Typography>
+              <DynamicPadding desktop="30px" mobile="20px" />
+              <div className={styles.first_grid}>
+                <SelectItem
+                  activeItem={activePaymentMethod}
+                  callback={item => {
+                    setActivePaymentMethod(item)
+                  }}
+                  title="A fixed amount"
+                />
+                <SelectItem
+                  activeItem={activePaymentMethod}
+                  callback={item => {
+                    setActivePaymentMethod(item)
+                  }}
+                  title="Negotiable budget"
+                  isNegotiation={true}
+                />
+              </div>
+            </div>
+            <div className={styles.vertical_line}></div>
+            <div className={styles.time}>
+              <Typography variant="body3" fontWeight="500">
+                What is your desired project time delivery?
+              </Typography>
+              <DynamicPadding desktop="30px" mobile="20px" />
+              <div className={styles.first_grid}>
+                <SelectItem
+                  activeItem={activeDeliveryMethod}
+                  callback={item => {
+                    setActiveDeliveryMethod(item)
+                  }}
+                  title="A fixed delivery"
+                  placeholder="* days"
+                />
+                <SelectItem
+                  activeItem={activeDeliveryMethod}
+                  callback={item => {
+                    setActiveDeliveryMethod(item)
+                  }}
+                  title="Negotiable delivery"
+                  isNegotiation={true}
+                  placeholder="* days"
+                />
+              </div>
+            </div>
           </div>
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <HorizontalLine />
-          <DynamicPadding desktop="30px" mobile="20px" />
-
-          <Typography variant="body4">
-            You will see results with{' '}
-            <span style={{ fontWeight: '500', color: AppColor.orange }}>
-              2 skill levels
-            </span>{' '}
-            only
-          </Typography>
-
-          <SizeBox height="5px" />
-          <div className={styles.level_wrapper}>
-            <LevelChoose
-              activeSelected={selectedSkillsLevel}
-              callback={item => {
-                setSelectedSkillsLevel(item)
-              }}
-              lvl={1}
-              priceRange="$30-$50"
-              title="Beginner"
-              titleColor="#B6DE59"
-            />
-            <LevelChoose
-              activeSelected={selectedSkillsLevel}
-              callback={item => {
-                setSelectedSkillsLevel(item)
-              }}
-              lvl={2}
-              priceRange=" $51 - $100"
-              title="Junior"
-              titleColor="#219653"
-            />
-            <LevelChoose
-              activeSelected={selectedSkillsLevel}
-              callback={item => {
-                setSelectedSkillsLevel(item)
-              }}
-              lvl={3}
-              priceRange="$101 - $300 "
-              title="Middle"
-              titleColor="#F2C94C"
-            />
-            <LevelChoose
-              activeSelected={selectedSkillsLevel}
-              callback={item => {
-                setSelectedSkillsLevel(item)
-              }}
-              lvl={4}
-              priceRange="$301 - $500   "
-              title="Senior"
-              titleColor="#F4A72A"
-            />
-            <LevelChoose
-              activeSelected={selectedSkillsLevel}
-              callback={item => {
-                setSelectedSkillsLevel(item)
-              }}
-              lvl={5}
-              priceRange=" starting at $501  "
-              title="Lead"
-              titleColor="#EB5757"
-            />
-          </div>
-        </div>
-
-        <DynamicPadding desktop="30px" mobile="20px" />
-        <div className={styles.shadow_box}>
-          <Typography variant="body3" fontWeight="500">
-            What is your desired project time delivery?
-          </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <div className={styles.first_grid}>
-            <SelectItem
-              activeItem={activeDeliveryMethod}
-              callback={item => {
-                setActiveDeliveryMethod(item)
-              }}
-              title="A fixed delivery"
-              placeholder="* days"
-            />
-            <SelectItem
-              activeItem={activeDeliveryMethod}
-              callback={item => {
-                setActiveDeliveryMethod(item)
-              }}
-              title="Negotiable delivery"
-              isNegotiation={true}
-              placeholder="* days"
-            />
-            <SelectItem
-              activeItem={activeDeliveryMethod}
-              callback={item => {
-                setActiveDeliveryMethod(item)
-              }}
-              title="Need an offer"
-              onlyText="If you are unsure about estimating the budget"
-            />
+          <div className={styles.container_footer}>
+            <DynamicPadding desktop="30px" mobile="20px" />
+            <Typography variant="body4">
+              You will see results with{' '}
+              <span style={{ fontWeight: '500', color: AppColor.orange }}>
+                2 skill levels
+              </span>{' '}
+              only
+            </Typography>
+            <SizeBox height="5px" />
+            <div className={styles.level_wrapper}>
+              <LevelChoose
+                activeSelected={selectedSkillsLevel}
+                callback={item => {
+                  setSelectedSkillsLevel(item)
+                }}
+                lvl={1}
+                priceRange="$30-$50"
+                title="Beginner"
+                titleColor="#B6DE59"
+              />
+              <LevelChoose
+                activeSelected={selectedSkillsLevel}
+                callback={item => {
+                  setSelectedSkillsLevel(item)
+                }}
+                lvl={2}
+                priceRange=" $51 - $100"
+                title="Junior"
+                titleColor="#219653"
+              />
+              <LevelChoose
+                activeSelected={selectedSkillsLevel}
+                callback={item => {
+                  setSelectedSkillsLevel(item)
+                }}
+                lvl={3}
+                priceRange="$101 - $300 "
+                title="Middle"
+                titleColor="#F2C94C"
+              />
+              <LevelChoose
+                activeSelected={selectedSkillsLevel}
+                callback={item => {
+                  setSelectedSkillsLevel(item)
+                }}
+                lvl={4}
+                priceRange="$301 - $500   "
+                title="Senior"
+                titleColor="#F4A72A"
+              />
+              <LevelChoose
+                activeSelected={selectedSkillsLevel}
+                callback={item => {
+                  setSelectedSkillsLevel(item)
+                }}
+                lvl={5}
+                priceRange=" starting at $501  "
+                title="Lead"
+                titleColor="#EB5757"
+              />
+            </div>
           </div>
         </div>
         <DynamicPadding desktop="30px" mobile="20px" />
+
         <div className={styles.text_box}>
           <Typography variant="body4">
             You will see{' '}
