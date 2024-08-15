@@ -76,7 +76,7 @@ export const StepItem = ({
             {solve}
           </Typography>
         </div>
-        <DynamicPadding desktop="30px" mobile="20px" />
+        <DynamicPadding desktop="36px" mobile="20px" />
       </div>
     </div>
   )

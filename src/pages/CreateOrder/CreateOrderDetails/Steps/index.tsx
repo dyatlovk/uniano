@@ -31,7 +31,7 @@ const StepOneOrder = ({
             callback={item => {
               callback(item)
             }}
-            placeholder="Title"
+            placeholder="Enter title"
           />
         }
         stepNumber="1"

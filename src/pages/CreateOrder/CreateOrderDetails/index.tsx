@@ -18,6 +18,9 @@ import StepOneOrder, {
 } from './Steps'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/createOrder/statesModel'
+import HeaderDummy from '@common/components/Header/Dummy/index'
 
 const CreateOrderDetails = () => {
   const navigate = useNavigate()
@@ -92,12 +95,15 @@ const CreateOrderDetails = () => {
 
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Details"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Details'}
+        />
+      </HeaderDummy>
 
-      <DynamicPadding />
+      <DynamicPadding desktop="33px" />
 
       <div className="wrapper_page">
         <ResponsiveLayoutTwo
@@ -121,7 +127,7 @@ const CreateOrderDetails = () => {
                     </div>
                   </div>
                 </div>
-                <DynamicPadding />
+                <DynamicPadding desktop="35px" />
                 <div>
                   {mapsItem[activeStep]}
                   {activeStep != 4 && (
@@ -153,7 +159,7 @@ const CreateOrderDetails = () => {
                   )}
                 </div>
 
-                <DynamicPadding />
+                <DynamicPadding desktop="12px" />
 
                 <div
                   style={{
@@ -168,7 +174,7 @@ const CreateOrderDetails = () => {
                   </Typography>
                 </div>
 
-                <DynamicPadding />
+                <DynamicPadding desktop="48px" />
 
                 <div className={'flex_space_between'}>
                   <ChevronMoveTo
@@ -233,7 +239,7 @@ const CreateOrderDetails = () => {
                   <Typography variant="body3" fontWeight="500">
                     Title examples
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="18px" mobile="20px" />
                   <ul className={styles.ul_wrapper}>
                     <li>
                       <Typography variant="body4">
@@ -258,7 +264,7 @@ const CreateOrderDetails = () => {
             </div>
           }
         />
-        <AskedQuestion />
+        <AskedQuestion margin='50px 0 0 0' />
       </div>
       <Footer />
     </div>
