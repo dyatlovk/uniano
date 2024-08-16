@@ -1,4 +1,3 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import styles from './style.module.scss'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -12,9 +11,7 @@ import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundI
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
-import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import Urgent from '@common/components/ui/Urgent/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
@@ -26,6 +23,9 @@ import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButto
 import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import { Link } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/createOrder/statesModel'
 
 const CreateOrderPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -35,12 +35,15 @@ const CreateOrderPosting = () => {
   }, [])
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Posting"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Posting'}
+        />
+      </HeaderDummy>
 
-      <DynamicPadding />
+      <DynamicPadding desktop="35px" />
 
       <div className="wrapper_page">
         <div className={styles.top_wrapper_part}>
@@ -80,7 +83,7 @@ const CreateOrderPosting = () => {
           </div>
         </div>
 
-        <DynamicPadding />
+        <DynamicPadding desktop="26px" />
 
         <FilterList
           filters={[
@@ -102,7 +105,7 @@ const CreateOrderPosting = () => {
 
       <CardsSliderRelated secondSlider={true} />
       <div className="wrapper_page">
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0px 0px" />
       </div>
 
       <Footer />
@@ -606,7 +609,7 @@ const OverviewBlock = () => {
   const [isPosted, setIsPosted] = useState(false)
   return (
     <>
-      <DynamicPadding />
+      <DynamicPadding desktop="30px" />
       {isPosted ? (
         <ResponsiveLayoutTwo
           gap="120px"
@@ -723,9 +726,9 @@ const OverviewBlock = () => {
         />
       ) : (
         <ResponsiveLayoutTwo
-          gap="120px"
-          item1MaxWidth="730px"
-          item2MaxWidth="330px"
+          gap="133px"
+          item1MaxWidth="732px"
+          item2MaxWidth="335px"
           item1={
             <div>
               <div className="justify_center">
@@ -823,11 +826,11 @@ const DetailsItem = ({ icon, text, title, absolute }: DetailsItemProps) => {
 const AdvancedBlock = () => {
   return (
     <>
-      <DynamicPadding />
+      <DynamicPadding desktop="24px" />
       <ResponsiveLayoutTwo
-        gap="120px"
-        item1MaxWidth="730px"
-        item2MaxWidth="330px"
+        gap="80px"
+        item1MaxWidth="732px"
+        item2MaxWidth="388px"
         item1={
           <div>
             <Typography variant="body3" fontWeight="500">
@@ -847,7 +850,7 @@ const AdvancedBlock = () => {
               iconHeight="12px"
             />
 
-            <DynamicPadding />
+            <DynamicPadding desktop="45px" />
             <Typography variant="body3" fontWeight="500">
               Sponsorship Campaign
             </Typography>
@@ -874,14 +877,14 @@ const AdvancedBlock = () => {
               </div>
             </div>
 
-            <DynamicPadding />
+            <DynamicPadding desktop="45px" />
             <div className="gap_10">
               <Typography variant="body3" fontWeight="500">
                 Urgent Order
               </Typography>
               <AppColor.upCirlcle />
             </div>
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="26px" mobile="20px" />
 
             <div style={{ opacity: '0.5' }} className={styles.wrapper_campaign}>
               <div className="gap_15">
