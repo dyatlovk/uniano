@@ -4,7 +4,7 @@ import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import FilterList from '@common/components/FilterList/index'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/createOrder/statesModel'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 
 const CreateOrderPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -842,11 +843,14 @@ const AdvancedBlock = () => {
               dropdownVariants={[
                 'All users and search engines',
                 'All registered users and search engines',
-                'All users, all registered users',
+                'All users',
+                'All registered users',
               ]}
-              initText="All users and search engines"
+              padding={'17px 20px'}
+              initText="all users and search engines"
               labelIcon={<></>}
-              callback={() => {}}
+              callback={(item: string) => {
+              }}
               iconHeight="12px"
             />
 
@@ -855,27 +859,7 @@ const AdvancedBlock = () => {
               Sponsorship Campaign
             </Typography>
             <DynamicPadding desktop="30px" mobile="20px" />
-            <div className={styles.wrapper_campaign}>
-              <div className="gap_10">
-                <div className={styles.orange}>
-                  <AppColor.caseWhite />
-                </div>
-                <Typography
-                  variant="body5"
-                  fontWeight="500"
-                  textTransform="uppercase"
-                  color={AppColor.transparentBlack}
-                >
-                  Change a campaign
-                </Typography>
-              </div>
-              <div className="gap_10">
-                <AppColor.workClub />
-                <Typography variant="body4" fontWeight="500">
-                  WorkClub
-                </Typography>
-              </div>
-            </div>
+            <SponsorshipDropdown onSelect={() => {}} />
 
             <DynamicPadding desktop="45px" />
             <div className="gap_10">
@@ -886,7 +870,10 @@ const AdvancedBlock = () => {
             </div>
             <DynamicPadding desktop="26px" mobile="20px" />
 
-            <div style={{ opacity: '0.5' }} className={styles.wrapper_campaign}>
+            <div
+              style={{ opacity: '0.5', padding: '13px 20px' }}
+              className={styles.wrapper_campaign}
+            >
               <div className="gap_15">
                 <Urgent />
                 <Typography variant="body4">
@@ -905,6 +892,118 @@ const AdvancedBlock = () => {
         }
       />
     </>
+  )
+}
+
+interface SponsorshipDropdownProps {
+  onSelect: () => void
+}
+const SponsorshipDropdown = ({
+  onSelect,
+}: SponsorshipDropdownProps): JSX.Element => {
+  const [selected, setSelected] = useState<number>(-1)
+  const [showDropdown, setShowDropDown] = useState<boolean>(false)
+  const listRef = useRef<HTMLUListElement | null>(null)
+
+  const list = [
+    {
+      icon: <AppColor.workClub width={29} height={29} />,
+      title: 'WorkClub',
+      text: '$5 500',
+    },
+    {
+      icon: <AppColor.googleLogo width={29} height={29} />,
+      title: 'MyDreamCampaign',
+      text: '$4 000',
+    },
+  ]
+
+  function getActiveItem(): Object {
+    return Object.values(list)[selected]
+  }
+
+  function isActive(id: number): boolean {
+    return id === selected
+  }
+
+  return (
+    <div
+      style={{ position: 'relative' }}
+      className={styles.wrapper_campaign}
+      onClick={() => {
+        setShowDropDown(prev => !prev)
+      }}
+    >
+      <div className="gap_10">
+        <div className={styles.orange}>
+          <AppColor.caseWhite />
+        </div>
+        <Typography
+          variant="body5"
+          fontWeight="500"
+          textTransform="uppercase"
+          color={AppColor.transparentBlack}
+        >
+          Change a campaign
+        </Typography>
+      </div>
+      <div className="gap_10">
+        {/* @ts-ignore */}
+        {getActiveItem() && getActiveItem().icon}
+        <Typography variant="body4" fontWeight="500">
+          {/* @ts-ignore */}
+          {getActiveItem() && getActiveItem().title}
+        </Typography>
+      </div>
+      {showDropdown && (
+        <div className={styles.sponsorship_dropdown}>
+          <div
+            className={styles.search}
+            onClick={() => {
+              setShowDropDown(false)
+            }}
+          >
+            <AppColor.searchIconBlack fill={AppColor.text} />
+            <InputCommon
+              width="100%"
+              padding="20px 0 20px 10px"
+              boxShadowNone={true}
+              placeholder={'Search'}
+              callback={() => {}}
+            />
+          </div>
+          <ul ref={listRef} className={styles.list}>
+            {list.map((item, id: number) => (
+              <li
+                key={id}
+                className={styles.list_item}
+                onClick={e => {
+                  setSelected(id)
+                  onSelect()
+                }}
+              >
+                <div className={styles.list_logo}>{item.icon}</div>
+                <div
+                  style={{
+                    flexGrow: 1,
+                    fontWeight: isActive(id) ? '500' : '400',
+                  }}
+                >
+                  {item.title}
+                </div>
+                <div
+                  style={{
+                    fontWeight: isActive(id) ? '500' : '400',
+                  }}
+                >
+                  {item.text}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   )
 }
 

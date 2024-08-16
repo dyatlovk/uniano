@@ -30,6 +30,7 @@ const InputDropdown = ({
 }: InputDropdownProps) => {
   const [currenText, setCurrentText] = useState(initText)
   const [showDropdown, setShowDropdown] = useState(false)
+  const [isFirstSelect, setIsFirstSelect] = useState<boolean>(false)
 
   function handleChange(item: string) {
     if (callback != null) {
@@ -56,7 +57,7 @@ const InputDropdown = ({
       <div className={styles.flex}>
         <Typography
           textLineHeight="1"
-          color={currenText == initText ? AppColor.text : AppColor.text}
+          color={!isFirstSelect ? AppColor.transparentBlack : AppColor.text}
           variant="body4"
         >
           {currenText}
@@ -97,11 +98,17 @@ const InputDropdown = ({
               <div
                 onClick={() => {
                   handleChange(item)
+                  setIsFirstSelect(true)
                 }}
                 className={styles.variant_item}
               >
                 {' '}
-                <Typography variant="body4">{item}</Typography>{' '}
+                <Typography
+                  variant="body4"
+                  fontWeight={currenText === item ? '500' : '400'}
+                >
+                  {item}
+                </Typography>{' '}
               </div>
             ))}
           </div>
