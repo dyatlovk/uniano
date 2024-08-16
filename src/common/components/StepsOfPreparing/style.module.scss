@@ -1,11 +1,13 @@
 .steps_grid {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .step_item {
   display: flex;
   gap: 10px;
+  width: 100%;
 }
 
 .step_item_hover_text {

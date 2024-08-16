@@ -88,6 +88,7 @@ type StepItemSolvingProps = {
   solveNode: React.ReactNode
   drawLine?: boolean
   removeHeight?: boolean
+  helpNode?: React.ReactNode
 }
 export const StepItemSolving = ({
   solveNode,
@@ -95,6 +96,7 @@ export const StepItemSolving = ({
   title,
   drawLine = true,
   removeHeight,
+  helpNode,
 }: StepItemSolvingProps) => {
   return (
     <div className={styles.step_item}>
@@ -117,6 +119,7 @@ export const StepItemSolving = ({
         <SizeBox height="20px" />
         {solveNode}
       </div>
+      {helpNode && helpNode}
     </div>
   )
 }

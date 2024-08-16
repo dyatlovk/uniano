@@ -2,11 +2,12 @@
   padding: 8px 15px;
   border-radius: 20px;
   background-color: $white;
+  max-width: calc(100% - 388px + 70px);
 }
 
 .title_wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
   align-items: center;
 }
@@ -51,6 +52,18 @@
   gap: 10px;
 }
 
+.category_select {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+  padding: 6px 13px;
+}
+
+.category_active {
+  background-color: $white;
+  border-radius: 20px;
+}
+
 @media (min-width: $tabletSize) {
 
   .right_text_box {
@@ -59,10 +72,6 @@
     padding: 25px 30px;
 
     @include weakShadow;
-  }
-
-  .title_wrapper {
-    justify-content: start;
   }
 
   .template_icon {
