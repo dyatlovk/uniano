@@ -1,0 +1,142 @@
+@mixin payment_button() {
+  border-radius: $borderRadius;
+  border: 1px solid #5151511A;
+  padding: 16px;
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 122px;
+  line-height: 1;
+  position: relative;
+
+  &:hover {
+    background-color: $white;
+  }
+}
+
+.right_text_box {
+  border-radius: 20px;
+  display: block;
+  padding: 25px 30px;
+  width: 388px;
+
+  @include weakShadow;
+}
+
+.payment_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.payment_button {
+  @include payment_button();
+  background-color: #fff;
+}
+
+.payment_button_active {
+  @include payment_button();
+  background-color: $white;
+}
+
+.info_button {
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0px 0px 2px 1px #00000021;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+}
+
+@mixin padding_shadow() {
+  padding: 11px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.padding_shadow {
+  @include weakShadow;
+  @include padding_shadow();
+}
+
+.padding_shadow_active {
+  border: 1px solid $white;
+  @include padding_shadow();
+}
+
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.file_close {
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attached_file_sign {
+  color: rgba(33, 150, 83, 1);
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.orange {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $orange;
+  border-radius: 50%;
+
+  svg path {
+    stroke: $white;
+  }
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  border: 1px dashed rgba(0, 0, 0, 0.13);
+  border-radius: $borderRadius;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(1, 1, 1, 0.5);
+  padding: 11px;
+  box-sizing: border-box;
+  background-color: $white;
+  @include weakShadow;
+
+  p {
+    color: rgba(1, 1, 1, 0.5);
+  }
+}
