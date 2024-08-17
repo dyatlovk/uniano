@@ -56,7 +56,11 @@ const CreateOrderPosting = () => {
         <div className={styles.top_wrapper_part}>
           <div className={styles.title_wrapper}>
             <div className="gap_10">
-              <Typography textTransform="uppercase" variant="titleBig">
+              <Typography
+                textTransform="uppercase"
+                variant="titleBig"
+                textLineHeight="1"
+              >
                 posting
               </Typography>
               <div className="mobile">
@@ -90,7 +94,7 @@ const CreateOrderPosting = () => {
           </div>
         </div>
 
-        <DynamicPadding desktop="26px" />
+        <DynamicPadding desktop="32px" />
 
         <FilterList
           filters={[
@@ -255,8 +259,8 @@ const FAQBlock = () => {
     <div>
       <DynamicPadding desktop="30px" />
       <ResponsiveLayoutTwo
-        item1MaxWidth="730px"
-        item2MaxWidth="390px"
+        item1MaxWidth="732px"
+        item2MaxWidth="388px"
         gap="80px"
         item1={
           <div>
@@ -285,6 +289,7 @@ const FAQBlock = () => {
                 titles={questions}
               />
             ))}
+            <DynamicPadding desktop="20px" mobile="15px" />
             <div className="flex_space_between">
               <MyButtonOrange
                 fontWeight="500"
@@ -650,184 +655,167 @@ const SelectUser = ({ activeSelected, callbackRemove }: SelectUserProps) => {
 }
 const OverviewBlock = () => {
   const [isPosted, setIsPosted] = useState(false)
-  return (
-    <>
-      <DynamicPadding desktop="30px" />
-      {isPosted ? (
-        <ResponsiveLayoutTwo
-          gap="120px"
-          item1MaxWidth="730px"
-          item2MaxWidth="330px"
-          item1={
-            <div>
-              <Typography variant="body3" fontWeight="500">
-                Order stages
-              </Typography>
+  return isPosted ? (
+    <ResponsiveLayoutTwo
+      gap="133px"
+      item1MaxWidth="732px"
+      item2MaxWidth="335px"
+      item1={
+        <div>
+          <DynamicPadding />
+          <Typography variant="body3" fontWeight="500">
+            Campaign stages
+          </Typography>
 
-              <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="30px" mobile="20px" />
 
-              <PercentBar currentPercent={35} height="13px" />
-              <DynamicPadding desktop="20px" mobile="15px" />
-              <div className="flex_space_between desktop">
-                <Typography
-                  variant="body4"
-                  fontWeight="500"
-                  color={AppColor.orange}
-                >
-                  Order
-                </Typography>
-                <Typography
-                  variant="body4"
-                  fontWeight="500"
-                  color={AppColor.orange}
-                >
-                  Selection
-                </Typography>
-                <Typography variant="body4" fontWeight="500">
-                  Negotiation
-                </Typography>
-                <Typography variant="body4" color={AppColor.transparentBlack}>
-                  Progress
-                </Typography>
-                <Typography variant="body4" color={AppColor.transparentBlack}>
-                  Completed
-                </Typography>
-              </div>
-              <div className="mobile">
-                <Typography variant="body4" fontWeight="500">
-                  Negotiation
-                </Typography>
-              </div>
-              <DynamicPadding />
+          <PercentBar currentPercent={30} height="13px" />
+          <DynamicPadding desktop="20px" mobile="15px" />
+          <div className="flex_space_between desktop">
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={AppColor.orange}
+            >
+              Campaign
+            </Typography>
+            <Typography variant="body4" color={AppColor.transparentBlack}>
+              Progress
+            </Typography>
+            <Typography variant="body4" color={AppColor.transparentBlack}>
+              Completed
+            </Typography>
+          </div>
+          <div className="mobile">
+            <Typography variant="body4" fontWeight="500">
+              Campaign
+            </Typography>
+          </div>
+          <DynamicPadding />
 
-              <div className={styles.details_grid}>
-                <DetailsItem
-                  icon={<AppColor.playTriangle />}
-                  text="Running"
-                  title="Status"
-                />
-                <DetailsItem
-                  icon={<AppColor.timelapse />}
-                  absolute={true}
-                  text="5 days left"
-                  title="Lifetime"
-                />
-                <DetailsItem
-                  icon={<AppColor.orderPlace />}
-                  absolute={true}
-                  text="55"
-                  title="Order Place"
-                />
-              </div>
+          <div className={styles.details_grid}>
+            <DetailsItem
+              icon={<AppColor.playTriangle />}
+              text="Running"
+              title="Status"
+            />
+            <DetailsItem
+              icon={<AppColor.timelapse />}
+              absolute={true}
+              text="5 days left"
+              title="Lifetime"
+            />
+            <DetailsItem
+              icon={<AppColor.orderPlace />}
+              absolute={true}
+              text="55"
+              title="Order Place"
+            />
+          </div>
 
-              <DynamicPadding />
+          <DynamicPadding />
 
-              <div className="text_box">
-                <Typography variant="body4">
-                  Your project has entered the{' '}
-                  <span style={{ fontWeight: '500' }}>negotiation stage</span>,
-                  which means you have hired freelancers and are ready to
-                  proceed.
-                </Typography>
-              </div>
+          <div className="text_box">
+            <Typography variant="body4">
+              Your project has entered the{' '}
+              <span style={{ fontWeight: '500' }}>negotiation stage</span>,
+              which means you have hired freelancers and are ready to proceed.
+            </Typography>
+          </div>
 
-              <DynamicPadding />
+          <DynamicPadding />
 
-              <div className={'flex_space_between'}>
-                <Link to={'/create-order/negotiation'}>
-                  <ChevronMoveTo
-                    variant="left"
-                    onClick={() => {}}
-                    text="Step back"
-                    title="Negotiation"
-                  />
-                </Link>
-                <ChevronMoveTo
-                  variant="right"
-                  preview={true}
-                  onClick={() => {}}
-                  text="Before posting"
-                  title="Preview"
-                />
-                <ChevronMoveTo
-                  variant="right"
-                  onClick={() => {
-                    setIsPosted(true)
-                  }}
-                  text="For free"
-                  disabled={true}
-                  title="update"
-                />
-              </div>
-            </div>
-          }
-          item2={
-            <div className="desktop">
-              <BackgroundItem image="" />
-            </div>
-          }
-        />
-      ) : (
-        <ResponsiveLayoutTwo
-          gap="133px"
-          item1MaxWidth="732px"
-          item2MaxWidth="335px"
-          item1={
-            <div>
-              <div className="justify_center">
-                <AppColor.reachingFlag
-                  width={'fit-content'}
-                  style={{ maxHeight: '245px', maxWidth: '470px' }}
-                />
-              </div>
-              <DynamicPadding />
-              <div className="text_box">
-                <Typography variant="body4">
-                  Almost done. Preview your order before posting and{' '}
-                  <span style={{ fontWeight: '500' }}>2 freelancers</span> will
-                  see your project.
-                </Typography>
-              </div>
-              <DynamicPadding />
-              <div className="mobile">
-                <BackgroundItem image="" />
-                <DynamicPadding />
-              </div>
-              <div className={'flex_space_between'}>
-                <Link to={'/create-order/negotiation'}>
-                  <ChevronMoveTo
-                    variant="left"
-                    onClick={() => {}}
-                    text="Step back"
-                    title="Negotiation"
-                  />
-                </Link>
-                <ChevronMoveTo
-                  variant="right"
-                  preview={true}
-                  onClick={() => {}}
-                  text="Before posting"
-                  title="Preview"
-                />
-                <ChevronMoveTo
-                  variant="right"
-                  onClick={() => {
-                    setIsPosted(true)
-                  }}
-                  text="For free"
-                  title="Post"
-                />
-              </div>
-            </div>
-          }
-          item2={
-            <div className="desktop">
-              <BackgroundItem image="" />
-            </div>
-          }
-        />
-      )}
-    </>
+          <div className={'flex_space_between'}>
+            <ChevronMoveTo
+              variant="left"
+              onClick={() => {}}
+              text="Step back"
+              title="Negotiation"
+            />
+            <ChevronMoveTo
+              variant="right"
+              preview={true}
+              onClick={() => {}}
+              text="Before posting"
+              title="Preview"
+            />
+            <ChevronMoveTo
+              variant="right"
+              onClick={() => {
+                setIsPosted(true)
+              }}
+              text="For free"
+              disabled={true}
+              title="update"
+            />
+          </div>
+        </div>
+      }
+      item2={
+        <div className="desktop">
+          <BackgroundItem image="" />
+        </div>
+      }
+    />
+  ) : (
+    <ResponsiveLayoutTwo
+      gap="133px"
+      item1MaxWidth="732px"
+      item2MaxWidth="335px"
+      item1={
+        <div>
+          <DynamicPadding desktop="32px" />
+          <div className="justify_center">
+            <AppColor.reachingFlag
+              width={'fit-content'}
+              style={{ maxHeight: '245px', maxWidth: '470px' }}
+            />
+          </div>
+          <DynamicPadding />
+          <div className="text_box">
+            <Typography variant="body4">
+              Preview your order before posting and{' '}
+              <span style={{ fontWeight: '500' }}>2 freelancers</span> will see
+              your project.
+            </Typography>
+          </div>
+          <DynamicPadding />
+          <div className="mobile">
+            <BackgroundItem image="" />
+            <DynamicPadding />
+          </div>
+          <div className={'flex_space_between'}>
+            <ChevronMoveTo
+              variant="left"
+              onClick={() => {}}
+              text="Step back"
+              title="Negotiation"
+            />
+            <ChevronMoveTo
+              variant="right"
+              preview={true}
+              onClick={() => {}}
+              text="Before posting"
+              title="Preview"
+            />
+            <ChevronMoveTo
+              variant="right"
+              onClick={() => {
+                setIsPosted(true)
+              }}
+              text="For free"
+              title="Post"
+            />
+          </div>
+        </div>
+      }
+      item2={
+        <div className="desktop" style={{ flexDirection: 'column' }}>
+          <DynamicPadding desktop="32px" />
+          <BackgroundItem image="/src/assets/images/bg.png" />
+        </div>
+      }
+    />
   )
 }
 

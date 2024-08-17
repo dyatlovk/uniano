@@ -77,6 +77,12 @@
   border-radius: 20px;
 }
 
+.faq_cancel_btn {
+  button {
+    color: $grey;
+  }
+}
+
 .flex_gap {
   display: flex;
   gap: 10px;

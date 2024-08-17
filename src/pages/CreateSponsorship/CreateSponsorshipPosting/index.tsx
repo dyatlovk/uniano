@@ -19,13 +19,16 @@ import UserAvatar from '@common/components/ui/UserAvatar/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import StatesModel from '@common/models/sponsorship/statesModel'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import MyButtonTransparentGrey from '@common/components/ui/MyButton/variants/MyButtonTransparentGrey'
+import DotsButton from '@common/components/ui/DotsButtons/index'
+import PopUpBottom from '@common/components/ModalPopUps/PopUpBottom/index'
+import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
 
 const CreateSponsorshipPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -42,7 +45,7 @@ const CreateSponsorshipPosting = () => {
         />
       </HeaderDummy>
 
-      <DynamicPadding desktop="40px" />
+      <DynamicPadding desktop="35px" />
 
       <div className="wrapper_page">
         <div className={styles.top_wrapper_part}>
@@ -129,9 +132,9 @@ const VariantSelect = ({ activeFilter }: VariantSelectProps) => {
 const ComplaintsBlock = () => {
   return (
     <div>
-      <DynamicPadding />
+      <DynamicPadding desktop="30px" />
       <DetailsTableMultiNodes
-        titles={['ID', 'Date', 'Complaint', 'Solution', 'Status']}
+        titles={['ID', 'Date', 'Complaint', 'Solution', 'Status', '']}
         elements={[
           {
             nodes: [
@@ -143,9 +146,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -155,6 +161,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
           {
@@ -167,9 +174,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -179,6 +189,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
           {
@@ -191,9 +202,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -203,6 +217,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
         ]}
@@ -227,10 +242,10 @@ const FAQBlock = () => {
   ])
   return (
     <div>
-      <DynamicPadding />
+      <DynamicPadding desktop="30px" />
       <ResponsiveLayoutTwo
-        item1MaxWidth="730px"
-        item2MaxWidth="390px"
+        item1MaxWidth="732px"
+        item2MaxWidth="388px"
         gap="80px"
         item1={
           <div>
@@ -242,8 +257,8 @@ const FAQBlock = () => {
               <SwitchButton
                 width="44px"
                 height="24px"
-                disable={true}
-                startValue={true}
+                disable={false}
+                startValue={false}
               />
             </div>
 
@@ -265,22 +280,29 @@ const FAQBlock = () => {
                 fontWeight="500"
                 onClick={() => {}}
                 textTransform="uppercase"
+                padding="7px 14px"
               >
                 {' '}
                 <div className={styles.white}>
-                  <AppColor.plus stroke={AppColor.orange} />
+                  <AppColor.plus
+                    stroke={AppColor.orange}
+                    width={12}
+                    height={12}
+                  />
                 </div>
                 Add question
               </MyButtonOrange>
-              <MyButtonTransparent
-                fontWeight="500"
-                textTransform="uppercase"
-                onClick={() => {
-                  setQuestions([])
-                }}
-              >
-                Delete all
-              </MyButtonTransparent>
+              <div className={styles.faq_cancel_btn}>
+                <MyButtonTransparentGrey
+                  fontWeight="500"
+                  textTransform="uppercase"
+                  onClick={() => {
+                    setQuestions([])
+                  }}
+                >
+                  Delete all
+                </MyButtonTransparentGrey>
+              </div>
             </div>
           </div>
         }
@@ -336,7 +358,7 @@ const QuestionItem = ({
       </div>
       <DynamicPadding desktop="30px" mobile="20px" />
       <HorizontalLine />
-      <DynamicPadding desktop="30px" mobile="20px" />
+      <DynamicPadding desktop="18px" mobile="20px" />
     </div>
   )
 }
@@ -717,8 +739,8 @@ const OverviewBlock = () => {
           <div className="text_box">
             <Typography variant="body4">
               Almost done. Preview your order before posting and{' '}
-              <span style={{ fontWeight: '500' }}>2 freelancers</span> will see
-              your project.
+              <span style={{ fontWeight: '500' }}>14 931 sponsors</span> will
+              see your campaign.
             </Typography>
           </div>
           <DynamicPadding />
@@ -798,68 +820,71 @@ const DetailsItem = ({ icon, text, title, absolute }: DetailsItemProps) => {
 
 const AdvancedBlock = () => {
   return (
-    <ResponsiveLayoutTwo
-      gap="80px"
-      item1MaxWidth="732px"
-      item2MaxWidth="388px"
-      item1={
-        <div>
-          <Typography variant="body3" fontWeight="500">
-            Visibility
-          </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <InputDropdown
-            marginLeft={true}
-            dropdownVariants={[
-              'All users and search engines',
-              'All registered users and search engines',
-              'All users',
-              'All registered users',
-            ]}
-            initText="all users and search engines"
-            labelIcon={<></>}
-            padding={'17px 20px'}
-            callback={() => {}}
-            iconHeight="12px"
-          />
-
-          <DynamicPadding desktop="45px" />
-          <Typography variant="body3" fontWeight="500">
-            Sponsorship Campaign
-          </Typography>
-          <DynamicPadding desktop="30px" mobile="20px" />
-          <SponsorshipDropdown onSelect={() => {}} />
-
-          <DynamicPadding desktop="45px" />
-          <div className="gap_10">
+    <>
+      <DynamicPadding desktop="24px" />
+      <ResponsiveLayoutTwo
+        gap="80px"
+        item1MaxWidth="732px"
+        item2MaxWidth="388px"
+        item1={
+          <div>
             <Typography variant="body3" fontWeight="500">
-              Urgent Order
+              Visibility
             </Typography>
-            <AppColor.upCirlcle />
-          </div>
-          <DynamicPadding desktop="26px" mobile="20px" />
+            <DynamicPadding desktop="30px" mobile="20px" />
+            <InputDropdown
+              marginLeft={true}
+              dropdownVariants={[
+                'All users and search engines',
+                'All registered users and search engines',
+                'All users',
+                'All registered users',
+              ]}
+              initText="all users and search engines"
+              labelIcon={<></>}
+              padding={'17px 20px'}
+              callback={() => {}}
+              iconHeight="12px"
+            />
 
-          <div
-            style={{ padding: '13px 20px' }}
-            className={styles.wrapper_campaign}
-          >
-            <div className="gap_15">
-              <Urgent />
-              <Typography variant="body4">
-                you will have a special badge about urgent order
+            <DynamicPadding desktop="45px" />
+            <Typography variant="body3" fontWeight="500">
+              Sponsorship Campaign
+            </Typography>
+            <DynamicPadding desktop="30px" mobile="20px" />
+            <SponsorshipDropdown onSelect={() => {}} />
+
+            <DynamicPadding desktop="45px" />
+            <div className="gap_10">
+              <Typography variant="body3" fontWeight="500">
+                Urgent Order
               </Typography>
+              <AppColor.upCirlcle />
             </div>
+            <DynamicPadding desktop="26px" mobile="20px" />
 
-            <SwitchButton width="44px" height="24px" disable={false} />
+            <div
+              style={{ padding: '13px 20px' }}
+              className={styles.wrapper_campaign}
+            >
+              <div className="gap_15">
+                <Urgent />
+                <Typography variant="body4">
+                  you will have a special badge about urgent order
+                </Typography>
+              </div>
+
+              <SwitchButton width="44px" height="24px" disable={false} />
+            </div>
           </div>
-        </div>
-      }
-      item2={
-        <div className="desktop">
-          <TitleExampleUl />
-        </div>
-      }
-    />
+        }
+        item2={
+          <div className="desktop">
+            <TitleExampleUl />
+          </div>
+        }
+      />
+    </>
   )
 }
 
@@ -971,6 +996,44 @@ const SponsorshipDropdown = ({
           </ul>
         </div>
       )}
+    </div>
+  )
+}
+
+const PopupMenuTable = (): JSX.Element => {
+  return (
+    <div style={{ width: '40px', height: '34px' }}>
+      <PopUpBottom
+        positionRight="-100%"
+        showBackgroundHover={true}
+        showNodeHover={
+          <div className="cursor">
+            {' '}
+            <AppColor.threeLinesActive />
+          </div>
+        }
+        showNode={
+          <div className="cursor">
+            <AppColor.threeLines />
+          </div>
+        }
+        popUpNode={
+          <ThreeLinesPopUpCustom
+            positionRight="45%"
+            items={[
+              {
+                icon: <AppColor.share />,
+                title: 'Share',
+              },
+              {
+                icon: <AppColor.report />,
+                title: 'Report',
+              },
+            ]}
+          />
+        }
+        topPaddingFromNode="27px"
+      />
     </div>
   )
 }
