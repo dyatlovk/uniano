@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
 
@@ -22,12 +22,12 @@ const SwitchButton = ({
   height,
   width,
 }: SwitchButtonProps) => {
-  const [isActive, setIsActive] = useState(startValue)
+  const [isActive, setIsActive] = useState<boolean>(startValue)
   const [buttonVariables, setButtonVariables] = useState<Object>({
     '--colorActive': backgroundColorInActive,
   })
 
-  function handleSwitch(item: boolean) {
+  const handle = useCallback((item: boolean) => {
     if (!disable) {
       if (callback != null) {
         callback(item)
@@ -37,7 +37,12 @@ const SwitchButton = ({
         ? setButtonVariables({ '--colorActive': backgroundColorActive })
         : setButtonVariables({ '--colorActive': backgroundColorInActive })
     }
-  }
+  }, [backgroundColorActive, backgroundColorInActive, callback, disable])
+
+  useEffect(() => {
+    handle(startValue)
+  }, [handle, startValue])
+
   return (
     <div>
       <label
@@ -47,7 +52,7 @@ const SwitchButton = ({
         <input
           checked={isActive}
           onChange={value => {
-            handleSwitch(value.target.checked)
+            handle(value.target.checked)
           }}
           type="checkbox"
         />
