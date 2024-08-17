@@ -4,7 +4,7 @@ import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import FilterList from '@common/components/FilterList/index'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
@@ -400,11 +400,14 @@ const InterviewBlock = () => {
 }
 const FiltersBlock = () => {
   const [selectedUsers, setSelectedUsers] = useState([fakeUserConstant.name])
-
   const [selectedCountries, setSelectedCountrues] = useState([])
+  const [selectedAccess, setSelectedAccess] = useState<string>(
+    'Only for filtered freelancers'
+  )
+
   return (
     <>
-      <DynamicPadding />
+      <DynamicPadding desktop="25px" />
       <ResponsiveLayoutTwo
         gap="120px"
         item1MaxWidth="730px"
@@ -414,16 +417,18 @@ const FiltersBlock = () => {
             <Typography variant="body3" fontWeight="500">
               Access
             </Typography>
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="23px" mobile="20px" />
             <InputDropdown
               marginLeft={true}
               dropdownVariants={[
                 'Only personal invitations',
                 'Only for filtered freelancers',
               ]}
-              initText="Only personal invitations"
+              initText="Only for filtered freelancers"
               labelIcon={<></>}
-              callback={() => {}}
+              callback={(item: string) => {
+                setSelectedAccess(item)
+              }}
               iconHeight="12px"
             />
 
@@ -436,21 +441,29 @@ const FiltersBlock = () => {
                 }}
               />
             ))}
-            <DynamicPadding desktop="30px" mobile="20px" />
-            <MyButtonOrange textTransform="uppercase" onClick={() => {}}>
+            <DynamicPadding desktop="10px" mobile="20px" />
+            <MyButtonOrange
+              padding="7px 14px"
+              textTransform="uppercase"
+              fontWeight="500"
+              onClick={() => {}}
+            >
               {' '}
               <div className={styles.white}>
-                <AppColor.plus stroke={AppColor.orange} />
+                <AppColor.plus
+                  stroke={AppColor.orange}
+                  width={12}
+                  height={12}
+                />
               </div>{' '}
               Add Freelancer
             </MyButtonOrange>
-            <DynamicPadding desktop="30px" mobile="20px" />
-            <DynamicPadding />
+            <DynamicPadding desktop="42px" />
 
             <Typography variant="body3" fontWeight="500">
               Need To Hire
             </Typography>
-            <DynamicPadding desktop="30px" mobile="20px" />
+            <DynamicPadding desktop="23px" mobile="20px" />
             <InputDropdown
               marginLeft={true}
               dropdownVariants={[
@@ -464,14 +477,20 @@ const FiltersBlock = () => {
               iconHeight="12px"
             />
 
-            <DynamicPadding />
-            <div style={{ opacity: '0.5', userSelect: 'none' }}>
+            <DynamicPadding desktop="45px" />
+            <div
+              className={
+                selectedAccess === 'Only for filtered freelancers'
+                  ? ''
+                  : styles.positive_disabled
+              }
+            >
               <div className={styles.positive_wrapper}>
                 <div>
                   <Typography variant="body3" fontWeight="500">
                     Positive Reviews
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="24px" mobile="20px" />
                   <SelectionItem
                     icon={<AppColor.starColored fill={AppColor.green} />}
                     text="90% and Up "
@@ -482,7 +501,7 @@ const FiltersBlock = () => {
                   <Typography variant="body3" fontWeight="500">
                     Freelancers
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="28px" mobile="20px" />
                   <SelectionItem
                     icon={<AppColor.teams fill={AppColor.text} />}
                     text="Teams Only"
@@ -492,15 +511,15 @@ const FiltersBlock = () => {
                   <Typography variant="body3" fontWeight="500">
                     Account Level
                   </Typography>
-                  <DynamicPadding desktop="30px" mobile="20px" />
+                  <DynamicPadding desktop="28px" mobile="20px" />
                   <SelectionItem icon={<></>} text="No Preference" />
                 </div>
               </div>
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <Typography variant="body3" fontWeight="500">
                 Cooperation
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="28px" mobile="20px" />
 
               <div className={styles.wrapper_campaign}>
                 <Typography variant="body4">
@@ -510,15 +529,15 @@ const FiltersBlock = () => {
                 <SwitchButton
                   width="44px"
                   height="24px"
-                  disable={true}
+                  disable={false}
                   startValue={true}
                 />
               </div>
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <Typography variant="body3" fontWeight="500">
                 Location
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="28px" mobile="20px" />
               <InputDropdown
                 marginLeft={true}
                 dropdownVariants={['Ukraine', 'Congo', 'England']}
@@ -527,11 +546,11 @@ const FiltersBlock = () => {
                 callback={() => {}}
                 iconHeight="12px"
               />
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <Typography variant="body3" fontWeight="500">
                 Languages
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="28px" mobile="20px" />
               <InputDropdown
                 marginLeft={true}
                 dropdownVariants={['Ukraine', 'Congo', 'England']}
@@ -540,11 +559,11 @@ const FiltersBlock = () => {
                 callback={() => {}}
                 iconHeight="12px"
               />
-              <DynamicPadding />
+              <DynamicPadding desktop="45px" />
               <Typography variant="body3" fontWeight="500">
                 Other Filters
               </Typography>
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="28px" mobile="20px" />
               <InputDropdown
                 marginLeft={true}
                 dropdownVariants={['Ukraine', 'Congo', 'England']}
@@ -849,8 +868,7 @@ const AdvancedBlock = () => {
               padding={'17px 20px'}
               initText="all users and search engines"
               labelIcon={<></>}
-              callback={(item: string) => {
-              }}
+              callback={(item: string) => {}}
               iconHeight="12px"
             />
 

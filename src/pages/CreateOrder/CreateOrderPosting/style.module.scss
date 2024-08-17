@@ -67,6 +67,12 @@
   gap: 30px;
 }
 
+.positive_disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  user-select: none;
+}
+
 .flex_space_between_item {
   display: flex;
   align-items: center;
