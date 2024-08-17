@@ -5,6 +5,7 @@ import Typography from '../../Typography/Typography'
 import MyCheckbox from '../../inputs/Checkbox'
 import styles from './style.module.scss'
 import React from 'react'
+import AppColor from '@common/styles/variables-static'
 
 type DetailsTableMultiNodesProps = {
   elements: DetailsTableMultiNodesItem[]
@@ -63,8 +64,17 @@ const DetailsTableMultiNodes = ({
                         index == selectableColumn && (
                           <MyCheckbox height="20px" width="20px" />
                         )}
-                      <Typography variant="body4" fontWeight="500">
-                        {item}
+                      <Typography
+                        variant="body4"
+                        fontWeight="500"
+                        textLineHeight="1"
+                      >
+                        {item}{' '}
+                        <AppColor.trianleDown
+                          fill={
+                            item.length !== 0 ? AppColor.text : 'transparent'
+                          }
+                        />
                       </Typography>
                     </div>
                   </th>

@@ -29,6 +29,9 @@ import StatesModel from '@common/models/createOrder/statesModel'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import MyButtonTransparentGrey from '@common/components/ui/MyButton/variants/MyButtonTransparentGrey'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
+import PopUpBottom from '@common/components/ModalPopUps/PopUpBottom/index'
+import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
+import DotsButton from '@common/components/ui/DotsButtons/index'
 
 const CreateOrderPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -139,9 +142,9 @@ const VariantSelect = ({ activeFilter }: VariantSelectProps) => {
 const ComplaintsBlock = () => {
   return (
     <div>
-      <DynamicPadding />
+      <DynamicPadding desktop="30px" />
       <DetailsTableMultiNodes
-        titles={['ID', 'Date', 'Complaint', 'Solution', 'Status']}
+        titles={['ID', 'Date', 'Complaint', 'Solution', 'Status', '']}
         elements={[
           {
             nodes: [
@@ -153,9 +156,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -165,6 +171,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
           {
@@ -177,9 +184,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -189,6 +199,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
           {
@@ -201,9 +212,12 @@ const ComplaintsBlock = () => {
                   # 1413
                 </Typography>
               </div>,
-              <Typography variant="body4">Feb 26, 2021 16:32 </Typography>,
+              <Typography variant="body4">
+                Feb 26, <br /> 2021 16:32{' '}
+              </Typography>,
               <Typography fontStyle="italic" variant="body4">
                 Freelancer didn’t finish the job
+                <DotsButton />
               </Typography>,
               <AppColor.minus />,
               <Typography
@@ -213,6 +227,7 @@ const ComplaintsBlock = () => {
               >
                 Unsolved
               </Typography>,
+              <PopupMenuTable />,
             ],
           },
         ]}
@@ -1028,6 +1043,44 @@ const SponsorshipDropdown = ({
           </ul>
         </div>
       )}
+    </div>
+  )
+}
+
+const PopupMenuTable = (): JSX.Element => {
+  return (
+    <div style={{ width: '40px', height: '34px' }}>
+      <PopUpBottom
+        positionRight="-100%"
+        showBackgroundHover={true}
+        showNodeHover={
+          <div className="cursor">
+            {' '}
+            <AppColor.threeLinesActive />
+          </div>
+        }
+        showNode={
+          <div className="cursor">
+            <AppColor.threeLines />
+          </div>
+        }
+        popUpNode={
+          <ThreeLinesPopUpCustom
+            positionRight="45%"
+            items={[
+              {
+                icon: <AppColor.share />,
+                title: 'Share',
+              },
+              {
+                icon: <AppColor.report />,
+                title: 'Report',
+              },
+            ]}
+          />
+        }
+        topPaddingFromNode="27px"
+      />
     </div>
   )
 }
