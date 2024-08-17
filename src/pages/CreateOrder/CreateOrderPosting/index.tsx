@@ -27,6 +27,8 @@ import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
 import StatesModel from '@common/models/createOrder/statesModel'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import MyButtonTransparentGrey from '@common/components/ui/MyButton/variants/MyButtonTransparentGrey'
+import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 
 const CreateOrderPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -227,7 +229,7 @@ const FAQBlock = () => {
       callbackRemove: () => {},
     },
     {
-      text: 'In risus nec etiam nunc, leo velit. Turpis et diam cursus adipiscing dolor posuere.  ',
+      text: 'In risus nec etiam nunc, leo velit. Turpis et diam cursus adipiscing dolor posuere.',
       title: 'What software do you use?',
       titles: [],
       callbackRemove: () => {},
@@ -235,7 +237,7 @@ const FAQBlock = () => {
   ])
   return (
     <div>
-      <DynamicPadding />
+      <DynamicPadding desktop="30px" />
       <ResponsiveLayoutTwo
         item1MaxWidth="730px"
         item2MaxWidth="390px"
@@ -250,8 +252,8 @@ const FAQBlock = () => {
               <SwitchButton
                 width="44px"
                 height="24px"
-                disable={true}
-                startValue={true}
+                disable={false}
+                startValue={false}
               />
             </div>
 
@@ -267,28 +269,33 @@ const FAQBlock = () => {
                 titles={questions}
               />
             ))}
-            <DynamicPadding desktop="20px" mobile="15px" />
             <div className="flex_space_between">
               <MyButtonOrange
                 fontWeight="500"
                 onClick={() => {}}
                 textTransform="uppercase"
+                padding="7px 14px"
               >
-                {' '}
                 <div className={styles.white}>
-                  <AppColor.plus stroke={AppColor.orange} />
+                  <AppColor.plus
+                    stroke={AppColor.orange}
+                    width={12}
+                    height={12}
+                  />
                 </div>
                 Add question
               </MyButtonOrange>
-              <MyButtonTransparent
-                fontWeight="500"
-                textTransform="uppercase"
-                onClick={() => {
-                  setQuestions([])
-                }}
-              >
-                Delete all
-              </MyButtonTransparent>
+              <div className={styles.faq_cancel_btn}>
+                <MyButtonTransparentGrey
+                  fontWeight="500"
+                  textTransform="uppercase"
+                  onClick={() => {
+                    setQuestions([])
+                  }}
+                >
+                  Delete all
+                </MyButtonTransparentGrey>
+              </div>
             </div>
           </div>
         }
@@ -344,14 +351,14 @@ const QuestionItem = ({
       </div>
       <DynamicPadding desktop="30px" mobile="20px" />
       <HorizontalLine />
-      <DynamicPadding desktop="30px" mobile="20px" />
+      <DynamicPadding desktop="18px" mobile="20px" />
     </div>
   )
 }
 const InterviewBlock = () => {
   return (
     <div>
-      <DynamicPadding desktop='30px' />
+      <DynamicPadding desktop="30px" />
       <ResponsiveLayoutTwo
         item1MaxWidth="730px"
         item2MaxWidth="390px"
