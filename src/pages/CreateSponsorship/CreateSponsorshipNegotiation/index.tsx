@@ -7,7 +7,7 @@ import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import StatesModel from '@common/models/createOrder/statesModel'
+import StatesModel from '@common/models/sponsorship/statesModel'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
@@ -19,7 +19,7 @@ const CreateSponsorshipNegotiation = () => {
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
-          currentState={'Details'}
+          currentState={'Negotiation'}
           useBg={false}
           padding="0"
         />
@@ -34,14 +34,14 @@ const CreateSponsorshipNegotiation = () => {
           orderItem2Desktop={1}
           orderItem2Mobile={0}
           gap="80px"
-          item1MaxWidth="730px"
-          item2MaxWidth="390px"
+          item1MaxWidth="732px"
+          item2MaxWidth="388px"
           item1={
-            <div>
+            <div style={{marginTop: '-16px'}}>
               <div>
                 <div className={styles.title_wrapper}>
                   <Typography textTransform="uppercase" variant="titleBig">
-                    Details
+                    Negotiation
                   </Typography>
                   <div className="mobile">
                     <div className={styles.template_icon}>
@@ -49,7 +49,7 @@ const CreateSponsorshipNegotiation = () => {
                     </div>
                   </div>
                 </div>
-                <DynamicPadding />
+                <DynamicPadding desktop="36px" />
                 <StepsOfPreparing
                   elements={[
                     {
@@ -63,7 +63,7 @@ const CreateSponsorshipNegotiation = () => {
                   ]}
                 />
 
-                <DynamicPadding />
+                <DynamicPadding desktop="20px" />
 
                 <div className={styles.text_box}>
                   <Typography variant="body4">
@@ -72,7 +72,7 @@ const CreateSponsorshipNegotiation = () => {
                   </Typography>
                 </div>
 
-                <DynamicPadding />
+                <DynamicPadding desktop="47px" />
 
                 <div className={'flex_space_between'}>
                   <ChevronMoveTo
@@ -157,7 +157,7 @@ const CreateSponsorshipNegotiation = () => {
             </div>
           }
         />
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

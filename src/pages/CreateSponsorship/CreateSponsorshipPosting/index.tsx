@@ -1,4 +1,3 @@
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import styles from './style.module.scss'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -12,9 +11,7 @@ import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundI
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
-import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import Urgent from '@common/components/ui/Urgent/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
@@ -25,24 +22,36 @@ import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
+import StatesModel from '@common/models/sponsorship/statesModel'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
 
 const CreateSponsorshipPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
 
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Posting"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Posting'}
+          useBg={false}
+          padding="0"
+        />
+      </HeaderDummy>
 
-      <DynamicPadding />
+      <DynamicPadding desktop="45px" />
 
       <div className="wrapper_page">
         <div className={styles.top_wrapper_part}>
-          <div className={styles.title_wrapper}>
+          <div className={styles.title_wrapper} style={{ marginTop: '-18px' }}>
             <div className="gap_10">
-              <Typography textTransform="uppercase" variant="titleBig">
+              <Typography
+                textTransform="uppercase"
+                variant="titleBig"
+                textLineHeight="1"
+              >
                 posting
               </Typography>
               <div className="mobile">

@@ -10,7 +10,7 @@ import styles from './style.module.scss'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/createOrder/statesModel'
+import StatesModel from '@common/models/sponsorship/statesModel'
 
 const CreateSponsorshipDetails = () => {
   return (
@@ -34,10 +34,10 @@ const CreateSponsorshipDetails = () => {
           orderItem2Desktop={1}
           orderItem2Mobile={0}
           gap="80px"
-          item1MaxWidth="730px"
-          item2MaxWidth="390px"
+          item1MaxWidth="732px"
+          item2MaxWidth="388px"
           item1={
-            <div>
+            <div style={{marginTop: '-16px'}}>
               <div>
                 <div className={styles.title_wrapper}>
                   <Typography textTransform="uppercase" variant="titleBig">
