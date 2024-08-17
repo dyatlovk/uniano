@@ -1,26 +1,32 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
+import HeaderDummy from '@common/components/Header/Dummy/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
+import StepsStates from '@common/components/StepsStates/index'
+import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
-import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import Typography from '@common/components/ui/Typography/Typography'
+import StatesModel from '@common/models/createService/statesModel'
+import AppColor from '@common/styles/variables-static'
+import { Link } from 'react-router-dom'
+import styles from './style.module.scss'
 
 const CreateServiceNegotiation = () => {
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Negotiation"
-      />
+      <HeaderDummy logoText="Create Service">
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Negotiation'}
+          useBg={false}
+          padding="0"
+        />
+      </HeaderDummy>
 
-      <DynamicPadding />
+      <DynamicPadding desktop="50px" />
 
       <div className="wrapper_page">
         <ResponsiveLayoutTwo
@@ -29,13 +35,17 @@ const CreateServiceNegotiation = () => {
           orderItem2Desktop={1}
           orderItem2Mobile={0}
           gap="80px"
-          item1MaxWidth="730px"
-          item2MaxWidth="390px"
+          item1MaxWidth="732px"
+          item2MaxWidth="388px"
           item1={
             <div>
               <div>
                 <div className={styles.title_wrapper}>
-                  <Typography textTransform="uppercase" variant="titleBig">
+                  <Typography
+                    textTransform="uppercase"
+                    variant="titleBig"
+                    textLineHeight="1"
+                  >
                     Negotiation
                   </Typography>
                 </div>
@@ -64,10 +74,15 @@ const CreateServiceNegotiation = () => {
                   fontWeight="500"
                   onClick={() => {}}
                   textTransform="uppercase"
+                  padding="7px 14px"
                 >
                   {' '}
                   <div className={styles.white}>
-                    <AppColor.plus stroke={AppColor.orange} />
+                    <AppColor.plus
+                      stroke={AppColor.orange}
+                      width={12}
+                      height={12}
+                    />
                   </div>
                   Add package
                 </MyButtonOrange>
@@ -84,18 +99,22 @@ const CreateServiceNegotiation = () => {
                 <DynamicPadding />
 
                 <div className={'flex_space_between'}>
-                  <ChevronMoveTo
-                    variant="left"
-                    onClick={() => {}}
-                    text="Step back"
-                    title="cancel"
-                  />
-                  <ChevronMoveTo
-                    variant="right"
-                    onClick={() => {}}
-                    text="Next step"
-                    title="posting"
-                  />
+                  <Link to="/create-service/details">
+                    <ChevronMoveTo
+                      variant="left"
+                      onClick={() => {}}
+                      text="Step back"
+                      title="cancel"
+                    />
+                  </Link>
+                  <Link to="/create-service/posting">
+                    <ChevronMoveTo
+                      variant="right"
+                      onClick={() => {}}
+                      text="Next step"
+                      title="posting"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -113,7 +132,7 @@ const CreateServiceNegotiation = () => {
                   </div>
                 </div>
 
-                <DynamicPadding />
+                <DynamicPadding desktop="50px" />
 
                 <div className={styles.right_text_box}>
                   <Typography variant="body3" fontWeight="500">
