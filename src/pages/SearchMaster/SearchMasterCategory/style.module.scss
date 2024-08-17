@@ -88,14 +88,6 @@
   }
 }
 
-[data-stepsstate="true"] {
-  background: transparent;
-}
-
-[data-stepstate="content"] {
-  padding: 0;
-}
-
 @media (min-width: $tabletSize) {
 
   .search_result {

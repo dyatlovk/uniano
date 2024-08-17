@@ -1,10 +1,18 @@
-.wrapper {
-  @include backgroundGradientGreyWhite;
+@mixin wrapper() {
   min-height: 45px;
   display: flex;
   padding: 0px 12px;
   width: 100%;
   align-items: center;
+}
+
+.wrapper {
+  @include wrapper();
+}
+
+.wrapp_bg {
+  @include backgroundGradientGreyWhite;
+  @include wrapper();
 }
 
 .content {

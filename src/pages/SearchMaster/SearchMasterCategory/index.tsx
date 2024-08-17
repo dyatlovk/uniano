@@ -34,6 +34,8 @@ const SearchMasterCategory = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Category'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 
@@ -120,44 +122,45 @@ const SearchMasterCategory = () => {
         <SizeBox height="9px" />
 
         <div className={styles.search_result}>
-          {currentList && currentList.items.map(item => (
-            <div style={{ whiteSpace: 'nowrap' }}>
-              <Typography
-                variant="body4"
-                fontWeight="500"
-                color={AppColor.transparentBlack}
-              >
-                {item.title}
-              </Typography>
-              <DynamicPadding desktop="11px" mobile="20px" />
-              <div className={styles.list_item}>
-                {item.links.map(item => (
-                  <div
-                    className="gap_5"
-                    onClick={() => {
-                      setSelectedSubCategory(item)
-                      setNextStepDisabled(false)
-                    }}
-                  >
+          {currentList &&
+            currentList.items.map(item => (
+              <div style={{ whiteSpace: 'nowrap' }}>
+                <Typography
+                  variant="body4"
+                  fontWeight="500"
+                  color={AppColor.transparentBlack}
+                >
+                  {item.title}
+                </Typography>
+                <DynamicPadding desktop="11px" mobile="20px" />
+                <div className={styles.list_item}>
+                  {item.links.map(item => (
                     <div
-                      className={`${styles.select_box} ${selectedSubCategory == item ? styles.select_box_active : styles.select_box_disabled}`}
-                    ></div>
-                    <Typography
-                      color={
-                        selectedSubCategory == item
-                          ? AppColor.orange
-                          : AppColor.text
-                      }
-                      fontWeight={selectedSubCategory == item ? '500' : '400'}
-                      variant="body4"
+                      className="gap_5"
+                      onClick={() => {
+                        setSelectedSubCategory(item)
+                        setNextStepDisabled(false)
+                      }}
                     >
-                      {item}
-                    </Typography>
-                  </div>
-                ))}
+                      <div
+                        className={`${styles.select_box} ${selectedSubCategory == item ? styles.select_box_active : styles.select_box_disabled}`}
+                      ></div>
+                      <Typography
+                        color={
+                          selectedSubCategory == item
+                            ? AppColor.orange
+                            : AppColor.text
+                        }
+                        fontWeight={selectedSubCategory == item ? '500' : '400'}
+                        variant="body4"
+                      >
+                        {item}
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
         <DynamicPadding />

@@ -27,6 +27,8 @@ const SearchMasterRequirements = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Requirements'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

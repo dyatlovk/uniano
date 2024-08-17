@@ -45,6 +45,8 @@ const CreateOrderPosting = () => {
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
+          useBg={false}
+          padding="0"
           currentState={'Posting'}
         />
       </HeaderDummy>

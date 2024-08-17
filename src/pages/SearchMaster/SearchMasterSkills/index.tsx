@@ -28,6 +28,8 @@ const SearchMasterSkills = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Skills'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

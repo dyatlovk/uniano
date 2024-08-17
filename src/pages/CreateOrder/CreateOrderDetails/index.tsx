@@ -31,6 +31,8 @@ const CreateOrderDetails = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Details'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

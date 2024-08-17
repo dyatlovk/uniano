@@ -11,11 +11,15 @@ interface Props {
   states: Navigation.State[]
   currentState: string
   maxWidth?: string
+  padding?: string
+  useBg?: boolean
 }
 const StepsStates = ({
   states,
   currentState,
   maxWidth = '100%',
+  padding = '33px 10px',
+  useBg = true,
 }: Props): JSX.Element => {
   const [stateMachine, setStateMachine] = useState<States | null>(null)
 
@@ -29,10 +33,14 @@ const StepsStates = ({
   return (
     <div
       style={{ maxWidth: maxWidth }}
-      className={styles.wrapper}
+      className={useBg ? styles.wrapp_bg : styles.wrapper}
       data-stepsstate
     >
-      <div className={styles.content} data-stepstate="content">
+      <div
+        style={{ padding: padding }}
+        className={styles.content}
+        data-stepstate="content"
+      >
         <div className={styles.mobile}>
           <Typography variant="body4" fontWeight="500" color={AppColor.white}>
             {stateMachine && stateMachine.getCurrent().title}

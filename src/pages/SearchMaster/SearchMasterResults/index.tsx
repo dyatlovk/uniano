@@ -72,6 +72,8 @@ const SearchMasterResults = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Results'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

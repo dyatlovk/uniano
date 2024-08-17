@@ -35,6 +35,8 @@ const SearchMasterBudgetAndDelivery = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Budget&Delivery'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

@@ -11,8 +11,6 @@ import { useEffect, useState } from 'react'
 import StepOrderNegotiationOne, {
   StepOrderNegotiationTwo,
   StepOrderNegotiationThree,
-  StepOrderNegotiationFour,
-  StepOrderNegotiationFive,
 } from './Steps'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
@@ -32,6 +30,8 @@ const CreateOrderNegotiation = () => {
           maxWidth="824px"
           states={StatesModel.getAll()}
           currentState={'Negotiation'}
+          useBg={false}
+          padding="0"
         />
       </HeaderDummy>
 

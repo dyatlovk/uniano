@@ -24,6 +24,8 @@ import InfoBox from '@common/components/ui/InfoBox/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/orders/statesModel'
 
 const OrdersNegotiation = () => {
   const arrayHistory = ['Order', 'Development ', 'Web Development', 'WordPress']
@@ -38,16 +40,7 @@ const OrdersNegotiation = () => {
     <div>
       <Header />
 
-      <NavigationBarSelection
-        allItemsProgress={[
-          'Order',
-          'Selection',
-          'Negotiation',
-          'Progress',
-          'Completed',
-        ]}
-        currentItemProgress="Order"
-      />
+      <StepsStates states={StatesModel.getAll()} currentState={'Negotiation'} />
 
       <div className={'wrapper_page'}>
         <PageDetails
