@@ -1,13 +1,18 @@
 import Logo from '@common/components/Logo/Logo'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
-import { useState, useEffect, PropsWithChildren } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { PropsWithChildren, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './style.module.scss'
 
-interface Props {}
+interface Props {
+  logoText: string
+}
 
-const HeaderDummy = ({ children }: PropsWithChildren<Props>): JSX.Element => {
+const HeaderDummy = ({
+  children,
+  logoText,
+}: PropsWithChildren<Props>): JSX.Element => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -19,7 +24,7 @@ const HeaderDummy = ({ children }: PropsWithChildren<Props>): JSX.Element => {
   return (
     <div style={{ opacity: visible ? '1' : '0' }} className={styles.wrapper}>
       <div className={styles.title_content_wrapper}>
-        <Logo text="Search master" color="white" />
+        <Logo text={logoText} color="white" />
         <div className={styles.content}>{children}</div>
         <Link to={'/dashboard/home'}>
           <div className={`${styles.close_box} ${styles.desktop}`}>

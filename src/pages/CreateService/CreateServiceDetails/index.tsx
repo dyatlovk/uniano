@@ -1,21 +1,22 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import HeaderDummy from '@common/components/Header/Dummy/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
+import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
-import HeaderDummy from '@common/components/Header/Dummy/index'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/sponsorship/statesModel'
+import Typography from '@common/components/ui/Typography/Typography'
+import StatesModel from '@common/models/createService/statesModel'
+import AppColor from '@common/styles/variables-static'
+import { Link } from 'react-router-dom'
+import styles from './style.module.scss'
 
-const CreateSponsorshipDetails = () => {
+const CreateServiceDetails = (): JSX.Element => {
   return (
     <div>
-      <HeaderDummy logoText="Create Sponsorship">
+      <HeaderDummy logoText="Create Service">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
@@ -97,12 +98,14 @@ const CreateSponsorshipDetails = () => {
                     text="Step back"
                     title="cancel"
                   />
-                  <ChevronMoveTo
-                    variant="right"
-                    onClick={() => {}}
-                    text="Next step"
-                    title="Negotiation"
-                  />
+                  <Link to={'/create-service/negotiation'}>
+                    <ChevronMoveTo
+                      variant="right"
+                      onClick={() => {}}
+                      text="Next step"
+                      title="Negotiation"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -122,4 +125,4 @@ const CreateSponsorshipDetails = () => {
   )
 }
 
-export default CreateSponsorshipDetails
+export default CreateServiceDetails

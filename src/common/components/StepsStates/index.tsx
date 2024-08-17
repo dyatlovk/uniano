@@ -28,7 +28,7 @@ const StepsStates = ({
     st.current = currentState
     st.updateStates
     setStateMachine(st)
-  }, [currentState])
+  }, [currentState, states])
 
   return (
     <div
@@ -43,7 +43,7 @@ const StepsStates = ({
       >
         <div className={styles.mobile}>
           <Typography variant="body4" fontWeight="500" color={AppColor.white}>
-            {stateMachine && stateMachine.getCurrent().title}
+            {stateMachine && stateMachine.getCurrent() && stateMachine.getCurrent().title}
           </Typography>
           <AppColor.chevronBottom
             width={'12px'}
@@ -65,7 +65,7 @@ const StepsStates = ({
                 <StepLabel
                   key={id}
                   state={state}
-                  current={stateMachine.getCurrent()}
+                  current={stateMachine.getCurrent() && stateMachine.getCurrent()}
                 />
               )
             )}
