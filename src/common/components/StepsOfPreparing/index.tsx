@@ -61,7 +61,7 @@ export const StepItem = ({
             {afterTextNode}
           </div>
         </div>
-        <SizeBox height="4px" />
+        <SizeBox height="10px" />
         <div
           onClick={onSolveClick}
           style={{ marginLeft: '5px' }}
@@ -76,7 +76,7 @@ export const StepItem = ({
             {solve}
           </Typography>
         </div>
-        <DynamicPadding desktop="36px" mobile="20px" />
+        <DynamicPadding desktop="28px" mobile="20px" />
       </div>
     </div>
   )

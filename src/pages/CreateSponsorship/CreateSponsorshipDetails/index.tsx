@@ -1,23 +1,29 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import StatesModel from '@common/models/createOrder/statesModel'
 
 const CreateSponsorshipDetails = () => {
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Details"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Details'}
+          useBg={false}
+          padding="0"
+        />
+      </HeaderDummy>
 
       <DynamicPadding />
 
@@ -43,7 +49,7 @@ const CreateSponsorshipDetails = () => {
                     </div>
                   </div>
                 </div>
-                <DynamicPadding />
+                <DynamicPadding desktop="36px" />
                 <StepsOfPreparing
                   elements={[
                     {
@@ -55,6 +61,10 @@ const CreateSponsorshipDetails = () => {
                       solve: 'Change category',
                     },
                     {
+                      text: 'Wordpress, website, new website, CMS',
+                      solve: 'Change tags',
+                    },
+                    {
                       text: '3 images',
                       solve: 'Change images',
                     },
@@ -63,17 +73,13 @@ const CreateSponsorshipDetails = () => {
                       solve: 'Change description',
                     },
                     {
-                      text: 'Wordpress, website, new website, CMS',
-                      solve: 'Change tags',
-                    },
-                    {
                       text: 'Agreements.pdf',
                       solve: 'Change documents',
                     },
                   ]}
                 />
 
-                <DynamicPadding />
+                <DynamicPadding desktop="20px" />
 
                 <div className={styles.text_box}>
                   <Typography variant="body4">
@@ -82,7 +88,7 @@ const CreateSponsorshipDetails = () => {
                   </Typography>
                 </div>
 
-                <DynamicPadding />
+                <DynamicPadding desktop="47px" />
 
                 <div className={'flex_space_between'}>
                   <ChevronMoveTo
@@ -109,7 +115,7 @@ const CreateSponsorshipDetails = () => {
             </div>
           }
         />
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
     </div>

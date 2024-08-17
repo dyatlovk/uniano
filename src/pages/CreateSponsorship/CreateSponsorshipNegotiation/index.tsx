@@ -1,11 +1,13 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import HeaderSearch from '@common/components/Header/HeaderSearch/index'
+import HeaderDummy from '@common/components/Header/Dummy/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
+import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
+import StatesModel from '@common/models/createOrder/statesModel'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
@@ -13,10 +15,15 @@ import styles from './style.module.scss'
 const CreateSponsorshipNegotiation = () => {
   return (
     <div>
-      <HeaderSearch
-        allItemsProgress={['Details', 'Negotiation', 'Posting']}
-        currentItemProgress="Negotiation"
-      />
+      <HeaderDummy>
+        <StepsStates
+          maxWidth="824px"
+          states={StatesModel.getAll()}
+          currentState={'Details'}
+          useBg={false}
+          padding="0"
+        />
+      </HeaderDummy>
 
       <DynamicPadding />
 
