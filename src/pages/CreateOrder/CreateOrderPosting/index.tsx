@@ -351,7 +351,7 @@ const QuestionItem = ({
 const InterviewBlock = () => {
   return (
     <div>
-      <DynamicPadding />
+      <DynamicPadding desktop='30px' />
       <ResponsiveLayoutTwo
         item1MaxWidth="730px"
         item2MaxWidth="390px"
@@ -366,7 +366,7 @@ const InterviewBlock = () => {
               <SwitchButton
                 width="44px"
                 height="24px"
-                disable={true}
+                disable={false}
                 startValue={true}
               />
             </div>
