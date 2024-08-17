@@ -4,7 +4,7 @@ import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import FilterList from '@common/components/FilterList/index'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
@@ -25,6 +25,7 @@ import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import StatesModel from '@common/models/sponsorship/statesModel'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 
 const CreateSponsorshipPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -798,9 +799,9 @@ const DetailsItem = ({ icon, text, title, absolute }: DetailsItemProps) => {
 const AdvancedBlock = () => {
   return (
     <ResponsiveLayoutTwo
-      gap="120px"
-      item1MaxWidth="730px"
-      item2MaxWidth="330px"
+      gap="80px"
+      item1MaxWidth="732px"
+      item2MaxWidth="388px"
       item1={
         <div>
           <Typography variant="body3" fontWeight="500">
@@ -812,51 +813,36 @@ const AdvancedBlock = () => {
             dropdownVariants={[
               'All users and search engines',
               'All registered users and search engines',
-              'All users, all registered users',
+              'All users',
+              'All registered users',
             ]}
-            initText="All users and search engines"
+            initText="all users and search engines"
             labelIcon={<></>}
+            padding={'17px 20px'}
             callback={() => {}}
             iconHeight="12px"
           />
 
-          <DynamicPadding />
+          <DynamicPadding desktop="45px" />
           <Typography variant="body3" fontWeight="500">
             Sponsorship Campaign
           </Typography>
           <DynamicPadding desktop="30px" mobile="20px" />
-          <div className={styles.wrapper_campaign}>
-            <div className="gap_10">
-              <div className={styles.orange}>
-                <AppColor.caseWhite />
-              </div>
-              <Typography
-                variant="body5"
-                fontWeight="500"
-                textTransform="uppercase"
-                color={AppColor.transparentBlack}
-              >
-                Change a campaign
-              </Typography>
-            </div>
-            <div className="gap_10">
-              <AppColor.workClub />
-              <Typography variant="body4" fontWeight="500">
-                WorkClub
-              </Typography>
-            </div>
-          </div>
+          <SponsorshipDropdown onSelect={() => {}} />
 
-          <DynamicPadding />
+          <DynamicPadding desktop="45px" />
           <div className="gap_10">
             <Typography variant="body3" fontWeight="500">
               Urgent Order
             </Typography>
             <AppColor.upCirlcle />
           </div>
-          <DynamicPadding desktop="30px" mobile="20px" />
+          <DynamicPadding desktop="26px" mobile="20px" />
 
-          <div style={{ opacity: '0.5' }} className={styles.wrapper_campaign}>
+          <div
+            style={{ padding: '13px 20px' }}
+            className={styles.wrapper_campaign}
+          >
             <div className="gap_15">
               <Urgent />
               <Typography variant="body4">
@@ -864,7 +850,7 @@ const AdvancedBlock = () => {
               </Typography>
             </div>
 
-            <SwitchButton width="44px" height="24px" disable={true} />
+            <SwitchButton width="44px" height="24px" disable={false} />
           </div>
         </div>
       }
@@ -874,6 +860,118 @@ const AdvancedBlock = () => {
         </div>
       }
     />
+  )
+}
+
+interface SponsorshipDropdownProps {
+  onSelect: () => void
+}
+const SponsorshipDropdown = ({
+  onSelect,
+}: SponsorshipDropdownProps): JSX.Element => {
+  const [selected, setSelected] = useState<number>(-1)
+  const [showDropdown, setShowDropDown] = useState<boolean>(false)
+  const listRef = useRef<HTMLUListElement | null>(null)
+
+  const list = [
+    {
+      icon: <AppColor.workClub width={29} height={29} />,
+      title: 'WorkClub',
+      text: '$5 500',
+    },
+    {
+      icon: <AppColor.googleLogo width={29} height={29} />,
+      title: 'MyDreamCampaign',
+      text: '$4 000',
+    },
+  ]
+
+  function getActiveItem(): Object {
+    return Object.values(list)[selected]
+  }
+
+  function isActive(id: number): boolean {
+    return id === selected
+  }
+
+  return (
+    <div
+      style={{ position: 'relative' }}
+      className={styles.wrapper_campaign}
+      onClick={() => {
+        setShowDropDown(prev => !prev)
+      }}
+    >
+      <div className="gap_10">
+        <div className={styles.orange}>
+          <AppColor.caseWhite />
+        </div>
+        <Typography
+          variant="body5"
+          fontWeight="500"
+          textTransform="uppercase"
+          color={AppColor.transparentBlack}
+        >
+          Change a campaign
+        </Typography>
+      </div>
+      <div className="gap_10">
+        {/* @ts-ignore */}
+        {getActiveItem() && getActiveItem().icon}
+        <Typography variant="body4" fontWeight="500">
+          {/* @ts-ignore */}
+          {getActiveItem() && getActiveItem().title}
+        </Typography>
+      </div>
+      {showDropdown && (
+        <div className={styles.sponsorship_dropdown}>
+          <div
+            className={styles.search}
+            onClick={() => {
+              setShowDropDown(false)
+            }}
+          >
+            <AppColor.searchIconBlack fill={AppColor.text} />
+            <InputCommon
+              width="100%"
+              padding="20px 0 20px 10px"
+              boxShadowNone={true}
+              placeholder={'Search'}
+              callback={() => {}}
+            />
+          </div>
+          <ul ref={listRef} className={styles.list}>
+            {list.map((item, id: number) => (
+              <li
+                key={id}
+                className={styles.list_item}
+                onClick={e => {
+                  setSelected(id)
+                  onSelect()
+                }}
+              >
+                <div className={styles.list_logo}>{item.icon}</div>
+                <div
+                  style={{
+                    flexGrow: 1,
+                    fontWeight: isActive(id) ? '500' : '400',
+                  }}
+                >
+                  {item.title}
+                </div>
+                <div
+                  style={{
+                    fontWeight: isActive(id) ? '500' : '400',
+                  }}
+                >
+                  {item.text}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   )
 }
 
