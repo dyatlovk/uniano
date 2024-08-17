@@ -41,11 +41,11 @@ const CreateSponsorshipPosting = () => {
         />
       </HeaderDummy>
 
-      <DynamicPadding desktop="45px" />
+      <DynamicPadding desktop="40px" />
 
       <div className="wrapper_page">
         <div className={styles.top_wrapper_part}>
-          <div className={styles.title_wrapper} style={{ marginTop: '-18px' }}>
+          <div className={styles.title_wrapper}>
             <div className="gap_10">
               <Typography
                 textTransform="uppercase"
@@ -85,11 +85,12 @@ const CreateSponsorshipPosting = () => {
           </div>
         </div>
 
-        <DynamicPadding />
+        <DynamicPadding desktop="32px" />
 
         <FilterList
           filters={['Overview', 'Advanced', 'FAQ', 'Complaints']}
           activeStartItem="Overview"
+          noPadding={false}
           callback={item => {
             setSelectedFilter(item)
           }}
@@ -100,7 +101,7 @@ const CreateSponsorshipPosting = () => {
 
       <CardsSliderRelated secondSlider={true} />
       <div className="wrapper_page">
-        <AskedQuestion />
+        <AskedQuestion margin="50px 0 0 0" />
       </div>
 
       <Footer />
@@ -597,9 +598,9 @@ const OverviewBlock = () => {
   const [isPosted, setIsPosted] = useState(false)
   return isPosted ? (
     <ResponsiveLayoutTwo
-      gap="120px"
-      item1MaxWidth="730px"
-      item2MaxWidth="330px"
+      gap="133px"
+      item1MaxWidth="732px"
+      item2MaxWidth="335px"
       item1={
         <div>
           <DynamicPadding />
@@ -699,11 +700,12 @@ const OverviewBlock = () => {
     />
   ) : (
     <ResponsiveLayoutTwo
-      gap="120px"
-      item1MaxWidth="730px"
-      item2MaxWidth="330px"
+      gap="133px"
+      item1MaxWidth="732px"
+      item2MaxWidth="335px"
       item1={
         <div>
+          <DynamicPadding desktop="32px" />
           <div className="justify_center">
             <AppColor.reachingFlag
               width={'fit-content'}
@@ -749,8 +751,9 @@ const OverviewBlock = () => {
         </div>
       }
       item2={
-        <div className="desktop">
-          <BackgroundItem image="" />
+        <div className="desktop" style={{ flexDirection: 'column' }}>
+          <DynamicPadding desktop="32px" />
+          <BackgroundItem image="/src/assets/images/bg.png" />
         </div>
       }
     />

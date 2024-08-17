@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Typography from '../ui/Typography/Typography'
 import styles from './style.module.scss'
 import AppColor from '@common/styles/variables-static'
-import HorizontalLine from '../ui/Lines/HorizontalLine'
 import DynamicPadding from '../ui/DynamicPadding'
 
 type FilterListProps = {
