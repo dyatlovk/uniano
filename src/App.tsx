@@ -73,6 +73,7 @@ import MessengerPageDirect from './pages/Messenger/pages/Direct'
 import PaymentsOperations from './pages/Payments/pages/Operations'
 import CreateServiceDetails from './pages/CreateService/CreateServiceDetails'
 import CreateServicePosting from './pages/CreateService/Posting'
+import CreatePartnership from './pages/CreatePartnership/Detail'
 
 function App() {
   return (
@@ -242,6 +243,10 @@ function App() {
           <Route
             path="/create-service/posting"
             element={<CreateServicePosting />}
+          />
+          <Route
+            path="/create-partnership/detail"
+            element={<CreatePartnership />}
           />
           <Route path="/admin" element={<AdminPannel />} />
           <Route path="*" element={<Navigate to="/error" />} />
