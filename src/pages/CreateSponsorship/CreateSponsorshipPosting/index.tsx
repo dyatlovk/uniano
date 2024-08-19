@@ -35,7 +35,7 @@ const CreateSponsorshipPosting = () => {
 
   return (
     <div>
-      <HeaderDummy>
+      <HeaderDummy logoText="Create Sponsorship">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}

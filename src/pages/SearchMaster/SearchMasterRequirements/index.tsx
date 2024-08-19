@@ -22,7 +22,7 @@ const SearchMasterRequirements = () => {
 
   return (
     <div>
-      <HeaderDummy>
+      <HeaderDummy logoText="Search Master">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}

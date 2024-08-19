@@ -15,7 +15,7 @@ import styles from './style.module.scss'
 const CreateSponsorshipNegotiation = () => {
   return (
     <div>
-      <HeaderDummy>
+      <HeaderDummy logoText="Create Sponsorship">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
@@ -37,7 +37,7 @@ const CreateSponsorshipNegotiation = () => {
           item1MaxWidth="732px"
           item2MaxWidth="388px"
           item1={
-            <div style={{marginTop: '-16px'}}>
+            <div style={{ marginTop: '-16px' }}>
               <div>
                 <div className={styles.title_wrapper}>
                   <Typography textTransform="uppercase" variant="titleBig">

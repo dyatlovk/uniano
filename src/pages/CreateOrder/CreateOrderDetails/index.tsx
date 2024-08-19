@@ -26,7 +26,7 @@ const CreateOrderDetails = () => {
 
   return (
     <div>
-      <HeaderDummy>
+      <HeaderDummy logoText="Create Order">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
