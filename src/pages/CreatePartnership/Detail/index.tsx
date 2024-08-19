@@ -16,7 +16,7 @@ import styles from './style.module.scss'
 const CreatePartnership = (): JSX.Element => {
   return (
     <div>
-      <HeaderDummy logoText="Create Service">
+      <HeaderDummy logoText="Create Partnership">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
