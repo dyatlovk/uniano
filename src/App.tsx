@@ -15,6 +15,7 @@ import CreateOrderNegotiation from './pages/CreateOrder/CreateOrderNegotiation'
 import CreateOrderPosting from './pages/CreateOrder/CreateOrderPosting'
 import CreatePartnership from './pages/CreatePartnership/Detail'
 import CreatePartnershipNegotiation from './pages/CreatePartnership/Negotiation'
+import CreatePartnerShipPosting from './pages/CreatePartnership/Posting'
 import CreateServiceDetails from './pages/CreateService/CreateServiceDetails'
 import CreateServiceNegotiation from './pages/CreateService/CreateServiceNegotiation'
 import CreateServicePosting from './pages/CreateService/Posting'
@@ -252,6 +253,10 @@ function App() {
           <Route
             path="/create-partnership/negotiation"
             element={<CreatePartnershipNegotiation />}
+          />
+          <Route
+            path="/create-partnership/posting"
+            element={<CreatePartnerShipPosting />}
           />
           <Route path="/admin" element={<AdminPannel />} />
           <Route path="*" element={<Navigate to="/error" />} />
