@@ -1,0 +1,41 @@
+@mixin nav_group() {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.group {
+  @include nav_group();
+}
+
+.group_opened {
+  @include nav_group();
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.child {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  gap: 7px;
+}
+
+.child_item {
+  display: inline list-item;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.child_title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

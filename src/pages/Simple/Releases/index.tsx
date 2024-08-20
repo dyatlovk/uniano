@@ -7,7 +7,8 @@ import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import ArticleModel from '@common/models/pages/articleModel'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
+import Article from '../components/Article'
+import NavTree from '../components/NavTree'
 import styles from './style.module.scss'
 
 const articlesManager = new ArticleModel()
@@ -60,7 +61,7 @@ const Releases = (): JSX.Element => {
       <div className={styles.layout}>
         <ResponsiveLayoutTwo
           item1={
-            <div className={styles.articles}>
+            <div>
               <DynamicPadding desktop="10px" />
               {articlesManager.getAll().map((el, id) => (
                 <Article data={el} isLastInList={id > 0} />
@@ -76,7 +77,7 @@ const Releases = (): JSX.Element => {
               }}
             >
               {articlesManager.buildNavTree().map(el => (
-                <NavDropDown data={el} onRootClick={() => {}} />
+                <NavTree data={el} onRootClick={() => {}} />
               ))}
             </div>
           }
@@ -96,67 +97,6 @@ const Releases = (): JSX.Element => {
         <AskedQuestion margin="0" />
       </div>
     </>
-  )
-}
-
-interface NavDropDownProps {
-  data: TextPage.ArticleNavTree
-  onRootClick: () => void
-}
-const NavDropDown = ({ data, onRootClick }: NavDropDownProps): JSX.Element => {
-  const [isOpened, setOpened] = useState<boolean>(false)
-
-  return (
-    <div className={isOpened ? styles.nav_group_opened : styles.nav_group}>
-      <div
-        className={styles.nav_root}
-        onClick={() => {
-          onRootClick()
-          setOpened(prev => !prev)
-        }}
-      >
-        <Typography variant="body3">{data.group}</Typography>
-        {isOpened && <AppColor.chevronTop fill={AppColor.text} />}
-        {!isOpened && <AppColor.chevronBottom fill={AppColor.text} />}
-      </div>
-      {isOpened && (
-        <div className={styles.nav_child}>
-          {data.sections.map(section => (
-            <div className={styles.nav_child_item}>{section.title}</div>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
-interface ArticleProps {
-  data: TextPage.ArticleGroup
-  isLastInList?: boolean
-}
-const Article = ({ data, isLastInList = false }: ArticleProps): JSX.Element => {
-  return (
-    <div className="article_section">
-      <Typography variant="body3">{data.title}</Typography>
-      <DynamicPadding desktop="20px" />
-      <div>
-        {data.items.map((article, id) => (
-          <>
-            <Typography variant="body4" className={styles.nav_child_title}>
-              <span className={styles.dot}></span>
-              {article.title}
-            </Typography>
-            <DynamicPadding desktop="20px" />
-            <div
-              dangerouslySetInnerHTML={{ __html: article.body }}
-              className={styles.article_content}
-            ></div>
-            {!isLastInList && <DynamicPadding desktop="18px" />}
-          </>
-        ))}
-      </div>
-      {!isLastInList && <DynamicPadding desktop="20px" />}
-    </div>
   )
 }
 

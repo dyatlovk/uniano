@@ -1,0 +1,30 @@
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.content {
+  p {
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.dot {
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: $orange;
+}
