@@ -305,7 +305,7 @@ export const NavigationBarCustom = ({
 }
 
 interface NavSimpleProps {
-  icon: React.ReactNode
+  icon?: React.ReactNode
   title: string
   activeId: number
   links: {
@@ -357,40 +357,43 @@ export const NavigationSimpleBar = ({
       className={styles.wrapper}
     >
       <div className={styles.content}>
-        <div className="gap_15">
-          <div className={styles.category_hover}>
-            <div
-              className={styles.title_hover}
-              onClick={() => {
-                setHovered(prev => !prev)
-              }}
-            >
-              {icon}
-              <span className={styles.currentTitle}>
-                <Typography
-                  textTransform="uppercase"
-                  variant="body4"
-                  color="white"
-                >
-                  {title}
-                </Typography>
-              </span>
-            </div>
+        {icon && (
+          <div className="gap_15">
+            <div className={styles.category_hover}>
+              <div
+                className={styles.title_hover}
+                onClick={() => {
+                  setHovered(prev => !prev)
+                }}
+              >
+                {icon}
+                <span className={styles.currentTitle}>
+                  <Typography
+                    textTransform="uppercase"
+                    variant="body4"
+                    color="white"
+                  >
+                    {title}
+                  </Typography>
+                </span>
+              </div>
 
-            <PagesNav hovered={hovered} />
+              <PagesNav hovered={hovered} />
+            </div>
+            <div className={styles.vertical_line}></div>
+            <div className="mobile">
+              <Typography
+                color="white"
+                fontWeight="500"
+                variant="body4"
+                textLineHeight="1"
+              >
+                {title}
+              </Typography>
+            </div>
           </div>
-          <div className={styles.vertical_line}></div>
-          <div className="mobile">
-            <Typography
-              color="white"
-              fontWeight="500"
-              variant="body4"
-              textLineHeight="1"
-            >
-              {title}
-            </Typography>
-          </div>
-        </div>
+        )}
+
         <div
           onClick={() => [setShowDropdown(prev => !prev)]}
           className="mobile"

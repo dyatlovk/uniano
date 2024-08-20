@@ -69,6 +69,10 @@ import SettingsNotifications from './pages/Settings/pages/Notifications'
 import PasswordAndSecurity from './pages/Settings/pages/PasswordAndSecurity'
 import SettingsProfile from './pages/Settings/pages/Profile'
 import Verification from './pages/Settings/pages/Verification'
+import AboutUs from './pages/Simple/AboutUs'
+import PrivacyPolicy from './pages/Simple/PrivacyPolicy'
+import Releases from './pages/Simple/Releases'
+import TermsConditions from './pages/Simple/TermsConditions'
 import MySubscription from './pages/Subscriptions/pages/MySubscription'
 import SubscriptionsPlans from './pages/Subscriptions/pages/Plans'
 import TeamMembers from './pages/Team/pages/Members'
@@ -258,6 +262,10 @@ function App() {
             path="/create-partnership/posting"
             element={<CreatePartnerShipPosting />}
           />
+          <Route path="/releases" element={<Releases />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/admin" element={<AdminPannel />} />
           <Route path="*" element={<Navigate to="/error" />} />
         </Routes>
