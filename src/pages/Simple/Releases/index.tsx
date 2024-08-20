@@ -6,48 +6,25 @@ import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import ArticleModel from '@common/models/pages/articleModel'
+import { ArticlesNavLinks } from '@common/models/pages/navigation'
 import AppColor from '@common/styles/variables-static'
 import Article from '../components/Article'
-import NavTree from '../components/NavTree'
-import styles from './style.module.scss'
-
-const articlesManager = new ArticleModel()
-articlesManager.replace(ArticleModel.MakeFake())
+import Tree from '../components/Tree'
+import articleStyles from '../shared/article.module.scss'
 
 const Releases = (): JSX.Element => {
   return (
     <>
       <HeaderNothAuthorized />
-      <NavigationSimpleBar
-        title=""
-        activeId={3}
-        links={[
-          {
-            title: 'About us',
-            link: '/about-us',
-          },
-          {
-            title: 'Privacy policy',
-            link: '/privacy-policy',
-          },
-          {
-            title: 'Terms and conditions',
-            link: '/terms-conditions',
-          },
-          {
-            title: 'Releases',
-            link: '/releases',
-          },
-        ]}
-      />
+      <NavigationSimpleBar title="" activeId={3} links={ArticlesNavLinks} />
 
-      <div className={styles.breadcrumbs}>
+      <div className={articleStyles.breadcrumbs}>
         <DynamicPadding desktop="50px" />
         <NavigationItem image={<AppColor.home />} textList={['Releases']} />
         <DynamicPadding desktop="30px" />
       </div>
 
-      <div className={styles.title}>
+      <div className={articleStyles.title}>
         <Typography
           variant="titleBig"
           textTransform="uppercase"
@@ -58,29 +35,10 @@ const Releases = (): JSX.Element => {
         <DynamicPadding desktop="18px" />
       </div>
 
-      <div className={styles.layout}>
+      <div className={articleStyles.layout}>
         <ResponsiveLayoutTwo
-          item1={
-            <div>
-              <DynamicPadding desktop="10px" />
-              {articlesManager.getAll().map((el, id) => (
-                <Article data={el} isLastInList={id > 0} />
-              ))}
-            </div>
-          }
-          item2={
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              {articlesManager.buildNavTree().map(el => (
-                <NavTree data={el} onRootClick={() => {}} />
-              ))}
-            </div>
-          }
+          item1={<Article data={articlesManager.getAll()} />}
+          item2={<Tree data={articlesManager.buildNavTree()} />}
           orderItem1Desktop={2}
           orderItem2Desktop={1}
           item1MaxWidth={'732px'}
@@ -93,7 +51,7 @@ const Releases = (): JSX.Element => {
 
       <DynamicPadding desktop="50px" />
 
-      <div className={styles.layout}>
+      <div className={articleStyles.layout}>
         <AskedQuestion margin="0" />
       </div>
     </>
@@ -101,3 +59,6 @@ const Releases = (): JSX.Element => {
 }
 
 export default Releases
+
+const articlesManager = new ArticleModel()
+articlesManager.replace(ArticleModel.MakeFake())

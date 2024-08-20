@@ -4,11 +4,30 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 
 interface Props {
+  data: TextPage.ArticleNavTree[]
+}
+const Tree = ({ data }: Props): JSX.Element => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      {data.map(el => (
+        <Item data={el} onRootClick={() => {}} />
+      ))}
+    </div>
+  )
+}
+
+interface ItemProps {
   data: TextPage.ArticleNavTree
   onRootClick: () => void
 }
 
-const NavTree = ({ data, onRootClick }: Props): JSX.Element => {
+const Item = ({ data, onRootClick }: ItemProps): JSX.Element => {
   const [isOpened, setOpened] = useState<boolean>(false)
 
   return (
@@ -35,4 +54,4 @@ const NavTree = ({ data, onRootClick }: Props): JSX.Element => {
   )
 }
 
-export default NavTree
+export default Tree

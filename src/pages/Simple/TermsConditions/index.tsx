@@ -1,39 +1,24 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
 import HeaderNothAuthorized from '@common/components/Header/Header-not-authorized/Header-not-authorized'
 import { NavigationSimpleBar } from '@common/components/NavigationBar/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
+import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import Typography from '@common/components/ui/Typography/Typography'
+import ArticleModel from '@common/models/pages/articleModel'
+import { ArticlesNavLinks } from '@common/models/pages/navigation'
 import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
+import Article from '../components/Article'
+import Tree from '../components/Tree'
+import articleStyles from '../shared/article.module.scss'
 
 const TermsConditions = (): JSX.Element => {
   return (
     <>
       <HeaderNothAuthorized />
-      <NavigationSimpleBar
-        title=""
-        activeId={2}
-        links={[
-          {
-            title: 'About us',
-            link: '/about-us',
-          },
-          {
-            title: 'Privacy policy',
-            link: '/privacy-policy',
-          },
-          {
-            title: 'Terms and conditions',
-            link: '/terms-conditions',
-          },
-          {
-            title: 'Releases',
-            link: '/releases',
-          },
-        ]}
-      />
+      <NavigationSimpleBar title="" activeId={2} links={ArticlesNavLinks} />
 
-      <div className={styles.breadcrumbs}>
+      <div className={articleStyles.breadcrumbs}>
         <DynamicPadding desktop="50px" />
         <NavigationItem
           image={<AppColor.home />}
@@ -42,7 +27,7 @@ const TermsConditions = (): JSX.Element => {
         <DynamicPadding desktop="30px" />
       </div>
 
-      <div className={styles.title}>
+      <div className={articleStyles.title}>
         <Typography
           variant="titleBig"
           textTransform="uppercase"
@@ -52,8 +37,31 @@ const TermsConditions = (): JSX.Element => {
         </Typography>
         <DynamicPadding desktop="18px" />
       </div>
+
+      <div className={articleStyles.layout}>
+        <ResponsiveLayoutTwo
+          item1={<Article data={articlesManager.getAll()} />}
+          item2={<Tree data={articlesManager.buildNavTree()} />}
+          orderItem1Desktop={2}
+          orderItem2Desktop={1}
+          item1MaxWidth={'732px'}
+          item2MaxWidth={'388px'}
+          orderItem1Mobile={1}
+          orderItem2Mobile={2}
+          gap={'80px'}
+        />
+      </div>
+
+      <DynamicPadding desktop="50px" />
+
+      <div className={articleStyles.layout}>
+        <AskedQuestion margin="0" />
+      </div>
     </>
   )
 }
 
 export default TermsConditions
+
+const articlesManager = new ArticleModel()
+articlesManager.replace(ArticleModel.MakeFake())
