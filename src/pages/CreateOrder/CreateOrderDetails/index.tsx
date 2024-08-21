@@ -1,23 +1,24 @@
-import styles from './style.module.scss'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
-import { Link } from 'react-router-dom'
+import HeaderDummy from '@common/components/Header/Dummy/index'
+import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
+import Typography from '@common/components/ui/Typography/Typography'
+import StatesModel from '@common/models/createOrder/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import StepOneOrder, {
   StepFourOrder,
   StepThreeOrder,
   StepTwoOrder,
 } from './Steps'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/createOrder/statesModel'
-import HeaderDummy from '@common/components/Header/Dummy/index'
+import styles from './style.module.scss'
 
 const CreateOrderDetails = () => {
   useEffect(() => {
@@ -279,7 +280,7 @@ const Header = (): JSX.Element => {
       </Typography>
       <div className="mobile">
         <div className={styles.template_icon}>
-          <AppColor.template />
+          <FilterTemplateDropdown />
         </div>
       </div>
       <div className={styles.top_image_wrapper}>
@@ -308,7 +309,7 @@ const Header = (): JSX.Element => {
           </div>
           <div className="desktop">
             <div className={styles.template_icon}>
-              <AppColor.template />
+              <FilterTemplateDropdown />
             </div>
           </div>
         </div>

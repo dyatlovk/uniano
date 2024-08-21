@@ -1,16 +1,17 @@
-import styles from './style.module.scss'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import { useEffect, useState } from 'react'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import { developmentDropdown, NavItemType } from '@common/models/constants'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import { Link, useNavigate } from 'react-router-dom'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { developmentDropdown, NavItemType } from '@common/models/constants'
 import StatesModel from '@common/models/search/statesModel'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import styles from './style.module.scss'
 
 const SearchMasterCategory = () => {
   const [activeCategory, setActiveCategory] = useState('Development')
@@ -46,7 +47,7 @@ const SearchMasterCategory = () => {
             Category
           </Typography>
           <div className={styles.template_icon}>
-            <AppColor.template />
+            <FilterTemplateDropdown />
           </div>
         </div>
 

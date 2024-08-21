@@ -6,6 +6,7 @@ import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
 import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import StatesModel from '@common/models/sponsorship/statesModel'
 import { fakeUserConstant } from '@common/models/user'
@@ -45,7 +46,7 @@ const CreateSponsorshipNegotiation = () => {
                   </Typography>
                   <div className="mobile">
                     <div className={styles.template_icon}>
-                      <AppColor.template />
+                      <FilterTemplateDropdown />
                     </div>
                   </div>
                 </div>
@@ -120,7 +121,7 @@ const CreateSponsorshipNegotiation = () => {
                     </div>
                     <div className="desktop">
                       <div className={styles.template_icon}>
-                        <AppColor.template />
+                        <FilterTemplateDropdown />
                       </div>
                     </div>
                   </div>

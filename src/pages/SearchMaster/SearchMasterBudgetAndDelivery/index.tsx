@@ -1,19 +1,19 @@
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import { useEffect, useState } from 'react'
-import styles from './style.module.scss'
-import RadioButton from '@common/components/ui/RadioButton/index'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import { levelMap } from '@common/components/Footer/Footer'
-import { Link, useNavigate } from 'react-router-dom'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import RadioButton from '@common/components/ui/RadioButton/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
+import Typography from '@common/components/ui/Typography/Typography'
 import StatesModel from '@common/models/search/statesModel'
+import AppColor from '@common/styles/variables-static'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import styles from './style.module.scss'
 
 const SearchMasterBudgetAndDelivery = () => {
   const [selectedSkillsLevel, setSelectedSkillsLevel] = useState<string[]>([])
@@ -47,7 +47,7 @@ const SearchMasterBudgetAndDelivery = () => {
             budget & delivery
           </Typography>
           <div className={styles.template_icon}>
-            <AppColor.template />
+            <FilterTemplateDropdown />
           </div>
         </div>
 

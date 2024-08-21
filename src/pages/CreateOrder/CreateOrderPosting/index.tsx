@@ -10,6 +10,7 @@ import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
 import DotsButton from '@common/components/ui/DotsButtons/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
@@ -38,7 +39,7 @@ const CreateOrderPosting = () => {
   }, [])
   return (
     <div>
-      <HeaderDummy logoText='Create Orders'>
+      <HeaderDummy logoText="Create Orders">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
@@ -63,7 +64,7 @@ const CreateOrderPosting = () => {
               </Typography>
               <div className="mobile">
                 <div className={styles.template_icon}>
-                  <AppColor.template />
+                  <FilterTemplateDropdown />
                 </div>
               </div>
             </div>
@@ -86,7 +87,7 @@ const CreateOrderPosting = () => {
             </div>
             <div className="desktop">
               <div className={`${styles.template_icon} ${'justify_center'}`}>
-                <AppColor.template />
+                <FilterTemplateDropdown />
               </div>
             </div>
           </div>

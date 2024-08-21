@@ -1,14 +1,15 @@
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import { useEffect, useState } from 'react'
-import styles from './style.module.scss'
 import ButtonsSelectList from '@common/components/ButtonsSelectList/index'
-import { Link, useNavigate } from 'react-router-dom'
 import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
+import Typography from '@common/components/ui/Typography/Typography'
 import StatesModel from '@common/models/search/statesModel'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import styles from './style.module.scss'
 
 const SearchMasterSkills = () => {
   const [activeTitle, setActiveTitle] = useState('')
@@ -40,7 +41,7 @@ const SearchMasterSkills = () => {
             skills
           </Typography>
           <div className={styles.template_icon}>
-            <AppColor.template />
+            <FilterTemplateDropdown />
           </div>
         </div>
 

@@ -29,6 +29,7 @@ import MyButtonTransparentGrey from '@common/components/ui/MyButton/variants/MyB
 import DotsButton from '@common/components/ui/DotsButtons/index'
 import PopUpBottom from '@common/components/ModalPopUps/PopUpBottom/index'
 import { ThreeLinesPopUpCustom } from '@common/components/ui/ThreeLinesPopUp/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
 
 const CreateSponsorshipPosting = () => {
   const [selectedFilter, setSelectedFilter] = useState('Overview')
@@ -60,7 +61,7 @@ const CreateSponsorshipPosting = () => {
               </Typography>
               <div className="mobile">
                 <div className={styles.template_icon}>
-                  <AppColor.template />
+                  <FilterTemplateDropdown />
                 </div>
               </div>
             </div>
@@ -83,7 +84,7 @@ const CreateSponsorshipPosting = () => {
             </div>
             <div className="desktop">
               <div className={`${styles.template_icon} ${'justify_center'}`}>
-                <AppColor.template />
+                <FilterTemplateDropdown />
               </div>
             </div>
           </div>
