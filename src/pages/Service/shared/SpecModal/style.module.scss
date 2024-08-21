@@ -1,0 +1,120 @@
+@mixin wrapper($horPadding: 30px) {
+  width: 100%;
+  padding: 0 $horPadding;
+}
+
+.line {
+  @include wrapper();
+}
+
+.pay_layout {
+  @include wrapper();
+}
+
+.subscriptions_layout {
+  @include wrapper();
+}
+
+.milestone_wrapper {
+  padding: 15px 20px;
+  background-color: $white;
+  border-radius: 20px;
+}
+
+.dots_text_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.options_layout {
+  @include wrapper();
+}
+
+.benefit_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.select_benefit {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  row-gap: 7px;
+  grid-template-areas:
+    "benefit_checkbox benefit_first_line"
+    ".                benefit_second_line";
+}
+
+.benefit_checkbox {
+  grid-area: benefit_checkbox;
+}
+
+.benefit_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.benefit_first_line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  grid-area: benefit_first_line;
+}
+
+.benefit_second_line {
+  grid-area: benefit_second_line;
+}
+
+.buy_wrapper {
+  width: 33px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include weakShadow;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $orange;
+
+    svg path {
+      fill: $white;
+    }
+  }
+}
+
+.mission_btn {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.rewards_layout {
+  @include wrapper();
+}
+
+.trust_score_layout {
+  @include wrapper();
+}
+
+.footer_layout {
+  @include wrapper();
+}
+
+@media (min-width: $tabletSize) {
+  .dots_text_wrapper {
+    gap: 15px;
+  }
+
+  .benefit_wrapper {
+    gap: 10px;
+  }
+}

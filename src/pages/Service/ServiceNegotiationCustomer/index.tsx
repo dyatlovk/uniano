@@ -1,35 +1,38 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
+import ButtonChooseList from '@common/components/ButtonChooseList/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
+import Footer from '@common/components/Footer/Footer'
+import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
 import Header from '@common/components/Header/Header/index'
+import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsOfPreparing, {
   StepItem,
 } from '@common/components/StepsOfPreparing/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import TextDotted from '@common/components/ui/TextDotted/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import AskedQuestion from '@common/components/AskedQuestions/index'
-import Footer from '@common/components/Footer/Footer'
-import { useEffect, useState } from 'react'
 import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/services/statesModel'
-import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
-import PartnersModel from '@common/models/partnership/partnersModel'
-import { SubscriptionList } from '../Service/components/Subscriptions/List'
-import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
-import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
-import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import PercentBar from '@common/components/ui/PercentBar/PercentBar'
+import Preloader from '@common/components/ui/Preloader/index'
+import TextDotted from '@common/components/ui/TextDotted/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import StatesModel from '@common/models/services/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import { useEffect, useState, useTransition } from 'react'
+import { SubscriptionList } from '../Service/components/Subscriptions/List'
+import MissionModal from '../shared/MissionModal'
+import SpecsModal from '../shared/SpecModal'
+import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
   FreelancerProjectsModel.makeFakeData()
@@ -54,6 +57,10 @@ const ServiceNegotiationCustomer = () => {
   const [selectedMileStone, setSelectedMilestone] =
     useState<string>('Milestone 2')
   const [addMilistone, setAddMilestone] = useState<boolean>(false)
+  const [specificationModalShow, setSpecificationModalShow] =
+    useState<boolean>(false)
+  const [isSpecsModalPending, startSpecsModalTransition] = useTransition()
+  const [isMissionModalPending, startMissionModalTransition] = useTransition()
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -91,6 +98,11 @@ const ServiceNegotiationCustomer = () => {
                 solve="Change service solution"
                 text="Custom Requirements"
                 drawLine={false}
+                onSolveClick={() => {
+                  startSpecsModalTransition(() => {
+                    setSpecificationModalShow(true)
+                  })
+                }}
               />
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '24px' }}
@@ -318,7 +330,9 @@ const ServiceNegotiationCustomer = () => {
                       <span
                         className={styles.mission_btn}
                         onClick={() => {
-                          setShowMissionModal(true)
+                          startMissionModalTransition(() => {
+                            setShowMissionModal(true)
+                          })
                         }}
                       >
                         {' '}
@@ -607,7 +621,9 @@ const ServiceNegotiationCustomer = () => {
                       <span
                         className={styles.mission_btn}
                         onClick={() => {
-                          setShowMissionModal(true)
+                          startMissionModalTransition(() => {
+                            setShowMissionModal(true)
+                          })
                         }}
                       >
                         {' '}
@@ -766,6 +782,7 @@ const ServiceNegotiationCustomer = () => {
 
       <Footer />
 
+      {isMissionModalPending && <Preloader />}
       {showMissionModal && (
         <MissionModal
           onClose={() => {
@@ -773,59 +790,16 @@ const ServiceNegotiationCustomer = () => {
           }}
         />
       )}
-    </div>
-  )
-}
 
-interface MissionModalProps {
-  onClose: () => void
-}
-
-const MissionModal = ({ onClose }: MissionModalProps): JSX.Element => {
-  return (
-    <ModalCenterBasic
-      bottomPartPadding="0px"
-      callbackClose={() => {
-        onClose()
-      }}
-      title="Pro Missions"
-      nodeAfterTitle={
-        <ButtonChooseList
-          buttonPadding="4px 13px"
-          buttons={['Start', 'Pro', 'Ultimate']}
-          callback={() => {}}
-          gap="0px"
-          initValue="Fixed"
+      {isSpecsModalPending && <Preloader />}
+      {specificationModalShow && (
+        <SpecsModal
+          onClose={() => {
+            setSpecificationModalShow(false)
+          }}
         />
-      }
-    >
-      <Typography style={{ padding: '30px 30px' }} variant="body4">
-        Freelancers create some tasks to achieve. After successful completion
-        you can get valuable rewards.
-      </Typography>
-      <RoadmapFlex
-        text="Provide complete information about yourself"
-        title="Entrance challenge"
-        completed={true}
-        steps="1 of 12 completed"
-      />
-      <RoadmapFlex
-        text="Provide complete information about yourself"
-        title="Entrance challenge"
-        completed={true}
-        steps="1 of 12 completed"
-      />
-
-      <div style={{ padding: '30px' }} className="flex_end">
-        <MyButtonOrange
-          onClick={() => {}}
-          fontWeight="500"
-          textTransform="uppercase"
-        >
-          Change pro plan $25/month
-        </MyButtonOrange>
-      </div>
-    </ModalCenterBasic>
+      )}
+    </div>
   )
 }
 
