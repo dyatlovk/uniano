@@ -28,6 +28,12 @@ class StepsNegotiationCustomerModel {
     this.items.steps.forEach(el => el.isVisible = true)
   }
 
+  public setVisible(no: number, state: boolean): void {
+    const item = this.findItemByNo(no)
+    if (!item) return
+    item.isVisible = state
+  }
+
   public isLastItem(no: number): boolean {
     const item = this.findItemByNo(no)
     if (!item) return false
@@ -60,6 +66,10 @@ class StepsNegotiationCustomerModel {
     if (!found) return this.items.steps[0]
 
     return found
+  }
+
+  public findVisible(): Item[] {
+    return this.items.steps.filter(el => el.isVisible === true && el.isDisabled === false)
   }
 
   public deactivate(no: number): void {
@@ -140,6 +150,13 @@ class StepsNegotiationCustomerModel {
     return lastItem
   }
 
+  public setDisabled(no: number, state: boolean): void {
+    const item = this.findItemByNo(no)
+    if (!item) return
+
+    item.isDisabled = state
+  }
+
   public resolveAndClose(no: number): void {
     this.setVisibleAll()
     this.deactivate(no)
@@ -185,7 +202,8 @@ if (import.meta.vitest) {
           isResolved: false,
           actiondNode: "node",
           resolvingNode: "node",
-          isActive: false
+          isActive: false,
+          isDisabled: false,
         },
         {
           no: 2,
@@ -194,7 +212,8 @@ if (import.meta.vitest) {
           isResolved: false,
           actiondNode: "node",
           resolvingNode: "node",
-          isActive: false
+          isActive: false,
+          isDisabled: false,
         }
       ]
     })
@@ -227,7 +246,8 @@ if (import.meta.vitest) {
             isResolved: false,
             actiondNode: "node",
             resolvingNode: "node",
-            isActive: false
+            isActive: false,
+            isDisabled: false,
           },
           {
             no: 2,
@@ -236,7 +256,8 @@ if (import.meta.vitest) {
             isResolved: false,
             actiondNode: "node",
             resolvingNode: "node",
-            isActive: false
+            isActive: false,
+            isDisabled: false,
           }
         ]
       })

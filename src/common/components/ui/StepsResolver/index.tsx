@@ -49,7 +49,8 @@ const StepResolverItem = ({
       <div className={styles.item_content}>
         <SizeBox height="8px" />
         <Typography textLineHeight="1" fontWeight="500" variant="body4">
-          {data.isResolved && data.titleResolved}
+          {data.isResolved && data.titleResolved && data.titleResolved}
+          {data.isResolved && !data.titleResolved && data.title}
           {!data.isResolved && data.title}
         </Typography>
 

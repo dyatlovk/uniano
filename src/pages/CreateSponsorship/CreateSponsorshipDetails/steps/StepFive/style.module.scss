@@ -1,0 +1,16 @@
+.textarea {
+  @include weakShadow();
+  border-radius: $borderRadius;
+  padding: 20px;
+
+  textarea {
+    min-height: 150px;
+  }
+}
+
+.attach_docs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  cursor: pointer;
+}

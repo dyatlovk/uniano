@@ -1,18 +1,254 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
+import HeaderDummy from '@common/components/Header/Dummy/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
+import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
+import {
+  StepActionNode,
+  StepNav,
+  StepResolverItem,
+  StepsResolver,
+} from '@common/components/ui/StepsResolver/index'
 import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
-import HeaderDummy from '@common/components/Header/Dummy/index'
-import StepsStates from '@common/components/StepsStates/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import useUpdater from '@common/helpers/useUpdater'
+import StepsNegotiationCustomerModel from '@common/models/services/stepsNegotiationCustomerModel'
 import StatesModel from '@common/models/sponsorship/statesModel'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
+import StepSix from './steps/Six'
+import Six from './steps/Six'
+import StepFive from './steps/StepFive'
+import StepFour from './steps/StepFour'
+import StepOne from './steps/StepOne'
+import StepThree from './steps/StepThree'
+import StepTwo from './steps/StepTwo'
+import styles from './style.module.scss'
 
 const CreateSponsorshipDetails = () => {
+  const [stepsModel, setStepsModel] = useState<StepsNegotiationCustomerModel>(
+    new StepsNegotiationCustomerModel()
+  )
+  const updater = useUpdater()
+  const [stepsNeedUpdate, setStepsNeedUpdate] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (stepsModel.count() === 0) updater()
+    stepsModel.replace({
+      steps: [
+        {
+          no: 1,
+          title: 'WordPress site with booking/payment functionality',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          isDisabled: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(1)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change Title" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepOne
+              onReady={(title: string) => {
+                stepsModel.setReadyToResolve(1, true)
+                stepsModel.updateResolvedTitle(1, title)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 2,
+          title: 'WordPress',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          isDisabled: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(2)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change documents to sign" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepTwo
+              onReady={(title: string) => {
+                if (title.length > 0) stepsModel.setReadyToResolve(2, true)
+                if (title.length == 0) stepsModel.setReadyToResolve(2, false)
+                stepsModel.updateResolvedTitle(2, title)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 3,
+          title: 'WordPress, website, new website, CMS',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          isDisabled: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(3)
+                setStepsNeedUpdate(prev => !prev)
+                stepsModel.setReadyToResolve(3, true)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change tags" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepThree
+              onReady={(title: string) => {
+                if (title.length > 0) stepsModel.setReadyToResolve(3, true)
+                if (title.length == 0) stepsModel.setReadyToResolve(3, false)
+                stepsModel.updateResolvedTitle(3, title)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 4,
+          title: '3 images',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          isDisabled: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(4)
+                stepsModel.setReadyToResolve(4, true)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change images" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepFour
+              onReady={title => {
+                stepsModel.setReadyToResolve(4, true)
+                stepsModel.updateResolvedTitle(4, title)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 5,
+          title: 'Here is my description',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          isDisabled: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(5)
+                setStepsNeedUpdate(prev => !prev)
+                stepsModel.setReadyToResolve(5, false)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change description" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepFive
+              onReady={(title: string) => {
+                const thisIndex = 5
+                const nextItem = stepsModel.findNext(thisIndex)
+                stepsModel.setReadyToResolve(thisIndex, true)
+                stepsModel.updateResolvedTitle(thisIndex, title)
+                stepsModel.setDisabled(nextItem.no, true)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+              onAttach={(state: boolean) => {
+                const thisIndex = 5
+                const nextItem = stepsModel.findNext(thisIndex)
+                if (state) {
+                  stepsModel.setVisible(nextItem.no, true)
+                  stepsModel.setReadyToResolve(thisIndex, true)
+                  stepsModel.setDisabled(nextItem.no, false)
+                }
+                if (!state) {
+                  stepsModel.setVisible(nextItem.no, false)
+                  stepsModel.setReadyToResolve(thisIndex, false)
+                  stepsModel.setDisabled(nextItem.no, true)
+                }
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 6,
+          title: 'Agreements.pdf',
+          isVisible: false,
+          isActive: false,
+          isResolved: false,
+          isDisabled: true,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                const thisIndex = 6
+                stepsModel.setResolveMode(thisIndex)
+                setStepsNeedUpdate(prev => !prev)
+                stepsModel.setReadyToResolve(thisIndex, true)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change documents" />
+            </div>
+          ),
+          resolvingNode: (
+            <StepSix
+              onReady={(title: string) => {
+                const thisIndex = 6
+                stepsModel.setReadyToResolve(thisIndex, true)
+                stepsModel.updateResolvedTitle(thisIndex, title)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+      ],
+    })
+  }, [])
+
   return (
     <div>
       <HeaderDummy logoText="Create Sponsorship">
@@ -50,34 +286,39 @@ const CreateSponsorshipDetails = () => {
                   </div>
                 </div>
                 <DynamicPadding desktop="36px" />
-                <StepsOfPreparing
-                  elements={[
-                    {
-                      text: 'WordPress site with booking/payment functionality',
-                      solve: 'Change title',
-                    },
-                    {
-                      text: 'WordPress',
-                      solve: 'Change category',
-                    },
-                    {
-                      text: 'Wordpress, website, new website, CMS',
-                      solve: 'Change tags',
-                    },
-                    {
-                      text: '3 images',
-                      solve: 'Change images',
-                    },
-                    {
-                      text: 'Here is my description',
-                      solve: 'Change description',
-                    },
-                    {
-                      text: 'Agreements.pdf',
-                      solve: 'Change documents',
-                    },
-                  ]}
-                />
+
+                <StepsResolver needUpdate={stepsNeedUpdate}>
+                  {stepsModel.findVisible().map((item: StepsResolver.Item) => (
+                    <StepResolverItem
+                      key={item.no}
+                      onResolved={(no: number) => {
+                        stepsModel.resolveAndClose(no)
+                        updater()
+                      }}
+                      forceUpdate={stepsNeedUpdate}
+                      data={item}
+                    >
+                      <StepNav
+                        onNext={() => {
+                          stepsModel.resolveAndClose(item.no)
+                          const nextItem = stepsModel.findNext(item.no)
+                          if (nextItem) stepsModel.setResolveMode(nextItem.no)
+                          updater()
+                        }}
+                        onPrev={() => {
+                          stepsModel.resolveAndClose(item.no)
+                          const prevItem = stepsModel.findPrev(item.no)
+                          if (prevItem) stepsModel.setResolveMode(prevItem.no)
+                          updater()
+                        }}
+                        nextVisible={true}
+                        prevVisible={!stepsModel.isFirstItem(item.no)}
+                        nextDisable={!stepsModel.getReadyToResolve(item.no)}
+                        prevDisable={stepsModel.isFirstItem(item.no)}
+                      />
+                    </StepResolverItem>
+                  ))}
+                </StepsResolver>
 
                 <DynamicPadding desktop="20px" />
 
