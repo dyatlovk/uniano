@@ -19,23 +19,21 @@ import StatesModel from '@common/models/sponsorship/statesModel'
 import AppColor from '@common/styles/variables-static'
 import { useEffect, useState } from 'react'
 import StepSix from './steps/Six'
-import Six from './steps/Six'
-import StepFive from './steps/StepFive'
-import StepFour from './steps/StepFour'
-import StepOne from './steps/StepOne'
-import StepThree from './steps/StepThree'
-import StepTwo from './steps/StepTwo'
+import StepFive from './steps/Five'
+import StepFour from './steps/Four'
+import StepOne from './steps/One'
+import StepThree from './steps/Three'
+import StepTwo from './steps/Two'
 import styles from './style.module.scss'
 
+const stepsModel = new StepsNegotiationCustomerModel()
+
 const CreateSponsorshipDetails = () => {
-  const [stepsModel, setStepsModel] = useState<StepsNegotiationCustomerModel>(
-    new StepsNegotiationCustomerModel()
-  )
-  const updater = useUpdater()
+  const update = useUpdater()
   const [stepsNeedUpdate, setStepsNeedUpdate] = useState<boolean>(false)
 
   useEffect(() => {
-    if (stepsModel.count() === 0) updater()
+    if (stepsModel.count() === 0) update()
     stepsModel.replace({
       steps: [
         {
@@ -51,7 +49,7 @@ const CreateSponsorshipDetails = () => {
               onClick={() => {
                 stepsModel.setResolveMode(1)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change Title" />
@@ -63,7 +61,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setReadyToResolve(1, true)
                 stepsModel.updateResolvedTitle(1, title)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -81,7 +79,7 @@ const CreateSponsorshipDetails = () => {
               onClick={() => {
                 stepsModel.setResolveMode(2)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change documents to sign" />
@@ -94,7 +92,7 @@ const CreateSponsorshipDetails = () => {
                 if (title.length == 0) stepsModel.setReadyToResolve(2, false)
                 stepsModel.updateResolvedTitle(2, title)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -113,7 +111,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setResolveMode(3)
                 setStepsNeedUpdate(prev => !prev)
                 stepsModel.setReadyToResolve(3, true)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change tags" />
@@ -121,12 +119,13 @@ const CreateSponsorshipDetails = () => {
           ),
           resolvingNode: (
             <StepThree
+              id={3}
               onReady={(title: string) => {
                 if (title.length > 0) stepsModel.setReadyToResolve(3, true)
                 if (title.length == 0) stepsModel.setReadyToResolve(3, false)
                 stepsModel.updateResolvedTitle(3, title)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -145,7 +144,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setResolveMode(4)
                 stepsModel.setReadyToResolve(4, true)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change images" />
@@ -157,7 +156,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setReadyToResolve(4, true)
                 stepsModel.updateResolvedTitle(4, title)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -176,7 +175,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setResolveMode(5)
                 setStepsNeedUpdate(prev => !prev)
                 stepsModel.setReadyToResolve(5, false)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change description" />
@@ -191,7 +190,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.updateResolvedTitle(thisIndex, title)
                 stepsModel.setDisabled(nextItem.no, true)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
               onAttach={(state: boolean) => {
                 const thisIndex = 5
@@ -207,7 +206,7 @@ const CreateSponsorshipDetails = () => {
                   stepsModel.setDisabled(nextItem.no, true)
                 }
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -227,7 +226,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setResolveMode(thisIndex)
                 setStepsNeedUpdate(prev => !prev)
                 stepsModel.setReadyToResolve(thisIndex, true)
-                updater()
+                update()
               }}
             >
               <StepActionNode title="Change documents" />
@@ -240,7 +239,7 @@ const CreateSponsorshipDetails = () => {
                 stepsModel.setReadyToResolve(thisIndex, true)
                 stepsModel.updateResolvedTitle(thisIndex, title)
                 setStepsNeedUpdate(prev => !prev)
-                updater()
+                update()
               }}
             />
           ),
@@ -291,29 +290,22 @@ const CreateSponsorshipDetails = () => {
                   {stepsModel.findVisible().map((item: StepsResolver.Item) => (
                     <StepResolverItem
                       key={item.no}
-                      onResolved={(no: number) => {
-                        stepsModel.resolveAndClose(no)
-                        updater()
-                      }}
+                      onResolved={(no: number) => {}}
                       forceUpdate={stepsNeedUpdate}
                       data={item}
                     >
                       <StepNav
                         onNext={() => {
-                          stepsModel.resolveAndClose(item.no)
-                          const nextItem = stepsModel.findNext(item.no)
-                          if (nextItem) stepsModel.setResolveMode(nextItem.no)
-                          updater()
+                          stepsModel.goToNext(item)
+                          update()
                         }}
                         onPrev={() => {
-                          stepsModel.resolveAndClose(item.no)
-                          const prevItem = stepsModel.findPrev(item.no)
-                          if (prevItem) stepsModel.setResolveMode(prevItem.no)
-                          updater()
+                          stepsModel.goToPrev(item)
+                          update()
                         }}
                         nextVisible={true}
                         prevVisible={!stepsModel.isFirstItem(item.no)}
-                        nextDisable={!stepsModel.getReadyToResolve(item.no)}
+                        nextDisable={!stepsModel.isReadyToResolve(item.no)}
                         prevDisable={stepsModel.isFirstItem(item.no)}
                       />
                     </StepResolverItem>

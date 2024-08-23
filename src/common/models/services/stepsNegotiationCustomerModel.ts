@@ -5,6 +5,7 @@ class StepsNegotiationCustomerModel {
   private items: Collection = { steps: [] }
 
   constructor(items?: Collection) {
+    console.log("init")
     if (items) this.items = items
   }
 
@@ -14,6 +15,10 @@ class StepsNegotiationCustomerModel {
 
   public replace(items: Collection): void {
     this.items = items
+  }
+
+  public append(item: Item): void {
+    this.items.steps.push(item)
   }
 
   public hideOther(no: number): void {
@@ -109,7 +114,7 @@ class StepsNegotiationCustomerModel {
     item.isReadyToResolve = state
   }
 
-  public getReadyToResolve(no: number): boolean {
+  public isReadyToResolve(no: number): boolean {
     const item = this.findItemByNo(no)
     if (!item) return false
 
@@ -180,6 +185,25 @@ class StepsNegotiationCustomerModel {
   public setResolveMode(no: number): void {
     this.hideOther(no)
     this.activate(no)
+  }
+
+  public goTo(no: number): void {
+    this.resolveAndClose(no)
+    this.setResolveMode(no)
+  }
+
+  public goToNext(current: Item): void {
+    this.resolveAndClose(current.no)
+    const nextItem = this.findNext(current.no)
+    if (!nextItem) return
+    this.setResolveMode(nextItem.no)
+  }
+
+  public goToPrev(current: Item): void {
+    this.resolveAndClose(current.no)
+    const prevItem = this.findPrev(current.no)
+    if (!prevItem) return
+    this.setResolveMode(prevItem.no)
   }
 }
 

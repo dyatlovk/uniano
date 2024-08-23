@@ -6,13 +6,15 @@ import { useState } from 'react'
 
 interface Props {
   onReady: (title: string) => void
+  id: number
 }
-const StepThree = ({ onReady }: Props): JSX.Element => {
+const StepThree = ({ onReady, id }: Props): JSX.Element => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>([])
 
   return (
     <div>
       <ButtonsSelectList
+        key={id}
         callback={item => {
           setSelectedSkills(item)
           if (item.length === 0) onReady('')

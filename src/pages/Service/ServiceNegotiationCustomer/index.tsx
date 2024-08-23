@@ -47,6 +47,8 @@ const freelancerFakeProject = freelancerProjectModel.findByLabel('Progress')
 const freelancerFakeProjectProgress =
   freelancerProjectModel.getProgress('Progress')
 
+const stepsModel = new StepsNegotiationCustomerModel()
+
 const ServiceNegotiationCustomer = () => {
   const arrayHistory = [
     'Service',
@@ -67,9 +69,6 @@ const ServiceNegotiationCustomer = () => {
     useState<boolean>(false)
   const [isSpecsModalPending, startSpecsModalTransition] = useTransition()
   const [isMissionModalPending, startMissionModalTransition] = useTransition()
-  const [stepsModel, setStepsModel] = useState<StepsNegotiationCustomerModel>(
-    new StepsNegotiationCustomerModel()
-  )
   const updater = useUpdater()
   const [stepsNeedUpdate, setStepsNeedUpdate] = useState<boolean>(false)
 
@@ -82,10 +81,12 @@ const ServiceNegotiationCustomer = () => {
   }, [])
 
   useEffect(() => {
+    if (stepsModel.count() === 0) updater()
     stepsModel.replace({
       steps: [
         {
           no: 1,
+          isDisabled: false,
           title: 'Select specification',
           isVisible: true,
           isActive: false,
@@ -115,6 +116,7 @@ const ServiceNegotiationCustomer = () => {
         },
         {
           no: 2,
+          isDisabled: false,
           title: 'Change documents to sign',
           isVisible: true,
           isActive: false,
@@ -207,38 +209,29 @@ const ServiceNegotiationCustomer = () => {
               <DynamicPadding desktop="30px" mobile="20px" />
 
               <StepsResolver needUpdate={stepsNeedUpdate}>
-                {stepsModel.getAll().steps.map(
-                  item =>
-                    item.isVisible && (
-                      <StepResolverItem
-                        onResolved={(no: number) => {
-                          stepsModel.resolveAndClose(no)
-                          updater()
-                        }}
-                        forceUpdate={stepsNeedUpdate}
-                        data={item}
-                      >
-                        <StepNav
-                          onNext={() => {
-                            stepsModel.resolveAndClose(item.no)
-                            const nextItem = stepsModel.findNext(item.no)
-                            if (nextItem) stepsModel.setResolveMode(nextItem.no)
-                            updater()
-                          }}
-                          onPrev={() => {
-                            stepsModel.resolveAndClose(item.no)
-                            const prevItem = stepsModel.findPrev(item.no)
-                            if (prevItem) stepsModel.setResolveMode(prevItem.no)
-                            updater()
-                          }}
-                          nextVisible={true}
-                          prevVisible={!stepsModel.isFirstItem(item.no)}
-                          nextDisable={!stepsModel.getReadyToResolve(item.no)}
-                          prevDisable={stepsModel.isFirstItem(item.no)}
-                        />
-                      </StepResolverItem>
-                    )
-                )}
+                {stepsModel.findVisible().map(item => (
+                  <StepResolverItem
+                    key={item.no}
+                    onResolved={(no: number) => {}}
+                    forceUpdate={stepsNeedUpdate}
+                    data={item}
+                  >
+                    <StepNav
+                      onNext={() => {
+                        stepsModel.goToNext(item)
+                        updater()
+                      }}
+                      onPrev={() => {
+                        stepsModel.goToPrev(item)
+                        updater()
+                      }}
+                      nextVisible={true}
+                      prevVisible={!stepsModel.isFirstItem(item.no)}
+                      nextDisable={!stepsModel.isReadyToResolve(item.no)}
+                      prevDisable={stepsModel.isFirstItem(item.no)}
+                    />
+                  </StepResolverItem>
+                ))}
               </StepsResolver>
 
               <DynamicPadding desktop="20px" mobile="10px" />
