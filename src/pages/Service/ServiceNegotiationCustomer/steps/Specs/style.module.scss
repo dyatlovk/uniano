@@ -1,0 +1,110 @@
+@mixin item() {
+  padding: 12.5px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item {
+  @include item();
+  @include weakShadow;
+  cursor: pointer;
+}
+
+.item_active {
+  @include item();
+  border: 1px solid $white;
+  background-color: #F5F5F5;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.orange {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $orange;
+  border-radius: 50%;
+
+  svg path {
+    stroke: $white;
+  }
+}
+
+.textarea {
+  @include weakShadow;
+  padding: 20px;
+  border-radius: $borderRadius;
+
+  textarea {
+    min-height: 150px;
+  }
+}
+
+.docs {
+  display: flex;
+  flex-direction: column;
+}
+
+.attach_docs {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.file_close {
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  border: 1px dashed rgba(0, 0, 0, 0.13);
+  border-radius: $borderRadius;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(1, 1, 1, 0.5);
+  padding: 11px;
+  box-sizing: border-box;
+  background-color: $white;
+  @include weakShadow;
+
+  p {
+    color: rgba(1, 1, 1, 0.5);
+  }
+}

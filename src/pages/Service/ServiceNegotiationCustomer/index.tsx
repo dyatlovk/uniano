@@ -2,28 +2,32 @@ import AskedQuestion from '@common/components/AskedQuestions/index'
 import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
-import { RoadmapFlex } from '@common/components/Header/Header/components/NewsPopUp/components/Roadmap/index'
 import Header from '@common/components/Header/Header/index'
-import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import StepsOfPreparing, {
-  StepItem,
-} from '@common/components/StepsOfPreparing/index'
+import { StepItem } from '@common/components/StepsOfPreparing/index'
 import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import MyButton from '@common/components/ui/MyButton/MyButton'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import Preloader from '@common/components/ui/Preloader/index'
+import {
+  StepActionNode,
+  StepNav,
+  StepResolverItem,
+  StepsResolver,
+} from '@common/components/ui/StepsResolver/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import useUpdater from '@common/helpers/useUpdater'
 import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
 import PartnersModel from '@common/models/partnership/partnersModel'
 import StatesModel from '@common/models/services/statesModel'
+import StepsNegotiationCustomerModel from '@common/models/services/stepsNegotiationCustomerModel'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
@@ -32,6 +36,8 @@ import { useEffect, useState, useTransition } from 'react'
 import { SubscriptionList } from '../Service/components/Subscriptions/List'
 import MissionModal from '../shared/MissionModal'
 import SpecsModal from '../shared/SpecModal'
+import DocsStep from './steps/Docs'
+import SpecsStep from './steps/Specs'
 import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
@@ -61,6 +67,11 @@ const ServiceNegotiationCustomer = () => {
     useState<boolean>(false)
   const [isSpecsModalPending, startSpecsModalTransition] = useTransition()
   const [isMissionModalPending, startMissionModalTransition] = useTransition()
+  const [stepsModel, setStepsModel] = useState<StepsNegotiationCustomerModel>(
+    new StepsNegotiationCustomerModel()
+  )
+  const updater = useUpdater()
+  const [stepsNeedUpdate, setStepsNeedUpdate] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
@@ -68,6 +79,72 @@ const ServiceNegotiationCustomer = () => {
 
   useEffect(() => {
     setPartnersModel(new PartnersModel())
+  }, [])
+
+  useEffect(() => {
+    stepsModel.replace({
+      steps: [
+        {
+          no: 1,
+          title: 'Select specification',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(1)
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change specification" />
+            </div>
+          ),
+          resolvingNode: (
+            <SpecsStep
+              onReady={() => {
+                stepsModel.setReadyToResolve(1, true)
+                stepsModel.updateResolvedTitle(1, 'Specs resolved title')
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+        {
+          no: 2,
+          title: 'Change documents to sign',
+          isVisible: true,
+          isActive: false,
+          isResolved: false,
+          actiondNode: (
+            <div
+              className={styles.link_hover}
+              onClick={() => {
+                stepsModel.setResolveMode(2)
+                setStepsNeedUpdate(prev => !prev)
+                stepsModel.setReadyToResolve(2, true)
+                updater()
+              }}
+            >
+              <StepActionNode title="Change documents to sign" />
+            </div>
+          ),
+          resolvingNode: (
+            <DocsStep
+              onReady={() => {
+                stepsModel.setReadyToResolve(2, true)
+                stepsModel.updateResolvedTitle(2, 'Docs sign resolved')
+                setStepsNeedUpdate(prev => !prev)
+                updater()
+              }}
+            />
+          ),
+        },
+      ],
+    })
   }, [])
 
   return (
@@ -104,6 +181,7 @@ const ServiceNegotiationCustomer = () => {
                   })
                 }}
               />
+
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '24px' }}
               >
@@ -125,19 +203,44 @@ const ServiceNegotiationCustomer = () => {
                   <AppColor.plusCircle />
                 </div>
               </div>
+
               <DynamicPadding desktop="30px" mobile="20px" />
-              <StepsOfPreparing
-                elements={[
-                  {
-                    solve: 'Change specification',
-                    text: 'Logo Design specification form',
-                  },
-                  {
-                    solve: 'Change documents to sign',
-                    text: 'NDA, NCA',
-                  },
-                ]}
-              />
+
+              <StepsResolver needUpdate={stepsNeedUpdate}>
+                {stepsModel.getAll().steps.map(
+                  item =>
+                    item.isVisible && (
+                      <StepResolverItem
+                        onResolved={(no: number) => {
+                          stepsModel.resolveAndClose(no)
+                          updater()
+                        }}
+                        forceUpdate={stepsNeedUpdate}
+                        data={item}
+                      >
+                        <StepNav
+                          onNext={() => {
+                            stepsModel.resolveAndClose(item.no)
+                            const nextItem = stepsModel.findNext(item.no)
+                            if (nextItem) stepsModel.setResolveMode(nextItem.no)
+                            updater()
+                          }}
+                          onPrev={() => {
+                            stepsModel.resolveAndClose(item.no)
+                            const prevItem = stepsModel.findPrev(item.no)
+                            if (prevItem) stepsModel.setResolveMode(prevItem.no)
+                            updater()
+                          }}
+                          nextVisible={true}
+                          prevVisible={!stepsModel.isFirstItem(item.no)}
+                          nextDisable={!stepsModel.getReadyToResolve(item.no)}
+                          prevDisable={stepsModel.isFirstItem(item.no)}
+                        />
+                      </StepResolverItem>
+                    )
+                )}
+              </StepsResolver>
+
               <DynamicPadding desktop="20px" mobile="10px" />
               <div className={styles.text_wrapper}>
                 <Typography variant="body4">
@@ -149,6 +252,7 @@ const ServiceNegotiationCustomer = () => {
                   steps.
                 </Typography>
               </div>
+
               <DynamicPadding />
 
               <div className="flex_space_between">
