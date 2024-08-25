@@ -716,6 +716,7 @@ class AppColor {
   static weakShadow = `-webkit-box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);
     -moz-box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);
     box-shadow: -1px 1px 6px 2px rgba(0,0,0,0.11);`
+  static boxShadowValues = `-1px 1px 6px 2px rgba(0,0,0,0.11)`
 
   static borderRadius = 20;
 

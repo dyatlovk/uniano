@@ -1,0 +1,91 @@
+@mixin flex_row($gap: 10px) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex_column($gap: 10px) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap;
+}
+
+.ul_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.right_text_box {
+  border-radius: 20px;
+  display: block;
+  padding: 25px 30px;
+  width: 388px;
+
+  @include weakShadow;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 388px;
+}
+
+.item {
+  @include weakShadow;
+  border-radius: $borderRadius;
+  padding: 30px;
+  cursor: pointer;
+}
+
+.add_item {
+  svg path {
+    fill: $white;
+  }
+}
+
+.update_img {
+  @include flex_row(10px);
+  justify-content: center;
+}
+
+.img {
+  @include flex_column(10px);
+}
+
+.description_counter {
+  @include flex_row(10px);
+  justify-content: flex-end;
+}
+
+.textarea {
+  textarea {
+    min-height: 250px;
+  }
+}
+
+.include_list {
+  @include flex_column(10px);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropDownNumbers {
+  @include weakShadow;
+  border-radius: $borderRadius;
+  padding: 15px;
+}
+
+.add_footer {
+  @include flex_row(10px);
+  justify-content: flex-end;
+}
+
+.add_cancel {
+  button {
+    color: $blackTransparent !important;
+  }
+}

@@ -1,0 +1,51 @@
+@mixin flex_row($gap: 10px) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: center;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  @include weakShadow();
+  border-radius: $borderRadius;
+}
+
+.selectbox {
+  @include flex_row();
+  justify-content: flex-start;
+  cursor: pointer;
+  user-select: none;
+  padding: 20px;
+}
+
+.selectbox_inner {
+  @include flex_row();
+  justify-content: flex-start;
+}
+
+.chevrons {
+  pointer-events: none;
+}
+
+.list {
+  border-top: 1px solid #5151511a;
+  display: flex;
+  flex-direction: column;
+}
+
+.simple_item {
+  cursor: pointer;
+  padding: 20px;
+  @include flex_row();
+
+  &:hover {
+    background-color: $white;
+
+    &:last-child {
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+}

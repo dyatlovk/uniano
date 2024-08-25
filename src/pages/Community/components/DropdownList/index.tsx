@@ -48,13 +48,14 @@ const DropdownList = ({
         className={styles.hide_list_wrapper}
         style={{ display: isShow ? 'flex' : 'none' }}
       >
-        {items.map(item => (
+        {items.map((item, id) => (
           <li
+            key={id}
             onClick={() => {
               setCurrentActiveItem(item)
               callback(item)
             }}
-            className={(currentActiveItem === item) ? styles.item_selected : ''}
+            className={currentActiveItem === item ? styles.item_selected : ''}
           >
             <Typography
               className={styles.list_item}

@@ -5,8 +5,11 @@ class StepsNegotiationCustomerModel {
   private items: Collection = { steps: [] }
 
   constructor(items?: Collection) {
-    console.log("init")
     if (items) this.items = items
+  }
+
+  public clear(): void {
+    this.items.steps = []
   }
 
   public getAll(): Collection {

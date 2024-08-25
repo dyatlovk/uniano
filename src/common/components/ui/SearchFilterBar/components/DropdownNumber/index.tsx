@@ -43,8 +43,9 @@ const DropdownNumber = () => {
         style={{ display: showDropdown ? 'block' : 'none' }}
         className={styles.absolute_list}
       >
-        {filters.map(item => (
+        {filters.map((item, id) => (
           <div
+            key={id}
             className={`${styles.filter_item} cursor`}
             onClick={() => {
               setShowDropdown(false)
