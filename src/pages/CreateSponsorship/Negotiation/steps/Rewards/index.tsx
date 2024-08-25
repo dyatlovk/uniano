@@ -16,6 +16,7 @@ import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import DropdownNumber from '@common/components/ui/SearchFilterBar/components/DropdownNumber/index'
+import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import useUpdater from '@common/helpers/useUpdater'
 import AppColor from '@common/styles/variables-static'
@@ -30,6 +31,7 @@ const dragListMgr = new DragListManager()
 
 const Rewards = ({ onReady }: Props): JSX.Element => {
   const [showAddModal, setShowAddModal] = useState<boolean>(false)
+  const [showSelectedReward, setSelectedReward] = useState<boolean>(false)
 
   return (
     <>
@@ -41,6 +43,7 @@ const Rewards = ({ onReady }: Props): JSX.Element => {
                 onReady('Select Rewards')
               }}
             />
+            {showSelectedReward && <SelectedReward onClick={() => {}} />}
             <div className={styles.add_item}>
               <MyButtonOrange
                 width="fit-content"
@@ -69,6 +72,11 @@ const Rewards = ({ onReady }: Props): JSX.Element => {
 
       {showAddModal && (
         <AddModal
+          onSave={() => {
+            setShowAddModal(false)
+            setSelectedReward(true)
+            onReady('Select Rewards')
+          }}
           onClose={() => {
             setShowAddModal(false)
           }}
@@ -132,8 +140,9 @@ const CancelReward = ({ onClick }: CancelProps): JSX.Element => {
 
 interface AddModalProps {
   onClose: () => void
+  onSave: () => void
 }
-const AddModal = ({ onClose }: AddModalProps): JSX.Element => {
+const AddModal = ({ onClose, onSave }: AddModalProps): JSX.Element => {
   const [descriptionCounter, setDescriptionCounter] = useState<number>(0)
   const descriptionMaxSymbols = 3000
 
@@ -327,7 +336,7 @@ const AddModal = ({ onClose }: AddModalProps): JSX.Element => {
           fontWeight="500"
           textTransform="uppercase"
           onClick={() => {
-            onClose()
+            onSave()
           }}
         >
           Save
@@ -487,6 +496,70 @@ const LeftSection = (): JSX.Element => {
           />
         </DropDownBase>
       </DropDownContext.Provider>
+    </div>
+  )
+}
+
+interface SelectedRewardProps {
+  onClick: () => void
+}
+const SelectedReward = ({ onClick }: SelectedRewardProps): JSX.Element => {
+  return (
+    <div
+      className={styles.item}
+      onClick={() => {
+        onClick()
+      }}
+    >
+      <div>
+        <img src="/src/assets/images/advertisment.png" width={'328px'} />
+        <DynamicPadding desktop="20px" />
+
+        <Typography variant="body3">Easy start</Typography>
+        <DynamicPadding desktop="20px" />
+
+        <Typography variant="body4">
+          Negotiate all technical and financial questions in private messages
+          and start the project.
+        </Typography>
+
+        <DynamicPadding desktop="20px" />
+
+        <TextDotted
+          text={'Digital copy of game'}
+          endNode={1}
+          fontWeightEndText="500"
+          startTextColor={AppColor.transparentBlack}
+        />
+        <DynamicPadding desktop="10px" />
+        <TextDotted
+          text={'Your name in credits'}
+          endNode={1}
+          fontWeightEndText="500"
+          startTextColor={AppColor.transparentBlack}
+        />
+        <DynamicPadding desktop="10px" />
+        <TextDotted
+          text={'Shipping'}
+          endNode={'Worldwide'}
+          fontWeightEndText="500"
+          startTextColor={AppColor.transparentBlack}
+        />
+        <DynamicPadding desktop="10px" />
+        <TextDotted
+          text={'Delivery'}
+          endNode={'30 days'}
+          fontWeightEndText="500"
+          startTextColor={AppColor.transparentBlack}
+        />
+        <DynamicPadding desktop="10px" />
+        <TextDotted
+          text={'Left'}
+          endNode={'14/1000'}
+          fontWeightEndText="500"
+          startTextColor={AppColor.transparentBlack}
+        />
+      </div>
     </div>
   )
 }
