@@ -1,0 +1,14 @@
+.ul_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.right_text_box {
+  border-radius: 20px;
+  display: block;
+  padding: 25px 30px;
+  width: 388px;
+
+  @include weakShadow;
+}

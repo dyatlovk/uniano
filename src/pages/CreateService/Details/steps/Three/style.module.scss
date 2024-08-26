@@ -1,0 +1,30 @@
+.ul_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.right_text_box {
+  border-radius: 20px;
+  display: block;
+  padding: 25px 30px;
+  width: 388px;
+
+  @include weakShadow;
+}
+
+.attr_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.attr_item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}

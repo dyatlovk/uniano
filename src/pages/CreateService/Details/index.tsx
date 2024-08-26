@@ -4,14 +4,14 @@ import HeaderDummy from '@common/components/Header/Dummy/index'
 import StepsStates from '@common/components/StepsStates/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import {
+  StepsResolver,
   StepActionNode,
   StepNav,
   StepResolverItem,
-  StepsResolver
 } from '@common/components/ui/StepsResolver/index'
 import useUpdater from '@common/helpers/useUpdater'
+import StatesModel from '@common/models/createService/statesModel'
 import StepsNegotiationCustomerModel from '@common/models/services/stepsNegotiationCustomerModel'
-import StatesModel from '@common/models/sponsorship/statesModel'
 import { useEffect, useState } from 'react'
 import StepFive from './steps/Five'
 import StepFour from './steps/Four'
@@ -23,9 +23,9 @@ import styles from './style.module.scss'
 
 const stepsModel = new StepsNegotiationCustomerModel()
 
-const CreateSponsorshipDetails = () => {
-  const update = useUpdater()
+const CreateServiceDetails = (): JSX.Element => {
   const [stepsNeedUpdate, setStepsNeedUpdate] = useState<boolean>(false)
+  const update = useUpdater()
 
   useEffect(() => {
     if (stepsModel.count() === 0) update()
@@ -81,7 +81,7 @@ const CreateSponsorshipDetails = () => {
                 update()
               }}
             >
-              <StepActionNode title="Change documents to sign" />
+              <StepActionNode title="Change Category" />
             </div>
           ),
           resolvingNode: (
@@ -101,7 +101,7 @@ const CreateSponsorshipDetails = () => {
         },
         {
           no: 3,
-          title: 'WordPress, website, new website, CMS',
+          title: 'Select Attributes',
           isVisible: true,
           isActive: false,
           isResolved: false,
@@ -112,11 +112,10 @@ const CreateSponsorshipDetails = () => {
               onClick={() => {
                 stepsModel.setResolveMode(3)
                 setStepsNeedUpdate(prev => !prev)
-                stepsModel.setReadyToResolve(3, true)
                 update()
               }}
             >
-              <StepActionNode title="Change tags" />
+              <StepActionNode title="Change attribute" />
             </div>
           ),
           resolvingNode: (
@@ -144,7 +143,6 @@ const CreateSponsorshipDetails = () => {
               className={styles.link_hover}
               onClick={() => {
                 stepsModel.setResolveMode(4)
-                stepsModel.setReadyToResolve(4, true)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -180,7 +178,6 @@ const CreateSponsorshipDetails = () => {
               onClick={() => {
                 stepsModel.setResolveMode(5)
                 setStepsNeedUpdate(prev => !prev)
-                stepsModel.setReadyToResolve(5, false)
                 update()
               }}
             >
@@ -229,10 +226,8 @@ const CreateSponsorshipDetails = () => {
             <div
               className={styles.link_hover}
               onClick={() => {
-                const thisIndex = 6
-                stepsModel.setResolveMode(thisIndex)
+                stepsModel.setResolveMode(6)
                 setStepsNeedUpdate(prev => !prev)
-                stepsModel.setReadyToResolve(thisIndex, true)
                 update()
               }}
             >
@@ -256,15 +251,11 @@ const CreateSponsorshipDetails = () => {
         },
       ],
     })
-
-    return () => {
-      stepsModel.clear()
-    }
   }, [])
 
   return (
     <div>
-      <HeaderDummy logoText="Create Sponsorship">
+      <HeaderDummy logoText="Create Service">
         <StepsStates
           maxWidth="824px"
           states={StatesModel.getAll()}
@@ -311,4 +302,4 @@ const CreateSponsorshipDetails = () => {
   )
 }
 
-export default CreateSponsorshipDetails
+export default CreateServiceDetails
