@@ -35,7 +35,7 @@ const CreateServiceDetails = (): JSX.Element => {
           no: 1,
           title: 'WordPress site with booking/payment functionality',
           isVisible: true,
-          isActive: false,
+          isActive: true,
           isResolved: false,
           isDisabled: false,
           actiondNode: (
@@ -68,7 +68,7 @@ const CreateServiceDetails = (): JSX.Element => {
         {
           no: 2,
           title: 'WordPress',
-          isVisible: true,
+          isVisible: false,
           isActive: false,
           isResolved: false,
           isDisabled: false,
@@ -102,7 +102,7 @@ const CreateServiceDetails = (): JSX.Element => {
         {
           no: 3,
           title: 'Select Attributes',
-          isVisible: true,
+          isVisible: false,
           isActive: false,
           isResolved: false,
           isDisabled: false,
@@ -134,7 +134,7 @@ const CreateServiceDetails = (): JSX.Element => {
         {
           no: 4,
           title: '3 images',
-          isVisible: true,
+          isVisible: false,
           isActive: false,
           isResolved: false,
           isDisabled: false,
@@ -168,7 +168,7 @@ const CreateServiceDetails = (): JSX.Element => {
         {
           no: 5,
           title: 'Here is my description',
-          isVisible: true,
+          isVisible: false,
           isActive: false,
           isResolved: false,
           isDisabled: false,
@@ -276,7 +276,7 @@ const CreateServiceDetails = (): JSX.Element => {
               forceUpdate={stepsNeedUpdate}
               data={item}
             >
-              <div style={{ width: '692px' }}>
+              <div style={{ width: '692px' }} key={item.no}>
                 <StepNav
                   onNext={() => {
                     stepsModel.goToNext(item)

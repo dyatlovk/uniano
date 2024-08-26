@@ -23,6 +23,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
         <>
           <div className={styles.category_wrapper}>
             <CategorySelect
+              key={1}
               itemIcon={<AppColor.development />}
               activeCategory={activeCategory}
               callback={item => {
@@ -32,6 +33,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
               title="Development"
             />
             <CategorySelect
+              key={2}
               itemIcon={<AppColor.desing />}
               activeCategory={activeCategory}
               callback={item => {
@@ -41,6 +43,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
               title="Design"
             />
             <CategorySelect
+              key={3}
               itemIcon={<AppColor.marketing />}
               activeCategory={activeCategory}
               callback={item => {
@@ -50,6 +53,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
               title="Marketing"
             />
             <CategorySelect
+              key={4}
               itemIcon={<AppColor.writing />}
               activeCategory={activeCategory}
               callback={item => {
@@ -59,6 +63,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
               title="Writing"
             />
             <CategorySelect
+              key={5}
               itemIcon={<AppColor.managment />}
               activeCategory={activeCategory}
               callback={item => {
@@ -68,6 +73,7 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
               title="Management"
             />
             <CategorySelect
+              key={6}
               itemIcon={<AppColor.consulting />}
               activeCategory={activeCategory}
               callback={item => {
@@ -80,8 +86,8 @@ const StepTwo = ({ onReady }: Props): JSX.Element => {
           <DynamicPadding desktop="10px" mobile="10px" />
           <div className={styles.search_result}>
             {currentList &&
-              currentList.items.map(item => (
-                <div style={{ whiteSpace: 'nowrap' }}>
+              currentList.items.map((item, id) => (
+                <div style={{ whiteSpace: 'nowrap' }} key={id}>
                   <Typography
                     variant="body4"
                     fontWeight="500"
