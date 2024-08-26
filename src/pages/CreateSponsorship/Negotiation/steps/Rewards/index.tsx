@@ -2,12 +2,12 @@ import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/compone
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import {
   DragList,
-  DragListManager,
+  DragListManager
 } from '@common/components/ui/DragnDrop/DragList/index'
 import {
   DropDownBase,
   DropDownContext,
-  DropDownSimpleItem,
+  DropDownSimpleItem
 } from '@common/components/ui/Dropdown/Base/index'
 import CountryItem from '@common/components/ui/Dropdown/Base/variants/Countries/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'

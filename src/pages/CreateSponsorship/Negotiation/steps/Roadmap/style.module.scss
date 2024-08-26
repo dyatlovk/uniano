@@ -12,3 +12,62 @@
 
   @include weakShadow;
 }
+
+.add_item {
+  svg path {
+    fill: $white;
+  }
+}
+
+.textarea {
+  textarea {
+    min-height: 150px;
+  }
+
+  .counter {
+    color: $blackTransparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.select_money {
+  min-width: 90px;
+  display: flex;
+  transition: 0.15s;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+
+  @include weakShadow;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.stage_items {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stage_item {
+  position: relative;
+  @include weakShadow;
+  width: 230px;
+  border-radius: $borderRadius;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 20px;
+}
+
+.stage_edit_icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

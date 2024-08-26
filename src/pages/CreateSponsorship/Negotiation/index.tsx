@@ -61,7 +61,7 @@ const CreateSponsorshipNegotiation = () => {
     stepsModel.append({
       no: 2,
       title: 'Select Roadmap',
-      isVisible: true,
+      isVisible: false,
       isActive: false,
       isResolved: false,
       isDisabled: false,

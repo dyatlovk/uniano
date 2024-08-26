@@ -23,6 +23,7 @@
   display: block;
   padding: 25px 30px;
   width: 388px;
+  height: fit-content;
 
   @include weakShadow;
 }
