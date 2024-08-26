@@ -58,8 +58,12 @@ const CreateSponsorshipDetails = () => {
           resolvingNode: (
             <StepOne
               onReady={(title: string) => {
-                stepsModel.setReadyToResolve(1, true)
-                stepsModel.updateResolvedTitle(1, title)
+                const curIndex = 1
+                if (title.length > 0)
+                  stepsModel.setReadyToResolve(curIndex, true)
+                if (title.length == 0)
+                  stepsModel.setReadyToResolve(curIndex, false)
+                stepsModel.updateResolvedTitle(curIndex, title)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -88,9 +92,12 @@ const CreateSponsorshipDetails = () => {
           resolvingNode: (
             <StepTwo
               onReady={(title: string) => {
-                if (title.length > 0) stepsModel.setReadyToResolve(2, true)
-                if (title.length == 0) stepsModel.setReadyToResolve(2, false)
-                stepsModel.updateResolvedTitle(2, title)
+                const curIndex = 2
+                if (title.length > 0)
+                  stepsModel.setReadyToResolve(curIndex, true)
+                if (title.length == 0)
+                  stepsModel.setReadyToResolve(curIndex, false)
+                stepsModel.updateResolvedTitle(curIndex, title)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -153,8 +160,12 @@ const CreateSponsorshipDetails = () => {
           resolvingNode: (
             <StepFour
               onReady={title => {
-                stepsModel.setReadyToResolve(4, true)
-                stepsModel.updateResolvedTitle(4, title)
+                const curIndex = 4
+                if (title.length > 0)
+                  stepsModel.setReadyToResolve(curIndex, true)
+                if (title.length == 0)
+                  stepsModel.setReadyToResolve(curIndex, false)
+                stepsModel.updateResolvedTitle(curIndex, title)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -184,11 +195,12 @@ const CreateSponsorshipDetails = () => {
           resolvingNode: (
             <StepFive
               onReady={(title: string) => {
-                const thisIndex = 5
-                const nextItem = stepsModel.findNext(thisIndex)
-                stepsModel.setReadyToResolve(thisIndex, true)
-                stepsModel.updateResolvedTitle(thisIndex, title)
-                stepsModel.setDisabled(nextItem.no, true)
+                const curIndex = 5
+                if (title.length > 0)
+                  stepsModel.setReadyToResolve(curIndex, true)
+                if (title.length == 0)
+                  stepsModel.setReadyToResolve(curIndex, false)
+                stepsModel.updateResolvedTitle(curIndex, title)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -235,9 +247,12 @@ const CreateSponsorshipDetails = () => {
           resolvingNode: (
             <StepSix
               onReady={(title: string) => {
-                const thisIndex = 6
-                stepsModel.setReadyToResolve(thisIndex, true)
-                stepsModel.updateResolvedTitle(thisIndex, title)
+                const curIndex = 6
+                if (title.length > 0)
+                  stepsModel.setReadyToResolve(curIndex, true)
+                if (title.length == 0)
+                  stepsModel.setReadyToResolve(curIndex, false)
+                stepsModel.updateResolvedTitle(curIndex, title)
                 setStepsNeedUpdate(prev => !prev)
                 update()
               }}
@@ -246,6 +261,10 @@ const CreateSponsorshipDetails = () => {
         },
       ],
     })
+
+    return () => {
+      stepsModel.clear()
+    }
   }, [])
 
   return (
@@ -263,91 +282,33 @@ const CreateSponsorshipDetails = () => {
       <DynamicPadding />
 
       <div className="wrapper_page">
-        <ResponsiveLayoutTwo
-          orderItem1Desktop={0}
-          orderItem1Mobile={1}
-          orderItem2Desktop={1}
-          orderItem2Mobile={0}
-          gap="80px"
-          item1MaxWidth="732px"
-          item2MaxWidth="388px"
-          item1={
-            <div style={{ marginTop: '-16px' }}>
-              <div>
-                <div className={styles.title_wrapper}>
-                  <Typography textTransform="uppercase" variant="titleBig">
-                    Details
-                  </Typography>
-                  <div className="mobile">
-                    <div className={styles.template_icon}>
-                      <AppColor.template />
-                    </div>
-                  </div>
-                </div>
-                <DynamicPadding desktop="36px" />
-
-                <StepsResolver needUpdate={stepsNeedUpdate}>
-                  {stepsModel.findVisible().map((item: StepsResolver.Item) => (
-                    <StepResolverItem
-                      key={item.no}
-                      onResolved={(no: number) => {}}
-                      forceUpdate={stepsNeedUpdate}
-                      data={item}
-                    >
-                      <StepNav
-                        onNext={() => {
-                          stepsModel.goToNext(item)
-                          update()
-                        }}
-                        onPrev={() => {
-                          stepsModel.goToPrev(item)
-                          update()
-                        }}
-                        nextVisible={true}
-                        prevVisible={!stepsModel.isFirstItem(item.no)}
-                        nextDisable={!stepsModel.isReadyToResolve(item.no)}
-                        prevDisable={stepsModel.isFirstItem(item.no)}
-                      />
-                    </StepResolverItem>
-                  ))}
-                </StepsResolver>
-
-                <DynamicPadding desktop="20px" />
-
-                <div className={styles.text_box}>
-                  <Typography variant="body4">
-                    You can move to negotiation step and provide payment and
-                    delivery conditions.
-                  </Typography>
-                </div>
-
-                <DynamicPadding desktop="47px" />
-
-                <div className={'flex_space_between'}>
-                  <ChevronMoveTo
-                    variant="left"
-                    onClick={() => {}}
-                    text="Step back"
-                    title="cancel"
-                  />
-                  <ChevronMoveTo
-                    variant="right"
-                    onClick={() => {}}
-                    text="Next step"
-                    title="Negotiation"
-                  />
-                </div>
+        <StepsResolver needUpdate={stepsNeedUpdate}>
+          {stepsModel.findVisible().map((item: StepsResolver.Item) => (
+            <StepResolverItem
+              key={item.no}
+              onResolved={(no: number) => {}}
+              forceUpdate={stepsNeedUpdate}
+              data={item}
+            >
+              <div style={{ width: '692px' }}>
+                <StepNav
+                  onNext={() => {
+                    stepsModel.goToNext(item)
+                    update()
+                  }}
+                  onPrev={() => {
+                    stepsModel.goToPrev(item)
+                    update()
+                  }}
+                  nextVisible={true}
+                  prevVisible={!stepsModel.isFirstItem(item.no)}
+                  nextDisable={!stepsModel.isReadyToResolve(item.no)}
+                  prevDisable={stepsModel.isFirstItem(item.no)}
+                />
               </div>
-            </div>
-          }
-          item2={
-            <div>
-              <div className="desktop">
-                <TitleExampleUl />
-              </div>
-            </div>
-          }
-        />
+            </StepResolverItem>
+          ))}
+        </StepsResolver>
         <AskedQuestion margin="50px 0 0 0" />
       </div>
       <Footer />
