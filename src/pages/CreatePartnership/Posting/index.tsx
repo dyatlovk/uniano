@@ -28,6 +28,11 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
 import { useState } from 'react'
+import {
+  AccountDropDown,
+  FreelancersDropDown,
+  PositiveReviewsDropDown,
+} from './components/filtersDropDown'
 import styles from './style.module.scss'
 
 type QuestionItemProps = {
@@ -91,16 +96,15 @@ const CreatePartnerShipPosting = (): JSX.Element => {
             setSelectedFilter(item)
           }}
         />
-
         <VariantSelect activeFilter={selectedFilter} />
-
-        <CardsSliderRelated secondSlider={true} />
-        <div className="wrapper_page">
-          <AskedQuestion margin="50px 0px 0px" />
-        </div>
-
-        <Footer />
       </div>
+
+      <CardsSliderRelated secondSlider={true} />
+      <div className="wrapper_page">
+        <AskedQuestion margin="50px 0px 0px" />
+      </div>
+
+      <Footer />
     </div>
   )
 }
@@ -615,29 +619,22 @@ const FiltersBlock = () => {
                   <Typography variant="body3" fontWeight="500">
                     Positive Reviews
                   </Typography>
-                  <DynamicPadding desktop="24px" mobile="20px" />
-                  <SelectionItem
-                    icon={<AppColor.starColored fill={AppColor.green} />}
-                    text="90% and Up "
-                    color={AppColor.green}
-                  />
+                  <DynamicPadding desktop="28px" mobile="20px" />
+                  <PositiveReviewsDropDown />
                 </div>
                 <div>
                   <Typography variant="body3" fontWeight="500">
                     Freelancers
                   </Typography>
                   <DynamicPadding desktop="28px" mobile="20px" />
-                  <SelectionItem
-                    icon={<AppColor.teams fill={AppColor.text} />}
-                    text="Teams Only"
-                  />
+                  <FreelancersDropDown />
                 </div>
                 <div>
                   <Typography variant="body3" fontWeight="500">
                     Account Level
                   </Typography>
                   <DynamicPadding desktop="28px" mobile="20px" />
-                  <SelectionItem icon={<></>} text="No Preference" />
+                  <AccountDropDown />
                 </div>
               </div>
               <DynamicPadding desktop="45px" />

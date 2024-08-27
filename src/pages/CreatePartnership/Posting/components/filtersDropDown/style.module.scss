@@ -1,0 +1,28 @@
+.item {
+  cursor: pointer;
+  padding: 20px;
+  @include flex_row();
+
+  &:hover {
+    background-color: $white;
+
+    &:last-child {
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+}
+
+.selected_item_reviews {
+  @include flex_row(5px);
+
+  color: $green !important;
+}
+
+.selected_item_freelancers {
+  @include flex_row(5px);
+
+  p {
+    color: $text !important;
+  }
+}

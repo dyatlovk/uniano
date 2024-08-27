@@ -1,12 +1,11 @@
 import AppColor from '@common/styles/variables-static'
-import classNames from 'classnames'
 import {
   createContext,
   PropsWithChildren,
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react'
 import Typography from '../../Typography/Typography'
 import styles from './shared/style.module.scss'
@@ -60,7 +59,7 @@ const DropDownBase = ({
         {selectedItem && selectedNode && selectedNode}
         {selectBoxInnerSpace && <div style={{ flexGrow: '1' }}></div>}
         <div className={styles.chevrons}>
-          {isVisible && <AppColor.chevronTop fill={'#01010180'} />}
+          {isVisible && <AppColor.chevronTop fill={'#01010150'} />}
           {!isVisible && <AppColor.chevronBottom fill={'#01010180'} />}
         </div>
       </div>
