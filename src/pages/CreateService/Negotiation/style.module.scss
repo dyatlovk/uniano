@@ -52,12 +52,59 @@
 }
 
 .white {
-  padding: 4px;
-  background-color: white;
-  border-radius: 50%;
-  display: flex;
+  svg path {
+    fill: $white;
+    stroke: transparent;
+  }
+}
+
+.fixed_milestones {
+  @include flex_row();
+}
+
+.info_circle {
+  @include roundLabel($bg: #fff, $size: 15px);
+  @include weakShadow();
+  cursor: pointer;
+}
+
+.list_dot {
+  margin-left: 1rem;
+  display: flow-root list-item;
+}
+
+.include_items {
+  @include flex_column($gap: 14px);
+  justify-content: space-between;
+}
+
+.include_item {
+  @include flex_row();
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.item_tools {
+  @include flex_row();
+}
+
+.item_tool {
+  cursor: pointer;
+  line-height: 1;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.add_package_footer {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+.add_package_btns {
+  @include flex_row();
 }
 
 @media (min-width: $tabletSize) {

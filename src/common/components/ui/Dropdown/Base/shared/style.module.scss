@@ -5,19 +5,45 @@
   align-items: center;
 }
 
-.dropdown {
+@mixin list() {
   display: flex;
   flex-direction: column;
-  @include weakShadow();
   border-radius: $borderRadius;
 }
 
-.selectbox {
+@mixin dropdown() {
+  display: flex;
+  flex-direction: column;
+  border-radius: $borderRadius;
+  position: relative;
+}
+
+@mixin selectBox() {
   @include flex_row();
   justify-content: flex-start;
   cursor: pointer;
   user-select: none;
   padding: 20px;
+  z-index: 1;
+}
+
+.dropdown {
+  @include weakShadow();
+  @include dropdown();
+}
+
+.dropdown_overlapped {
+  @include dropdown();
+}
+
+.selectbox {
+  @include selectBox();
+  border-bottom: 1px solid transparent;
+}
+
+.selectbox_overlapped {
+  @include selectBox();
+  border-bottom: 1px solid #5151511a;
 }
 
 .selectbox_inner {
@@ -30,9 +56,20 @@
 }
 
 .list {
+  @include list();
   border-top: 1px solid #5151511a;
-  display: flex;
-  flex-direction: column;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.list_overlapped {
+  @include list();
+  @include weakShadow();
+  position: absolute;
+  left: 0;
+  padding-top: 56px;
+  width: 100%;
+  background-color: #fff;
 }
 
 .simple_item {

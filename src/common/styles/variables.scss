@@ -35,38 +35,42 @@ $borderRadius: 20px;
 
 @mixin backgroundGradientGreyWhite {
   background: rgb(138, 131, 131);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(138, 131, 131, 1) 0%,
-    rgba(130, 132, 132, 1) 20%,
-    rgba(110, 111, 113, 1) 40%,
-    rgba(81, 81, 81, 1) 100%
-  );
+  background: radial-gradient(ellipse at center,
+      rgba(138, 131, 131, 1) 0%,
+      rgba(130, 132, 132, 1) 20%,
+      rgba(110, 111, 113, 1) 40%,
+      rgba(81, 81, 81, 1) 100%);
 }
 
 @mixin prevent-select {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }
 
 @mixin dashedBorder {
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5) 60%,
-    rgba(255, 255, 255, 0) 0%
-  );
+  background-image: linear-gradient(to right,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(255, 255, 255, 0) 0%);
   background-position: bottom;
   background-size: 5px 1px;
   background-repeat: repeat-x;
 }
 
 @mixin noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
   user-select: none;
 }
 
@@ -78,14 +82,17 @@ $borderRadius: 20px;
   }
 
   &::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
+    width: 5px;
+    /* Width of the scrollbar */
     background-color: transparent;
     border-radius: 20px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0; /* Color of the thumb */
-    border-radius: 1px; /* Rounded corners of the thumb */
+    background-color: #e0e0e0;
+    /* Color of the thumb */
+    border-radius: 1px;
+    /* Rounded corners of the thumb */
     border-radius: 20px;
   }
 }
@@ -95,18 +102,32 @@ $borderRadius: 20px;
   @include roundLabel;
 }
 
-@mixin roundLabel {
-  color: $white;
-  background-color: $orange;
-  min-width: 20px;
-  min-height: 20px;
-  max-width: 20px;
-  max-height: 20px;
+@mixin roundLabel($bg: $orange, $fg: $white, $size: 20px) {
+  color: $fg;
+  background-color: $bg;
+  min-width: $size;
+  min-height: $size;
+  max-width: $size;
+  max-height: $size;
   border-radius: 50%;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@mixin flex_row($gap: 10px) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: center;
+}
+
+@mixin flex_column($gap: 10px) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  align-items: center;
 }
 
 .flex_space_between {
@@ -364,4 +385,5 @@ $borderRadius: 20px;
 .fade-exit-active {
   transition: opacity 500ms;
 }
+
 //@media (min-width:$tabletSize) {
