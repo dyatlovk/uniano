@@ -1,0 +1,31 @@
+.info_circle {
+  @include roundLabel($bg: #fff, $size: 15px);
+  @include weakShadow();
+  cursor: pointer;
+}
+
+.type {
+  @include flex_row();
+}
+
+.input_counter {
+  @include flex_row(2px);
+  justify-content: flex-end;
+  color: $blackTransparent;
+}
+
+.box_shadow {
+  @include weakShadow();
+  padding: 9px;
+  border-radius: $borderRadius;
+  line-height: 1;
+}
+
+.footer {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+.footer_btns {
+  @include flex_row();
+}
