@@ -1,3 +1,4 @@
+import popularCatsImg from '@assets/images/popular-categorys_services_3.png'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import FilterList from '@common/components/FilterList/index'
@@ -24,6 +25,8 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
 import { useEffect, useState } from 'react'
+import { PromoItem, PromoItems } from './components/PromoTab'
+import stylesShared from './shared/style.module.scss'
 import styles from './style.module.scss'
 
 const CreateServicePosting = (): JSX.Element => {
@@ -128,7 +131,69 @@ const VariantSelect = ({ activeFilter }: VariantSelectProps) => {
 }
 
 const PromoBlock = (): JSX.Element => {
-  return <>promo</>
+  return (
+    <div>
+      <DynamicPadding desktop="30px" />
+      <PromoItems>
+        <PromoItem
+          title="Promo #1"
+          items={[
+            <div className={stylesShared.promo_text}>
+              <div className={stylesShared.promo_img}>
+                <img width={30} height={30} src={popularCatsImg} alt="" />
+              </div>
+              <Typography>
+                Professional business logo with copyrights
+              </Typography>
+            </div>,
+            <div className={stylesShared.promo_text}>
+              <div className={stylesShared.promo_img}>
+                <img width={30} height={30} src={popularCatsImg} alt="" />
+              </div>
+              <Typography>Web design</Typography>
+            </div>,
+          ]}
+          available={true}
+          key={1}
+        />
+        <PromoItem
+          title="Promo #2"
+          items={[
+            <div className={stylesShared.promo_text}>
+              <div className={stylesShared.promo_img}>
+                <img width={30} height={30} src={popularCatsImg} alt="" />
+              </div>
+              <Typography>
+                Professional business logo with copyrights
+              </Typography>
+            </div>,
+            <div className={stylesShared.promo_text}>
+              <div className={stylesShared.promo_img}>
+                <img width={30} height={30} src={popularCatsImg} alt="" />
+              </div>
+              <Typography>Web design</Typography>
+            </div>,
+          ]}
+          available={false}
+          key={2}
+        />
+      </PromoItems>
+
+      <DynamicPadding desktop="30px" />
+
+      <MyButtonOrange
+        fontWeight="500"
+        onClick={() => {}}
+        textTransform="uppercase"
+        padding="7px 14px"
+      >
+        <div className={styles.white}>
+          <AppColor.plus stroke={AppColor.orange} width={12} height={12} />
+        </div>
+        Add Promo
+      </MyButtonOrange>
+    </div>
+  )
 }
 
 const OverviewBlock = () => {

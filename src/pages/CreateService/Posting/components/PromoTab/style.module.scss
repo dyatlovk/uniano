@@ -1,0 +1,66 @@
+.list {
+  @include flex_column(30px);
+  align-items: flex-start;
+}
+
+.item {
+  @include flex_column(30px);
+  width: 100%;
+}
+
+.item_pos1 {
+  width: 100%;
+}
+
+.item_pos2 {
+  width: 100%;
+}
+
+.promo_title {
+  @include flex_row(10px);
+}
+
+.items {
+  @include flex_column();
+  align-items: flex-start;
+}
+
+.progressBar {
+  position: relative;
+  width: 100%;
+  height: 13px;
+  background-color: #5151511a;
+  border-radius: 5px;
+}
+
+.prices {
+  @include flex-row(5px);
+}
+
+.timer {
+  width: 100%;
+  @include flex-row();
+}
+
+.timer_item {
+  @include weakShadow();
+  @include flex_column(0);
+  flex-grow: 1;
+  border-radius: $borderRadius;
+}
+
+@media (min-width: $tabletSize) {
+  .item {
+    @include flex_row(30px);
+    align-items: flex-start;
+  }
+
+  .item_pos1 {
+    min-width: 360px;
+    width: 360px;
+  }
+
+  .item_pos2 {
+    flex-grow: 1;
+  }
+}

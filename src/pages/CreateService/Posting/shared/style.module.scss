@@ -1,0 +1,9 @@
+.promo_text {
+  @include flex_row();
+}
+
+.promo_img {
+  img {
+    border-radius: 100%;
+  }
+}
