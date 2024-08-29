@@ -488,6 +488,14 @@ const FiltersBlock = () => {
             </MyButtonOrange>
             <DynamicPadding desktop="42px" />
 
+            <div
+              className={
+                selectedAccess === 'Only for filtered freelancers'
+                  ? ''
+                  : styles.positive_disabled
+              }
+            >
+
             <Typography variant="body3" fontWeight="500">
               Need To Hire
             </Typography>
@@ -506,13 +514,6 @@ const FiltersBlock = () => {
             />
 
             <DynamicPadding desktop="45px" />
-            <div
-              className={
-                selectedAccess === 'Only for filtered freelancers'
-                  ? ''
-                  : styles.positive_disabled
-              }
-            >
               <div className={styles.positive_wrapper}>
                 <div>
                   <Typography variant="body3" fontWeight="500">
