@@ -25,6 +25,7 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
 import { useEffect, useState } from 'react'
+import AddPromoModal from './components/AddPromoModal'
 import { PromoItem, PromoItems } from './components/PromoTab'
 import stylesShared from './shared/style.module.scss'
 import styles from './style.module.scss'
@@ -131,6 +132,8 @@ const VariantSelect = ({ activeFilter }: VariantSelectProps) => {
 }
 
 const PromoBlock = (): JSX.Element => {
+  const [showPromoModal, setShowPromoModal] = useState<boolean>(false)
+
   return (
     <div>
       <DynamicPadding desktop="30px" />
@@ -183,7 +186,9 @@ const PromoBlock = (): JSX.Element => {
 
       <MyButtonOrange
         fontWeight="500"
-        onClick={() => {}}
+        onClick={() => {
+          setShowPromoModal(true)
+        }}
         textTransform="uppercase"
         padding="7px 14px"
       >
@@ -192,6 +197,17 @@ const PromoBlock = (): JSX.Element => {
         </div>
         Add Promo
       </MyButtonOrange>
+
+      {showPromoModal && (
+        <AddPromoModal
+          onCancel={() => {
+            setShowPromoModal(false)
+          }}
+          onAdd={() => {
+            setShowPromoModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }

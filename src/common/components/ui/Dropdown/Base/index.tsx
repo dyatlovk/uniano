@@ -69,7 +69,7 @@ const DropDownBase = ({
             paddingTop:
               useOverlappedList && selectBoxRef.current
                 ? selectBoxRef.current.clientHeight
-                : '20px',
+                : '0',
           }}
           className={useOverlappedList ? styles.list_overlapped : styles.list}
         >
