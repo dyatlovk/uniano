@@ -29,6 +29,7 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
 import { useEffect, useRef, useState } from 'react'
+import { AccountDropDown, FreelancersDropDown, PositiveReviewsDropDown } from './components/filtersDropDown'
 import styles from './style.module.scss'
 
 const CreateOrderPosting = () => {
@@ -518,28 +519,21 @@ const FiltersBlock = () => {
                     Positive Reviews
                   </Typography>
                   <DynamicPadding desktop="24px" mobile="20px" />
-                  <SelectionItem
-                    icon={<AppColor.starColored fill={AppColor.green} />}
-                    text="90% and Up "
-                    color={AppColor.green}
-                  />
+                  <PositiveReviewsDropDown />
                 </div>
                 <div>
                   <Typography variant="body3" fontWeight="500">
                     Freelancers
                   </Typography>
                   <DynamicPadding desktop="28px" mobile="20px" />
-                  <SelectionItem
-                    icon={<AppColor.teams fill={AppColor.text} />}
-                    text="Teams Only"
-                  />
+                  <FreelancersDropDown />
                 </div>
                 <div>
                   <Typography variant="body3" fontWeight="500">
                     Account Level
                   </Typography>
                   <DynamicPadding desktop="28px" mobile="20px" />
-                  <SelectionItem icon={<></>} text="No Preference" />
+                  <AccountDropDown />
                 </div>
               </div>
               <DynamicPadding desktop="45px" />
