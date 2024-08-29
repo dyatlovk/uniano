@@ -17,6 +17,7 @@
 .modal_center_basic {
   background-color: white;
   border-radius: 20px;
+  margin: auto;
 
   @include weakShadow;
   overflow: hidden;

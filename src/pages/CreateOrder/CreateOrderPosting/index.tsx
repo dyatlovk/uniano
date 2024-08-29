@@ -28,8 +28,14 @@ import StatesModel from '@common/models/createOrder/statesModel'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
+import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
-import { AccountDropDown, FreelancersDropDown, PositiveReviewsDropDown } from './components/filtersDropDown'
+import {
+  AccountDropDown,
+  FreelancersDropDown,
+  PositiveReviewsDropDown,
+} from './components/filtersDropDown'
+import InterviewModal from './components/InterviewModal'
 import styles from './style.module.scss'
 
 const CreateOrderPosting = () => {
@@ -432,6 +438,7 @@ const FiltersBlock = () => {
   const [selectedAccess, setSelectedAccess] = useState<string>(
     'Only for filtered freelancers'
   )
+  const [showInterViewModal, setShowInterviewModal] = useState<boolean>(false)
 
   return (
     <>
@@ -495,25 +502,24 @@ const FiltersBlock = () => {
                   : styles.positive_disabled
               }
             >
+              <Typography variant="body3" fontWeight="500">
+                Need To Hire
+              </Typography>
+              <DynamicPadding desktop="23px" mobile="20px" />
+              <InputDropdown
+                marginLeft={true}
+                dropdownVariants={[
+                  '1 freelancers',
+                  '2 freelancers',
+                  '3 freelancers',
+                ]}
+                initText="2 freelancers"
+                labelIcon={<></>}
+                callback={() => {}}
+                iconHeight="12px"
+              />
 
-            <Typography variant="body3" fontWeight="500">
-              Need To Hire
-            </Typography>
-            <DynamicPadding desktop="23px" mobile="20px" />
-            <InputDropdown
-              marginLeft={true}
-              dropdownVariants={[
-                '1 freelancers',
-                '2 freelancers',
-                '3 freelancers',
-              ]}
-              initText="2 freelancers"
-              labelIcon={<></>}
-              callback={() => {}}
-              iconHeight="12px"
-            />
-
-            <DynamicPadding desktop="45px" />
+              <DynamicPadding desktop="45px" />
               <div className={styles.positive_wrapper}>
                 <div>
                   <Typography variant="body3" fontWeight="500">
@@ -595,6 +601,36 @@ const FiltersBlock = () => {
                 iconHeight="12px"
               />
             </div>
+            <DynamicPadding desktop="30px" />
+
+            <div
+              className={classNames(styles.hover, 'gap_5')}
+              onClick={() => {
+                setShowInterviewModal(true)
+              }}
+            >
+              <div className={styles.orange}>
+                <AppColor.interview />
+              </div>
+              <Typography
+                variant="body5"
+                fontWeight="500"
+                textTransform="uppercase"
+                color={AppColor.transparentBlack}
+              >
+                Interview
+              </Typography>
+            </div>
+            {showInterViewModal && (
+              <InterviewModal
+                onCancel={() => {
+                  setShowInterviewModal(false)
+                }}
+                onSave={() => {
+                  setShowInterviewModal(false)
+                }}
+              />
+            )}
           </div>
         }
         item2={

@@ -1,0 +1,74 @@
+.questions {
+  @include flex_column();
+  @include weakShadow;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: $borderRadius;
+  background-color: $white;
+}
+
+.answer_types {
+  @include flex_column();
+}
+
+@mixin answer_type() {
+  @include flex_column();
+  justify-content: center;
+  border-radius: $borderRadius;
+  border: 1px solid #5151511A;
+  padding: 10px;
+  width: 122px;
+  height: 83px;
+  cursor: pointer;
+  position: relative;
+}
+
+.answer_type {
+  @include answer_type();
+
+  &:hover {
+    background-color: $white;
+  }
+}
+
+.answer_type_active {
+  background-color: $white;
+  @include answer_type();
+}
+
+.answer_inner {
+  width: 100%;
+}
+
+.info {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  @include roundLabel($bg: #fff, $useShadow: true, $size: 15px);
+}
+
+.own_answer {
+  @include flex_row(15px);
+}
+
+.add_footer {
+  @include flex_row(10px);
+  justify-content: flex-end;
+}
+
+.add_cancel {
+  button {
+    color: $blackTransparent !important;
+  }
+}
+
+@media (min-width: $tabletSize) {
+  .answer_types {
+    @include flex_row();
+  }
+
+  .answer_inner {
+    width: 406px;
+  }
+}

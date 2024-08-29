@@ -28,6 +28,14 @@
   justify-content: center;
 }
 
+.hover {
+  cursor: pointer;
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
 .wrapper_campaign {
   padding: 10.5px 20px;
   user-select: none;

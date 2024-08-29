@@ -102,7 +102,7 @@ $borderRadius: 20px;
   @include roundLabel;
 }
 
-@mixin roundLabel($bg: $orange, $fg: $white, $size: 20px) {
+@mixin roundLabel($bg: $orange, $fg: $white, $size: 20px, $useShadow: false) {
   color: $fg;
   background-color: $bg;
   min-width: $size;
@@ -114,6 +114,9 @@ $borderRadius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  @if $useShadow {
+    @include weakShadow();
+  }
 }
 
 @mixin flex_row($gap: 10px) {

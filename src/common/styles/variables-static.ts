@@ -374,6 +374,9 @@ import { ReactComponent as iconChecked } from '@assets/svg/icon-checked.svg'
 import { ReactComponent as iconFileDownload } from '@assets/svg/download_file.svg'
 import { ReactComponent as iconSupportUa } from '@assets/svg/support_ua.svg'
 import { ReactComponent as googleLogo } from '@assets/svg/google-logo.svg'
+import { ReactComponent as radioList } from '@assets/svg/radio_list.svg'
+import { ReactComponent as checkboxList } from '@assets/svg/checkbox_list.svg'
+import { ReactComponent as symbols } from '@assets/svg/symbols.svg'
 
 class AppColor {
   static pigBonuses = pigBonuses
@@ -695,6 +698,9 @@ class AppColor {
   static iconFileDownload = iconFileDownload
   static iconSupportUa = iconSupportUa
   static googleLogo = googleLogo
+  static radioList = radioList
+  static checkboxList = checkboxList
+  static symbols = symbols
 
   static orange = '#F4A72A'
   static yellow = '#F2C94C'
