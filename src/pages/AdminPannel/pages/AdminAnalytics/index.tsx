@@ -1,20 +1,21 @@
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import styles from './style.module.scss'
-import Typography from '@common/components/ui/Typography/Typography'
-import DateFilter from '../../components/DateFilter'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import { useState } from 'react'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import AppColor from '@common/styles/variables-static'
 import SizeBox from '@common/components/ui/SizeBox/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
+import DateFilter from '../../components/DateFilter'
+import styles from './style.module.scss'
 
 const AdminAnalytics = () => {
   return (
     <div className="admin_wrapper">
-      <DynamicPadding />
+      <DynamicPadding desktop='44px' />
       <div className="center_mobile_text">
         <Typography
+          textLineHeight="1"
           textTransform="uppercase"
           variant="titleBig"
           fontWeight="600"
@@ -22,7 +23,7 @@ const AdminAnalytics = () => {
           analytics
         </Typography>
       </div>
-      <DynamicPadding />
+      <DynamicPadding desktop='45px' />
 
       <DateFilter />
 
@@ -207,7 +208,7 @@ export const DetailsTable = ({
     <div className={styles.details_wrapper}>
       <div>
         <div className={styles.top_part_dropdown}>
-          <Typography variant="body3" fontWeight="500">
+          <Typography variant="body3" fontWeight="500" textLineHeight='1'>
             {title}
           </Typography>
           <div className="desktop">

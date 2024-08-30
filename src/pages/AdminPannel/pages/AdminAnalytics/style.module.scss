@@ -87,9 +87,10 @@
   .details_wrapper_text {
     display: flex;
     align-items: center;
-    gap: 30px;
+    column-gap: 30px;
+    row-gap: 20px;
     flex-wrap: wrap;
-    padding: 20px 30px;
+    padding: 24px 30px;
   }
 
   .details_item {
@@ -97,6 +98,6 @@
   }
 
   .top_part_dropdown {
-    padding: 20px 30px;
+    padding: 24px 30px;
   }
 }

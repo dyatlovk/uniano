@@ -38,7 +38,7 @@ import AdminServicesSponsorship from '../../pages/AdminServicesSponsorship'
 import AdminServicesCommunity from '../../pages/AdminServicesCommunity'
 
 const Layout = () => {
-  const [activePage, setActivePage] = useState('Analytics')
+  const [activePage, setActivePage] = useState('Global.Analytics')
   return (
     <div className={styles.layout}>
       <div className="desktop">
