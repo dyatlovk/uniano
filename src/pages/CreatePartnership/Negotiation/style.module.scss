@@ -46,6 +46,21 @@
   @include flex_row(10px);
 }
 
+.list_item_disabled {
+  @include flex_row(10px);
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
 .template_icon {
   display: flex;
   align-items: center;

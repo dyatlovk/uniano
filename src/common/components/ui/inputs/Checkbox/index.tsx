@@ -10,7 +10,6 @@ type MyCheckboxProps = {
   checkWidth?: string
   checkHeight?: string
   borderRadius?: string
-
   disabled?: boolean
 }
 const MyCheckbox = ({

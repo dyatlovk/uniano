@@ -13,10 +13,13 @@ import TitleExampleUl from '@common/components/ui/TitleExampleUl/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import StatesModel from '@common/models/partnership/createModel'
 import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './style.module.scss'
 
 const CreatePartnershipNegotiation = (): JSX.Element => {
+  const [useOrders, setUseOrders] = useState<boolean>(false)
+
   return (
     <div>
       <HeaderDummy logoText="Create Partnership">
@@ -62,13 +65,20 @@ const CreatePartnershipNegotiation = (): JSX.Element => {
               <DynamicPadding desktop="30px" mobile="20px" />
 
               <div className={styles.orders_switch}>
-                <SwitchButton height="24px" width="44px" startValue={false} />
+                <SwitchButton
+                  height="24px"
+                  width="44px"
+                  startValue={useOrders}
+                  callback={(state: boolean) => {
+                    setUseOrders(state)
+                  }}
+                />
                 User orders
               </div>
 
               <DynamicPadding desktop="30px" mobile="20px" />
 
-              <List />
+              <List isOrdersActive={useOrders} />
 
               <DynamicPadding desktop="50px" />
 
@@ -126,7 +136,10 @@ const CreatePartnershipNegotiation = (): JSX.Element => {
   )
 }
 
-const List = (): JSX.Element => {
+interface ListProps {
+  isOrdersActive: boolean
+}
+const List = ({ isOrdersActive }: ListProps): JSX.Element => {
   return (
     <div className={styles.list}>
       <div className={styles.list_item}>
@@ -147,8 +160,12 @@ const List = (): JSX.Element => {
           fontWeightEndText="500"
         />
       </div>
-      <div className={styles.list_item}>
-        <MyCheckbox width={'22px'} height={'22px'} />
+      <div
+        className={
+          isOrdersActive ? styles.list_item : styles.list_item_disabled
+        }
+      >
+        <MyCheckbox width={'22px'} height={'22px'} disabled={!isOrdersActive} />
         <TextDotted
           text={'Access to chat with customers'}
           startTextColor={AppColor.transparentBlack}
@@ -156,8 +173,12 @@ const List = (): JSX.Element => {
           fontWeightEndText="500"
         />
       </div>
-      <div className={styles.list_item}>
-        <MyCheckbox width={'22px'} height={'22px'} />
+      <div
+        className={
+          isOrdersActive ? styles.list_item : styles.list_item_disabled
+        }
+      >
+        <MyCheckbox width={'22px'} height={'22px'} disabled={!isOrdersActive} />
         <TextDotted
           text={'Access to "Selection" stage'}
           startTextColor={AppColor.transparentBlack}
@@ -165,8 +186,12 @@ const List = (): JSX.Element => {
           fontWeightEndText="500"
         />
       </div>
-      <div className={styles.list_item}>
-        <MyCheckbox width={'22px'} height={'22px'} />
+      <div
+        className={
+          isOrdersActive ? styles.list_item : styles.list_item_disabled
+        }
+      >
+        <MyCheckbox width={'22px'} height={'22px'} disabled={!isOrdersActive} />
         <TextDotted
           text={'Access to "Negotiation" stage'}
           startTextColor={AppColor.transparentBlack}
@@ -174,8 +199,12 @@ const List = (): JSX.Element => {
           fontWeightEndText="500"
         />
       </div>
-      <div className={styles.list_item}>
-        <MyCheckbox width={'22px'} height={'22px'} />
+      <div
+        className={
+          isOrdersActive ? styles.list_item : styles.list_item_disabled
+        }
+      >
+        <MyCheckbox width={'22px'} height={'22px'} disabled={!isOrdersActive} />
         <TextDotted
           text={'Access to "Progress" stage'}
           startTextColor={AppColor.transparentBlack}
@@ -183,8 +212,12 @@ const List = (): JSX.Element => {
           fontWeightEndText="500"
         />
       </div>
-      <div className={styles.list_item}>
-        <MyCheckbox width={'22px'} height={'22px'} />
+      <div
+        className={
+          isOrdersActive ? styles.list_item : styles.list_item_disabled
+        }
+      >
+        <MyCheckbox width={'22px'} height={'22px'} disabled={!isOrdersActive} />
         <TextDotted
           text={'Access to "Completed" stage'}
           startTextColor={AppColor.transparentBlack}
