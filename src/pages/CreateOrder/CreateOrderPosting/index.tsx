@@ -30,6 +30,7 @@ import AppColor from '@common/styles/variables-static'
 import BackgroundItem from '@pages/Settings/pages/Profile/components/BackgroundItem/index'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
+import AddFreelancer from './components/addFreelancer'
 import {
   AccountDropDown,
   FreelancersDropDown,
@@ -433,12 +434,13 @@ const InterviewBlock = () => {
   )
 }
 const FiltersBlock = () => {
-  const [selectedUsers, setSelectedUsers] = useState([fakeUserConstant.name])
   const [selectedCountries, setSelectedCountrues] = useState([])
   const [selectedAccess, setSelectedAccess] = useState<string>(
     'Only for filtered freelancers'
   )
   const [showInterViewModal, setShowInterviewModal] = useState<boolean>(false)
+  const [showAddFreelancerDropdown, setShowAddFreelancerDropdown] =
+    useState<boolean>(false)
 
   return (
     <>
@@ -468,31 +470,7 @@ const FiltersBlock = () => {
             />
 
             <DynamicPadding desktop="20px" mobile="15px" />
-            {selectedUsers.map(item => (
-              <SelectUser
-                activeSelected={selectedUsers}
-                callbackRemove={() => {
-                  setSelectedUsers([])
-                }}
-              />
-            ))}
-            <DynamicPadding desktop="10px" mobile="20px" />
-            <MyButtonOrange
-              padding="7px 14px"
-              textTransform="uppercase"
-              fontWeight="500"
-              onClick={() => {}}
-            >
-              {' '}
-              <div className={styles.white}>
-                <AppColor.plus
-                  stroke={AppColor.orange}
-                  width={12}
-                  height={12}
-                />
-              </div>{' '}
-              Add Freelancer
-            </MyButtonOrange>
+            <AddFreelancer />
             <DynamicPadding desktop="42px" />
 
             <div

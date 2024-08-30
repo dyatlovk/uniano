@@ -10,6 +10,14 @@ declare namespace DropDown {
     flag: React.Node,
   }
 
+  export interface UserItem extends Item {
+    avatar: React.Node
+    name: string
+    position: string
+    countryFlag: string
+    isOnline: boolean
+  }
+
   export interface Context {
     isVisible: boolean,
     setVisible: React.Dispatch<React.SetStateAction<boolean>>,

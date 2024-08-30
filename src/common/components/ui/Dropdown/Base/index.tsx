@@ -5,7 +5,7 @@ import {
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
 } from 'react'
 import Typography from '../../Typography/Typography'
 import styles from './shared/style.module.scss'
@@ -16,12 +16,14 @@ interface Props {
   selectBoxCss?: React.CSSProperties
   selectBoxInnerSpace?: boolean
   useOverlappedList?: boolean
+  css?: React.CSSProperties
 }
 const DropDownBase = ({
   children,
   selectBoxCss,
   selectBoxInnerSpace = true,
   useOverlappedList = false,
+  css,
 }: PropsWithChildren<Props>): JSX.Element => {
   const { setVisible, isVisible, selectedItem, selectedNode, placeholder } =
     useContext<DropDown.Context>(DropDownContext)
@@ -30,6 +32,9 @@ const DropDownBase = ({
 
   return (
     <div
+      style={{
+        ...css,
+      }}
       className={
         isVisible && useOverlappedList
           ? styles.dropdown_overlapped
