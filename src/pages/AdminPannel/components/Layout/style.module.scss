@@ -6,10 +6,9 @@
 
 .pages_scroll {
   overflow-y: auto;
-  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 30px;
   padding-bottom: 100px;
   @include scrollStyles;
 }

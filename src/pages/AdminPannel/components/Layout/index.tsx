@@ -273,9 +273,10 @@ const DropdownLink = ({
               style={{
                 display: showDropdown ? 'grid' : 'none',
                 paddingLeft: `${20 * depth}px`,
+                paddingBottom: depth === 0 ? '20px' : '0',
+                paddingTop: '20px',
               }}
             >
-              <SizeBox height="15px" />
               {page.dropdownTitles.map((item, index) => {
                 return (
                   <DropdownLink
@@ -292,7 +293,6 @@ const DropdownLink = ({
                   />
                 )
               })}
-              <SizeBox height="15px" />
             </div>
           </div>
         )}
