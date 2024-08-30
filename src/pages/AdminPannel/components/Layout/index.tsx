@@ -1,46 +1,54 @@
-import { useEffect, useState } from 'react'
-import styles from './style.module.scss'
+import HeaderAdmin from '@common/components/Header/HeaderAdmin/index'
 import Logo from '@common/components/Logo/Logo'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import { PageType, pagesAdmin } from './content'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import Header from '@common/components/Header/Header/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import { useState } from 'react'
 import AdminAnalytics from '../../pages/AdminAnalytics'
-import HeaderAdmin from '@common/components/Header/HeaderAdmin/index'
-import AdminTopUp from '../../pages/AdminTopUp'
-import AdminTaxForm from '../../pages/AdminTaxForm'
-import AdminWithdraw from '../../pages/AdminWithdraw'
-import AdminList from '../../pages/AdminList'
-import AdminVerification from '../../pages/AdminVerification'
-import AdminService from '../../pages/AdminService'
-import AdminOrder from '../../pages/AdminOrder'
-import AdminCrowdfreelance from '../../pages/AdminCrowdfreelance'
-import AdminSubscriptions from '../../pages/AdminSubscriptions'
-import AdminPartnerships from '../../pages/AdminPartnerships'
-import AdminForms from '../../pages/AdminForms'
-import AdminPosts from '../../pages/AdminPosts'
-import AdminFAQ from '../../pages/AdminFAQ'
-import AdminModeration from '../../pages/AdminModeration'
 import AdminArbitration from '../../pages/AdminArbitration'
-import AdminManagerСhats from '../../pages/AdminManagerСhats'
-import AdminModeratorsChats from '../../pages/AdminModeratorsChats'
-import AdminTickets from '../../pages/AdminTickets'
-import AdminMailing from '../../pages/AdminMailing'
+import AdminCrowdfreelance from '../../pages/AdminCrowdfreelance'
+import AdminFAQ from '../../pages/AdminFAQ'
+import AdminForms from '../../pages/AdminForms'
+import AdminList from '../../pages/AdminList'
 import AdminListPages from '../../pages/AdminListPages'
+import AdminMailing from '../../pages/AdminMailing'
+import AdminManagerСhats from '../../pages/AdminManagerСhats'
+import AdminModeration from '../../pages/AdminModeration'
+import AdminModeratorsChats from '../../pages/AdminModeratorsChats'
+import AdminOrder from '../../pages/AdminOrder'
+import AdminPartnerships from '../../pages/AdminPartnerships'
+import AdminPosts from '../../pages/AdminPosts'
+import AdminService from '../../pages/AdminService'
 import AdminServicesCategories from '../../pages/AdminServicesCategories'
-import AdminSettings from '../../pages/AdminSettings'
+import AdminServicesCommunity from '../../pages/AdminServicesCommunity'
 import AdminServicesOrders from '../../pages/AdminServicesOrders'
 import AdminServicesPartnership from '../../pages/AdminServicesPartnership'
 import AdminServicesSponsorship from '../../pages/AdminServicesSponsorship'
-import AdminServicesCommunity from '../../pages/AdminServicesCommunity'
+import AdminSettings from '../../pages/AdminSettings'
+import AdminSubscriptions from '../../pages/AdminSubscriptions'
+import AdminTaxForm from '../../pages/AdminTaxForm'
+import AdminTickets from '../../pages/AdminTickets'
+import AdminTopUp from '../../pages/AdminTopUp'
+import AdminVerification from '../../pages/AdminVerification'
+import AdminWithdraw from '../../pages/AdminWithdraw'
+import { pagesAdmin, PageType } from './content'
+import styles from './style.module.scss'
+
+const leftSidebar = {
+  desktopWidth: '290px',
+}
 
 const Layout = () => {
   const [activePage, setActivePage] = useState('Global.Analytics')
+  const css = {
+    '--sideBarDesktopWidth': leftSidebar.desktopWidth,
+  }
+
   return (
-    <div className={styles.layout}>
+    /* @ts-ignore */
+    <div style={css} className={styles.layout}>
       <div className="desktop">
         <div className={styles.left_bar}>
           <LeftBar
@@ -116,8 +124,10 @@ type LeftBarProps = {
   callback: (item: string) => void
   activePage: string
 }
-
-const LeftBar = ({ activePage, callback }: LeftBarProps) => {
+const LeftBar = ({
+  activePage,
+  callback,
+}: LeftBarProps) => {
   const [history, setHistory] = useState<string[]>([])
 
   return (
@@ -202,12 +212,11 @@ const DropdownLink = ({
   localHistory,
 }: DropdownLinkProps) => {
   const [showDropdown, setShowDropdown] = useState(false)
-
   const isInHistory = history.includes(page.title)
+  const hasChildren = page.dropdownTitles.length !== 0
 
-  // useEffect(() => {
-  //     if(!showDropdown &&)
-  // },[showDropdown])
+  const isParent = depth === 0
+  const isChildren = depth > 0
 
   const getHistoryTitle = () => {
     //make unique path for SwitchPage component
@@ -227,7 +236,7 @@ const DropdownLink = ({
     <div>
       <div
         onClick={() => {
-          if (page.dropdownTitles.length != 0) {
+          if (hasChildren) {
             setShowDropdown(prev => !prev)
           } else {
             callback(`${historyTitle}${page.title}`)
@@ -252,9 +261,16 @@ const DropdownLink = ({
                     : '#A8A8AD'
           }
         >
-          {depth != 0 && '•'} {page.title}
+          {isChildren && '•'} <span>{page.title}</span>
         </Typography>
-        {page.dropdownTitles.length != 0 ? (
+        {page.count && (
+          <Typography variant="body4" color={AppColor.orange}>
+            {page.count}
+          </Typography>
+        )}
+        {page.hasEvent && <div className={styles.event_indicator}></div>}
+        <div style={{ flexGrow: '1' }}></div>
+        {hasChildren ? (
           showDropdown ? (
             <AppColor.chevronTop fill={'white'} />
           ) : (
@@ -264,9 +280,11 @@ const DropdownLink = ({
           <></>
         )}
       </div>
-      {depth == 0 && showDropdown && <SizeBox height="20px" />}
-      <div className={styles.background_color}>
-        {page.dropdownTitles.length != 0 && showDropdown && (
+
+      {isParent && showDropdown && <SizeBox height="20px" />}
+
+      {hasChildren && showDropdown && (
+        <div className={styles.background_color}>
           <div>
             <div
               className={styles.dropdown_link}
@@ -295,8 +313,8 @@ const DropdownLink = ({
               })}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

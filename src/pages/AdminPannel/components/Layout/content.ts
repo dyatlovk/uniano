@@ -1,6 +1,8 @@
 export type PageType = {
   title: string
   dropdownTitles: PageType[]
+  hasEvent?: boolean
+  count?: number
 }
 export const pagesAdmin: PageType[] = [
   {
@@ -10,16 +12,22 @@ export const pagesAdmin: PageType[] = [
 
   {
     title: 'Finance',
+    hasEvent: true,
     dropdownTitles: [
       {
         title: 'Operations',
+        hasEvent: true,
         dropdownTitles: [
           {
             title: 'Top up',
+            count: 2,
+            hasEvent: true,
             dropdownTitles: [],
           },
           {
             title: 'Withdraw',
+            count: 3,
+            hasEvent: false,
             dropdownTitles: [],
           },
         ],
