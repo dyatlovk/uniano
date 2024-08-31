@@ -10,183 +10,15 @@ import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useCallback, useState } from 'react'
-import { Table, TableBody, TableHead, TableRow } from '../../components/Tables'
+import { useState } from 'react'
 import { DropdownCustomNodesCenter } from '../AdminPartnerships'
 import styles from './style.module.scss'
-
-const tableData: Admin.Tables.RowItem[] = [
-  {
-    id: 1,
-    cols: [{}],
-  },
-]
 
 const AdminTopUp = () => {
   const [showSettingsModal, setShowSettingsModal] = useState(false)
 
   return (
     <div className="admin_wrapper">
-      {showSettingsModal && (
-        <ModalCenterBasic
-          desktopMinWidth="800px"
-          desktopMaxWidth="800px"
-          bottomPartPadding="30px"
-          callbackClose={() => {
-            setShowSettingsModal(false)
-          }}
-          title="Withdraw settings"
-        >
-          <>
-            <Typography textLineHeight="1" variant="body3" fontWeight="500">
-              Payment system
-            </Typography>
-            <DynamicPadding desktop="30px" mobile="20px" />
-            <DropdownCustom
-              nodes={[
-                <AppColor.visa />,
-                <AppColor.visa />,
-                <AppColor.visa />,
-                <AppColor.visa />,
-              ]}
-            />
-            <DynamicPadding desktop="20px" mobile="15px" />
-            <div className="gap_20">
-              <div className="gap_10">
-                <Typography variant="body4">Active</Typography>
-                <SwitchButton width="44px" height="24px" />
-              </div>
-              <div className="gap_10">
-                <Typography variant="body4">Withdrawal with SMS</Typography>
-                <SwitchButton width="44px" height="24px" />
-              </div>
-              <div className="gap_10">
-                <Typography variant="body4">Withdrawal with PIN</Typography>
-                <SwitchButton width="44px" height="24px" />
-              </div>
-            </div>
-            <DynamicPadding desktop="20px" mobile="15px" />
-
-            <div className={styles.grid_3_row}>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Min amount
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <InputCommon
-                  callback={() => {}}
-                  placeholder=""
-                  padding="15px 20px"
-                />
-              </div>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Max amount
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <InputCommon
-                  callback={() => {}}
-                  placeholder=""
-                  padding="15px 20px"
-                />
-              </div>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Max per day
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <InputCommon
-                  callback={() => {}}
-                  placeholder=""
-                  padding="15px 20px"
-                />
-              </div>
-            </div>
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <div className={styles.grid_2_row}>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Payment fee percent
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <InputCommon
-                  callback={() => {}}
-                  placeholder=""
-                  padding="15px 20px"
-                />
-              </div>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Payment fee amount
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <InputCommon
-                  callback={() => {}}
-                  placeholder=""
-                  padding="15px 20px"
-                />
-              </div>
-            </div>
-
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <div className={styles.grid_2_row}>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Time to withdraw
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <DropdownCustomNodesCenter
-                  nodes={Array.from({ length: 300 }, (_, index) => ({
-                    id: (index + 1).toString(),
-                    item: (
-                      <Typography variant="body4">
-                        {index + 1} of 300
-                      </Typography>
-                    ),
-                  }))}
-                />
-              </div>
-              <div>
-                <Typography variant="body3" fontWeight="500">
-                  Withdrawal type
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <DropdownCustomNodesCenter
-                  nodes={Array.from({ length: 300 }, (_, index) => ({
-                    id: (index + 1).toString(),
-                    item: (
-                      <Typography variant="body4">
-                        {index + 1} of 300
-                      </Typography>
-                    ),
-                  }))}
-                />
-              </div>
-            </div>
-
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <div className="flex_end">
-              <MyButtonTransparent
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Cancel
-              </MyButtonTransparent>
-              <MyButtonOrange
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Save
-              </MyButtonOrange>
-            </div>
-          </>
-        </ModalCenterBasic>
-      )}
       <DynamicPadding />
 
       <div className={styles.top_part}>
@@ -245,6 +77,167 @@ const AdminTopUp = () => {
         ]}
       />
       <DynamicPadding />
+
+      {showSettingsModal && (
+        <ModalCenterBasic
+          desktopMinWidth="800px"
+          desktopMaxWidth="800px"
+          bottomPartPadding="29px"
+          callbackClose={() => {
+            setShowSettingsModal(false)
+          }}
+          title="Withdraw settings"
+        >
+          <>
+            <Typography textLineHeight="1" variant="body3" fontWeight="500">
+              Payment system
+            </Typography>
+            <DynamicPadding desktop="30px" mobile="20px" />
+            <DropdownCustom
+              nodes={[
+                <AppColor.visa />,
+                <AppColor.visa />,
+                <AppColor.visa />,
+                <AppColor.visa />,
+              ]}
+            />
+            <DynamicPadding desktop="20px" mobile="15px" />
+            <div className="gap_20">
+              <div className="gap_10">
+                <Typography variant="body4">Active</Typography>
+                <SwitchButton width="44px" height="24px" />
+              </div>
+              <div className="gap_10">
+                <Typography variant="body4">Withdrawal with SMS</Typography>
+                <SwitchButton width="44px" height="24px" />
+              </div>
+              <div className="gap_10">
+                <Typography variant="body4">Withdrawal with PIN</Typography>
+                <SwitchButton width="44px" height="24px" />
+              </div>
+            </div>
+            <DynamicPadding desktop="20px" mobile="15px" />
+
+            <div className={styles.grid_3_row}>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Min amount
+                </Typography>
+                <DynamicPadding desktop="22px" mobile="20px" />
+                <InputCommon
+                  callback={() => {}}
+                  placeholder=""
+                  padding="15px 20px"
+                />
+              </div>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Max amount
+                </Typography>
+                <DynamicPadding desktop="22px" mobile="20px" />
+                <InputCommon
+                  callback={() => {}}
+                  placeholder=""
+                  padding="15px 20px"
+                />
+              </div>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Max per day
+                </Typography>
+                <DynamicPadding desktop="22px" mobile="20px" />
+                <InputCommon
+                  callback={() => {}}
+                  placeholder=""
+                  padding="15px 20px"
+                />
+              </div>
+            </div>
+            <DynamicPadding desktop="23px" mobile="20px" />
+
+            <div className={styles.grid_2_row}>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Payment fee percent
+                </Typography>
+                <DynamicPadding desktop="23px" mobile="20px" />
+                <InputCommon
+                  callback={() => {}}
+                  placeholder=""
+                  padding="15px 20px"
+                />
+              </div>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Payment fee amount
+                </Typography>
+                <DynamicPadding desktop="23px" mobile="20px" />
+                <InputCommon
+                  callback={() => {}}
+                  placeholder=""
+                  padding="15px 20px"
+                />
+              </div>
+            </div>
+
+            <DynamicPadding desktop="23px" mobile="20px" />
+
+            <div className={styles.grid_2_row}>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Time to withdraw
+                </Typography>
+                <DynamicPadding desktop="20px" mobile="20px" />
+                <DropdownCustomNodesCenter
+                  nodes={Array.from({ length: 300 }, (_, index) => ({
+                    id: (index + 1).toString(),
+                    item: (
+                      <Typography variant="body4">
+                        {index + 1} of 300
+                      </Typography>
+                    ),
+                  }))}
+                />
+              </div>
+              <div>
+                <Typography variant="body3" fontWeight="500">
+                  Withdrawal type
+                </Typography>
+                <DynamicPadding desktop="20px" mobile="20px" />
+                <DropdownCustomNodesCenter
+                  nodes={Array.from({ length: 300 }, (_, index) => ({
+                    id: (index + 1).toString(),
+                    item: (
+                      <Typography variant="body4">
+                        {index + 1} of 300
+                      </Typography>
+                    ),
+                  }))}
+                />
+              </div>
+            </div>
+
+            <DynamicPadding desktop="25px" mobile="20px" />
+
+            <div className="flex_end">
+              <MyButtonTransparent
+                onClick={() => {}}
+                fontWeight="500"
+                textTransform="uppercase"
+              >
+                Cancel
+              </MyButtonTransparent>
+              <MyButtonOrange
+                onClick={() => {}}
+                fontWeight="500"
+                textTransform="uppercase"
+              >
+                Save
+              </MyButtonOrange>
+            </div>
+          </>
+        </ModalCenterBasic>
+      )}
     </div>
   )
 }
