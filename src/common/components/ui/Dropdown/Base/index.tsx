@@ -88,8 +88,13 @@ const DropDownBase = ({
 interface ItemProps {
   data: DropDown.Item
   css?: React.CSSProperties
+  onSelect?: (id: number) => void
 }
-const DropDownSimpleItem = ({ data, css }: ItemProps): JSX.Element => {
+const DropDownSimpleItem = ({
+  data,
+  css,
+  onSelect,
+}: ItemProps): JSX.Element => {
   const { setSelectedItem, setVisible, setSelectedNode, selectedItem } =
     useContext<DropDown.Context>(DropDownContext)
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -107,6 +112,8 @@ const DropDownSimpleItem = ({ data, css }: ItemProps): JSX.Element => {
         setSelectedItem(data)
         setVisible(false)
         setSelectedNode(data.listNode)
+        onSelect(data.id)
+        setIsActive(prev => !prev)
       }}
     >
       <Typography variant="body4" fontWeight={isActive ? '500' : '400'}>

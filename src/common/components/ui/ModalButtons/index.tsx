@@ -11,6 +11,8 @@ interface Props {
   saveLabel?: string
   cancelLabel?: string
   align?: AlignType
+  isSaveDisabled?: boolean
+  isCancelDisabled?: boolean
 }
 const ModalButtonsSetup = ({
   onCancel,
@@ -19,6 +21,8 @@ const ModalButtonsSetup = ({
   saveLabel = 'Save',
   align = 'end',
   children,
+  isSaveDisabled = false,
+  isCancelDisabled = false,
 }: PropsWithChildren<Props>): JSX.Element => {
   const css = {
     justifyContent: align,
@@ -28,6 +32,7 @@ const ModalButtonsSetup = ({
       {children}
       <div className={styles.cancel}>
         <MyButtonTransparent
+          disabled={isCancelDisabled}
           fontWeight="500"
           textTransform="uppercase"
           onClick={onCancel}
@@ -36,6 +41,7 @@ const ModalButtonsSetup = ({
         </MyButtonTransparent>
       </div>
       <MyButtonOrange
+        disabled={isSaveDisabled}
         fontWeight="500"
         textTransform="uppercase"
         onClick={onSave}

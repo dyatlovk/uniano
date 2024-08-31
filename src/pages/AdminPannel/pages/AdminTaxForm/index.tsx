@@ -7,10 +7,12 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import TaxFormModal from '../../components/TaxFormModal'
+import AddModal from './AddModal'
 import styles from './style.module.scss'
 
 const AdminTaxForm = () => {
   const [showTaxFormModal, setShowTaxFormModal] = useState<boolean>(false)
+  const [showAddTax, setShowAddTax] = useState<boolean>(false)
 
   return (
     <div className="admin_wrapper">
@@ -25,7 +27,12 @@ const AdminTaxForm = () => {
           >
             tax form
           </Typography>
-          <div className={styles.orange_circle}>
+          <div
+            className={styles.orange_circle}
+            onClick={() => {
+              setShowAddTax(true)
+            }}
+          >
             <AppColor.plus style={{ flexGrow: '1' }} stroke="white" />
           </div>
         </div>
@@ -78,6 +85,20 @@ const AdminTaxForm = () => {
           }}
           onCancel={() => {
             setShowTaxFormModal(false)
+          }}
+        />
+      )}
+
+      {showAddTax && (
+        <AddModal
+          onClose={() => {
+            setShowAddTax(false)
+          }}
+          onAdd={() => {
+            setShowAddTax(false)
+          }}
+          onCancel={() => {
+            setShowAddTax(false)
           }}
         />
       )}

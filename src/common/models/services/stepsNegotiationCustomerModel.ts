@@ -1,6 +1,9 @@
 type Item = StepsResolver.Item
 type Collection = StepsResolver.Collection
 
+/**
+ * @todo Make this model as shared and standalone class
+ */
 class StepsNegotiationCustomerModel {
   private items: Collection = { steps: [] }
 

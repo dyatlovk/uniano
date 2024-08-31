@@ -1,0 +1,51 @@
+.attached_file {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  width: 156px;
+}
+
+.file_close {
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.attached_file_inner {
+  border-radius: $borderRadius;
+  padding: 14px;
+  @include weakShadow;
+}
+
+.attached_file_sign {
+  color: rgba(33, 150, 83, 1);
+}
+
+.attaches {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  border: 1px dashed rgba(0, 0, 0, 0.13);
+  border-radius: $borderRadius;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(1, 1, 1, 0.5);
+  padding: 11px;
+  box-sizing: border-box;
+  background-color: $white;
+  @include weakShadow;
+
+  p {
+    color: rgba(1, 1, 1, 0.5);
+  }
+}
