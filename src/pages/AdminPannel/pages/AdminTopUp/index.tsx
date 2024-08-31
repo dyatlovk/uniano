@@ -6,7 +6,7 @@ import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
-import WithdrawModal from '../../components/WithdrawModal'
+import PartnerShipModal from '../../components/PartnerShipModal'
 import styles from './style.module.scss'
 
 const AdminTopUp = () => {
@@ -74,8 +74,14 @@ const AdminTopUp = () => {
       <DynamicPadding />
 
       {showSettingsModal && (
-        <WithdrawModal
+        <PartnerShipModal
+          onCancel={() => {
+            setShowSettingsModal(false)
+          }}
           onClose={() => {
+            setShowSettingsModal(false)
+          }}
+          onSave={() => {
             setShowSettingsModal(false)
           }}
         />
