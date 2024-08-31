@@ -5,9 +5,13 @@ import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
+import WithdrawModal from '../../components/WithdrawModal'
 import styles from './style.module.scss'
 
 const AdminWithdraw = () => {
+  const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false)
+
   return (
     <div className="admin_wrapper">
       <DynamicPadding />
@@ -30,14 +34,21 @@ const AdminWithdraw = () => {
             <Typography variant="body4">Active</Typography>
             <SwitchButton width="44px" height="24px" startValue={true} />
           </div>
-          <Typography
-            variant="body4"
-            fontWeight="500"
-            color={AppColor.transparentBlack}
-            textTransform="uppercase"
+          <div
+            className="cursor"
+            onClick={() => {
+              setShowSettingsModal(true)
+            }}
           >
-            Withdraw settings
-          </Typography>
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={AppColor.transparentBlack}
+              textTransform="uppercase"
+            >
+              Withdraw settings
+            </Typography>
+          </div>
         </div>
       </div>
 
@@ -61,6 +72,14 @@ const AdminWithdraw = () => {
         ]}
       />
       <DynamicPadding />
+
+      {showSettingsModal && (
+        <WithdrawModal
+          onClose={() => {
+            setShowSettingsModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }

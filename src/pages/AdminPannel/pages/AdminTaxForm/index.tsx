@@ -1,16 +1,17 @@
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import styles from './style.module.scss'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import FilterList from '@common/components/FilterList/index'
-import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
-import DetailsWithdraw from '@common/components/ui/DetailsTable/variants/DetailsWithdraw/index'
-import { fakeUserConstant } from '@common/models/user'
 import DetailsTaxForm from '@common/components/ui/DetailsTable/variants/DetailsTaxForm/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import SwitchButton from '@common/components/ui/SwitchButton/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
+import TaxFormModal from '../../components/TaxFormModal'
+import styles from './style.module.scss'
 
 const AdminTaxForm = () => {
+  const [showTaxFormModal, setShowTaxFormModal] = useState<boolean>(false)
+
   return (
     <div className="admin_wrapper">
       <DynamicPadding />
@@ -33,14 +34,21 @@ const AdminTaxForm = () => {
             <Typography variant="body4">Active</Typography>
             <SwitchButton width="44px" height="24px" startValue={true} />
           </div>
-          <Typography
-            variant="body4"
-            fontWeight="500"
-            color={AppColor.transparentBlack}
-            textTransform="uppercase"
+          <div
+            className="cursor"
+            onClick={() => {
+              setShowTaxFormModal(true)
+            }}
           >
-            Withdraw settings
-          </Typography>
+            <Typography
+              variant="body4"
+              fontWeight="500"
+              color={AppColor.transparentBlack}
+              textTransform="uppercase"
+            >
+              Tax form settings
+            </Typography>
+          </div>
         </div>
       </div>
 
@@ -62,6 +70,17 @@ const AdminTaxForm = () => {
         ]}
       />
       <DynamicPadding />
+
+      {showTaxFormModal && (
+        <TaxFormModal
+          onSave={() => {
+            setShowTaxFormModal(false)
+          }}
+          onCancel={() => {
+            setShowTaxFormModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }

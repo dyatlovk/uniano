@@ -1,0 +1,14 @@
+.wrapper {
+  @include flex_row(10px);
+  justify-content: flex-end;
+}
+
+.cancel {
+  button {
+    color: $blackTransparent !important;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
