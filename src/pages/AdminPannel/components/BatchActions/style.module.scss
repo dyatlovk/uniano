@@ -1,0 +1,51 @@
+.batch_actions {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  z-index: 3;
+  background-color: $white;
+  border-radius: $borderRadius;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 10px;
+  user-select: none;
+  width: 100%;
+}
+
+.selection_activity {
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.6;
+
+    p {
+      font-weight: 500;
+    }
+  }
+}
+
+.gap_20 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.gap_10 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.batch_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}

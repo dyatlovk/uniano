@@ -1,30 +1,26 @@
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import styles from './style.module.scss'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import FilterList from '@common/components/FilterList/index'
-import DetailsTableMultiNodes from '@common/components/ui/DetailsTable/DetailsTableMultiNodes/index'
-import DetailsWithdraw from '@common/components/ui/DetailsTable/variants/DetailsWithdraw/index'
-import { fakeUserConstant } from '@common/models/user'
+import AnimateHeight from '@common/components/AnimateHeight/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
-import DarkBox from '@common/components/ui/DarkBox/index'
+import DetailsWithdraw from '@common/components/ui/DetailsTable/variants/DetailsWithdraw/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import RadioButton from '@common/components/ui/RadioButton/index'
-import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
-import {
-  DropdownCustomNodesCenter,
-  StarItem,
-  SkillLevel,
-  ButtonsRemoveList,
-  YesNoTable,
-  TableChooseDropdown,
-} from '../AdminPartnerships'
-import { useState } from 'react'
-import AnimateHeight from '@common/components/AnimateHeight/index'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import SwitchButton from '@common/components/ui/SwitchButton/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useCallback, useState } from 'react'
+import { Table, TableBody, TableHead, TableRow } from '../../components/Tables'
+import { DropdownCustomNodesCenter } from '../AdminPartnerships'
+import styles from './style.module.scss'
+
+const tableData: Admin.Tables.RowItem[] = [
+  {
+    id: 1,
+    cols: [{}],
+  },
+]
 
 const AdminTopUp = () => {
   const [showSettingsModal, setShowSettingsModal] = useState(false)
@@ -238,7 +234,7 @@ const AdminTopUp = () => {
       <DetailsWithdraw
         information={[
           {
-            operation: '',
+            operation: 'Title',
             id: '3311',
             date: 'Feb 26, 2021 16:32 ',
             amount: '-$10 353.54',
@@ -328,4 +324,5 @@ const DropdownCustom = ({ nodes }: DropdownCustomProps) => {
     </div>
   )
 }
+
 export default AdminTopUp

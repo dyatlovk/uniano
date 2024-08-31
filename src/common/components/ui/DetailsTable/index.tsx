@@ -11,6 +11,7 @@ import PopUpBottom from '../../ModalPopUps/PopUpBottom'
 import { ThreeLinesPopUpCustom } from '../ThreeLinesPopUp'
 
 type DetailsTableProps = {
+  /** Recieve only one row? */
   details: DetailsTableItem[]
   page?: number
   filters: string[]
@@ -29,6 +30,8 @@ type DetailsTableProps = {
   modalDropdown?: React.ReactNode
   counter?: React.ReactNode
   groupDropdown?: React.ReactNode
+  selectAllClick?: (state: boolean) => void
+  selectClick?: (item: string, state: boolean) => void
 }
 
 type DetailsTableItem = {
@@ -48,6 +51,8 @@ const DetailsTable = ({
   projectsCount,
   filters,
   callbackNav,
+  selectAllClick,
+  selectClick,
   showUsers,
   users,
   maxWidth,
@@ -118,7 +123,11 @@ const DetailsTable = ({
                   <div className="gap_10">
                     {item.selecrable && (
                       <MyCheckbox
-                        callback={item => [setSelectAll(item)]}
+                        key={'check_all'}
+                        callback={el => {
+                          ;[setSelectAll(el)]
+                          selectAllClick && selectAllClick(el)
+                        }}
                         width="20px"
                         height="20px"
                       />
@@ -157,9 +166,13 @@ const DetailsTable = ({
                       )}
                       {item.selecrable && (
                         <MyCheckbox
+                          key={item.title}
                           basicValue={selectAll}
                           width="20px"
                           height="20px"
+                          callback={(state: boolean) => {
+                            selectClick && selectClick(item.title, state)
+                          }}
                         />
                       )}
                       {item.child}
@@ -168,9 +181,13 @@ const DetailsTable = ({
                     <div className="gap_10">
                       {item.selecrable && (
                         <MyCheckbox
+                          key={item.title}
                           basicValue={selectAll}
                           width="20px"
                           height="20px"
+                          callback={(state: boolean) => {
+                            selectClick && selectClick(item.title, state)
+                          }}
                         />
                       )}
                       {item.child}
@@ -218,9 +235,13 @@ const DetailsTable = ({
                       )}
                       {item.selecrable && (
                         <MyCheckbox
+                          key={'check_all'}
                           width="20px"
                           height="20px"
-                          callback={item => [setSelectAll(item)]}
+                          callback={el => {
+                            ;[setSelectAll(el)]
+                            selectAllClick && selectAllClick(el)
+                          }}
                         />
                       )}
 
@@ -259,9 +280,13 @@ const DetailsTable = ({
                         )}
                         {item.selecrable && (
                           <MyCheckbox
+                            key={item.title}
                             basicValue={selectAll}
                             width="20px"
                             height="20px"
+                            callback={(state: boolean) => {
+                              selectClick && selectClick(item.title, state)
+                            }}
                           />
                         )}
                         {item.child}
@@ -270,9 +295,13 @@ const DetailsTable = ({
                       <div className={styles.gap_20}>
                         {item.selecrable && (
                           <MyCheckbox
+                            key={item.title}
                             basicValue={selectAll}
                             width="20px"
                             height="20px"
+                            callback={(state: boolean) => {
+                              selectClick && selectClick(item.title, state)
+                            }}
                           />
                         )}
                         {item.child}
