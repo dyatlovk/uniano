@@ -265,6 +265,8 @@ import { ReactComponent as security } from '@assets/svg/security.svg'
 import { ReactComponent as pinCode } from '@assets/svg/pin-code.svg'
 import { ReactComponent as moneyWithdraw } from '@assets/svg/money-withdraw.svg'
 import { ReactComponent as visa } from '@assets/svg/visa.svg'
+import { ReactComponent as paypal } from '@assets/svg/paypal.svg'
+import { ReactComponent as payoneer } from '@assets/svg/payoneer.svg'
 import { ReactComponent as exportIcon } from '@assets/svg/export.svg'
 
 import { ReactComponent as business } from '@assets/svg/business.svg'
@@ -468,6 +470,8 @@ class AppColor {
   static publicIcon = publicIcon
   static exportIcon = exportIcon
   static visa = visa
+  static paypal = paypal
+  static payoneer = payoneer
   static moneyWithdraw = moneyWithdraw
   static security = security
   static pinCode = pinCode

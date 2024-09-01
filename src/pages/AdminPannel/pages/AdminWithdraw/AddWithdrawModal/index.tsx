@@ -8,6 +8,11 @@ import {
 import useUpdater from '@common/helpers/useUpdater'
 import StepsNegotiationCustomerModel from '@common/models/services/stepsNegotiationCustomerModel'
 import { useCallback, useEffect, useState } from 'react'
+import AmountStep from '../AddWithrawalSteps/Amount'
+import MethodStep from '../AddWithrawalSteps/Method'
+import OperationStep from '../AddWithrawalSteps/Operation'
+import Status from '../AddWithrawalSteps/Status'
+import UserStep from '../AddWithrawalSteps/User'
 
 const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
   const [nextLabel, setNextLabel] = useState<string>('Next')
@@ -60,7 +65,7 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
       no: 1,
       title: 'User',
       isVisible: true,
-      isActive: false,
+      isActive: true,
       isResolved: false,
       isDisabled: false,
       actiondNode: (
@@ -79,12 +84,24 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
           <StepActionNode title="Change User" />
         </div>
       ),
-      resolvingNode: <>resolve</>,
+      resolvingNode: (
+        <UserStep
+          onReady={(title: string) => {
+            if (!stepsModel) return
+            const index = 1
+            if (title.length > 0) stepsModel.setReadyToResolve(index, true)
+            if (title.length == 0) stepsModel.setReadyToResolve(index, false)
+            stepsModel.updateResolvedTitle(index, title)
+            setNextDisabled(false)
+            setStepsNeedUpdate(prev => !prev)
+          }}
+        />
+      ),
     })
     stepsModel.append({
       no: 2,
       title: 'Operation',
-      isVisible: true,
+      isVisible: false,
       isActive: false,
       isResolved: false,
       isDisabled: false,
@@ -104,13 +121,25 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
           <StepActionNode title="Change Operation" />
         </div>
       ),
-      resolvingNode: <>resolve</>,
+      resolvingNode: (
+        <OperationStep
+          onReady={(title: string) => {
+            if (!stepsModel) return
+            const index = 2
+            if (title.length > 0) stepsModel.setReadyToResolve(index, true)
+            if (title.length == 0) stepsModel.setReadyToResolve(index, false)
+            stepsModel.updateResolvedTitle(index, title)
+            setNextDisabled(false)
+            setStepsNeedUpdate(prev => !prev)
+          }}
+        />
+      ),
     })
 
     stepsModel.append({
       no: 3,
       title: 'Method',
-      isVisible: true,
+      isVisible: false,
       isActive: false,
       isResolved: false,
       isDisabled: false,
@@ -130,12 +159,24 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
           <StepActionNode title="Change Method" />
         </div>
       ),
-      resolvingNode: <>resolve</>,
+      resolvingNode: (
+        <MethodStep
+          onReady={(title: string) => {
+            if (!stepsModel) return
+            const index = 3
+            if (title.length > 0) stepsModel.setReadyToResolve(index, true)
+            if (title.length == 0) stepsModel.setReadyToResolve(index, false)
+            stepsModel.updateResolvedTitle(index, title)
+            setNextDisabled(false)
+            setStepsNeedUpdate(prev => !prev)
+          }}
+        />
+      ),
     })
     stepsModel.append({
       no: 4,
       title: 'Amount',
-      isVisible: true,
+      isVisible: false,
       isActive: false,
       isResolved: false,
       isDisabled: false,
@@ -155,12 +196,24 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
           <StepActionNode title="Change Amount" />
         </div>
       ),
-      resolvingNode: <>resolve</>,
+      resolvingNode: (
+        <AmountStep
+          onReady={(title: string) => {
+            if (!stepsModel) return
+            const index = 4
+            if (title.length > 0) stepsModel.setReadyToResolve(index, true)
+            if (title.length == 0) stepsModel.setReadyToResolve(index, false)
+            stepsModel.updateResolvedTitle(index, title)
+            setNextDisabled(false)
+            setStepsNeedUpdate(prev => !prev)
+          }}
+        />
+      ),
     })
     stepsModel.append({
       no: 5,
       title: 'Status',
-      isVisible: true,
+      isVisible: false,
       isActive: false,
       isResolved: false,
       isDisabled: false,
@@ -180,7 +233,19 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
           <StepActionNode title="Change Status" />
         </div>
       ),
-      resolvingNode: <>resolve</>,
+      resolvingNode: (
+        <Status
+          onReady={(title: string) => {
+            if (!stepsModel) return
+            const index = 5
+            if (title.length > 0) stepsModel.setReadyToResolve(index, true)
+            if (title.length == 0) stepsModel.setReadyToResolve(index, false)
+            stepsModel.updateResolvedTitle(index, title)
+            setNextDisabled(false)
+            setStepsNeedUpdate(prev => !prev)
+          }}
+        />
+      ),
     })
 
     return () => stepsModel.clear()
@@ -213,7 +278,7 @@ const AddWithdrawModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
         isSaveDisabled={nextDisabled}
         onCancel={onCancel}
         onSave={() => {
-          onAdd()
+          onSaveOrNextCallack()
         }}
         saveLabel={nextLabel}
       />
