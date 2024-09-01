@@ -7,17 +7,24 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import WithdrawModal from '../../components/WithdrawModal'
+import AddWithdrawModal from './AddWithdrawModal'
 import styles from './style.module.scss'
 
 const AdminWithdraw = () => {
   const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false)
+  const [showAddWithdraw, setShowAddWithdraw] = useState<boolean>(false)
 
   return (
     <div className="admin_wrapper">
       <DynamicPadding />
 
       <div className={styles.top_part}>
-        <div className={styles.gap_20_10}>
+        <div
+          className={styles.gap_20_10}
+          onClick={() => {
+            setShowAddWithdraw(true)
+          }}
+        >
           <Typography
             variant="titleBig"
             fontWeight="600"
@@ -77,6 +84,20 @@ const AdminWithdraw = () => {
         <WithdrawModal
           onClose={() => {
             setShowSettingsModal(false)
+          }}
+        />
+      )}
+
+      {showAddWithdraw && (
+        <AddWithdrawModal
+          onClose={() => {
+            setShowAddWithdraw(false)
+          }}
+          onAdd={() => {
+            setShowAddWithdraw(false)
+          }}
+          onCancel={() => {
+            setShowAddWithdraw(false)
           }}
         />
       )}
