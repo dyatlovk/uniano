@@ -45,7 +45,7 @@ const AdminVerification = () => {
         >
           <>
             <Typography textLineHeight="1" variant="body3" fontWeight="500">
-              Hired freelancers
+              Verified accounts
             </Typography>
 
             <DynamicPadding desktop="30px" mobile="20px" />

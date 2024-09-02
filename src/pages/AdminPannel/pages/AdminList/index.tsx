@@ -78,7 +78,7 @@ const AdminList = () => {
         >
           <>
             <Typography textLineHeight="1" variant="body3" fontWeight="500">
-              Hired freelancers
+              Hired managers
             </Typography>
 
             <DynamicPadding desktop="30px" mobile="20px" />
@@ -416,7 +416,7 @@ const AdminList = () => {
                 text={'Logo design'.toUpperCase()}
               />
               <div className="gap_10">
-                <Typography variant="body4">Create</Typography>
+                <Typography variant="body4">Registration</Typography>
                 <SwitchButton startValue={true} width="44px" height="24px" />
               </div>
               <div className="gap_10">
@@ -430,7 +430,7 @@ const AdminList = () => {
             <div className={styles.flex_3}>
               <div style={{ flex: '0 0 100%' }}>
                 <Typography variant="body3" fontWeight="500">
-                  Active campaigns
+                  Hired moderators
                 </Typography>
                 <DynamicPadding desktop="30px" mobile="20px" />
                 <DropdownCustomNodesCenter
@@ -682,7 +682,7 @@ const AdminList = () => {
           callbackClose={() => {
             setArbitratorSettings(false)
           }}
-          title="Partnership settings"
+          title="Arbitrator settings"
           nodeAfterTitle={
             <div style={{ width: '100%' }} className="gap_20">
               <DarkBox
@@ -691,7 +691,7 @@ const AdminList = () => {
                 text={'Logo design'.toUpperCase()}
               />
               <div className="gap_10">
-                <Typography variant="body4">Create</Typography>
+                <Typography variant="body4">Registration</Typography>
                 <SwitchButton startValue={true} width="44px" height="24px" />
               </div>
               <div className="gap_10">
@@ -705,7 +705,7 @@ const AdminList = () => {
             <div className={styles.flex_3}>
               <div style={{ flex: '0 0 100%' }}>
                 <Typography variant="body3" fontWeight="500">
-                  Active campaigns
+                  Hired arbitrators
                 </Typography>
                 <DynamicPadding desktop="30px" mobile="20px" />
                 <DropdownCustomNodesCenter
