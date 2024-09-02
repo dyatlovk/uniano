@@ -1,19 +1,18 @@
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import styles from './style.module.scss'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import DetailsTableVerification from '@common/components/ui/DetailsTable/variants/DetailsTableVerification/index'
-import { fakeUserConstant } from '@common/models/user'
-import { useState } from 'react'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
-import DarkBox from '@common/components/ui/DarkBox/index'
+import DetailsTableVerification from '@common/components/ui/DetailsTable/variants/DetailsTableVerification/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import RadioButton from '@common/components/ui/RadioButton/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
-import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
 import { ButtonsRemoveList } from '../AdminPartnerships'
+import styles from './style.module.scss'
 
 const AdminVerification = () => {
   const [locations, setLocations] = useState<string[]>([])
@@ -142,7 +141,7 @@ const AdminVerification = () => {
                   setSelectedVariant(item)
                 }}
                 indexItem={1}
-                text=" New programs"
+                text="New programs"
               />
 
               <RadioButton
@@ -151,7 +150,7 @@ const AdminVerification = () => {
                   setSelectedVariant(item)
                 }}
                 indexItem={2}
-                text="  All programs          "
+                text="All programs"
               />
             </div>
 

@@ -1,0 +1,48 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+.col {
+  @include flex_column(0);
+  align-items: flex-start;
+  position: relative;
+}
+
+.tools {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include flex_row(10px);
+}
+
+.photo {
+  position: relative;
+  @include flex_column(0);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.checked,
+.close {
+  cursor: pointer;
+  @include hoverable();
+}
+
+.checked path {
+  fill: $green;
+}
+
+.status {
+  p {
+    display: inline list-item;
+    @include pxToRemem(14);
+  }
+}
+
+@media (min-width: $tabletSize) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

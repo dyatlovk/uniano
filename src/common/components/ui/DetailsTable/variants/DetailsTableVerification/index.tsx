@@ -1,15 +1,15 @@
+import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
 import DynamicPadding from '../../../DynamicPadding'
 import UserAvatar from '../../../UserAvatar'
+import FirstStage from './Stages/First'
+import SecondStage from './Stages/Second'
+import ThirdStage from './Stages/Third'
 import styles from './style.module.scss'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonTransparentRed from '@common/components/ui/MyButton/variants/MyButtonTransparentRed'
 
 type DetailsTableVerificationProps = {
   information: DetailsTableVerificationPropsItem[]
@@ -24,6 +24,7 @@ export type DetailsTableVerificationPropsItem = {
 const DetailsTableVerification = ({
   information,
 }: DetailsTableVerificationProps) => {
+  const [selectedStage, setSelectedStage] = useState<string>('Stage 1')
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
 
@@ -36,62 +37,17 @@ const DetailsTableVerification = ({
           <DynamicPadding desktop="30px" mobile="20px" />
           <div>
             <ButtonChooseList
-              initValue="Stage 1"
+              initValue={selectedStage}
               buttons={['Stage 1', 'Stage 2', 'Stage 3']}
               buttonPadding="3px 14px"
-              callback={() => {}}
+              callback={setSelectedStage}
               gap="0px"
             />
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
-          <div className={styles.fields_grid}>
-            <FieldItem title="First Name" text="Artem" />
-            <FieldItem title="Last Name" text="Artem" />
-            <FieldItem title="Country" text="Artem" />
-            <FieldItem title="State/Province" text="Artem" />
-            <FieldItem title="Address Line 1" text="Artem" />
-            <FieldItem title="Address Line 2" text="Artem" />
-            <FieldItem title="City" text="Artem" />
-            <FieldItem title="Post Code" text="Artem" />
-          </div>
-
-          <DynamicPadding desktop="20px" mobile="15px" />
-          <div className="text_box">
-            <Typography variant="body4" fontWeight="500">
-              Requirements:
-            </Typography>
-            <DynamicPadding desktop="20px" mobile="15px" />
-            <ul className={styles.ul_item}>
-              <li>
-                <Typography variant="body4">
-                  You must be at least 18 y.o. to complete the KYC process.
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body4">
-                  Proof of identity cannot be used as a proof of address.
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body4">
-                  All information must match your proof of identity document and
-                  proof of address document.
-                </Typography>
-              </li>
-            </ul>
-          </div>
-          <DynamicPadding desktop="20px" mobile="15px" />
-          <div className="justify_center gap_10">
-            <MyButtonTransparentRed
-              textTransform="uppercase"
-              onClick={() => {}}
-            >
-              Cancel
-            </MyButtonTransparentRed>
-            <MyButtonOrange textTransform="uppercase" onClick={() => {}}>
-              Verify
-            </MyButtonOrange>
-          </div>
+          {selectedStage === 'Stage 1' && <FirstStage />}
+          {selectedStage === 'Stage 2' && <SecondStage />}
+          {selectedStage === 'Stage 3' && <ThirdStage />}
         </div>
       }
       projectsCount="1"
