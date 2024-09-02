@@ -5,7 +5,7 @@ import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
 import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import AdminAnalytics from '../../pages/AdminAnalytics'
 import AdminArbitration from '../../pages/AdminArbitration'
 import AdminCrowdfreelance from '../../pages/AdminCrowdfreelance'
@@ -39,6 +39,12 @@ import styles from './style.module.scss'
 const leftSidebar = {
   desktopWidth: '290px',
 }
+
+interface MenuContextType {
+  selectedItem: string
+  setSelectedItem: (title: string) => void
+}
+const MenuContext = createContext<MenuContextType>(null)
 
 const Layout = () => {
   const [activePage, setActivePage] = useState('Global.Analytics')
@@ -124,11 +130,14 @@ type LeftBarProps = {
   callback: (item: string) => void
   activePage: string
 }
-const LeftBar = ({
-  activePage,
-  callback,
-}: LeftBarProps) => {
+const LeftBar = ({ activePage, callback }: LeftBarProps) => {
   const [history, setHistory] = useState<string[]>([])
+  const [clickOnSingleItem, setClickOnSingleItem] = useState<boolean>(false)
+  const [selectedItem, setSelectedItem] = useState<string>('')
+
+  function hasChildren(item: PageType): boolean {
+    return item.dropdownTitles.length !== 0
+  }
 
   return (
     <div>
@@ -142,45 +151,56 @@ const LeftBar = ({
 
         <div className={styles.pages_scroll}>
           {pagesAdmin.map(item => {
-            if (item.dropdownTitles.length == 0) {
+            if (!hasChildren(item)) {
               return (
-                <div
-                  onClick={() => {
-                    callback(`Global.${item.title}`)
-                    setHistory([])
-                  }}
-                  className={styles.page_link}
-                >
-                  <Typography
-                    textLineHeight="1"
-                    variant="body3"
-                    fontWeight="500"
-                    color={
-                      activePage == `Global.${item.title}` ? 'white' : '#A8A8AD'
-                    }
+                <MenuContext.Provider value={{ selectedItem, setSelectedItem }}>
+                  <div
+                    onClick={() => {
+                      callback(`Global.${item.title}`)
+                      setHistory([])
+                      setSelectedItem(item.title)
+                    }}
+                    className={styles.page_link}
                   >
-                    {item.title}
-                  </Typography>
-                </div>
+                    <Typography
+                      textLineHeight="1"
+                      variant="body3"
+                      fontWeight="500"
+                      color={
+                        activePage == `Global.${item.title}`
+                          ? 'white'
+                          : '#A8A8AD'
+                      }
+                    >
+                      {item.title}
+                    </Typography>
+                  </div>
+                </MenuContext.Provider>
               )
-            } else {
+            }
+
+            if (hasChildren(item)) {
               return (
-                <DropdownLink
-                  localHistory={[]}
-                  history={history}
-                  callbackHistoryClear={() => {
-                    setHistory([])
-                  }}
-                  callbackHistory={item => {
-                    setHistory(prev => [...item])
-                  }}
-                  depth={0}
-                  activePage={activePage}
-                  callback={item => {
-                    callback(item)
-                  }}
-                  page={item}
-                />
+                <MenuContext.Provider value={{ selectedItem, setSelectedItem }}>
+                  <DropdownLink
+                    localHistory={[]}
+                    history={history}
+                    callbackHistoryClear={() => {
+                      setHistory([])
+                    }}
+                    callbackHistory={item => {
+                      setHistory(prev => [...item])
+                    }}
+                    depth={0}
+                    activePage={activePage}
+                    callback={item => {
+                      callback(item)
+                      setSelectedItem(item)
+                    }}
+                    page={item}
+                    isActive={false}
+                  />
+                </MenuContext.Provider>
               )
             }
           })}
@@ -199,6 +219,7 @@ type DropdownLinkProps = {
   history: string[]
   callbackHistoryClear: () => void
   localHistory: string[]
+  isActive: boolean
 }
 
 const DropdownLink = ({
@@ -210,8 +231,11 @@ const DropdownLink = ({
   callbackHistoryClear,
   history,
   localHistory,
+  isActive = false,
 }: DropdownLinkProps) => {
-  const [showDropdown, setShowDropdown] = useState(false)
+  const { selectedItem, setSelectedItem } =
+    useContext<MenuContextType>(MenuContext)
+  const [showDropdown, setShowDropdown] = useState(isActive)
   const isInHistory = history.includes(page.title)
   const hasChildren = page.dropdownTitles.length !== 0
 
@@ -232,6 +256,10 @@ const DropdownLink = ({
 
   const historyTitle = getHistoryTitle()
 
+  useEffect(() => {
+    setShowDropdown(selectedItem.includes(page.title))
+  }, [page.title, selectedItem])
+
   return (
     <div>
       <div
@@ -242,6 +270,7 @@ const DropdownLink = ({
             callback(`${historyTitle}${page.title}`)
             callbackHistory(localHistory)
           }
+          setSelectedItem(`${historyTitle}${page.title}`)
         }}
         className={styles.page_link}
       >
@@ -298,6 +327,7 @@ const DropdownLink = ({
               {page.dropdownTitles.map((item, index) => {
                 return (
                   <DropdownLink
+                    key={index}
                     localHistory={[...localHistory, page.title]}
                     history={history}
                     callbackHistoryClear={callbackHistoryClear}
@@ -306,8 +336,10 @@ const DropdownLink = ({
                     activePage={activePage}
                     callback={dropdown => {
                       callback(dropdown)
+                      setSelectedItem(dropdown)
                     }}
                     page={item}
+                    isActive={showDropdown}
                   />
                 )
               })}

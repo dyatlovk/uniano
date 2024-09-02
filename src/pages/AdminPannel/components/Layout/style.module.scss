@@ -11,6 +11,7 @@
   gap: 30px;
   padding-bottom: 100px;
   @include scrollStyles;
+  height: 100%;
 }
 
 .dropdown_link {
