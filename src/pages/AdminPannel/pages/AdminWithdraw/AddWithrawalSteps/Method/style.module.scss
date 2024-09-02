@@ -10,6 +10,7 @@
 
 .payment_type_item {
   @include payment_item();
+
   &:hover {
     border: 1px solid $orange;
   }
@@ -21,5 +22,31 @@
 }
 
 .payments_list {
-  @include flex_row(20px);
+  @include flex_column(20px);
+}
+
+.two_one {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card_holder,
+.expired {
+  @include flex_column();
+  align-items: flex-start;
+}
+
+.dates {
+  @include flex_row(10px);
+}
+
+@media (min-width: $tabletSize) {
+  .payments_list {
+    @include flex_row(20px);
+  }
+
+  .two_one {
+    grid-template-columns: 2fr 1fr;
+  }
 }

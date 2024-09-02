@@ -763,5 +763,9 @@ class AppColor {
     const rgbaColor = `rgba(${rgbColor}, ${opacity})`
     return rgbaColor
   }
+
+  static pxToRem = (size: number): string => {
+    return size / 16 + 'rem';
+  }
 }
 export default AppColor

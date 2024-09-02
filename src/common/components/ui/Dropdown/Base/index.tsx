@@ -17,6 +17,7 @@ interface Props {
   selectBoxInnerSpace?: boolean
   useOverlappedList?: boolean
   css?: React.CSSProperties
+  listCss?: React.CSSProperties
 }
 const DropDownBase = ({
   children,
@@ -24,6 +25,7 @@ const DropDownBase = ({
   selectBoxInnerSpace = true,
   useOverlappedList = false,
   css,
+  listCss,
 }: PropsWithChildren<Props>): JSX.Element => {
   const { setVisible, isVisible, selectedItem, selectedNode, placeholder } =
     useContext<DropDown.Context>(DropDownContext)
@@ -78,7 +80,7 @@ const DropDownBase = ({
           }}
           className={useOverlappedList ? styles.list_overlapped : styles.list}
         >
-          {children}
+          <div style={{ ...listCss }}>{children}</div>
         </div>
       )}
     </div>
