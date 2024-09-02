@@ -1,0 +1,41 @@
+.tools {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include flex_row(10px);
+}
+
+.photo {
+  position: relative;
+  @include flex_column(0);
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.checked,
+.close {
+  cursor: pointer;
+  @include hoverable();
+}
+
+.checked path {
+  fill: $green;
+}
+
+.status {
+  p {
+    display: inline list-item;
+    @include pxToRemem(14);
+  }
+}
+
+.image {
+  object-fit: contain;
+}
+
+@media (min-width: $tabletSize) {
+  .image {
+    width: auto;
+  }
+}
