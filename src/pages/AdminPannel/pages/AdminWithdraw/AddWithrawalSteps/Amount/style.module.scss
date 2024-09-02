@@ -1,0 +1,27 @@
+.money_round {
+  border-radius: 100%;
+  background-color: $whiteGreen;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg path {
+    fill: #fff;
+  }
+}
+
+.balance {
+  width: fit-content;
+  @include flex_row();
+}
+
+.balance_value {
+  @include flex_column(0);
+  align-items: flex-start;
+}
+
+.update_amount {
+  @include flex_row(20px);
+}
