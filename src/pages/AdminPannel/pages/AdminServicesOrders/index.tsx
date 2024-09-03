@@ -1,11 +1,10 @@
-import DetailsTableTicketsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableTicketsAdmin/index'
+import DetailsTableAdminCategoriesServices from '@common/components/ui/DetailsTable/variants/DetailsTableAdminCategoriesServices/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import styles from './style.module.scss'
-import DetailsTableAdminCategoriesServices from '@common/components/ui/DetailsTable/variants/DetailsTableAdminCategoriesServices/index'
 
 const AdminServicesOrders = () => {
   return (

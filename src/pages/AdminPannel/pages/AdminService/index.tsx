@@ -1,3 +1,4 @@
+import InclusionModal from '@common/components/InclusionModal/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import DarkBox from '@common/components/ui/DarkBox/index'
 import DetailsTableServiceAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableServiceAdmin/index'
@@ -7,19 +8,25 @@ import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOran
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import RadioButton from '@common/components/ui/RadioButton/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import {
-  ButtonsRemoveList, DropdownCustomNodesCenter, SkillLevel, StarItem, TableChooseDropdown, YesNoTable
+  ButtonsRemoveList,
+  DropdownCustomNodesCenter,
+  SkillLevel,
+  StarItem,
+  TableChooseDropdown,
+  YesNoTable
 } from '../AdminPartnerships'
 import styles from './style.module.scss'
 
 const AdminService = () => {
   const [selectedCategory, setSelectedCategory] = useState('Development')
+  const [showOwnInclusionsModal, setShowOwnInclusionsModal] =
+    useState<boolean>(false)
 
   const [locations, setLocations] = useState<string[]>([])
   const [languages, setLanguages] = useState<string[]>([])
@@ -81,7 +88,7 @@ const AdminService = () => {
             <div className={styles.top_grid_4}>
               <div>
                 <Typography variant="body3" fontWeight="500">
-                  Active programs
+                  Active services
                 </Typography>
                 <DynamicPadding desktop="30px" mobile="20px" />
                 <DropdownCustomNodesCenter
@@ -287,14 +294,20 @@ const AdminService = () => {
 
             <DynamicPadding desktop="25px" mobile="15px" />
 
-            <Typography
-              textLineHeight="1"
-              variant="body5"
-              color={AppColor.orange}
-              fontWeight="500"
+            <div
+              onClick={() => {
+                setShowOwnInclusionsModal(true)
+              }}
             >
-              Add inclusion & option
-            </Typography>
+              <Typography
+                textLineHeight="1"
+                variant="body5"
+                color={AppColor.orange}
+                fontWeight="500"
+              >
+                Add inclusion & option
+              </Typography>
+            </div>
 
             <DynamicPadding desktop="25px" mobile="15px" />
 
@@ -553,6 +566,20 @@ const AdminService = () => {
           ]}
         />
       </div>
+
+      {showOwnInclusionsModal && (
+        <InclusionModal
+          onAdd={() => {
+            setShowOwnInclusionsModal(false)
+          }}
+          onCancel={() => {
+            setShowOwnInclusionsModal(false)
+          }}
+          onClose={() => {
+            setShowOwnInclusionsModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }
@@ -562,35 +589,6 @@ const OptionEndNode = ({}) => {
     <div className="gap_10">
       <AppColor.close width={'16px'} height={'16px'} fill={AppColor.red} />
       <AppColor.edit width={'16px'} height={'16px'} fill={AppColor.text} />
-    </div>
-  )
-}
-type TopItemProps = {
-  icon: React.ReactNode
-  title: string
-  activeSelect: string
-  callbackSelect: (item: string) => void
-}
-const TopItem = ({
-  icon,
-  title,
-  activeSelect,
-  callbackSelect,
-}: TopItemProps) => {
-  const isActive = activeSelect == title
-  return (
-    <div
-      onClick={() => {
-        if (!isActive) {
-          callbackSelect(title)
-        }
-      }}
-      className="gap_10"
-    >
-      {icon}
-      <Typography variant="body4" fontWeight={isActive ? '500' : '400'}>
-        {title}
-      </Typography>
     </div>
   )
 }

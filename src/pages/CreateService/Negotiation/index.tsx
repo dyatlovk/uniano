@@ -1,6 +1,7 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import Footer from '@common/components/Footer/Footer'
 import HeaderDummy from '@common/components/Header/Dummy/index'
+import InclusionModal from '@common/components/InclusionModal/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsStates from '@common/components/StepsStates/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
@@ -12,7 +13,6 @@ import StatesModel from '@common/models/createService/statesModel'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import OptionsModal from './comp/OptionsModal'
 import PackageModal from './comp/PackageModal'
 import styles from './style.module.scss'
 
@@ -190,7 +190,7 @@ const CreateServiceNegotiation = () => {
       )}
 
       {addOptionsModalShow && (
-        <OptionsModal
+        <InclusionModal
           onClose={() => {
             setOptionsModalShow(false)
           }}

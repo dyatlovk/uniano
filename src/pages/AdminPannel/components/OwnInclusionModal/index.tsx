@@ -11,11 +11,16 @@ import { useState } from 'react'
 import styles from './style.module.scss'
 
 interface Props {
+  onCancel: () => void
   onClose: () => void
   onAdd: () => void
-  onCancel: () => void
 }
-const OptionsModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
+
+const OwnInclusionModal = ({
+  onAdd,
+  onCancel,
+  onClose,
+}: Props): JSX.Element => {
   const [promptInputCounter, setPromptInputCounter] = useState<number>(0)
   const promptInputCounterMax = 100
 
@@ -139,4 +144,75 @@ const OptionsModal = ({ onAdd, onCancel, onClose }: Props): JSX.Element => {
   )
 }
 
-export default OptionsModal
+const Inclusion = (): JSX.Element => {
+  return (
+    <>
+      <Typography>Inclusion title</Typography>
+      <DynamicPadding desktop="20px" />
+      <InputCommon
+        placeholder="My Inclusion"
+        callback={item => {}}
+        padding={'15.5px 20px'}
+      />
+    </>
+  )
+}
+
+const CustomerPrompt = (): JSX.Element => {
+  const [charsLength, setCharsLength] = useState<number>(0)
+  const maxSymbols = 100
+
+  return (
+    <>
+      <Typography>Customer Prompt</Typography>
+      <DynamicPadding desktop="20px" />
+      <div>
+        <InputCommon
+          placeholder="Write customer prompt"
+          maxSymbolCount={maxSymbols}
+          callback={item => {
+            setCharsLength(item.length)
+          }}
+          padding={'15.5px 20px'}
+        />
+        <DynamicPadding desktop="10px" />
+        <div className={styles.char_counter}>
+          <span>{charsLength}</span>
+          <span>/</span>
+          <span>{maxSymbols}</span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const Type = (): JSX.Element => {
+  const [selectedType, setSelectedType] = useState<number>(0)
+
+  return (
+    <>
+      <Typography>Type</Typography>
+      <DynamicPadding desktop="20px" />
+      <RadioButton
+        key={1}
+        callback={(item: number) => {
+          setSelectedType(item)
+        }}
+        indexItem={1}
+        activeSelection={selectedType === 1}
+        text="Counter"
+      />
+      <RadioButton
+        key={2}
+        callback={(item: number) => {
+          setSelectedType(item)
+        }}
+        text="Boolean"
+        indexItem={2}
+        activeSelection={selectedType === 2}
+      />
+    </>
+  )
+}
+
+export default OwnInclusionModal
