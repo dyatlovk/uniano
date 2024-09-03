@@ -249,6 +249,7 @@ import { ReactComponent as workClub } from '@assets/svg/workclub.svg'
 import { ReactComponent as starColored } from '@assets/svg/starColored.svg'
 import { ReactComponent as interview } from '@assets/svg/interview.svg'
 import { ReactComponent as arrowFour } from '@assets/svg/arrow-four.svg'
+import { ReactComponent as arrowRight } from '@assets/svg/arrow_right.svg'
 
 import { ReactComponent as playTriangle } from '@assets/svg/play-triangle.svg'
 import { ReactComponent as timelapse } from '@assets/svg/timelapse.svg'
@@ -486,6 +487,7 @@ class AppColor {
   static timelapse = timelapse
   static orderPlace = orderPlace
   static arrowFour = arrowFour
+  static arrowRight = arrowRight
   static interview = interview
   static starColored = starColored
   static workClub = workClub

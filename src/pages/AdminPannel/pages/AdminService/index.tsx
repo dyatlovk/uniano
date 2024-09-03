@@ -1,28 +1,22 @@
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import styles from './style.module.scss'
-import Typography from '@common/components/ui/Typography/Typography'
-import { useState } from 'react'
-import AppColor from '@common/styles/variables-static'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import DetailsTableServiceAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableServiceAdmin/index'
-import { fakeUserConstant } from '@common/models/user'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import DarkBox from '@common/components/ui/DarkBox/index'
+import DetailsTableServiceAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableServiceAdmin/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import RadioButton from '@common/components/ui/RadioButton/index'
-import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
+import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
+import SwitchButton from '@common/components/ui/SwitchButton/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
 import {
-  DropdownCustomNodesCenter,
-  StarItem,
-  SkillLevel,
-  ButtonsRemoveList,
-  YesNoTable,
-  TableChooseDropdown,
+  ButtonsRemoveList, DropdownCustomNodesCenter, SkillLevel, StarItem, TableChooseDropdown, YesNoTable
 } from '../AdminPartnerships'
+import styles from './style.module.scss'
 
 const AdminService = () => {
   const [selectedCategory, setSelectedCategory] = useState('Development')
@@ -495,64 +489,6 @@ const AdminService = () => {
           </>
         </ModalCenterBasic>
       )}
-      <div className={styles.scroll_bar}>
-        <div className={styles.top_gap_30_15}>
-          <div className="mobile">
-            <SizeBox height="5px" width="20px" />
-          </div>
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.development />}
-            title="Development"
-          />
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.desing />}
-            title="Design"
-          />
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.marketing />}
-            title="Marketing"
-          />
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.writing />}
-            title="Writing"
-          />
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.managment />}
-            title="Management"
-          />
-          <TopItem
-            activeSelect={selectedCategory}
-            callbackSelect={item => {
-              setSelectedCategory(item)
-            }}
-            icon={<AppColor.consulting />}
-            title="Consulting"
-          />
-          <div className="mobile">
-            <SizeBox height="5px" width="20px" />
-          </div>
-        </div>
-      </div>
 
       <div className={styles.mobile_padding}>
         <DynamicPadding />

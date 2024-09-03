@@ -1,14 +1,13 @@
-import AppColor from '@common/styles/variables-static'
+import ReviewsProgramCard from '@common/components/ReviewsProgram/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import { useScreenSize } from '@common/helpers/useScreenSize'
+import { fakeUserConstant, userModel } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
 import DynamicPadding from '../../../DynamicPadding'
-import { fakeUserConstant, userModel } from '@common/models/user'
-import UserAvatar from '../../../UserAvatar'
 import SizeBox from '../../../SizeBox'
+import UserAvatar from '../../../UserAvatar'
 import styles from './style.module.scss'
-import ReviewsProgramCard from '@common/components/ReviewsProgram/index'
 
 type DetailsTableServiceAdminProps = {
   information: DetailsTableServiceAdminPropsItem[]
@@ -143,7 +142,7 @@ const DetailsTableServiceAdmin = ({
             />
 
             <TextItem
-              title="Ultimate Subscription "
+              title="Ultimate Subscription"
               node={
                 <div className="gap_5">
                   <AppColor.moneyHummer />
@@ -157,6 +156,9 @@ const DetailsTableServiceAdmin = ({
                 </div>
               }
             />
+            <div className={styles.arrowMenu}>
+              <AppColor.arrowRight width={7} height={12} />
+            </div>
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
 
