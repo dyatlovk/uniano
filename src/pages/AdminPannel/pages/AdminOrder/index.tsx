@@ -345,34 +345,4 @@ const AdminOrder = () => {
   )
 }
 
-type TopItemProps = {
-  icon: React.ReactNode
-  title: string
-  activeSelect: string
-  callbackSelect: (item: string) => void
-}
-const TopItem = ({
-  icon,
-  title,
-  activeSelect,
-  callbackSelect,
-}: TopItemProps) => {
-  const isActive = activeSelect == title
-  return (
-    <div
-      onClick={() => {
-        if (!isActive) {
-          callbackSelect(title)
-        }
-      }}
-      className="gap_10"
-    >
-      {icon}
-      <Typography variant="body4" fontWeight={isActive ? '500' : '400'}>
-        {title}
-      </Typography>
-    </div>
-  )
-}
-
 export default AdminOrder

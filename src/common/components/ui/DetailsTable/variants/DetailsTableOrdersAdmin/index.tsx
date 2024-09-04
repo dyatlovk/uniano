@@ -1,8 +1,13 @@
+import stylesDropDownItem from '@common/components/ui/Dropdown/Base/shared/style.module.scss'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
+import { ReactNode, useContext, useEffect, useState } from 'react'
 import DetailsTable from '../..'
+import {
+  DropDownBase,
+  DropDownContext
+} from '../../../Dropdown/Base'
 import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import SizeBox from '../../../SizeBox'
@@ -78,21 +83,7 @@ const DetailsTableOrdersAdmin = ({
       dropdownNode={
         <div>
           <DynamicPadding desktop="30px" mobile="20px" />
-          <div className={styles.user_card}>
-            <UserAvatar
-              preventMobileNone={true}
-              flag={<AppColor.UkraineFlagIcon />}
-              active={true}
-              name={fakeUserConstant.name}
-              url={fakeUserConstant.image}
-            />
-            <div className="gap_10">
-              <Typography variant="body5" color={AppColor.transparentBlack}>
-                15 hr 59 min ago
-              </Typography>
-              <AppColor.chevronBottom fill={AppColor.transparentBlack} />
-            </div>
-          </div>
+          <UserTypes />
           <DynamicPadding desktop="30px" mobile="20px" />
           <div className={styles.dropdow_grid}>
             <div className="gap_20">
@@ -329,6 +320,144 @@ const TextItem = ({ node, title }: TextItemProps) => {
       </Typography>
       <SizeBox height="2px" />
       {node}
+    </div>
+  )
+}
+
+const UserTypes = (): JSX.Element => {
+  const [isVisible, setVisible] = useState<boolean>(false)
+  const [selectedItem, setSelectedItem] = useState<DropDown.Item>(null)
+  const [selectedNode, setSelectedNode] = useState<ReactNode>(<></>)
+  const [placeholder, setPlaceholder] = useState<ReactNode>('Select User')
+
+  return (
+    <>
+      <DropDownContext.Provider
+        value={{
+          isVisible,
+          setVisible,
+          selectedItem,
+          setSelectedItem,
+          setSelectedNode,
+          selectedNode,
+          placeholder,
+          setPlaceholder,
+        }}
+      >
+        <DropDownBase
+          useOverlappedList={true}
+          selectBoxInnerSpace={true}
+          css={{ width: 'fit-content', alignItems: 'center' }}
+          selectBoxCss={{
+            height: '50px',
+            justifyContent: 'center',
+            padding: '13px 20px',
+            alignItems: 'center',
+          }}
+        >
+          <DropDownUser
+            key={1}
+            css={{ padding: '13px 20px' }}
+            data={{
+              id: 1,
+              Name: 'User',
+              listNode: (
+                <div
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
+                >
+                  <UserAvatar
+                    width="22px"
+                    height="22px"
+                    active={true}
+                    variant={'image'}
+                    margin="0"
+                    name={'User2'}
+                  />
+                  <AppColor.UkraineFlagIcon />
+                  <Typography>User2</Typography>
+                  <div style={{ flexGrow: '1' }}></div>
+                  <div>15 hr 59 min ago</div>
+                </div>
+              ),
+            }}
+          />
+          <DropDownUser
+            key={2}
+            css={{ padding: '12px 20px' }}
+            data={{
+              id: 2,
+              Name: 'User 2',
+              listNode: (
+                <div
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
+                >
+                  <UserAvatar
+                    width="22px"
+                    height="22px"
+                    active={false}
+                    variant={'image'}
+                    margin="0"
+                    name={'User'}
+                  />
+                  <AppColor.UkraineFlagIcon />
+                  <Typography>User</Typography>
+                  <div style={{ flexGrow: '1' }}></div>
+                  <div>15 hr 59 min ago</div>
+                </div>
+              ),
+            }}
+          />
+        </DropDownBase>
+      </DropDownContext.Provider>
+    </>
+  )
+}
+
+interface UserDropDownItem extends DropDown.Item {
+  Name: string
+}
+
+interface UserProps {
+  data: UserDropDownItem
+  css?: React.CSSProperties
+  onSelect?: (userName: string) => void
+}
+
+const DropDownUser = ({ data, css, onSelect }: UserProps): JSX.Element => {
+  const { setSelectedItem, setVisible, setSelectedNode, selectedItem } =
+    useContext<DropDown.Context>(DropDownContext)
+  const [isActive, setIsActive] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!selectedItem) return
+    setIsActive(selectedItem.id === data.id)
+  }, [data.id, selectedItem])
+
+  return (
+    <div
+      style={css}
+      className={stylesDropDownItem.simple_item}
+      onClick={() => {
+        setSelectedItem(data)
+        setVisible(false)
+        setSelectedNode(<>{data.listNode}</>)
+        onSelect(data.Name)
+        setIsActive(prev => !prev)
+      }}
+    >
+      {data.listNode}
     </div>
   )
 }
