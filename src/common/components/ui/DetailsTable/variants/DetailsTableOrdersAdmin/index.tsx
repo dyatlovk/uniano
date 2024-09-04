@@ -4,10 +4,7 @@ import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { ReactNode, useContext, useEffect, useState } from 'react'
 import DetailsTable from '../..'
-import {
-  DropDownBase,
-  DropDownContext
-} from '../../../Dropdown/Base'
+import { DropDownBase, DropDownContext } from '../../../Dropdown/Base'
 import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import SizeBox from '../../../SizeBox'
@@ -347,12 +344,16 @@ const UserTypes = (): JSX.Element => {
         <DropDownBase
           useOverlappedList={true}
           selectBoxInnerSpace={true}
-          css={{ width: 'fit-content', alignItems: 'center' }}
+          css={{
+            width: 'fit-content',
+            alignItems: 'flex-start',
+            minWidth: '320px',
+          }}
           selectBoxCss={{
             height: '50px',
             justifyContent: 'center',
             padding: '13px 20px',
-            alignItems: 'center',
+            alignItems: 'flex-start',
           }}
         >
           <DropDownUser
@@ -382,7 +383,9 @@ const UserTypes = (): JSX.Element => {
                   <AppColor.UkraineFlagIcon />
                   <Typography>User2</Typography>
                   <div style={{ flexGrow: '1' }}></div>
-                  <div>15 hr 59 min ago</div>
+                  <Typography color={AppColor.transparentBlack} variant="body4">
+                    15 hr 59 min ago
+                  </Typography>
                 </div>
               ),
             }}
@@ -414,7 +417,9 @@ const UserTypes = (): JSX.Element => {
                   <AppColor.UkraineFlagIcon />
                   <Typography>User</Typography>
                   <div style={{ flexGrow: '1' }}></div>
-                  <div>15 hr 59 min ago</div>
+                  <Typography color={AppColor.transparentBlack} variant="body4">
+                    17 hr 17 min ago
+                  </Typography>
                 </div>
               ),
             }}
