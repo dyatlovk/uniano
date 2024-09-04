@@ -154,15 +154,19 @@ const DetailsTable = ({
                       className={styles.gap_20}
                     >
                       {showDropdown ? (
-                        <AppColor.chevronTop
-                          width={'20px'}
-                          fill={AppColor.text}
-                        />
+                        <div>
+                          <AppColor.chevronTop
+                            width={'20px'}
+                            fill={AppColor.text}
+                          />
+                        </div>
                       ) : (
-                        <AppColor.chevronBottom
-                          width={'20px'}
-                          fill={AppColor.text}
-                        />
+                        <div>
+                          <AppColor.chevronBottom
+                            width={'20px'}
+                            fill={AppColor.text}
+                          />
+                        </div>
                       )}
                       {item.selecrable && (
                         <MyCheckbox
@@ -268,15 +272,19 @@ const DetailsTable = ({
                         className={styles.gap_20}
                       >
                         {showDropdown ? (
-                          <AppColor.chevronTop
-                            width={'20px'}
-                            fill={AppColor.text}
-                          />
+                          <div>
+                            <AppColor.chevronTop
+                              width={'20px'}
+                              fill={AppColor.text}
+                            />
+                          </div>
                         ) : (
-                          <AppColor.chevronBottom
-                            width={'20px'}
-                            fill={'#01010150'}
-                          />
+                          <div>
+                            <AppColor.chevronBottom
+                              width={'20px'}
+                              fill={'#01010150'}
+                            />
+                          </div>
                         )}
                         {item.selecrable && (
                           <MyCheckbox
