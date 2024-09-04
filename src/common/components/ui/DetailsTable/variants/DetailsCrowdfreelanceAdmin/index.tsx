@@ -7,6 +7,7 @@ import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import SizeBox from '../../../SizeBox'
 import UserAvatar from '../../../UserAvatar'
+import Filters from '../../shared/Filters'
 import styles from './style.module.scss'
 
 type DetailsCrowdfreelanceAdminProps = {
@@ -27,17 +28,52 @@ const DetailsCrowdfreelanceAdmin = ({
 }: DetailsCrowdfreelanceAdminProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
+  const [filters, setFilters] = useState<string[]>([])
 
   return (
     <DetailsTable
-      group="Campaigns"
       removeNavBar={true}
       titleEnd="campaign"
       projectsCount="1"
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Pending', 'Completed']}
+      groupDropdown={
+        <Filters
+          initActiveGroup="Campaigns"
+          onSelect={(group: DetailsTable.Filter.Group | null) => {
+            if (!group) {
+              setFilters([])
+              return
+            }
+            let filters = []
+            group.items.map(el => filters.push(el.title))
+            setFilters(filters)
+          }}
+          data={[
+            {
+              title: 'Campaigns',
+              items: [
+                { title: 'All' },
+                { title: 'Progress' },
+                { title: 'Pending' },
+                { title: 'Completed' },
+                { title: 'Canceled' },
+                { title: 'Blocked' },
+              ],
+            },
+            {
+              title: 'Programs',
+              items: [
+                { title: 'All' },
+                { title: 'Active' },
+                { title: 'Pending' },
+              ],
+            },
+          ]}
+        />
+      }
+      filters={filters}
       page={currentPage}
       dropdownNode={
         <div>
@@ -150,6 +186,9 @@ const DetailsCrowdfreelanceAdmin = ({
                 </Typography>
               }
             />
+            <div className={styles.arrowMenu}>
+              <AppColor.arrowRight width={7} height={12} />
+            </div>
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
 
