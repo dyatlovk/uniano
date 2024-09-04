@@ -189,6 +189,9 @@ const DetailsTableOrdersAdmin = ({
                 </Typography>
               }
             />
+            <div className={styles.arrowMenu}>
+              <AppColor.arrowRight width={7} height={12} />
+            </div>
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
 
