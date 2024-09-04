@@ -1,4 +1,5 @@
 import AppColor from '@common/styles/variables-static'
+import classNames from 'classnames'
 import {
   createContext,
   PropsWithChildren,
@@ -18,6 +19,7 @@ interface Props {
   useOverlappedList?: boolean
   css?: React.CSSProperties
   listCss?: React.CSSProperties
+  listWrapperCss?: React.CSSProperties
 }
 const DropDownBase = ({
   children,
@@ -26,6 +28,7 @@ const DropDownBase = ({
   useOverlappedList = false,
   css,
   listCss,
+  listWrapperCss,
 }: PropsWithChildren<Props>): JSX.Element => {
   const { setVisible, isVisible, selectedItem, selectedNode, placeholder } =
     useContext<DropDown.Context>(DropDownContext)
@@ -77,6 +80,7 @@ const DropDownBase = ({
               useOverlappedList && selectBoxRef.current
                 ? selectBoxRef.current.clientHeight
                 : '0',
+            ...listWrapperCss,
           }}
           className={useOverlappedList ? styles.list_overlapped : styles.list}
         >
