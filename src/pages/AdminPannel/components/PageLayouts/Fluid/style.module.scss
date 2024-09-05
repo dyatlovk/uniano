@@ -1,0 +1,19 @@
+.fluid {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0px 10px;
+}
+
+.title {
+  text-align: center;
+}
+
+@media (min-width: $tabletSize) {
+  .fluid {
+    padding: 50px;
+  }
+
+  .title {
+    text-align: left;
+  }
+}

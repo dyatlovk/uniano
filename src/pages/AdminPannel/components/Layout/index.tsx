@@ -33,6 +33,12 @@ import AdminTickets from '../../pages/AdminTickets'
 import AdminTopUp from '../../pages/AdminTopUp'
 import AdminVerification from '../../pages/AdminVerification'
 import AdminWithdraw from '../../pages/AdminWithdraw'
+
+import AccountsCustomers from '../../pages/Gamification/Accounts/Customers'
+import AccountsFreelancers from '../../pages/Gamification/Accounts/Freelancers'
+import AccountsManagers from '../../pages/Gamification/Accounts/Managers'
+import AccountsSponsors from '../../pages/Gamification/Accounts/Sponsors'
+
 import { pagesAdmin, PageType } from './content'
 import styles from './style.module.scss'
 
@@ -103,6 +109,10 @@ const SwitchPage = ({ activePage }: SwitchPageProps) => {
     'Projects.Service': <AdminService />,
     'Projects.Order': <AdminOrder />,
     'Global.Crowdfreelance': <AdminCrowdfreelance />,
+    'Gamification.Accounts.Customers': <AccountsCustomers />,
+    'Gamification.Accounts.Freelancers': <AccountsFreelancers />,
+    'Gamification.Accounts.Managers': <AccountsManagers />,
+    'Gamification.Accounts.Sponsors': <AccountsSponsors />,
     'Global.Subscriptions': <AdminSubscriptions />,
     'Global.Partnerships': <AdminPartnerships />,
     'Global.Forms': <AdminForms />,

@@ -1,0 +1,30 @@
+.profile_bottom_level {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text_flex {
+  display: flex;
+  align-items: center;
+}
+
+.profile_top_level {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  p {
+    line-height: 1;
+  }
+}
+
+.margin_left {
+  margin-left: auto;
+}
+
+.levels_point {
+  @include flex_row(5px);
+  svg path {
+    fill: $orange;
+  }
+}
