@@ -6,7 +6,11 @@ import FluidLayout from '@pages/AdminPannel/components/PageLayouts/Fluid/index'
 
 const Freelancers = (): JSX.Element => {
   return (
-    <FluidLayout title="Freelancers accounts">
+    <FluidLayout
+      titleOptions={{
+        title: 'Freelancers accounts',
+      }}
+    >
       <DynamicPadding desktop="50px" />
       <SearchFilterBar />
       <DynamicPadding desktop="50px" />

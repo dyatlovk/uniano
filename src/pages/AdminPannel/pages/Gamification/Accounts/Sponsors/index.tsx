@@ -6,7 +6,11 @@ import FluidLayout from '@pages/AdminPannel/components/PageLayouts/Fluid/index'
 
 const Sponsors = (): JSX.Element => {
   return (
-    <FluidLayout title="Sponsors accounts">
+    <FluidLayout
+      titleOptions={{
+        title: 'Sponsors accounts',
+      }}
+    >
       <DynamicPadding desktop="50px" />
       <SearchFilterBar />
 

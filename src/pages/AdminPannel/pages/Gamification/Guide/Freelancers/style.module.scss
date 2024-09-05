@@ -1,0 +1,33 @@
+.orange_circle {
+  width: 25px;
+  height: 25px;
+  background-color: $orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.title_switchers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (min-width: $tabletSize) {
+  .orange_circle {
+    width: 35px;
+    height: 35px;
+  }
+
+  .title_switchers {
+    gap: 20px;
+  }
+}

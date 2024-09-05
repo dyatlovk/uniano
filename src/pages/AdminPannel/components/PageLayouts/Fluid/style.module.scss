@@ -5,7 +5,17 @@
 }
 
 .title {
+  @include flex_row();
   text-align: center;
+}
+
+.title_line {
+  @include flex_column();
+}
+
+.stretch {
+  display: none;
+  flex-grow: 0;
 }
 
 @media (min-width: $tabletSize) {
@@ -13,7 +23,18 @@
     padding: 50px;
   }
 
+  .stretch {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .title_line {
+    flex-wrap: wrap;
+    @include flex_row();
+  }
+
   .title {
+    @include flex_row();
     text-align: left;
   }
 }

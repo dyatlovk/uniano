@@ -38,6 +38,12 @@ import AccountsCustomers from '../../pages/Gamification/Accounts/Customers'
 import AccountsFreelancers from '../../pages/Gamification/Accounts/Freelancers'
 import AccountsManagers from '../../pages/Gamification/Accounts/Managers'
 import AccountsSponsors from '../../pages/Gamification/Accounts/Sponsors'
+import GuideCustomers from '../../pages/Gamification/Guide/Customers'
+import GuideFreelancer from '../../pages/Gamification/Guide/Freelancers'
+import GuideManagers from '../../pages/Gamification/Guide/Managers'
+import GuideSponsors from '../../pages/Gamification/Guide/Sponsors'
+import GuideModerators from '../../pages/Gamification/Guide/Moderators'
+import GuideArbitrators from '../../pages/Gamification/Guide/Arbitrators'
 
 import { pagesAdmin, PageType } from './content'
 import styles from './style.module.scss'
@@ -113,6 +119,12 @@ const SwitchPage = ({ activePage }: SwitchPageProps) => {
     'Gamification.Accounts.Freelancers': <AccountsFreelancers />,
     'Gamification.Accounts.Managers': <AccountsManagers />,
     'Gamification.Accounts.Sponsors': <AccountsSponsors />,
+    'Gamification.Guide.Customers': <GuideCustomers />,
+    'Gamification.Guide.Freelancers': <GuideFreelancer />,
+    'Gamification.Guide.Managers': <GuideManagers />,
+    'Gamification.Guide.Sponsors': <GuideSponsors />,
+    'Gamification.Guide.Moderators': <GuideModerators />,
+    'Gamification.Guide.Arbitrators': <GuideArbitrators />,
     'Global.Subscriptions': <AdminSubscriptions />,
     'Global.Partnerships': <AdminPartnerships />,
     'Global.Forms': <AdminForms />,
