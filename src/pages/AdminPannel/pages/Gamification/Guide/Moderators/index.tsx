@@ -4,16 +4,25 @@ import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import AppColor from '@common/styles/variables-static'
+import AddTask from '@pages/AdminPannel/components/Gamification/AddTask/index'
 import FluidLayout from '@pages/AdminPannel/components/PageLayouts/Fluid/index'
+import { useState } from 'react'
 import styles from './style.module.scss'
 
 const Moderators = (): JSX.Element => {
+  const [showAddTaskModal, setShowAddTaskModal] = useState<boolean>(false)
+
   return (
     <FluidLayout
       titleOptions={{
         title: 'Moderators Guide',
         after: (
-          <div className={styles.orange_circle}>
+          <div
+            className={styles.orange_circle}
+            onClick={() => {
+              setShowAddTaskModal(true)
+            }}
+          >
             <AppColor.plus stroke="white" />
           </div>
         ),
@@ -35,6 +44,20 @@ const Moderators = (): JSX.Element => {
           },
         ]}
       />
+
+      {showAddTaskModal && (
+        <AddTask
+          onCancel={() => {
+            setShowAddTaskModal(false)
+          }}
+          onClose={() => {
+            setShowAddTaskModal(false)
+          }}
+          onSave={() => {
+            setShowAddTaskModal(false)
+          }}
+        />
+      )}
     </FluidLayout>
   )
 }
