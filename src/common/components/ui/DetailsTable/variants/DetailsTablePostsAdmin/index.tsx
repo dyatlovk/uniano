@@ -1,11 +1,12 @@
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
 import DynamicPadding from '../../../DynamicPadding'
 import SizeBox from '../../../SizeBox'
 import UserAvatar from '../../../UserAvatar'
+import Filters from '../../shared/Filters'
 import styles from './style.module.scss'
 
 type DetailsTablePostsAdminProps = {
@@ -26,6 +27,7 @@ const DetailsTablePostsAdmin = ({
 }: DetailsTablePostsAdminProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
+  const [filters, setFilters] = useState<string[]>([])
 
   return (
     <DetailsTable
@@ -35,7 +37,41 @@ const DetailsTablePostsAdmin = ({
       callbackNav={item => {
         setCurrentPage(item)
       }}
-      filters={['All', 'Progress', 'Pending', 'Completed']}
+      groupDropdown={
+        <Filters
+          initActiveGroup="Projects"
+          onSelect={(group: DetailsTable.Filter.Group | null) => {
+            if (!group) {
+              setFilters([])
+              return
+            }
+            let filters = []
+            group.items.map(el => filters.push(el.title))
+            setFilters(filters)
+          }}
+          data={[
+            {
+              title: 'Projects',
+              items: [
+                { title: 'All' },
+                { title: 'Progress' },
+                { title: 'Pending' },
+                { title: 'Completed' },
+                { title: 'Canceled' },
+              ],
+            },
+            {
+              title: 'Programs',
+              items: [
+                { title: 'All' },
+                { title: 'Active' },
+                { title: 'Pending' },
+              ],
+            },
+          ]}
+        />
+      }
+      filters={filters}
       page={currentPage}
       details={
         currentItem != null

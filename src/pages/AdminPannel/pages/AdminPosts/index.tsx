@@ -1,37 +1,28 @@
-import DetailsTableFormsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableFormsAdmin/index'
+import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
+import DarkBox from '@common/components/ui/DarkBox/index'
+import DetailsTablePostsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTablePostsAdmin/index'
+import {
+  DropDownBase,
+  DropDownContext,
+  DropDownSimpleItem
+} from '@common/components/ui/Dropdown/Base/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import ModalButtonsSetup from '@common/components/ui/ModalButtons/index'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import RadioButton from '@common/components/ui/RadioButton/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
+import { YesNoTable } from '../AdminPartnerships'
 import styles from './style.module.scss'
-import DetailsTablePostsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTablePostsAdmin/index'
-import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
-import DarkBox from '@common/components/ui/DarkBox/index'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import RadioButton from '@common/components/ui/RadioButton/index'
-import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
-import {
-  DropdownCustomNodesCenter,
-  StarItem,
-  SkillLevel,
-  ButtonsRemoveList,
-  YesNoTable,
-  TableChooseDropdown,
-} from '../AdminPartnerships'
 
 const AdminPosts = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Development')
   const [showSettingsModal, setShowSettingsModal] = useState(false)
-  const [locations, setLocations] = useState<string[]>([])
-  const [languages, setLanguages] = useState<string[]>([])
-  const [filtersOther, setFiltersOther] = useState<string[]>([])
-
   const [selectedVariant, setSelectedVariant] = useState(1)
+
   return (
     <div className={styles.wrapper}>
       {showSettingsModal && (
@@ -41,7 +32,7 @@ const AdminPosts = () => {
           callbackClose={() => {
             setShowSettingsModal(false)
           }}
-          title="Partnership settings"
+          title="Posts settings"
           nodeAfterTitle={
             <div style={{ width: '100%' }} className="gap_20">
               <DarkBox
@@ -63,44 +54,10 @@ const AdminPosts = () => {
           <>
             <div className={styles.top_grid_2}>
               <div>
-                <Typography variant="body3" fontWeight="500">
-                  Visibility
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <DropdownCustomNodesCenter
-                  nodes={[
-                    {
-                      id: '1',
-                      item: (
-                        <Typography variant="body4">
-                          All users and search engines
-                        </Typography>
-                      ),
-                    },
-                    {
-                      id: '2',
-                      item: <Typography variant="body4">None</Typography>,
-                    },
-                  ]}
-                />
+                <Visibility />
               </div>
               <div>
-                <Typography variant="body3" fontWeight="500">
-                  Can reply
-                </Typography>
-                <DynamicPadding desktop="30px" mobile="20px" />
-                <DropdownCustomNodesCenter
-                  nodes={[
-                    {
-                      id: '1',
-                      item: <Typography variant="body4">None</Typography>,
-                    },
-                    {
-                      id: '2',
-                      item: <Typography variant="body4">All</Typography>,
-                    },
-                  ]}
-                />
+                <CanReply />
               </div>
             </div>
 
@@ -163,54 +120,17 @@ const AdminPosts = () => {
 
             <DynamicPadding desktop="30px" mobile="20px" />
 
-            <div className="flex_end">
-              <MyButtonTransparent
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Cancel
-              </MyButtonTransparent>
-              <MyButtonOrange
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Save
-              </MyButtonOrange>
-            </div>
+            <ModalButtonsSetup
+              onCancel={() => {
+                setShowSettingsModal(false)
+              }}
+              onSave={() => {
+                setShowSettingsModal(false)
+              }}
+            />
           </>
         </ModalCenterBasic>
       )}
-      <div className={styles.scroll_bar}>
-        <div className={styles.top_gap_30_15}>
-          <div className="mobile">
-            <SizeBox height="5px" width="20px" />
-          </div>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Getting Started
-          </Typography>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Subscription
-          </Typography>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Projects
-          </Typography>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Crowdfreelance
-          </Typography>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Partnership
-          </Typography>
-          <Typography style={{ whiteSpace: 'nowrap' }} variant="body4">
-            Gamification
-          </Typography>
-          <div className="mobile">
-            <SizeBox height="5px" width="20px" />
-          </div>
-        </div>
-      </div>
-
       <div className={styles.mobile_padding}>
         <DynamicPadding />
 
@@ -257,7 +177,7 @@ const AdminPosts = () => {
               textTransform="uppercase"
               className={styles.hover_text}
             >
-              partnership settings
+              Posts settings
             </Typography>
           </div>
         </div>
@@ -287,33 +207,133 @@ const AdminPosts = () => {
   )
 }
 
-type TopItemProps = {
-  icon: React.ReactNode
-  title: string
-  activeSelect: string
-  callbackSelect: (item: string) => void
-}
-const TopItem = ({
-  icon,
-  title,
-  activeSelect,
-  callbackSelect,
-}: TopItemProps) => {
-  const isActive = activeSelect == title
+const Visibility = (): JSX.Element => {
+  const [isVisible, setVisible] = useState<boolean>(false)
+  const [selectedItem, setSelectedItem] = useState<DropDown.Item>({
+    id: 3,
+    listNode: 'All users',
+  })
+  const [selectedNode, setSelectedNode] = useState<ReactNode>('All users')
+  const [placeholder, setPlaceholder] = useState<ReactNode>('')
+
   return (
-    <div
-      onClick={() => {
-        if (!isActive) {
-          callbackSelect(title)
-        }
-      }}
-      className="gap_10"
-    >
-      {icon}
-      <Typography variant="body4" fontWeight={isActive ? '500' : '400'}>
-        {title}
+    <>
+      <Typography variant="body3" fontWeight="500">
+        Visibility
       </Typography>
-    </div>
+      <DynamicPadding desktop="30px" mobile="20px" />
+      <DropDownContext.Provider
+        value={{
+          isVisible,
+          setVisible,
+          selectedItem,
+          setSelectedItem,
+          setSelectedNode,
+          selectedNode,
+          placeholder,
+          setPlaceholder,
+        }}
+      >
+        <DropDownBase
+          useOverlappedList={true}
+          selectBoxInnerSpace={true}
+          selectBoxCss={{
+            justifyContent: 'center',
+            padding: '13px 20px',
+          }}
+        >
+          <DropDownSimpleItem
+            key={1}
+            css={{ padding: '13px 20px' }}
+            data={{
+              id: 1,
+              listNode: 'All users and search engines',
+            }}
+          />
+          <DropDownSimpleItem
+            key={2}
+            css={{ padding: '12px 20px' }}
+            data={{
+              id: 2,
+              listNode: 'All registered users and search engines',
+            }}
+          />
+          <DropDownSimpleItem
+            key={3}
+            css={{ padding: '12px 20px' }}
+            data={{
+              id: 3,
+              listNode: 'All users',
+            }}
+          />
+          <DropDownSimpleItem
+            key={4}
+            css={{ padding: '12px 20px' }}
+            data={{
+              id: 4,
+              listNode: 'All registered users',
+            }}
+          />
+        </DropDownBase>
+      </DropDownContext.Provider>
+    </>
+  )
+}
+
+const CanReply = (): JSX.Element => {
+  const [isVisible, setVisible] = useState<boolean>(false)
+  const [selectedItem, setSelectedItem] = useState<DropDown.Item>({
+    id: 1,
+    listNode: 'All',
+  })
+  const [selectedNode, setSelectedNode] = useState<ReactNode>('All')
+  const [placeholder, setPlaceholder] = useState<ReactNode>('')
+
+  return (
+    <>
+      <Typography variant="body3" fontWeight="500">
+        Can Reply
+      </Typography>
+      <DynamicPadding desktop="30px" mobile="20px" />
+      <DropDownContext.Provider
+        value={{
+          isVisible,
+          setVisible,
+          selectedItem,
+          setSelectedItem,
+          setSelectedNode,
+          selectedNode,
+          placeholder,
+          setPlaceholder,
+        }}
+      >
+        <DropDownBase
+          useOverlappedList={true}
+          selectBoxInnerSpace={true}
+          selectBoxCss={{
+            justifyContent: 'center',
+            padding: '13px 20px',
+          }}
+        >
+          <DropDownSimpleItem
+            key={1}
+            css={{ padding: '13px 20px' }}
+            data={{
+              id: 1,
+              listNode: 'All',
+            }}
+          />
+          <DropDownSimpleItem
+            key={2}
+            css={{ padding: '12px 20px' }}
+            data={{
+              id: 2,
+              listNode: 'None',
+            }}
+          />
+        </DropDownBase>
+      </DropDownContext.Provider>
+    </>
   )
 }
 
