@@ -20,65 +20,6 @@ const AdminPartnerships = () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <div className={styles.scroll_bar}>
-          <div className={styles.top_gap_30_15}>
-            <div className="mobile">
-              <SizeBox height="5px" width="20px" />
-            </div>
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.development />}
-              title="Development"
-            />
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.desing />}
-              title="Design"
-            />
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.marketing />}
-              title="Marketing"
-            />
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.writing />}
-              title="Writing"
-            />
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.managment />}
-              title="Management"
-            />
-            <TopItem
-              activeSelect={selectedCategory}
-              callbackSelect={item => {
-                setSelectedCategory(item)
-              }}
-              icon={<AppColor.consulting />}
-              title="Consulting"
-            />
-            <div className="mobile">
-              <SizeBox height="5px" width="20px" />
-            </div>
-          </div>
-        </div>
-
         <div className={styles.mobile_padding}>
           <DynamicPadding />
 
