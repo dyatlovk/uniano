@@ -12,7 +12,7 @@ const Managers = (): JSX.Element => {
       }}
     >
       <DynamicPadding desktop="50px" />
-      <SearchFilterBar />
+      <SearchFilterBar exportIcon={true} onExportClick={() => {}} />
       <DynamicPadding desktop="50px" />
 
       <AdminAccountsTable

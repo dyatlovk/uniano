@@ -25,6 +25,7 @@ type SearchFilterBarProps = {
   useFilters?: boolean
   showItemsOnPage?: boolean
   useSearch?: boolean
+  onExportClick?: () => void
 }
 
 type ValuePiece = Date | null
@@ -36,6 +37,7 @@ const SearchFilterBar = ({
   useFilters = true,
   showItemsOnPage = true,
   useSearch = true,
+  onExportClick,
 }: SearchFilterBarProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
@@ -606,7 +608,7 @@ const SearchFilterBar = ({
         )}
         {recent && <DropdownRecent />}
         {exportIcon && (
-          <div className={styles.flex_item}>
+          <div className={styles.flex_item} onClick={onExportClick}>
             <AppColor.exportIcon />
           </div>
         )}
