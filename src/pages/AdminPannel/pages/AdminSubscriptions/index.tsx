@@ -42,7 +42,7 @@ const AdminSubscriptions = () => {
           callbackClose={() => {
             setShowSettingsModal(false)
           }}
-          title="Partnership settings"
+          title="Subscription settings"
           nodeAfterTitle={
             <div style={{ width: '100%' }} className="gap_20">
               <DarkBox
