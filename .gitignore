@@ -6,3 +6,4 @@ docs
 .nvimrc
 dist
 .vite
+.vscode/settings.json
