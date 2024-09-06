@@ -32,6 +32,7 @@ const ModalButtonsSetup = ({
       {children}
       <div className={styles.cancel}>
         <MyButtonTransparent
+          padding="8px 13.95px"
           disabled={isCancelDisabled}
           fontWeight="500"
           textTransform="uppercase"
@@ -43,6 +44,7 @@ const ModalButtonsSetup = ({
       <MyButtonOrange
         disabled={isSaveDisabled}
         fontWeight="500"
+        padding="8px 13.95px"
         textTransform="uppercase"
         onClick={onSave}
       >

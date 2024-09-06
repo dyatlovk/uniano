@@ -1,11 +1,10 @@
-import InclusionModal from '@common/components/InclusionModal/index'
 import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
 import DarkBox from '@common/components/ui/DarkBox/index'
 import DetailsTableFormsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableFormsAdmin/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
+import ModalButtonsSetup from '@common/components/ui/ModalButtons/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
 import Preloader from '@common/components/ui/Preloader/index'
 import RadioButton from '@common/components/ui/RadioButton/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
@@ -15,44 +14,20 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState, useTransition } from 'react'
 import {
-  DropdownCustomNodesCenter,
-  StarItem,
-  SkillLevel,
   ButtonsRemoveList,
-  YesNoTable,
-  TableChooseDropdown,
+  DropdownCustomNodesCenter,
+  SkillLevel,
+  StarItem,
+  YesNoTable
 } from '../AdminPartnerships'
 import styles from './style.module.scss'
 
 const AdminForms = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Development')
   const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false)
   const [selectedVariant, setSelectedVariant] = useState(1)
   const [languages, setLanguages] = useState<string[]>([])
   const [locations, setLocations] = useState<string[]>([])
   const [filtersOther, setFiltersOther] = useState<string[]>([])
-  const [showOwnInclusionsModal, setShowOwnInclusionsModal] =
-    useState<boolean>(false)
-  const [optionsArray, setOptionsArray] = useState([
-    {
-      text: 'Revisions (Add Revisions)',
-      initValue: true,
-      info: true,
-      nodeAfterDots: <OptionEndNode />,
-    },
-    {
-      text: 'Source File (Add Source File)',
-      initValue: true,
-      info: true,
-      nodeAfterDots: <OptionEndNode />,
-    },
-    {
-      text: 'High Resolution (Add High Resolution)',
-      initValue: true,
-      info: true,
-      nodeAfterDots: <OptionEndNode />,
-    },
-  ])
   const [isSettingsModalPending, startSettingsModalTransition] = useTransition()
 
   return (
@@ -137,7 +112,7 @@ const AdminForms = () => {
           callbackClose={() => {
             setShowSettingsModal(false)
           }}
-          title="Service settings"
+          title="Form settings"
           nodeAfterTitle={
             <div style={{ width: '100%' }} className="gap_20">
               <DarkBox
@@ -335,180 +310,6 @@ const AdminForms = () => {
 
             <DynamicPadding desktop="30px" mobile="20px" />
 
-            <YesNoTable
-              title="Negotiation"
-              items={[
-                {
-                  text: 'Fixed payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Milestones payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Custom requirements',
-                  initValue: true,
-                },
-                {
-                  text: 'Packages',
-                  initValue: true,
-                },
-              ]}
-            />
-
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <YesNoTable
-              title="Package inclusions & options"
-              items={optionsArray}
-            />
-
-            <DynamicPadding desktop="25px" mobile="15px" />
-
-            <div
-              onClick={() => {
-                setShowOwnInclusionsModal(true)
-              }}
-            >
-              <Typography
-                textLineHeight="1"
-                variant="body5"
-                color={AppColor.orange}
-                fontWeight="500"
-              >
-                Add inclusion & option
-              </Typography>
-            </div>
-
-            <DynamicPadding desktop="25px" mobile="15px" />
-
-            <TableChooseDropdown
-              title="Conditions"
-              items={[
-                {
-                  items: [
-                    '10%',
-                    '20%',
-                    '30%',
-                    '40%',
-                    '50%',
-                    '60%',
-                    '70%',
-                    '80%',
-                    '90%',
-                    '100%',
-                  ],
-                  text: 'Freelancer fee',
-                },
-                {
-                  items: ['$10', '$20', '$30', '$40', '$50'],
-                  text: 'Beginner skill level low price',
-                },
-                {
-                  items: ['$40', '$50', '$60', '$70', '$80'],
-                  text: 'Junior skill level low price',
-                },
-                {
-                  items: ['$70', '$80', '$90', '$100', '$110'],
-                  text: 'Middle skill level low price',
-                },
-                {
-                  items: ['$100', '$150', '$200', '$250', '$300'],
-                  text: 'Senior skill level low price',
-                },
-                {
-                  items: ['$150', '$200', '$250', '$300', '$350'],
-                  text: 'Lead skill level low price',
-                },
-              ]}
-            />
-
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <YesNoTable
-              title="Promo conditions"
-              items={[
-                {
-                  text: 'Minimum service purchase',
-                  initValue: true,
-                },
-                {
-                  text: 'Buy specific package',
-                  initValue: true,
-                },
-                {
-                  text: 'Buy custom requirements',
-                  initValue: true,
-                },
-                {
-                  text: 'Only fixed payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Only milestones payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Only for Pro and Ultimate subscribers',
-                  initValue: true,
-                },
-                {
-                  text: 'Only for Ultimate subscribers',
-                  initValue: true,
-                },
-                {
-                  text: 'Were previous projects with customers',
-                  initValue: true,
-                },
-              ]}
-            />
-
-            <DynamicPadding desktop="30px" mobile="20px" />
-
-            <YesNoTable
-              title="Promo conditions"
-              items={[
-                {
-                  text: 'Sale',
-                  initValue: true,
-                },
-                {
-                  text: 'Bonuses',
-                  initValue: true,
-                },
-                {
-                  text: 'Next service discount for fixed payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Next service discount for hourly payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Next service discount for milestones payment',
-                  initValue: true,
-                },
-                {
-                  text: 'Next service discount for specific package',
-                  initValue: true,
-                },
-                {
-                  text: 'Next service discount for custom requirements',
-                  initValue: true,
-                },
-                {
-                  text: '1 month Pro subscription',
-                  initValue: true,
-                },
-                {
-                  text: '1 month Ultimate subscription',
-                  initValue: true,
-                },
-              ]}
-            />
-
-            <DynamicPadding desktop="30px" mobile="20px" />
             <Typography textLineHeight="1" variant="body3" fontWeight="500">
               Affect on
             </Typography>
@@ -555,38 +356,16 @@ const AdminForms = () => {
 
             <DynamicPadding desktop="30px" mobile="20px" />
 
-            <div className="flex_end">
-              <MyButtonTransparent
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Cancel
-              </MyButtonTransparent>
-              <MyButtonOrange
-                onClick={() => {}}
-                fontWeight="500"
-                textTransform="uppercase"
-              >
-                Save
-              </MyButtonOrange>
-            </div>
+            <ModalButtonsSetup
+              onCancel={() => {
+                setShowSettingsModal(false)
+              }}
+              onSave={() => {
+                setShowSettingsModal(false)
+              }}
+            />
           </>
         </ModalCenterBasic>
-      )}
-
-      {showOwnInclusionsModal && (
-        <InclusionModal
-          onAdd={() => {
-            setShowOwnInclusionsModal(false)
-          }}
-          onCancel={() => {
-            setShowOwnInclusionsModal(false)
-          }}
-          onClose={() => {
-            setShowOwnInclusionsModal(false)
-          }}
-        />
       )}
     </div>
   )
