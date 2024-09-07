@@ -1,35 +1,25 @@
+import ButtonChooseList from '@common/components/ButtonChooseList/index'
+import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
+import { BigInputOutside } from '@common/components/ui/BigInput/index'
 import DetailsTableTicketsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableTicketsAdmin/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import { FilterTemplateDropdown } from '@common/components/ui/FiltersTemplate/index'
+import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
+import InputCommon from '@common/components/ui/inputs/InputCommon/index'
+import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
+import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
+import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
+import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
+import { DropdownCustomNodesCenter } from '../AdminPartnerships'
 import styles from './style.module.scss'
-import ModalCenterBasic from '@common/components/ModalPopUps/ModalCenter/components/ModalCenterBasic/index'
-import DarkBox from '@common/components/ui/DarkBox/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
-import InputCommon from '@common/components/ui/inputs/InputCommon/index'
-import MyButtonTransparent from '@common/components/ui/MyButton/variants/MyButtonTransparent'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import TemplateItem from '@common/components/Header/Header/components/NewsPopUp/components/TemplateItem/index'
-import FiltersTemplate, {
-  FilterTemplateDropdown,
-} from '@common/components/ui/FiltersTemplate/index'
-import {
-  DropdownCustomNodesCenter,
-  SkillLevel,
-  StarItem,
-} from '../AdminPartnerships'
-import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
-import BigInput, { BigInputOutside } from '@common/components/ui/BigInput/index'
-import MyCheckbox from '@common/components/ui/inputs/Checkbox/index'
 
 const AdminMailing = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Development')
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [addScript, setAddScript] = useState(false)
 
@@ -355,10 +345,12 @@ const AdminMailing = () => {
         <DynamicPadding />
 
         <DetailsTableTicketsAdmin
+          tableCounterLabel="mailing"
           information={[
             {
               user: fakeUserConstant,
-              date: 'Feb 26, 2021 16:32 ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
               emails: '30 195',
               recipients: 'Freelancer',
               status: 'Scheduled',

@@ -1,17 +1,12 @@
-import DetailsTablePostsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTablePostsAdmin/index'
+import DetailsTableTicketsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableTicketsAdmin/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
 import styles from './style.module.scss'
-import DetailsTableTicketsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableTicketsAdmin/index'
 
 const AdminTickets = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Development')
   return (
     <div className={styles.wrapper}>
       <div className={styles.mobile_padding}>
@@ -52,7 +47,8 @@ const AdminTickets = () => {
           information={[
             {
               user: fakeUserConstant,
-              date: 'Feb 26, 2021 16:32 ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
               emails: '30 195',
               recipients: 'Freelancer',
               status: 'Scheduled',

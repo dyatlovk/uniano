@@ -1,21 +1,23 @@
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
 import DynamicPadding from '../../../DynamicPadding'
+import HorizontalLine from '../../../Lines/HorizontalLine'
+import SizeBox from '../../../SizeBox'
 import UserAvatar from '../../../UserAvatar'
 import styles from './style.module.scss'
-import SizeBox from '../../../SizeBox'
-import HorizontalLine from '../../../Lines/HorizontalLine'
 
 type DetailsTableTicketsAdminProps = {
   information: DetailsTableTicketsAdminItem[]
+  tableCounterLabel?: string
 }
 
 export type DetailsTableTicketsAdminItem = {
   user: userModel
   date: string
+  time: string
   recipients: string
   emails: string
   unsubscribes: string
@@ -23,6 +25,7 @@ export type DetailsTableTicketsAdminItem = {
 }
 const DetailsTableTicketsAdmin = ({
   information,
+  tableCounterLabel = 'post',
 }: DetailsTableTicketsAdminProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
@@ -30,7 +33,7 @@ const DetailsTableTicketsAdmin = ({
   return (
     <DetailsTable
       removeNavBar={true}
-      titleEnd="post"
+      titleEnd={tableCounterLabel}
       projectsCount="1"
       callbackNav={item => {
         setCurrentPage(item)
@@ -53,7 +56,8 @@ const DetailsTableTicketsAdmin = ({
               title="Date"
               node={
                 <Typography variant="body4" fontWeight="500">
-                  Oct 25, 2021 17:12
+                  <div>{currentItem.date}</div>
+                  <div>{currentItem.time}</div>
                 </Typography>
               }
             />
@@ -82,6 +86,10 @@ const DetailsTableTicketsAdmin = ({
                 </Typography>
               }
             />
+            <div style={{ flexGrow: '1' }}></div>
+            <div className={styles.arrowMenu}>
+              <AppColor.arrowRight width={7} height={12} />
+            </div>
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
 
@@ -128,7 +136,10 @@ const DetailsTableTicketsAdmin = ({
                 title: 'Date',
                 maxWidth: '110px',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <Typography variant="body4">
+                    <div>{currentItem.date}</div>
+                    <div>{currentItem.time}</div>
+                  </Typography>
                 ),
               },
               {

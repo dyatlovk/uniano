@@ -1,11 +1,10 @@
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
-import ArbitrationTable from '../../../ArbitrationTable'
+import DotsButton from '../../../DotsButtons'
 import DynamicPadding from '../../../DynamicPadding'
-import styles from './style.module.scss'
 import UserAvatar from '../../../UserAvatar'
 
 type DetailsTableManagerChatAdminProps = {
@@ -16,6 +15,7 @@ export type DetailsTableManagerChatAdminItem = {
   user: userModel
   id: string
   date: string
+  time: string
   description: string
   manager: userModel
   status: string
@@ -67,14 +67,26 @@ const DetailsTableManagerChatAdmin = ({
               {
                 title: 'Date',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <Typography variant="body4">
+                    <div>{currentItem.date}</div>
+                    <div>{currentItem.time}</div>
+                  </Typography>
                 ),
               },
               {
                 title: 'Description',
                 child: (
                   <Typography fontStyle="italic" variant="body4">
-                    {currentItem.description}
+                    <span
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                      }}
+                    >
+                      {currentItem.description}
+                      <DotsButton />
+                    </span>
                   </Typography>
                 ),
               },

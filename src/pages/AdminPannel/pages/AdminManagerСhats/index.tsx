@@ -1,11 +1,10 @@
-import DetailsTableArbitraion from '@common/components/ui/DetailsTable/variants/DetailsTableArbitraion/index'
+import DetailsTableManagerChatAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableManagerChatAdmin/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import styles from './style.module.scss'
-import DetailsTableManagerChatAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableManagerChatAdmin/index'
 
 const AdminManagerСhats = () => {
   return (
@@ -46,7 +45,8 @@ const AdminManagerСhats = () => {
           information={[
             {
               user: fakeUserConstant,
-              date: 'Feb 26, 2021 16:32 ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
               description: 'Freelancer didn’t ',
               id: '4242',
               manager: fakeUserConstant,

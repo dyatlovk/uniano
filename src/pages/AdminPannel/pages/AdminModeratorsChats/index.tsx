@@ -45,8 +45,9 @@ const AdminModeratorsChats = () => {
           information={[
             {
               user: fakeUserConstant,
-              date: 'Feb 26, 2021 16:32 ',
-              description: 'Freelancer didn’t ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
+              description: "Freelancer didn't",
               id: '4242',
               manager: fakeUserConstant,
               status: 'Opened',
