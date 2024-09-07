@@ -42,6 +42,8 @@
   justify-content: center;
   background-color: $orange;
   aspect-ratio: 1;
+  cursor: pointer;
+  @include hoverable();
 }
 
 .title_plus {

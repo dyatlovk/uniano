@@ -1,0 +1,25 @@
+.simple_item {
+  cursor: pointer;
+  padding: 20px;
+  @include flex_row();
+
+  &:hover {
+    background-color: $white;
+
+    &:last-child {
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+}
+
+.cat_label {
+  padding: 4px 14px;
+  background-color: $orange;
+  border-radius: $borderRadius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #fff;
+}

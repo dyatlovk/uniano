@@ -1,13 +1,16 @@
-import DetailsTableTicketsAdmin from '@common/components/ui/DetailsTable/variants/DetailsTableTicketsAdmin/index'
+import DetailsTableAdminCategoriesServices from '@common/components/ui/DetailsTable/variants/DetailsTableAdminCategoriesServices/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
+import AddOrderCatModal from '../../components/AddOrderCatModal'
 import styles from './style.module.scss'
-import DetailsTableAdminCategoriesServices from '@common/components/ui/DetailsTable/variants/DetailsTableAdminCategoriesServices/index'
 
 const AdminServicesCommunity = () => {
+  const [showAddOrderModal, setShowAddOrderModal] = useState<boolean>(false)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.mobile_padding}>
@@ -24,7 +27,12 @@ const AdminServicesCommunity = () => {
                 Community categories{' '}
               </Typography>
             </div>
-            <div className={styles.orange}>
+            <div
+              className={styles.orange}
+              onClick={() => {
+                setShowAddOrderModal(true)
+              }}
+            >
               <AppColor.plus stroke="white" width={'fit-content'} />
             </div>
           </div>
@@ -48,6 +56,14 @@ const AdminServicesCommunity = () => {
         />
         <DynamicPadding />
       </div>
+      {showAddOrderModal && (
+        <AddOrderCatModal
+          title="Add community category"
+          onAdd={() => setShowAddOrderModal(false)}
+          onCancel={() => setShowAddOrderModal(false)}
+          onClose={() => setShowAddOrderModal(false)}
+        />
+      )}
     </div>
   )
 }
