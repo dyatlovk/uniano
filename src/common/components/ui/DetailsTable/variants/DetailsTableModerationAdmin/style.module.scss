@@ -4,7 +4,7 @@
   gap: 20px;
   align-items: start;
 
-  > * {
+  >* {
     min-height: 40px;
   }
 }
@@ -38,6 +38,21 @@
   justify-content: space-between;
 }
 
+.arrowMenu {
+  cursor: pointer;
+  @include hoverable();
+  border-radius: 100%;
+  border: 1px solid #00000021;
+  min-width: 29px;
+  min-height: 29px;
+  margin: auto;
+  @include flex_column();
+
+  svg {
+    margin: auto;
+  }
+}
+
 @media (min-width: $tabletSize) {
 
   .reviews_wrapper {
@@ -50,7 +65,5 @@
     align-items: start;
     gap: 20px;
     flex-wrap: wrap;
-    padding-left: 60px;
-    padding-left: 60px;
   }
 }

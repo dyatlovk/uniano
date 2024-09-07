@@ -1,8 +1,9 @@
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
+import DotsButton from '../../../DotsButtons'
 import DynamicPadding from '../../../DynamicPadding'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import SizeBox from '../../../SizeBox'
@@ -92,7 +93,17 @@ const DetailsTableModerationAdmin = ({
               title="Complaint"
               node={
                 <Typography fontStyle="italic" variant="body4">
-                  Freelancer didn’t{' '}
+                  <span
+                    onClick={() => {
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                    }}
+                  >
+                    Freelancer didn't <DotsButton />
+                  </span>
                 </Typography>
               }
             />
@@ -111,14 +122,6 @@ const DetailsTableModerationAdmin = ({
               }
             />
             <TextItem
-              title="Reward"
-              node={
-                <Typography variant="body4" fontWeight="500">
-                  Alpha unit
-                </Typography>
-              }
-            />
-            <TextItem
               title="Status"
               node={
                 <Typography
@@ -130,9 +133,11 @@ const DetailsTableModerationAdmin = ({
                 </Typography>
               }
             />
+            <div className={styles.arrowMenu}>
+              <AppColor.arrowRight width={7} height={12} />
+            </div>
           </div>
           <DynamicPadding desktop="30px" mobile="20px" />
-
           <HorizontalLine />
         </div>
       }
