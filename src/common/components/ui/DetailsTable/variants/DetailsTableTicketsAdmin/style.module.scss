@@ -52,6 +52,23 @@
   }
 }
 
+.answer_row {
+  padding: 20px 0;
+  padding-left: 0px;
+  @include flex_column(20px);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.answer_col {
+  flex-grow: 1;
+}
+
+.hover_link {
+  cursor: pointer;
+  @include hoverable();
+}
+
 @media (min-width: $tabletSize) {
 
   .reviews_wrapper {
@@ -64,5 +81,12 @@
     align-items: start;
     gap: 20px;
     flex-wrap: wrap;
+  }
+
+  .answer_row {
+    padding: 35px 0;
+    padding-left: 35px;
+    @include flex_row(46px);
+    justify-content: space-between;
   }
 }

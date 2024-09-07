@@ -4,6 +4,7 @@ import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
 import DynamicPadding from '../../../DynamicPadding'
+import MyCheckbox from '../../../inputs/Checkbox'
 import HorizontalLine from '../../../Lines/HorizontalLine'
 import SizeBox from '../../../SizeBox'
 import UserAvatar from '../../../UserAvatar'
@@ -29,6 +30,7 @@ const DetailsTableTicketsAdmin = ({
 }: DetailsTableTicketsAdminProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
+  const [showUserAnswer, setShowUserAnswer] = useState<boolean>(false)
 
   return (
     <DetailsTable
@@ -46,6 +48,7 @@ const DetailsTableTicketsAdmin = ({
           <div className={styles.dropdow_grid}>
             <TextItem
               title="ID"
+              minWidth="55px"
               node={
                 <Typography variant="body4" fontWeight="500">
                   332
@@ -77,13 +80,20 @@ const DetailsTableTicketsAdmin = ({
             <TextItem
               title="Survey"
               node={
-                <Typography
-                  variant="body4"
-                  color={AppColor.transparentBlack}
-                  fontWeight="500"
+                <div
+                  className={styles.hover_link}
+                  onClick={() => {
+                    setShowUserAnswer(prev => !prev)
+                  }}
                 >
-                  View
-                </Typography>
+                  <Typography
+                    variant="body4"
+                    color={AppColor.transparentBlack}
+                    fontWeight="500"
+                  >
+                    View
+                  </Typography>
+                </div>
               }
             />
             <div style={{ flexGrow: '1' }}></div>
@@ -94,6 +104,13 @@ const DetailsTableTicketsAdmin = ({
           <DynamicPadding desktop="30px" mobile="20px" />
 
           <HorizontalLine />
+
+          {showUserAnswer && (
+            <div>
+              <AnswerRow />
+              <HorizontalLine />
+            </div>
+          )}
         </div>
       }
       details={
@@ -212,15 +229,66 @@ const DetailsTableTicketsAdmin = ({
 type TextItemProps = {
   title: string
   node: React.ReactNode
+  minWidth?: string
 }
-const TextItem = ({ node, title }: TextItemProps) => {
+const TextItem = ({ node, title, minWidth = 'fit-content' }: TextItemProps) => {
   return (
-    <div className={styles.text_item}>
+    <div className={styles.text_item} style={{ minWidth: minWidth }}>
       <Typography variant="body5" color={AppColor.transparentBlack}>
         {title}
       </Typography>
       <SizeBox height="2px" />
       {node}
+    </div>
+  )
+}
+
+const AnswerRow = (): JSX.Element => {
+  return (
+    <div className={styles.answer_row}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '20px',
+          maxWidth: '250px',
+        }}
+        className={styles.answer_col}
+      >
+        <MyCheckbox width="22px" height="22px" />
+        <div>
+          <Typography>
+            Completed all guides{' '}
+            <span style={{ color: AppColor.transparentBlack }}>(text)</span>
+          </Typography>
+          <Typography color={AppColor.transparentBlack} variant="body5">
+            1 time after condition
+          </Typography>
+        </div>
+      </div>
+      <div style={{ maxWidth: '99px' }} className={styles.anwser_col}>
+        <Typography variant="body4">
+          <div>Feb 26, 2021</div>
+          <div>16:32</div>
+        </Typography>
+      </div>
+      <div style={{ maxWidth: '130px' }} className={styles.answer_col}>
+        <Typography variant="body4">Freelancer</Typography>
+      </div>
+      <div style={{ textAlign: 'center' }} className={styles.answer_col}>
+        <Typography variant="body4">30 194</Typography>
+      </div>
+      <div style={{ textAlign: 'center' }} className={styles.answer_col}>
+        <Typography variant="body4">5%</Typography>
+      </div>
+      <div style={{ textAlign: 'center' }} className={styles.answer_col}>
+        <Typography color={AppColor.green} variant="body4">
+          Sent
+        </Typography>
+      </div>
+      <div className={styles.answer_col}>
+        <AppColor.threeLines />
+      </div>
     </div>
   )
 }

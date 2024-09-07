@@ -345,7 +345,7 @@ const AdminMailing = () => {
         <DynamicPadding />
 
         <DetailsTableTicketsAdmin
-          tableCounterLabel="mailing"
+          tableCounterLabel="script"
           information={[
             {
               user: fakeUserConstant,
