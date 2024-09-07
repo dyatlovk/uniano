@@ -47,7 +47,8 @@ const AdminArbitration = () => {
             {
               user: fakeUserConstant,
               category: 'Crypto Wallet Development',
-              date: 'Feb 26, 2021 16:32 ',
+              date: 'Feb 26, 2021',
+              time: '16:32',
               id: '413',
               objectProp: 'Artem Markevych Logo Design ',
               scope: 'Order project',

@@ -1,13 +1,11 @@
 import Typography from '@common/components/ui/Typography/Typography'
-import { userModel, fakeUserConstant } from '@common/models/user'
+import { fakeUserConstant, userModel } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState } from 'react'
 import DetailsTable from '../..'
-import DynamicPadding from '../../../DynamicPadding'
-import HorizontalLine from '../../../Lines/HorizontalLine'
-import UserAvatar from '../../../UserAvatar'
-import styles from './style.module.scss'
 import ArbitrationTable from '../../../ArbitrationTable'
+import DynamicPadding from '../../../DynamicPadding'
+import styles from './style.module.scss'
 
 type DetailsTableArbitraionProps = {
   information: DetailsTableArbitraionItem[]
@@ -19,6 +17,7 @@ export type DetailsTableArbitraionItem = {
   id: string
   scope: string
   date: string
+  time: string
   category: string
   status: string
 }
@@ -81,9 +80,13 @@ const DetailsTableArbitraion = ({
               },
               {
                 title: 'Date',
-                maxWidth: '90px',
+                maxWidth: '110px',
                 child: (
-                  <Typography variant="body4">{currentItem.date}</Typography>
+                  <Typography variant="body4">
+                    <span>{currentItem.date}</span>
+                    <br />
+                    <span>{currentItem.time}</span>
+                  </Typography>
                 ),
               },
               {

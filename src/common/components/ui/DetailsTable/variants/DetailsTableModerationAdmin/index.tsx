@@ -58,7 +58,7 @@ const DetailsTableModerationAdmin = ({
               title="Date"
               node={
                 <Typography variant="body4" fontWeight="500">
-                  Oct 25, 2021 17:12
+                  Oct 25, 2021 <br/> 17:12
                 </Typography>
               }
             />
