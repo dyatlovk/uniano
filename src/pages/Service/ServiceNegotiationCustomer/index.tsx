@@ -10,7 +10,6 @@ import StepsStates from '@common/components/StepsStates/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import MyButton from '@common/components/ui/MyButton/MyButton'
 import PageDetails from '@common/components/ui/PageDetails/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import Preloader from '@common/components/ui/Preloader/index'
@@ -18,7 +17,7 @@ import {
   StepActionNode,
   StepNav,
   StepResolverItem,
-  StepsResolver,
+  StepsResolver
 } from '@common/components/ui/StepsResolver/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
@@ -153,7 +152,16 @@ const ServiceNegotiationCustomer = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Negotiation'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Negotiation'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

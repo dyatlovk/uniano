@@ -73,6 +73,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .selection_wrapper {

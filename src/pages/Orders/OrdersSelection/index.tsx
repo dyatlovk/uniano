@@ -1,27 +1,27 @@
-import Header from '@common/components/Header/Header/index'
-import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import { useEffect, useState } from 'react'
+import Header from '@common/components/Header/Header/index'
+import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/orders/statesModel'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import { useScreenSize } from '@common/helpers/useScreenSize'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
 import NavBarLineBlack from '@common/components/ui/NavBarLineBlack/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
 import DropdownNumber from '@common/components/ui/SearchFilterBar/components/DropdownNumber/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import { useScreenSize } from '@common/helpers/useScreenSize'
+import StatesModel from '@common/models/orders/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CardsGroup from './components/CardsGroup'
+import styles from './style.module.scss'
 
 const OrdersSelection = () => {
   const { width, height } = useScreenSize()
@@ -46,7 +46,16 @@ const OrdersSelection = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Selection'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Selection'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

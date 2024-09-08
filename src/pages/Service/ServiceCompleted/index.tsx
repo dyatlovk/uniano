@@ -1,36 +1,34 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
+import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import Typography from '@common/components/ui/Typography/Typography'
+import StepsStates from '@common/components/StepsStates/index'
 import BigInput from '@common/components/ui/BigInput/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import { TipsItem } from '@pages/Partnership/pages/PartnershipCompleted/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import SizeBox from '@common/components/ui/SizeBox/index'
-import TextDotted from '@common/components/ui/TextDotted/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import AskedQuestion from '@common/components/AskedQuestions/index'
-import Footer from '@common/components/Footer/Footer'
-import { useEffect, useState } from 'react'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/services/statesModel'
-import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import TextDotted from '@common/components/ui/TextDotted/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
-import partnersModel from '@common/models/partnership/partnersModel'
 import PartnersModel from '@common/models/partnership/partnersModel'
+import StatesModel from '@common/models/services/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { TipsItem } from '@pages/Partnership/pages/PartnershipCompleted/index'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import { useEffect, useState } from 'react'
 import { SubscriptionList } from '../Service/components/Subscriptions/List'
 import MissionModal from '../ServiceProgress/components/MissionModal'
+import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
   FreelancerProjectsModel.makeFakeData()
@@ -66,7 +64,16 @@ const ServiceCompleted = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Completed'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Completed'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

@@ -1,29 +1,27 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
+import CardsGroup from '@common/components/cards/Services/CardsGroup/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
+import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import { useEffect, useState } from 'react'
+import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import AskedQuestion from '@common/components/AskedQuestions/index'
-import Footer from '@common/components/Footer/Footer'
-import { Link } from 'react-router-dom'
-import { useScreenSize } from '@common/helpers/useScreenSize'
-import CardsGroup from '@common/components/cards/Services/CardsGroup/index'
 import MyButtonTransparentBlack from '@common/components/ui/MyButton/variants/MyButtonTransparentBlack'
-import StepsStates from '@common/components/StepsStates/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import { useScreenSize } from '@common/helpers/useScreenSize'
 import StatesModel from '@common/models/services/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './style.module.scss'
 
 const ServiceSelection = () => {
   const arrayHistory = [
@@ -53,7 +51,16 @@ const ServiceSelection = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Selection'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Selection'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

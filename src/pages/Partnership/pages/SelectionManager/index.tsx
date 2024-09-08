@@ -1,23 +1,22 @@
-import Header from '@common/components/Header/Header/index'
-import styles from './style.module.scss'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import AppColor from '@common/styles/variables-static'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import { useScreenSize } from '@common/helpers/useScreenSize'
-import Typography from '@common/components/ui/Typography/Typography'
-import { useState } from 'react'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
-import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
+import CardManager from '@common/components/cards/CardStatiscticsPartnership/variants/CardManager/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
+import Header from '@common/components/Header/Header/index'
+import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
+import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import { useScreenSize } from '@common/helpers/useScreenSize'
 import StatesModel from '@common/models/partnership/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useState } from 'react'
+import styles from './style.module.scss'
 
 const SelectionManager = () => {
   const { width, height } = useScreenSize()
@@ -33,10 +32,16 @@ const SelectionManager = () => {
     <div>
       <Header />
 
-      <StepsStates
-        states={StatesModel.getAll()}
-        currentState={'Selection'}
-      />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Selection'}
+          />
+        </div>
+      </div>
 
       <div className={styles.wrapper}>
         <PageDetails

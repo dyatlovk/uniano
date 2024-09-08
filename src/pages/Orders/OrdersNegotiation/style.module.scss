@@ -18,6 +18,10 @@
   gap: 15px;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .details_box {

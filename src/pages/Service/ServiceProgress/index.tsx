@@ -1,34 +1,34 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
+import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
-import DetailsProgresService from '@common/components/ui/DetailsTable/variants/DetailsProgresService/index'
+import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
+import StepsStates from '@common/components/StepsStates/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
-import Typography from '@common/components/ui/Typography/Typography'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DetailsProgresService from '@common/components/ui/DetailsTable/variants/DetailsProgresService/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
 import TextDotted from '@common/components/ui/TextDotted/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import AskedQuestion from '@common/components/AskedQuestions/index'
-import Footer from '@common/components/Footer/Footer'
-import { useEffect, useState } from 'react'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/services/statesModel'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
-import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
 import PartnersModel from '@common/models/partnership/partnersModel'
+import StatesModel from '@common/models/services/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import { useEffect, useState } from 'react'
 import { SubscriptionList } from '../Service/components/Subscriptions/List'
-import NegotiationsModal from './components/NegotiationModal'
 import CancelModal from './components/CancelModal'
 import FilesModal from './components/FilesModal'
 import MissionModal from './components/MissionModal'
+import NegotiationsModal from './components/NegotiationModal'
+import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
   FreelancerProjectsModel.makeFakeData()
@@ -67,7 +67,16 @@ const ServiceProgress = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Progress'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

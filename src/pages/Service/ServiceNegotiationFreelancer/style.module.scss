@@ -184,6 +184,10 @@
   border-radius: 50%;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .details_box {

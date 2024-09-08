@@ -1,31 +1,28 @@
+import AskedQuestion from '@common/components/AskedQuestions/index'
+import ButtonChooseList from '@common/components/ButtonChooseList/index'
+import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
+import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import NavigationBarSelection from '@common/components/NavigationBarSelection/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { useScreenSize } from '@common/helpers/useScreenSize'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import { useEffect, useState } from 'react'
-import styles from './style.module.scss'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import StepsOfPreparing from '@common/components/StepsOfPreparing/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import PercentBar from '@common/components/ui/PercentBar/PercentBar'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
-import TextDotted from '@common/components/ui/TextDotted/index'
-import UserAvatar from '@common/components/ui/UserAvatar/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
-import InfoBox from '@common/components/ui/InfoBox/index'
-import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
-import AskedQuestion from '@common/components/AskedQuestions/index'
-import Footer from '@common/components/Footer/Footer'
 import StepsStates from '@common/components/StepsStates/index'
+import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import InfoBox from '@common/components/ui/InfoBox/index'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import PercentBar from '@common/components/ui/PercentBar/PercentBar'
+import TextDotted from '@common/components/ui/TextDotted/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserAvatar from '@common/components/ui/UserAvatar/index'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import StatesModel from '@common/models/orders/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import { useEffect } from 'react'
+import styles from './style.module.scss'
 
 const OrdersNegotiation = () => {
   const arrayHistory = ['Order', 'Development ', 'Web Development', 'WordPress']
@@ -40,7 +37,16 @@ const OrdersNegotiation = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Negotiation'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Negotiation'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

@@ -46,6 +46,10 @@
   }
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .text_dotted_wrapper {

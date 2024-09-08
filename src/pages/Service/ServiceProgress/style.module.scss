@@ -40,6 +40,10 @@
   }
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .shadow_box_grid {

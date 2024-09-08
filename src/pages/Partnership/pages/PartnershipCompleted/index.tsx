@@ -1,28 +1,28 @@
-import Header from '@common/components/Header/Header/index'
-import styles from './style.module.scss'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import AppColor from '@common/styles/variables-static'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
-import Typography from '@common/components/ui/Typography/Typography'
-import { useEffect, useState } from 'react'
-import SizeBox from '@common/components/ui/SizeBox/index'
+import Header from '@common/components/Header/Header/index'
+import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
+import Progress from '@common/components/Partnership/Progress/index'
+import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import ReviewsProgramCard from '@common/components/ReviewsProgram/index'
+import StepsStates from '@common/components/StepsStates/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import MyButtonOrange from '@common/components/ui/MyButton/variants/MyButtonOrange'
 import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/partnership/statesModel'
-import PartnersModel from '@common/models/partnership/partnersModel'
-import ManagersDropDown from '../ProgressFreelancer/components/ManagerDropdown'
-import Progress from '@common/components/Partnership/Progress/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
+import SizeBox from '@common/components/ui/SizeBox/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import StatesModel from '@common/models/partnership/statesModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import { useEffect, useState } from 'react'
+import ManagersDropDown from '../ProgressFreelancer/components/ManagerDropdown'
+import styles from './style.module.scss'
 
 const currentState = 'Completed'
 const freelancerProjectModel = new FreelancerProjectsModel(
@@ -57,7 +57,16 @@ const PartnershipCompleted = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={currentState} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={currentState}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

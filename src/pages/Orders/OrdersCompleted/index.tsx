@@ -1,10 +1,10 @@
 import AskedQuestion from '@common/components/AskedQuestions/index'
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
 import Header from '@common/components/Header/Header/index'
-import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
 import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
+import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
+import StepsStates from '@common/components/StepsStates/index'
 import BigInput from '@common/components/ui/BigInput/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
@@ -17,19 +17,18 @@ import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
+import StatesModel from '@common/models/orders/statesModel'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { TipsItem } from '@pages/Partnership/pages/PartnershipCompleted/index'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import styles from './style.module.scss'
-import { useEffect, useState } from 'react'
-import StepsStates from '@common/components/StepsStates/index'
-import StatesModel from '@common/models/orders/statesModel'
 import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
-import PartnersModel from '@common/models/partnership/partnersModel'
-import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
 import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
 import MissionModal from '@pages/Service/ServiceProgress/components/MissionModal/index'
+import { useEffect, useState } from 'react'
+import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
   FreelancerProjectsModel.makeFakeData()
@@ -64,7 +63,16 @@ const OrdersCompleted = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Completed'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Completed'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails
@@ -76,7 +84,7 @@ const OrdersCompleted = () => {
 
         <DynamicPadding desktop="14px" mobile="14px" />
         <UserTopPageInfo user={fakeUserConstant} />
-        <DynamicPadding desktop='42px' mobile='20px' />
+        <DynamicPadding desktop="42px" mobile="20px" />
 
         <ResponsiveLayoutTwo
           gap="80px"
@@ -93,7 +101,7 @@ const OrdersCompleted = () => {
               </Typography>
               <DynamicPadding desktop="23px" mobile="20px" />
               <BigInput />
-              <DynamicPadding desktop='44px' mobile='20px' />
+              <DynamicPadding desktop="44px" mobile="20px" />
 
               <Typography variant="body3" fontWeight="500">
                 Warranty
@@ -110,14 +118,14 @@ const OrdersCompleted = () => {
                       <Typography variant="body4">3 of 10 days</Typography>
                     </div>
                   </div>,
-                  <DynamicPadding desktop='17px' mobile='17px' />,
+                  <DynamicPadding desktop="17px" mobile="17px" />,
                   <PercentBar currentPercent={30} height="3px" />,
-                  <DynamicPadding desktop='20px' mobile='20px' />,
+                  <DynamicPadding desktop="20px" mobile="20px" />,
                   <div className="gap_5_wrap">
                     <Typography variant="body4">
                       You can upgrade your subscription to extend your warranty
                     </Typography>
-                    <SizeBox width='10px' />
+                    <SizeBox width="10px" />
                     <MyButtonTransparentOrange
                       padding="7.5px 14px"
                       fontWeight="500"
@@ -134,7 +142,7 @@ const OrdersCompleted = () => {
                 paddingBoxDesktop="22px 30px 30px 30px"
                 paddingBoxMobile="15px"
               />
-              <DynamicPadding desktop='25px' mobile='20px' />
+              <DynamicPadding desktop="25px" mobile="20px" />
 
               <Typography variant="body3" fontWeight="500">
                 Tips

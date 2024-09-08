@@ -111,6 +111,10 @@
   align-self: center;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .desktop {

@@ -37,6 +37,10 @@
   background-color: $white;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .box_text {

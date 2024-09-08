@@ -50,7 +50,16 @@ const SelectionFreelancer = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Selection'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Selection'}
+          />
+        </div>
+      </div>
 
       <div className={styles.wrapper}>
         <PageDetails

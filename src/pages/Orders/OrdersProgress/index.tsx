@@ -1,35 +1,35 @@
-import Header from '@common/components/Header/Header/index'
-import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
-import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import PageDetails from '@common/components/ui/PageDetails/index'
-import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
-import { fakeUserConstant } from '@common/models/user'
-import AppColor from '@common/styles/variables-static'
-import styles from './style.module.scss'
 import AskedQuestion from '@common/components/AskedQuestions/index'
 import CardsSliderRelated from '@common/components/CardsSliderRelated/index'
 import Footer from '@common/components/Footer/Footer'
+import Header from '@common/components/Header/Header/index'
+import NavigationItem from '@common/components/navigation_history/NavigationItem/index'
 import ResponsiveLayoutTwo from '@common/components/ResponsiveLayoutTwo/index'
+import StepsStates from '@common/components/StepsStates/index'
 import CenterShadowBox from '@common/components/ui/CenterShadowBox/index'
 import ChevronMoveTo from '@common/components/ui/ChevronMoveTo/index'
+import DetailsProgressOrders from '@common/components/ui/DetailsTable/variants/DetailsProgressOrders/index'
+import DynamicPadding from '@common/components/ui/DynamicPadding/index'
 import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import PageDetails from '@common/components/ui/PageDetails/index'
 import PercentBar from '@common/components/ui/PercentBar/PercentBar'
+import SwitchButton from '@common/components/ui/SwitchButton/index'
 import TextDotted from '@common/components/ui/TextDotted/index'
 import Typography from '@common/components/ui/Typography/Typography'
-import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
-import DetailsProgressOrders from '@common/components/ui/DetailsTable/variants/DetailsProgressOrders/index'
-import { useEffect, useState } from 'react'
-import StepsStates from '@common/components/StepsStates/index'
+import UserTopPageInfo from '@common/components/ui/UserTopPageInfo/index'
 import StatesModel from '@common/models/orders/statesModel'
+import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
+import PartnersModel from '@common/models/partnership/partnersModel'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
+import { DetailsDropdownItem } from '@pages/Partnership/pages/ProgressFreelancer/index'
+import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
 import CancelModal from '@pages/Service/ServiceProgress/components/CancelModal/index'
 import FilesModal from '@pages/Service/ServiceProgress/components/FilesModal/index'
-import NegotiationsModal from '@pages/Service/ServiceProgress/components/NegotiationModal/index'
-import ManagersDropDown from '@pages/Partnership/pages/ProgressFreelancer/components/ManagerDropdown/index'
-import PartnersModel from '@common/models/partnership/partnersModel'
-import FreelancerProjectsModel from '@common/models/partnership/freelancesProjectsModel'
-import { SubscriptionList } from '@pages/Service/Service/components/Subscriptions/List/index'
 import MissionModal from '@pages/Service/ServiceProgress/components/MissionModal/index'
-import SwitchButton from '@common/components/ui/SwitchButton/index'
+import NegotiationsModal from '@pages/Service/ServiceProgress/components/NegotiationModal/index'
+import { useEffect, useState } from 'react'
+import styles from './style.module.scss'
 
 const freelancerProjectModel = new FreelancerProjectsModel(
   FreelancerProjectsModel.makeFakeData()
@@ -68,7 +68,16 @@ const OrdersProgress = () => {
     <div>
       <Header />
 
-      <StepsStates states={StatesModel.getAll()} currentState={'Progress'} />
+      <div className={styles.steps_wrap}>
+        <div className="wrapper">
+          <StepsStates
+            useBg={false}
+            maxWidth="100%"
+            states={StatesModel.getAll()}
+            currentState={'Progress'}
+          />
+        </div>
+      </div>
 
       <div className={'wrapper_page'}>
         <PageDetails

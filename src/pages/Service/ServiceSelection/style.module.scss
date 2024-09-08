@@ -49,6 +49,10 @@
   align-items: baseline;
 }
 
+.steps_wrap {
+  @include backgroundGradientGreyWhite;
+}
+
 @media (min-width: $tabletSize) {
 
   .center_card {
