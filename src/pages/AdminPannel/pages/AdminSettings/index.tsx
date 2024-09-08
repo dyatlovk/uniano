@@ -1,18 +1,16 @@
-import ButtonChooseList from '@common/components/ButtonChooseList/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
-import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
-import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
-import SizeBox from '@common/components/ui/SizeBox/index'
-import Typography from '@common/components/ui/Typography/Typography'
-import AppColor from '@common/styles/variables-static'
-import React, { useRef, useState } from 'react'
-import DateFilter from '../../components/DateFilter'
-import styles from './style.module.scss'
-import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
-import { fakeUserConstant } from '@common/models/user'
 import InputCommon from '@common/components/ui/inputs/InputCommon/index'
 import InputDropdown from '@common/components/ui/inputs/InputDropdown/index'
+import HorizontalLine from '@common/components/ui/Lines/HorizontalLine/index'
+import MyButtonBlack from '@common/components/ui/MyButton/variants/MyButtonBlack'
+import MyButtonTransparentOrange from '@common/components/ui/MyButton/variants/MyButtonTransparentOrange'
+import SizeBox from '@common/components/ui/SizeBox/index'
 import SwitchButton from '@common/components/ui/SwitchButton/index'
+import Typography from '@common/components/ui/Typography/Typography'
+import { fakeUserConstant } from '@common/models/user'
+import AppColor from '@common/styles/variables-static'
+import React, { useState } from 'react'
+import styles from './style.module.scss'
 
 const AdminSettings = () => {
   return (
@@ -29,95 +27,97 @@ const AdminSettings = () => {
       </div>
       <DynamicPadding />
 
-      <DateFilter />
-
-      <DynamicPadding />
-
       <DetailsTable
         title="Logo & favicon"
         node={
           <div className={styles.logo_grid}>
             <div className={styles.flex_column}>
-              <Typography
-                variant="body4"
-                fontWeight="500"
-                color={AppColor.transparentBlack}
-              >
-                White background
-              </Typography>
-              <SizeBox height="20px" />
-              <div
-                className="box_shadow"
-                style={{
-                  width: '200px',
-                  height: '100px',
-                }}
-              ></div>
-              <SizeBox height="20px" />
-              <div className={styles.logo_bottom_item}>
-                <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
-                  Update logo
-                </MyButtonBlack>
-                <AppColor.close
-                  fill={AppColor.red}
-                  width={'15px'}
-                  height={'15px'}
-                />
+              <div className={styles.col_inner}>
+                <Typography
+                  variant="body4"
+                  fontWeight="500"
+                  color={AppColor.transparentBlack}
+                >
+                  White background
+                </Typography>
+                <SizeBox height="20px" />
+                <div
+                  className="box_shadow"
+                  style={{
+                    width: '200px',
+                    height: '100px',
+                  }}
+                ></div>
+                <SizeBox height="20px" />
+                <div className={styles.logo_bottom_item}>
+                  <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
+                    Update logo
+                  </MyButtonBlack>
+                  <AppColor.close
+                    fill={AppColor.red}
+                    width={'15px'}
+                    height={'15px'}
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.flex_column}>
-              <Typography
-                variant="body4"
-                fontWeight="500"
-                color={AppColor.transparentBlack}
-              >
-                Dark background
-              </Typography>
-              <SizeBox height="20px" />
-              <div
-                className="box_shadow"
-                style={{
-                  width: '200px',
-                  height: '100px',
-                }}
-              ></div>
-              <SizeBox height="20px" />
-              <div className={styles.logo_bottom_item}>
-                <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
-                  Update logo
-                </MyButtonBlack>
-                <AppColor.close
-                  fill={AppColor.red}
-                  width={'15px'}
-                  height={'15px'}
-                />
+              <div className={styles.col_inner}>
+                <Typography
+                  variant="body4"
+                  fontWeight="500"
+                  color={AppColor.transparentBlack}
+                >
+                  Dark background
+                </Typography>
+                <SizeBox height="20px" />
+                <div
+                  className="box_shadow"
+                  style={{
+                    width: '200px',
+                    height: '100px',
+                  }}
+                ></div>
+                <SizeBox height="20px" />
+                <div className={styles.logo_bottom_item}>
+                  <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
+                    Update logo
+                  </MyButtonBlack>
+                  <AppColor.close
+                    fill={AppColor.red}
+                    width={'15px'}
+                    height={'15px'}
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.flex_column}>
-              <Typography
-                variant="body4"
-                fontWeight="500"
-                color={AppColor.transparentBlack}
-              >
-                Favicon
-              </Typography>
-              <SizeBox height="20px" />
-              <img
-                src={fakeUserConstant.image}
-                width={'100px'}
-                height={'100px'}
-                alt=""
-              />
-              <SizeBox height="20px" />
-              <div className={styles.logo_bottom_item}>
-                <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
-                  Update logo
-                </MyButtonBlack>
-                <AppColor.close
-                  fill={AppColor.red}
-                  width={'15px'}
-                  height={'15px'}
+              <div className={styles.col_inner}>
+                <Typography
+                  variant="body4"
+                  fontWeight="500"
+                  color={AppColor.transparentBlack}
+                >
+                  Favicon
+                </Typography>
+                <SizeBox height="20px" />
+                <img
+                  src={fakeUserConstant.image}
+                  width={'100px'}
+                  height={'100px'}
+                  alt=""
                 />
+                <SizeBox height="20px" />
+                <div className={styles.logo_bottom_item}>
+                  <MyButtonBlack textTransform="uppercase" onClick={() => {}}>
+                    Update logo
+                  </MyButtonBlack>
+                  <AppColor.close
+                    fill={AppColor.red}
+                    width={'15px'}
+                    height={'15px'}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -405,6 +405,7 @@ const AdminSettings = () => {
         ]}
         title="IP block"
       />
+      <DynamicPadding desktop="50px" />
     </div>
   )
 }

@@ -134,6 +134,10 @@
   gap: 15px;
 }
 
+.col_inner {
+  @include flex_column();
+}
+
 @media (min-width: $tabletSize) {
 
   .ips_grid {
@@ -157,12 +161,12 @@
   }
 
   .logo_bottom_item {
-    align-self: flex-end;
+    align-self: center;
   }
 
   .logo_grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, max-content);
     gap: 30px;
   }
 
