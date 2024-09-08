@@ -1,5 +1,6 @@
 import DetailsTableAdminCategoriesServices from '@common/components/ui/DetailsTable/variants/DetailsTableAdminCategoriesServices/index'
 import DynamicPadding from '@common/components/ui/DynamicPadding/index'
+import Preloader from '@common/components/ui/Preloader/index'
 import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
