@@ -12,6 +12,7 @@ import styles from './style.module.scss'
 
 type DetailsTableAdminCategoriesServicesProps = {
   information: DetailsTableAdminCategoriesServicesItem[]
+  onFilterSettingsClick: () => void
 }
 
 export type DetailsTableAdminCategoriesServicesItem = {
@@ -23,6 +24,7 @@ export type DetailsTableAdminCategoriesServicesItem = {
 
 const DetailsTableAdminCategoriesServices = ({
   information,
+  onFilterSettingsClick,
 }: DetailsTableAdminCategoriesServicesProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const currentItem = information[currentPage - 1]
@@ -138,6 +140,17 @@ const DetailsTableAdminCategoriesServices = ({
               {
                 title: 'Active',
                 child: <SwitchButton width="44px" height="24px" />,
+              },
+              {
+                title: '',
+                child: (
+                  <div className='link_hover' onClick={onFilterSettingsClick}>
+                    <Typography>
+                      <div>Filter</div>
+                      <div>Settings</div>
+                    </Typography>
+                  </div>
+                ),
               },
             ]
           : [

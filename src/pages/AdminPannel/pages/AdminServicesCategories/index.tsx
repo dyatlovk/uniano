@@ -7,11 +7,13 @@ import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
 import { useState, useTransition } from 'react'
 import AddOrderCatModal from '../../components/AddOrderCatModal'
+import FilterSettingsModal from '../../components/FilterSettingsModal'
 import styles from './style.module.scss'
 
 const AdminServicesCategories = () => {
   const [showAddOrderModal, setShowAddOrderModal] = useState<boolean>(false)
   const [isAddModalPending, startAddModalTransition] = useTransition()
+  const [showFilterSettings, setShowFilterSettings] = useState<boolean>(false)
 
   return (
     <div className={styles.wrapper}>
@@ -49,6 +51,7 @@ const AdminServicesCategories = () => {
         <DynamicPadding />
 
         <DetailsTableAdminCategoriesServices
+          onFilterSettingsClick={() => setShowFilterSettings(true)}
           information={[
             {
               user: fakeUserConstant,
@@ -68,6 +71,14 @@ const AdminServicesCategories = () => {
           onAdd={() => setShowAddOrderModal(false)}
           onCancel={() => setShowAddOrderModal(false)}
           onClose={() => setShowAddOrderModal(false)}
+        />
+      )}
+
+      {showFilterSettings && (
+        <FilterSettingsModal
+          onCancel={() => setShowFilterSettings(false)}
+          onClose={() => setShowFilterSettings(false)}
+          onSave={() => setShowFilterSettings(false)}
         />
       )}
     </div>

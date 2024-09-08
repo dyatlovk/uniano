@@ -1,0 +1,68 @@
+.add_filter {
+  cursor: pointer;
+  @include hoverable();
+}
+
+.grid {
+  @include flex_column(30px);
+  align-items: flex-start;
+}
+
+.section_row {
+  width: 100%;
+  @include flex_row();
+}
+
+.actions {
+  @include flex_row(10px);
+}
+
+.action_setup {
+  @include flex_row(30px);
+}
+
+.title_line {
+  @include flex_row(10px);
+}
+
+.plus_icon {
+  background-color: $orange;
+  @include flex_column();
+  border-radius: 100%;
+  min-width: 25px;
+  min-height: 25px;
+  aspect-ratio: 1;
+  align-items: center;
+
+  cursor: pointer;
+  @include hoverable();
+
+  svg {
+    margin: auto;
+
+    line {
+      stroke: #fff;
+    }
+  }
+}
+
+.files_grid {
+  @include flex_row(20px);
+}
+
+.file {
+  @include flex_column(20px);
+}
+
+.update_icon {
+  text-transform: uppercase;
+  background-color: $blackTransparent;
+  border-radius: $borderRadius;
+  font-weight: 500;
+  color: #fff;
+  padding: 5px;
+}
+
+.update_action {
+  @include flex_row(10px);
+}
