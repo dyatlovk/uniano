@@ -4,12 +4,15 @@ import SearchFilterBar from '@common/components/ui/SearchFilterBar/index'
 import Typography from '@common/components/ui/Typography/Typography'
 import { fakeUserConstant } from '@common/models/user'
 import AppColor from '@common/styles/variables-static'
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import AddOrderCatModal from '../../components/AddOrderCatModal'
+import FilterSettingsModal from '../../components/FilterSettingsModal'
 import styles from './style.module.scss'
 
 const AdminServicesCommunity = () => {
   const [showAddOrderModal, setShowAddOrderModal] = useState<boolean>(false)
+  const [isAddModalPending, startAddModalTransition] = useTransition()
+  const [showFilterSettings, setShowFilterSettings] = useState<boolean>(false)
 
   return (
     <div className={styles.wrapper}>
@@ -30,7 +33,9 @@ const AdminServicesCommunity = () => {
             <div
               className={styles.orange}
               onClick={() => {
-                setShowAddOrderModal(true)
+                startAddModalTransition(() => {
+                  setShowAddOrderModal(true)
+                })
               }}
             >
               <AppColor.plus stroke="white" width={'fit-content'} />
@@ -45,6 +50,7 @@ const AdminServicesCommunity = () => {
         <DynamicPadding />
 
         <DetailsTableAdminCategoriesServices
+          onFilterSettingsClick={() => setShowFilterSettings(true)}
           information={[
             {
               user: fakeUserConstant,
@@ -56,12 +62,20 @@ const AdminServicesCommunity = () => {
         />
         <DynamicPadding />
       </div>
+      {isAddModalPending && !showAddOrderModal && <Preloader />}
       {showAddOrderModal && (
         <AddOrderCatModal
           title="Add community category"
           onAdd={() => setShowAddOrderModal(false)}
           onCancel={() => setShowAddOrderModal(false)}
           onClose={() => setShowAddOrderModal(false)}
+        />
+      )}
+      {showFilterSettings && (
+        <FilterSettingsModal
+          onCancel={() => setShowFilterSettings(false)}
+          onClose={() => setShowFilterSettings(false)}
+          onSave={() => setShowFilterSettings(false)}
         />
       )}
     </div>
