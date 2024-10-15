@@ -43,7 +43,7 @@ const Item = ({ title, icon, onClick, color, fontWeight }: ItemProps) => (
     <Typography
       title={title}
       className={styles.text_of_item}
-      color={color ?? AppColor.text}
+      color={color ?? AppColor.red}
       variant="body5"
       fontWeight={fontWeight ?? '400'}
     >
