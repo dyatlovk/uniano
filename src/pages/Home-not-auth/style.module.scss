@@ -561,7 +561,7 @@
 
 .six_section_details_span {
   display: block;
-  margin-top: 23px;
+  margin-top: 13px;
   margin-bottom: 34px;
 }
 
@@ -625,6 +625,8 @@
 
   .fourth_screen_sponsor_wrapper {
     margin-top: 30px;
+    position: relative;
+    z-index: 10;
   }
 
   .fourth_screen_buttons {
@@ -834,7 +836,7 @@
           margin-top: 32px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-          row-gap: 11px;
+          row-gap: 9px;
         }
       }
     }

@@ -19,7 +19,7 @@
 
 .care_height {
   min-height: 50vh;
-  max-height: calc(100vh - 270px);
+  max-height: calc(100vh - 170px);
   display: flex;
   flex-direction: column;
 }
@@ -32,6 +32,7 @@
 .bottom_part {
   overflow-y: auto;
   height: 100%;
+  flex-grow: 1;
 
   @include scrollStyles;
 }

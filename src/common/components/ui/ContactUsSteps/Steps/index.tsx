@@ -316,7 +316,7 @@ export const StepTwoContactUs = ({
             </div>
           }
           stepNumber="2"
-          title="Description"
+          title="Tell us about the issue"
         />
       }
     />
@@ -357,7 +357,18 @@ export const StepThreeContactUs = ({
       elements={[
         {
           solve: 'Change title',
-          text: stepOneValue,
+          text: '',
+          afterTextNode: (
+            <div className="gap_5">
+              <Typography variant="body4">{stepOneValue[0]}</Typography>
+              <AppColor.chevronRight
+                width={'6px'}
+                height={'12px'}
+                fill={'#A8A8AD'}
+              />
+              <Typography variant="body4">{stepOneValue[1]}</Typography>
+            </div>
+          ),
           onSolveClick: () => {
             callbackStep(1)
           },

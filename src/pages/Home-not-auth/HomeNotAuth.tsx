@@ -201,7 +201,8 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Search Master',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Search Master' ? '500' : '400',
                         onClick: () => {
                           setActiveFilter('Search Master')
                         },
@@ -216,7 +217,8 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Services Catalog',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Services Catalog' ? '500' : '400',
                         onClick: () => {
                           setActiveFilter('Services Catalog')
                         },
@@ -227,7 +229,8 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Create Order',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Create Order' ? '500' : '400',
                         onClick: () => {
                           setActiveFilter('Create Order')
                         },
@@ -238,7 +241,10 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Sponsorships Catalog',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Sponsorships Catalog'
+                            ? '500'
+                            : '400',
                         onClick: () => {
                           setActiveFilter('Sponsorships Catalog')
                         },
@@ -249,7 +255,10 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Freelancers Catalog',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Freelancers Catalog'
+                            ? '500'
+                            : '400',
                         onClick: () => {
                           setActiveFilter('Freelancers Catalog')
                         },
@@ -260,7 +269,8 @@ const HomeNotAuth = () => {
                         ),
                         title: 'Contact Managers',
                         color: AppColor.text,
-                        fontWeight: '400',
+                        fontWeight:
+                          activeFilter === 'Contact Managers' ? '500' : '400',
                         onClick: () => {
                           setActiveFilter('Contact Managers')
                         },
@@ -981,7 +991,7 @@ const HomeNotAuth = () => {
           item1={
             <div>
               <div
-                style={{ paddingBottom: '5px' }}
+                style={{ paddingBottom: '30px' }}
                 className={styles.six_section_cards_wrapper}
               >
                 {six_section_cards_content.map((item, index) => (

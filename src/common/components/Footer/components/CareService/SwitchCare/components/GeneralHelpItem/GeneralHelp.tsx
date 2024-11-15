@@ -26,6 +26,11 @@ const GeneralHelp = ({ setActiveSwitch }: CareServiceChildProps) => {
             setActiveSwitch(item)
           }}
         />
+        <QuestionItem
+          callback={item => {
+            setActiveSwitch(item)
+          }}
+        />
 
         <DynamicPadding desktop="30px" mobile="20px" />
       </div>
