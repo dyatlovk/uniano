@@ -22,6 +22,7 @@ import AnimateHeight from '@common/components/AnimateHeight/index'
 import AnimatedSvg from '@common/components/AnimatedSvg/index'
 import GettingsStarted from './components/GettingsStarted'
 import { FooterTriggerContext } from '@common/context/footer_trigger'
+import HelpOptions from './components/GeneralHelp/options'
 
 type CareComponentProps = {
   showHelper: boolean
@@ -154,48 +155,10 @@ export const CareComponent = ({ showHelper, callback }: CareComponentProps) => {
                     }
                   />
                 ) : lastTextItem == 'showhelp' ? (
-                  <PopUpBottom
-                    popUpNode={
-                      <ThreeLinesPopUpCustom
-                        items={[
-                          {
-                            icon: <AppColor.details />,
-                            title: 'View details',
-                            onClick: () => {
-                              setActiveSwitch(
-                                'main.general help.helpchat showhelp.details'
-                              )
-                            },
-                          },
-                          {
-                            icon: <AppColor.search />,
-                            title: 'Search',
-                          },
-                          {
-                            icon: <AppColor.mute />,
-                            title: 'Mute notifications',
-                          },
-                          {
-                            icon: <AppColor.closeAsSolved />,
-                            title: 'Close as solved',
-                          },
-                          {
-                            icon: <AppColor.edit fill={AppColor.text} />,
-                            title: 'Edit',
-                          },
-                          {
-                            icon: <AppColor.close fill={AppColor.red} />,
-                            title: 'Delete',
-                          },
-                        ]}
-                      />
-                    }
-                    topPaddingFromNode="20px"
-                    showNode={<AppColor.chevronBottom fill={AppColor.text} />}
-                    showBackgroundHover={false}
-                    showNodeHover={
-                      <AppColor.chevronBottom fill={AppColor.orange} />
-                    }
+                  <HelpOptions
+                    activeSwitch={(state: string) => {
+                      setActiveSwitch(state)
+                    }}
                   />
                 ) : (
                   <AnimatedSvg
