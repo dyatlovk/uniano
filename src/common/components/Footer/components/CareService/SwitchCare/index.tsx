@@ -127,6 +127,9 @@ export const CareComponent = ({ showHelper, callback }: CareComponentProps) => {
                             activeSwitch.split('.').length - 1
                           ]
                         )}
+                    {activeSwitch == 'showhelp.details.user' && <>x</>}
+                    {activeSwitch == 'showhelp.details.user' ||
+                      (activeSwitch != 'main' && <> Info</>)}
                   </Typography>
                 )}
               </div>
