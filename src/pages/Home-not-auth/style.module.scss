@@ -280,6 +280,7 @@
         padding: 0 10px;
         columns: 2;
         column-gap: 20px;
+
         >a {
           display: inline-block;
           margin-bottom: 2px;
@@ -845,6 +846,21 @@
 
 @media (max-width: 524px) {
 
+  .six_section_details_span {
+    width: 80%;
+    margin: auto;
+  }
+
+  .fifth_sectin_details_text_margin {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+  }
+
+  .fourth_screen_bc_image {
+    top: 53%;
+  }
+
   .margin_top_slider {
     margin-top: 0;
   }
@@ -864,7 +880,7 @@
   }
 
   .fourth_screen_slider {
-    margin-top: 13px;
+    margin-top: 30px;
   }
 
   .fourth_screen_sponsor_wrapper {

@@ -19,6 +19,7 @@ interface SliderProps {
   buttonRight?: string
   buttonLeft?: string
   removeButtons?: boolean
+  margin?: number
 }
 const Slider = ({
   children,
@@ -36,6 +37,7 @@ const Slider = ({
   paddingTop,
   paddingBottom,
   swiper,
+  margin,
 }: SliderProps) => {
   const [startX, setStartX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -115,7 +117,7 @@ const Slider = ({
           onTouchMove={handleDragMove}
           onMouseUp={handleDragEnd}
           onTouchEnd={handleDragEnd}
-          style={{ paddingTop, paddingBottom }}
+          style={{ paddingTop, paddingBottom, margin }}
           className={styles.sliderOverflow}
         >
           <div

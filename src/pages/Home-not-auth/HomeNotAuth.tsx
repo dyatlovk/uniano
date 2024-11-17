@@ -311,6 +311,7 @@ const HomeNotAuth = () => {
             textTransform="uppercase"
             variant="titleSmall"
             color={AppColor.orange}
+            textLineHeight="1.6em"
           >
             One Account,{' '}
             <span className={styles.advantanges_section_title_grey}>
@@ -412,6 +413,7 @@ const HomeNotAuth = () => {
             <DynamicPadding mobile="0px" desktop="50px" />
             <div className={styles.popular_categorys_slider}>
               <Slider
+                margin={width <= AppColor.mobileSize ? 0 : -10}
                 maxShowCount={4}
                 itemWidth={260}
                 maxWidth={width <= AppColor.tabletSize ? 260 : 1100}
@@ -427,7 +429,7 @@ const HomeNotAuth = () => {
                 ))}
               </Slider>
 
-              <DynamicPadding desktop="30px" mobile="20px" />
+              <DynamicPadding desktop="30px" mobile="0px" />
             </div>
             <div className={styles.popular_categorys_buttons}>
               <MyButton
@@ -508,13 +510,14 @@ const HomeNotAuth = () => {
                 alt=""
               />
               <Slider
-                buttonLeft="-65px"
+                buttonLeft={width <= AppColor.tabletSize ? '-50px' : '-65px'}
                 buttonRight="-55px"
                 maxShowCount={2}
                 paddingBottom="10px"
                 paddingTop="20px"
                 elementsCount={6}
                 itemWidth={250}
+                margin={width <= AppColor.tabletSize ? 0 : -10}
                 maxWidth={width <= AppColor.tabletSize ? 250 : 540}
                 gap={40}
               >
@@ -791,7 +794,13 @@ const HomeNotAuth = () => {
             <div className={styles.fifth_sectin_wrapper_flex}>
               <div className={styles.fifth_sectin_wrapper_details_wrapper}>
                 <div className="center_mobile_text">
-                  <Typography variant="titleSmall" textTransform="uppercase">
+                  <Typography
+                    variant="titleSmall"
+                    textTransform="uppercase"
+                    textLineHeight={
+                      width <= AppColor.tabletSize ? '25px' : '33px'
+                    }
+                  >
                     Elevate Projects with Professional{' '}
                     <span style={{ color: AppColor.orange }}>Management</span>
                   </Typography>
@@ -982,7 +991,7 @@ const HomeNotAuth = () => {
       <div className={styles.wrapper}>
         <ResponsiveLayoutTwo
           gap="80px"
-          item1MaxWidth="730px"
+          item1MaxWidth={width <= AppColor.mobileSize ? '300px' : '730px'}
           item2MaxWidth="380px"
           orderItem1Desktop={0}
           orderItem1Mobile={1}
