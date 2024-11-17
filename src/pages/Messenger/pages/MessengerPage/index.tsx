@@ -379,6 +379,7 @@ const MessengerPage = ({ activePageIndex }: MessengerPageProps) => {
 export const FileItemNotific = () => {
   return (
     <div className={styles.file_notification_wrapper}>
+      <div className={styles.absolute_background_color}></div>
       <AppColor.pdfFile />
       <div>
         <Typography textLineHeight="1" variant="body5" fontWeight="500">
